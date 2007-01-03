@@ -22,10 +22,11 @@
 
 #include "base_rec.h"
 
-//CBaseRec::CBaseRec(void)
-//{
-//}
-//
+CBaseRec::CBaseRec(void)
+{
+	TransactionAlreadyStarted = false;
+}
+
 //CBaseRec::~CBaseRec(void)
 //{
 //}

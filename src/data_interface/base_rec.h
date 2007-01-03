@@ -47,13 +47,17 @@ protected:
 	// true if we are past the end of the result set
 	bool eof;
 
+	// used in the execution of multi row queries: it remembers if a transaction was already started
+	// when the query was executed
+	bool TransactionAlreadyStarted;
+
 	// Firebird specific
 	virtual void FB_DbInsert(void) = 0;
 	virtual void FB_DbUpdate(void) = 0;
 	virtual void FB_DbDelete(void) = 0;
 	// executes a query that does not return rows
 	void FB_ExecuteQueryNoReturn( wxString sql );
-	// current statement, used to manrain state between calls for multi row queries
+	// current statement, used to mantain state between calls for multi row queries
 	IBPP::Statement FB_st;
 	void FB_DBStartMultiRowQuery( wxString sql, bool readOnly );
 	void FB_DBNextRow(void);
@@ -64,7 +68,7 @@ protected:
 	bool FB_QueryReturnsNoRows( wxString sql );
 
 public:
-//	CBaseRec(void);
+	CBaseRec(void);
 //	~CBaseRec(void);
 
 	// insert this record into the database
@@ -77,9 +81,13 @@ public:
 	void DbDelete(void);
 
 	// support for queries that return one or more rows
-	bool IsEOF(void) {return eof;}				// returns true if we are beyond the leat row
-	void DBStartMultiRowQuery( wxString sql, bool readOnly );	// starts the query and reads the first row, possibly setting EOF
-	void DBNextRow(void);									// moves to the next row, possibly setting EOF
+	//
+	// returns true if we are beyond the leat row
+	bool IsEOF(void) {return eof;}
+	// starts the query and reads the first row, possibly setting EOF
+	void DBStartMultiRowQuery( wxString sql, bool readOnly );
+	// moves to the next row, possibly setting EOF
+	void DBNextRow(void);
 
 
 };

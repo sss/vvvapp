@@ -75,8 +75,11 @@ void CVolumes::FB_FetchRow(void) {
 	else {
 		// end of the rowset
 		eof = true;
-		CFirebirdDB* db = (CFirebirdDB*) CBaseDB::GetDatabase();
-		db->TransactionCommit();
+		if( !TransactionAlreadyStarted ) {
+			CFirebirdDB* db = (CFirebirdDB*) CBaseDB::GetDatabase();
+			db->TransactionCommit();
+		}
+		TransactionAlreadyStarted = false;
 	}
 }
 

@@ -47,7 +47,9 @@ void CBaseRec::FB_ExecuteQueryNoReturn( wxString sql ) {
 // from inside a transaction
 void CBaseRec::FB_DBStartMultiRowQuery( wxString sql, bool readOnly ) {
 	CFirebirdDB* db = (CFirebirdDB*) CBaseDB::GetDatabase();
-	db->TransactionStart( readOnly );
+	TransactionAlreadyStarted = db->TransactionIsOpened();
+	if( !TransactionAlreadyStarted )
+		db->TransactionStart( readOnly );
 	FB_st = StatementFactory( db->GetIBPPDB(), db->TransactionGetReference() );
 	FB_st->Execute( CUtils::wx2std(sql) );
 	FB_FetchRow();
