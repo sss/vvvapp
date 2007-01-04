@@ -308,6 +308,9 @@ void CMainFrame::LoadVolumeInTreeControl( CVolumes vol, wxTreeCtrl* tctl, wxTree
 		// adds the folder to the tree
 		wxTreeItemId itemID = tctl->AppendItem( volumeID, name, 1, 2, 
 							new MyTreeItemData(name, vol.VolumeID, pth.PathID, false) );
+		// sets the expanded images
+		tctl->SetItemImage( itemID, 1, wxTreeItemIcon_Expanded );
+		tctl->SetItemImage( itemID, 2, wxTreeItemIcon_SelectedExpanded );
 		// adds the subfolders
 		LoadFolderInTreeControl( vol.VolumeID, tctl, itemID, pth.PathID );
 
@@ -327,6 +330,9 @@ void CMainFrame::LoadFolderInTreeControl( long VolumeID, wxTreeCtrl* tctl, wxTre
 		// adds the folder to the tree
 		wxTreeItemId itemID = tctl->AppendItem( fatherTreeID, name, 1, 2, 
 							new MyTreeItemData(name, VolumeID, pth.PathID, false) );
+		// sets the expanded images
+		tctl->SetItemImage( itemID, 1, wxTreeItemIcon_Expanded );
+		tctl->SetItemImage( itemID, 2, wxTreeItemIcon_SelectedExpanded );
 
 		pth.DBNextRow();
 	}
