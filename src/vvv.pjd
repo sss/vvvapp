@@ -744,7 +744,7 @@
             <string name="proxy-Custom arguments">""</string>
             <string name="proxy-Custom ctor arguments">""</string>
             <document>
-              <string name="title">"wxTreeCtrl: ID_TREECTRL1"</string>
+              <string name="title">"wxTreeCtrl: ID_TREE_CONTROL"</string>
               <string name="type">"dialog-control-document"</string>
               <string name="filename">""</string>
               <string name="icon-name">"treectrl"</string>
@@ -754,7 +754,8 @@
               <long name="locked">0</long>
               <string name="created">"16/12/2006"</string>
               <string name="proxy-type">"wbTreeCtrlProxy"</string>
-              <string name="proxy-Id name">"ID_TREECTRL1"</string>
+              <string name="event-handler-0">"wxEVT_COMMAND_TREE_ITEM_EXPANDING|OnTreeControlItemExpanding"</string>
+              <string name="proxy-Id name">"ID_TREE_CONTROL"</string>
               <long name="proxy-Id value">10005</long>
               <string name="proxy-Class">"wxTreeCtrl"</string>
               <string name="proxy-Member variable name">""</string>
@@ -775,7 +776,7 @@
               <bool name="proxy-wxTR_NO_LINES">0</bool>
               <bool name="proxy-wxTR_FULL_ROW_HIGHLIGHT">0</bool>
               <bool name="proxy-wxTR_LINES_AT_ROOT">0</bool>
-              <bool name="proxy-wxTR_HIDE_ROOT">0</bool>
+              <bool name="proxy-wxTR_HIDE_ROOT">1</bool>
               <bool name="proxy-wxTR_ROW_LINES">0</bool>
               <bool name="proxy-wxTR_HAS_VARIABLE_ROW_HEIGHT">0</bool>
               <bool name="proxy-wxTR_SINGLE">1</bool>
@@ -811,7 +812,7 @@
               <string name="proxy-Custom ctor arguments">""</string>
             </document>
             <document>
-              <string name="title">"wxListCtrl: ID_LISTCTRL1"</string>
+              <string name="title">"wxListCtrl: ID_LIST_CONTROL"</string>
               <string name="type">"dialog-control-document"</string>
               <string name="filename">""</string>
               <string name="icon-name">"listctrl"</string>
@@ -821,7 +822,7 @@
               <long name="locked">0</long>
               <string name="created">"16/12/2006"</string>
               <string name="proxy-type">"wbListCtrlProxy"</string>
-              <string name="proxy-Id name">"ID_LISTCTRL1"</string>
+              <string name="proxy-Id name">"ID_LIST_CONTROL"</string>
               <long name="proxy-Id value">10006</long>
               <string name="proxy-Class">"wxListCtrl"</string>
               <string name="proxy-Member variable name">""</string>
@@ -963,6 +964,14 @@
             <string name="proxy-type">"wbBoxSizerProxy"</string>
             <string name="proxy-Orientation">"Vertical"</string>
             <string name="proxy-Member variable name">""</string>
+            <string name="proxy-AlignH">"Centre"</string>
+            <string name="proxy-AlignV">"Centre"</string>
+            <long name="proxy-Stretch factor">0</long>
+            <long name="proxy-Border">5</long>
+            <bool name="proxy-wxLEFT">1</bool>
+            <bool name="proxy-wxRIGHT">1</bool>
+            <bool name="proxy-wxTOP">1</bool>
+            <bool name="proxy-wxBOTTOM">1</bool>
             <bool name="proxy-wxSHAPED">0</bool>
             <bool name="proxy-wxADJUST_MINSIZE">0</bool>
             <bool name="proxy-wxFIXED_MINSIZE">0</bool>

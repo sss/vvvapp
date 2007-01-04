@@ -44,6 +44,9 @@ public:
 
 	// methods -----------------------------------
 
+	// starts a multirow query that returns all the volumes
+	void DBStartQueryListVolumes(void);
+
 protected:
 
 	// Firebird implementation of the database methods

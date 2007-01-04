@@ -43,6 +43,10 @@ public:
 
 	// methods -----------------------------------
 
+	// starts a multirow query that returns all the paths with a given VolumeID and FatherID (nullable)
+	void DBStartQueryListPaths( long VolumeID, CNullableLong FatherID );
+
+
 protected:
 
 	// Firebird implementation of the database methods

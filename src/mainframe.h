@@ -52,6 +52,9 @@
 #include "wx/listctrl.h"
 ////@end includes
 
+#include "data_interface/volumes.h"
+#include "data_interface/paths.h"
+
 /*!
  * Forward declarations
  */
@@ -68,8 +71,8 @@
 #define ID_CATALOG_VOLUME 10001
 #define ID_STATUSBAR1 10004
 #define ID_SPLITTERWINDOW1 10003
-#define ID_TREECTRL1 10005
-#define ID_LISTCTRL1 10006
+#define ID_TREE_CONTROL 10005
+#define ID_LIST_CONTROL 10006
 #define SYMBOL_CMAINFRAME_STYLE wxDEFAULT_FRAME_STYLE|wxCAPTION
 #define SYMBOL_CMAINFRAME_TITLE _("VVV")
 #define SYMBOL_CMAINFRAME_IDNAME ID_MAIN_FRAME
@@ -115,6 +118,9 @@ public:
     /// wxEVT_COMMAND_MENU_SELECTED event handler for ID_CATALOG_VOLUME
     void OnCatalogVolumeClick( wxCommandEvent& event );
 
+    /// wxEVT_COMMAND_TREE_ITEM_EXPANDING event handler for ID_TREE_CONTROL
+    void OnTreeControlItemExpanding( wxTreeEvent& event );
+
 ////@end CMainFrame event handler declarations
 
 ////@begin CMainFrame member function declarations
@@ -131,6 +137,17 @@ public:
 
 ////@begin CMainFrame member variables
 ////@end CMainFrame member variables
+
+private:
+
+	// fills the tree control
+	void LoadTreeControl(void);
+
+	// loads a volume and its folders in the tree control
+	void LoadVolumeInTreeControl( CVolumes vol, wxTreeCtrl* tctl, wxTreeItemId rootID);
+
+	// loads a folder in the tree control, adding its subfolder to be able to show the "+" near folders with subfolders
+	void LoadFolderInTreeControl( long VolumeID, wxTreeCtrl* tctl, wxTreeItemId fatherTreeID, long fatherID);
 };
 
 #endif

@@ -28,3 +28,15 @@ CPaths::CPaths(void) {
 
 CPaths::~CPaths(void) {
 }
+
+
+void CPaths::DBStartQueryListPaths( long VolID, CNullableLong FathID ) {
+	wxString sql;
+
+	if( FathID.IsNull() )
+		sql = "SELECT * FROM PATHS WHERE VOLUME_ID = " + long2string(VolID) + " AND FATHER_ID IS NULL ORDER BY PATH_NAME";
+	else
+		sql = "SELECT * FROM PATHS WHERE VOLUME_ID = " + long2string(VolID) + " AND FATHER_ID = " + long2string(FathID) + " ORDER BY PATH_NAME";
+
+	DBStartMultiRowQuery( sql, true );
+}

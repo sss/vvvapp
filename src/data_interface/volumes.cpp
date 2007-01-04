@@ -42,3 +42,6 @@ bool CVolumes::NameExists(void) {
 	return retVal;
 }
 
+void CVolumes::DBStartQueryListVolumes(void) {
+	DBStartMultiRowQuery( "SELECT * FROM VOLUMES ORDER BY VOLUME_NAME", true );
+}
