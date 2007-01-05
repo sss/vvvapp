@@ -91,7 +91,7 @@ void CFiles::FB_FetchRow(void) {
 		FB_st->Get("FILE_DATETIME", ts);
 		DateTime.Set( ts.Day(), (wxDateTime::Month) (wxDateTime::Jan + ts.Month() - 1), ts.Year(), ts.Hours(), ts.Minutes(), ts.Seconds() );
 		FB_st->Get("IS_FOLDER", stmp);
-		FileSize = (stmp == "T");
+		IsFolder = (stmp == "T");
 		FB_st->Get("PATH_ID", tmp);
 		PathID = (long) tmp;
 	}

@@ -54,6 +54,7 @@
 
 #include "data_interface/volumes.h"
 #include "data_interface/paths.h"
+#include "data_interface/files.h"
 
 /*!
  * Forward declarations
@@ -118,6 +119,9 @@ public:
     /// wxEVT_COMMAND_MENU_SELECTED event handler for ID_CATALOG_VOLUME
     void OnCatalogVolumeClick( wxCommandEvent& event );
 
+    /// wxEVT_COMMAND_TREE_SEL_CHANGED event handler for ID_TREE_CONTROL
+    void OnTreeControlSelChanged( wxTreeEvent& event );
+
     /// wxEVT_COMMAND_TREE_ITEM_EXPANDING event handler for ID_TREE_CONTROL
     void OnTreeControlItemExpanding( wxTreeEvent& event );
 
@@ -148,6 +152,9 @@ private:
 
 	// loads a folder in the tree control, adding its subfolder to be able to show the "+" near folders with subfolders
 	void LoadFolderInTreeControl( long VolumeID, wxTreeCtrl* tctl, wxTreeItemId fatherTreeID, long fatherID);
+
+	// create the headers for the list control in report mode
+	void CreateListControlHeaders(void);
 };
 
 #endif

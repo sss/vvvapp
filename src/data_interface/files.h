@@ -46,6 +46,9 @@ public:
 
 	// methods -----------------------------------
 
+	// starts a multirow query that returns all the files from a given PathID
+	void DBStartQueryListFiles( long PathID );
+
 protected:
 
 	// Firebird implementation of the database methods
