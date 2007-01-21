@@ -86,8 +86,10 @@ wxString CBaseRec::ExpandSingleQuotes( wxString txt ) {
 
 // converts a long to a string
 wxString CBaseRec::long2string( long val ) {
-	char buf[30];
-	wxString retVal = ltoa( val, buf, 10 );
+//	char buf[30];
+//	wxString retVal = ltoa( val, buf, 10 );
+	wxString retVal;
+	retVal.Printf( "%d", val );
 	return retVal;
 }
 
