@@ -25,7 +25,7 @@
 
 #include <wx/string.h>
 
-#include "../data_interface/base_db.h"
+#include "base_db.h"
 #include "../ibpp/core/ibpp.h"
 
 using namespace std;

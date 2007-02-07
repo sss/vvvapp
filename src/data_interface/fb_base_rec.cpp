@@ -20,8 +20,8 @@
     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
-#include "../data_interface/base_rec.h"
-#include "../firebird/firebird_db.h"
+#include "base_rec.h"
+#include "firebird_db.h"
 #include "../ibpp/core/ibpp.h"
 
 using namespace IBPP;

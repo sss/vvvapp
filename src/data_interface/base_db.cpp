@@ -22,7 +22,7 @@
 
 #include "base_db.h"
 #include "base_rec.h"
-#include "../firebird/firebird_db.h"
+#include "firebird_db.h"
 
 using namespace std;
 

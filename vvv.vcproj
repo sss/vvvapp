@@ -1189,32 +1189,28 @@
 					RelativePath=".\src\data_interface\base_rec.cpp">
 				</File>
 				<File
+					RelativePath=".\src\data_interface\fb_base_rec.cpp">
+				</File>
+				<File
+					RelativePath=".\src\data_interface\fb_files.cpp">
+				</File>
+				<File
+					RelativePath=".\src\data_interface\fb_paths.cpp">
+				</File>
+				<File
+					RelativePath=".\src\data_interface\fb_volumes.cpp">
+				</File>
+				<File
 					RelativePath=".\src\data_interface\files.cpp">
+				</File>
+				<File
+					RelativePath=".\src\data_interface\firebird_db.cpp">
 				</File>
 				<File
 					RelativePath=".\src\data_interface\paths.cpp">
 				</File>
 				<File
 					RelativePath=".\src\data_interface\volumes.cpp">
-				</File>
-			</Filter>
-			<Filter
-				Name="Firebird"
-				Filter="">
-				<File
-					RelativePath=".\src\firebird\fb_base_rec.cpp">
-				</File>
-				<File
-					RelativePath=".\src\firebird\fb_files.cpp">
-				</File>
-				<File
-					RelativePath=".\src\firebird\fb_paths.cpp">
-				</File>
-				<File
-					RelativePath=".\src\firebird\fb_volumes.cpp">
-				</File>
-				<File
-					RelativePath=".\src\firebird\firebird_db.cpp">
 				</File>
 			</Filter>
 		</Filter>
@@ -1259,17 +1255,13 @@
 					RelativePath=".\src\data_interface\files.h">
 				</File>
 				<File
+					RelativePath=".\src\data_interface\firebird_db.h">
+				</File>
+				<File
 					RelativePath=".\src\data_interface\paths.h">
 				</File>
 				<File
 					RelativePath=".\src\data_interface\volumes.h">
-				</File>
-			</Filter>
-			<Filter
-				Name="Firebird"
-				Filter="">
-				<File
-					RelativePath=".\src\firebird\firebird_db.h">
 				</File>
 			</Filter>
 		</Filter>
