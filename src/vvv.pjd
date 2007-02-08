@@ -535,6 +535,7 @@
                 <long name="locked">0</long>
                 <string name="created">"16/12/2006"</string>
                 <string name="proxy-type">"wbMenuItemProxy"</string>
+                <string name="event-handler-0">"wxEVT_COMMAND_MENU_SELECTED|OnOPENClick"</string>
                 <string name="proxy-Id name">"wxID_OPEN"</string>
                 <long name="proxy-Id value">5000</long>
                 <string name="proxy-Label">"Open"</string>

@@ -105,8 +105,8 @@ void CVvvApp::Init()
 bool CVvvApp::OnInit()
 {    
 	// connects to the database
-	CBaseDB::CreateFirebirdDatabase( "localhost", "CDCATALOG", "SYSDBA", "masterkey" );
-	wxString stmp = CBaseDB::GetDatabase()->Connect();
+//	CBaseDB::CreateFirebirdDatabase( "", "CDCATALOG", "SYSDBA", "masterkey" );
+//	wxString stmp = CBaseDB::GetDatabase()->Connect();
 
 
 
@@ -139,8 +139,11 @@ bool CVvvApp::OnInit()
  */
 int CVvvApp::OnExit()
 {    
-	CBaseDB::GetDatabase()->Disconnect();
-	CBaseDB::DeleteFirebirdDatabase();
+	CBaseDB *db = CBaseDB::GetDatabase();
+	if( db != NULL ) {
+		CBaseDB::GetDatabase()->Disconnect();
+		CBaseDB::DeleteFirebirdDatabase();
+	}
 
 ////@begin CVvvApp cleanup
 	return wxApp::OnExit();

@@ -113,6 +113,9 @@ public:
 
 ////@begin CMainFrame event handler declarations
 
+    /// wxEVT_COMMAND_MENU_SELECTED event handler for wxID_OPEN
+    void OnOPENClick( wxCommandEvent& event );
+
     /// wxEVT_COMMAND_MENU_SELECTED event handler for wxID_EXIT
     void OnEXITClick( wxCommandEvent& event );
 
