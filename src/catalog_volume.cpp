@@ -296,6 +296,7 @@ void CDialogCatalogVolume::CatalogSingleFolder( CBaseDB* db, wxString path, long
 	CPaths pth;
 	pth.VolumeID = VolumeID;
 	pth.PathName = dirName.GetPath(0);
+	pth.PathName = pth.PathName.AfterLast( wxFileName::GetPathSeparator() );	// only takes the last part of the full path
 	pth.FatherID = FatherID;
 	pth.DbInsert();
 

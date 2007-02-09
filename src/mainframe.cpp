@@ -266,7 +266,7 @@ void CMainFrame::LoadTreeControl(void) {
 
 	tctl->DeleteAllItems();
 
-	// adds a root item that will not ba visible
+	// adds a root item that will not be visible
 	wxTreeItemId rootID = tctl->AddRoot( wxT("Root") );
 
 	CVolumes vol;
@@ -303,7 +303,6 @@ void CMainFrame::LoadVolumeInTreeControl( CVolumes vol, wxTreeCtrl* tctl, wxTree
 	pth.DBStartQueryListPaths( vol.VolumeID, nl );
 	while( !pth.IsEOF() ) {
 		wxString name = pth.PathName;
-		name = name.AfterLast( wxFileName::GetPathSeparator() );
 		// adds the folder to the tree
 		wxTreeItemId itemID = tctl->AppendItem( volumeID, name, 1, 2, 
 							new MyTreeItemData(name, vol.VolumeID, pth.PathID, false) );
