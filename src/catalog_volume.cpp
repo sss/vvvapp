@@ -302,7 +302,7 @@ void CDialogCatalogVolume::CatalogSingleFolder( CBaseDB* db, wxString path, long
 
 	// reads all file names
 	wxDir dir(path);
-	bool cont = dir.GetFirst(&fileName, wxT("*.*"), wxDIR_FILES );
+	bool cont = dir.GetFirst(&fileName, wxT(""), wxDIR_FILES );
 	while( cont ) {
 		// stores the file row
 		wxFileName fn( path, fileName );
@@ -319,7 +319,7 @@ void CDialogCatalogVolume::CatalogSingleFolder( CBaseDB* db, wxString path, long
 	}
 
 	// now reads all the subfolders
-	cont = dir.GetFirst(&fileName, wxT("*.*"), wxDIR_DIRS );
+	cont = dir.GetFirst(&fileName, wxT(""), wxDIR_DIRS );
 	while( cont ) {
 		wxFileName dirName( path, wxEmptyString );
 		dirName.AppendDir( fileName );
