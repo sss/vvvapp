@@ -53,6 +53,7 @@
 ////@end includes
 
 #include "wx/filename.h"
+#include "wx/config.h"
 #include "mainframe.h"
 
 ////@begin XPM images
@@ -142,7 +143,21 @@ bool CMainFrame::Create( wxWindow* parent, wxWindowID id, const wxString& captio
     CreateControls();
     Centre();
 ////@end CMainFrame creation
-    return true;
+
+	// reads the frame position from the config object
+	wxConfigBase *pConfig = wxConfigBase::Get();
+	pConfig->SetPath(wxT("/Mainframe/Layout"));
+	int x = pConfig->Read(wxT("x"), 50),
+		y = pConfig->Read(wxT("y"), 50),
+		w = pConfig->Read(wxT("w"), 600),
+		h = pConfig->Read(wxT("h"), 400);
+	Move(x, y);
+	SetClientSize(w, h);
+	bool FrameMaximized;
+	pConfig->Read( wxT("Maximized"), &FrameMaximized, false );
+	if( FrameMaximized ) Maximize(true);
+
+	return true;
 }
 
 /*!
@@ -466,4 +481,23 @@ void CMainFrame::OnOPENClick( wxCommandEvent& event )
 	}
 }
 
+CMainFrame::~CMainFrame() {
 
+	wxConfigBase *pConfig = wxConfigBase::Get();
+	if ( pConfig == NULL )
+		return;
+
+	// save the frame position
+	int x, y, w, h;
+	GetClientSize(&w, &h);
+	GetPosition(&x, &y);
+	pConfig->SetPath(wxT("/Mainframe/Layout"));
+	if( !IsMaximized() ) {
+		pConfig->Write(wxT("x"), (long) x);
+		pConfig->Write(wxT("y"), (long) y);
+		pConfig->Write(wxT("w"), (long) w);
+		pConfig->Write(wxT("h"), (long) h);
+	}
+	pConfig->Write(wxT("Maximized"), IsMaximized() );
+
+}

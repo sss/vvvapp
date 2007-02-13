@@ -103,6 +103,8 @@ public:
     CMainFrame( );
     CMainFrame( wxWindow* parent, wxWindowID id = SYMBOL_CMAINFRAME_IDNAME, const wxString& caption = SYMBOL_CMAINFRAME_TITLE, const wxPoint& pos = SYMBOL_CMAINFRAME_POSITION, const wxSize& size = SYMBOL_CMAINFRAME_SIZE, long style = SYMBOL_CMAINFRAME_STYLE );
 
+	virtual ~CMainFrame();
+
     bool Create( wxWindow* parent, wxWindowID id = SYMBOL_CMAINFRAME_IDNAME, const wxString& caption = SYMBOL_CMAINFRAME_TITLE, const wxPoint& pos = SYMBOL_CMAINFRAME_POSITION, const wxSize& size = SYMBOL_CMAINFRAME_SIZE, long style = SYMBOL_CMAINFRAME_STYLE );
 
     /// Initialises member variables

@@ -104,12 +104,10 @@ void CVvvApp::Init()
 
 bool CVvvApp::OnInit()
 {    
-	// connects to the database
-//	CBaseDB::CreateFirebirdDatabase( "", "CDCATALOG", "SYSDBA", "masterkey" );
-//	wxString stmp = CBaseDB::GetDatabase()->Connect();
 
-
-
+	// sets the config object
+	SetVendorName(wxT("VVV"));
+	SetAppName(wxT("VVV"));
 	
 ////@begin CVvvApp initialisation
 	// Remove the comment markers above and below this block
