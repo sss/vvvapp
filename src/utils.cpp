@@ -53,15 +53,15 @@ wxString CUtils::HumanReadableFileSize( wxLongLong size ) {
 
 	if( size > 1024*1024 ) {
 		size = size / (1024*1024);
-		retVal.Printf( "%d MB", size );
+		retVal = size.ToString() + " MB";
 	}
 	else {
 		if( size > 1024 ) {
 			size = size / 1024;
-			retVal.Printf( "%d KB", size );
+			retVal = size.ToString() + " KB";
 		}
 		else {
-			retVal.Printf( "%d", size );
+			retVal = size.ToString();
 		}
 	}
 
