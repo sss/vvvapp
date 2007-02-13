@@ -47,3 +47,23 @@ void CUtils::MsgErr( wxString errMsg ){
 	wxMessageDialog dialog( NULL, errMsg, applicationName, wxOK|wxICON_ERROR );
 	dialog.ShowModal();
 }
+
+wxString CUtils::HumanReadableFileSize( wxLongLong size ) {
+	wxString retVal;
+
+	if( size > 1024*1024 ) {
+		size = size / (1024*1024);
+		retVal.Printf( "%d MB", size );
+	}
+	else {
+		if( size > 1024 ) {
+			size = size / 1024;
+			retVal.Printf( "%d KB", size );
+		}
+		else {
+			retVal.Printf( "%d", size );
+		}
+	}
+
+	return retVal;
+}

@@ -38,6 +38,9 @@ public:
 	static std::string wx2std(const wxString& input, wxMBConv* conv = wxConvCurrent);
 	static wxString std2wx(const std::string& input, wxMBConv* conv = wxConvCurrent);
 
+	// returns the size of a file in human readable format (KB, MB and so on...)
+	static wxString HumanReadableFileSize( wxLongLong size );
+
 	// displays an error message
 	static void MsgErr( wxString errMsg );
 
