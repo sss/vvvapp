@@ -157,6 +157,10 @@ bool CMainFrame::Create( wxWindow* parent, wxWindowID id, const wxString& captio
 	pConfig->Read( wxT("Maximized"), &FrameMaximized, false );
 	if( FrameMaximized ) Maximize(true);
 
+	// reads the splitter sash position
+	wxSplitterWindow* sw = (wxSplitterWindow*) FindWindow( ID_SPLITTERWINDOW1 );
+	sw->SetSashPosition( pConfig->Read(wxT("SashPosition"), 200) );
+
 	return true;
 }
 
@@ -487,7 +491,7 @@ CMainFrame::~CMainFrame() {
 	if ( pConfig == NULL )
 		return;
 
-	// save the frame position
+	// saves the frame position
 	int x, y, w, h;
 	GetClientSize(&w, &h);
 	GetPosition(&x, &y);
@@ -499,5 +503,9 @@ CMainFrame::~CMainFrame() {
 		pConfig->Write(wxT("h"), (long) h);
 	}
 	pConfig->Write(wxT("Maximized"), IsMaximized() );
+
+	// saves the sash position
+	wxSplitterWindow* sw = (wxSplitterWindow*) FindWindow( ID_SPLITTERWINDOW1 );
+	pConfig->Write(wxT("SashPosition"), (long) sw->GetSashPosition() );
 
 }
