@@ -157,6 +157,9 @@ public:
 ////@begin CMainFrame member variables
 ////@end CMainFrame member variables
 
+    /// wxEVT_COMMAND_TREE_ITEM_EXPANDING event handler for ID_TREE_CONTROL_VIRTUAL
+    void OnTreeControlVirtualItemExpanding( wxTreeEvent& event );
+
 private:
 
 	// fills the physical tree control

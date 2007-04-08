@@ -118,6 +118,8 @@ BEGIN_EVENT_TABLE( CMainFrame, wxFrame )
 
 ////@end CMainFrame event table entries
 
+    EVT_TREE_ITEM_EXPANDING( ID_TREE_CONTROL_VIRTUAL, CMainFrame::OnTreeControlVirtualItemExpanding )
+
 END_EVENT_TABLE()
 
 /*!
@@ -641,3 +643,28 @@ void CMainFrame::OnViewVirtualClick( wxCommandEvent& event )
 }
 
 
+/*!
+ * wxEVT_COMMAND_TREE_ITEM_EXPANDING event handler for ID_TREE_CONTROL_VIRTUAL
+ */
+
+void CMainFrame::OnTreeControlVirtualItemExpanding( wxTreeEvent& event )
+{
+	wxTreeCtrl* tctl = (wxTreeCtrl*) FindWindow( ID_TREE_CONTROL_VIRTUAL );
+	wxTreeItemId itemID = event.GetItem();
+    MyTreeItemData *itemData = (MyTreeItemData *) tctl->GetItemData(itemID);
+
+	if( itemData->AlreadyOpened() ) return;
+		
+	// if this item has not been yet opened it loads the children of its children
+	itemData->SetAlreadyOpened();
+
+	// loops over the children
+	wxTreeItemIdValue cookie;
+	wxTreeItemId childID = tctl->GetFirstChild( itemID, cookie );
+	while( childID.IsOk() ) {
+		// adds the children of this child
+	    MyTreeItemData *childItemData = (MyTreeItemData *) tctl->GetItemData(childID);
+		LoadVirtualFolderInTreeControl( tctl, childID, childItemData->GetPathID() );
+		childID = tctl->GetNextChild( itemID, cookie );
+	}
+}
