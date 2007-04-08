@@ -1198,6 +1198,9 @@
 					RelativePath=".\src\data_interface\fb_paths.cpp">
 				</File>
 				<File
+					RelativePath=".\src\data_interface\fb_virtual_files.cpp">
+				</File>
+				<File
 					RelativePath=".\src\data_interface\fb_virtual_paths.cpp">
 				</File>
 				<File
@@ -1211,6 +1214,9 @@
 				</File>
 				<File
 					RelativePath=".\src\data_interface\paths.cpp">
+				</File>
+				<File
+					RelativePath=".\src\data_interface\virtual_files.cpp">
 				</File>
 				<File
 					RelativePath=".\src\data_interface\virtual_paths.cpp">
@@ -1265,6 +1271,9 @@
 				</File>
 				<File
 					RelativePath=".\src\data_interface\paths.h">
+				</File>
+				<File
+					RelativePath=".\src\data_interface\virtual_files.h">
 				</File>
 				<File
 					RelativePath=".\src\data_interface\virtual_paths.h">

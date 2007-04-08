@@ -56,6 +56,7 @@
 #include "data_interface/paths.h"
 #include "data_interface/files.h"
 #include "data_interface/virtual_paths.h"
+#include "data_interface/virtual_files.h"
 
 /*!
  * Forward declarations
@@ -159,6 +160,9 @@ public:
 
     /// wxEVT_COMMAND_TREE_ITEM_EXPANDING event handler for ID_TREE_CONTROL_VIRTUAL
     void OnTreeControlVirtualItemExpanding( wxTreeEvent& event );
+
+    /// wxEVT_COMMAND_TREE_SEL_CHANGED event handler for ID_TREE_CONTROL_VIRTUAL
+    void OnTreeControlVirtualSelChanged( wxTreeEvent& event );
 
 private:
 

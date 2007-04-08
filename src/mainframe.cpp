@@ -118,6 +118,7 @@ BEGIN_EVENT_TABLE( CMainFrame, wxFrame )
 
 ////@end CMainFrame event table entries
 
+    EVT_TREE_SEL_CHANGED( ID_TREE_CONTROL_VIRTUAL, CMainFrame::OnTreeControlVirtualSelChanged )
     EVT_TREE_ITEM_EXPANDING( ID_TREE_CONTROL_VIRTUAL, CMainFrame::OnTreeControlVirtualItemExpanding )
 
 END_EVENT_TABLE()
@@ -489,6 +490,56 @@ void CMainFrame::OnTreeControlSelChanged( wxTreeEvent& event )
 
 	// retrieves the files contained in the selected folder
 	CFiles files;
+	files.DBStartQueryListFiles( itemData->GetPathID() );
+	int i = 0;
+	while( !files.IsEOF() ) {
+		// adds the file to the list control
+		int imageIndex = (files.IsFolder ? 0 : 1 );
+		lctl->InsertItem( i, files.FileName, imageIndex );
+		lctl->SetItem( i, 1, files.IsFolder ? "" : CUtils::HumanReadableFileSize(files.FileSize) );
+		lctl->SetItem( i, 2, files.FileExt );
+		lctl->SetItem( i, 3, files.DateTime.FormatDate() + " " + files.DateTime.FormatTime() );
+
+		files.DBNextRow();
+		i++;
+	}
+
+	//lctl->SetColumnWidth( 0, wxLIST_AUTOSIZE );
+	//lctl->SetColumnWidth( 1, wxLIST_AUTOSIZE );
+	//lctl->SetColumnWidth( 2, wxLIST_AUTOSIZE );
+	//lctl->SetColumnWidth( 3, wxLIST_AUTOSIZE );
+	lctl->SetColumnWidth( 0, 200 );
+	lctl->SetColumnWidth( 1, 200 );
+	lctl->SetColumnWidth( 2, 200 );
+	lctl->SetColumnWidth( 3, 200 );
+
+}
+
+
+/*!
+ * wxEVT_COMMAND_TREE_SEL_CHANGED event handler for ID_TREE_CONTROL_VIRTUAL
+ */
+
+void CMainFrame::OnTreeControlVirtualSelChanged( wxTreeEvent& event )
+{
+
+	wxTreeCtrl* tctl = (wxTreeCtrl*) FindWindow( ID_TREE_CONTROL_VIRTUAL );
+	wxListCtrl* lctl = (wxListCtrl*) FindWindow( ID_LIST_CONTROL );
+	
+	// assigns the image list
+	wxImageList* iml = new wxImageList( 16, 16 );
+	iml->Add(wxIcon(folder_closed_xpm));
+	iml->Add(wxIcon(deffile_xpm));
+	lctl->AssignImageList( iml, wxIMAGE_LIST_SMALL );
+
+	// retrieves info about the selected item
+	wxTreeItemId itemID = event.GetItem();
+    MyTreeItemData *itemData = (MyTreeItemData *) tctl->GetItemData(itemID);
+
+	lctl->DeleteAllItems();
+
+	// retrieves the files contained in the selected folder
+	CVirtualFiles files;
 	files.DBStartQueryListFiles( itemData->GetPathID() );
 	int i = 0;
 	while( !files.IsEOF() ) {

@@ -20,59 +20,49 @@
     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
-#include "files.h"
+#include "virtual_files.h"
 #include "firebird_db.h"
 #include "../ibpp/core/ibpp.h"
 
 using namespace IBPP;
 
 // add this record to the database
-void CFiles::FB_DbInsert(void)
+void CVirtualFiles::FB_DbInsert(void)
 {
 	wxString sql;
 
-	sql = "INSERT INTO FILES (";
+	sql = "INSERT INTO VIRTUAL_FILES (";
 	if( !FileID.IsNull() )
 		sql += "FILE_ID, ";
-	sql += "FILE_NAME, FILE_EXT, FILE_SIZE, FILE_DATETIME, IS_FOLDER, PATH_ID) VALUES (";
+	sql += "VIRTUAL_PATH_ID, PHYSICAL_FILE_ID) VALUES (";
 	if( !FileID.IsNull() )
 		sql += long2string(FileID) + ", ";
-	sql += "'" + ExpandSingleQuotes(FileName) + "', '" + 
-		         ExpandSingleQuotes(FileExt) + "', " + 
-                 FileSize.ToString() + ", " +
-				 DateTime.Format( "'%Y-%m-%d %H:%M:%S'" ) + ", '" +
-				 (IsFolder ? "T" : "F") + "', " +
-				 long2string(PathID) + ")";
+	sql += long2string(VirtualPathID) + ", " + 
+		   long2string(PhysicalFileID) + ")";
 	FB_ExecuteQueryNoReturn( sql );
 }
 
-void CFiles::FB_DbUpdate(void)
+void CVirtualFiles::FB_DbUpdate(void)
 {
 	wxString sql;
 
-	sql = "UPDATE FILES SET ";
-	sql += "FILE_NAME = '" + ExpandSingleQuotes(FileName) + "', ";
-	sql += "FILE_EXT = '" + ExpandSingleQuotes(FileExt) + "', ";
-	sql += "FILE_SIZE = " + FileSize.ToString() + ", ";
-	sql += "FILE_DATETIME = " + DateTime.Format( "'%Y-%m-%d %H:%M:%S'" ) + ", ";
-	sql += "IS_FOLDER = '";
-	sql += "', ";
-	sql += "IS_FOLDER = '" + wxString(IsFolder ? "T" : "F") + "', ";
-	sql += "PATH_ID = " + long2string(PathID) + " ";
-	sql += "WHERE FILE_ID = "  + long2string(FileID);
+	sql = "UPDATE VIRTUAL_FILES SET ";
+	sql += "VIRTUAL_PATH_ID = " + long2string(VirtualPathID) + ", ";
+	sql += "PHYSICAL_FILE_ID = " + long2string(PhysicalFileID) + " ";
+	sql += "WHERE FILE_ID = " + long2string(FileID);
 	FB_ExecuteQueryNoReturn( sql );
 }
 
-void CFiles::FB_DbDelete(void)
+void CVirtualFiles::FB_DbDelete(void)
 {
 	wxString sql;
 
-	sql = "DELETE FROM FILES WHERE FILE_ID = " + long2string( FileID );
+	sql = "DELETE FROM VIRTUAL_FILES WHERE FILE_ID = " + long2string( FileID );
 	FB_ExecuteQueryNoReturn( sql );
 }
 
 
-void CFiles::FB_FetchRow(void) {
+void CVirtualFiles::FB_FetchRow(void) {
 	int64_t tmp;
 	string stmp;
 	Timestamp ts;
@@ -82,6 +72,11 @@ void CFiles::FB_FetchRow(void) {
 		eof = false;
 		FB_st->Get("FILE_ID", tmp);
 		FileID = (long) tmp;
+		FB_st->Get("VIRTUAL_PATH_ID", tmp);
+		VirtualPathID = (long) tmp;
+		FB_st->Get("PHYSICAL_FILE_ID", tmp);
+		PhysicalFileID = (long) tmp;
+
 		FB_st->Get( "FILE_NAME", stmp );
 		FileName = CUtils::std2wx( stmp );
 		FB_st->Get( "FILE_EXT", stmp );
@@ -93,7 +88,7 @@ void CFiles::FB_FetchRow(void) {
 		FB_st->Get("IS_FOLDER", stmp);
 		IsFolder = (stmp == "T");
 		FB_st->Get("PATH_ID", tmp);
-		PathID = (long) tmp;
+		PhysicalPathID = (long) tmp;
 	}
 	else {
 		// end of the rowset
