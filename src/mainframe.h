@@ -55,6 +55,7 @@
 #include "data_interface/volumes.h"
 #include "data_interface/paths.h"
 #include "data_interface/files.h"
+#include "data_interface/virtual_paths.h"
 
 /*!
  * Forward declarations
@@ -70,6 +71,8 @@
 ////@begin control identifiers
 #define ID_MAIN_FRAME 10000
 #define ID_CATALOG_VOLUME 10001
+#define ID_VIEW_PHYSICAL 10011
+#define ID_VIEW_VIRTUAL 10012
 #define ID_STATUSBAR1 10004
 #define ID_SPLITTERWINDOW1 10003
 #define ID_TREE_CONTROL 10005
@@ -80,6 +83,7 @@
 #define SYMBOL_CMAINFRAME_SIZE wxSize(400, 300)
 #define SYMBOL_CMAINFRAME_POSITION wxDefaultPosition
 ////@end control identifiers
+#define ID_TREE_CONTROL_VIRTUAL 10007
 
 /*!
  * Compatibility
@@ -124,6 +128,12 @@ public:
     /// wxEVT_COMMAND_MENU_SELECTED event handler for ID_CATALOG_VOLUME
     void OnCatalogVolumeClick( wxCommandEvent& event );
 
+    /// wxEVT_COMMAND_MENU_SELECTED event handler for ID_VIEW_PHYSICAL
+    void OnViewPhysicalClick( wxCommandEvent& event );
+
+    /// wxEVT_COMMAND_MENU_SELECTED event handler for ID_VIEW_VIRTUAL
+    void OnViewVirtualClick( wxCommandEvent& event );
+
     /// wxEVT_COMMAND_TREE_SEL_CHANGED event handler for ID_TREE_CONTROL
     void OnTreeControlSelChanged( wxTreeEvent& event );
 
@@ -149,14 +159,16 @@ public:
 
 private:
 
-	// fills the tree control
+	// fills the physical tree control
 	void LoadTreeControl(void);
-
 	// loads a volume and its folders in the tree control
 	void LoadVolumeInTreeControl( CVolumes vol, wxTreeCtrl* tctl, wxTreeItemId rootID);
-
 	// loads a folder in the tree control, adding its subfolder to be able to show the "+" near folders with subfolders
 	void LoadFolderInTreeControl( long VolumeID, wxTreeCtrl* tctl, wxTreeItemId fatherTreeID, long fatherID);
+
+	// fills the virtual tree control
+	void LoadVirtualTreeControl(void);
+	void LoadVirtualFolderInTreeControl( wxTreeCtrl* tctl, wxTreeItemId fatherTreeID, long fatherID);
 
 	// create the headers for the list control in report mode
 	void CreateListControlHeaders(void);
