@@ -472,47 +472,8 @@ void CMainFrame::OnTreeControlItemExpanding( wxTreeEvent& event )
 
 void CMainFrame::OnTreeControlSelChanged( wxTreeEvent& event )
 {
-
-	wxTreeCtrl* tctl = (wxTreeCtrl*) FindWindow( ID_TREE_CONTROL );
-	wxListCtrl* lctl = (wxListCtrl*) FindWindow( ID_LIST_CONTROL );
-	
-	// assigns the image list
-	wxImageList* iml = new wxImageList( 16, 16 );
-	iml->Add(wxIcon(folder_closed_xpm));
-	iml->Add(wxIcon(deffile_xpm));
-	lctl->AssignImageList( iml, wxIMAGE_LIST_SMALL );
-
-	// retrieves info about the selected item
 	wxTreeItemId itemID = event.GetItem();
-    MyTreeItemData *itemData = (MyTreeItemData *) tctl->GetItemData(itemID);
-
-	lctl->DeleteAllItems();
-
-	// retrieves the files contained in the selected folder
-	CFiles files;
-	files.DBStartQueryListFiles( itemData->GetPathID() );
-	int i = 0;
-	while( !files.IsEOF() ) {
-		// adds the file to the list control
-		int imageIndex = (files.IsFolder ? 0 : 1 );
-		lctl->InsertItem( i, files.FileName, imageIndex );
-		lctl->SetItem( i, 1, files.IsFolder ? "" : CUtils::HumanReadableFileSize(files.FileSize) );
-		lctl->SetItem( i, 2, files.FileExt );
-		lctl->SetItem( i, 3, files.DateTime.FormatDate() + " " + files.DateTime.FormatTime() );
-
-		files.DBNextRow();
-		i++;
-	}
-
-	//lctl->SetColumnWidth( 0, wxLIST_AUTOSIZE );
-	//lctl->SetColumnWidth( 1, wxLIST_AUTOSIZE );
-	//lctl->SetColumnWidth( 2, wxLIST_AUTOSIZE );
-	//lctl->SetColumnWidth( 3, wxLIST_AUTOSIZE );
-	lctl->SetColumnWidth( 0, 200 );
-	lctl->SetColumnWidth( 1, 200 );
-	lctl->SetColumnWidth( 2, 200 );
-	lctl->SetColumnWidth( 3, 200 );
-
+	ShowFolderFiles( itemID );
 }
 
 
@@ -522,47 +483,8 @@ void CMainFrame::OnTreeControlSelChanged( wxTreeEvent& event )
 
 void CMainFrame::OnTreeControlVirtualSelChanged( wxTreeEvent& event )
 {
-
-	wxTreeCtrl* tctl = (wxTreeCtrl*) FindWindow( ID_TREE_CONTROL_VIRTUAL );
-	wxListCtrl* lctl = (wxListCtrl*) FindWindow( ID_LIST_CONTROL );
-	
-	// assigns the image list
-	wxImageList* iml = new wxImageList( 16, 16 );
-	iml->Add(wxIcon(folder_closed_xpm));
-	iml->Add(wxIcon(deffile_xpm));
-	lctl->AssignImageList( iml, wxIMAGE_LIST_SMALL );
-
-	// retrieves info about the selected item
 	wxTreeItemId itemID = event.GetItem();
-    MyTreeItemData *itemData = (MyTreeItemData *) tctl->GetItemData(itemID);
-
-	lctl->DeleteAllItems();
-
-	// retrieves the files contained in the selected folder
-	CVirtualFiles files;
-	files.DBStartQueryListFiles( itemData->GetPathID() );
-	int i = 0;
-	while( !files.IsEOF() ) {
-		// adds the file to the list control
-		int imageIndex = (files.IsFolder ? 0 : 1 );
-		lctl->InsertItem( i, files.FileName, imageIndex );
-		lctl->SetItem( i, 1, files.IsFolder ? "" : CUtils::HumanReadableFileSize(files.FileSize) );
-		lctl->SetItem( i, 2, files.FileExt );
-		lctl->SetItem( i, 3, files.DateTime.FormatDate() + " " + files.DateTime.FormatTime() );
-
-		files.DBNextRow();
-		i++;
-	}
-
-	//lctl->SetColumnWidth( 0, wxLIST_AUTOSIZE );
-	//lctl->SetColumnWidth( 1, wxLIST_AUTOSIZE );
-	//lctl->SetColumnWidth( 2, wxLIST_AUTOSIZE );
-	//lctl->SetColumnWidth( 3, wxLIST_AUTOSIZE );
-	lctl->SetColumnWidth( 0, 200 );
-	lctl->SetColumnWidth( 1, 200 );
-	lctl->SetColumnWidth( 2, 200 );
-	lctl->SetColumnWidth( 3, 200 );
-
+	ShowVirtualFolderFiles( itemID );
 }
 
 
@@ -666,6 +588,7 @@ void CMainFrame::OnViewPhysicalClick( wxCommandEvent& event )
 		tctlPhysical->Show( true );
 		sw->SplitVertically( tctlPhysical, lctl );
 		sw->SetSashPosition( sp );
+		ShowSelectedFolderFiles();
 	}
 }
 
@@ -690,6 +613,7 @@ void CMainFrame::OnViewVirtualClick( wxCommandEvent& event )
 		tctlPhysical->Show( false );
 		sw->SplitVertically( tctlVirtual, lctl );
 		sw->SetSashPosition( sp );
+		ShowSelectedVirtualFolderFiles();
 	}
 }
 
@@ -717,5 +641,120 @@ void CMainFrame::OnTreeControlVirtualItemExpanding( wxTreeEvent& event )
 	    MyTreeItemData *childItemData = (MyTreeItemData *) tctl->GetItemData(childID);
 		LoadVirtualFolderInTreeControl( tctl, childID, childItemData->GetPathID() );
 		childID = tctl->GetNextChild( itemID, cookie );
+	}
+}
+
+
+// shows in the listview the files contained in the passed folder
+void CMainFrame::ShowFolderFiles( wxTreeItemId itemID ) {
+
+	wxTreeCtrl* tctl = (wxTreeCtrl*) FindWindow( ID_TREE_CONTROL );
+	wxListCtrl* lctl = (wxListCtrl*) FindWindow( ID_LIST_CONTROL );
+	
+	// assigns the image list
+	wxImageList* iml = new wxImageList( 16, 16 );
+	iml->Add(wxIcon(folder_closed_xpm));
+	iml->Add(wxIcon(deffile_xpm));
+	lctl->AssignImageList( iml, wxIMAGE_LIST_SMALL );
+
+    MyTreeItemData *itemData = (MyTreeItemData *) tctl->GetItemData(itemID);
+
+	lctl->DeleteAllItems();
+
+	// retrieves the files contained in the selected folder
+	CFiles files;
+	files.DBStartQueryListFiles( itemData->GetPathID() );
+	int i = 0;
+	while( !files.IsEOF() ) {
+		// adds the file to the list control
+		int imageIndex = (files.IsFolder ? 0 : 1 );
+		lctl->InsertItem( i, files.FileName, imageIndex );
+		lctl->SetItem( i, 1, files.IsFolder ? "" : CUtils::HumanReadableFileSize(files.FileSize) );
+		lctl->SetItem( i, 2, files.FileExt );
+		lctl->SetItem( i, 3, files.DateTime.FormatDate() + " " + files.DateTime.FormatTime() );
+
+		files.DBNextRow();
+		i++;
+	}
+
+	//lctl->SetColumnWidth( 0, wxLIST_AUTOSIZE );
+	//lctl->SetColumnWidth( 1, wxLIST_AUTOSIZE );
+	//lctl->SetColumnWidth( 2, wxLIST_AUTOSIZE );
+	//lctl->SetColumnWidth( 3, wxLIST_AUTOSIZE );
+	lctl->SetColumnWidth( 0, 200 );
+	lctl->SetColumnWidth( 1, 200 );
+	lctl->SetColumnWidth( 2, 200 );
+	lctl->SetColumnWidth( 3, 200 );
+
+}
+
+// shows in the listview the files contained in the currently selected folder
+void CMainFrame::ShowSelectedFolderFiles(void ) {
+
+	wxTreeCtrl* tctl = (wxTreeCtrl*) FindWindow( ID_TREE_CONTROL );
+    wxTreeItemId itemID = tctl->GetSelection();
+	if( itemID.IsOk() ) {
+		ShowFolderFiles( itemID );
+	}
+	else {
+		wxListCtrl* lctl = (wxListCtrl*) FindWindow( ID_LIST_CONTROL );
+		lctl->DeleteAllItems();
+	}
+}
+
+// shows in the listview the files contained in the passed virtual folder
+void CMainFrame::ShowVirtualFolderFiles( wxTreeItemId itemID ) {
+
+	wxTreeCtrl* tctl = (wxTreeCtrl*) FindWindow( ID_TREE_CONTROL_VIRTUAL );
+	wxListCtrl* lctl = (wxListCtrl*) FindWindow( ID_LIST_CONTROL );
+	
+	// assigns the image list
+	wxImageList* iml = new wxImageList( 16, 16 );
+	iml->Add(wxIcon(folder_closed_xpm));
+	iml->Add(wxIcon(deffile_xpm));
+	lctl->AssignImageList( iml, wxIMAGE_LIST_SMALL );
+
+	// retrieves info about the selected item
+    MyTreeItemData *itemData = (MyTreeItemData *) tctl->GetItemData(itemID);
+
+	lctl->DeleteAllItems();
+
+	// retrieves the files contained in the selected folder
+	CVirtualFiles files;
+	files.DBStartQueryListFiles( itemData->GetPathID() );
+	int i = 0;
+	while( !files.IsEOF() ) {
+		// adds the file to the list control
+		int imageIndex = (files.IsFolder ? 0 : 1 );
+		lctl->InsertItem( i, files.FileName, imageIndex );
+		lctl->SetItem( i, 1, files.IsFolder ? "" : CUtils::HumanReadableFileSize(files.FileSize) );
+		lctl->SetItem( i, 2, files.FileExt );
+		lctl->SetItem( i, 3, files.DateTime.FormatDate() + " " + files.DateTime.FormatTime() );
+
+		files.DBNextRow();
+		i++;
+	}
+
+	//lctl->SetColumnWidth( 0, wxLIST_AUTOSIZE );
+	//lctl->SetColumnWidth( 1, wxLIST_AUTOSIZE );
+	//lctl->SetColumnWidth( 2, wxLIST_AUTOSIZE );
+	//lctl->SetColumnWidth( 3, wxLIST_AUTOSIZE );
+	lctl->SetColumnWidth( 0, 200 );
+	lctl->SetColumnWidth( 1, 200 );
+	lctl->SetColumnWidth( 2, 200 );
+	lctl->SetColumnWidth( 3, 200 );
+}
+
+// shows in the listview the files contained in the currently selected virtual folder
+void CMainFrame::ShowSelectedVirtualFolderFiles(void ) {
+
+	wxTreeCtrl* tctl = (wxTreeCtrl*) FindWindow( ID_TREE_CONTROL_VIRTUAL );
+    wxTreeItemId itemID = tctl->GetSelection();
+	if( itemID.IsOk() ) {
+		ShowVirtualFolderFiles( itemID );
+	}
+	else {
+		wxListCtrl* lctl = (wxListCtrl*) FindWindow( ID_LIST_CONTROL );
+		lctl->DeleteAllItems();
 	}
 }

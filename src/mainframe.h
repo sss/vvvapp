@@ -179,6 +179,16 @@ private:
 
 	// create the headers for the list control in report mode
 	void CreateListControlHeaders(void);
+protected:
+	// shows in the listview the files contained in the passed folder
+	void ShowFolderFiles( wxTreeItemId itemID );
+	// shows in the listview the files contained in the currently selected folder
+	void ShowSelectedFolderFiles(void );
+
+	// shows in the listview the files contained in the passed virtual folder
+	void ShowVirtualFolderFiles( wxTreeItemId itemID );
+	// shows in the listview the files contained in the currently selected virtual folder
+	void ShowSelectedVirtualFolderFiles(void );
 };
 
 #endif
