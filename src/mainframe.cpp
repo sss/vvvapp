@@ -165,7 +165,7 @@ bool CMainFrame::Create( wxWindow* parent, wxWindowID id, const wxString& captio
 	if( FrameMaximized ) Maximize(true);
 
 	// reads the splitter sash position
-	wxSplitterWindow* sw = (wxSplitterWindow*) FindWindow( ID_SPLITTERWINDOW1 );
+	wxSplitterWindow* sw = GetSplitterWindow();
 	sw->SetSashPosition( pConfig->Read(wxT("SashPosition"), 200) );
 
 	return true;
@@ -223,10 +223,16 @@ void CMainFrame::CreateControls()
 ////@end CMainFrame content construction
 
 	// creates the tree control used to show virtual folders
-	// this control must be created in the same was as the tree control created above
+	// this control must be created in the same way as the tree control created above
 	wxSplitterWindow* sw = (wxSplitterWindow*) FindWindow( ID_SPLITTERWINDOW1 );
 	wxTreeCtrl* itemTreeCtrlVirtual = new wxTreeCtrl( sw, ID_TREE_CONTROL_VIRTUAL, wxDefaultPosition, wxSize(100, 100), wxTR_HAS_BUTTONS |wxTR_HIDE_ROOT|wxTR_SINGLE|wxNO_BORDER|wxTR_DEFAULT_STYLE );
 	itemTreeCtrlVirtual->Show( false );
+
+	// stores a pointer to some window components for later use
+	m_splitterWindow = sw;
+	m_treePhysicalCtl = (wxTreeCtrl*) FindWindow( ID_TREE_CONTROL );
+	m_treeVirtualCtl = (wxTreeCtrl*) FindWindow( ID_TREE_CONTROL_VIRTUAL );
+	m_listCtl = (wxListCtrl*) FindWindow( ID_LIST_CONTROL );
 
 	CreateListControlHeaders();
 }
@@ -294,7 +300,7 @@ void CMainFrame::OnCatalogVolumeClick( wxCommandEvent& event )
 
 void CMainFrame::LoadTreeControl(void) {
 
-	wxTreeCtrl* tctl = (wxTreeCtrl*) FindWindow( ID_TREE_CONTROL );
+	wxTreeCtrl* tctl = GetTreePhysicalControl();
 	wxImageList* iml = new wxImageList( 16, 16 );
 	iml->Add(wxIcon(removable_xpm));
 	iml->Add(wxIcon(folder_closed_xpm));
@@ -375,7 +381,7 @@ void CMainFrame::LoadFolderInTreeControl( long VolumeID, wxTreeCtrl* tctl, wxTre
 
 void CMainFrame::LoadVirtualTreeControl(void) {
 
-	wxTreeCtrl* tctl = (wxTreeCtrl*) FindWindow( ID_TREE_CONTROL_VIRTUAL );
+	wxTreeCtrl* tctl = GetTreeVirtualControl();
 	wxImageList* iml = new wxImageList( 16, 16 );
 	iml->Add(wxIcon(removable_xpm));
 	iml->Add(wxIcon(folder_closed_xpm));
@@ -445,7 +451,7 @@ void CMainFrame::LoadVirtualFolderInTreeControl( wxTreeCtrl* tctl, wxTreeItemId 
 
 void CMainFrame::OnTreeControlItemExpanding( wxTreeEvent& event )
 {
-	wxTreeCtrl* tctl = (wxTreeCtrl*) FindWindow( ID_TREE_CONTROL );
+	wxTreeCtrl* tctl = GetTreePhysicalControl();
 	wxTreeItemId itemID = event.GetItem();
     MyTreeItemData *itemData = (MyTreeItemData *) tctl->GetItemData(itemID);
 
@@ -490,7 +496,7 @@ void CMainFrame::OnTreeControlVirtualSelChanged( wxTreeEvent& event )
 
 void CMainFrame::CreateListControlHeaders(void) {
 
-	wxListCtrl* lctl = (wxListCtrl*) FindWindow( ID_LIST_CONTROL );
+	wxListCtrl* lctl = GetListControl();
 
 	// adds the columns to the list control
 	wxListItem itemCol;
@@ -538,7 +544,7 @@ void CMainFrame::OnOPENClick( wxCommandEvent& event )
 		LoadTreeControl();
 		LoadVirtualTreeControl();
 
-		wxListCtrl* lctl = (wxListCtrl*) FindWindow( ID_LIST_CONTROL );
+		wxListCtrl* lctl = GetListControl();
 		lctl->DeleteAllItems();
 	}
 }
@@ -563,7 +569,7 @@ CMainFrame::~CMainFrame() {
 	pConfig->Write(wxT("Maximized"), IsMaximized() );
 
 	// saves the sash position
-	wxSplitterWindow* sw = (wxSplitterWindow*) FindWindow( ID_SPLITTERWINDOW1 );
+	wxSplitterWindow* sw = GetSplitterWindow();
 	pConfig->Write(wxT("SashPosition"), (long) sw->GetSashPosition() );
 
 }
@@ -577,12 +583,12 @@ void CMainFrame::OnViewPhysicalClick( wxCommandEvent& event )
 	event.Skip();
 
 	// shows the physical tree view
-	wxTreeCtrl* tctlPhysical = (wxTreeCtrl*) FindWindow( ID_TREE_CONTROL );
+	wxTreeCtrl* tctlPhysical = GetTreePhysicalControl();
 	if( !tctlPhysical->IsShown() ) {
-		wxTreeCtrl* tctlVirtual = (wxTreeCtrl*) FindWindow( ID_TREE_CONTROL_VIRTUAL );
-		wxSplitterWindow* sw = (wxSplitterWindow*) FindWindow( ID_SPLITTERWINDOW1 );
+		wxTreeCtrl* tctlVirtual = GetTreeVirtualControl();
+		wxSplitterWindow* sw = GetSplitterWindow();
 		long sp = sw->GetSashPosition();
-		wxListCtrl* lctl = (wxListCtrl*) FindWindow( ID_LIST_CONTROL );
+		wxListCtrl* lctl = GetListControl();
 		sw->Unsplit();
 		tctlVirtual->Show( false );
 		tctlPhysical->Show( true );
@@ -602,12 +608,12 @@ void CMainFrame::OnViewVirtualClick( wxCommandEvent& event )
 	event.Skip();
 
 	// shows the virtual tree view
-	wxTreeCtrl* tctlVirtual = (wxTreeCtrl*) FindWindow( ID_TREE_CONTROL_VIRTUAL );
+	wxTreeCtrl* tctlVirtual = GetTreeVirtualControl();
 	if( !tctlVirtual->IsShown() ) {
-		wxTreeCtrl* tctlPhysical = (wxTreeCtrl*) FindWindow( ID_TREE_CONTROL );
-		wxSplitterWindow* sw = (wxSplitterWindow*) FindWindow( ID_SPLITTERWINDOW1 );
+		wxTreeCtrl* tctlPhysical = GetTreePhysicalControl();
+		wxSplitterWindow* sw = GetSplitterWindow();
 		long sp = sw->GetSashPosition();
-		wxListCtrl* lctl = (wxListCtrl*) FindWindow( ID_LIST_CONTROL );
+		wxListCtrl* lctl = GetListControl();
 		sw->Unsplit();
 		tctlVirtual->Show( true );
 		tctlPhysical->Show( false );
@@ -624,7 +630,7 @@ void CMainFrame::OnViewVirtualClick( wxCommandEvent& event )
 
 void CMainFrame::OnTreeControlVirtualItemExpanding( wxTreeEvent& event )
 {
-	wxTreeCtrl* tctl = (wxTreeCtrl*) FindWindow( ID_TREE_CONTROL_VIRTUAL );
+	wxTreeCtrl* tctl = GetTreeVirtualControl();
 	wxTreeItemId itemID = event.GetItem();
     MyTreeItemData *itemData = (MyTreeItemData *) tctl->GetItemData(itemID);
 
@@ -648,8 +654,8 @@ void CMainFrame::OnTreeControlVirtualItemExpanding( wxTreeEvent& event )
 // shows in the listview the files contained in the passed folder
 void CMainFrame::ShowFolderFiles( wxTreeItemId itemID ) {
 
-	wxTreeCtrl* tctl = (wxTreeCtrl*) FindWindow( ID_TREE_CONTROL );
-	wxListCtrl* lctl = (wxListCtrl*) FindWindow( ID_LIST_CONTROL );
+	wxTreeCtrl* tctl = GetTreePhysicalControl();
+	wxListCtrl* lctl = GetListControl();
 	
 	// assigns the image list
 	wxImageList* iml = new wxImageList( 16, 16 );
@@ -691,13 +697,13 @@ void CMainFrame::ShowFolderFiles( wxTreeItemId itemID ) {
 // shows in the listview the files contained in the currently selected folder
 void CMainFrame::ShowSelectedFolderFiles(void ) {
 
-	wxTreeCtrl* tctl = (wxTreeCtrl*) FindWindow( ID_TREE_CONTROL );
+	wxTreeCtrl* tctl = GetTreePhysicalControl();
     wxTreeItemId itemID = tctl->GetSelection();
 	if( itemID.IsOk() ) {
 		ShowFolderFiles( itemID );
 	}
 	else {
-		wxListCtrl* lctl = (wxListCtrl*) FindWindow( ID_LIST_CONTROL );
+		wxListCtrl* lctl = GetListControl();
 		lctl->DeleteAllItems();
 	}
 }
@@ -705,8 +711,8 @@ void CMainFrame::ShowSelectedFolderFiles(void ) {
 // shows in the listview the files contained in the passed virtual folder
 void CMainFrame::ShowVirtualFolderFiles( wxTreeItemId itemID ) {
 
-	wxTreeCtrl* tctl = (wxTreeCtrl*) FindWindow( ID_TREE_CONTROL_VIRTUAL );
-	wxListCtrl* lctl = (wxListCtrl*) FindWindow( ID_LIST_CONTROL );
+	wxTreeCtrl* tctl = GetTreeVirtualControl();
+	wxListCtrl* lctl = GetListControl();
 	
 	// assigns the image list
 	wxImageList* iml = new wxImageList( 16, 16 );
@@ -748,13 +754,13 @@ void CMainFrame::ShowVirtualFolderFiles( wxTreeItemId itemID ) {
 // shows in the listview the files contained in the currently selected virtual folder
 void CMainFrame::ShowSelectedVirtualFolderFiles(void ) {
 
-	wxTreeCtrl* tctl = (wxTreeCtrl*) FindWindow( ID_TREE_CONTROL_VIRTUAL );
+	wxTreeCtrl* tctl = GetTreeVirtualControl();
     wxTreeItemId itemID = tctl->GetSelection();
 	if( itemID.IsOk() ) {
 		ShowVirtualFolderFiles( itemID );
 	}
 	else {
-		wxListCtrl* lctl = (wxListCtrl*) FindWindow( ID_LIST_CONTROL );
+		wxListCtrl* lctl = GetListControl();
 		lctl->DeleteAllItems();
 	}
 }

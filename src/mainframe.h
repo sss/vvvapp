@@ -165,6 +165,17 @@ public:
     void OnTreeControlVirtualSelChanged( wxTreeEvent& event );
 
 private:
+	// pointers to some windows used in the main frame
+	wxListCtrl* m_listCtl;	// the list control
+	wxTreeCtrl* m_treePhysicalCtl;	// the tree control with the physical view
+	wxTreeCtrl* m_treeVirtualCtl;		// the tree control with the virtual view
+	wxSplitterWindow* m_splitterWindow;	// the splitter window
+
+	// accessors for the above windows
+	wxListCtrl* GetListControl() { return m_listCtl; }
+	wxTreeCtrl* GetTreePhysicalControl() { return m_treePhysicalCtl; }
+	wxTreeCtrl* GetTreeVirtualControl() { return m_treeVirtualCtl; }
+	wxSplitterWindow* GetSplitterWindow() { return m_splitterWindow; }
 
 	// fills the physical tree control
 	void LoadTreeControl(void);
