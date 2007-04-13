@@ -141,6 +141,9 @@ public:
     /// wxEVT_COMMAND_TREE_ITEM_EXPANDING event handler for ID_TREE_CONTROL
     void OnTreeControlItemExpanding( wxTreeEvent& event );
 
+    /// wxEVT_CONTEXT_MENU event handler for ID_TREE_CONTROL
+    void OnTreeControlContextMenu( wxContextMenuEvent& event );
+
 ////@end CMainFrame event handler declarations
 
 ////@begin CMainFrame member function declarations
