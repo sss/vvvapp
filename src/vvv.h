@@ -80,6 +80,10 @@ public:
     /// Initialises the application
     virtual bool OnInit();
 
+	// derived to add exception handling
+	virtual int OnRun();
+	virtual bool OnExceptionInMainLoop();
+
     /// Called on exit
     virtual int OnExit();
 

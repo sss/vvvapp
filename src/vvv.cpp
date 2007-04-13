@@ -42,12 +42,18 @@
 #pragma hdrstop
 #endif
 
+#if !wxUSE_EXCEPTIONS
+    #error "This application requires wxUSE_EXCEPTIONS == 1"
+#endif // !wxUSE_EXCEPTIONS
+
 #ifndef WX_PRECOMP
 #include "wx/wx.h"
 #endif
 
 ////@begin includes
 ////@end includes
+
+#include "wx/log.h"
 
 #include "vvv.h"
 #include "data_interface/base_db.h"
@@ -148,3 +154,27 @@ int CVvvApp::OnExit()
 ////@end CVvvApp cleanup
 }
 
+// derived to add exception handling
+int CVvvApp::OnRun() {
+
+	try {
+		return wxApp::OnRun();
+	}
+	catch( IBPP::Exception& e ) {
+		wxString s = _("An unexpected error has occurred. Here is a description of the error:\n\n");
+		s += e.ErrorMessage();
+		wxLogFatalError( "%s", s.c_str() );
+		return 3;
+	}
+	catch( ... ) {
+		wxString s = _("An unexpected error has occurred. This application will be terminated");
+		wxLogFatalError( "%s", s.c_str() );
+		return 3;
+	}
+}
+
+// it does nothing to avoid an unuseful error message
+bool CVvvApp::OnExceptionInMainLoop() {
+//	return true;
+	throw;
+}
