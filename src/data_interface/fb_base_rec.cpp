@@ -21,6 +21,7 @@
 */
 
 #include "base_rec.h"
+#include "data_error.h"
 #include "firebird_db.h"
 #include "../ibpp/core/ibpp.h"
 
@@ -36,7 +37,20 @@ void CBaseRec::FB_ExecuteQueryNoReturn( wxString sql ) {
 		db->TransactionStart();
 	}
 	Statement st = StatementFactory( db->GetIBPPDB(), db->TransactionGetReference() );
-	st->Execute( CUtils::wx2std(sql) );
+
+	try {
+		st->Execute( CUtils::wx2std(sql) );
+	}
+	catch( IBPP::SQLException& e ) {
+		// catches exceptions in order to convert interesting ones
+		db->TransactionRollback();
+		CDataErrorException::ErrorCause ec;
+		if( CDataErrorException::ConvertFirebirdError( e.EngineCode(), ec )  )
+			throw CDataErrorException( e.ErrorMessage(), ec );
+		else
+			throw;
+	}
+
 	if( !inTransaction ) {
 		db->TransactionCommit();
 	}

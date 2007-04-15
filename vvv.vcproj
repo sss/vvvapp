@@ -1189,6 +1189,9 @@
 					RelativePath=".\src\data_interface\base_rec.cpp">
 				</File>
 				<File
+					RelativePath=".\src\data_interface\data_error.cpp">
+				</File>
+				<File
 					RelativePath=".\src\data_interface\fb_base_rec.cpp">
 				</File>
 				<File
@@ -1259,6 +1262,9 @@
 				</File>
 				<File
 					RelativePath=".\src\data_interface\base_rec.h">
+				</File>
+				<File
+					RelativePath=".\src\data_interface\data_error.h">
 				</File>
 				<File
 					RelativePath=".\src\data_interface\db_null.h">

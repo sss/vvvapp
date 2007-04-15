@@ -58,6 +58,7 @@
 #include "data_interface/volumes.h"
 #include "data_interface/paths.h"
 #include "data_interface/files.h"
+#include "data_interface/data_error.h"
 
 #ifdef __WXMSW__
 #include "windows_specific.h"
@@ -249,16 +250,6 @@ void CDialogCatalogVolume::OnButtonCatalogClick( wxCommandEvent& event )
 		return;
 	}
 
-	{
-		// to avoid name conflict	
-		CVolumes vol;
-		vol.VolumeName = vn;
-		if( vol.NameExists() ) {
-			CUtils::MsgErr( _("This volume name is already present in the database") );
-			return;
-		}
-	}
-
 	wxCursor curCursor = GetCursor();
 	SetCursor(wxCursor(wxCURSOR_WAIT));
 
@@ -273,7 +264,18 @@ void CDialogCatalogVolume::OnButtonCatalogClick( wxCommandEvent& event )
 	// writes the volume row
 	CVolumes vol;
 	vol.VolumeName = vn;
-	vol.DbInsert();
+	try {
+		vol.DbInsert();
+	}
+	catch( CDataErrorException& e ) {
+		if( e.GetErrorCause() == CDataErrorException::Unique ) {
+			SetCursor(curCursor);
+			CUtils::MsgErr( _("This volume name is already present in the database") );
+			return;
+		}
+		else
+			throw;
+	}
 
 	// catalogs the folders
 	CNullableLong FatherID;

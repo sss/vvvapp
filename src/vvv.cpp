@@ -57,6 +57,7 @@
 
 #include "vvv.h"
 #include "data_interface/base_db.h"
+#include "data_interface/data_error.h"
 
 ////@begin XPM images
 ////@end XPM images
@@ -160,15 +161,21 @@ int CVvvApp::OnRun() {
 	try {
 		return wxApp::OnRun();
 	}
+	catch( CDataErrorException& e ) {
+		wxString s = _("An unexpected error has occurred. Here is a description of the error:\n\n");
+		s += e.what();
+		wxLogError( "%s", s.c_str() );
+		return 3;
+	}
 	catch( IBPP::Exception& e ) {
 		wxString s = _("An unexpected error has occurred. Here is a description of the error:\n\n");
 		s += e.ErrorMessage();
-		wxLogFatalError( "%s", s.c_str() );
+		wxLogError( "%s", s.c_str() );
 		return 3;
 	}
 	catch( ... ) {
 		wxString s = _("An unexpected error has occurred. This application will be terminated");
-		wxLogFatalError( "%s", s.c_str() );
+		wxLogError( "%s", s.c_str() );
 		return 3;
 	}
 }
