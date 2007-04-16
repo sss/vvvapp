@@ -71,6 +71,9 @@
 
 ////@begin control identifiers
 #define ID_MAIN_FRAME 10000
+#define ID_ADD_VIRTUAL_FOLDER 10015
+#define ID_RENAME_VOLUME 10013
+#define ID_DELETE_VOLUME 10014
 #define ID_CATALOG_VOLUME 10001
 #define ID_VIEW_PHYSICAL 10011
 #define ID_VIEW_VIRTUAL 10012
@@ -125,6 +128,15 @@ public:
 
     /// wxEVT_COMMAND_MENU_SELECTED event handler for wxID_EXIT
     void OnEXITClick( wxCommandEvent& event );
+
+    /// wxEVT_COMMAND_MENU_SELECTED event handler for ID_RENAME_VOLUME
+    void OnRenameVolumeClick( wxCommandEvent& event );
+
+    /// wxEVT_UPDATE_UI event handler for ID_RENAME_VOLUME
+    void OnRenameVolumeUpdate( wxUpdateUIEvent& event );
+
+    /// wxEVT_UPDATE_UI event handler for ID_DELETE_VOLUME
+    void OnDeleteVolumeUpdate( wxUpdateUIEvent& event );
 
     /// wxEVT_COMMAND_MENU_SELECTED event handler for ID_CATALOG_VOLUME
     void OnCatalogVolumeClick( wxCommandEvent& event );

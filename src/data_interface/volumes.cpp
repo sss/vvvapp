@@ -26,6 +26,15 @@ CVolumes::CVolumes(void) {
 	VolumeName = "";
 }
 
+CVolumes::CVolumes( long volumeID ) {
+	DBStartMultiRowQuery( "SELECT * FROM VOLUMES WHERE VOLUME_ID = " + long2string(volumeID), true );
+	while( !IsEOF() ) {
+		// this query should return only one row
+		DBNextRow();
+	}
+	// at this point "this" should contain the volume's data
+}
+
 CVolumes::~CVolumes(void) {
 }
 

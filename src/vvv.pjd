@@ -6,7 +6,7 @@
     <string name="title">""</string>
     <string name="author">""</string>
     <string name="description">""</string>
-    <long name="doc_count">42</long>
+    <long name="doc_count">47</long>
     <string name="xrc_filename">""</string>
     <bool name="convert_images_to_xpm">0</bool>
     <bool name="inline_images">0</bool>
@@ -583,6 +583,101 @@
               </document>
             </document>
             <document>
+              <string name="title">"Edit"</string>
+              <string name="type">"dialog-control-document"</string>
+              <string name="filename">""</string>
+              <string name="icon-name">"menu"</string>
+              <long name="is-transient">0</long>
+              <long name="owns-file">1</long>
+              <long name="title-mode">0</long>
+              <long name="locked">0</long>
+              <string name="created">"16/4/2007"</string>
+              <string name="proxy-type">"wbMenuProxy"</string>
+              <string name="proxy-Label">"Edit"</string>
+              <bool name="proxy-Enabled">1</bool>
+              <string name="proxy-Member variable name">""</string>
+              <string name="proxy-Platform">"&lt;Any platform&gt;"</string>
+              <document>
+                <string name="title">"Add To Virtual Folder: ID_ADD_VIRTUAL_FOLDER"</string>
+                <string name="type">"dialog-control-document"</string>
+                <string name="filename">""</string>
+                <string name="icon-name">"menuitem"</string>
+                <long name="is-transient">0</long>
+                <long name="owns-file">1</long>
+                <long name="title-mode">0</long>
+                <long name="locked">0</long>
+                <string name="created">"16/4/2007"</string>
+                <string name="proxy-type">"wbMenuItemProxy"</string>
+                <string name="proxy-Id name">"ID_ADD_VIRTUAL_FOLDER"</string>
+                <long name="proxy-Id value">10015</long>
+                <string name="proxy-Label">"Add To Virtual Folder"</string>
+                <string name="proxy-Kind">"Normal"</string>
+                <bool name="proxy-Checked">0</bool>
+                <bool name="proxy-Enabled">1</bool>
+                <string name="proxy-Help text">""</string>
+                <string name="proxy-Bitmap">""</string>
+                <string name="proxy-Platform">"&lt;Any platform&gt;"</string>
+              </document>
+              <document>
+                <string name="title">"------------"</string>
+                <string name="type">"dialog-control-document"</string>
+                <string name="filename">""</string>
+                <string name="icon-name">"menuitem"</string>
+                <long name="is-transient">0</long>
+                <long name="owns-file">1</long>
+                <long name="title-mode">0</long>
+                <long name="locked">0</long>
+                <string name="created">"16/4/2007"</string>
+                <string name="proxy-type">"wbMenuSeparatorProxy"</string>
+                <string name="proxy-Platform">"&lt;Any platform&gt;"</string>
+              </document>
+              <document>
+                <string name="title">"Rename Volume: ID_RENAME_VOLUME"</string>
+                <string name="type">"dialog-control-document"</string>
+                <string name="filename">""</string>
+                <string name="icon-name">"menuitem"</string>
+                <long name="is-transient">0</long>
+                <long name="owns-file">1</long>
+                <long name="title-mode">0</long>
+                <long name="locked">0</long>
+                <string name="created">"16/4/2007"</string>
+                <string name="proxy-type">"wbMenuItemProxy"</string>
+                <string name="event-handler-0">"wxEVT_COMMAND_MENU_SELECTED|OnRenameVolumeClick"</string>
+                <string name="event-handler-1">"wxEVT_UPDATE_UI|OnRenameVolumeUpdate"</string>
+                <string name="proxy-Id name">"ID_RENAME_VOLUME"</string>
+                <long name="proxy-Id value">10013</long>
+                <string name="proxy-Label">"Rename Volume"</string>
+                <string name="proxy-Kind">"Normal"</string>
+                <bool name="proxy-Checked">0</bool>
+                <bool name="proxy-Enabled">1</bool>
+                <string name="proxy-Help text">""</string>
+                <string name="proxy-Bitmap">""</string>
+                <string name="proxy-Platform">"&lt;Any platform&gt;"</string>
+              </document>
+              <document>
+                <string name="title">"Delete Volume: ID_DELETE_VOLUME"</string>
+                <string name="type">"dialog-control-document"</string>
+                <string name="filename">""</string>
+                <string name="icon-name">"menuitem"</string>
+                <long name="is-transient">0</long>
+                <long name="owns-file">1</long>
+                <long name="title-mode">0</long>
+                <long name="locked">0</long>
+                <string name="created">"16/4/2007"</string>
+                <string name="proxy-type">"wbMenuItemProxy"</string>
+                <string name="event-handler-0">"wxEVT_UPDATE_UI|OnDeleteVolumeUpdate"</string>
+                <string name="proxy-Id name">"ID_DELETE_VOLUME"</string>
+                <long name="proxy-Id value">10014</long>
+                <string name="proxy-Label">"Delete Volume"</string>
+                <string name="proxy-Kind">"Normal"</string>
+                <bool name="proxy-Checked">0</bool>
+                <bool name="proxy-Enabled">1</bool>
+                <string name="proxy-Help text">""</string>
+                <string name="proxy-Bitmap">""</string>
+                <string name="proxy-Platform">"&lt;Any platform&gt;"</string>
+              </document>
+            </document>
+            <document>
               <string name="title">"Volumes"</string>
               <string name="type">"dialog-control-document"</string>
               <string name="filename">""</string>
@@ -598,7 +693,7 @@
               <string name="proxy-Member variable name">""</string>
               <string name="proxy-Platform">"&lt;Any platform&gt;"</string>
               <document>
-                <string name="title">"Catalog volume: ID_CATALOG_VOLUME"</string>
+                <string name="title">"Catalog Volume: ID_CATALOG_VOLUME"</string>
                 <string name="type">"dialog-control-document"</string>
                 <string name="filename">""</string>
                 <string name="icon-name">"menuitem"</string>
@@ -611,7 +706,7 @@
                 <string name="event-handler-0">"wxEVT_COMMAND_MENU_SELECTED|OnCatalogVolumeClick|SHOWWINDOW|ID_DIALOG_CATALOG_VOLUME"</string>
                 <string name="proxy-Id name">"ID_CATALOG_VOLUME"</string>
                 <long name="proxy-Id value">10001</long>
-                <string name="proxy-Label">"Catalog volume"</string>
+                <string name="proxy-Label">"Catalog Volume"</string>
                 <string name="proxy-Kind">"Normal"</string>
                 <bool name="proxy-Checked">0</bool>
                 <bool name="proxy-Enabled">1</bool>

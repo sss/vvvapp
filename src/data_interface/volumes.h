@@ -33,6 +33,7 @@ class CVolumes : public CBaseRec
 {
 public:
 	CVolumes(void);
+	CVolumes( long volumeID );	// creates an object reading the database with the supplied primary key
 	~CVolumes(void);
 
 	// returns true if this->VolumeName is already present in the database
