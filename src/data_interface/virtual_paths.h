@@ -46,8 +46,13 @@ public:
 	// starts a multirow query that returns all the paths with a given VolumeID and FatherID (nullable)
 	void DBStartQueryListPaths( CNullableLong FatherID );
 
-	// adds a physical path to the virtual path
+	// appends a physical path to the virtual path
+	// creates a virtual folder named as the physical folder and copies data in it
 	static void AppendPhysicalPath( long PhysicalPathID, long VirtualPathID );
+
+	// copies the content of the physical path into the virtual path
+	static void CopyPhysicalPath( long PhysicalPathID, long VirtualPathID );
+
 
 protected:
 
@@ -58,6 +63,7 @@ protected:
 	void FB_FetchRow(void);
 
 	static void FB_AppendPhysicalPath( long PhysicalPathID, long VirtualPathID );
+	static void FB_CopyPhysicalPath( long PhysicalPathID, long VirtualPathID );
 
 };
 

@@ -148,3 +148,35 @@ void CVirtualPaths::FB_AppendPhysicalPath( long PhysicalPathID, long VirtualPath
 		db->TransactionCommit();
 	}
 }
+
+
+void CVirtualPaths::FB_CopyPhysicalPath( long PhysicalPathID, long VirtualPathID ) {
+	bool inTransaction;
+
+	CFirebirdDB* db = (CFirebirdDB*) CBaseDB::GetDatabase();
+	inTransaction = db->TransactionIsOpened();
+	if( !inTransaction ) {
+		db->TransactionStart();
+	}
+	Statement st = StatementFactory( db->GetIBPPDB(), db->TransactionGetReference() );
+
+	try {
+		st->Prepare( "EXECUTE PROCEDURE SP_ADD_PHYSPATH_TO_VIRTUALPATH( ?, ? )" );
+		st->Set( 1, PhysicalPathID );
+		st->Set( 2, VirtualPathID );
+		st->Execute();
+	}
+	catch( IBPP::SQLException& e ) {
+		// catches exceptions in order to convert interesting ones
+		db->TransactionRollback();
+		CDataErrorException::ErrorCause ec;
+		if( CDataErrorException::ConvertFirebirdError( e.EngineCode(), ec )  )
+			throw CDataErrorException( e.ErrorMessage(), ec );
+		else
+			throw;
+	}
+
+	if( !inTransaction ) {
+		db->TransactionCommit();
+	}
+}

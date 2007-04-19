@@ -815,9 +815,6 @@ void CMainFrame::OnTreeControlContextMenu( wxContextMenuEvent& event )
 	}
 	
 	PopupMenu( &menu, pt );
-
-	
-//	event.Skip();
 }
 
 
@@ -906,15 +903,20 @@ void CMainFrame::OnAddVirtualFolderClick( wxCommandEvent& event )
 	event.Skip(false);	// to suppress a warning
 
 	if( m_ChooseVirtualFolderDialog->ShowModal() != wxID_OK ) return;
-
 	long virtualFolderId = m_ChooseVirtualFolderDialog->GetVirtualFolderID();
 
+	bool isVolumeItem = false;	// true if the user has selected a volume (not a folder)
 	wxTreeCtrl *tctl = GetTreePhysicalControl();
 	wxTreeItemId item = tctl->GetSelection();
+	if( tctl->GetItemParent(item) == tctl->GetRootItem() ) isVolumeItem = true;
+
     MyTreeItemData *itemData = (MyTreeItemData *) tctl->GetItemData(item);
 	long physicalFolderId = itemData->GetPathID();
 
-	CVirtualPaths::AppendPhysicalPath( physicalFolderId, virtualFolderId );
+	if( isVolumeItem )
+		CVirtualPaths::CopyPhysicalPath( physicalFolderId, virtualFolderId );
+	else
+		CVirtualPaths::AppendPhysicalPath( physicalFolderId, virtualFolderId );
 }
 
 
