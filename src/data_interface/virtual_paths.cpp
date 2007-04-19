@@ -10,7 +10,7 @@
     the Free Software Foundation; either version 2 of the License, or
     (at your option) any later version.
 
-    Foobar is distributed in the hope that it will be useful,
+    VVV is distributed in the hope that it will be useful,
     but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
     GNU General Public License for more details.
@@ -39,4 +39,12 @@ void CVirtualPaths::DBStartQueryListPaths( CNullableLong FathID ) {
 		sql = "SELECT * FROM VIRTUAL_PATHS WHERE FATHER_ID = " + long2string(FathID) + " ORDER BY PATH";
 
 	DBStartMultiRowQuery( sql, true );
+}
+
+void CVirtualPaths::AppendPhysicalPath( long PhysicalPathID, long VirtualPathID ) {
+	switch( DatabaseType ) {
+		case dbtFirebird:
+			FB_AppendPhysicalPath( PhysicalPathID, VirtualPathID );
+			break;
+	}
 }

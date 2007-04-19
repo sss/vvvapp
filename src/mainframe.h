@@ -10,7 +10,7 @@
     the Free Software Foundation; either version 2 of the License, or
     (at your option) any later version.
 
-    Foobar is distributed in the hope that it will be useful,
+    VVV is distributed in the hope that it will be useful,
     but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
     GNU General Public License for more details.
@@ -57,6 +57,7 @@
 #include "data_interface/files.h"
 #include "data_interface/virtual_paths.h"
 #include "data_interface/virtual_files.h"
+#include "choose_virtual_folder.h"
 
 /*!
  * Forward declarations
@@ -128,6 +129,9 @@ public:
 
     /// wxEVT_COMMAND_MENU_SELECTED event handler for wxID_EXIT
     void OnEXITClick( wxCommandEvent& event );
+
+    /// wxEVT_COMMAND_MENU_SELECTED event handler for ID_ADD_VIRTUAL_FOLDER
+    void OnAddVirtualFolderClick( wxCommandEvent& event );
 
     /// wxEVT_COMMAND_MENU_SELECTED event handler for ID_RENAME_VOLUME
     void OnRenameVolumeClick( wxCommandEvent& event );
@@ -205,6 +209,10 @@ private:
 
 	// create the headers for the list control in report mode
 	void CreateListControlHeaders(void);
+
+	// dialog used to choose a virtual folder
+	CDialogChooseVirtualFolder* m_ChooseVirtualFolderDialog;
+
 protected:
 	// shows in the listview the files contained in the passed folder
 	void ShowFolderFiles( wxTreeItemId itemID );

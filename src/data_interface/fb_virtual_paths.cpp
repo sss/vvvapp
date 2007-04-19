@@ -10,7 +10,7 @@
     the Free Software Foundation; either version 2 of the License, or
     (at your option) any later version.
 
-    Foobar is distributed in the hope that it will be useful,
+    VVV is distributed in the hope that it will be useful,
     but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
     GNU General Public License for more details.
@@ -20,6 +20,7 @@
     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
+#include "data_error.h"
 #include "virtual_paths.h"
 #include "firebird_db.h"
 #include "../ibpp/core/ibpp.h"
@@ -114,5 +115,36 @@ void CVirtualPaths::FB_FetchRow(void) {
 			db->TransactionCommit();
 		}
 		TransactionAlreadyStarted = false;
+	}
+}
+
+void CVirtualPaths::FB_AppendPhysicalPath( long PhysicalPathID, long VirtualPathID ) {
+	bool inTransaction;
+
+	CFirebirdDB* db = (CFirebirdDB*) CBaseDB::GetDatabase();
+	inTransaction = db->TransactionIsOpened();
+	if( !inTransaction ) {
+		db->TransactionStart();
+	}
+	Statement st = StatementFactory( db->GetIBPPDB(), db->TransactionGetReference() );
+
+	try {
+		st->Prepare( "EXECUTE PROCEDURE SP_APPEND_PHYSPTH_TO_VIRTUALPTH( ?, ? )" );
+		st->Set( 1, PhysicalPathID );
+		st->Set( 2, VirtualPathID );
+		st->Execute();
+	}
+	catch( IBPP::SQLException& e ) {
+		// catches exceptions in order to convert interesting ones
+		db->TransactionRollback();
+		CDataErrorException::ErrorCause ec;
+		if( CDataErrorException::ConvertFirebirdError( e.EngineCode(), ec )  )
+			throw CDataErrorException( e.ErrorMessage(), ec );
+		else
+			throw;
+	}
+
+	if( !inTransaction ) {
+		db->TransactionCommit();
 	}
 }

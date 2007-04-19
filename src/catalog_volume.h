@@ -10,7 +10,7 @@
     the Free Software Foundation; either version 2 of the License, or
     (at your option) any later version.
 
-    Foobar is distributed in the hope that it will be useful,
+    VVV is distributed in the hope that it will be useful,
     but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
     GNU General Public License for more details.
@@ -68,7 +68,7 @@
 #define ID_VOLUME_NAME 10008
 #define ID_GET_VOLUME_NAME 10009
 #define ID_BUTTON_CATALOG 10010
-#define SYMBOL_CDIALOGCATALOGVOLUME_STYLE wxCAPTION|wxRESIZE_BORDER|wxSYSTEM_MENU|wxCLOSE_BOX
+#define SYMBOL_CDIALOGCATALOGVOLUME_STYLE wxCAPTION|wxSYSTEM_MENU|wxCLOSE_BOX
 #define SYMBOL_CDIALOGCATALOGVOLUME_TITLE _("Catalog volume")
 #define SYMBOL_CDIALOGCATALOGVOLUME_IDNAME ID_DIALOG_CATALOG_VOLUME
 #define SYMBOL_CDIALOGCATALOGVOLUME_SIZE wxSize(400, 300)

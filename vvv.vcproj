@@ -1104,6 +1104,9 @@
 				RelativePath=".\src\catalog_volume.cpp">
 			</File>
 			<File
+				RelativePath=".\src\choose_virtual_folder.cpp">
+			</File>
+			<File
 				RelativePath=".\src\mainframe.cpp">
 			</File>
 			<File
@@ -1236,7 +1239,13 @@
 				RelativePath=".\src\catalog_volume.h">
 			</File>
 			<File
+				RelativePath=".\src\choose_virtual_folder.h">
+			</File>
+			<File
 				RelativePath=".\src\mainframe.h">
+			</File>
+			<File
+				RelativePath=".\src\mytreeitemdata.h">
 			</File>
 			<File
 				RelativePath=".\src\utils.h">

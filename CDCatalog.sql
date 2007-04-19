@@ -34,8 +34,37 @@ BEGIN EXIT; END^
 SET TERM ; ^
 
 SET TERM ^ ;
+CREATE PROCEDURE SP_APPEND_PHYSPTH_TO_VIRTUALPTH (
+    PHYS_PATH_ID Numeric(18,0),
+    VIRTUAL_PATH_ID Numeric(18,0) )
+AS
+BEGIN EXIT; END^
+SET TERM ; ^
+
+SET TERM ^ ;
+CREATE PROCEDURE SP_CREATE_VIRTUALPATH (
+    PATH_NAME Varchar(500),
+    FATHER_ID Numeric(18,0),
+    PHYS_PATH_ID Numeric(18,0),
+    CREATE_VIRTUAL_FOLDER_FILE Smallint )
+RETURNS (
+    VPATH_ID Numeric(18,0) )
+AS
+BEGIN EXIT; END^
+SET TERM ; ^
+
+SET TERM ^ ;
 CREATE PROCEDURE SP_DELETE_VOLUME (
     VOLUME_ID Numeric(18,0) )
+AS
+BEGIN EXIT; END^
+SET TERM ; ^
+
+SET TERM ^ ;
+CREATE PROCEDURE SP_GET_PHYS_FILEID_FROM_PATHID (
+    PATH_ID Numeric(18,0) )
+RETURNS (
+    FILE_ID Numeric(18,0) )
 AS
 BEGIN EXIT; END^
 SET TERM ; ^
@@ -188,9 +217,11 @@ begin
          :PATH_ID, :PATH_NAME
     do
     begin
-        VPATH_ID = gen_id( GEN_VIRTUAL_PATHS_ID, 1 );
-        insert into VIRTUAL_PATHS ( PATH_ID, PATH, FATHER_ID, PHYS_PATH_ID )
-        values ( :VPATH_ID, :PATH_NAME, :VIRTUAL_PATH_ID, :PATH_ID );
+        execute procedure SP_CREATE_VIRTUALPATH( :PATH_NAME, :VIRTUAL_PATH_ID, :PATH_ID, 0 )
+            returning_values( :VPATH_ID );
+--        VPATH_ID = gen_id( GEN_VIRTUAL_PATHS_ID, 1 );
+--        insert into VIRTUAL_PATHS ( PATH_ID, PATH, FATHER_ID, PHYS_PATH_ID )
+--        values ( :VPATH_ID, :PATH_NAME, :VIRTUAL_PATH_ID, :PATH_ID );
         execute procedure SP_ADD_PHYSPATH_TO_VIRTUALPATH( :PATH_ID, VPATH_ID );
     end
 end^
@@ -199,6 +230,125 @@ SET TERM ; ^
 GRANT EXECUTE
  ON PROCEDURE SP_ADD_PHYSPATH_TO_VIRTUALPATH TO  SYSDBA;
 
+UPDATE RDB$PROCEDURES set
+  RDB$DESCRIPTION = 'Assigns the contents of the physical path to then virtual path.
+It will not create duplicate files or folders.'
+  where RDB$PROCEDURE_NAME = 'SP_ADD_PHYSPATH_TO_VIRTUALPATH';
+
+SET TERM ^ ;
+ALTER PROCEDURE SP_APPEND_PHYSPTH_TO_VIRTUALPTH (
+    PHYS_PATH_ID Numeric(18,0),
+    VIRTUAL_PATH_ID Numeric(18,0) )
+AS
+declare variable phys_path_name varchar(500);
+declare variable tmp_str varchar(500);
+declare variable new_virtual_path_id bigint;
+begin
+    -- retrieves the name of the physical folder
+    for select PATH_NAME
+    from PATHS
+    where PATH_ID = :PHYS_PATH_ID
+    into
+        :TMP_STR
+    do
+    begin
+        PHYS_PATH_NAME = TMP_STR;
+    end
+
+    -- creates the new virtual folder as a child of the one received as a parameter
+    execute procedure SP_CREATE_VIRTUALPATH( PHYS_PATH_NAME, VIRTUAL_PATH_ID, PHYS_PATH_ID, 1 )
+        returning_values( :NEW_VIRTUAL_PATH_ID );
+
+    -- copies the content of the physical folder to the new virtual folder
+    execute procedure SP_ADD_PHYSPATH_TO_VIRTUALPATH( PHYS_PATH_ID, NEW_VIRTUAL_PATH_ID );
+
+end^
+SET TERM ; ^
+
+GRANT EXECUTE
+ ON PROCEDURE SP_APPEND_PHYSPTH_TO_VIRTUALPTH TO  SYSDBA;
+
+UPDATE RDB$PROCEDURES set
+  RDB$DESCRIPTION = 'Appends the physical folder and its contents to a child of the virtual folder.
+It will create a virtual folder, child of the specified virtual folder,
+with the same name as the physical folder.'
+  where RDB$PROCEDURE_NAME = 'SP_APPEND_PHYSPTH_TO_VIRTUALPTH';
+
+SET TERM ^ ;
+ALTER PROCEDURE SP_CREATE_VIRTUALPATH (
+    PATH_NAME Varchar(500),
+    FATHER_ID Numeric(18,0),
+    PHYS_PATH_ID Numeric(18,0),
+    CREATE_VIRTUAL_FOLDER_FILE Smallint )
+RETURNS (
+    VPATH_ID Numeric(18,0) )
+AS
+declare variable tmp_id bigint;
+declare variable phys_file_id bigint;
+begin
+    VPATH_ID = -1;   -- impossible value
+
+    -- looks for an existing folder
+    for select PATH_ID
+    from VIRTUAL_PATHS
+    where FATHER_ID = :FATHER_ID and PATH = :PATH_NAME
+    into
+        :TMP_ID
+    do
+    begin
+        VPATH_ID = TMP_ID;
+    end
+
+    if( VPATH_ID = -1 ) then
+    begin
+        -- the path does not exists: we create one
+        VPATH_ID = gen_id( GEN_VIRTUAL_PATHS_ID, 1 );
+        insert into VIRTUAL_PATHS ( PATH_ID, PATH, FATHER_ID, PHYS_PATH_ID )
+        values ( :VPATH_ID, :PATH_NAME, :FATHER_ID, :PHYS_PATH_ID );
+
+        if( CREATE_VIRTUAL_FOLDER_FILE = 1 ) then
+        begin
+            -- now we need to create a row in VIRTUAL_FILES for this path:
+            -- that row needs to link to a row in FILES
+
+            if( PHYS_PATH_ID is null ) then
+            begin
+                -- the virtual path that we are creating does not have
+                -- a corresponding physical path: we need to add a row to
+                -- the FILES table because there is not one yet
+                PHYS_FILE_ID = gen_id( GEN_FILES_ID, 1 );
+                insert into FILES( FILE_ID, FILE_NAME, FILE_EXT, FILE_DATETIME, PATH_ID, IS_FOLDER )
+                values( :PHYS_FILE_ID, :PATH_NAME, '', 'NOW', NULL, 'T' );
+            end
+            else
+            begin
+                -- the virtual path that we are creating has a corresponding
+                -- physical path, so we look fot the existing row in the FILES table
+                execute procedure SP_GET_PHYS_FILEID_FROM_PATHID( :PHYS_PATH_ID )
+                    returning_values( :PHYS_FILE_ID );
+            end
+
+            -- now we can insert the row
+            insert into VIRTUAL_FILES( VIRTUAL_PATH_ID, PHYSICAL_FILE_ID )
+            values( :FATHER_ID, :PHYS_FILE_ID );
+
+        end
+    end
+end^
+SET TERM ; ^
+
+GRANT EXECUTE
+ ON PROCEDURE SP_CREATE_VIRTUALPATH TO  SYSDBA;
+
+UPDATE RDB$PROCEDURES set
+  RDB$DESCRIPTION = 'If there is not a virtual folder with the specied name creates that folder
+and returns its primary key.
+If the folder already exists return its primary key.
+The procedure will allow only one path with a given name to be the child of
+another path. The value of PHYS_PATH_ID does not matter.'
+  where RDB$PROCEDURE_NAME = 'SP_CREATE_VIRTUALPATH';
+UPDATE RDB$PROCEDURE_PARAMETERS set RDB$DESCRIPTION = 'If = 1 it also creates a virtual file corresponding to the created virtual folder.'
+  where RDB$PARAMETER_NAME = 'CREATE_VIRTUAL_FOLDER_FILE' AND RDB$PROCEDURE_NAME = 'SP_CREATE_VIRTUALPATH';
 
 SET TERM ^ ;
 ALTER PROCEDURE SP_DELETE_VOLUME (
@@ -228,6 +378,51 @@ GRANT EXECUTE
  ON PROCEDURE SP_DELETE_VOLUME TO  SYSDBA;
 
 
+SET TERM ^ ;
+ALTER PROCEDURE SP_GET_PHYS_FILEID_FROM_PATHID (
+    PATH_ID Numeric(18,0) )
+RETURNS (
+    FILE_ID Numeric(18,0) )
+AS
+declare variable tmp_id bigint;
+declare variable father_id bigint;
+declare variable path_name varchar(500);
+declare variable tmp_str varchar(500);
+begin
+    FILE_ID = -1;
+
+    -- looks for the path name and the ID of the parent path
+    for select FATHER_ID, PATH_NAME
+    from PATHS
+    where PATH_ID = :PATH_ID
+    into
+        :TMP_ID, :TMP_STR
+    do
+    begin
+        FATHER_ID = TMP_ID;
+        PATH_NAME = TMP_STR;
+    end
+
+    -- looks for the file
+    for select FILE_ID
+    from FILES
+    where PATH_ID = :FATHER_ID and FILE_NAME = :PATH_NAME
+    into
+        :TMP_ID
+    do
+        FILE_ID = TMP_ID;
+end^
+SET TERM ; ^
+
+GRANT EXECUTE
+ ON PROCEDURE SP_GET_PHYS_FILEID_FROM_PATHID TO  SYSDBA;
+
+UPDATE RDB$PROCEDURES set
+  RDB$DESCRIPTION = 'Returns FILES.FILE_ID of the row corresponding to the value of
+PATHS.PATH_ID received as a parameter'
+  where RDB$PROCEDURE_NAME = 'SP_GET_PHYS_FILEID_FROM_PATHID';
+
+UPDATE RDB$RELATION_FIELDS set RDB$DESCRIPTION = 'If PATH_ID is null this row represents a virtual folder created by the user.'  where RDB$FIELD_NAME = 'PATH_ID' and RDB$RELATION_NAME = 'FILES';
 ALTER TABLE FILES ADD CONSTRAINT FK_FILES_PATHS
   FOREIGN KEY (PATH_ID) REFERENCES PATHS (PATH_ID);
 GRANT DELETE, INSERT, REFERENCES, SELECT, UPDATE

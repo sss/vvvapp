@@ -10,7 +10,7 @@
     the Free Software Foundation; either version 2 of the License, or
     (at your option) any later version.
 
-    Foobar is distributed in the hope that it will be useful,
+    VVV is distributed in the hope that it will be useful,
     but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
     GNU General Public License for more details.
@@ -46,6 +46,8 @@ public:
 	// starts a multirow query that returns all the paths with a given VolumeID and FatherID (nullable)
 	void DBStartQueryListPaths( CNullableLong FatherID );
 
+	// adds a physical path to the virtual path
+	static void AppendPhysicalPath( long PhysicalPathID, long VirtualPathID );
 
 protected:
 
@@ -54,6 +56,8 @@ protected:
 	void FB_DbUpdate(void);
 	void FB_DbDelete(void);
 	void FB_FetchRow(void);
+
+	static void FB_AppendPhysicalPath( long PhysicalPathID, long VirtualPathID );
 
 };
 
