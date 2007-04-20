@@ -75,7 +75,10 @@
 #define ID_ADD_VIRTUAL_FOLDER 10015
 #define ID_RENAME_VOLUME 10013
 #define ID_DELETE_VOLUME 10014
-#define D_DELETE_VIRTUAL_FOLDER 10018
+#define ID_NEW_VIRTUAL_ROOT_FOLDER 10019
+#define ID_NEW_VIRTUAL_SUBFOLDER 10018
+#define ID_RENAME_VIRTUAL_FOLDER 10020
+#define ID_DELETE_VIRTUAL_FOLDER 10021
 #define ID_CATALOG_VOLUME 10001
 #define ID_VIEW_PHYSICAL 10011
 #define ID_VIEW_VIRTUAL 10012
@@ -146,6 +149,30 @@ public:
     /// wxEVT_UPDATE_UI event handler for ID_DELETE_VOLUME
     void OnDeleteVolumeUpdate( wxUpdateUIEvent& event );
 
+    /// wxEVT_COMMAND_MENU_SELECTED event handler for ID_NEW_VIRTUAL_ROOT_FOLDER
+    void OnNewVirtualRootFolderClick( wxCommandEvent& event );
+
+    /// wxEVT_UPDATE_UI event handler for ID_NEW_VIRTUAL_ROOT_FOLDER
+    void OnNewVirtualRootFolderUpdate( wxUpdateUIEvent& event );
+
+    /// wxEVT_COMMAND_MENU_SELECTED event handler for ID_NEW_VIRTUAL_SUBFOLDER
+    void OnNewVirtualSubfolderClick( wxCommandEvent& event );
+
+    /// wxEVT_UPDATE_UI event handler for ID_NEW_VIRTUAL_SUBFOLDER
+    void OnNewVirtualSubfolderUpdate( wxUpdateUIEvent& event );
+
+    /// wxEVT_COMMAND_MENU_SELECTED event handler for ID_RENAME_VIRTUAL_FOLDER
+    void OnRenameVirtualFolderClick( wxCommandEvent& event );
+
+    /// wxEVT_UPDATE_UI event handler for ID_RENAME_VIRTUAL_FOLDER
+    void OnRenameVirtualFolderUpdate( wxUpdateUIEvent& event );
+
+    /// wxEVT_COMMAND_MENU_SELECTED event handler for ID_DELETE_VIRTUAL_FOLDER
+    void OnDeleteVirtualFolderClick( wxCommandEvent& event );
+
+    /// wxEVT_UPDATE_UI event handler for ID_DELETE_VIRTUAL_FOLDER
+    void OnDeleteVirtualFolderUpdate( wxUpdateUIEvent& event );
+
     /// wxEVT_COMMAND_MENU_SELECTED event handler for ID_CATALOG_VOLUME
     void OnCatalogVolumeClick( wxCommandEvent& event );
 
@@ -186,6 +213,9 @@ public:
 
     /// wxEVT_COMMAND_TREE_SEL_CHANGED event handler for ID_TREE_CONTROL_VIRTUAL
     void OnTreeControlVirtualSelChanged( wxTreeEvent& event );
+
+    /// wxEVT_CONTEXT_MENU event handler for ID_TREE_CONTROL_VIRTUAL
+    void OnTreeControlVirtualContextMenu( wxContextMenuEvent& event );
 
 private:
 
