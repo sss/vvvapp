@@ -75,6 +75,7 @@
 #define ID_ADD_VIRTUAL_FOLDER 10015
 #define ID_RENAME_VOLUME 10013
 #define ID_DELETE_VOLUME 10014
+#define D_DELETE_VIRTUAL_FOLDER 10018
 #define ID_CATALOG_VOLUME 10001
 #define ID_VIEW_PHYSICAL 10011
 #define ID_VIEW_VIRTUAL 10012
@@ -133,6 +134,9 @@ public:
     /// wxEVT_COMMAND_MENU_SELECTED event handler for ID_ADD_VIRTUAL_FOLDER
     void OnAddVirtualFolderClick( wxCommandEvent& event );
 
+    /// wxEVT_UPDATE_UI event handler for ID_ADD_VIRTUAL_FOLDER
+    void OnAddVirtualFolderUpdate( wxUpdateUIEvent& event );
+
     /// wxEVT_COMMAND_MENU_SELECTED event handler for ID_RENAME_VOLUME
     void OnRenameVolumeClick( wxCommandEvent& event );
 
@@ -184,6 +188,15 @@ public:
     void OnTreeControlVirtualSelChanged( wxTreeEvent& event );
 
 private:
+
+	// the possible views available in the program
+	enum CurrentView {
+		Physical,
+		Virtual
+	};
+	// holds the current view
+	CurrentView m_CurrentView;
+
 	// pointers to some windows used in the main frame
 	wxListCtrl* m_listCtl;	// the list control
 	wxTreeCtrl* m_treePhysicalCtl;	// the tree control with the physical view
