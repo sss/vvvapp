@@ -42,6 +42,17 @@ BEGIN EXIT; END^
 SET TERM ; ^
 
 SET TERM ^ ;
+CREATE PROCEDURE SP_CREATE_UNIQUE_VIRTUALPATH (
+    PATH_NAME Varchar(500),
+    FATHER_ID Numeric(18,0),
+    PHYS_PATH_ID Numeric(18,0) )
+RETURNS (
+    VPATH_ID Numeric(18,0) )
+AS
+BEGIN EXIT; END^
+SET TERM ; ^
+
+SET TERM ^ ;
 CREATE PROCEDURE SP_CREATE_VIRTUALPATH (
     PATH_NAME Varchar(500),
     FATHER_ID Numeric(18,0),
@@ -49,6 +60,13 @@ CREATE PROCEDURE SP_CREATE_VIRTUALPATH (
     CREATE_VIRTUAL_FOLDER_FILE Smallint )
 RETURNS (
     VPATH_ID Numeric(18,0) )
+AS
+BEGIN EXIT; END^
+SET TERM ; ^
+
+SET TERM ^ ;
+CREATE PROCEDURE SP_DELETE_VIRTUAL_FOLDER (
+    VIRTUAL_PATH_ID Numeric(18,0) )
 AS
 BEGIN EXIT; END^
 SET TERM ; ^
@@ -197,7 +215,7 @@ AS
 declare variable file_id bigint;
 declare variable path_id bigint;
 declare variable vpath_id bigint;
-declare variable path_name varchar(500);
+declare variable path_name varchar(500) character set none;
 begin
     -- copies all files in the current folder
     for select FILE_ID
@@ -240,7 +258,7 @@ ALTER PROCEDURE SP_APPEND_PHYSPTH_TO_VIRTUALPTH (
     PHYS_PATH_ID Numeric(18,0),
     VIRTUAL_PATH_ID Numeric(18,0) )
 AS
-declare variable phys_path_name varchar(500);
+declare variable phys_path_name varchar(500) character set none;
 declare variable tmp_str varchar(500);
 declare variable new_virtual_path_id bigint;
 begin
@@ -273,6 +291,35 @@ UPDATE RDB$PROCEDURES set
 It will create a virtual folder, child of the specified virtual folder,
 with the same name as the physical folder.'
   where RDB$PROCEDURE_NAME = 'SP_APPEND_PHYSPTH_TO_VIRTUALPTH';
+
+SET TERM ^ ;
+ALTER PROCEDURE SP_CREATE_UNIQUE_VIRTUALPATH (
+    PATH_NAME Varchar(500),
+    FATHER_ID Numeric(18,0),
+    PHYS_PATH_ID Numeric(18,0) )
+RETURNS (
+    VPATH_ID Numeric(18,0) )
+AS
+begin
+    if( exists( select PATH_ID
+                from VIRTUAL_PATHS
+                where FATHER_ID = :FATHER_ID and PATH = :PATH_NAME )) then
+    begin
+        VPATH_ID = -1;
+    end
+    else
+    begin
+        execute procedure SP_CREATE_VIRTUALPATH( :PATH_NAME, :FATHER_ID, :PHYS_PATH_ID, 1 )
+        returning_values( VPATH_ID );
+    end
+end^
+SET TERM ; ^
+
+GRANT EXECUTE
+ ON PROCEDURE SP_CREATE_UNIQUE_VIRTUALPATH TO  SYSDBA;
+
+UPDATE RDB$PROCEDURE_PARAMETERS set RDB$DESCRIPTION = 'The SP returns -1 if the folder name is already present'
+  where RDB$PARAMETER_NAME = 'VPATH_ID' AND RDB$PROCEDURE_NAME = 'SP_CREATE_UNIQUE_VIRTUALPATH';
 
 SET TERM ^ ;
 ALTER PROCEDURE SP_CREATE_VIRTUALPATH (
@@ -349,6 +396,37 @@ another path. The value of PHYS_PATH_ID does not matter.'
   where RDB$PROCEDURE_NAME = 'SP_CREATE_VIRTUALPATH';
 UPDATE RDB$PROCEDURE_PARAMETERS set RDB$DESCRIPTION = 'If = 1 it also creates a virtual file corresponding to the created virtual folder.'
   where RDB$PARAMETER_NAME = 'CREATE_VIRTUAL_FOLDER_FILE' AND RDB$PROCEDURE_NAME = 'SP_CREATE_VIRTUALPATH';
+
+SET TERM ^ ;
+ALTER PROCEDURE SP_DELETE_VIRTUAL_FOLDER (
+    VIRTUAL_PATH_ID Numeric(18,0) )
+AS
+declare variable path_id bigint;
+begin
+    for select PATH_ID
+    from VIRTUAL_PATHS
+    where FATHER_ID = :VIRTUAL_PATH_ID
+    into
+        :PATH_ID
+    do
+    begin
+        -- recurse to delete all che children of this path to avoid problems
+        -- with referential integrity
+        execute procedure SP_DELETE_VIRTUAL_FOLDER( :PATH_ID );
+    end
+
+    -- now delete all the virtual files of this folder
+    delete from VIRTUAL_FILES where VIRTUAL_PATH_ID = :VIRTUAL_PATH_ID;
+
+    -- now delete the virtual folder received as a parameter
+    delete from VIRTUAL_PATHS where PATH_ID = :VIRTUAL_PATH_ID;
+
+end^
+SET TERM ; ^
+
+GRANT EXECUTE
+ ON PROCEDURE SP_DELETE_VIRTUAL_FOLDER TO  SYSDBA;
+
 
 SET TERM ^ ;
 ALTER PROCEDURE SP_DELETE_VOLUME (

@@ -27,32 +27,82 @@
 
 using namespace IBPP;
 
-// add this record to the database
-void CVirtualPaths::FB_DbInsert(void)
-{
-	wxString sql;
+void CVirtualPaths::FB_DbInsert(void) {
+	bool inTransaction;
+	int64_t tmp;
+	long outputPathID;
 
-	if( PathID.IsNull() )
-		PathID = FB_GenNewValue( wxT("GEN_VIRTUAL_PATHS_ID") );
-	sql = "INSERT INTO VIRTUAL_PATHS (";
-	if( !PathID.IsNull() )
-		sql += "PATH_ID, ";
-	sql += "PATH, FATHER_ID, PHYS_PATH_ID) VALUES (";
-	if( !PathID.IsNull() )
-		sql += long2string(PathID) + ", ";
-	sql += ExpandSingleQuotes(PathName) + "', ";
-	if( FatherID.IsNull() )
-		sql += "NULL";
-	else
-		sql += long2string(FatherID);
-	sql += "', ";
-	if( PhysPathID.IsNull() )
-		sql += "NULL";
-	else
-		sql += long2string(PhysPathID);
-	sql += ")";
-	FB_ExecuteQueryNoReturn( sql );
+	CFirebirdDB* db = (CFirebirdDB*) CBaseDB::GetDatabase();
+	inTransaction = db->TransactionIsOpened();
+	if( !inTransaction ) {
+		db->TransactionStart();
+	}
+	Statement st = StatementFactory( db->GetIBPPDB(), db->TransactionGetReference() );
+
+	try {
+		st->Prepare( "EXECUTE PROCEDURE SP_CREATE_UNIQUE_VIRTUALPATH( ?, ?, ? )" );
+		st->Set( 1, PathName );
+		if( FatherID.IsNull() )
+			st->SetNull( 2 );
+		else
+			st->Set( 2, FatherID );
+		if( PhysPathID.IsNull() )
+			st->SetNull( 3 );
+		else
+			st->Set( 3, PhysPathID );
+		st->Execute();
+	}
+	catch( IBPP::SQLException& e ) {
+		// catches exceptions in order to convert interesting ones
+		db->TransactionRollback();
+		CDataErrorException::ErrorCause ec;
+		if( CDataErrorException::ConvertFirebirdError( e.EngineCode(), ec )  )
+			throw CDataErrorException( e.ErrorMessage(), ec );
+		else
+			throw;
+	}
+
+	// get the ID of the created row
+	st->Get( 1, tmp );
+	outputPathID = (long) tmp;
+
+	if( !inTransaction ) {
+		db->TransactionCommit();
+	}
+
+	if( tmp < 0 )
+		throw CDataErrorException( "Duplicate path name", CDataErrorException::Unique );
 }
+
+
+
+
+//// add this record to the database
+//void CVirtualPaths::FB_DbInsert(void)
+//{
+//	wxString sql;
+//
+//	if( PathID.IsNull() )
+//		PathID = FB_GenNewValue( wxT("GEN_VIRTUAL_PATHS_ID") );
+//	sql = "INSERT INTO VIRTUAL_PATHS (";
+//	if( !PathID.IsNull() )
+//		sql += "PATH_ID, ";
+//	sql += "PATH, FATHER_ID, PHYS_PATH_ID) VALUES (";
+//	if( !PathID.IsNull() )
+//		sql += long2string(PathID) + ", ";
+//	sql += ExpandSingleQuotes(PathName) + "', ";
+//	if( FatherID.IsNull() )
+//		sql += "NULL";
+//	else
+//		sql += long2string(FatherID);
+//	sql += "', ";
+//	if( PhysPathID.IsNull() )
+//		sql += "NULL";
+//	else
+//		sql += long2string(PhysPathID);
+//	sql += ")";
+//	FB_ExecuteQueryNoReturn( sql );
+//}
 
 void CVirtualPaths::FB_DbUpdate(void)
 {

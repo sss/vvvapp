@@ -491,6 +491,8 @@ void CMainFrame::OnTreeControlItemExpanding( wxTreeEvent& event )
 
 void CMainFrame::OnTreeControlSelChanged( wxTreeEvent& event )
 {
+	if( m_CurrentView != Physical ) return;
+
 	wxTreeItemId itemID = event.GetItem();
 	ShowFolderFiles( itemID );
 }
@@ -502,6 +504,8 @@ void CMainFrame::OnTreeControlSelChanged( wxTreeEvent& event )
 
 void CMainFrame::OnTreeControlVirtualSelChanged( wxTreeEvent& event )
 {
+	if( m_CurrentView != Virtual ) return;
+	
 	wxTreeItemId itemID = event.GetItem();
 	ShowVirtualFolderFiles( itemID );
 }
@@ -980,6 +984,10 @@ void CMainFrame::OnAddVirtualFolderClick( wxCommandEvent& event )
 		CVirtualPaths::CopyPhysicalPath( physicalFolderId, virtualFolderId );
 	else
 		CVirtualPaths::AppendPhysicalPath( physicalFolderId, virtualFolderId );
+
+	// updates the tree controls
+	m_ChooseVirtualFolderDialog->Refresh();
+	LoadVirtualTreeControl();
 }
 
 
@@ -1020,10 +1028,46 @@ void CMainFrame::OnNewVirtualRootFolderUpdate( wxUpdateUIEvent& event )
 
 void CMainFrame::OnNewVirtualSubfolderClick( wxCommandEvent& event )
 {
-////@begin wxEVT_COMMAND_MENU_SELECTED event handler for ID_NEW_VIRTUAL_SUBFOLDER in CMainFrame.
-    // Before editing this code, remove the block markers.
-    event.Skip();
-////@end wxEVT_COMMAND_MENU_SELECTED event handler for ID_NEW_VIRTUAL_SUBFOLDER in CMainFrame. 
+	wxTreeCtrl *tctl = GetTreeVirtualControl();
+	wxTreeItemId item = tctl->GetSelection();
+	wxString folderName = "";
+
+	// asks for the new folder name
+	wxTextEntryDialog ted( this, _("Enter the new folder name"), _("New virtual subfolder"), folderName, wxOK | wxCANCEL );
+	if( ted.ShowModal() != wxID_OK ) return;
+	folderName = ted.GetValue();
+
+	// adds the new folder to the database
+    MyTreeItemData *itemData = (MyTreeItemData *) tctl->GetItemData(item);
+	CVirtualPaths pth;
+	pth.PathName = folderName;
+	pth.PhysPathID.SetNull( true );
+	pth.FatherID = itemData->GetPathID();
+	try {
+		pth.DbInsert();
+	}
+	catch( CDataErrorException& e ) {
+		if( e.GetErrorCause() == CDataErrorException::Unique ) {
+			CUtils::MsgErr( _("The new folder name is already present in the database") );
+			return;
+		}
+		else
+			throw;
+	}
+
+	// adds the folder to the tree control
+	wxTreeItemId newItem = tctl->AppendItem( item, pth.PathName, 1, 2, 
+						new MyTreeItemData(pth.PathName, 0, pth.PathID, false) );
+	// sets the expanded images
+	tctl->SetItemImage( newItem, 1, wxTreeItemIcon_Expanded );
+	tctl->SetItemImage( newItem, 2, wxTreeItemIcon_SelectedExpanded );
+
+	// updates the listview
+	ShowVirtualFolderFiles( item );
+
+	m_ChooseVirtualFolderDialog->Refresh();
+
+	event.Skip(false);	// to suppress a warning
 }
 
 /*!

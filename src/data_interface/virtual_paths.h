@@ -57,7 +57,11 @@ public:
 protected:
 
 	// Firebird implementation of the database methods
+	
+	// adds a new virtual folder. It does not use PathID as input value: is is only an output value
+	// if a folder with than name alread exists returns it does not inset anything and it returns that PathID
 	void FB_DbInsert(void);
+
 	void FB_DbUpdate(void);
 	void FB_DbDelete(void);
 	void FB_FetchRow(void);

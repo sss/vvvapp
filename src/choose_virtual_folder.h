@@ -135,6 +135,9 @@ public:
 
 	long GetVirtualFolderID() { return m_VirtualFolderID; }
 
+	// reloads the tree from the database
+	void Refresh() { LoadVirtualTreeControl(); }
+
 private:
 
 	void LoadVirtualTreeControl(void);
