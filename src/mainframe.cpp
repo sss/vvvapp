@@ -406,22 +406,10 @@ void CMainFrame::LoadVirtualTreeControl(void) {
 	// adds a root item that will not be visible
 	wxTreeItemId rootID = tctl->AddRoot( wxT("Root") );
 
-	// first retrieves the id of the root folder
-	long rootPathID = -1;
+	// appends subfolders
 	CVirtualPaths pth;
 	CNullableLong nl;
 	nl.SetNull(true);
-	pth.DBStartQueryListPaths( nl );
-	while( !pth.IsEOF() ) {
-		// this query should return only one line
-		rootPathID = pth.PathID;
-		pth.DBNextRow();
-	}
-
-	// appends the first level of subfolders
-
-	// now retrieves the subfolders
-	nl = rootPathID;
 	pth.DBStartQueryListPaths( nl );
 	while( !pth.IsEOF() ) {
 		wxString name = pth.PathName;
@@ -1007,10 +995,12 @@ void CMainFrame::OnAddVirtualFolderUpdate( wxUpdateUIEvent& event )
 
 void CMainFrame::OnNewVirtualRootFolderClick( wxCommandEvent& event )
 {
-////@begin wxEVT_COMMAND_MENU_SELECTED event handler for ID_NEW_VIRTUAL_ROOT_FOLDER in CMainFrame.
-    // Before editing this code, remove the block markers.
-    event.Skip();
-////@end wxEVT_COMMAND_MENU_SELECTED event handler for ID_NEW_VIRTUAL_ROOT_FOLDER in CMainFrame. 
+	CNullableLong nl;
+	nl.SetNull( true );
+
+	CreateNewVirtualFolder( nl, _("New virtual root folder") );
+
+	event.Skip(false);	// to suppress a warning
 }
 
 /*!
@@ -1030,19 +1020,38 @@ void CMainFrame::OnNewVirtualSubfolderClick( wxCommandEvent& event )
 {
 	wxTreeCtrl *tctl = GetTreeVirtualControl();
 	wxTreeItemId item = tctl->GetSelection();
+    MyTreeItemData *itemData = (MyTreeItemData *) tctl->GetItemData(item);
+	long FatherID = itemData->GetPathID();
+
+	CreateNewVirtualFolder( FatherID, _("New virtual subfolder") );
+
+	event.Skip(false);	// to suppress a warning
+}
+
+void CMainFrame::CreateNewVirtualFolder( CNullableLong FatherID, wxString windowTitle ) {
+	wxTreeCtrl *tctl = GetTreeVirtualControl();
+	wxTreeItemId fatherItem;
 	wxString folderName = "";
 
+	if( FatherID.IsNull() ) {
+		// this is a root folder
+		fatherItem = tctl->GetRootItem();
+	}
+	else {
+		// this is a subfolder
+		fatherItem = tctl->GetSelection();
+	}
+
 	// asks for the new folder name
-	wxTextEntryDialog ted( this, _("Enter the new folder name"), _("New virtual subfolder"), folderName, wxOK | wxCANCEL );
+	wxTextEntryDialog ted( this, _("Enter the new folder name"), windowTitle, folderName, wxOK | wxCANCEL );
 	if( ted.ShowModal() != wxID_OK ) return;
 	folderName = ted.GetValue();
 
 	// adds the new folder to the database
-    MyTreeItemData *itemData = (MyTreeItemData *) tctl->GetItemData(item);
 	CVirtualPaths pth;
 	pth.PathName = folderName;
 	pth.PhysPathID.SetNull( true );
-	pth.FatherID = itemData->GetPathID();
+	pth.FatherID = FatherID;
 	try {
 		pth.DbInsert();
 	}
@@ -1056,18 +1065,17 @@ void CMainFrame::OnNewVirtualSubfolderClick( wxCommandEvent& event )
 	}
 
 	// adds the folder to the tree control
-	wxTreeItemId newItem = tctl->AppendItem( item, pth.PathName, 1, 2, 
+	wxTreeItemId newItem = tctl->AppendItem( fatherItem, pth.PathName, 1, 2, 
 						new MyTreeItemData(pth.PathName, 0, pth.PathID, false) );
 	// sets the expanded images
 	tctl->SetItemImage( newItem, 1, wxTreeItemIcon_Expanded );
 	tctl->SetItemImage( newItem, 2, wxTreeItemIcon_SelectedExpanded );
 
 	// updates the listview
-	ShowVirtualFolderFiles( item );
+	if( !FatherID.IsNull() ) 
+		ShowVirtualFolderFiles( fatherItem );
 
 	m_ChooseVirtualFolderDialog->Refresh();
-
-	event.Skip(false);	// to suppress a warning
 }
 
 /*!

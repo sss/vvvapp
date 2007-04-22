@@ -221,22 +221,10 @@ void CDialogChooseVirtualFolder::LoadVirtualTreeControl(void) {
 	// adds a root item that will not be visible
 	wxTreeItemId rootID = tctl->AddRoot( wxT("Root") );
 
-	// first retrieves the id of the root folder
-	long rootPathID = -1;
+	// appends subfolders
 	CVirtualPaths pth;
 	CNullableLong nl;
 	nl.SetNull(true);
-	pth.DBStartQueryListPaths( nl );
-	while( !pth.IsEOF() ) {
-		// this query should return only one line
-		rootPathID = pth.PathID;
-		pth.DBNextRow();
-	}
-
-	// appends the first level of subfolders
-
-	// now retrieves the subfolders
-	nl = rootPathID;
 	pth.DBStartQueryListPaths( nl );
 	while( !pth.IsEOF() ) {
 		wxString name = pth.PathName;

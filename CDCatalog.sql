@@ -309,8 +309,17 @@ begin
     end
     else
     begin
-        execute procedure SP_CREATE_VIRTUALPATH( :PATH_NAME, :FATHER_ID, :PHYS_PATH_ID, 1 )
-        returning_values( VPATH_ID );
+        if( FATHER_ID is null ) then
+        begin
+            -- we are inserting a root virtual path: very simple case
+            execute procedure SP_CREATE_VIRTUALPATH( :PATH_NAME, :FATHER_ID, :PHYS_PATH_ID, 0 )
+            returning_values( VPATH_ID );
+        end
+        else
+        begin
+            execute procedure SP_CREATE_VIRTUALPATH( :PATH_NAME, :FATHER_ID, :PHYS_PATH_ID, 1 )
+            returning_values( VPATH_ID );
+        end
     end
 end^
 SET TERM ; ^
@@ -370,7 +379,7 @@ begin
             else
             begin
                 -- the virtual path that we are creating has a corresponding
-                -- physical path, so we look fot the existing row in the FILES table
+                -- physical path, so we look for the existing row in the FILES table
                 execute procedure SP_GET_PHYS_FILEID_FROM_PATHID( :PHYS_PATH_ID )
                     returning_values( :PHYS_FILE_ID );
             end

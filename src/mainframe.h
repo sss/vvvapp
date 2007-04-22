@@ -217,6 +217,11 @@ public:
     /// wxEVT_CONTEXT_MENU event handler for ID_TREE_CONTROL_VIRTUAL
     void OnTreeControlVirtualContextMenu( wxContextMenuEvent& event );
 
+	// creates a new virtual folder from user input
+	// FatherID is the primary key of the father of this folder in the database: it can be NULL for root folders
+	// windowTitle is the title of the window that will ask for the new folder's name
+	void CreateNewVirtualFolder( CNullableLong FatherID, wxString windowTitle );
+
 private:
 
 	// the possible views available in the program
