@@ -416,6 +416,11 @@ void CMainFrame::LoadVirtualTreeControl(void) {
 		// adds the folder to the tree
 		wxTreeItemId itemID = tctl->AppendItem( rootID, name, 1, 2, 
 							new MyTreeItemData(name, 0, pth.PathID, false) );
+		if( pth.PhysPathID.IsNull() ) {
+			// this vistual path has been created by the user: it is not a physical path assigned to a virtual path
+			// show it in a different colour
+			tctl->SetItemTextColour( itemID, *wxBLUE );
+		}
 		// sets the expanded images
 		tctl->SetItemImage( itemID, 1, wxTreeItemIcon_Expanded );
 		tctl->SetItemImage( itemID, 2, wxTreeItemIcon_SelectedExpanded );
@@ -436,6 +441,11 @@ void CMainFrame::LoadVirtualFolderInTreeControl( wxTreeCtrl* tctl, wxTreeItemId 
 		// adds the folder to the tree
 		wxTreeItemId itemID = tctl->AppendItem( fatherTreeID, name, 1, 2, 
 							new MyTreeItemData(name, 0, pth.PathID, false) );
+		if( pth.PhysPathID.IsNull() ) {
+			// this vistual path has been created by the user: it is not a physical path assigned to a virtual path
+			// show it in a different colour
+			tctl->SetItemTextColour( itemID, *wxBLUE );
+		}
 		// sets the expanded images
 		tctl->SetItemImage( itemID, 1, wxTreeItemIcon_Expanded );
 		tctl->SetItemImage( itemID, 2, wxTreeItemIcon_SelectedExpanded );
@@ -1046,6 +1056,7 @@ void CMainFrame::CreateNewVirtualFolder( CNullableLong FatherID, wxString window
 	wxTextEntryDialog ted( this, _("Enter the new folder name"), windowTitle, folderName, wxOK | wxCANCEL );
 	if( ted.ShowModal() != wxID_OK ) return;
 	folderName = ted.GetValue();
+	if( folderName == "" ) return;
 
 	// adds the new folder to the database
 	CVirtualPaths pth;
@@ -1067,6 +1078,7 @@ void CMainFrame::CreateNewVirtualFolder( CNullableLong FatherID, wxString window
 	// adds the folder to the tree control
 	wxTreeItemId newItem = tctl->AppendItem( fatherItem, pth.PathName, 1, 2, 
 						new MyTreeItemData(pth.PathName, 0, pth.PathID, false) );
+	tctl->SetItemTextColour( newItem, *wxBLUE );
 	// sets the expanded images
 	tctl->SetItemImage( newItem, 1, wxTreeItemIcon_Expanded );
 	tctl->SetItemImage( newItem, 2, wxTreeItemIcon_SelectedExpanded );
