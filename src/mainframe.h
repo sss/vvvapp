@@ -52,6 +52,8 @@
 #include "wx/listctrl.h"
 ////@end includes
 
+#include "wx/docview.h"
+
 #include "data_interface/volumes.h"
 #include "data_interface/paths.h"
 #include "data_interface/files.h"
@@ -64,6 +66,7 @@
  */
 
 ////@begin forward declarations
+class wxMenu;
 ////@end forward declarations
 
 /*!
@@ -206,6 +209,7 @@ public:
     static bool ShowToolTips();
 
 ////@begin CMainFrame member variables
+    wxMenu* m_fileMenu;
 ////@end CMainFrame member variables
 
     /// wxEVT_COMMAND_TREE_ITEM_EXPANDING event handler for ID_TREE_CONTROL_VIRTUAL
@@ -221,6 +225,10 @@ public:
 	// FatherID is the primary key of the father of this folder in the database: it can be NULL for root folders
 	// windowTitle is the title of the window that will ask for the new folder's name
 	void CreateNewVirtualFolder( CNullableLong FatherID, wxString windowTitle );
+
+	// called when the user chooses a file from the MRU list
+	void OnMRUFile( wxCommandEvent& event );
+
 
 private:
 
@@ -260,6 +268,12 @@ private:
 
 	// dialog used to choose a virtual folder
 	CDialogChooseVirtualFolder* m_ChooseVirtualFolderDialog;
+
+	// used to handle the list of recently opened files
+	wxFileHistory* m_fileHistory;
+
+	// opens a database
+	void OpenDatabase( wxString fileName );
 
 protected:
 	// shows in the listview the files contained in the passed folder

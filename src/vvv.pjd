@@ -522,7 +522,7 @@
               <string name="proxy-type">"wbMenuProxy"</string>
               <string name="proxy-Label">"File"</string>
               <bool name="proxy-Enabled">1</bool>
-              <string name="proxy-Member variable name">""</string>
+              <string name="proxy-Member variable name">"m_fileMenu"</string>
               <string name="proxy-Platform">"&lt;Any platform&gt;"</string>
               <document>
                 <string name="title">"Open: wxID_OPEN"</string>
