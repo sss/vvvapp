@@ -57,3 +57,11 @@ void CVirtualPaths::CopyPhysicalPath( long PhysicalPathID, long VirtualPathID ) 
 			break;
 	}
 }
+
+void CVirtualPaths::Rename( long VirtualPathID, wxString newName ) {
+	switch( DatabaseType ) {
+		case dbtFirebird:
+			FB_Rename( VirtualPathID, newName );
+			break;
+	}
+}

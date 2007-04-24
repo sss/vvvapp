@@ -53,6 +53,8 @@ public:
 	// copies the content of the physical path into the virtual path
 	static void CopyPhysicalPath( long PhysicalPathID, long VirtualPathID );
 
+	// renames a virtual path.
+	static void Rename( long VirtualPathID, wxString newName );
 
 protected:
 
@@ -68,6 +70,7 @@ protected:
 
 	static void FB_AppendPhysicalPath( long PhysicalPathID, long VirtualPathID );
 	static void FB_CopyPhysicalPath( long PhysicalPathID, long VirtualPathID );
+	static void FB_Rename( long VirtualPathID, wxString newName );
 
 };
 

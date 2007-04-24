@@ -87,6 +87,16 @@ AS
 BEGIN EXIT; END^
 SET TERM ; ^
 
+SET TERM ^ ;
+CREATE PROCEDURE SP_RENAME_VIRTUALPATH (
+    VPATH_ID Numeric(18,0),
+    PATH_NAME Varchar(500) )
+RETURNS (
+    STATUS Integer )
+AS
+BEGIN EXIT; END^
+SET TERM ; ^
+
 /******************** TABLES **********************/
 
 CREATE TABLE FILES
@@ -134,6 +144,8 @@ CREATE TABLE VOLUMES
 
 /******************* EXCEPTIONS *******************/
 
+CREATE EXCEPTION EX_RENAME_PHYSICAL_PATH
+'Unable to rename a virtual path with a link to a physical path';
 /******************** TRIGGERS ********************/
 
 SET TERM ^ ;
@@ -327,6 +339,9 @@ SET TERM ; ^
 GRANT EXECUTE
  ON PROCEDURE SP_CREATE_UNIQUE_VIRTUALPATH TO  SYSDBA;
 
+UPDATE RDB$PROCEDURES set
+  RDB$DESCRIPTION = 'Returns -1 if then pathname is already present in the database'
+  where RDB$PROCEDURE_NAME = 'SP_CREATE_UNIQUE_VIRTUALPATH';
 UPDATE RDB$PROCEDURE_PARAMETERS set RDB$DESCRIPTION = 'The SP returns -1 if the folder name is already present'
   where RDB$PARAMETER_NAME = 'VPATH_ID' AND RDB$PROCEDURE_NAME = 'SP_CREATE_UNIQUE_VIRTUALPATH';
 
@@ -508,6 +523,62 @@ UPDATE RDB$PROCEDURES set
   RDB$DESCRIPTION = 'Returns FILES.FILE_ID of the row corresponding to the value of
 PATHS.PATH_ID received as a parameter'
   where RDB$PROCEDURE_NAME = 'SP_GET_PHYS_FILEID_FROM_PATHID';
+
+SET TERM ^ ;
+ALTER PROCEDURE SP_RENAME_VIRTUALPATH (
+    VPATH_ID Numeric(18,0),
+    PATH_NAME Varchar(500) )
+RETURNS (
+    STATUS Integer )
+AS
+declare variable father_id bigint;
+declare variable physical_path_id bigint;
+declare variable tmp_id bigint;
+declare variable tmp_id2 bigint;
+begin
+    STATUS = 0;
+
+     -- looks for the father id
+    for select FATHER_ID, PHYS_PATH_ID
+    from VIRTUAL_PATHS
+    where PATH_ID = :VPATH_ID
+    into
+        :TMP_ID, :TMP_ID2
+    do
+    begin
+        FATHER_ID = TMP_ID;
+        PHYSICAL_PATH_ID = TMP_ID2;
+    end
+
+    -- do not rename physical paths
+    if( not PHYSICAL_PATH_ID is null ) then exception EX_RENAME_PHYSICAL_PATH;
+
+    -- avoids duplicates paths
+    if( exists( select PATH_ID from VIRTUAL_PATHS where PATH_ID = :FATHER_ID and PATH = :PATH_NAME )) then
+    begin
+        STATUS = -1;
+        exit;
+    end
+
+    -- here if we can rename
+    update VIRTUAL_PATHS set PATH = :PATH_NAME where PATH_ID = :VPATH_ID;
+    update FILES set FILE_NAME = :PATH_NAME where FILE_ID =
+        (select VIRTUAL_FILES.PHYSICAL_FILE_ID
+         from VIRTUAL_FILES inner join FILES
+         on VIRTUAL_FILES.PHYSICAL_FILE_ID = FILES.FILE_ID
+         where FILES.FILE_NAME = :PATH_NAME and FILES.is_folder = 'T');
+
+end^
+SET TERM ; ^
+
+GRANT EXECUTE
+ ON PROCEDURE SP_RENAME_VIRTUALPATH TO  SYSDBA;
+
+UPDATE RDB$PROCEDURES set
+  RDB$DESCRIPTION = 'Changes the name of a virtual folder created by the user: no link to physical path.'
+  where RDB$PROCEDURE_NAME = 'SP_RENAME_VIRTUALPATH';
+UPDATE RDB$PROCEDURE_PARAMETERS set RDB$DESCRIPTION = '0=OK, -1=error: new name would be duplicated'
+  where RDB$PARAMETER_NAME = 'STATUS' AND RDB$PROCEDURE_NAME = 'SP_RENAME_VIRTUALPATH';
 
 UPDATE RDB$RELATION_FIELDS set RDB$DESCRIPTION = 'If PATH_ID is null this row represents a virtual folder created by the user.'  where RDB$FIELD_NAME = 'PATH_ID' and RDB$RELATION_NAME = 'FILES';
 ALTER TABLE FILES ADD CONSTRAINT FK_FILES_PATHS

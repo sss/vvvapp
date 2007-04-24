@@ -230,7 +230,7 @@ void CDialogChooseVirtualFolder::LoadVirtualTreeControl(void) {
 		wxString name = pth.PathName;
 		// adds the folder to the tree
 		wxTreeItemId itemID = tctl->AppendItem( rootID, name, 1, 2, 
-							new MyTreeItemData(name, 0, pth.PathID, false) );
+							new MyTreeItemData(name, pth.PathID, pth.PhysPathID) );
 		// sets the expanded images
 		tctl->SetItemImage( itemID, 1, wxTreeItemIcon_Expanded );
 		tctl->SetItemImage( itemID, 2, wxTreeItemIcon_SelectedExpanded );
@@ -250,7 +250,7 @@ void CDialogChooseVirtualFolder::LoadVirtualFolderInTreeControl( wxTreeCtrl* tct
 		name = name.AfterLast( wxFileName::GetPathSeparator() );
 		// adds the folder to the tree
 		wxTreeItemId itemID = tctl->AppendItem( fatherTreeID, name, 1, 2, 
-							new MyTreeItemData(name, 0, pth.PathID, false) );
+							new MyTreeItemData(name, pth.PathID, pth.PhysPathID) );
 		// sets the expanded images
 		tctl->SetItemImage( itemID, 1, wxTreeItemIcon_Expanded );
 		tctl->SetItemImage( itemID, 2, wxTreeItemIcon_SelectedExpanded );

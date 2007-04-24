@@ -426,7 +426,7 @@ void CMainFrame::LoadVirtualTreeControl(void) {
 		wxString name = pth.PathName;
 		// adds the folder to the tree
 		wxTreeItemId itemID = tctl->AppendItem( rootID, name, 1, 2, 
-							new MyTreeItemData(name, 0, pth.PathID, false) );
+							new MyTreeItemData(name, pth.PathID, pth.PhysPathID) );
 		if( pth.PhysPathID.IsNull() ) {
 			// this vistual path has been created by the user: it is not a physical path assigned to a virtual path
 			// show it in a different colour
@@ -451,7 +451,7 @@ void CMainFrame::LoadVirtualFolderInTreeControl( wxTreeCtrl* tctl, wxTreeItemId 
 		name = name.AfterLast( wxFileName::GetPathSeparator() );
 		// adds the folder to the tree
 		wxTreeItemId itemID = tctl->AppendItem( fatherTreeID, name, 1, 2, 
-							new MyTreeItemData(name, 0, pth.PathID, false) );
+							new MyTreeItemData(name, pth.PathID, pth.PhysPathID) );
 		if( pth.PhysPathID.IsNull() ) {
 			// this vistual path has been created by the user: it is not a physical path assigned to a virtual path
 			// show it in a different colour
@@ -871,7 +871,8 @@ void CMainFrame::OnTreeControlVirtualContextMenu( wxContextMenuEvent& event )
 	if( item.IsOk() ) {
 		// only if we have a selected item
 		menu.Append( ID_NEW_VIRTUAL_SUBFOLDER, _("New Subfolder") );
-		menu.Append( ID_RENAME_VIRTUAL_FOLDER, _("Rename") );
+	    MyTreeItemData *itemData = (MyTreeItemData *) tctl->GetItemData(item);
+		if( itemData->GetPhysPathID().IsNull() ) menu.Append( ID_RENAME_VIRTUAL_FOLDER, _("Rename") );
 		menu.Append( ID_DELETE_VIRTUAL_FOLDER, _("Delete") );
 	}
 	
@@ -931,7 +932,7 @@ void CMainFrame::OnRenameVolumeClick( wxCommandEvent& event )
 	wxTextEntryDialog ted( this, _("Enter the new volume name"), _("Rename volume"), oldName, wxOK | wxCANCEL );
 	if( ted.ShowModal() != wxID_OK ) return;
 	wxString newName = ted.GetValue();
-	if( newName == oldName ) return;
+	if( newName == oldName || newName.empty() ) return;
 
 	// changes the volume name in the database
     MyTreeItemData *itemData = (MyTreeItemData *) tctl->GetItemData(item);
@@ -1102,10 +1103,34 @@ void CMainFrame::OnNewVirtualSubfolderUpdate( wxUpdateUIEvent& event )
 
 void CMainFrame::OnRenameVirtualFolderClick( wxCommandEvent& event )
 {
-////@begin wxEVT_COMMAND_MENU_SELECTED event handler for ID_RENAME_VIRTUAL_FOLDER in CMainFrame.
-    // Before editing this code, remove the block markers.
-    event.Skip();
-////@end wxEVT_COMMAND_MENU_SELECTED event handler for ID_RENAME_VIRTUAL_FOLDER in CMainFrame. 
+	wxTreeCtrl *tctl = GetTreeVirtualControl();
+	wxTreeItemId item = tctl->GetSelection();
+	wxString oldName = tctl->GetItemText(item);
+
+	// asks for the new volume name
+	wxTextEntryDialog ted( this, _("Enter the new forder name"), _("Rename virtual folder"), oldName, wxOK | wxCANCEL );
+	if( ted.ShowModal() != wxID_OK ) return;
+	wxString newName = ted.GetValue();
+	if( newName == oldName || newName.empty() ) return;
+
+	// changes the folder name in the database
+    MyTreeItemData *itemData = (MyTreeItemData *) tctl->GetItemData(item);
+	try {
+		CVirtualPaths::Rename( itemData->GetPathID(), newName );
+	}
+	catch( CDataErrorException& e ) {
+		if( e.GetErrorCause() == CDataErrorException::Unique ) {
+			CUtils::MsgErr( _("The new folder name is already present in the database") );
+			return;
+		}
+		else
+			throw;
+	}
+
+	// changes the volume name in the tree control
+	tctl->SetItemText( item, newName );
+
+	event.Skip(false);	// to suppress a warning
 }
 
 /*!
@@ -1114,7 +1139,14 @@ void CMainFrame::OnRenameVirtualFolderClick( wxCommandEvent& event )
 
 void CMainFrame::OnRenameVirtualFolderUpdate( wxUpdateUIEvent& event )
 {
-	event.Enable( m_CurrentView == Virtual );
+	bool isEnabled = m_CurrentView == Virtual;
+	if( isEnabled ) {
+		wxTreeCtrl* tctl = GetTreeVirtualControl();
+		wxTreeItemId item = tctl->GetSelection();
+	    MyTreeItemData *itemData = (MyTreeItemData *) tctl->GetItemData(item);
+		isEnabled = itemData->GetPhysPathID().IsNull();
+	}
+	event.Enable( isEnabled );
 }
 
 /*!
