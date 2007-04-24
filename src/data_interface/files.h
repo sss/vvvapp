@@ -42,12 +42,15 @@ public:
 	wxDateTime DateTime;
 	wxLongLong FileSize;
 	long PathID;
-	bool IsFolder;
+	CNullableLong PathFileID;
 
 	// methods -----------------------------------
 
 	// starts a multirow query that returns all the files from a given PathID
 	void DBStartQueryListFiles( long PathID );
+
+	// true if this row represents a folder
+	bool IsFolder(void) { return !PathFileID.IsNull(); }
 
 protected:
 

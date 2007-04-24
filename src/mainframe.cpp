@@ -694,9 +694,9 @@ void CMainFrame::ShowFolderFiles( wxTreeItemId itemID ) {
 	int i = 0;
 	while( !files.IsEOF() ) {
 		// adds the file to the list control
-		int imageIndex = (files.IsFolder ? 0 : 1 );
+		int imageIndex = (files.IsFolder() ? 0 : 1 );
 		lctl->InsertItem( i, files.FileName, imageIndex );
-		lctl->SetItem( i, 1, files.IsFolder ? "" : CUtils::HumanReadableFileSize(files.FileSize) );
+		lctl->SetItem( i, 1, files.IsFolder() ? "" : CUtils::HumanReadableFileSize(files.FileSize) );
 		lctl->SetItem( i, 2, files.FileExt );
 		lctl->SetItem( i, 3, files.DateTime.FormatDate() + " " + files.DateTime.FormatTime() );
 

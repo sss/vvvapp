@@ -280,7 +280,7 @@ void CDialogCatalogVolume::OnButtonCatalogClick( wxCommandEvent& event )
 	// catalogs the folders
 	CNullableLong FatherID;
 	FatherID.SetNull(true);
-	CatalogSingleFolder( db, path, vol.VolumeID, FatherID );
+	CatalogSingleFolder( db, path, vol.VolumeID, FatherID, NULL );
 
 	// commits the transaction
 	db->TransactionCommit();
@@ -290,7 +290,7 @@ void CDialogCatalogVolume::OnButtonCatalogClick( wxCommandEvent& event )
 }
 
 
-void CDialogCatalogVolume::CatalogSingleFolder( CBaseDB* db, wxString path, long VolumeID, CNullableLong& FatherID  ) {
+void CDialogCatalogVolume::CatalogSingleFolder( CBaseDB* db, wxString path, long VolumeID, CNullableLong& FatherID, CFiles* PathFile  ) {
 	wxString fileName;
 
 	// writes the path row
@@ -301,6 +301,12 @@ void CDialogCatalogVolume::CatalogSingleFolder( CBaseDB* db, wxString path, long
 	pth.PathName = pth.PathName.AfterLast( wxFileName::GetPathSeparator() );	// only takes the last part of the full path
 	pth.FatherID = FatherID;
 	pth.DbInsert();
+
+	// adds the path id and stores the FILES info about this folder
+	if( PathFile != NULL ) {
+		PathFile->PathFileID = pth.PathID;
+		PathFile->DbInsert();
+	}
 
 	// reads all file names
 	wxDir dir(path);
@@ -314,7 +320,7 @@ void CDialogCatalogVolume::CatalogSingleFolder( CBaseDB* db, wxString path, long
 		file.DateTime = fn.GetModificationTime();
 		file.FileSize = fn.GetSize();
 		file.PathID = pth.PathID;
-		file.IsFolder = false;
+		file.PathFileID.SetNull(true);
 		file.DbInsert();
 
 		cont = dir.GetNext(&fileName);
@@ -333,10 +339,9 @@ void CDialogCatalogVolume::CatalogSingleFolder( CBaseDB* db, wxString path, long
 		file.DateTime = dirName.GetModificationTime();
 		file.FileSize = 0;
 		file.PathID = pth.PathID;
-		file.IsFolder = true;
-		file.DbInsert();
+//		file.DbInsert();
 
-		CatalogSingleFolder( db, dirName.GetPath(), VolumeID, pth.PathID );
+		CatalogSingleFolder( db, dirName.GetPath(), VolumeID, pth.PathID, &file );
 		cont = dir.GetNext(&fileName);
 	}
 

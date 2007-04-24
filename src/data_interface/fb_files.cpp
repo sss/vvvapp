@@ -34,33 +34,35 @@ void CFiles::FB_DbInsert(void)
 	sql = "INSERT INTO FILES (";
 	if( !FileID.IsNull() )
 		sql += "FILE_ID, ";
-	sql += "FILE_NAME, FILE_EXT, FILE_SIZE, FILE_DATETIME, IS_FOLDER, PATH_ID) VALUES (";
+	sql += "FILE_NAME, FILE_EXT, FILE_SIZE, FILE_DATETIME, PATH_FILE_ID, PATH_ID) VALUES (";
 	if( !FileID.IsNull() )
 		sql += long2string(FileID) + ", ";
 	sql += "'" + ExpandSingleQuotes(FileName) + "', '" + 
 		         ExpandSingleQuotes(FileExt) + "', " + 
                  FileSize.ToString() + ", " +
-				 DateTime.Format( "'%Y-%m-%d %H:%M:%S'" ) + ", '" +
-				 (IsFolder ? "T" : "F") + "', " +
+				 DateTime.Format( "'%Y-%m-%d %H:%M:%S'" ) + ", " +
+				 (PathFileID.IsNull() ? "NULL" : long2string(PathFileID) ) + ", " +
 				 long2string(PathID) + ")";
 	FB_ExecuteQueryNoReturn( sql );
 }
 
 void CFiles::FB_DbUpdate(void)
 {
-	wxString sql;
+// not used (and not working)
 
-	sql = "UPDATE FILES SET ";
-	sql += "FILE_NAME = '" + ExpandSingleQuotes(FileName) + "', ";
-	sql += "FILE_EXT = '" + ExpandSingleQuotes(FileExt) + "', ";
-	sql += "FILE_SIZE = " + FileSize.ToString() + ", ";
-	sql += "FILE_DATETIME = " + DateTime.Format( "'%Y-%m-%d %H:%M:%S'" ) + ", ";
-	sql += "IS_FOLDER = '";
-	sql += "', ";
-	sql += "IS_FOLDER = '" + wxString(IsFolder ? "T" : "F") + "', ";
-	sql += "PATH_ID = " + long2string(PathID) + " ";
-	sql += "WHERE FILE_ID = "  + long2string(FileID);
-	FB_ExecuteQueryNoReturn( sql );
+	//wxString sql;
+
+	//sql = "UPDATE FILES SET ";
+	//sql += "FILE_NAME = '" + ExpandSingleQuotes(FileName) + "', ";
+	//sql += "FILE_EXT = '" + ExpandSingleQuotes(FileExt) + "', ";
+	//sql += "FILE_SIZE = " + FileSize.ToString() + ", ";
+	//sql += "FILE_DATETIME = " + DateTime.Format( "'%Y-%m-%d %H:%M:%S'" ) + ", ";
+	//sql += "IS_FOLDER = '";
+	//sql += "', ";
+	//sql += "IS_FOLDER = '" + wxString(IsFolder ? "T" : "F") + "', ";
+	//sql += "PATH_ID = " + long2string(PathID) + " ";
+	//sql += "WHERE FILE_ID = "  + long2string(FileID);
+	//FB_ExecuteQueryNoReturn( sql );
 }
 
 void CFiles::FB_DbDelete(void)
@@ -90,8 +92,12 @@ void CFiles::FB_FetchRow(void) {
 		FileSize = (long) tmp;
 		FB_st->Get("FILE_DATETIME", ts);
 		DateTime.Set( ts.Day(), (wxDateTime::Month) (wxDateTime::Jan + ts.Month() - 1), ts.Year(), ts.Hours(), ts.Minutes(), ts.Seconds() );
-		FB_st->Get("IS_FOLDER", stmp);
-		IsFolder = (stmp == "T");
+		if( FB_st->IsNull("PATH_FILE_ID") )
+			PathFileID.SetNull(true);
+		else {
+			FB_st->Get("PATH_FILE_ID", tmp);
+			PathFileID = (long) tmp;
+		}
 		FB_st->Get("PATH_ID", tmp);
 		PathID = (long) tmp;
 	}

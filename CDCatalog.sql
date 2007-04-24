@@ -107,7 +107,7 @@ CREATE TABLE FILES
   FILE_EXT Varchar(50) CHARACTER SET ISO8859_1,
   FILE_DATETIME Timestamp,
   PATH_ID Numeric(18,0),
-  IS_FOLDER Char(1),
+  PATH_FILE_ID Numeric(18,0),
   CONSTRAINT PK_FILES PRIMARY KEY (FILE_ID)
 );
 CREATE TABLE PATHS
@@ -388,8 +388,8 @@ begin
                 -- a corresponding physical path: we need to add a row to
                 -- the FILES table because there is not one yet
                 PHYS_FILE_ID = gen_id( GEN_FILES_ID, 1 );
-                insert into FILES( FILE_ID, FILE_NAME, FILE_EXT, FILE_DATETIME, PATH_ID, IS_FOLDER )
-                values( :PHYS_FILE_ID, :PATH_NAME, '', 'NOW', NULL, 'T' );
+                insert into FILES( FILE_ID, FILE_NAME, FILE_EXT, FILE_DATETIME, PATH_ID )
+                values( :PHYS_FILE_ID, :PATH_NAME, '', 'NOW', NULL );
             end
             else
             begin
@@ -566,7 +566,7 @@ begin
         (select VIRTUAL_FILES.PHYSICAL_FILE_ID
          from VIRTUAL_FILES inner join FILES
          on VIRTUAL_FILES.PHYSICAL_FILE_ID = FILES.FILE_ID
-         where FILES.FILE_NAME = :PATH_NAME and FILES.is_folder = 'T');
+         where FILES.FILE_NAME = :PATH_NAME);
 
 end^
 SET TERM ; ^
@@ -581,8 +581,12 @@ UPDATE RDB$PROCEDURE_PARAMETERS set RDB$DESCRIPTION = '0=OK, -1=error: new name 
   where RDB$PARAMETER_NAME = 'STATUS' AND RDB$PROCEDURE_NAME = 'SP_RENAME_VIRTUALPATH';
 
 UPDATE RDB$RELATION_FIELDS set RDB$DESCRIPTION = 'If PATH_ID is null this row represents a virtual folder created by the user.'  where RDB$FIELD_NAME = 'PATH_ID' and RDB$RELATION_NAME = 'FILES';
+UPDATE RDB$RELATION_FIELDS set RDB$DESCRIPTION = 'This field is NULL if the row represents a file.
+It is not NULL if the row represents a path (folder) and it contains the primary key of the PATHS row that it is describing.'  where RDB$FIELD_NAME = 'PATH_FILE_ID' and RDB$RELATION_NAME = 'FILES';
 ALTER TABLE FILES ADD CONSTRAINT FK_FILES_PATHS
   FOREIGN KEY (PATH_ID) REFERENCES PATHS (PATH_ID);
+ALTER TABLE FILES ADD CONSTRAINT FK_FILES_PATHS2
+  FOREIGN KEY (PATH_FILE_ID) REFERENCES PATHS (PATH_ID);
 GRANT DELETE, INSERT, REFERENCES, SELECT, UPDATE
  ON FILES TO  SYSDBA WITH GRANT OPTION;
 
