@@ -1175,8 +1175,14 @@ void CMainFrame::OnDeleteVirtualFolderUpdate( wxUpdateUIEvent& event )
 
 void CMainFrame::OnMRUFile( wxCommandEvent& event ) {
 	
-	wxString fileName = m_fileHistory->GetHistoryFile( event.GetId() - wxID_FILE1 );
+	int i = event.GetId() - wxID_FILE1;
+	wxString fileName = m_fileHistory->GetHistoryFile( i );
 	if( fileName.empty() ) return;
+	if( !wxFileName::FileExists(fileName) ) {
+		CUtils::MsgErr( "This catalog file does not exist any more" );
+		m_fileHistory->RemoveFileFromHistory( i );
+		return;
+	}
 	OpenDatabase( fileName );
 
 }
@@ -1204,7 +1210,7 @@ void CMainFrame::OpenDatabase( wxString fileName ) {
 	if( m_ChooseVirtualFolderDialog != NULL ) delete m_ChooseVirtualFolderDialog;
 	m_ChooseVirtualFolderDialog = new CDialogChooseVirtualFolder(this, ID_DIALOG_CHOOSE_VIRTUAL_FOLDER, _("Choose virual folder"));
 
-	// stroes the file in the MRU list
+	// stores the file in the MRU list
 	m_fileHistory->AddFileToHistory( fileName );
 
 }
