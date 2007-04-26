@@ -39,19 +39,24 @@ public:
 	CNullableLong FileID;
 	long VirtualPathID;
 	long PhysicalFileID;
+	CNullableLong VirtualPathFileID;
+
 	// data from the referenced physical file. Only filled by queries
 	wxString FileName;
 	wxString FileExt;
 	wxDateTime DateTime;
 	wxLongLong FileSize;
 	long PhysicalPathID;
-	bool IsFolder;
+	CNullableLong PathFileID;
 
 	// methods -----------------------------------
 
 	// starts a multirow query that returns all the files from a given VirtualPathID
 	// always returns a join between VIRTUAL_FILES and FILES
 	void DBStartQueryListFiles( long VirtualPathID );
+
+	// true if this row represents a folder
+	bool IsFolder(void) { return !VirtualPathFileID.IsNull(); }
 
 protected:
 

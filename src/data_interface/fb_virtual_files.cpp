@@ -85,8 +85,18 @@ void CVirtualFiles::FB_FetchRow(void) {
 		FileSize = (long) tmp;
 		FB_st->Get("FILE_DATETIME", ts);
 		DateTime.Set( ts.Day(), (wxDateTime::Month) (wxDateTime::Jan + ts.Month() - 1), ts.Year(), ts.Hours(), ts.Minutes(), ts.Seconds() );
-		FB_st->Get("IS_FOLDER", stmp);
-		IsFolder = (stmp == "T");
+		if( FB_st->IsNull("VIRTUAL_PATH_FILE_ID") )
+			VirtualPathFileID.SetNull(true);
+		else {
+			FB_st->Get("VIRTUAL_PATH_FILE_ID", tmp);
+			VirtualPathFileID = (long) tmp;
+		}
+		if( FB_st->IsNull("PATH_FILE_ID") )
+			PathFileID.SetNull(true);
+		else {
+			FB_st->Get("PATH_FILE_ID", tmp);
+			PathFileID = (long) tmp;
+		}
 		FB_st->Get("PATH_ID", tmp);
 		PhysicalPathID = (long) tmp;
 	}

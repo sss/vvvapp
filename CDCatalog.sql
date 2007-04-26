@@ -123,6 +123,7 @@ CREATE TABLE VIRTUAL_FILES
   FILE_ID Numeric(18,0) NOT NULL,
   VIRTUAL_PATH_ID Numeric(18,0) NOT NULL,
   PHYSICAL_FILE_ID Numeric(18,0) NOT NULL,
+  VIRTUAL_PATH_FILE_ID Numeric(18,0),
   CONSTRAINT PK_VIRTUAL_FILES PRIMARY KEY (FILE_ID)
 );
 CREATE TABLE VIRTUAL_PATHS
@@ -247,11 +248,15 @@ begin
          :PATH_ID, :PATH_NAME
     do
     begin
+        -- creates the folder
         execute procedure SP_CREATE_VIRTUALPATH( :PATH_NAME, :VIRTUAL_PATH_ID, :PATH_ID, 0 )
             returning_values( :VPATH_ID );
---        VPATH_ID = gen_id( GEN_VIRTUAL_PATHS_ID, 1 );
---        insert into VIRTUAL_PATHS ( PATH_ID, PATH, FATHER_ID, PHYS_PATH_ID )
---        values ( :VPATH_ID, :PATH_NAME, :VIRTUAL_PATH_ID, :PATH_ID );
+        -- updates the virtual file representing this folder with a pointer to this folder
+        update VIRTUAL_FILES set VIRTUAL_PATH_FILE_ID = :VPATH_ID
+          where FILE_ID = (select VIRTUAL_FILES.FILE_ID
+                           from VIRTUAL_FILES inner join FILES on VIRTUAL_FILES.PHYSICAL_FILE_ID = FILES.FILE_ID
+                           where FILES.PATH_FILE_ID = :PATH_ID);
+        -- recursion
         execute procedure SP_ADD_PHYSPATH_TO_VIRTUALPATH( :PATH_ID, VPATH_ID );
     end
 end^
@@ -400,8 +405,8 @@ begin
             end
 
             -- now we can insert the row
-            insert into VIRTUAL_FILES( VIRTUAL_PATH_ID, PHYSICAL_FILE_ID )
-            values( :FATHER_ID, :PHYS_FILE_ID );
+            insert into VIRTUAL_FILES( VIRTUAL_PATH_ID, PHYSICAL_FILE_ID, VIRTUAL_PATH_FILE_ID )
+            values( :FATHER_ID, :PHYS_FILE_ID, :VPATH_ID );
 
         end
     end
@@ -487,28 +492,12 @@ RETURNS (
     FILE_ID Numeric(18,0) )
 AS
 declare variable tmp_id bigint;
-declare variable father_id bigint;
-declare variable path_name varchar(500);
-declare variable tmp_str varchar(500);
 begin
     FILE_ID = -1;
 
-    -- looks for the path name and the ID of the parent path
-    for select FATHER_ID, PATH_NAME
-    from PATHS
-    where PATH_ID = :PATH_ID
-    into
-        :TMP_ID, :TMP_STR
-    do
-    begin
-        FATHER_ID = TMP_ID;
-        PATH_NAME = TMP_STR;
-    end
-
-    -- looks for the file
     for select FILE_ID
     from FILES
-    where PATH_ID = :FATHER_ID and FILE_NAME = :PATH_NAME
+    where PATH_FILE_ID = :PATH_ID
     into
         :TMP_ID
     do
@@ -600,10 +589,14 @@ ALTER TABLE PATHS ADD CONSTRAINT CHK1_PATHS
 GRANT DELETE, INSERT, REFERENCES, SELECT, UPDATE
  ON PATHS TO  SYSDBA WITH GRANT OPTION;
 
+UPDATE RDB$RELATION_FIELDS set RDB$DESCRIPTION = 'This field is NULL if the row represents a file.
+It is not NULL if the row represents a virtual path (folder) and it contains the primary key of the VIRTUAL_PATHS row that it is describing.'  where RDB$FIELD_NAME = 'VIRTUAL_PATH_FILE_ID' and RDB$RELATION_NAME = 'VIRTUAL_FILES';
 ALTER TABLE VIRTUAL_FILES ADD CONSTRAINT FK_VIRTUAL_FILES_FILES
   FOREIGN KEY (PHYSICAL_FILE_ID) REFERENCES FILES (FILE_ID);
 ALTER TABLE VIRTUAL_FILES ADD CONSTRAINT FK_VIRTUAL_FILES_VIRTUAL_PATHS
   FOREIGN KEY (VIRTUAL_PATH_ID) REFERENCES VIRTUAL_PATHS (PATH_ID);
+ALTER TABLE VIRTUAL_FILES ADD CONSTRAINT FK_VIRTUAL_FILES_VIRTUAL_PATHS2
+  FOREIGN KEY (VIRTUAL_PATH_FILE_ID) REFERENCES VIRTUAL_PATHS (PATH_ID);
 GRANT DELETE, INSERT, REFERENCES, SELECT, UPDATE
  ON VIRTUAL_FILES TO  SYSDBA WITH GRANT OPTION;
 

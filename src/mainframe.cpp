@@ -752,9 +752,9 @@ void CMainFrame::ShowVirtualFolderFiles( wxTreeItemId itemID ) {
 	int i = 0;
 	while( !files.IsEOF() ) {
 		// adds the file to the list control
-		int imageIndex = (files.IsFolder ? 0 : 1 );
+		int imageIndex = (files.IsFolder() ? 0 : 1 );
 		lctl->InsertItem( i, files.FileName, imageIndex );
-		lctl->SetItem( i, 1, files.IsFolder ? "" : CUtils::HumanReadableFileSize(files.FileSize) );
+		lctl->SetItem( i, 1, files.IsFolder() ? "" : CUtils::HumanReadableFileSize(files.FileSize) );
 		lctl->SetItem( i, 2, files.FileExt );
 		lctl->SetItem( i, 3, files.DateTime.FormatDate() + " " + files.DateTime.FormatTime() );
 
@@ -1143,8 +1143,10 @@ void CMainFrame::OnRenameVirtualFolderUpdate( wxUpdateUIEvent& event )
 	if( isEnabled ) {
 		wxTreeCtrl* tctl = GetTreeVirtualControl();
 		wxTreeItemId item = tctl->GetSelection();
-	    MyTreeItemData *itemData = (MyTreeItemData *) tctl->GetItemData(item);
-		isEnabled = itemData->GetPhysPathID().IsNull();
+		if( item.IsOk() ) {
+			MyTreeItemData *itemData = (MyTreeItemData *) tctl->GetItemData(item);
+			isEnabled = itemData->GetPhysPathID().IsNull();
+		}
 	}
 	event.Enable( isEnabled );
 }
