@@ -48,6 +48,12 @@ void CUtils::MsgErr( wxString errMsg ){
 	dialog.ShowModal();
 }
 
+bool CUtils::MsgAskNo( wxString msg ){
+	wxMessageDialog dialog( NULL, msg, applicationName, wxYES_NO|wxNO_DEFAULT|wxICON_EXCLAMATION );
+	return dialog.ShowModal() == wxID_YES;
+}
+
+
 wxString CUtils::HumanReadableFileSize( wxLongLong size ) {
 	wxString retVal;
 

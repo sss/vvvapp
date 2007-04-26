@@ -1157,10 +1157,23 @@ void CMainFrame::OnRenameVirtualFolderUpdate( wxUpdateUIEvent& event )
 
 void CMainFrame::OnDeleteVirtualFolderClick( wxCommandEvent& event )
 {
-////@begin wxEVT_COMMAND_MENU_SELECTED event handler for ID_DELETE_VIRTUAL_FOLDER in CMainFrame.
-    // Before editing this code, remove the block markers.
-    event.Skip();
-////@end wxEVT_COMMAND_MENU_SELECTED event handler for ID_DELETE_VIRTUAL_FOLDER in CMainFrame. 
+	if( !CUtils::MsgAskNo( _("This command will delete the selected virtual foder, but it will not change the folders in the physical view.\n\nDo you really want to delete the selected virtual folder?") ) )
+		return;
+	
+	wxTreeCtrl *tctl = GetTreeVirtualControl();
+	wxTreeItemId item = tctl->GetSelection();
+    MyTreeItemData *itemData = (MyTreeItemData *) tctl->GetItemData(item);
+
+	// deletes from the database
+	CVirtualPaths vp;
+	vp.PathID = itemData->GetPathID();
+	vp.DbDelete();
+
+	// deletes from the tree control
+	tctl->DeleteChildren(item);
+	tctl->Delete(item);
+
+	event.Skip(false);	// to suppress a warning
 }
 
 /*!

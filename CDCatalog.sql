@@ -430,7 +430,9 @@ SET TERM ^ ;
 ALTER PROCEDURE SP_DELETE_VIRTUAL_FOLDER (
     VIRTUAL_PATH_ID Numeric(18,0) )
 AS
-declare variable path_id bigint;
+declare variable PATH_ID bigint;
+declare variable TMP_ID bigint;
+declare variable FILE_ID bigint;
 begin
     for select PATH_ID
     from VIRTUAL_PATHS
@@ -444,11 +446,36 @@ begin
         execute procedure SP_DELETE_VIRTUAL_FOLDER( :PATH_ID );
     end
 
+    -- now delete the FILES row corresponding to this virtual path
+    -- (only if this path has been created by the user, so it has no
+    --  corresponding physical path)
+    -- we cannot delete now because we would break a foreign key,
+    --  so we store the key of the row to be deleted
+    FILE_ID = -1;
+    for select FILES.FILE_ID
+    from FILES inner join VIRTUAL_FILES
+    on FILES.FILE_ID = VIRTUAL_FILES.PHYSICAL_FILE_ID
+    where FILES.PATH_ID is null and VIRTUAL_FILES.VIRTUAL_PATH_FILE_ID = :VIRTUAL_PATH_ID
+    into :TMP_ID
+    do
+    begin
+        FILE_ID = TMP_ID;
+    end
+
     -- now delete all the virtual files of this folder
     delete from VIRTUAL_FILES where VIRTUAL_PATH_ID = :VIRTUAL_PATH_ID;
 
+    -- delete the VIRTUAL_FILES row that describes this path
+    delete from VIRTUAL_FILES where VIRTUAL_PATH_FILE_ID = :VIRTUAL_PATH_ID;
+
     -- now delete the virtual folder received as a parameter
     delete from VIRTUAL_PATHS where PATH_ID = :VIRTUAL_PATH_ID;
+
+    -- finally delete the FILES row, if any
+    if( :FILE_ID > 0 ) then
+    begin
+        delete from FILES where FILE_ID = :FILE_ID;
+    end
 
 end^
 SET TERM ; ^

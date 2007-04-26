@@ -44,6 +44,11 @@ public:
 	// displays an error message
 	static void MsgErr( wxString errMsg );
 
+	// ask a question to the user. possible answers: yes or no (default)
+	// returns true if the user has chosen yes
+	static bool MsgAskNo( wxString msg );
+
+
 private:
 	// name of the current application
 	static wxString applicationName;
