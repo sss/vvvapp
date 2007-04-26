@@ -393,8 +393,8 @@ begin
                 -- a corresponding physical path: we need to add a row to
                 -- the FILES table because there is not one yet
                 PHYS_FILE_ID = gen_id( GEN_FILES_ID, 1 );
-                insert into FILES( FILE_ID, FILE_NAME, FILE_EXT, FILE_DATETIME, PATH_ID )
-                values( :PHYS_FILE_ID, :PATH_NAME, '', 'NOW', NULL );
+                insert into FILES( FILE_ID, FILE_NAME, FILE_SIZE, FILE_EXT, FILE_DATETIME, PATH_ID )
+                values( :PHYS_FILE_ID, :PATH_NAME, 0, '', 'NOW', NULL );
             end
             else
             begin
@@ -543,7 +543,7 @@ begin
     if( not PHYSICAL_PATH_ID is null ) then exception EX_RENAME_PHYSICAL_PATH;
 
     -- avoids duplicates paths
-    if( exists( select PATH_ID from VIRTUAL_PATHS where PATH_ID = :FATHER_ID and PATH = :PATH_NAME )) then
+    if( exists( select PATH_ID from VIRTUAL_PATHS where FATHER_ID = :FATHER_ID and PATH = :PATH_NAME )) then
     begin
         STATUS = -1;
         exit;
@@ -552,10 +552,9 @@ begin
     -- here if we can rename
     update VIRTUAL_PATHS set PATH = :PATH_NAME where PATH_ID = :VPATH_ID;
     update FILES set FILE_NAME = :PATH_NAME where FILE_ID =
-        (select VIRTUAL_FILES.PHYSICAL_FILE_ID
-         from VIRTUAL_FILES inner join FILES
-         on VIRTUAL_FILES.PHYSICAL_FILE_ID = FILES.FILE_ID
-         where FILES.FILE_NAME = :PATH_NAME);
+    (select PHYSICAL_FILE_ID
+     from VIRTUAL_FILES
+     where VIRTUAL_PATH_FILE_ID = :VPATH_ID);
 
 end^
 SET TERM ; ^
