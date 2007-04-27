@@ -26,7 +26,7 @@
 #define __DATA_ERROR_H__
 
 #include <wx/string.h>
-#include <exception>
+#include <stdexcept>
 
 using namespace std;
 

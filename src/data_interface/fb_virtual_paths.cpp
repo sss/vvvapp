@@ -44,11 +44,11 @@ void CVirtualPaths::FB_DbInsert(void) {
 		if( FatherID.IsNull() )
 			st->SetNull( 2 );
 		else
-			st->Set( 2, FatherID );
+			st->Set( 2, (int32_t) FatherID );
 		if( PhysPathID.IsNull() )
 			st->SetNull( 3 );
 		else
-			st->Set( 3, PhysPathID );
+			st->Set( 3, (int32_t) PhysPathID );
 		st->Execute();
 	}
 	catch( IBPP::SQLException& e ) {
@@ -107,7 +107,7 @@ void CVirtualPaths::FB_DbDelete(void)
 
 	try {
 		st->Prepare( "EXECUTE PROCEDURE SP_DELETE_VIRTUAL_FOLDER( ? )" );
-		st->Set( 1, PathID );
+		st->Set( 1, (int32_t) PathID );
 		st->Execute();
 	}
 	catch( IBPP::SQLException& e ) {
@@ -173,8 +173,8 @@ void CVirtualPaths::FB_AppendPhysicalPath( long PhysicalPathID, long VirtualPath
 
 	try {
 		st->Prepare( "EXECUTE PROCEDURE SP_APPEND_PHYSPTH_TO_VIRTUALPTH( ?, ? )" );
-		st->Set( 1, PhysicalPathID );
-		st->Set( 2, VirtualPathID );
+		st->Set( 1, (int32_t) PhysicalPathID );
+		st->Set( 2, (int32_t) VirtualPathID );
 		st->Execute();
 	}
 	catch( IBPP::SQLException& e ) {
@@ -205,8 +205,8 @@ void CVirtualPaths::FB_CopyPhysicalPath( long PhysicalPathID, long VirtualPathID
 
 	try {
 		st->Prepare( "EXECUTE PROCEDURE SP_ADD_PHYSPATH_TO_VIRTUALPATH( ?, ? )" );
-		st->Set( 1, PhysicalPathID );
-		st->Set( 2, VirtualPathID );
+		st->Set( 1, (int32_t) PhysicalPathID );
+		st->Set( 2, (int32_t) VirtualPathID );
 		st->Execute();
 	}
 	catch( IBPP::SQLException& e ) {
@@ -238,7 +238,7 @@ void CVirtualPaths::FB_Rename( long VirtualPathID, wxString newName ) {
 
 	try {
 		st->Prepare( "EXECUTE PROCEDURE SP_RENAME_VIRTUALPATH( ?, ? )" );
-		st->Set( 1, VirtualPathID );
+		st->Set( 1, (int32_t) VirtualPathID );
 		st->Set( 2, newName );
 		st->Execute();
 	}

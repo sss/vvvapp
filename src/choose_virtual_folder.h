@@ -47,6 +47,7 @@
 ////@begin includes
 #include "wx/treectrl.h"
 ////@end includes
+#include "wx/imaglist.h"
 
 /*!
  * Forward declarations
