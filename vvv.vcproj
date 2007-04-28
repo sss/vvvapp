@@ -836,7 +836,7 @@
 				AdditionalIncludeDirectories="&quot;$(WXDIR)\lib\vc_lib\msw&quot;;&quot;$(WXDIR)\include&quot;"
 				PreprocessorDefinitions="WIN32;__WXMSW__;_WINDOWS;NOPCH;IBPP_WINDOWS"
 				StringPooling="TRUE"
-				RuntimeLibrary="2"
+				RuntimeLibrary="0"
 				EnableFunctionLevelLinking="TRUE"
 				RuntimeTypeInfo="TRUE"
 				UsePrecompiledHeader="2"
