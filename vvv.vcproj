@@ -1245,6 +1245,9 @@
 				RelativePath=".\src\mainframe.h">
 			</File>
 			<File
+				RelativePath=".\src\mylistitemdata.h">
+			</File>
+			<File
 				RelativePath=".\src\mytreeitemdata.h">
 			</File>
 			<File

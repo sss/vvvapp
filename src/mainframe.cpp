@@ -58,6 +58,7 @@
 #include "mainframe.h"
 #include "data_interface/data_error.h"
 #include "mytreeitemdata.h"
+#include "mylistitemdata.h"
 
 ////@begin XPM images
 ////@end XPM images
@@ -564,6 +565,8 @@ void CMainFrame::OnOPENClick( wxCommandEvent& event )
 
 CMainFrame::~CMainFrame() {
 
+	DeleteAllListControlItems();
+
 	wxConfigBase *pConfig = wxConfigBase::Get();
 	if ( pConfig == NULL )
 		return;
@@ -672,6 +675,18 @@ void CMainFrame::OnTreeControlVirtualItemExpanding( wxTreeEvent& event )
 }
 
 
+void CMainFrame::DeleteAllListControlItems(void) {
+	wxListCtrl* lctl = GetListControl();
+	int nItems = lctl->GetItemCount();
+	for( int i = 0; i < nItems; i++ ) {
+		long itemData = lctl->GetItemData( i );
+		delete (MyListItemData*) itemData;
+	}
+	lctl->DeleteAllItems();
+}
+
+
+
 // shows in the listview the files contained in the passed folder
 void CMainFrame::ShowFolderFiles( wxTreeItemId itemID ) {
 
@@ -686,22 +701,25 @@ void CMainFrame::ShowFolderFiles( wxTreeItemId itemID ) {
 
     MyTreeItemData *itemData = (MyTreeItemData *) tctl->GetItemData(itemID);
 
-	lctl->DeleteAllItems();
+	DeleteAllListControlItems();
 
 	// retrieves the files contained in the selected folder
 	CFiles files;
 	files.DBStartQueryListFiles( itemData->GetPathID() );
-	int i = 0;
 	while( !files.IsEOF() ) {
 		// adds the file to the list control
 		int imageIndex = (files.IsFolder() ? 0 : 1 );
-		lctl->InsertItem( i, files.FileName, imageIndex );
+
+		wxListItem item;
+		item.SetMask( wxLIST_MASK_STATE|wxLIST_MASK_TEXT|wxLIST_MASK_IMAGE|wxLIST_MASK_DATA );
+		int i = lctl->InsertItem( item );
+		lctl->SetItem( i, 0, files.FileName, imageIndex );
 		lctl->SetItem( i, 1, files.IsFolder() ? "" : CUtils::HumanReadableFileSize(files.FileSize) );
 		lctl->SetItem( i, 2, files.FileExt );
 		lctl->SetItem( i, 3, files.DateTime.FormatDate() + " " + files.DateTime.FormatTime() );
+		lctl->SetItemData( i, (long) new MyListItemData( files.FileName, files.FileExt, files.FileSize, files.DateTime, files.IsFolder() ) );
 
 		files.DBNextRow();
-		i++;
 	}
 
 	//lctl->SetColumnWidth( 0, wxLIST_AUTOSIZE );
@@ -724,8 +742,7 @@ void CMainFrame::ShowSelectedFolderFiles(void ) {
 		ShowFolderFiles( itemID );
 	}
 	else {
-		wxListCtrl* lctl = GetListControl();
-		lctl->DeleteAllItems();
+		DeleteAllListControlItems();
 	}
 }
 
@@ -744,22 +761,25 @@ void CMainFrame::ShowVirtualFolderFiles( wxTreeItemId itemID ) {
 	// retrieves info about the selected item
     MyTreeItemData *itemData = (MyTreeItemData *) tctl->GetItemData(itemID);
 
-	lctl->DeleteAllItems();
+	DeleteAllListControlItems();
 
 	// retrieves the files contained in the selected folder
 	CVirtualFiles files;
 	files.DBStartQueryListFiles( itemData->GetPathID() );
-	int i = 0;
 	while( !files.IsEOF() ) {
 		// adds the file to the list control
 		int imageIndex = (files.IsFolder() ? 0 : 1 );
-		lctl->InsertItem( i, files.FileName, imageIndex );
+
+		wxListItem item;
+		item.SetMask( wxLIST_MASK_STATE|wxLIST_MASK_TEXT|wxLIST_MASK_IMAGE|wxLIST_MASK_DATA );
+		int i = lctl->InsertItem( item );
+		lctl->SetItem( i, 0, files.FileName, imageIndex );
 		lctl->SetItem( i, 1, files.IsFolder() ? "" : CUtils::HumanReadableFileSize(files.FileSize) );
 		lctl->SetItem( i, 2, files.FileExt );
 		lctl->SetItem( i, 3, files.DateTime.FormatDate() + " " + files.DateTime.FormatTime() );
+		lctl->SetItemData( i, (long) new MyListItemData( files.FileName, files.FileExt, files.FileSize, files.DateTime, files.IsFolder() ) );
 
 		files.DBNextRow();
-		i++;
 	}
 
 	//lctl->SetColumnWidth( 0, wxLIST_AUTOSIZE );
@@ -781,8 +801,7 @@ void CMainFrame::ShowSelectedVirtualFolderFiles(void ) {
 		ShowVirtualFolderFiles( itemID );
 	}
 	else {
-		wxListCtrl* lctl = GetListControl();
-		lctl->DeleteAllItems();
+		DeleteAllListControlItems();
 	}
 }
 
@@ -1215,8 +1234,7 @@ void CMainFrame::OpenDatabase( wxString fileName ) {
 	LoadTreeControl();
 	LoadVirtualTreeControl();
 
-	wxListCtrl* lctl = GetListControl();
-	lctl->DeleteAllItems();
+	DeleteAllListControlItems();
 
 	// creates the dialog used to choose a virtual folder
 	// we use a global object to keep folders selection between dialog calls

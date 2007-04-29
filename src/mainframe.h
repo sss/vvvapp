@@ -284,7 +284,10 @@ protected:
 	// shows in the listview the files contained in the passed virtual folder
 	void ShowVirtualFolderFiles( wxTreeItemId itemID );
 	// shows in the listview the files contained in the currently selected virtual folder
-	void ShowSelectedVirtualFolderFiles(void );
+	void ShowSelectedVirtualFolderFiles(void);
+
+	// deletes all the list control items
+	void DeleteAllListControlItems(void);
 };
 
 #endif
