@@ -1087,6 +1087,7 @@
               <long name="locked">0</long>
               <string name="created">"16/12/2006"</string>
               <string name="proxy-type">"wbListCtrlProxy"</string>
+              <string name="event-handler-0">"wxEVT_COMMAND_LIST_COL_CLICK|OnListControlColLeftClick"</string>
               <string name="proxy-Id name">"ID_LIST_CONTROL"</string>
               <long name="proxy-Id value">10006</long>
               <string name="proxy-Class">"wxListCtrl"</string>

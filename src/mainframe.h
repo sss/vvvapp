@@ -194,6 +194,9 @@ public:
     /// wxEVT_CONTEXT_MENU event handler for ID_TREE_CONTROL
     void OnTreeControlContextMenu( wxContextMenuEvent& event );
 
+    /// wxEVT_COMMAND_LIST_COL_CLICK event handler for ID_LIST_CONTROL
+    void OnListControlColLeftClick( wxListEvent& event );
+
 ////@end CMainFrame event handler declarations
 
 ////@begin CMainFrame member function declarations
