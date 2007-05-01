@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="windows-1252"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <anthemion-project version="1.0.0.0" xmlns="http://www.anthemion.co.uk">
   <header>
     <long name="name_counter">0</long>
@@ -6,7 +6,6 @@
     <string name="title">""</string>
     <string name="author">""</string>
     <string name="description">""</string>
-    <long name="doc_count">60</long>
     <string name="xrc_filename">""</string>
     <bool name="convert_images_to_xpm">0</bool>
     <bool name="inline_images">0</bool>
@@ -94,6 +93,7 @@
     <string name="external_symbol_filenames">""</string>
     <string name="configuration">"VC++ Debug"</string>
     <string name="source_encoding">"&lt;System&gt;"</string>
+    <string name="xrc_encoding">"utf-8"</string>
     <string name="project_encoding">"&lt;System&gt;"</string>
     <string name="resource_archive">""</string>
     <long name="text_file_type">0</long>
@@ -106,6 +106,7 @@
     <bool name="always_generate_xrc">1</bool>
     <bool name="archive_xrc_files">1</bool>
     <bool name="archive_image_files">1</bool>
+    <bool name="archive_all_image_files">0</bool>
     <bool name="xrc_retain_relative_paths">1</bool>
   </header>
   <data>
@@ -395,7 +396,7 @@
       <long name="is-transient">1</long>
       <long name="owns-file">1</long>
       <long name="title-mode">0</long>
-      <long name="locked">0</long>
+      <long name="locked">1</long>
       <document>
         <string name="title">"Windows"</string>
         <string name="type">"html-document"</string>
@@ -419,6 +420,8 @@
           <long name="base-id">10000</long>
           <bool name="use-id-prefix">0</bool>
           <string name="id-prefix">""</string>
+          <bool name="use-id-suffix">0</bool>
+          <string name="id-suffix">""</string>
           <long name="use-xrc">0</long>
           <string name="proxy-Class">"CVvvApp"</string>
           <string name="proxy-Base class">"wxApp"</string>
@@ -441,6 +444,8 @@
           <long name="base-id">10000</long>
           <bool name="use-id-prefix">0</bool>
           <string name="id-prefix">""</string>
+          <bool name="use-id-suffix">0</bool>
+          <string name="id-suffix">""</string>
           <long name="use-xrc">0</long>
           <string name="proxy-Id name">"ID_MAIN_FRAME"</string>
           <long name="proxy-Id value">10000</long>
@@ -496,6 +501,198 @@
           <long name="proxy-Width">400</long>
           <long name="proxy-Height">300</long>
           <string name="proxy-Event sources">""</string>
+          <document>
+            <string name="title">"wxToolBar: ID_TOOLBAR1"</string>
+            <string name="type">"dialog-control-document"</string>
+            <string name="filename">""</string>
+            <string name="icon-name">"toolbar"</string>
+            <long name="is-transient">0</long>
+            <long name="owns-file">1</long>
+            <long name="title-mode">0</long>
+            <long name="locked">0</long>
+            <string name="created">"30/4/2007"</string>
+            <string name="proxy-type">"wbToolBarProxy"</string>
+            <string name="proxy-Id name">"ID_TOOLBAR1"</string>
+            <long name="proxy-Id value">10022</long>
+            <string name="proxy-Class">"wxToolBar"</string>
+            <string name="proxy-Member variable name">""</string>
+            <string name="proxy-Help text">""</string>
+            <string name="proxy-Tooltip text">""</string>
+            <string name="proxy-Background colour">""</string>
+            <string name="proxy-Foreground colour">""</string>
+            <string name="proxy-Font">""</string>
+            <bool name="proxy-Hidden">0</bool>
+            <bool name="proxy-Enabled">1</bool>
+            <string name="proxy-Platform">"&lt;Any platform&gt;"</string>
+            <string name="proxy-Data variable">""</string>
+            <string name="proxy-Data validator">""</string>
+            <long name="proxy-Bitmap width">16</long>
+            <long name="proxy-Bitmap height">15</long>
+            <long name="proxy-Margin width">0</long>
+            <long name="proxy-Margin height">0</long>
+            <long name="proxy-Tool packing">1</long>
+            <long name="proxy-Tool separation">5</long>
+            <bool name="proxy-wxTB_FLAT">1</bool>
+            <bool name="proxy-wxTB_DOCKABLE">0</bool>
+            <bool name="proxy-wxTB_HORIZONTAL">1</bool>
+            <bool name="proxy-wxTB_VERTICAL">0</bool>
+            <bool name="proxy-wxTB_TEXT">1</bool>
+            <bool name="proxy-wxTB_NOICONS">0</bool>
+            <bool name="proxy-wxTB_NODIVIDER">0</bool>
+            <bool name="proxy-wxTB_NOALIGN">0</bool>
+            <bool name="proxy-wxTB_HORZ_LAYOUT">0</bool>
+            <bool name="proxy-wxNO_BORDER">0</bool>
+            <bool name="proxy-wxSIMPLE_BORDER">0</bool>
+            <bool name="proxy-wxDOUBLE_BORDER">0</bool>
+            <bool name="proxy-wxSUNKEN_BORDER">0</bool>
+            <bool name="proxy-wxRAISED_BORDER">0</bool>
+            <bool name="proxy-wxSTATIC_BORDER">0</bool>
+            <bool name="proxy-wxWANTS_CHARS">0</bool>
+            <bool name="proxy-wxNO_FULL_REPAINT_ON_RESIZE">0</bool>
+            <bool name="proxy-wxFULL_REPAINT_ON_RESIZE">0</bool>
+            <bool name="proxy-wxCLIP_CHILDREN">0</bool>
+            <string name="proxy-Custom styles">""</string>
+            <long name="proxy-X">-1</long>
+            <long name="proxy-Y">-1</long>
+            <long name="proxy-Width">-1</long>
+            <long name="proxy-Height">-1</long>
+            <string name="proxy-AlignH">"Centre"</string>
+            <string name="proxy-AlignV">"Centre"</string>
+            <long name="proxy-Stretch factor">0</long>
+            <long name="proxy-Border">5</long>
+            <bool name="proxy-wxLEFT">1</bool>
+            <bool name="proxy-wxRIGHT">1</bool>
+            <bool name="proxy-wxTOP">1</bool>
+            <bool name="proxy-wxBOTTOM">1</bool>
+            <bool name="proxy-wxSHAPED">0</bool>
+            <bool name="proxy-wxADJUST_MINSIZE">0</bool>
+            <bool name="proxy-wxFIXED_MINSIZE">0</bool>
+            <string name="proxy-Custom arguments">""</string>
+            <string name="proxy-Custom ctor arguments">""</string>
+            <document>
+              <string name="title">"New: wxID_NEW"</string>
+              <string name="type">"dialog-control-document"</string>
+              <string name="filename">""</string>
+              <string name="icon-name">"menuitem"</string>
+              <long name="is-transient">0</long>
+              <long name="owns-file">1</long>
+              <long name="title-mode">0</long>
+              <long name="locked">0</long>
+              <string name="created">"30/4/2007"</string>
+              <string name="proxy-type">"wbToolBarButtonProxy"</string>
+              <string name="proxy-Id name">"wxID_NEW"</string>
+              <long name="proxy-Id value">5002</long>
+              <string name="proxy-Bitmap">"graphics/tlb_new.xpm"</string>
+              <string name="proxy-Bitmap (disabled)">""</string>
+              <string name="proxy-Label">"New"</string>
+              <string name="proxy-Kind">"Normal"</string>
+              <bool name="proxy-Enabled">1</bool>
+              <string name="proxy-Tooltip">"Create a new catalog"</string>
+              <string name="proxy-Help text">""</string>
+              <string name="proxy-Platform">"&lt;Any platform&gt;"</string>
+            </document>
+            <document>
+              <string name="title">"Open: wxID_OPEN"</string>
+              <string name="type">"dialog-control-document"</string>
+              <string name="filename">""</string>
+              <string name="icon-name">"menuitem"</string>
+              <long name="is-transient">0</long>
+              <long name="owns-file">1</long>
+              <long name="title-mode">0</long>
+              <long name="locked">0</long>
+              <string name="created">"30/4/2007"</string>
+              <string name="proxy-type">"wbToolBarButtonProxy"</string>
+              <string name="proxy-Id name">"wxID_OPEN"</string>
+              <long name="proxy-Id value">5000</long>
+              <string name="proxy-Bitmap">"graphics/tlb_open.xpm"</string>
+              <string name="proxy-Bitmap (disabled)">""</string>
+              <string name="proxy-Label">"Open"</string>
+              <string name="proxy-Kind">"Normal"</string>
+              <bool name="proxy-Enabled">1</bool>
+              <string name="proxy-Tooltip">"Open an existing catalog"</string>
+              <string name="proxy-Help text">""</string>
+              <string name="proxy-Platform">"&lt;Any platform&gt;"</string>
+            </document>
+            <document>
+              <string name="title">"Catalog: ID_CATALOG_VOLUME"</string>
+              <string name="type">"dialog-control-document"</string>
+              <string name="filename">""</string>
+              <string name="icon-name">"menuitem"</string>
+              <long name="is-transient">0</long>
+              <long name="owns-file">1</long>
+              <long name="title-mode">0</long>
+              <long name="locked">0</long>
+              <string name="created">"1/5/2007"</string>
+              <string name="proxy-type">"wbToolBarButtonProxy"</string>
+              <string name="proxy-Id name">"ID_CATALOG_VOLUME"</string>
+              <long name="proxy-Id value">10001</long>
+              <string name="proxy-Bitmap">"graphics/tlb_catalog.xpm"</string>
+              <string name="proxy-Bitmap (disabled)">""</string>
+              <string name="proxy-Label">"Catalog"</string>
+              <string name="proxy-Kind">"Normal"</string>
+              <bool name="proxy-Enabled">1</bool>
+              <string name="proxy-Tooltip">"Catalog a new volume"</string>
+              <string name="proxy-Help text">""</string>
+              <string name="proxy-Platform">"&lt;Any platform&gt;"</string>
+            </document>
+            <document>
+              <string name="title">"----------"</string>
+              <string name="type">"dialog-control-document"</string>
+              <string name="filename">""</string>
+              <string name="icon-name">"menuitem"</string>
+              <long name="is-transient">0</long>
+              <long name="owns-file">1</long>
+              <long name="title-mode">0</long>
+              <long name="locked">0</long>
+              <string name="created">"30/4/2007"</string>
+              <string name="proxy-type">"wbToolBarSeparatorProxy"</string>
+              <string name="proxy-Platform">"&lt;Any platform&gt;"</string>
+            </document>
+            <document>
+              <string name="title">"Physical: ID_VIEW_PHYSICAL"</string>
+              <string name="type">"dialog-control-document"</string>
+              <string name="filename">""</string>
+              <string name="icon-name">"menuitem"</string>
+              <long name="is-transient">0</long>
+              <long name="owns-file">1</long>
+              <long name="title-mode">0</long>
+              <long name="locked">0</long>
+              <string name="created">"30/4/2007"</string>
+              <string name="proxy-type">"wbToolBarButtonProxy"</string>
+              <string name="proxy-Id name">"ID_VIEW_PHYSICAL"</string>
+              <long name="proxy-Id value">10011</long>
+              <string name="proxy-Bitmap">"graphics/tlb_physical.xpm"</string>
+              <string name="proxy-Bitmap (disabled)">""</string>
+              <string name="proxy-Label">"Physical"</string>
+              <string name="proxy-Kind">"Radio"</string>
+              <bool name="proxy-Enabled">1</bool>
+              <string name="proxy-Tooltip">"Show the physical view"</string>
+              <string name="proxy-Help text">""</string>
+              <string name="proxy-Platform">"&lt;Any platform&gt;"</string>
+            </document>
+            <document>
+              <string name="title">"Virtual: ID_VIEW_VIRTUAL"</string>
+              <string name="type">"dialog-control-document"</string>
+              <string name="filename">""</string>
+              <string name="icon-name">"menuitem"</string>
+              <long name="is-transient">0</long>
+              <long name="owns-file">1</long>
+              <long name="title-mode">0</long>
+              <long name="locked">0</long>
+              <string name="created">"30/4/2007"</string>
+              <string name="proxy-type">"wbToolBarButtonProxy"</string>
+              <string name="proxy-Id name">"ID_VIEW_VIRTUAL"</string>
+              <long name="proxy-Id value">10012</long>
+              <string name="proxy-Bitmap">"graphics/tlb_virtual.xpm"</string>
+              <string name="proxy-Bitmap (disabled)">""</string>
+              <string name="proxy-Label">"Virtual"</string>
+              <string name="proxy-Kind">"Radio"</string>
+              <bool name="proxy-Enabled">1</bool>
+              <string name="proxy-Tooltip">"Show the virtual view"</string>
+              <string name="proxy-Help text">""</string>
+              <string name="proxy-Platform">"&lt;Any platform&gt;"</string>
+            </document>
+          </document>
           <document>
             <string name="title">"wxMenuBar: ID_MAINMENUBAR"</string>
             <string name="type">"dialog-control-document"</string>
@@ -848,7 +1045,8 @@
                 <long name="locked">0</long>
                 <string name="created">"16/3/2007"</string>
                 <string name="proxy-type">"wbMenuItemProxy"</string>
-                <string name="event-handler-0">"wxEVT_COMMAND_MENU_SELECTED|OnViewPhysicalClick"</string>
+                <string name="event-handler-0">"wxEVT_COMMAND_MENU_SELECTED|OnViewPhysicalClick|||"</string>
+                <string name="event-handler-1">"wxEVT_UPDATE_UI|OnViewPhysicalUpdate|NONE||"</string>
                 <string name="proxy-Id name">"ID_VIEW_PHYSICAL"</string>
                 <long name="proxy-Id value">10011</long>
                 <string name="proxy-Label">"Physical View"</string>
@@ -870,7 +1068,8 @@
                 <long name="locked">0</long>
                 <string name="created">"16/3/2007"</string>
                 <string name="proxy-type">"wbMenuItemProxy"</string>
-                <string name="event-handler-0">"wxEVT_COMMAND_MENU_SELECTED|OnViewVirtualClick"</string>
+                <string name="event-handler-0">"wxEVT_COMMAND_MENU_SELECTED|OnViewVirtualClick|||"</string>
+                <string name="event-handler-1">"wxEVT_UPDATE_UI|OnViewVirtualUpdate|NONE||"</string>
                 <string name="proxy-Id name">"ID_VIEW_VIRTUAL"</string>
                 <long name="proxy-Id value">10012</long>
                 <string name="proxy-Label">"Virtual View"</string>
@@ -962,6 +1161,7 @@
             <string name="proxy-Orientation">"Vertical"</string>
             <long name="proxy-Sash position">50</long>
             <long name="proxy-Minimum pane size">0</long>
+            <double name="proxy-Gravity">0</double>
             <string name="proxy-Help text">""</string>
             <string name="proxy-Tooltip text">""</string>
             <string name="proxy-Background colour">""</string>
@@ -1163,6 +1363,8 @@
           <long name="base-id">10000</long>
           <bool name="use-id-prefix">0</bool>
           <string name="id-prefix">""</string>
+          <bool name="use-id-suffix">0</bool>
+          <string name="id-suffix">""</string>
           <long name="use-xrc">0</long>
           <string name="proxy-Id name">"ID_DIALOG_CATALOG_VOLUME"</string>
           <long name="proxy-Id value">10002</long>
@@ -1799,6 +2001,8 @@
           <long name="base-id">10000</long>
           <bool name="use-id-prefix">0</bool>
           <string name="id-prefix">""</string>
+          <bool name="use-id-suffix">0</bool>
+          <string name="id-suffix">""</string>
           <long name="use-xrc">0</long>
           <string name="proxy-Id name">"ID_DIALOG_CHOOSE_VIRTUAL_FOLDER"</string>
           <long name="proxy-Id value">10016</long>

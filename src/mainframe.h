@@ -46,6 +46,7 @@
 
 ////@begin includes
 #include "wx/frame.h"
+#include "wx/toolbar.h"
 #include "wx/statusbr.h"
 #include "wx/splitter.h"
 #include "wx/treectrl.h"
@@ -75,6 +76,10 @@ class wxMenu;
 
 ////@begin control identifiers
 #define ID_MAIN_FRAME 10000
+#define ID_TOOLBAR1 10022
+#define ID_CATALOG_VOLUME 10001
+#define ID_VIEW_PHYSICAL 10011
+#define ID_VIEW_VIRTUAL 10012
 #define ID_ADD_VIRTUAL_FOLDER 10015
 #define ID_RENAME_VOLUME 10013
 #define ID_DELETE_VOLUME 10014
@@ -82,9 +87,6 @@ class wxMenu;
 #define ID_NEW_VIRTUAL_SUBFOLDER 10018
 #define ID_RENAME_VIRTUAL_FOLDER 10020
 #define ID_DELETE_VIRTUAL_FOLDER 10021
-#define ID_CATALOG_VOLUME 10001
-#define ID_VIEW_PHYSICAL 10011
-#define ID_VIEW_VIRTUAL 10012
 #define ID_STATUSBAR1 10004
 #define ID_SPLITTERWINDOW1 10003
 #define ID_TREE_CONTROL 10005
@@ -182,8 +184,14 @@ public:
     /// wxEVT_COMMAND_MENU_SELECTED event handler for ID_VIEW_PHYSICAL
     void OnViewPhysicalClick( wxCommandEvent& event );
 
+    /// wxEVT_UPDATE_UI event handler for ID_VIEW_PHYSICAL
+    void OnViewPhysicalUpdate( wxUpdateUIEvent& event );
+
     /// wxEVT_COMMAND_MENU_SELECTED event handler for ID_VIEW_VIRTUAL
     void OnViewVirtualClick( wxCommandEvent& event );
+
+    /// wxEVT_UPDATE_UI event handler for ID_VIEW_VIRTUAL
+    void OnViewVirtualUpdate( wxUpdateUIEvent& event );
 
     /// wxEVT_COMMAND_TREE_SEL_CHANGED event handler for ID_TREE_CONTROL
     void OnTreeControlSelChanged( wxTreeEvent& event );
