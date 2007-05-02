@@ -181,6 +181,9 @@ public:
     /// wxEVT_COMMAND_MENU_SELECTED event handler for ID_CATALOG_VOLUME
     void OnCatalogVolumeClick( wxCommandEvent& event );
 
+    /// wxEVT_UPDATE_UI event handler for ID_CATALOG_VOLUME
+    void OnCatalogVolumeUpdate( wxUpdateUIEvent& event );
+
     /// wxEVT_COMMAND_MENU_SELECTED event handler for ID_VIEW_PHYSICAL
     void OnViewPhysicalClick( wxCommandEvent& event );
 

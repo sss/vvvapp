@@ -1007,7 +1007,8 @@
                 <long name="locked">0</long>
                 <string name="created">"31/12/2006"</string>
                 <string name="proxy-type">"wbMenuItemProxy"</string>
-                <string name="event-handler-0">"wxEVT_COMMAND_MENU_SELECTED|OnCatalogVolumeClick|SHOWWINDOW|ID_DIALOG_CATALOG_VOLUME"</string>
+                <string name="event-handler-0">"wxEVT_COMMAND_MENU_SELECTED|OnCatalogVolumeClick|SHOWWINDOW|ID_DIALOG_CATALOG_VOLUME|"</string>
+                <string name="event-handler-1">"wxEVT_UPDATE_UI|OnCatalogVolumeUpdate|NONE||"</string>
                 <string name="proxy-Id name">"ID_CATALOG_VOLUME"</string>
                 <long name="proxy-Id value">10001</long>
                 <string name="proxy-Label">"Catalog Volume"</string>

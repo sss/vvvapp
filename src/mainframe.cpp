@@ -174,6 +174,7 @@ BEGIN_EVENT_TABLE( CMainFrame, wxFrame )
     EVT_UPDATE_UI( ID_DELETE_VIRTUAL_FOLDER, CMainFrame::OnDeleteVirtualFolderUpdate )
 
     EVT_MENU( ID_CATALOG_VOLUME, CMainFrame::OnCatalogVolumeClick )
+    EVT_UPDATE_UI( ID_CATALOG_VOLUME, CMainFrame::OnCatalogVolumeUpdate )
 
     EVT_MENU( ID_VIEW_PHYSICAL, CMainFrame::OnViewPhysicalClick )
     EVT_UPDATE_UI( ID_VIEW_PHYSICAL, CMainFrame::OnViewPhysicalUpdate )
@@ -1035,6 +1036,11 @@ void CMainFrame::OnTreeControlVirtualContextMenu( wxContextMenuEvent& event )
 
 void CMainFrame::OnRenameVolumeUpdate( wxUpdateUIEvent& event )
 {
+	if( CBaseDB::GetDatabase() == NULL ) {
+		event.Enable(false);
+		return;
+	}
+	
 	bool hideElement = false;
 	wxTreeCtrl *tctl = GetTreePhysicalControl();
 	wxTreeItemId item = tctl->GetSelection();
@@ -1053,6 +1059,11 @@ void CMainFrame::OnRenameVolumeUpdate( wxUpdateUIEvent& event )
 
 void CMainFrame::OnDeleteVolumeUpdate( wxUpdateUIEvent& event )
 {
+	if( CBaseDB::GetDatabase() == NULL ) {
+		event.Enable(false);
+		return;
+	}
+	
 	bool hideElement = false;
 	wxTreeCtrl *tctl = GetTreePhysicalControl();
 	wxTreeItemId item = tctl->GetSelection();
@@ -1141,6 +1152,11 @@ void CMainFrame::OnAddVirtualFolderClick( wxCommandEvent& event )
 
 void CMainFrame::OnAddVirtualFolderUpdate( wxUpdateUIEvent& event )
 {
+	if( CBaseDB::GetDatabase() == NULL ) {
+		event.Enable(false);
+		return;
+	}
+	
 	event.Enable( m_CurrentView == Physical );
 }
 
@@ -1165,6 +1181,11 @@ void CMainFrame::OnNewVirtualRootFolderClick( wxCommandEvent& event )
 
 void CMainFrame::OnNewVirtualRootFolderUpdate( wxUpdateUIEvent& event )
 {
+	if( CBaseDB::GetDatabase() == NULL ) {
+		event.Enable(false);
+		return;
+	}
+	
 	event.Enable( m_CurrentView == Virtual );
 }
 
@@ -1242,7 +1263,18 @@ void CMainFrame::CreateNewVirtualFolder( CNullableLong FatherID, wxString window
 
 void CMainFrame::OnNewVirtualSubfolderUpdate( wxUpdateUIEvent& event )
 {
-	event.Enable( m_CurrentView == Virtual );
+	if( CBaseDB::GetDatabase() == NULL ) {
+		event.Enable(false);
+		return;
+	}
+	
+	bool isEnabled = m_CurrentView == Virtual;
+	if( isEnabled ) {
+		wxTreeCtrl* tctl = GetTreeVirtualControl();
+		wxTreeItemId item = tctl->GetSelection();
+		isEnabled = item.IsOk();
+	}
+	event.Enable( isEnabled );
 }
 
 /*!
@@ -1287,6 +1319,11 @@ void CMainFrame::OnRenameVirtualFolderClick( wxCommandEvent& event )
 
 void CMainFrame::OnRenameVirtualFolderUpdate( wxUpdateUIEvent& event )
 {
+	if( CBaseDB::GetDatabase() == NULL ) {
+		event.Enable(false);
+		return;
+	}
+	
 	bool isEnabled = m_CurrentView == Virtual;
 	if( isEnabled ) {
 		wxTreeCtrl* tctl = GetTreeVirtualControl();
@@ -1295,6 +1332,8 @@ void CMainFrame::OnRenameVirtualFolderUpdate( wxUpdateUIEvent& event )
 			MyTreeItemData *itemData = (MyTreeItemData *) tctl->GetItemData(item);
 			isEnabled = itemData->GetPhysPathID().IsNull();
 		}
+		else
+			isEnabled = false;
 	}
 	event.Enable( isEnabled );
 }
@@ -1330,7 +1369,18 @@ void CMainFrame::OnDeleteVirtualFolderClick( wxCommandEvent& event )
 
 void CMainFrame::OnDeleteVirtualFolderUpdate( wxUpdateUIEvent& event )
 {
-	event.Enable( m_CurrentView == Virtual );
+	if( CBaseDB::GetDatabase() == NULL ) {
+		event.Enable(false);
+		return;
+	}
+	
+	bool isEnabled = m_CurrentView == Virtual;
+	if( isEnabled ) {
+		wxTreeCtrl* tctl = GetTreeVirtualControl();
+		wxTreeItemId item = tctl->GetSelection();
+		isEnabled = item.IsOk();
+	}
+	event.Enable( isEnabled );
 }
 
 
@@ -1368,7 +1418,7 @@ void CMainFrame::OpenDatabase( wxString fileName ) {
 	// creates the dialog used to choose a virtual folder
 	// we use a global object to keep folders selection between dialog calls
 	if( m_ChooseVirtualFolderDialog != NULL ) delete m_ChooseVirtualFolderDialog;
-	m_ChooseVirtualFolderDialog = new CDialogChooseVirtualFolder(this, ID_DIALOG_CHOOSE_VIRTUAL_FOLDER, _("Choose virual folder"));
+	m_ChooseVirtualFolderDialog = new CDialogChooseVirtualFolder(this, ID_DIALOG_CHOOSE_VIRTUAL_FOLDER, _("Choose virtual folder"));
 
 	// stores the file in the MRU list
 	m_fileHistory->AddFileToHistory( fileName );
@@ -1401,6 +1451,8 @@ void CMainFrame::OnListControlColLeftClick( wxListEvent& event )
 
 void CMainFrame::OnViewPhysicalUpdate( wxUpdateUIEvent& event )
 {
+	event.Enable( CBaseDB::GetDatabase() != NULL );
+	
 	if( m_CurrentView == Physical )
 		event.Check(true);
 	else
@@ -1413,9 +1465,20 @@ void CMainFrame::OnViewPhysicalUpdate( wxUpdateUIEvent& event )
 
 void CMainFrame::OnViewVirtualUpdate( wxUpdateUIEvent& event )
 {
+	event.Enable( CBaseDB::GetDatabase() != NULL );
+	
 	if( m_CurrentView == Virtual )
 		event.Check(true);
 	else
 		event.Check(false);
+}
+
+/*!
+ * wxEVT_UPDATE_UI event handler for ID_CATALOG_VOLUME
+ */
+
+void CMainFrame::OnCatalogVolumeUpdate( wxUpdateUIEvent& event )
+{
+	event.Enable( CBaseDB::GetDatabase() != NULL );
 }
 
