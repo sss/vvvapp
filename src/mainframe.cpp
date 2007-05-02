@@ -1423,6 +1423,9 @@ void CMainFrame::OpenDatabase( wxString fileName ) {
 	// stores the file in the MRU list
 	m_fileHistory->AddFileToHistory( fileName );
 
+	// sets the main window caption
+	SetLabel( fileName + " - " + CUtils::GetApplicationName() );
+
 }
 /*!
  * wxEVT_COMMAND_LIST_COL_CLICK event handler for ID_LIST_CONTROL

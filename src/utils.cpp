@@ -73,3 +73,8 @@ wxString CUtils::HumanReadableFileSize( wxLongLong size ) {
 
 	return retVal;
 }
+
+
+wxString CUtils::GetApplicationName(void) {
+	return applicationName;
+}

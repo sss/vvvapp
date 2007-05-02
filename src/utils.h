@@ -48,6 +48,9 @@ public:
 	// returns true if the user has chosen yes
 	static bool MsgAskNo( wxString msg );
 
+	// returns the application name
+	static wxString GetApplicationName(void);
+
 
 private:
 	// name of the current application
