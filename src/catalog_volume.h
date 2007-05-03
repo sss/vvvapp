@@ -57,6 +57,7 @@
  */
 
 ////@begin forward declarations
+class wxGenericDirCtrl;
 ////@end forward declarations
 
 /*!
@@ -66,9 +67,11 @@
 ////@begin control identifiers
 #define ID_DIALOG_CATALOG_VOLUME 10002
 #define ID_DIR_CTRL 10007
+#define ID_VOLUME_PATH 10023
 #define ID_VOLUME_NAME 10008
 #define ID_GET_VOLUME_NAME 10009
 #define ID_BUTTON_CATALOG 10010
+#define ID_CURRENT_FOLDER 10024
 #define SYMBOL_CDIALOGCATALOGVOLUME_STYLE wxCAPTION|wxSYSTEM_MENU|wxCLOSE_BOX
 #define SYMBOL_CDIALOGCATALOGVOLUME_TITLE _("Catalog volume")
 #define SYMBOL_CDIALOGCATALOGVOLUME_IDNAME ID_DIALOG_CATALOG_VOLUME
@@ -109,6 +112,9 @@ public:
 
 ////@begin CDialogCatalogVolume event handler declarations
 
+    /// wxEVT_COMMAND_TREE_SEL_CHANGED event handler for ID_DIR_CTRL
+    void OnDirCtrlSelChanged( wxTreeEvent& event );
+
     /// wxEVT_COMMAND_BUTTON_CLICKED event handler for ID_GET_VOLUME_NAME
     void OnGetVolumeNameClick( wxCommandEvent& event );
 
@@ -130,6 +136,10 @@ public:
     static bool ShowToolTips();
 
 ////@begin CDialogCatalogVolume member variables
+    wxGenericDirCtrl* m_DirControl;
+    wxTextCtrl* m_VolumePath;
+    wxTextCtrl* m_VolumeName;
+    wxStaticText* m_CurrentFolder;
 ////@end CDialogCatalogVolume member variables
 
 private:

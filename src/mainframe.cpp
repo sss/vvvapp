@@ -438,7 +438,8 @@ void CMainFrame::OnCatalogVolumeClick( wxCommandEvent& event )
 {
 	event.Skip(false);	// to suppress a warning
     CDialogCatalogVolume* window = new CDialogCatalogVolume(this, ID_DIALOG_CATALOG_VOLUME, _("Catalog volume"));
-    window->Show(true);
+    window->ShowModal();
+	LoadTreeControl();
 }
 
 
