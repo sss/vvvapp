@@ -644,6 +644,8 @@ void CMainFrame::OnTreeControlVirtualSelChanged( wxTreeEvent& event )
 void CMainFrame::CreateListControlHeaders(void) {
 
 	wxListCtrl* lctl = GetListControl();
+	DeleteAllListControlItems();
+	lctl->ClearAll();
 
 	// adds the columns to the list control
 	wxListItem itemCol;
@@ -663,6 +665,12 @@ void CMainFrame::CreateListControlHeaders(void) {
 	itemCol.SetText( _("Last modified") );
 	itemCol.SetAlign( wxLIST_FORMAT_LEFT );
 	lctl->InsertColumn( 3, itemCol );
+
+	if( m_CurrentView == Virtual ) {
+		itemCol.SetText( _("Physical path") );
+		itemCol.SetAlign( wxLIST_FORMAT_LEFT );
+		lctl->InsertColumn( 4, itemCol );
+	}
 }
 
 /*!
@@ -736,8 +744,9 @@ void CMainFrame::OnViewPhysicalClick( wxCommandEvent& event )
 		tctlPhysical->Show( true );
 		sw->SplitVertically( tctlPhysical, lctl );
 		sw->SetSashPosition( sp );
-		ShowSelectedFolderFiles();
 		m_CurrentView = Physical;
+		CreateListControlHeaders();
+		ShowSelectedFolderFiles();
 	}
 }
 
@@ -762,8 +771,9 @@ void CMainFrame::OnViewVirtualClick( wxCommandEvent& event )
 		tctlPhysical->Show( false );
 		sw->SplitVertically( tctlVirtual, lctl );
 		sw->SetSashPosition( sp );
-		ShowSelectedVirtualFolderFiles();
 		m_CurrentView = Virtual;
+		CreateListControlHeaders();
+		ShowSelectedVirtualFolderFiles();
 	}
 }
 
@@ -904,6 +914,7 @@ void CMainFrame::ShowVirtualFolderFiles( wxTreeItemId itemID ) {
 		lctl->SetItem( i, 1, files.IsFolder() ? "" : CUtils::HumanReadableFileSize(files.FileSize) );
 		lctl->SetItem( i, 2, files.FileExt );
 		lctl->SetItem( i, 3, files.DateTime.FormatDate() + " " + files.DateTime.FormatTime() );
+		lctl->SetItem( i, 4, files.FullPhysicalPath );
 		lctl->SetItemData( i, (long) new MyListItemData( files.FileName, files.FileExt, files.FileSize, files.DateTime, files.IsFolder() ) );
 
 		files.DBNextRow();
@@ -917,6 +928,7 @@ void CMainFrame::ShowVirtualFolderFiles( wxTreeItemId itemID ) {
 	lctl->SetColumnWidth( 1, 200 );
 	lctl->SetColumnWidth( 2, 200 );
 	lctl->SetColumnWidth( 3, 200 );
+	lctl->SetColumnWidth( 4, 200 );
 
 	lctl->SortItems( ListControlCompareFunction, 0 );
 

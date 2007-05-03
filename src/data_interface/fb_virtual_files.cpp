@@ -22,6 +22,7 @@
 
 #include "virtual_files.h"
 #include "firebird_db.h"
+#include "paths.h"
 #include "../ibpp/core/ibpp.h"
 
 using namespace IBPP;
@@ -99,6 +100,7 @@ void CVirtualFiles::FB_FetchRow(void) {
 		}
 		FB_st->Get("PATH_ID", tmp);
 		PhysicalPathID = (long) tmp;
+		FullPhysicalPath = CPaths::GetFullPath( PhysicalPathID );
 	}
 	else {
 		// end of the rowset

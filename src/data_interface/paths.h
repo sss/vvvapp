@@ -46,6 +46,9 @@ public:
 	// starts a multirow query that returns all the paths with a given VolumeID and FatherID (nullable)
 	void DBStartQueryListPaths( long VolumeID, CNullableLong FatherID );
 
+	// returns the full path
+	static wxString GetFullPath( long PathID );
+
 
 protected:
 
@@ -54,6 +57,8 @@ protected:
 	void FB_DbUpdate(void);
 	void FB_DbDelete(void);
 	void FB_FetchRow(void);
+
+	static wxString FB_GetFullPath( long PathID );
 
 };
 

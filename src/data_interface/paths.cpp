@@ -40,3 +40,18 @@ void CPaths::DBStartQueryListPaths( long VolID, CNullableLong FathID ) {
 
 	DBStartMultiRowQuery( sql, true );
 }
+
+
+wxString CPaths::GetFullPath( long PathID ) {
+	wxString retVal = "";
+
+	switch( DatabaseType ) {
+		case dbtFirebird:
+			retVal = FB_GetFullPath( PathID );
+			break;
+	}
+
+	return retVal;
+}
+
+

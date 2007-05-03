@@ -20,6 +20,8 @@
     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
+#include <wx/filename.h>
+
 #include "paths.h"
 #include "firebird_db.h"
 #include "../ibpp/core/ibpp.h"
@@ -102,4 +104,29 @@ void CPaths::FB_FetchRow(void) {
 		}
 		TransactionAlreadyStarted = false;
 	}
+}
+
+wxString CPaths::FB_GetFullPath( long PathID ) {
+	bool inTransaction;
+	std::string stmp;
+
+	CFirebirdDB* db = (CFirebirdDB*) CBaseDB::GetDatabase();
+	inTransaction = db->TransactionIsOpened();
+	if( !inTransaction ) {
+		db->TransactionStart();
+	}
+	Statement st = StatementFactory( db->GetIBPPDB(), db->TransactionGetReference() );
+
+	st->Prepare( "EXECUTE PROCEDURE SP_GET_FULL_PATH( ?, ? )" );
+	st->Set( 1, PathID );
+	st->Set( 2, wxString(wxFileName::GetPathSeparator()).c_str() );
+	st->Execute();
+
+	if( !inTransaction ) {
+		db->TransactionCommit();
+	}
+
+	st->Get( 1, stmp );
+	return CUtils::std2wx( stmp );
+
 }
