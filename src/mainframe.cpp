@@ -131,6 +131,19 @@ int wxCALLBACK ListControlCompareFunction( long item1, long item2, long WXUNUSED
 					retVal = (itemData1->GetDateTime() > itemData2->GetDateTime() ? -1 : 1);
 			}
 			break;
+		case 4:
+			// full physical path
+			if( m_ListViewSortAscending )
+				retVal = wxStricmp( itemData1->GetFullPhysicalPath(), itemData2->GetFullPhysicalPath() );
+			else
+				retVal = wxStricmp( itemData2->GetFullPhysicalPath(), itemData1->GetFullPhysicalPath() );
+			if( retVal == 0 ) {
+				if( m_ListViewSortAscending )
+					retVal = wxStricmp( itemData1->GetName(), itemData2->GetName() );
+				else
+					retVal = wxStricmp( itemData2->GetName(), itemData1->GetName() );
+			}
+			break;
 	}
 	return retVal;
 }
@@ -983,7 +996,7 @@ void CMainFrame::ShowVirtualFolderFiles( wxTreeItemId itemID ) {
 		lctl->SetItem( i, 2, files.FileExt );
 		lctl->SetItem( i, 3, files.DateTime.FormatDate() + " " + files.DateTime.FormatTime() );
 		lctl->SetItem( i, 4, files.FullPhysicalPath );
-		lctl->SetItemData( i, (long) new MyListItemData( files.FileName, files.FileExt, files.FileSize, files.DateTime, files.IsFolder() ) );
+		lctl->SetItemData( i, (long) new MyListItemData( files.FileName, files.FileExt, files.FileSize, files.DateTime, files.IsFolder(), files.FullPhysicalPath ) );
 
 		files.DBNextRow();
 	}

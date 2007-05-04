@@ -35,14 +35,15 @@ class MyListItemData {
 
 public:
 
-	MyListItemData( const wxString& name, const wxString& ext, wxLongLong size, wxDateTime dateTime, bool isFolder ) :
-	                m_name(name), m_ext(ext), m_size(size), m_dateTime(dateTime), m_isFolder(isFolder) {}
+	MyListItemData( const wxString& name, const wxString& ext, wxLongLong size, wxDateTime dateTime, bool isFolder, const wxString& fullPhysicalPath = "" ) :
+	                m_name(name), m_ext(ext), m_size(size), m_dateTime(dateTime), m_isFolder(isFolder), m_fullPhysicalPath(fullPhysicalPath) {}
 
 	const wxString& GetName() const { return m_name; }
 	const wxString& GetExt() const { return m_ext; }
 	wxLongLong GetSize() { return m_size; }
 	wxDateTime GetDateTime() { return m_dateTime; }
 	bool IsFolder() { return m_isFolder; }
+	const wxString& GetFullPhysicalPath() const { return m_fullPhysicalPath; }
 
 private:
 
@@ -51,6 +52,7 @@ private:
 	wxLongLong m_size;
 	bool m_isFolder;
 	wxDateTime m_dateTime;
+	wxString m_fullPhysicalPath;	// only used in virtual view
 
 	// database data
 
