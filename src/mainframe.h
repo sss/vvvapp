@@ -87,6 +87,7 @@ class wxMenu;
 #define ID_NEW_VIRTUAL_SUBFOLDER 10018
 #define ID_RENAME_VIRTUAL_FOLDER 10020
 #define ID_DELETE_VIRTUAL_FOLDER 10021
+#define ID_VIEW_TOOLBAR 10025
 #define ID_STATUSBAR1 10004
 #define ID_SPLITTERWINDOW1 10003
 #define ID_TREE_CONTROL 10005
@@ -196,6 +197,9 @@ public:
     /// wxEVT_UPDATE_UI event handler for ID_VIEW_VIRTUAL
     void OnViewVirtualUpdate( wxUpdateUIEvent& event );
 
+    /// wxEVT_COMMAND_MENU_SELECTED event handler for ID_VIEW_TOOLBAR
+    void OnViewToolbarClick( wxCommandEvent& event );
+
     /// wxEVT_COMMAND_TREE_SEL_CHANGED event handler for ID_TREE_CONTROL
     void OnTreeControlSelChanged( wxTreeEvent& event );
 
@@ -223,6 +227,7 @@ public:
     static bool ShowToolTips();
 
 ////@begin CMainFrame member variables
+    wxToolBar* m_Toolbar;
     wxMenu* m_fileMenu;
 ////@end CMainFrame member variables
 

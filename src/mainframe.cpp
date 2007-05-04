@@ -182,6 +182,8 @@ BEGIN_EVENT_TABLE( CMainFrame, wxFrame )
     EVT_MENU( ID_VIEW_VIRTUAL, CMainFrame::OnViewVirtualClick )
     EVT_UPDATE_UI( ID_VIEW_VIRTUAL, CMainFrame::OnViewVirtualUpdate )
 
+    EVT_MENU( ID_VIEW_TOOLBAR, CMainFrame::OnViewToolbarClick )
+
     EVT_TREE_SEL_CHANGED( ID_TREE_CONTROL, CMainFrame::OnTreeControlSelChanged )
     EVT_TREE_ITEM_EXPANDING( ID_TREE_CONTROL, CMainFrame::OnTreeControlItemExpanding )
 
@@ -254,6 +256,7 @@ bool CMainFrame::Create( wxWindow* parent, wxWindowID id, const wxString& captio
 void CMainFrame::Init()
 {
 ////@begin CMainFrame member initialisation
+    m_Toolbar = NULL;
     m_fileMenu = NULL;
 ////@end CMainFrame member initialisation
 	m_ChooseVirtualFolderDialog = NULL;
@@ -298,44 +301,47 @@ void CMainFrame::CreateControls()
     itemMenu26->Append(ID_VIEW_PHYSICAL, _("Physical View"), _T(""), wxITEM_RADIO);
     itemMenu26->Check(ID_VIEW_PHYSICAL, true);
     itemMenu26->Append(ID_VIEW_VIRTUAL, _("Virtual View"), _T(""), wxITEM_RADIO);
+    itemMenu26->AppendSeparator();
+    itemMenu26->Append(ID_VIEW_TOOLBAR, _("Toolbar"), _T(""), wxITEM_CHECK);
+    itemMenu26->Check(ID_VIEW_TOOLBAR, true);
     menuBar->Append(itemMenu26, _("View"));
     itemFrame1->SetMenuBar(menuBar);
 
-    wxToolBar* itemToolBar2 = CreateToolBar( wxTB_FLAT|wxTB_HORIZONTAL|wxTB_TEXT, ID_TOOLBAR1 );
+    m_Toolbar = CreateToolBar( wxTB_FLAT|wxTB_HORIZONTAL|wxTB_TEXT, ID_TOOLBAR1 );
     wxBitmap itemtool3Bitmap(itemFrame1->GetBitmapResource(wxT("graphics/tlb_new.xpm")));
     wxBitmap itemtool3BitmapDisabled;
-    itemToolBar2->AddTool(wxID_NEW, _("New"), itemtool3Bitmap, itemtool3BitmapDisabled, wxITEM_NORMAL, _("Create a new catalog"), wxEmptyString);
+    m_Toolbar->AddTool(wxID_NEW, _("New"), itemtool3Bitmap, itemtool3BitmapDisabled, wxITEM_NORMAL, _("Create a new catalog"), wxEmptyString);
     wxBitmap itemtool4Bitmap(itemFrame1->GetBitmapResource(wxT("graphics/tlb_open.xpm")));
     wxBitmap itemtool4BitmapDisabled;
-    itemToolBar2->AddTool(wxID_OPEN, _("Open"), itemtool4Bitmap, itemtool4BitmapDisabled, wxITEM_NORMAL, _("Open an existing catalog"), wxEmptyString);
+    m_Toolbar->AddTool(wxID_OPEN, _("Open"), itemtool4Bitmap, itemtool4BitmapDisabled, wxITEM_NORMAL, _("Open an existing catalog"), wxEmptyString);
     wxBitmap itemtool5Bitmap(itemFrame1->GetBitmapResource(wxT("graphics/tlb_catalog.xpm")));
     wxBitmap itemtool5BitmapDisabled;
-    itemToolBar2->AddTool(ID_CATALOG_VOLUME, _("Catalog"), itemtool5Bitmap, itemtool5BitmapDisabled, wxITEM_NORMAL, _("Catalog a new volume"), wxEmptyString);
-    itemToolBar2->AddSeparator();
+    m_Toolbar->AddTool(ID_CATALOG_VOLUME, _("Catalog"), itemtool5Bitmap, itemtool5BitmapDisabled, wxITEM_NORMAL, _("Catalog a new volume"), wxEmptyString);
+    m_Toolbar->AddSeparator();
     wxBitmap itemtool7Bitmap(itemFrame1->GetBitmapResource(wxT("graphics/tlb_physical.xpm")));
     wxBitmap itemtool7BitmapDisabled;
-    itemToolBar2->AddTool(ID_VIEW_PHYSICAL, _("Physical"), itemtool7Bitmap, itemtool7BitmapDisabled, wxITEM_RADIO, _("Show the physical view"), wxEmptyString);
+    m_Toolbar->AddTool(ID_VIEW_PHYSICAL, _("Physical"), itemtool7Bitmap, itemtool7BitmapDisabled, wxITEM_RADIO, _("Show the physical view"), wxEmptyString);
     wxBitmap itemtool8Bitmap(itemFrame1->GetBitmapResource(wxT("graphics/tlb_virtual.xpm")));
     wxBitmap itemtool8BitmapDisabled;
-    itemToolBar2->AddTool(ID_VIEW_VIRTUAL, _("Virtual"), itemtool8Bitmap, itemtool8BitmapDisabled, wxITEM_RADIO, _("Show the virtual view"), wxEmptyString);
-    itemToolBar2->Realize();
-    itemFrame1->SetToolBar(itemToolBar2);
+    m_Toolbar->AddTool(ID_VIEW_VIRTUAL, _("Virtual"), itemtool8Bitmap, itemtool8BitmapDisabled, wxITEM_RADIO, _("Show the virtual view"), wxEmptyString);
+    m_Toolbar->Realize();
+    itemFrame1->SetToolBar(m_Toolbar);
 
-    wxStatusBar* itemStatusBar29 = new wxStatusBar( itemFrame1, ID_STATUSBAR1, wxST_SIZEGRIP );
-    itemStatusBar29->SetFieldsCount(2);
-    itemFrame1->SetStatusBar(itemStatusBar29);
+    wxStatusBar* itemStatusBar31 = new wxStatusBar( itemFrame1, ID_STATUSBAR1, wxST_SIZEGRIP );
+    itemStatusBar31->SetFieldsCount(2);
+    itemFrame1->SetStatusBar(itemStatusBar31);
 
-    wxSplitterWindow* itemSplitterWindow30 = new wxSplitterWindow( itemFrame1, ID_SPLITTERWINDOW1, wxDefaultPosition, wxSize(100, 100), wxSP_3DBORDER|wxSP_3DSASH|wxSP_NO_XP_THEME|wxNO_BORDER );
-    itemSplitterWindow30->SetMinimumPaneSize(0);
+    wxSplitterWindow* itemSplitterWindow32 = new wxSplitterWindow( itemFrame1, ID_SPLITTERWINDOW1, wxDefaultPosition, wxSize(100, 100), wxSP_3DBORDER|wxSP_3DSASH|wxSP_NO_XP_THEME|wxNO_BORDER );
+    itemSplitterWindow32->SetMinimumPaneSize(0);
 
-    wxTreeCtrl* itemTreeCtrl31 = new wxTreeCtrl( itemSplitterWindow30, ID_TREE_CONTROL, wxDefaultPosition, wxSize(100, 100), wxTR_HAS_BUTTONS |wxTR_HIDE_ROOT|wxTR_SINGLE|wxNO_BORDER|wxTR_DEFAULT_STYLE );
+    wxTreeCtrl* itemTreeCtrl33 = new wxTreeCtrl( itemSplitterWindow32, ID_TREE_CONTROL, wxDefaultPosition, wxSize(100, 100), wxTR_HAS_BUTTONS |wxTR_HIDE_ROOT|wxTR_SINGLE|wxNO_BORDER|wxTR_DEFAULT_STYLE );
 
-    wxListCtrl* itemListCtrl32 = new wxListCtrl( itemSplitterWindow30, ID_LIST_CONTROL, wxDefaultPosition, wxSize(100, 100), wxLC_REPORT|wxNO_BORDER );
+    wxListCtrl* itemListCtrl34 = new wxListCtrl( itemSplitterWindow32, ID_LIST_CONTROL, wxDefaultPosition, wxSize(100, 100), wxLC_REPORT|wxNO_BORDER );
 
-    itemSplitterWindow30->SplitVertically(itemTreeCtrl31, itemListCtrl32, 50);
+    itemSplitterWindow32->SplitVertically(itemTreeCtrl33, itemListCtrl34, 50);
 
     // Connect events and objects
-    itemTreeCtrl31->Connect(ID_TREE_CONTROL, wxEVT_CONTEXT_MENU, wxContextMenuEventHandler(CMainFrame::OnTreeControlContextMenu), NULL, this);
+    itemTreeCtrl33->Connect(ID_TREE_CONTROL, wxEVT_CONTEXT_MENU, wxContextMenuEventHandler(CMainFrame::OnTreeControlContextMenu), NULL, this);
 ////@end CMainFrame content construction
 
 	// creates the tree control used to show virtual folders
@@ -1496,5 +1502,19 @@ void CMainFrame::OnViewVirtualUpdate( wxUpdateUIEvent& event )
 void CMainFrame::OnCatalogVolumeUpdate( wxUpdateUIEvent& event )
 {
 	event.Enable( CBaseDB::GetDatabase() != NULL );
+}
+
+/*!
+ * wxEVT_COMMAND_MENU_SELECTED event handler for ID_VIEW_TOOLBAR
+ */
+
+void CMainFrame::OnViewToolbarClick( wxCommandEvent& event )
+{
+	if( event.IsChecked() )
+		GetToolBar()->Show(true);
+	else {
+		GetToolBar()->Show(false);
+	}
+	SendSizeEvent();
 }
 
