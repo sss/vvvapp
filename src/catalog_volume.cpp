@@ -309,6 +309,7 @@ void CDialogCatalogVolume::CatalogSingleFolder( CBaseDB* db, wxString path, long
 
 	// shows the path in the dialog box
 	m_CurrentFolder->SetLabel( path );
+	wxSafeYield();
 
 	// writes the path row
 	wxFileName dirName( path, wxEmptyString );
