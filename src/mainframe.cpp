@@ -246,6 +246,21 @@ bool CMainFrame::Create( wxWindow* parent, wxWindowID id, const wxString& captio
 	// reads the MRU files list
 	m_fileHistory->Load( *pConfig );
 
+	// reads the listview columns width
+	pConfig->SetPath(wxT("/Mainframe/Layout/ListViewPhysical"));
+	m_ListviewColWidthPhysical[0] = pConfig->Read(wxT("cw0"), 200);
+	m_ListviewColWidthPhysical[1] = pConfig->Read(wxT("cw1"), 100);
+	m_ListviewColWidthPhysical[2] = pConfig->Read(wxT("cw2"), 100);
+	m_ListviewColWidthPhysical[3] = pConfig->Read(wxT("cw3"), 200);
+	pConfig->SetPath(wxT("/Mainframe/Layout/ListViewVirtual"));
+	m_ListviewColWidthVirtual[0] = pConfig->Read(wxT("cw0"), 200);
+	m_ListviewColWidthVirtual[1] = pConfig->Read(wxT("cw1"), 100);
+	m_ListviewColWidthVirtual[2] = pConfig->Read(wxT("cw2"), 100);
+	m_ListviewColWidthVirtual[3] = pConfig->Read(wxT("cw3"), 200);
+	m_ListviewColWidthVirtual[4] = pConfig->Read(wxT("cw4"), 200);
+
+	CreateListControlHeaders();
+
 	return true;
 }
 
@@ -357,8 +372,6 @@ void CMainFrame::CreateControls()
 	m_listCtl = (wxListCtrl*) FindWindow( ID_LIST_CONTROL );
 
     m_treeVirtualCtl->Connect(ID_TREE_CONTROL_VIRTUAL, wxEVT_CONTEXT_MENU, wxContextMenuEventHandler(CMainFrame::OnTreeControlVirtualContextMenu), NULL, this);
-
-	CreateListControlHeaders();
 
 	// associates the MRU files list
 	m_fileHistory->UseMenu( m_fileMenu );
@@ -651,6 +664,9 @@ void CMainFrame::CreateListControlHeaders(void) {
 
 	wxListCtrl* lctl = GetListControl();
 	DeleteAllListControlItems();
+
+	lctl->Hide();
+
 	lctl->ClearAll();
 
 	// adds the columns to the list control
@@ -677,6 +693,41 @@ void CMainFrame::CreateListControlHeaders(void) {
 		itemCol.SetAlign( wxLIST_FORMAT_LEFT );
 		lctl->InsertColumn( 4, itemCol );
 	}
+
+	// assigns the image list
+	wxImageList* iml = new wxImageList( 16, 16 );
+	iml->Add(wxIcon(folder_closed_xpm));
+	iml->Add(wxIcon(deffile_xpm));
+	lctl->AssignImageList( iml, wxIMAGE_LIST_SMALL );
+
+	// adds a dummy row and deletes it
+	// needed to correctly show the headers
+	wxListItem item;
+	item.SetMask( wxLIST_MASK_STATE|wxLIST_MASK_TEXT|wxLIST_MASK_IMAGE|wxLIST_MASK_DATA );
+	int i = lctl->InsertItem( item );
+	lctl->SetItem( i, 0, "a" );
+	lctl->SetItem( i, 1, "a" );
+	lctl->SetItem( i, 2, "a" );
+	lctl->SetItem( i, 3, "a" );
+	if( m_CurrentView == Virtual )
+		lctl->SetItem( i, 4, "a" );
+
+	if( m_CurrentView == Physical ) {
+		lctl->SetColumnWidth( 0, m_ListviewColWidthPhysical[0] );
+		lctl->SetColumnWidth( 1, m_ListviewColWidthPhysical[1] );
+		lctl->SetColumnWidth( 2, m_ListviewColWidthPhysical[2] );
+		lctl->SetColumnWidth( 3, m_ListviewColWidthPhysical[3] );
+	}
+	else {
+		lctl->SetColumnWidth( 0, m_ListviewColWidthVirtual[0] );
+		lctl->SetColumnWidth( 1, m_ListviewColWidthVirtual[1] );
+		lctl->SetColumnWidth( 2, m_ListviewColWidthVirtual[2] );
+		lctl->SetColumnWidth( 3, m_ListviewColWidthVirtual[3] );
+		lctl->SetColumnWidth( 4, m_ListviewColWidthVirtual[4] );
+	}
+
+	lctl->DeleteAllItems();
+	lctl->Show();
 }
 
 /*!
@@ -699,7 +750,12 @@ void CMainFrame::OnOPENClick( wxCommandEvent& event )
 
 CMainFrame::~CMainFrame() {
 
-	DeleteAllListControlItems();
+	if( m_CurrentView == Physical ) 
+		StoreListControlPhysicalWidth();
+	else
+		StoreListControlVirtualWidth();
+
+	DeleteAllListControlItems();	// to delete item data
 
 	wxConfigBase *pConfig = wxConfigBase::Get();
 	if ( pConfig == NULL )
@@ -722,6 +778,19 @@ CMainFrame::~CMainFrame() {
 	wxSplitterWindow* sw = GetSplitterWindow();
 	pConfig->Write(wxT("SashPosition"), (long) sw->GetSashPosition() );
 
+	// saves the listview columns width
+	pConfig->SetPath(wxT("/Mainframe/Layout/ListViewPhysical"));
+	pConfig->Write(wxT("cw0"), (long) m_ListviewColWidthPhysical[0]);
+	pConfig->Write(wxT("cw1"), (long) m_ListviewColWidthPhysical[1]);
+	pConfig->Write(wxT("cw2"), (long) m_ListviewColWidthPhysical[2]);
+	pConfig->Write(wxT("cw3"), (long) m_ListviewColWidthPhysical[3]);
+	pConfig->SetPath(wxT("/Mainframe/Layout/ListViewVirtual"));
+	pConfig->Write(wxT("cw0"), (long) m_ListviewColWidthVirtual[0]);
+	pConfig->Write(wxT("cw1"), (long) m_ListviewColWidthVirtual[1]);
+	pConfig->Write(wxT("cw2"), (long) m_ListviewColWidthVirtual[2]);
+	pConfig->Write(wxT("cw3"), (long) m_ListviewColWidthVirtual[3]);
+	pConfig->Write(wxT("cw4"), (long) m_ListviewColWidthVirtual[4]);
+
 	// delete the virtual folders window
 	if( m_ChooseVirtualFolderDialog != NULL ) delete m_ChooseVirtualFolderDialog;
 
@@ -741,6 +810,7 @@ void CMainFrame::OnViewPhysicalClick( wxCommandEvent& event )
 	// shows the physical tree view
 	wxTreeCtrl* tctlPhysical = GetTreePhysicalControl();
 	if( !tctlPhysical->IsShown() ) {
+		StoreListControlVirtualWidth();
 		wxTreeCtrl* tctlVirtual = GetTreeVirtualControl();
 		wxSplitterWindow* sw = GetSplitterWindow();
 		long sp = sw->GetSashPosition();
@@ -768,6 +838,7 @@ void CMainFrame::OnViewVirtualClick( wxCommandEvent& event )
 	// shows the virtual tree view
 	wxTreeCtrl* tctlVirtual = GetTreeVirtualControl();
 	if( !tctlVirtual->IsShown() ) {
+		StoreListControlPhysicalWidth();
 		wxTreeCtrl* tctlPhysical = GetTreePhysicalControl();
 		wxSplitterWindow* sw = GetSplitterWindow();
 		long sp = sw->GetSashPosition();
@@ -860,15 +931,6 @@ void CMainFrame::ShowFolderFiles( wxTreeItemId itemID ) {
 		files.DBNextRow();
 	}
 
-	//lctl->SetColumnWidth( 0, wxLIST_AUTOSIZE );
-	//lctl->SetColumnWidth( 1, wxLIST_AUTOSIZE );
-	//lctl->SetColumnWidth( 2, wxLIST_AUTOSIZE );
-	//lctl->SetColumnWidth( 3, wxLIST_AUTOSIZE );
-	lctl->SetColumnWidth( 0, 200 );
-	lctl->SetColumnWidth( 1, 200 );
-	lctl->SetColumnWidth( 2, 200 );
-	lctl->SetColumnWidth( 3, 200 );
-
 	lctl->SortItems( ListControlCompareFunction, 0 );
 
 	lctl->Show();
@@ -925,16 +987,6 @@ void CMainFrame::ShowVirtualFolderFiles( wxTreeItemId itemID ) {
 
 		files.DBNextRow();
 	}
-
-	//lctl->SetColumnWidth( 0, wxLIST_AUTOSIZE );
-	//lctl->SetColumnWidth( 1, wxLIST_AUTOSIZE );
-	//lctl->SetColumnWidth( 2, wxLIST_AUTOSIZE );
-	//lctl->SetColumnWidth( 3, wxLIST_AUTOSIZE );
-	lctl->SetColumnWidth( 0, 200 );
-	lctl->SetColumnWidth( 1, 200 );
-	lctl->SetColumnWidth( 2, 200 );
-	lctl->SetColumnWidth( 3, 200 );
-	lctl->SetColumnWidth( 4, 200 );
 
 	lctl->SortItems( ListControlCompareFunction, 0 );
 
@@ -1522,5 +1574,23 @@ void CMainFrame::OnViewToolbarClick( wxCommandEvent& event )
 		GetToolBar()->Show(false);
 	}
 	SendSizeEvent();
+}
+
+void CMainFrame::StoreListControlVirtualWidth(void) {
+
+	wxListCtrl* lctl = GetListControl();
+	wxASSERT(lctl->GetColumnCount() == 5);
+
+	for( int k = 0; k < 5; k++ )
+		m_ListviewColWidthVirtual[k] = lctl->GetColumnWidth(k);
+}
+
+void CMainFrame::StoreListControlPhysicalWidth(void) {
+
+	wxListCtrl* lctl = GetListControl();
+	wxASSERT(lctl->GetColumnCount() == 4);
+
+	for( int k = 0; k < 4; k++ )
+		m_ListviewColWidthPhysical[k] = lctl->GetColumnWidth(k);
 }
 

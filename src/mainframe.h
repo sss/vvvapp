@@ -294,6 +294,16 @@ private:
 	// opens a database
 	void OpenDatabase( wxString fileName );
 
+	// width of the listview columns in physical view
+	int m_ListviewColWidthPhysical[4];
+	// width of the listview columns in virtual view
+	int m_ListviewColWidthVirtual[5];
+
+	// stores the column widths of the list control columns in physical view
+	void StoreListControlPhysicalWidth();
+	// stores the column widths of the list control columns in virtual view
+	void StoreListControlVirtualWidth();
+
 protected:
 	// shows in the listview the files contained in the passed folder
 	void ShowFolderFiles( wxTreeItemId itemID );
