@@ -20,6 +20,7 @@
     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
+#include "data_error.h"
 #include "volumes.h"
 #include "firebird_db.h"
 #include "../ibpp/core/ibpp.h"
@@ -50,10 +51,34 @@ void CVolumes::FB_DbUpdate(void)
 // delete this record from the database
 void CVolumes::FB_DbDelete(void)
 {
-	wxString sql;
+	bool inTransaction;
 
-	sql = "DELETE FROM VOLUMES WHERE VOLUME_ID = " + long2string( VolumeID );
-	FB_ExecuteQueryNoReturn( sql );
+	CFirebirdDB* db = (CFirebirdDB*) CBaseDB::GetDatabase();
+	inTransaction = db->TransactionIsOpened();
+	if( !inTransaction ) {
+		db->TransactionStart();
+	}
+	Statement st = StatementFactory( db->GetIBPPDB(), db->TransactionGetReference() );
+
+	try {
+		st->Prepare( "EXECUTE PROCEDURE SP_DELETE_VOLUME( ? )" );
+		st->Set( 1, VolumeID );
+		st->Execute();
+	}
+	catch( IBPP::SQLException& e ) {
+		// catches exceptions in order to convert interesting ones
+		db->TransactionRollback();
+		CDataErrorException::ErrorCause ec;
+		if( CDataErrorException::ConvertFirebirdError( e.EngineCode(), ec )  )
+			throw CDataErrorException( e.ErrorMessage(), ec );
+		else
+			throw;
+	}
+
+	if( !inTransaction ) {
+		db->TransactionCommit();
+	}
+
 }
 
 void CVolumes::FB_FetchRow(void) {

@@ -172,6 +172,7 @@ BEGIN_EVENT_TABLE( CMainFrame, wxFrame )
     EVT_MENU( ID_RENAME_VOLUME, CMainFrame::OnRenameVolumeClick )
     EVT_UPDATE_UI( ID_RENAME_VOLUME, CMainFrame::OnRenameVolumeUpdate )
 
+    EVT_MENU( ID_DELETE_VOLUME, CMainFrame::OnDeleteVolumeClick )
     EVT_UPDATE_UI( ID_DELETE_VOLUME, CMainFrame::OnDeleteVolumeUpdate )
 
     EVT_MENU( ID_NEW_VIRTUAL_ROOT_FOLDER, CMainFrame::OnNewVirtualRootFolderClick )
@@ -1177,7 +1178,7 @@ void CMainFrame::OnDeleteVolumeUpdate( wxUpdateUIEvent& event )
  * wxEVT_COMMAND_MENU_SELECTED event handler for ID_RENAME_VOLUME
  */
 
-void CMainFrame::OnRenameVolumeClick( wxCommandEvent& event )
+void CMainFrame::OnRenameVolumeClick( wxCommandEvent& WXUNUSED(event) )
 {
 	wxTreeCtrl *tctl = GetTreePhysicalControl();
 	wxTreeItemId item = tctl->GetSelection();
@@ -1208,7 +1209,6 @@ void CMainFrame::OnRenameVolumeClick( wxCommandEvent& event )
 	// changes the volume name in the tree control
 	tctl->SetItemText( item, newName );
 
-	event.Skip(false);	// to suppress a warning
 }
 
 
@@ -1612,5 +1612,36 @@ void CMainFrame::StoreListControlPhysicalWidth(void) {
 
 	for( int k = 0; k < 4; k++ )
 		m_ListviewColWidthPhysical[k] = lctl->GetColumnWidth(k);
+}
+
+/*!
+ * wxEVT_COMMAND_MENU_SELECTED event handler for ID_DELETE_VOLUME
+ */
+
+void CMainFrame::OnDeleteVolumeClick( wxCommandEvent& WXUNUSED(event) )
+{
+	wxTreeCtrl *tctl = GetTreePhysicalControl();
+	wxTreeItemId item = tctl->GetSelection();
+    MyTreeItemData *itemData = (MyTreeItemData *) tctl->GetItemData(item);
+
+	if( !CUtils::MsgAskNo( _("This command will delete this volume:\n\n") + tctl->GetItemText(item) + _("\n\nDo you really want to delete this volume?") ) )
+		return;
+
+	CVolumes vol;
+	vol.VolumeID = itemData->GetVolumeID();
+	try {
+		vol.DbDelete();
+	}
+	catch( CDataErrorException& e ) {
+		if( e.GetErrorCause() == CDataErrorException::ReferentialIntegrity ) {
+			CUtils::MsgErr( _("Unable to delete this volume: at least one of its files is used in the virtual view") );
+			return;
+		}
+		else
+			throw;
+	}
+
+	// removes the item from the tree control
+	tctl->Delete(item);
 }
 

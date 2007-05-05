@@ -44,6 +44,10 @@ bool CDataErrorException::ConvertFirebirdError( long gdscode, ErrorCause& ec ) {
 			ec = Unique;
 			retVal = true;
 			break;
+		case 335544466:
+			ec = ReferentialIntegrity;
+			retVal = true;
+			break;
 	}
 
 	return retVal;

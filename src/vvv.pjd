@@ -864,7 +864,8 @@
                 <long name="locked">0</long>
                 <string name="created">"16/4/2007"</string>
                 <string name="proxy-type">"wbMenuItemProxy"</string>
-                <string name="event-handler-0">"wxEVT_UPDATE_UI|OnDeleteVolumeUpdate"</string>
+                <string name="event-handler-0">"wxEVT_COMMAND_MENU_SELECTED|OnDeleteVolumeClick|NONE||"</string>
+                <string name="event-handler-1">"wxEVT_UPDATE_UI|OnDeleteVolumeUpdate|||"</string>
                 <string name="proxy-Id name">"ID_DELETE_VOLUME"</string>
                 <long name="proxy-Id value">10014</long>
                 <string name="proxy-Label">"Delete Volume"</string>

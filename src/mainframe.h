@@ -152,6 +152,9 @@ public:
     /// wxEVT_UPDATE_UI event handler for ID_RENAME_VOLUME
     void OnRenameVolumeUpdate( wxUpdateUIEvent& event );
 
+    /// wxEVT_COMMAND_MENU_SELECTED event handler for ID_DELETE_VOLUME
+    void OnDeleteVolumeClick( wxCommandEvent& event );
+
     /// wxEVT_UPDATE_UI event handler for ID_DELETE_VOLUME
     void OnDeleteVolumeUpdate( wxUpdateUIEvent& event );
 
