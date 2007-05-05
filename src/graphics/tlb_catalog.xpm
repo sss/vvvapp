@@ -1,5 +1,5 @@
 /* XPM */
-static char *cdrom01_xpm[] = {
+static char *tlb_catalog_xpm[] = {
 /* columns rows colors chars-per-pixel */
 "16 15 12 1",
 ". c Black",

@@ -61,6 +61,7 @@
 #include "mylistitemdata.h"
 
 ////@begin XPM images
+#include "graphics/vvv.xpm"
 #include "graphics/tlb_new.xpm"
 #include "graphics/tlb_open.xpm"
 #include "graphics/tlb_catalog.xpm"
@@ -238,6 +239,7 @@ bool CMainFrame::Create( wxWindow* parent, wxWindowID id, const wxString& captio
     wxFrame::Create( parent, id, caption, pos, size, style );
 
     CreateControls();
+    SetIcon(GetIconResource(wxT("graphics/vvv.xpm")));
     Centre();
 ////@end CMainFrame creation
 
@@ -436,7 +438,7 @@ wxBitmap CMainFrame::GetBitmapResource( const wxString& name )
     }
     else if (name == _T("graphics/tlb_catalog.xpm"))
     {
-        wxBitmap bitmap(cdrom01_xpm);
+        wxBitmap bitmap(tlb_catalog_xpm);
         return bitmap;
     }
     else if (name == _T("graphics/tlb_physical.xpm"))
@@ -462,6 +464,11 @@ wxIcon CMainFrame::GetIconResource( const wxString& name )
     // Icon retrieval
 ////@begin CMainFrame icon retrieval
     wxUnusedVar(name);
+    if (name == _T("graphics/vvv.xpm"))
+    {
+        wxIcon icon(vvv_xpm);
+        return icon;
+    }
     return wxNullIcon;
 ////@end CMainFrame icon retrieval
 }

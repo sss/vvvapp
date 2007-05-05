@@ -456,7 +456,7 @@
           <string name="proxy-XRC filename">""</string>
           <string name="proxy-Title">"VVV"</string>
           <bool name="proxy-Centre">1</bool>
-          <string name="proxy-Icon">""</string>
+          <string name="proxy-Icon">"graphics/vvv.xpm"</string>
           <bool name="proxy-Dialog units">0</bool>
           <string name="proxy-Help text">""</string>
           <string name="proxy-Tooltip text">""</string>
