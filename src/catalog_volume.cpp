@@ -372,6 +372,7 @@ void CDialogCatalogVolume::CatalogSingleFolder( CBaseDB* db, wxString path, long
 void CDialogCatalogVolume::OnDirCtrlSelChanged( wxTreeEvent& WXUNUSED(event) )
 {
 	// copies the selected path to the text box
+	if(m_DirControl == NULL) return;
 	wxString p = m_DirControl->GetPath();
 	if( !p.empty() ) {
 		m_VolumePath->SetValue( p );

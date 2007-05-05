@@ -46,6 +46,7 @@
 
 ////@begin includes
 #include "wx/treectrl.h"
+#include "wx/imaglist.h"
 ////@end includes
 #include "wx/imaglist.h"
 

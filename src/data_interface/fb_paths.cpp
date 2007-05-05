@@ -118,7 +118,7 @@ wxString CPaths::FB_GetFullPath( long PathID ) {
 	Statement st = StatementFactory( db->GetIBPPDB(), db->TransactionGetReference() );
 
 	st->Prepare( "EXECUTE PROCEDURE SP_GET_FULL_PATH( ?, ? )" );
-	st->Set( 1, PathID );
+	st->Set( 1, (int32_t) PathID );
 	st->Set( 2, wxString(wxFileName::GetPathSeparator()).c_str() );
 	st->Execute();
 

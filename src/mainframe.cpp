@@ -222,6 +222,7 @@ CMainFrame::CMainFrame( )
 
 CMainFrame::CMainFrame( wxWindow* parent, wxWindowID id, const wxString& caption, const wxPoint& pos, const wxSize& size, long style )
 {
+//	wxIcon ico(removable_xpm);
     Init();
     Create( parent, id, caption, pos, size, style );
 }
@@ -283,6 +284,7 @@ bool CMainFrame::Create( wxWindow* parent, wxWindowID id, const wxString& captio
 
 void CMainFrame::Init()
 {
+//	wxIcon ico(removable_xpm);
 ////@begin CMainFrame member initialisation
     m_Toolbar = NULL;
     m_fileMenu = NULL;
@@ -479,7 +481,9 @@ void CMainFrame::LoadTreeControl(void) {
 
 	wxTreeCtrl* tctl = GetTreePhysicalControl();
 	wxImageList* iml = new wxImageList( 16, 16 );
-	iml->Add(wxIcon(removable_xpm));
+	wxIcon ico(removable_xpm);
+	iml->Add(ico);
+//	iml->Add(wxIcon(removable_xpm));
 	iml->Add(wxIcon(folder_closed_xpm));
 	iml->Add(wxIcon(folder_opened_xpm));
 	tctl->AssignImageList( iml );
@@ -920,6 +924,7 @@ void CMainFrame::ShowFolderFiles( wxTreeItemId itemID ) {
 	lctl->AssignImageList( iml, wxIMAGE_LIST_SMALL );
 
     MyTreeItemData *itemData = (MyTreeItemData *) tctl->GetItemData(itemID);
+	if( itemData == NULL ) return;
 
 	lctl->Hide();	// to speed up things
 
@@ -976,7 +981,8 @@ void CMainFrame::ShowVirtualFolderFiles( wxTreeItemId itemID ) {
 
 	// retrieves info about the selected item
     MyTreeItemData *itemData = (MyTreeItemData *) tctl->GetItemData(itemID);
-
+	if( itemData == NULL ) return;
+	
 	lctl->Hide();	// to speed up things
 
 	DeleteAllListControlItems();
@@ -1214,7 +1220,8 @@ void CMainFrame::OnAddVirtualFolderClick( wxCommandEvent& event )
 {
 	event.Skip(false);	// to suppress a warning
 
-	if( m_ChooseVirtualFolderDialog->ShowModal() != wxID_OK ) return;
+	int r = m_ChooseVirtualFolderDialog->ShowModal();
+	if( r != wxID_OK ) return;
 	long virtualFolderId = m_ChooseVirtualFolderDialog->GetVirtualFolderID();
 
 	bool isVolumeItem = false;	// true if the user has selected a volume (not a folder)
