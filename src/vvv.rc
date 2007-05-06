@@ -15,11 +15,11 @@
 #undef APSTUDIO_READONLY_SYMBOLS
 
 /////////////////////////////////////////////////////////////////////////////
-// Italian (Italy) resources
+// Neutral resources
 
-#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ITA)
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_NEU)
 #ifdef _WIN32
-LANGUAGE LANG_ITALIAN, SUBLANG_ITALIAN
+LANGUAGE LANG_NEUTRAL, SUBLANG_NEUTRAL
 #pragma code_page(1252)
 #endif //_WIN32
 
@@ -31,6 +31,18 @@ LANGUAGE LANG_ITALIAN, SUBLANG_ITALIAN
 // Icon with lowest ID value placed first to ensure application icon
 // remains consistent on all systems.
 VVV_ICON                ICON                    "graphics\\vvv.ico"
+#endif    // Neutral resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
+// Italian (Italy) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ITA)
+#ifdef _WIN32
+LANGUAGE LANG_ITALIAN, SUBLANG_ITALIAN
+#pragma code_page(1252)
+#endif //_WIN32
 
 #ifdef APSTUDIO_INVOKED
 /////////////////////////////////////////////////////////////////////////////
@@ -58,6 +70,45 @@ BEGIN
 END
 
 #endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 0,5,0,0
+ PRODUCTVERSION 0,5,0,0
+ FILEFLAGSMASK 0x17L
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x0L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "000004b0"
+        BEGIN
+            VALUE "CompanyName", "The VVV Team"
+            VALUE "FileDescription", "VVV (Virtual Volumes View): an application to catalog removable disks"
+            VALUE "FileVersion", "0, 5, 0, 0"
+            VALUE "InternalName", "VVV"
+            VALUE "LegalCopyright", "Copyright (C) 2007 The VVV Team"
+            VALUE "OriginalFilename", "vvv.rc"
+            VALUE "ProductName", "VVV"
+            VALUE "ProductVersion", "0, 5, 0, 0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x0, 1200
+    END
+END
 
 #endif    // Italian (Italy) resources
 /////////////////////////////////////////////////////////////////////////////
