@@ -136,6 +136,9 @@ bool CVvvApp::OnInit()
 	mainWindow->Show(true);
 ////@end CVvvApp initialisation
 
+    wxLocale m_locale;
+    m_locale.Init();
+
 	return true;
 }
 
