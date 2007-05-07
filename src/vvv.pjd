@@ -767,7 +767,7 @@
                 <long name="locked">0</long>
                 <string name="created">"16/12/2006"</string>
                 <string name="proxy-type">"wbMenuItemProxy"</string>
-                <string name="event-handler-0">"wxEVT_COMMAND_MENU_SELECTED|OnEXITClick"</string>
+                <string name="event-handler-0">"wxEVT_COMMAND_MENU_SELECTED|OnEXITClick|||"</string>
                 <string name="proxy-Id name">"wxID_EXIT"</string>
                 <long name="proxy-Id value">5006</long>
                 <string name="proxy-Label">"Exit"</string>

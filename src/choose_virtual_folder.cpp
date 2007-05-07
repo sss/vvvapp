@@ -316,9 +316,8 @@ void CDialogChooseVirtualFolder::OnTreectrlChooseSelChanged( wxTreeEvent& event 
  * wxEVT_COMMAND_BUTTON_CLICKED event handler for wxID_OK
  */
 
-void CDialogChooseVirtualFolder::OnOKClick( wxCommandEvent& event )
+void CDialogChooseVirtualFolder::OnOKClick( wxCommandEvent& WXUNUSED(event) )
 {
-	event.Skip(false);	// to suppress a warning
 	if( m_VirtualFolderID > 0 )
 		SetReturnCode( wxID_OK );
 	else
@@ -330,9 +329,8 @@ void CDialogChooseVirtualFolder::OnOKClick( wxCommandEvent& event )
  * wxEVT_COMMAND_BUTTON_CLICKED event handler for wxID_CANCEL
  */
 
-void CDialogChooseVirtualFolder::OnCANCELClick( wxCommandEvent& event )
+void CDialogChooseVirtualFolder::OnCANCELClick( wxCommandEvent& WXUNUSED(event) )
 {
-	event.Skip(false);	// to suppress a warning
 	SetReturnCode( wxID_CANCEL );
 	this->Show(false);
 }

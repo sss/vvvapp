@@ -234,8 +234,7 @@ wxIcon CDialogCatalogVolume::GetIconResource( const wxString& name )
  * wxEVT_COMMAND_BUTTON_CLICKED event handler for ID_GET_VOLUME_NAME
  */
 
-void CDialogCatalogVolume::OnGetVolumeNameClick( wxCommandEvent& event ) {
-	event.Skip(false);	// to suppress a warning
+void CDialogCatalogVolume::OnGetVolumeNameClick( wxCommandEvent& WXUNUSED(event) ) {
 #ifdef __WXMSW__
 	wxString path = m_DirControl->GetPath();
 	if( !path.EndsWith(wxT("\\")) )
@@ -250,10 +249,8 @@ void CDialogCatalogVolume::OnGetVolumeNameClick( wxCommandEvent& event ) {
  * wxEVT_COMMAND_BUTTON_CLICKED event handler for ID_BUTTON_CATALOG
  */
 
-void CDialogCatalogVolume::OnButtonCatalogClick( wxCommandEvent& event )
+void CDialogCatalogVolume::OnButtonCatalogClick( wxCommandEvent& WXUNUSED(event) )
 {
-	event.Skip(false);	// to suppress a warning
-	
 	wxString path = m_VolumePath->GetValue();
 	if( path == "" ) {
 		CUtils::MsgErr( _("The volume path is missing") );

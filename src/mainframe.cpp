@@ -396,17 +396,6 @@ void CMainFrame::CreateControls()
 
 }
 
-/*!
- * wxEVT_COMMAND_MENU_SELECTED event handler for wxID_EXIT
- */
-
-void CMainFrame::OnEXITClick( wxCommandEvent& event )
-{
-////@begin wxEVT_COMMAND_MENU_SELECTED event handler for wxID_EXIT in Prova.
-    // Before editing this code, remove the block markers.
-    event.Skip();
-////@end wxEVT_COMMAND_MENU_SELECTED event handler for wxID_EXIT in Prova. 
-}
 
 /*!
  * Should we show tooltips?
@@ -476,9 +465,8 @@ wxIcon CMainFrame::GetIconResource( const wxString& name )
  * wxEVT_COMMAND_MENU_SELECTED event handler for ID_CATALOG_VOLUME
  */
 
-void CMainFrame::OnCatalogVolumeClick( wxCommandEvent& event )
+void CMainFrame::OnCatalogVolumeClick( wxCommandEvent& WXUNUSED(event) )
 {
-	event.Skip(false);	// to suppress a warning
     CDialogCatalogVolume* window = new CDialogCatalogVolume(this, ID_DIALOG_CATALOG_VOLUME, _("Catalog volume"));
     window->ShowModal();
 	LoadTreeControl();
@@ -759,10 +747,8 @@ void CMainFrame::CreateListControlHeaders(void) {
  * wxEVT_COMMAND_MENU_SELECTED event handler for wxID_OPEN
  */
 
-void CMainFrame::OnOPENClick( wxCommandEvent& event )
+void CMainFrame::OnOPENClick( wxCommandEvent& WXUNUSED(event) )
 {
-    event.Skip();
-
 	wxString caption = _("Open catalog");
 	wxString wildcard = _("VVV  files (*.vvv)|*.vvv|All files (*.*)|*.*");
 	wxFileDialog fd( this, caption, wxEmptyString, wxEmptyString, wildcard, wxOPEN );
@@ -830,7 +816,6 @@ CMainFrame::~CMainFrame() {
 void CMainFrame::OnViewPhysicalClick( wxCommandEvent& event )
 {
 	if( !event.IsChecked() ) return;
-	event.Skip();
 
 	// shows the physical tree view
 	wxTreeCtrl* tctlPhysical = GetTreePhysicalControl();
@@ -858,7 +843,6 @@ void CMainFrame::OnViewPhysicalClick( wxCommandEvent& event )
 void CMainFrame::OnViewVirtualClick( wxCommandEvent& event )
 {
 	if( !event.IsChecked() ) return;
-	event.Skip();
 
 	// shows the virtual tree view
 	wxTreeCtrl* tctlVirtual = GetTreeVirtualControl();
@@ -1223,10 +1207,8 @@ void CMainFrame::OnRenameVolumeClick( wxCommandEvent& WXUNUSED(event) )
  * wxEVT_COMMAND_MENU_SELECTED event handler for ID_ADD_VIRTUAL_FOLDER
  */
 
-void CMainFrame::OnAddVirtualFolderClick( wxCommandEvent& event )
+void CMainFrame::OnAddVirtualFolderClick( wxCommandEvent& WXUNUSED(event) )
 {
-	event.Skip(false);	// to suppress a warning
-
 	int r = m_ChooseVirtualFolderDialog->ShowModal();
 	if( r != wxID_OK ) return;
 	long virtualFolderId = m_ChooseVirtualFolderDialog->GetVirtualFolderID();
@@ -1269,14 +1251,14 @@ void CMainFrame::OnAddVirtualFolderUpdate( wxUpdateUIEvent& event )
  * wxEVT_COMMAND_MENU_SELECTED event handler for ID_NEW_VIRTUAL_ROOT_FOLDER
  */
 
-void CMainFrame::OnNewVirtualRootFolderClick( wxCommandEvent& event )
+void CMainFrame::OnNewVirtualRootFolderClick( wxCommandEvent& WXUNUSED(event) )
 {
 	CNullableLong nl;
 	nl.SetNull( true );
 
 	CreateNewVirtualFolder( nl, _("New virtual root folder") );
 
-	event.Skip(false);	// to suppress a warning
+	m_ChooseVirtualFolderDialog->Refresh();
 }
 
 /*!
@@ -1297,7 +1279,7 @@ void CMainFrame::OnNewVirtualRootFolderUpdate( wxUpdateUIEvent& event )
  * wxEVT_COMMAND_MENU_SELECTED event handler for ID_NEW_VIRTUAL_SUBFOLDER
  */
 
-void CMainFrame::OnNewVirtualSubfolderClick( wxCommandEvent& event )
+void CMainFrame::OnNewVirtualSubfolderClick( wxCommandEvent& WXUNUSED(event) )
 {
 	wxTreeCtrl *tctl = GetTreeVirtualControl();
 	wxTreeItemId item = tctl->GetSelection();
@@ -1306,7 +1288,7 @@ void CMainFrame::OnNewVirtualSubfolderClick( wxCommandEvent& event )
 
 	CreateNewVirtualFolder( FatherID, _("New virtual subfolder") );
 
-	event.Skip(false);	// to suppress a warning
+	m_ChooseVirtualFolderDialog->Refresh();
 }
 
 void CMainFrame::CreateNewVirtualFolder( CNullableLong FatherID, wxString windowTitle ) {
@@ -1385,7 +1367,7 @@ void CMainFrame::OnNewVirtualSubfolderUpdate( wxUpdateUIEvent& event )
  * wxEVT_COMMAND_MENU_SELECTED event handler for ID_RENAME_VIRTUAL_FOLDER
  */
 
-void CMainFrame::OnRenameVirtualFolderClick( wxCommandEvent& event )
+void CMainFrame::OnRenameVirtualFolderClick( wxCommandEvent& WXUNUSED(event) )
 {
 	wxTreeCtrl *tctl = GetTreeVirtualControl();
 	wxTreeItemId item = tctl->GetSelection();
@@ -1414,7 +1396,7 @@ void CMainFrame::OnRenameVirtualFolderClick( wxCommandEvent& event )
 	// changes the volume name in the tree control
 	tctl->SetItemText( item, newName );
 
-	event.Skip(false);	// to suppress a warning
+	m_ChooseVirtualFolderDialog->Refresh();
 }
 
 /*!
@@ -1446,7 +1428,7 @@ void CMainFrame::OnRenameVirtualFolderUpdate( wxUpdateUIEvent& event )
  * wxEVT_COMMAND_MENU_SELECTED event handler for ID_DELETE_VIRTUAL_FOLDER
  */
 
-void CMainFrame::OnDeleteVirtualFolderClick( wxCommandEvent& event )
+void CMainFrame::OnDeleteVirtualFolderClick( wxCommandEvent& WXUNUSED(event) )
 {
 	if( !CUtils::MsgAskNo( _("This command will delete the selected virtual foder, but it will not change the folders in the physical view.\n\nDo you really want to delete the selected virtual folder?") ) )
 		return;
@@ -1464,7 +1446,7 @@ void CMainFrame::OnDeleteVirtualFolderClick( wxCommandEvent& event )
 	tctl->DeleteChildren(item);
 	tctl->Delete(item);
 
-	event.Skip(false);	// to suppress a warning
+	m_ChooseVirtualFolderDialog->Refresh();
 }
 
 /*!
@@ -1650,5 +1632,14 @@ void CMainFrame::OnDeleteVolumeClick( wxCommandEvent& WXUNUSED(event) )
 
 	// removes the item from the tree control
 	tctl->Delete(item);
+}
+
+/*!
+ * wxEVT_COMMAND_MENU_SELECTED event handler for wxID_EXIT
+ */
+
+void CMainFrame::OnEXITClick( wxCommandEvent& WXUNUSED(event) )
+{
+	Close(true);
 }
 
