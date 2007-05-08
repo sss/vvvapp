@@ -62,7 +62,7 @@ void CVolumes::FB_DbDelete(void)
 
 	try {
 		st->Prepare( "EXECUTE PROCEDURE SP_DELETE_VOLUME( ? )" );
-		st->Set( 1, VolumeID );
+		st->Set( 1, (int32_t) VolumeID );
 		st->Execute();
 	}
 	catch( IBPP::SQLException& e ) {

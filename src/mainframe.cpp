@@ -1582,7 +1582,13 @@ void CMainFrame::OnViewToolbarClick( wxCommandEvent& event )
 	else {
 		GetToolBar()->Show(false);
 	}
+#ifdef __WXMSW__
 	SendSizeEvent();
+#else
+	wxSize s = GetSize();
+	Fit();
+	SetSize(s);
+#endif
 }
 
 void CMainFrame::StoreListControlVirtualWidth(void) {
