@@ -789,6 +789,10 @@ CMainFrame::~CMainFrame() {
 	wxSplitterWindow* sw = GetSplitterWindow();
 	pConfig->Write(wxT("SashPosition"), (long) sw->GetSashPosition() );
 
+	// saves the MRU files list
+	m_fileHistory->Save( *pConfig );
+	delete m_fileHistory;
+
 	// saves the listview columns width
 	pConfig->SetPath(wxT("/Mainframe/Layout/ListViewPhysical"));
 	pConfig->Write(wxT("cw0"), (long) m_ListviewColWidthPhysical[0]);
@@ -805,9 +809,6 @@ CMainFrame::~CMainFrame() {
 	// delete the virtual folders window
 	if( m_ChooseVirtualFolderDialog != NULL ) delete m_ChooseVirtualFolderDialog;
 
-	m_fileHistory->Save( *pConfig );
-
-	delete m_fileHistory;
 }
 /*!
  * wxEVT_COMMAND_MENU_SELECTED event handler for ID_VIEW_PHYSICAL
