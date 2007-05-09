@@ -303,7 +303,10 @@ void CDialogChooseVirtualFolder::OnOKClick( wxCommandEvent& WXUNUSED(event) )
 	wxTreeItemId itemID = m_TreeCtrl->GetSelection();
 	if( itemID.IsOk() ) {
 		MyTreeItemData *itemData = (MyTreeItemData *) m_TreeCtrl->GetItemData(itemID);
-		m_VirtualFolderID = itemData->GetPathID();
+		if( itemData != NULL )
+			m_VirtualFolderID = itemData->GetPathID();
+		else
+			m_VirtualFolderID = -1;
 	}
 	else {
 		m_VirtualFolderID = -1;
