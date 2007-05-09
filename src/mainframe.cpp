@@ -55,6 +55,7 @@
 #include "wx/textdlg.h"
 #include "wx/filename.h"
 #include "wx/config.h"
+#include "wx/utils.h"
 #include "mainframe.h"
 #include "data_interface/data_error.h"
 #include "mytreeitemdata.h"
@@ -907,6 +908,8 @@ void CMainFrame::DeleteAllListControlItems(void) {
 // shows in the listview the files contained in the passed folder
 void CMainFrame::ShowFolderFiles( wxTreeItemId itemID ) {
 
+	wxBusyCursor wait;
+
 	wxTreeCtrl* tctl = GetTreePhysicalControl();
 	wxListCtrl* lctl = GetListControl();
 	
@@ -962,6 +965,8 @@ void CMainFrame::ShowSelectedFolderFiles(void ) {
 
 // shows in the listview the files contained in the passed virtual folder
 void CMainFrame::ShowVirtualFolderFiles( wxTreeItemId itemID ) {
+
+	wxBusyCursor wait;
 
 	wxTreeCtrl* tctl = GetTreeVirtualControl();
 	wxListCtrl* lctl = GetListControl();
@@ -1487,6 +1492,8 @@ void CMainFrame::OnMRUFile( wxCommandEvent& event ) {
 
 
 void CMainFrame::OpenDatabase( wxString fileName ) {
+
+	wxBusyCursor wait;
 
 	CBaseDB *db = CBaseDB::GetDatabase();
 	if( db != NULL ) {
