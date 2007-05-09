@@ -1210,9 +1210,9 @@ void CMainFrame::OnRenameVolumeClick( wxCommandEvent& WXUNUSED(event) )
 
 void CMainFrame::OnAddVirtualFolderClick( wxCommandEvent& WXUNUSED(event) )
 {
-	int r = m_ChooseVirtualFolderDialog->ShowModal();
-	if( r != wxID_OK ) return;
+	m_ChooseVirtualFolderDialog->ShowModal();
 	long virtualFolderId = m_ChooseVirtualFolderDialog->GetVirtualFolderID();
+	if( virtualFolderId < 0 ) return;
 
 	bool isVolumeItem = false;	// true if the user has selected a volume (not a folder)
 	wxTreeCtrl *tctl = GetTreePhysicalControl();

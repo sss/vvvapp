@@ -46,7 +46,6 @@
 
 ////@begin includes
 #include "wx/treectrl.h"
-#include "wx/imaglist.h"
 ////@end includes
 #include "wx/imaglist.h"
 
@@ -104,9 +103,6 @@ public:
     void CreateControls();
 
 ////@begin CDialogChooseVirtualFolder event handler declarations
-
-    /// wxEVT_COMMAND_TREE_SEL_CHANGED event handler for ID_TREECTRL_CHOOSE
-    void OnTreectrlChooseSelChanged( wxTreeEvent& event );
 
     /// wxEVT_COMMAND_TREE_ITEM_EXPANDING event handler for ID_TREECTRL_CHOOSE
     void OnTreectrlChooseItemExpanding( wxTreeEvent& event );
