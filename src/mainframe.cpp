@@ -1224,7 +1224,9 @@ void CMainFrame::OnAddVirtualFolderClick( wxCommandEvent& WXUNUSED(event) )
 	wxTreeItemId item = tctl->GetSelection();
 	if( tctl->GetItemParent(item) == tctl->GetRootItem() ) isVolumeItem = true;
 
-    MyTreeItemData *itemData = (MyTreeItemData *) tctl->GetItemData(item);
+	wxBusyCursor wait;
+
+	MyTreeItemData *itemData = (MyTreeItemData *) tctl->GetItemData(item);
 	long physicalFolderId = itemData->GetPathID();
 
 	if( isVolumeItem ) {
