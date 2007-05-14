@@ -1227,8 +1227,10 @@ void CMainFrame::OnAddVirtualFolderClick( wxCommandEvent& WXUNUSED(event) )
     MyTreeItemData *itemData = (MyTreeItemData *) tctl->GetItemData(item);
 	long physicalFolderId = itemData->GetPathID();
 
-	if( isVolumeItem )
-		CVirtualPaths::CopyPhysicalPath( physicalFolderId, virtualFolderId );
+	if( isVolumeItem ) {
+		long volumeID = itemData->GetVolumeID();
+		CVirtualPaths::AppendVolume( volumeID, physicalFolderId, virtualFolderId );
+	}
 	else
 		CVirtualPaths::AppendPhysicalPath( physicalFolderId, virtualFolderId );
 

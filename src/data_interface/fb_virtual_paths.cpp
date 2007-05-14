@@ -193,7 +193,7 @@ void CVirtualPaths::FB_AppendPhysicalPath( long PhysicalPathID, long VirtualPath
 }
 
 
-void CVirtualPaths::FB_CopyPhysicalPath( long PhysicalPathID, long VirtualPathID ) {
+void CVirtualPaths::FB_AppendVolume( long VolumeID, long PhysicalPathID, long VirtualPathID ) {
 	bool inTransaction;
 
 	CFirebirdDB* db = (CFirebirdDB*) CBaseDB::GetDatabase();
@@ -204,9 +204,10 @@ void CVirtualPaths::FB_CopyPhysicalPath( long PhysicalPathID, long VirtualPathID
 	Statement st = StatementFactory( db->GetIBPPDB(), db->TransactionGetReference() );
 
 	try {
-		st->Prepare( "EXECUTE PROCEDURE SP_ADD_PHYSPATH_TO_VIRTUALPATH( ?, ? )" );
-		st->Set( 1, (int32_t) PhysicalPathID );
-		st->Set( 2, (int32_t) VirtualPathID );
+		st->Prepare( "EXECUTE PROCEDURE SP_ADD_VOLUME_TO_VIRTUALPATH( ?, ?, ? )" );
+		st->Set( 1, (int32_t) VolumeID );
+		st->Set( 2, (int32_t) PhysicalPathID );
+		st->Set( 3, (int32_t) VirtualPathID );
 		st->Execute();
 	}
 	catch( IBPP::SQLException& e ) {

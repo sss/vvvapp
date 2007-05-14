@@ -50,10 +50,10 @@ void CVirtualPaths::AppendPhysicalPath( long PhysicalPathID, long VirtualPathID 
 }
 
 
-void CVirtualPaths::CopyPhysicalPath( long PhysicalPathID, long VirtualPathID ) {
+void CVirtualPaths::AppendVolume( long VolumeID, long PhysicalPathID, long VirtualPathID ) {
 	switch( DatabaseType ) {
 		case dbtFirebird:
-			FB_CopyPhysicalPath( PhysicalPathID, VirtualPathID );
+			FB_AppendVolume( VolumeID, PhysicalPathID, VirtualPathID );
 			break;
 	}
 }
