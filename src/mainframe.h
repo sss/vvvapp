@@ -203,6 +203,9 @@ public:
     /// wxEVT_COMMAND_MENU_SELECTED event handler for ID_VIEW_TOOLBAR
     void OnViewToolbarClick( wxCommandEvent& event );
 
+    /// wxEVT_COMMAND_MENU_SELECTED event handler for wxID_ABOUT
+    void OnABOUTClick( wxCommandEvent& event );
+
     /// wxEVT_COMMAND_TREE_SEL_CHANGED event handler for ID_TREE_CONTROL
     void OnTreeControlSelChanged( wxTreeEvent& event );
 

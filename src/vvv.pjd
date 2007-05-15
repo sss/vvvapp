@@ -722,7 +722,7 @@
               <string name="proxy-Member variable name">"m_fileMenu"</string>
               <string name="proxy-Platform">"&lt;Any platform&gt;"</string>
               <document>
-                <string name="title">"Open: wxID_OPEN"</string>
+                <string name="title">"Open...: wxID_OPEN"</string>
                 <string name="type">"dialog-control-document"</string>
                 <string name="filename">""</string>
                 <string name="icon-name">"menuitem"</string>
@@ -735,7 +735,7 @@
                 <string name="event-handler-0">"wxEVT_COMMAND_MENU_SELECTED|OnOPENClick"</string>
                 <string name="proxy-Id name">"wxID_OPEN"</string>
                 <long name="proxy-Id value">5000</long>
-                <string name="proxy-Label">"Open"</string>
+                <string name="proxy-Label">"Open..."</string>
                 <string name="proxy-Kind">"Normal"</string>
                 <bool name="proxy-Checked">0</bool>
                 <bool name="proxy-Enabled">1</bool>
@@ -795,7 +795,7 @@
               <string name="proxy-Member variable name">""</string>
               <string name="proxy-Platform">"&lt;Any platform&gt;"</string>
               <document>
-                <string name="title">"Add To Virtual Folder: ID_ADD_VIRTUAL_FOLDER"</string>
+                <string name="title">"Add To Virtual Folder...: ID_ADD_VIRTUAL_FOLDER"</string>
                 <string name="type">"dialog-control-document"</string>
                 <string name="filename">""</string>
                 <string name="icon-name">"menuitem"</string>
@@ -809,7 +809,7 @@
                 <string name="event-handler-1">"wxEVT_UPDATE_UI|OnAddVirtualFolderUpdate"</string>
                 <string name="proxy-Id name">"ID_ADD_VIRTUAL_FOLDER"</string>
                 <long name="proxy-Id value">10015</long>
-                <string name="proxy-Label">"Add To Virtual Folder"</string>
+                <string name="proxy-Label">"Add To Virtual Folder..."</string>
                 <string name="proxy-Kind">"Normal"</string>
                 <bool name="proxy-Checked">0</bool>
                 <bool name="proxy-Enabled">1</bool>
@@ -831,7 +831,7 @@
                 <string name="proxy-Platform">"&lt;Any platform&gt;"</string>
               </document>
               <document>
-                <string name="title">"Rename Volume: ID_RENAME_VOLUME"</string>
+                <string name="title">"Rename Volume...: ID_RENAME_VOLUME"</string>
                 <string name="type">"dialog-control-document"</string>
                 <string name="filename">""</string>
                 <string name="icon-name">"menuitem"</string>
@@ -845,7 +845,7 @@
                 <string name="event-handler-1">"wxEVT_UPDATE_UI|OnRenameVolumeUpdate"</string>
                 <string name="proxy-Id name">"ID_RENAME_VOLUME"</string>
                 <long name="proxy-Id value">10013</long>
-                <string name="proxy-Label">"Rename Volume"</string>
+                <string name="proxy-Label">"Rename Volume..."</string>
                 <string name="proxy-Kind">"Normal"</string>
                 <bool name="proxy-Checked">0</bool>
                 <bool name="proxy-Enabled">1</bool>
@@ -890,7 +890,7 @@
                 <string name="proxy-Platform">"&lt;Any platform&gt;"</string>
               </document>
               <document>
-                <string name="title">"New Virtual Root Folder: ID_NEW_VIRTUAL_ROOT_FOLDER"</string>
+                <string name="title">"New Virtual Root Folder...: ID_NEW_VIRTUAL_ROOT_FOLDER"</string>
                 <string name="type">"dialog-control-document"</string>
                 <string name="filename">""</string>
                 <string name="icon-name">"menuitem"</string>
@@ -904,7 +904,7 @@
                 <string name="event-handler-1">"wxEVT_UPDATE_UI|OnNewVirtualRootFolderUpdate"</string>
                 <string name="proxy-Id name">"ID_NEW_VIRTUAL_ROOT_FOLDER"</string>
                 <long name="proxy-Id value">10019</long>
-                <string name="proxy-Label">"New Virtual Root Folder"</string>
+                <string name="proxy-Label">"New Virtual Root Folder..."</string>
                 <string name="proxy-Kind">"Normal"</string>
                 <bool name="proxy-Checked">0</bool>
                 <bool name="proxy-Enabled">1</bool>
@@ -913,7 +913,7 @@
                 <string name="proxy-Platform">"&lt;Any platform&gt;"</string>
               </document>
               <document>
-                <string name="title">"New Virtual Subfolder: ID_NEW_VIRTUAL_SUBFOLDER"</string>
+                <string name="title">"New Virtual Subfolder...: ID_NEW_VIRTUAL_SUBFOLDER"</string>
                 <string name="type">"dialog-control-document"</string>
                 <string name="filename">""</string>
                 <string name="icon-name">"menuitem"</string>
@@ -927,7 +927,7 @@
                 <string name="event-handler-1">"wxEVT_UPDATE_UI|OnNewVirtualSubfolderUpdate"</string>
                 <string name="proxy-Id name">"ID_NEW_VIRTUAL_SUBFOLDER"</string>
                 <long name="proxy-Id value">10018</long>
-                <string name="proxy-Label">"New Virtual Subfolder"</string>
+                <string name="proxy-Label">"New Virtual Subfolder..."</string>
                 <string name="proxy-Kind">"Normal"</string>
                 <bool name="proxy-Checked">0</bool>
                 <bool name="proxy-Enabled">1</bool>
@@ -936,7 +936,7 @@
                 <string name="proxy-Platform">"&lt;Any platform&gt;"</string>
               </document>
               <document>
-                <string name="title">"Rename Virtual Folder: ID_RENAME_VIRTUAL_FOLDER"</string>
+                <string name="title">"Rename Virtual Folder...: ID_RENAME_VIRTUAL_FOLDER"</string>
                 <string name="type">"dialog-control-document"</string>
                 <string name="filename">""</string>
                 <string name="icon-name">"menuitem"</string>
@@ -950,7 +950,7 @@
                 <string name="event-handler-1">"wxEVT_UPDATE_UI|OnRenameVirtualFolderUpdate"</string>
                 <string name="proxy-Id name">"ID_RENAME_VIRTUAL_FOLDER"</string>
                 <long name="proxy-Id value">10020</long>
-                <string name="proxy-Label">"Rename Virtual Folder"</string>
+                <string name="proxy-Label">"Rename Virtual Folder..."</string>
                 <string name="proxy-Kind">"Normal"</string>
                 <bool name="proxy-Checked">0</bool>
                 <bool name="proxy-Enabled">1</bool>
@@ -998,7 +998,7 @@
               <string name="proxy-Member variable name">""</string>
               <string name="proxy-Platform">"&lt;Any platform&gt;"</string>
               <document>
-                <string name="title">"Catalog Volume: ID_CATALOG_VOLUME"</string>
+                <string name="title">"Catalog Volume...: ID_CATALOG_VOLUME"</string>
                 <string name="type">"dialog-control-document"</string>
                 <string name="filename">""</string>
                 <string name="icon-name">"menuitem"</string>
@@ -1012,7 +1012,7 @@
                 <string name="event-handler-1">"wxEVT_UPDATE_UI|OnCatalogVolumeUpdate|NONE||"</string>
                 <string name="proxy-Id name">"ID_CATALOG_VOLUME"</string>
                 <long name="proxy-Id value">10001</long>
-                <string name="proxy-Label">"Catalog Volume"</string>
+                <string name="proxy-Label">"Catalog Volume..."</string>
                 <string name="proxy-Kind">"Normal"</string>
                 <bool name="proxy-Checked">0</bool>
                 <bool name="proxy-Enabled">1</bool>
@@ -1112,6 +1112,44 @@
                 <string name="proxy-Label">"Toolbar"</string>
                 <string name="proxy-Kind">"Check"</string>
                 <bool name="proxy-Checked">1</bool>
+                <bool name="proxy-Enabled">1</bool>
+                <string name="proxy-Help text">""</string>
+                <string name="proxy-Bitmap">""</string>
+                <string name="proxy-Platform">"&lt;Any platform&gt;"</string>
+              </document>
+            </document>
+            <document>
+              <string name="title">"Help"</string>
+              <string name="type">"dialog-control-document"</string>
+              <string name="filename">""</string>
+              <string name="icon-name">"menu"</string>
+              <long name="is-transient">0</long>
+              <long name="owns-file">1</long>
+              <long name="title-mode">0</long>
+              <long name="locked">0</long>
+              <string name="created">"15/5/2007"</string>
+              <string name="proxy-type">"wbMenuProxy"</string>
+              <string name="proxy-Label">"Help"</string>
+              <bool name="proxy-Enabled">1</bool>
+              <string name="proxy-Member variable name">""</string>
+              <string name="proxy-Platform">"&lt;Any platform&gt;"</string>
+              <document>
+                <string name="title">"About VVV...: wxID_ABOUT"</string>
+                <string name="type">"dialog-control-document"</string>
+                <string name="filename">""</string>
+                <string name="icon-name">"menuitem"</string>
+                <long name="is-transient">0</long>
+                <long name="owns-file">1</long>
+                <long name="title-mode">0</long>
+                <long name="locked">0</long>
+                <string name="created">"15/5/2007"</string>
+                <string name="proxy-type">"wbMenuItemProxy"</string>
+                <string name="event-handler-0">"wxEVT_COMMAND_MENU_SELECTED|OnABOUTClick|NONE||"</string>
+                <string name="proxy-Id name">"wxID_ABOUT"</string>
+                <long name="proxy-Id value">5013</long>
+                <string name="proxy-Label">"About VVV..."</string>
+                <string name="proxy-Kind">"Normal"</string>
+                <bool name="proxy-Checked">0</bool>
                 <bool name="proxy-Enabled">1</bool>
                 <string name="proxy-Help text">""</string>
                 <string name="proxy-Bitmap">""</string>
@@ -2270,6 +2308,14 @@
             <string name="proxy-type">"wbBoxSizerProxy"</string>
             <string name="proxy-Orientation">"Vertical"</string>
             <string name="proxy-Member variable name">""</string>
+            <string name="proxy-AlignH">"Centre"</string>
+            <string name="proxy-AlignV">"Centre"</string>
+            <long name="proxy-Stretch factor">0</long>
+            <long name="proxy-Border">5</long>
+            <bool name="proxy-wxLEFT">1</bool>
+            <bool name="proxy-wxRIGHT">1</bool>
+            <bool name="proxy-wxTOP">1</bool>
+            <bool name="proxy-wxBOTTOM">1</bool>
             <bool name="proxy-wxSHAPED">0</bool>
             <bool name="proxy-wxADJUST_MINSIZE">0</bool>
             <bool name="proxy-wxFIXED_MINSIZE">0</bool>

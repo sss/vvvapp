@@ -56,6 +56,7 @@
 #include "wx/filename.h"
 #include "wx/config.h"
 #include "wx/utils.h"
+#include "wx/aboutdlg.h"
 #include "mainframe.h"
 #include "data_interface/data_error.h"
 #include "mytreeitemdata.h"
@@ -200,6 +201,8 @@ BEGIN_EVENT_TABLE( CMainFrame, wxFrame )
 
     EVT_MENU( ID_VIEW_TOOLBAR, CMainFrame::OnViewToolbarClick )
 
+    EVT_MENU( wxID_ABOUT, CMainFrame::OnABOUTClick )
+
     EVT_TREE_SEL_CHANGED( ID_TREE_CONTROL, CMainFrame::OnTreeControlSelChanged )
     EVT_TREE_ITEM_EXPANDING( ID_TREE_CONTROL, CMainFrame::OnTreeControlItemExpanding )
 
@@ -313,23 +316,23 @@ void CMainFrame::CreateControls()
 
     wxMenuBar* menuBar = new wxMenuBar;
     m_fileMenu = new wxMenu;
-    m_fileMenu->Append(wxID_OPEN, _("Open"), _T(""), wxITEM_NORMAL);
+    m_fileMenu->Append(wxID_OPEN, _("Open..."), _T(""), wxITEM_NORMAL);
     m_fileMenu->AppendSeparator();
     m_fileMenu->Append(wxID_EXIT, _("Exit"), _T(""), wxITEM_NORMAL);
     menuBar->Append(m_fileMenu, _("File"));
     wxMenu* itemMenu14 = new wxMenu;
-    itemMenu14->Append(ID_ADD_VIRTUAL_FOLDER, _("Add To Virtual Folder"), _T(""), wxITEM_NORMAL);
+    itemMenu14->Append(ID_ADD_VIRTUAL_FOLDER, _("Add To Virtual Folder..."), _T(""), wxITEM_NORMAL);
     itemMenu14->AppendSeparator();
-    itemMenu14->Append(ID_RENAME_VOLUME, _("Rename Volume"), _T(""), wxITEM_NORMAL);
+    itemMenu14->Append(ID_RENAME_VOLUME, _("Rename Volume..."), _T(""), wxITEM_NORMAL);
     itemMenu14->Append(ID_DELETE_VOLUME, _("Delete Volume"), _T(""), wxITEM_NORMAL);
     itemMenu14->AppendSeparator();
-    itemMenu14->Append(ID_NEW_VIRTUAL_ROOT_FOLDER, _("New Virtual Root Folder"), _T(""), wxITEM_NORMAL);
-    itemMenu14->Append(ID_NEW_VIRTUAL_SUBFOLDER, _("New Virtual Subfolder"), _T(""), wxITEM_NORMAL);
-    itemMenu14->Append(ID_RENAME_VIRTUAL_FOLDER, _("Rename Virtual Folder"), _T(""), wxITEM_NORMAL);
+    itemMenu14->Append(ID_NEW_VIRTUAL_ROOT_FOLDER, _("New Virtual Root Folder..."), _T(""), wxITEM_NORMAL);
+    itemMenu14->Append(ID_NEW_VIRTUAL_SUBFOLDER, _("New Virtual Subfolder..."), _T(""), wxITEM_NORMAL);
+    itemMenu14->Append(ID_RENAME_VIRTUAL_FOLDER, _("Rename Virtual Folder..."), _T(""), wxITEM_NORMAL);
     itemMenu14->Append(ID_DELETE_VIRTUAL_FOLDER, _("Delete Virtual Folder"), _T(""), wxITEM_NORMAL);
     menuBar->Append(itemMenu14, _("Edit"));
     wxMenu* itemMenu24 = new wxMenu;
-    itemMenu24->Append(ID_CATALOG_VOLUME, _("Catalog Volume"), _T(""), wxITEM_NORMAL);
+    itemMenu24->Append(ID_CATALOG_VOLUME, _("Catalog Volume..."), _T(""), wxITEM_NORMAL);
     menuBar->Append(itemMenu24, _("Volumes"));
     wxMenu* itemMenu26 = new wxMenu;
     itemMenu26->Append(ID_VIEW_PHYSICAL, _("Physical View"), _T(""), wxITEM_RADIO);
@@ -339,6 +342,9 @@ void CMainFrame::CreateControls()
     itemMenu26->Append(ID_VIEW_TOOLBAR, _("Toolbar"), _T(""), wxITEM_CHECK);
     itemMenu26->Check(ID_VIEW_TOOLBAR, true);
     menuBar->Append(itemMenu26, _("View"));
+    wxMenu* itemMenu31 = new wxMenu;
+    itemMenu31->Append(wxID_ABOUT, _("About VVV..."), _T(""), wxITEM_NORMAL);
+    menuBar->Append(itemMenu31, _("Help"));
     itemFrame1->SetMenuBar(menuBar);
 
     m_Toolbar = CreateToolBar( wxTB_FLAT|wxTB_HORIZONTAL|wxTB_TEXT, ID_TOOLBAR1 );
@@ -361,21 +367,21 @@ void CMainFrame::CreateControls()
     m_Toolbar->Realize();
     itemFrame1->SetToolBar(m_Toolbar);
 
-    wxStatusBar* itemStatusBar31 = new wxStatusBar( itemFrame1, ID_STATUSBAR1, wxST_SIZEGRIP );
-    itemStatusBar31->SetFieldsCount(2);
-    itemFrame1->SetStatusBar(itemStatusBar31);
+    wxStatusBar* itemStatusBar33 = new wxStatusBar( itemFrame1, ID_STATUSBAR1, wxST_SIZEGRIP );
+    itemStatusBar33->SetFieldsCount(2);
+    itemFrame1->SetStatusBar(itemStatusBar33);
 
-    wxSplitterWindow* itemSplitterWindow32 = new wxSplitterWindow( itemFrame1, ID_SPLITTERWINDOW1, wxDefaultPosition, wxSize(100, 100), wxSP_3DBORDER|wxSP_3DSASH|wxSP_NO_XP_THEME|wxNO_BORDER );
-    itemSplitterWindow32->SetMinimumPaneSize(0);
+    wxSplitterWindow* itemSplitterWindow34 = new wxSplitterWindow( itemFrame1, ID_SPLITTERWINDOW1, wxDefaultPosition, wxSize(100, 100), wxSP_3DBORDER|wxSP_3DSASH|wxSP_NO_XP_THEME|wxNO_BORDER );
+    itemSplitterWindow34->SetMinimumPaneSize(0);
 
-    wxTreeCtrl* itemTreeCtrl33 = new wxTreeCtrl( itemSplitterWindow32, ID_TREE_CONTROL, wxDefaultPosition, wxSize(100, 100), wxTR_HAS_BUTTONS |wxTR_HIDE_ROOT|wxTR_SINGLE|wxNO_BORDER|wxTR_DEFAULT_STYLE );
+    wxTreeCtrl* itemTreeCtrl35 = new wxTreeCtrl( itemSplitterWindow34, ID_TREE_CONTROL, wxDefaultPosition, wxSize(100, 100), wxTR_HAS_BUTTONS |wxTR_HIDE_ROOT|wxTR_SINGLE|wxNO_BORDER|wxTR_DEFAULT_STYLE );
 
-    wxListCtrl* itemListCtrl34 = new wxListCtrl( itemSplitterWindow32, ID_LIST_CONTROL, wxDefaultPosition, wxSize(100, 100), wxLC_REPORT|wxNO_BORDER );
+    wxListCtrl* itemListCtrl36 = new wxListCtrl( itemSplitterWindow34, ID_LIST_CONTROL, wxDefaultPosition, wxSize(100, 100), wxLC_REPORT|wxNO_BORDER );
 
-    itemSplitterWindow32->SplitVertically(itemTreeCtrl33, itemListCtrl34, 50);
+    itemSplitterWindow34->SplitVertically(itemTreeCtrl35, itemListCtrl36, 50);
 
     // Connect events and objects
-    itemTreeCtrl33->Connect(ID_TREE_CONTROL, wxEVT_CONTEXT_MENU, wxContextMenuEventHandler(CMainFrame::OnTreeControlContextMenu), NULL, this);
+    itemTreeCtrl35->Connect(ID_TREE_CONTROL, wxEVT_CONTEXT_MENU, wxContextMenuEventHandler(CMainFrame::OnTreeControlContextMenu), NULL, this);
 ////@end CMainFrame content construction
 
 	// creates the tree control used to show virtual folders
@@ -1659,5 +1665,22 @@ void CMainFrame::OnDeleteVolumeClick( wxCommandEvent& WXUNUSED(event) )
 void CMainFrame::OnEXITClick( wxCommandEvent& WXUNUSED(event) )
 {
 	Close(true);
+}
+
+/*!
+ * wxEVT_COMMAND_MENU_SELECTED event handler for wxID_ABOUT
+ */
+
+void CMainFrame::OnABOUTClick( wxCommandEvent& WXUNUSED(event) )
+{
+	wxAboutDialogInfo info;
+	info.SetName( "VVV" );
+	info.SetVersion( "0.5" );
+	info.SetWebSite( "http://vvvapp.sourceforge.net/" );
+	info.SetDescription( _("VVV (Virtual Volumes View): a program to catalog removable devices like CDs and DVDs") );
+	info.SetCopyright( _("Copyright (C) 2007 The VVV Team") );
+	info.AddDeveloper( "Fulvio Senore" );
+
+	wxAboutBox( info );
 }
 
