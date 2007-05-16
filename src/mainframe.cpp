@@ -1269,7 +1269,13 @@ void CMainFrame::OnAddVirtualFolderUpdate( wxUpdateUIEvent& event )
 		return;
 	}
 	
-	event.Enable( m_CurrentView == Physical );
+	bool isEnabled = m_CurrentView == Physical;
+	if( isEnabled ) {
+		wxTreeCtrl* tctl = GetTreePhysicalControl();
+		isEnabled = (tctl->GetCount() > 0);
+	}
+
+	event.Enable( isEnabled );
 }
 
 
