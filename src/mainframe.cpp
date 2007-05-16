@@ -1143,13 +1143,18 @@ void CMainFrame::OnRenameVolumeUpdate( wxUpdateUIEvent& event )
 	
 	bool hideElement = false;
 	wxTreeCtrl *tctl = GetTreePhysicalControl();
-	wxTreeItemId item = tctl->GetSelection();
-	if( item.IsOk() ) {
-		if( tctl->GetItemParent(item) != tctl->GetRootItem() ) hideElement = true;
+	if( tctl->GetCount() > 0 ) {
+		wxTreeItemId item = tctl->GetSelection();
+		if( item.IsOk() ) {
+			if( tctl->GetItemParent(item) != tctl->GetRootItem() ) hideElement = true;
+		}
+		else {
+			hideElement = true;
+		}
 	}
-	else {
+	else
 		hideElement = true;
-	}
+
 	event.Enable( !hideElement );
 }
 
@@ -1166,13 +1171,18 @@ void CMainFrame::OnDeleteVolumeUpdate( wxUpdateUIEvent& event )
 	
 	bool hideElement = false;
 	wxTreeCtrl *tctl = GetTreePhysicalControl();
-	wxTreeItemId item = tctl->GetSelection();
-	if( item.IsOk() ) {
-		if( tctl->GetItemParent(item) != tctl->GetRootItem() ) hideElement = true;
+	if( tctl->GetCount() > 0 ) {
+		wxTreeItemId item = tctl->GetSelection();
+		if( item.IsOk() ) {
+			if( tctl->GetItemParent(item) != tctl->GetRootItem() ) hideElement = true;
+		}
+		else {
+			hideElement = true;
+		}
 	}
-	else {
+	else
 		hideElement = true;
-	}
+
 	event.Enable( !hideElement );
 }
 
@@ -1373,8 +1383,11 @@ void CMainFrame::OnNewVirtualSubfolderUpdate( wxUpdateUIEvent& event )
 	bool isEnabled = m_CurrentView == Virtual;
 	if( isEnabled ) {
 		wxTreeCtrl* tctl = GetTreeVirtualControl();
-		wxTreeItemId item = tctl->GetSelection();
-		isEnabled = item.IsOk();
+		isEnabled = (tctl->GetCount() > 0);
+		if( isEnabled ) {
+			wxTreeItemId item = tctl->GetSelection();
+			isEnabled = item.IsOk();
+		}
 	}
 	event.Enable( isEnabled );
 }
@@ -1429,13 +1442,16 @@ void CMainFrame::OnRenameVirtualFolderUpdate( wxUpdateUIEvent& event )
 	bool isEnabled = m_CurrentView == Virtual;
 	if( isEnabled ) {
 		wxTreeCtrl* tctl = GetTreeVirtualControl();
-		wxTreeItemId item = tctl->GetSelection();
-		if( item.IsOk() ) {
-			MyTreeItemData *itemData = (MyTreeItemData *) tctl->GetItemData(item);
-			isEnabled = itemData->GetPhysPathID().IsNull();
+		isEnabled = (tctl->GetCount() > 0);
+		if( isEnabled ) {
+			wxTreeItemId item = tctl->GetSelection();
+			if( item.IsOk() ) {
+				MyTreeItemData *itemData = (MyTreeItemData *) tctl->GetItemData(item);
+				isEnabled = itemData->GetPhysPathID().IsNull();
+			}
+			else
+				isEnabled = false;
 		}
-		else
-			isEnabled = false;
 	}
 	event.Enable( isEnabled );
 }
@@ -1479,8 +1495,11 @@ void CMainFrame::OnDeleteVirtualFolderUpdate( wxUpdateUIEvent& event )
 	bool isEnabled = m_CurrentView == Virtual;
 	if( isEnabled ) {
 		wxTreeCtrl* tctl = GetTreeVirtualControl();
-		wxTreeItemId item = tctl->GetSelection();
-		isEnabled = item.IsOk();
+		isEnabled = (tctl->GetCount() > 0);
+		if( isEnabled ) {
+			wxTreeItemId item = tctl->GetSelection();
+			isEnabled = item.IsOk();
+		}
 	}
 	event.Enable( isEnabled );
 }
