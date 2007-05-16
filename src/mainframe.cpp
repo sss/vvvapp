@@ -1553,7 +1553,7 @@ void CMainFrame::OpenDatabase( wxString fileName ) {
 	m_fileHistory->AddFileToHistory( fileName );
 
 	// sets the main window caption
-	SetLabel( fileName + " - " + CUtils::GetApplicationName() );
+	SetTitle( fileName + " - " + CUtils::GetApplicationName() );
 
 }
 /*!
