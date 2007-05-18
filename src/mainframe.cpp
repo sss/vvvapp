@@ -1728,9 +1728,16 @@ void CMainFrame::OnNEWClick( wxCommandEvent& WXUNUSED(event) )
 	wxString databaseFile = fd.GetPath();
 	if ( databaseFile.empty() ) return;
 
+	// add an extension if needed
+	{
+		wxFileName fn(databaseFile);
+		if( fn.GetExt().empty() )
+			databaseFile += ".vvv";
+	}
+
 	// check if the database already exists
 	if( wxFileExists(databaseFile) ) {
-		CUtils::MsgErr( _("Unable to create the new catalog: you have choosen an existing file.\n\nYou must type the name of a non-existing file.") );
+		CUtils::MsgErr( _("Unable to create the new catalog. You have choosen an existing file:\n\n" + databaseFile + "\n\nYou must type the name of a non-existing file.") );
 		return;
 	}
 
@@ -1761,15 +1768,20 @@ void CMainFrame::OnNEWClick( wxCommandEvent& WXUNUSED(event) )
 	// restore the database
 	CBaseDB::CreateFirebirdDatabaseOnDisk( "", "SYSDBA", "masterkey", backupName, databaseFile );
 	
-	// since the restore process creates an all-uppercase file name, rename it to the original name
-	//{
-	//	wxFileName fn(databaseFile);
-	//	wxString name = fn.GetFullName();
-	//	wxString path = fn.GetPath( wxPATH_GET_VOLUME | wxPATH_GET_SEPARATOR );
-	//	wxString ucDatabaseFile = path + name.Upper();
-	//	if( wxFileExists(ucDatabaseFile) )
-	//		wxRenameFile( ucDatabaseFile, databaseFile, false );
-	//}
+	// since under Windows the restore process creates an all-uppercase file name, rename it to the original name
+#ifdef __WXMSW__
+	{
+		wxFileName fn(databaseFile);
+		wxString name = fn.GetFullName();
+		wxString path = fn.GetPath( wxPATH_GET_VOLUME | wxPATH_GET_SEPARATOR );
+		wxString ucDatabaseFile = path + name.Upper();
+		wxString tmpDatabaseFile = ucDatabaseFile + "$$tmp$$";
+		if( wxFileExists(tmpDatabaseFile) )
+			wxRemoveFile( tmpDatabaseFile );
+		wxRenameFile( ucDatabaseFile, tmpDatabaseFile, false );
+		wxRenameFile( tmpDatabaseFile, databaseFile, false );
+	}
+#endif
 
 	// open the database
 	OpenDatabase( databaseFile );
