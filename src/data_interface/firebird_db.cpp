@@ -75,3 +75,14 @@ bool CFirebirdDB::TransactionIsOpened(void) {
 	return (tr != NULL);
 }
 
+void CFirebirdDB::CreateDatabaseOnDisk( wxString serverName, wxString userName, wxString password, wxString backupName, wxString databaseName ) {
+
+	Service svc = ServiceFactory( CUtils::wx2std(serverName), CUtils::wx2std(userName), CUtils::wx2std(password) );
+	svc->Connect();
+	svc->StartRestore( CUtils::wx2std(backupName), CUtils::wx2std(databaseName), 4096 );
+	svc->Wait();
+	svc->Disconnect();
+}
+
+
+

@@ -51,6 +51,12 @@ public:
 	// returns a reference to the transaction
 	IBPP::Transaction& TransactionGetReference(void) {return tr;}
 
+	// creates a new firebird database on disk by restoring a backup
+	// backupName is the name of the backup file that will be restored
+	// databaseName is name of the disk file that will contain the database
+	static void CreateDatabaseOnDisk( wxString serverName, wxString userName, wxString password, wxString backupName, wxString databaseName );
+
+
 protected:
 
 	wxString serverName, databaseName, userName, password;

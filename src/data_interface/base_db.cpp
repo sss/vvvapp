@@ -49,3 +49,8 @@ void CBaseDB::DeleteFirebirdDatabase(void) {
 CBaseDB* CBaseDB::GetDatabase(void) {
 	return _instance;
 }
+
+
+void CBaseDB::CreateFirebirdDatabaseOnDisk( wxString serverName, wxString userName, wxString password, wxString backupName, wxString databaseName ) {
+	CFirebirdDB::CreateDatabaseOnDisk( serverName, userName, password, backupName, databaseName );
+}

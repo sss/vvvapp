@@ -37,7 +37,7 @@ class CBaseDB
 {
 public:
 
-	// called to create a Firebird database. Add other functions to create other type of databases
+	// called to create a Firebird database object. Add other functions to create other type of databases
 	static void CreateFirebirdDatabase( wxString serverName, wxString databaseName, wxString userName, wxString password );
 	
 	// deletes the database object
@@ -56,6 +56,9 @@ public:
 	virtual void TransactionCommit(void) = 0;
 	// rolls back the transaction
 	virtual void TransactionRollback(void) = 0;
+
+	// called to create an empty Firebird physical database on disk
+	static void CreateFirebirdDatabaseOnDisk( wxString serverName, wxString userName, wxString password, wxString backupName, wxString databaseName );
 
 protected:
 

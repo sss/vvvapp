@@ -57,6 +57,8 @@
 #include "wx/config.h"
 #include "wx/utils.h"
 #include "wx/aboutdlg.h"
+#include "wx/stdpaths.h"
+#include "wx/textfile.h"
 #include "mainframe.h"
 #include "data_interface/data_error.h"
 #include "mytreeitemdata.h"
@@ -165,6 +167,8 @@ IMPLEMENT_CLASS( CMainFrame, wxFrame )
 BEGIN_EVENT_TABLE( CMainFrame, wxFrame )
 
 ////@begin CMainFrame event table entries
+    EVT_MENU( wxID_NEW, CMainFrame::OnNEWClick )
+
     EVT_MENU( wxID_OPEN, CMainFrame::OnOPENClick )
 
     EVT_MENU( wxID_EXIT, CMainFrame::OnEXITClick )
@@ -316,35 +320,36 @@ void CMainFrame::CreateControls()
 
     wxMenuBar* menuBar = new wxMenuBar;
     m_fileMenu = new wxMenu;
+    m_fileMenu->Append(wxID_NEW, _("New..."), _T(""), wxITEM_NORMAL);
     m_fileMenu->Append(wxID_OPEN, _("Open..."), _T(""), wxITEM_NORMAL);
     m_fileMenu->AppendSeparator();
     m_fileMenu->Append(wxID_EXIT, _("Exit"), _T(""), wxITEM_NORMAL);
     menuBar->Append(m_fileMenu, _("File"));
-    wxMenu* itemMenu14 = new wxMenu;
-    itemMenu14->Append(ID_ADD_VIRTUAL_FOLDER, _("Add To Virtual Folder..."), _T(""), wxITEM_NORMAL);
-    itemMenu14->AppendSeparator();
-    itemMenu14->Append(ID_RENAME_VOLUME, _("Rename Volume..."), _T(""), wxITEM_NORMAL);
-    itemMenu14->Append(ID_DELETE_VOLUME, _("Delete Volume"), _T(""), wxITEM_NORMAL);
-    itemMenu14->AppendSeparator();
-    itemMenu14->Append(ID_NEW_VIRTUAL_ROOT_FOLDER, _("New Virtual Root Folder..."), _T(""), wxITEM_NORMAL);
-    itemMenu14->Append(ID_NEW_VIRTUAL_SUBFOLDER, _("New Virtual Subfolder..."), _T(""), wxITEM_NORMAL);
-    itemMenu14->Append(ID_RENAME_VIRTUAL_FOLDER, _("Rename Virtual Folder..."), _T(""), wxITEM_NORMAL);
-    itemMenu14->Append(ID_DELETE_VIRTUAL_FOLDER, _("Delete Virtual Folder"), _T(""), wxITEM_NORMAL);
-    menuBar->Append(itemMenu14, _("Edit"));
-    wxMenu* itemMenu24 = new wxMenu;
-    itemMenu24->Append(ID_CATALOG_VOLUME, _("Catalog Volume..."), _T(""), wxITEM_NORMAL);
-    menuBar->Append(itemMenu24, _("Volumes"));
-    wxMenu* itemMenu26 = new wxMenu;
-    itemMenu26->Append(ID_VIEW_PHYSICAL, _("Physical View"), _T(""), wxITEM_RADIO);
-    itemMenu26->Check(ID_VIEW_PHYSICAL, true);
-    itemMenu26->Append(ID_VIEW_VIRTUAL, _("Virtual View"), _T(""), wxITEM_RADIO);
-    itemMenu26->AppendSeparator();
-    itemMenu26->Append(ID_VIEW_TOOLBAR, _("Toolbar"), _T(""), wxITEM_CHECK);
-    itemMenu26->Check(ID_VIEW_TOOLBAR, true);
-    menuBar->Append(itemMenu26, _("View"));
-    wxMenu* itemMenu31 = new wxMenu;
-    itemMenu31->Append(wxID_ABOUT, _("About VVV..."), _T(""), wxITEM_NORMAL);
-    menuBar->Append(itemMenu31, _("Help"));
+    wxMenu* itemMenu15 = new wxMenu;
+    itemMenu15->Append(ID_ADD_VIRTUAL_FOLDER, _("Add To Virtual Folder..."), _T(""), wxITEM_NORMAL);
+    itemMenu15->AppendSeparator();
+    itemMenu15->Append(ID_RENAME_VOLUME, _("Rename Volume..."), _T(""), wxITEM_NORMAL);
+    itemMenu15->Append(ID_DELETE_VOLUME, _("Delete Volume"), _T(""), wxITEM_NORMAL);
+    itemMenu15->AppendSeparator();
+    itemMenu15->Append(ID_NEW_VIRTUAL_ROOT_FOLDER, _("New Virtual Root Folder..."), _T(""), wxITEM_NORMAL);
+    itemMenu15->Append(ID_NEW_VIRTUAL_SUBFOLDER, _("New Virtual Subfolder..."), _T(""), wxITEM_NORMAL);
+    itemMenu15->Append(ID_RENAME_VIRTUAL_FOLDER, _("Rename Virtual Folder..."), _T(""), wxITEM_NORMAL);
+    itemMenu15->Append(ID_DELETE_VIRTUAL_FOLDER, _("Delete Virtual Folder"), _T(""), wxITEM_NORMAL);
+    menuBar->Append(itemMenu15, _("Edit"));
+    wxMenu* itemMenu25 = new wxMenu;
+    itemMenu25->Append(ID_CATALOG_VOLUME, _("Catalog Volume..."), _T(""), wxITEM_NORMAL);
+    menuBar->Append(itemMenu25, _("Volumes"));
+    wxMenu* itemMenu27 = new wxMenu;
+    itemMenu27->Append(ID_VIEW_PHYSICAL, _("Physical View"), _T(""), wxITEM_RADIO);
+    itemMenu27->Check(ID_VIEW_PHYSICAL, true);
+    itemMenu27->Append(ID_VIEW_VIRTUAL, _("Virtual View"), _T(""), wxITEM_RADIO);
+    itemMenu27->AppendSeparator();
+    itemMenu27->Append(ID_VIEW_TOOLBAR, _("Toolbar"), _T(""), wxITEM_CHECK);
+    itemMenu27->Check(ID_VIEW_TOOLBAR, true);
+    menuBar->Append(itemMenu27, _("View"));
+    wxMenu* itemMenu32 = new wxMenu;
+    itemMenu32->Append(wxID_ABOUT, _("About VVV..."), _T(""), wxITEM_NORMAL);
+    menuBar->Append(itemMenu32, _("Help"));
     itemFrame1->SetMenuBar(menuBar);
 
     m_Toolbar = CreateToolBar( wxTB_FLAT|wxTB_HORIZONTAL|wxTB_TEXT, ID_TOOLBAR1 );
@@ -367,21 +372,21 @@ void CMainFrame::CreateControls()
     m_Toolbar->Realize();
     itemFrame1->SetToolBar(m_Toolbar);
 
-    wxStatusBar* itemStatusBar33 = new wxStatusBar( itemFrame1, ID_STATUSBAR1, wxST_SIZEGRIP );
-    itemStatusBar33->SetFieldsCount(2);
-    itemFrame1->SetStatusBar(itemStatusBar33);
+    wxStatusBar* itemStatusBar34 = new wxStatusBar( itemFrame1, ID_STATUSBAR1, wxST_SIZEGRIP );
+    itemStatusBar34->SetFieldsCount(2);
+    itemFrame1->SetStatusBar(itemStatusBar34);
 
-    wxSplitterWindow* itemSplitterWindow34 = new wxSplitterWindow( itemFrame1, ID_SPLITTERWINDOW1, wxDefaultPosition, wxSize(100, 100), wxSP_3DBORDER|wxSP_3DSASH|wxSP_NO_XP_THEME|wxNO_BORDER );
-    itemSplitterWindow34->SetMinimumPaneSize(0);
+    wxSplitterWindow* itemSplitterWindow35 = new wxSplitterWindow( itemFrame1, ID_SPLITTERWINDOW1, wxDefaultPosition, wxSize(100, 100), wxSP_3DBORDER|wxSP_3DSASH|wxSP_NO_XP_THEME|wxNO_BORDER );
+    itemSplitterWindow35->SetMinimumPaneSize(0);
 
-    wxTreeCtrl* itemTreeCtrl35 = new wxTreeCtrl( itemSplitterWindow34, ID_TREE_CONTROL, wxDefaultPosition, wxSize(100, 100), wxTR_HAS_BUTTONS |wxTR_HIDE_ROOT|wxTR_SINGLE|wxNO_BORDER|wxTR_DEFAULT_STYLE );
+    wxTreeCtrl* itemTreeCtrl36 = new wxTreeCtrl( itemSplitterWindow35, ID_TREE_CONTROL, wxDefaultPosition, wxSize(100, 100), wxTR_HAS_BUTTONS |wxTR_HIDE_ROOT|wxTR_SINGLE|wxNO_BORDER|wxTR_DEFAULT_STYLE );
 
-    wxListCtrl* itemListCtrl36 = new wxListCtrl( itemSplitterWindow34, ID_LIST_CONTROL, wxDefaultPosition, wxSize(100, 100), wxLC_REPORT|wxNO_BORDER );
+    wxListCtrl* itemListCtrl37 = new wxListCtrl( itemSplitterWindow35, ID_LIST_CONTROL, wxDefaultPosition, wxSize(100, 100), wxLC_REPORT|wxNO_BORDER );
 
-    itemSplitterWindow34->SplitVertically(itemTreeCtrl35, itemListCtrl36, 50);
+    itemSplitterWindow35->SplitVertically(itemTreeCtrl36, itemListCtrl37, 50);
 
     // Connect events and objects
-    itemTreeCtrl35->Connect(ID_TREE_CONTROL, wxEVT_CONTEXT_MENU, wxContextMenuEventHandler(CMainFrame::OnTreeControlContextMenu), NULL, this);
+    itemTreeCtrl36->Connect(ID_TREE_CONTROL, wxEVT_CONTEXT_MENU, wxContextMenuEventHandler(CMainFrame::OnTreeControlContextMenu), NULL, this);
 ////@end CMainFrame content construction
 
 	// creates the tree control used to show virtual folders
@@ -1707,5 +1712,67 @@ void CMainFrame::OnABOUTClick( wxCommandEvent& WXUNUSED(event) )
 	info.AddDeveloper( "Fulvio Senore" );
 
 	wxAboutBox( info );
+}
+
+/*!
+ * wxEVT_COMMAND_MENU_SELECTED event handler for wxID_NEW
+ */
+
+void CMainFrame::OnNEWClick( wxCommandEvent& WXUNUSED(event) )
+{
+	wxString caption = _("New catalog");
+	wxString wildcard = _("VVV  files (*.vvv)|*.vvv|All files (*.*)|*.*");
+	wxFileDialog fd( this, caption, wxEmptyString, wxEmptyString, wildcard, wxSAVE );
+	if( fd.ShowModal() != wxID_OK ) return;
+
+	wxString databaseFile = fd.GetPath();
+	if ( databaseFile.empty() ) return;
+
+	// check if the database already exists
+	if( wxFileExists(databaseFile) ) {
+		CUtils::MsgErr( _("Unable to create the new catalog: you have choosen an existing file.\n\nYou must type the name of a non-existing file.") );
+		return;
+	}
+
+	// check if we can create the database
+	wxFile f;
+	{
+		wxLogNull ln;
+		if( !f.Create(databaseFile) ) {
+			CUtils::MsgErr( _("Unable to create the new catalog: you have choosen a folder where you do not have the right to create a file.") );
+			return;
+		}
+	}
+	f.Close();
+	wxRemoveFile(databaseFile);
+
+	// creates the name of the database backup file to restore
+	wxString appPath = wxStandardPaths::Get().GetExecutablePath();
+	wxFileName fn(appPath);
+	wxString path = fn.GetPath( wxPATH_GET_VOLUME | wxPATH_GET_SEPARATOR );
+	wxString backupName = path + _T("VVV.fbk");
+	if( !wxFileExists(backupName) ) {
+		CUtils::MsgErr( _("Unable to find the database backup to restore.\n\nYou can try reinstalling the program to solve this problem.") );
+		return;
+	}
+
+	wxBusyCursor wait;
+	
+	// restore the database
+	CBaseDB::CreateFirebirdDatabaseOnDisk( "", "SYSDBA", "masterkey", backupName, databaseFile );
+	
+	// since the restore process creates an all-uppercase file name, rename it to the original name
+	//{
+	//	wxFileName fn(databaseFile);
+	//	wxString name = fn.GetFullName();
+	//	wxString path = fn.GetPath( wxPATH_GET_VOLUME | wxPATH_GET_SEPARATOR );
+	//	wxString ucDatabaseFile = path + name.Upper();
+	//	if( wxFileExists(ucDatabaseFile) )
+	//		wxRenameFile( ucDatabaseFile, databaseFile, false );
+	//}
+
+	// open the database
+	OpenDatabase( databaseFile );
+
 }
 
