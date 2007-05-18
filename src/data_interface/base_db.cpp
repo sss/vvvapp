@@ -54,3 +54,4 @@ CBaseDB* CBaseDB::GetDatabase(void) {
 void CBaseDB::CreateFirebirdDatabaseOnDisk( wxString serverName, wxString userName, wxString password, wxString backupName, wxString databaseName ) {
 	CFirebirdDB::CreateDatabaseOnDisk( serverName, userName, password, backupName, databaseName );
 }
+

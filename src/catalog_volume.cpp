@@ -243,7 +243,7 @@ wxIcon CDialogCatalogVolume::GetIconResource( const wxString& name )
 
 void CDialogCatalogVolume::OnGetVolumeNameClick( wxCommandEvent& WXUNUSED(event) ) {
 #ifdef __WXMSW__
-	wxString path = m_DirControl->GetPath();
+	wxString path = m_VolumePath->GetValue();
 	if( !path.EndsWith(wxT("\\")) )
 		path += wxT("\\");
 	wxString vn = GetVolumeName( path );
