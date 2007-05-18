@@ -101,6 +101,9 @@ public:
     CDialogCatalogVolume( );
     CDialogCatalogVolume( wxWindow* parent, wxWindowID id = SYMBOL_CDIALOGCATALOGVOLUME_IDNAME, const wxString& caption = SYMBOL_CDIALOGCATALOGVOLUME_TITLE, const wxPoint& pos = SYMBOL_CDIALOGCATALOGVOLUME_POSITION, const wxSize& size = SYMBOL_CDIALOGCATALOGVOLUME_SIZE, long style = SYMBOL_CDIALOGCATALOGVOLUME_STYLE );
 
+	// destructor
+    ~CDialogCatalogVolume( );
+
     /// Creation
     bool Create( wxWindow* parent, wxWindowID id = SYMBOL_CDIALOGCATALOGVOLUME_IDNAME, const wxString& caption = SYMBOL_CDIALOGCATALOGVOLUME_TITLE, const wxPoint& pos = SYMBOL_CDIALOGCATALOGVOLUME_POSITION, const wxSize& size = SYMBOL_CDIALOGCATALOGVOLUME_SIZE, long style = SYMBOL_CDIALOGCATALOGVOLUME_STYLE );
 

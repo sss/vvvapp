@@ -53,6 +53,7 @@
 
 #include <wx/dir.h>
 #include <wx/filename.h>
+#include "wx/config.h"
 #include "catalog_volume.h"
 #include "utils.h"
 #include "data_interface/volumes.h"
@@ -122,7 +123,13 @@ bool CDialogCatalogVolume::Create( wxWindow* parent, wxWindowID id, const wxStri
     }
     Centre();
 ////@end CDialogCatalogVolume creation
-    return true;
+
+	wxConfigBase *pConfig = wxConfigBase::Get();
+	pConfig->SetPath(wxT("/CatalogVolume"));
+	wxString catalogPath = pConfig->Read( wxT("CatalogPath"), wxT("") );
+	m_VolumePath->SetValue( catalogPath );
+	
+	return true;
 }
 
 /*!
@@ -189,7 +196,7 @@ void CDialogCatalogVolume::CreateControls()
     itemBoxSizer12->Add(itemButton15, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5);
 
     m_CurrentFolder = new wxStaticText( itemDialog1, ID_CURRENT_FOLDER, _("Current folder"), wxDefaultPosition, wxDefaultSize, 0 );
-    itemBoxSizer3->Add(m_CurrentFolder, 0, wxGROW|wxALL|wxADJUST_MINSIZE, 5);
+    itemBoxSizer3->Add(m_CurrentFolder, 0, wxGROW|wxALL, 5);
 
 ////@end CDialogCatalogVolume content construction
 
@@ -376,3 +383,11 @@ void CDialogCatalogVolume::OnDirCtrlSelChanged( wxTreeEvent& WXUNUSED(event) )
 	}
 }
 
+
+CDialogCatalogVolume::~CDialogCatalogVolume() {
+
+	wxConfigBase *pConfig = wxConfigBase::Get();
+	pConfig->SetPath(wxT("/CatalogVolume"));
+	wxString catalogPath = m_VolumePath->GetValue();
+	pConfig->Write( wxT("CatalogPath"), catalogPath );
+}
