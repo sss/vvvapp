@@ -1141,7 +1141,7 @@ void CMainFrame::OnTreeControlVirtualContextMenu( wxContextMenuEvent& event )
 
 void CMainFrame::OnRenameVolumeUpdate( wxUpdateUIEvent& event )
 {
-	if( CBaseDB::GetDatabase() == NULL ) {
+	if( CBaseDB::GetDatabase() == NULL || m_CurrentView != Physical ) {
 		event.Enable(false);
 		return;
 	}
@@ -1169,7 +1169,7 @@ void CMainFrame::OnRenameVolumeUpdate( wxUpdateUIEvent& event )
 
 void CMainFrame::OnDeleteVolumeUpdate( wxUpdateUIEvent& event )
 {
-	if( CBaseDB::GetDatabase() == NULL ) {
+	if( CBaseDB::GetDatabase() == NULL || m_CurrentView != Physical ) {
 		event.Enable(false);
 		return;
 	}
