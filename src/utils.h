@@ -51,10 +51,22 @@ public:
 	// returns the application name
 	static wxString GetApplicationName(void);
 
+	// returns the application version
+	static wxString GetApplicationVersion(void);
+
+	// returns the expected database version
+	static int GetExpectedDatabaseVersion(void);
 
 private:
 	// name of the current application
 	static wxString applicationName;
+
+	// current application version
+	static wxString applicationVersion;
+
+	// the current version of the application expects this database version
+	static int expectedDatabaseVersion;
+
 };
 
 

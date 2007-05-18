@@ -23,6 +23,8 @@
 #include "utils.h"
 
 wxString CUtils::applicationName = wxT("VVV");
+wxString CUtils::applicationVersion = wxT("0.5");
+int CUtils::expectedDatabaseVersion = 1;
 
 std::string CUtils::wx2std(const wxString& input, wxMBConv* conv)
 {
@@ -77,4 +79,12 @@ wxString CUtils::HumanReadableFileSize( wxLongLong size ) {
 
 wxString CUtils::GetApplicationName(void) {
 	return applicationName;
+}
+
+wxString CUtils::GetApplicationVersion(void) {
+	return applicationVersion;
+}
+
+int CUtils::GetExpectedDatabaseVersion(void) {
+	return expectedDatabaseVersion;
 }

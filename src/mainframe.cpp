@@ -1705,7 +1705,7 @@ void CMainFrame::OnABOUTClick( wxCommandEvent& WXUNUSED(event) )
 {
 	wxAboutDialogInfo info;
 	info.SetName( "VVV" );
-	info.SetVersion( "0.5" );
+	info.SetVersion( CUtils::GetApplicationVersion() );
 	info.SetWebSite( "http://vvvapp.sourceforge.net/" );
 	info.SetDescription( _("VVV (Virtual Volumes View): a program to catalog removable devices like CDs and DVDs") );
 	info.SetCopyright( _("Copyright (C) 2007 The VVV Team") );
