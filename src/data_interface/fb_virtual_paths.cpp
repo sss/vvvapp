@@ -67,6 +67,7 @@ void CVirtualPaths::FB_DbInsert(void) {
 		db->TransactionRollback();
 		throw CDataErrorException( "Duplicate virtual path name", CDataErrorException::Unique );
 	}
+	PathID = tmp;
 
 	if( !inTransaction ) {
 		db->TransactionCommit();
