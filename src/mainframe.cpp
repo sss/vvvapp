@@ -530,7 +530,7 @@ void CMainFrame::LoadVolumeInTreeControl( CVolumes vol, wxTreeCtrl* tctl, wxTree
 	}
 
 	// appends the volume item
-	wxTreeItemId volumeID = tctl->AppendItem( rootID, vol.VolumeName, 0, 0, 
+	wxTreeItemId volumeID = tctl->AppendItem( rootID, CreateVolumeLabel(vol.VolumeName, vol.VolumeDescription), 0, 0, 
 							new MyTreeItemData(vol.VolumeName, vol.VolumeID, rootPathID, true, vol.VolumeDescription) );
 
 	// appends the first level of subfolders
@@ -1823,6 +1823,9 @@ void CMainFrame::OnEditVolumeDescriptionClick( wxCommandEvent& WXUNUSED(event) )
 
 	itemData->SetVolumeDescription( newDescr );
 
+	// updates the tree control
+	tctl->SetItemText( item, CreateVolumeLabel(vol.VolumeName, newDescr) );
+
 }
 
 /*!
@@ -1853,3 +1856,14 @@ void CMainFrame::OnEditVolumeDescriptionUpdate( wxUpdateUIEvent& event )
 	event.Enable( !hideElement );
 }
 
+wxString CMainFrame::CreateVolumeLabel( const wxString& VolumeName, const wxString& VolumeDescription ) {
+	wxString retVal;
+
+	retVal = VolumeName;
+	if( !VolumeDescription.empty() ) {
+		wxString s = VolumeDescription.Left(20);
+		s.Replace( "\n", " " );
+		retVal += " - " + s;
+	}
+	return retVal;
+}

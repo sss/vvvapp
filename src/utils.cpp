@@ -24,7 +24,7 @@
 
 wxString CUtils::applicationName = wxT("VVV");
 wxString CUtils::applicationVersion = wxT("0.5");
-int CUtils::expectedDatabaseVersion = 1;
+int CUtils::expectedDatabaseVersion = 2;
 
 std::string CUtils::wx2std(const wxString& input, wxMBConv* conv)
 {

@@ -264,6 +264,9 @@ public:
 	// called when the user chooses a file from the MRU list
 	void OnMRUFile( wxCommandEvent& event );
 
+	// creates the volume label for a tree control
+	wxString CreateVolumeLabel( const wxString& VolumeName, const wxString& VolumeDescription );
+
 
 private:
 
