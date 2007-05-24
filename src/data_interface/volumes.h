@@ -42,6 +42,7 @@ public:
 	// data members ----------------------------
 	wxString VolumeName;
 	CNullableLong VolumeID;
+	wxString VolumeDescription;
 
 	// methods -----------------------------------
 

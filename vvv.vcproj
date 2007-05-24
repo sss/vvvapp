@@ -1113,6 +1113,9 @@
 				RelativePath=".\src\utils.cpp">
 			</File>
 			<File
+				RelativePath=".\src\volume_description.cpp">
+			</File>
+			<File
 				RelativePath=".\src\vvv.cpp">
 			</File>
 			<File
@@ -1252,6 +1255,9 @@
 			</File>
 			<File
 				RelativePath=".\src\utils.h">
+			</File>
+			<File
+				RelativePath=".\src\volume_description.h">
 			</File>
 			<File
 				RelativePath=".\src\vvv.h">

@@ -34,7 +34,11 @@ void CVolumes::FB_DbInsert(void)
 
 	if( VolumeID.IsNull() )
 		VolumeID = FB_GenNewValue( wxT("GEN_VOLUMES_ID") );
-	sql = "INSERT INTO VOLUMES (VOLUME_ID, VOLUME_NAME) VALUES (" +  long2string(VolumeID) + ", '" + ExpandSingleQuotes(VolumeName) + "')";
+	if( VolumeDescription.empty() )
+		sql = "INSERT INTO VOLUMES (VOLUME_ID, VOLUME_NAME) VALUES (" +  long2string(VolumeID) + ", '" + ExpandSingleQuotes(VolumeName) + "')";
+	else
+		sql = "INSERT INTO VOLUMES (VOLUME_ID, VOLUME_NAME, VOLUME_DESCRIPTION) VALUES (" +  long2string(VolumeID) + ", '" + ExpandSingleQuotes(VolumeName) + "', '" + ExpandSingleQuotes(VolumeDescription) + "')";
+
 	FB_ExecuteQueryNoReturn( sql );
 }
 
@@ -43,7 +47,12 @@ void CVolumes::FB_DbUpdate(void)
 {
 	wxString sql;
 
-	sql = "UPDATE VOLUMES SET VOLUME_NAME = '" + ExpandSingleQuotes(VolumeName) + "' WHERE VOLUME_ID = " + long2string( VolumeID );
+//	sql = "UPDATE VOLUMES SET VOLUME_NAME = '" + ExpandSingleQuotes(VolumeName) + "' WHERE VOLUME_ID = " + long2string( VolumeID );
+	if( VolumeDescription.empty() )
+		sql = "UPDATE VOLUMES SET VOLUME_NAME = '" + ExpandSingleQuotes(VolumeName) + "', VOLUME_DESCRIPTION = NULL WHERE VOLUME_ID = " + long2string( VolumeID );
+	else
+		sql = "UPDATE VOLUMES SET VOLUME_NAME = '" + ExpandSingleQuotes(VolumeName) + "', VOLUME_DESCRIPTION = '" + ExpandSingleQuotes(VolumeDescription) + "' WHERE VOLUME_ID = " + long2string( VolumeID );
+	
 	FB_ExecuteQueryNoReturn( sql );
 }
 
@@ -95,6 +104,18 @@ void CVolumes::FB_FetchRow(void) {
 		else {
 			FB_st->Get("VOLUME_ID", tmp);
 			VolumeID = (long) tmp;
+		}
+		if( FB_st->IsNull("VOLUME_DESCRIPTION") ) {
+			VolumeDescription = "";
+		}
+		else {
+			// reads the blob
+			CFirebirdDB* db = (CFirebirdDB*) CBaseDB::GetDatabase();
+			Blob bl = BlobFactory( db->GetIBPPDB(), db->TransactionGetReference() );
+			string s;
+			FB_st->Get( "VOLUME_DESCRIPTION", bl );
+			bl->Load( s );
+			VolumeDescription = CUtils::std2wx( s );
 		}
 	}
 	else {

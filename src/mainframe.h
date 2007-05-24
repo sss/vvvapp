@@ -81,6 +81,7 @@ class wxMenu;
 #define ID_VIEW_PHYSICAL 10011
 #define ID_VIEW_VIRTUAL 10012
 #define ID_ADD_VIRTUAL_FOLDER 10015
+#define ID_EDIT_VOLUME_DESCRIPTION 10029
 #define ID_RENAME_VOLUME 10013
 #define ID_DELETE_VOLUME 10014
 #define ID_NEW_VIRTUAL_ROOT_FOLDER 10019
@@ -148,6 +149,12 @@ public:
 
     /// wxEVT_UPDATE_UI event handler for ID_ADD_VIRTUAL_FOLDER
     void OnAddVirtualFolderUpdate( wxUpdateUIEvent& event );
+
+    /// wxEVT_COMMAND_MENU_SELECTED event handler for ID_EDIT_VOLUME_DESCRIPTION
+    void OnEditVolumeDescriptionClick( wxCommandEvent& event );
+
+    /// wxEVT_UPDATE_UI event handler for ID_EDIT_VOLUME_DESCRIPTION
+    void OnEditVolumeDescriptionUpdate( wxUpdateUIEvent& event );
 
     /// wxEVT_COMMAND_MENU_SELECTED event handler for ID_RENAME_VOLUME
     void OnRenameVolumeClick( wxCommandEvent& event );

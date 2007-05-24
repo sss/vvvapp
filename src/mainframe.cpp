@@ -63,6 +63,7 @@
 #include "data_interface/data_error.h"
 #include "mytreeitemdata.h"
 #include "mylistitemdata.h"
+#include "volume_description.h"
 
 ////@begin XPM images
 #include "graphics/vvv.xpm"
@@ -175,6 +176,9 @@ BEGIN_EVENT_TABLE( CMainFrame, wxFrame )
 
     EVT_MENU( ID_ADD_VIRTUAL_FOLDER, CMainFrame::OnAddVirtualFolderClick )
     EVT_UPDATE_UI( ID_ADD_VIRTUAL_FOLDER, CMainFrame::OnAddVirtualFolderUpdate )
+
+    EVT_MENU( ID_EDIT_VOLUME_DESCRIPTION, CMainFrame::OnEditVolumeDescriptionClick )
+    EVT_UPDATE_UI( ID_EDIT_VOLUME_DESCRIPTION, CMainFrame::OnEditVolumeDescriptionUpdate )
 
     EVT_MENU( ID_RENAME_VOLUME, CMainFrame::OnRenameVolumeClick )
     EVT_UPDATE_UI( ID_RENAME_VOLUME, CMainFrame::OnRenameVolumeUpdate )
@@ -328,6 +332,7 @@ void CMainFrame::CreateControls()
     wxMenu* itemMenu15 = new wxMenu;
     itemMenu15->Append(ID_ADD_VIRTUAL_FOLDER, _("Add To Virtual Folder..."), _T(""), wxITEM_NORMAL);
     itemMenu15->AppendSeparator();
+    itemMenu15->Append(ID_EDIT_VOLUME_DESCRIPTION, _("Volume Description..."), _T(""), wxITEM_NORMAL);
     itemMenu15->Append(ID_RENAME_VOLUME, _("Rename Volume..."), _T(""), wxITEM_NORMAL);
     itemMenu15->Append(ID_DELETE_VOLUME, _("Delete Volume"), _T(""), wxITEM_NORMAL);
     itemMenu15->AppendSeparator();
@@ -336,20 +341,20 @@ void CMainFrame::CreateControls()
     itemMenu15->Append(ID_RENAME_VIRTUAL_FOLDER, _("Rename Virtual Folder..."), _T(""), wxITEM_NORMAL);
     itemMenu15->Append(ID_DELETE_VIRTUAL_FOLDER, _("Delete Virtual Folder"), _T(""), wxITEM_NORMAL);
     menuBar->Append(itemMenu15, _("Edit"));
-    wxMenu* itemMenu25 = new wxMenu;
-    itemMenu25->Append(ID_CATALOG_VOLUME, _("Catalog Volume..."), _T(""), wxITEM_NORMAL);
-    menuBar->Append(itemMenu25, _("Volumes"));
-    wxMenu* itemMenu27 = new wxMenu;
-    itemMenu27->Append(ID_VIEW_PHYSICAL, _("Physical View"), _T(""), wxITEM_RADIO);
-    itemMenu27->Check(ID_VIEW_PHYSICAL, true);
-    itemMenu27->Append(ID_VIEW_VIRTUAL, _("Virtual View"), _T(""), wxITEM_RADIO);
-    itemMenu27->AppendSeparator();
-    itemMenu27->Append(ID_VIEW_TOOLBAR, _("Toolbar"), _T(""), wxITEM_CHECK);
-    itemMenu27->Check(ID_VIEW_TOOLBAR, true);
-    menuBar->Append(itemMenu27, _("View"));
-    wxMenu* itemMenu32 = new wxMenu;
-    itemMenu32->Append(wxID_ABOUT, _("About VVV..."), _T(""), wxITEM_NORMAL);
-    menuBar->Append(itemMenu32, _("Help"));
+    wxMenu* itemMenu26 = new wxMenu;
+    itemMenu26->Append(ID_CATALOG_VOLUME, _("Catalog Volume..."), _T(""), wxITEM_NORMAL);
+    menuBar->Append(itemMenu26, _("Volumes"));
+    wxMenu* itemMenu28 = new wxMenu;
+    itemMenu28->Append(ID_VIEW_PHYSICAL, _("Physical View"), _T(""), wxITEM_RADIO);
+    itemMenu28->Check(ID_VIEW_PHYSICAL, true);
+    itemMenu28->Append(ID_VIEW_VIRTUAL, _("Virtual View"), _T(""), wxITEM_RADIO);
+    itemMenu28->AppendSeparator();
+    itemMenu28->Append(ID_VIEW_TOOLBAR, _("Toolbar"), _T(""), wxITEM_CHECK);
+    itemMenu28->Check(ID_VIEW_TOOLBAR, true);
+    menuBar->Append(itemMenu28, _("View"));
+    wxMenu* itemMenu33 = new wxMenu;
+    itemMenu33->Append(wxID_ABOUT, _("About VVV..."), _T(""), wxITEM_NORMAL);
+    menuBar->Append(itemMenu33, _("Help"));
     itemFrame1->SetMenuBar(menuBar);
 
     m_Toolbar = CreateToolBar( wxTB_FLAT|wxTB_HORIZONTAL|wxTB_TEXT, ID_TOOLBAR1 );
@@ -372,21 +377,21 @@ void CMainFrame::CreateControls()
     m_Toolbar->Realize();
     itemFrame1->SetToolBar(m_Toolbar);
 
-    wxStatusBar* itemStatusBar34 = new wxStatusBar( itemFrame1, ID_STATUSBAR1, wxST_SIZEGRIP );
-    itemStatusBar34->SetFieldsCount(2);
-    itemFrame1->SetStatusBar(itemStatusBar34);
+    wxStatusBar* itemStatusBar35 = new wxStatusBar( itemFrame1, ID_STATUSBAR1, wxST_SIZEGRIP );
+    itemStatusBar35->SetFieldsCount(2);
+    itemFrame1->SetStatusBar(itemStatusBar35);
 
-    wxSplitterWindow* itemSplitterWindow35 = new wxSplitterWindow( itemFrame1, ID_SPLITTERWINDOW1, wxDefaultPosition, wxSize(100, 100), wxSP_3DBORDER|wxSP_3DSASH|wxSP_NO_XP_THEME|wxNO_BORDER );
-    itemSplitterWindow35->SetMinimumPaneSize(0);
+    wxSplitterWindow* itemSplitterWindow36 = new wxSplitterWindow( itemFrame1, ID_SPLITTERWINDOW1, wxDefaultPosition, wxSize(100, 100), wxSP_3DBORDER|wxSP_3DSASH|wxSP_NO_XP_THEME|wxNO_BORDER );
+    itemSplitterWindow36->SetMinimumPaneSize(0);
 
-    wxTreeCtrl* itemTreeCtrl36 = new wxTreeCtrl( itemSplitterWindow35, ID_TREE_CONTROL, wxDefaultPosition, wxSize(100, 100), wxTR_HAS_BUTTONS |wxTR_HIDE_ROOT|wxTR_SINGLE|wxNO_BORDER|wxTR_DEFAULT_STYLE );
+    wxTreeCtrl* itemTreeCtrl37 = new wxTreeCtrl( itemSplitterWindow36, ID_TREE_CONTROL, wxDefaultPosition, wxSize(100, 100), wxTR_HAS_BUTTONS |wxTR_HIDE_ROOT|wxTR_SINGLE|wxNO_BORDER|wxTR_DEFAULT_STYLE );
 
-    wxListCtrl* itemListCtrl37 = new wxListCtrl( itemSplitterWindow35, ID_LIST_CONTROL, wxDefaultPosition, wxSize(100, 100), wxLC_REPORT|wxNO_BORDER );
+    wxListCtrl* itemListCtrl38 = new wxListCtrl( itemSplitterWindow36, ID_LIST_CONTROL, wxDefaultPosition, wxSize(100, 100), wxLC_REPORT|wxNO_BORDER );
 
-    itemSplitterWindow35->SplitVertically(itemTreeCtrl36, itemListCtrl37, 50);
+    itemSplitterWindow36->SplitVertically(itemTreeCtrl37, itemListCtrl38, 50);
 
     // Connect events and objects
-    itemTreeCtrl36->Connect(ID_TREE_CONTROL, wxEVT_CONTEXT_MENU, wxContextMenuEventHandler(CMainFrame::OnTreeControlContextMenu), NULL, this);
+    itemTreeCtrl37->Connect(ID_TREE_CONTROL, wxEVT_CONTEXT_MENU, wxContextMenuEventHandler(CMainFrame::OnTreeControlContextMenu), NULL, this);
 ////@end CMainFrame content construction
 
 	// creates the tree control used to show virtual folders
@@ -526,7 +531,7 @@ void CMainFrame::LoadVolumeInTreeControl( CVolumes vol, wxTreeCtrl* tctl, wxTree
 
 	// appends the volume item
 	wxTreeItemId volumeID = tctl->AppendItem( rootID, vol.VolumeName, 0, 0, 
-							new MyTreeItemData(vol.VolumeName, vol.VolumeID, rootPathID, true) );
+							new MyTreeItemData(vol.VolumeName, vol.VolumeID, rootPathID, true, vol.VolumeDescription) );
 
 	// appends the first level of subfolders
 
@@ -537,7 +542,7 @@ void CMainFrame::LoadVolumeInTreeControl( CVolumes vol, wxTreeCtrl* tctl, wxTree
 		wxString name = pth.PathName;
 		// adds the folder to the tree
 		wxTreeItemId itemID = tctl->AppendItem( volumeID, name, 1, 2, 
-							new MyTreeItemData(name, vol.VolumeID, pth.PathID, false) );
+							new MyTreeItemData(name, vol.VolumeID, pth.PathID, false, "") );
 		// sets the expanded images
 		tctl->SetItemImage( itemID, 1, wxTreeItemIcon_Expanded );
 		tctl->SetItemImage( itemID, 2, wxTreeItemIcon_SelectedExpanded );
@@ -559,7 +564,7 @@ void CMainFrame::LoadFolderInTreeControl( long VolumeID, wxTreeCtrl* tctl, wxTre
 		name = name.AfterLast( wxFileName::GetPathSeparator() );
 		// adds the folder to the tree
 		wxTreeItemId itemID = tctl->AppendItem( fatherTreeID, name, 1, 2, 
-							new MyTreeItemData(name, VolumeID, pth.PathID, false) );
+							new MyTreeItemData(name, VolumeID, pth.PathID, false, "") );
 		// sets the expanded images
 		tctl->SetItemImage( itemID, 1, wxTreeItemIcon_Expanded );
 		tctl->SetItemImage( itemID, 2, wxTreeItemIcon_SelectedExpanded );
@@ -1078,6 +1083,7 @@ void CMainFrame::OnTreeControlContextMenu( wxContextMenuEvent& event )
 	if( tctl->GetItemParent(item) == tctl->GetRootItem() ) {
 		// only for voume nodes, not for folders
 	    menu.AppendSeparator();
+		menu.Append( ID_EDIT_VOLUME_DESCRIPTION, _("Edit description") );
 		menu.Append( ID_RENAME_VOLUME, _("Rename") );
 		menu.Append( ID_DELETE_VOLUME, _("Delete") );
 	}
@@ -1367,7 +1373,7 @@ void CMainFrame::CreateNewVirtualFolder( CNullableLong FatherID, wxString window
 
 	// adds the folder to the tree control
 	wxTreeItemId newItem = tctl->AppendItem( fatherItem, pth.PathName, 1, 2, 
-						new MyTreeItemData(pth.PathName, 0, pth.PathID, false) );
+						new MyTreeItemData(pth.PathName, 0, pth.PathID, false, "") );
 	tctl->SetItemTextColour( newItem, *wxBLUE );
 	// sets the expanded images
 	tctl->SetItemImage( newItem, 1, wxTreeItemIcon_Expanded );
@@ -1786,5 +1792,64 @@ void CMainFrame::OnNEWClick( wxCommandEvent& WXUNUSED(event) )
 	// open the database
 	OpenDatabase( databaseFile );
 
+}
+
+/*!
+ * wxEVT_COMMAND_MENU_SELECTED event handler for ID_EDIT_VOLUME_DESCRIPTION
+ */
+
+void CMainFrame::OnEditVolumeDescriptionClick( wxCommandEvent& WXUNUSED(event) )
+{
+	wxTreeCtrl *tctl = GetTreePhysicalControl();
+	wxTreeItemId item = tctl->GetSelection();
+	wxString volumeName = tctl->GetItemText( item );
+    MyTreeItemData *itemData = (MyTreeItemData *) tctl->GetItemData(item);
+
+	CDialogVolumeDescription dialog( this, ID_DIALOG_VOLUME_DESCRIPTION, _("Volume description") );
+	dialog.SetVolumeName( volumeName );
+	wxString orgDescr = itemData->GetVolumeDescription();
+	dialog.SetDescription( orgDescr );
+
+	if( dialog.ShowModal() != wxID_OK ) return;
+
+	wxString newDescr = dialog.GetDescription();
+	if( newDescr == orgDescr) return;
+
+	CVolumes vol;
+	vol.VolumeID = itemData->GetVolumeID();
+	vol.VolumeName = itemData->GetDesc();
+	vol.VolumeDescription = newDescr;
+	vol.DbUpdate();
+
+	itemData->SetVolumeDescription( newDescr );
+
+}
+
+/*!
+ * wxEVT_UPDATE_UI event handler for ID_EDIT_VOLUME_DESCRIPTION
+ */
+
+void CMainFrame::OnEditVolumeDescriptionUpdate( wxUpdateUIEvent& event )
+{
+	if( CBaseDB::GetDatabase() == NULL || m_CurrentView != Physical ) {
+		event.Enable(false);
+		return;
+	}
+	
+	bool hideElement = false;
+	wxTreeCtrl *tctl = GetTreePhysicalControl();
+	if( tctl->GetCount() > 0 ) {
+		wxTreeItemId item = tctl->GetSelection();
+		if( item.IsOk() ) {
+			if( tctl->GetItemParent(item) != tctl->GetRootItem() ) hideElement = true;
+		}
+		else {
+			hideElement = true;
+		}
+	}
+	else
+		hideElement = true;
+
+	event.Enable( !hideElement );
 }
 

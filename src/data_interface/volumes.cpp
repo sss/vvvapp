@@ -24,6 +24,7 @@
 
 CVolumes::CVolumes(void) {
 	VolumeName = "";
+	VolumeDescription = "";
 }
 
 CVolumes::CVolumes( long volumeID ) {
