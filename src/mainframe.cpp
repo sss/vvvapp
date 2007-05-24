@@ -1373,7 +1373,7 @@ void CMainFrame::CreateNewVirtualFolder( CNullableLong FatherID, wxString window
 
 	// adds the folder to the tree control
 	wxTreeItemId newItem = tctl->AppendItem( fatherItem, pth.PathName, 1, 2, 
-						new MyTreeItemData(pth.PathName, 0, pth.PathID, false, "") );
+						new MyTreeItemData(pth.PathName, pth.PathID, pth.PhysPathID) );
 	tctl->SetItemTextColour( newItem, *wxBLUE );
 	// sets the expanded images
 	tctl->SetItemImage( newItem, 1, wxTreeItemIcon_Expanded );
