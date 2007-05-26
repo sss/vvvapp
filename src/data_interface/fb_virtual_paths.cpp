@@ -86,13 +86,13 @@ void CVirtualPaths::FB_DbUpdate(void)
 	if( FatherID.IsNull() )
 		sql += "NULL, ";
 	else
-		sql += long2string(FatherID) + ", ";
+		sql += CUtils::long2string(FatherID) + ", ";
 	sql += "PHYS_PATH_ID = ";
 	if( PhysPathID.IsNull() )
 		sql += "NULL ";
 	else
-		sql += long2string(PhysPathID) + " ";
-	sql += " WHERE PATH_ID = "  + long2string(PathID);
+		sql += CUtils::long2string(PhysPathID) + " ";
+	sql += " WHERE PATH_ID = "  + CUtils::long2string(PathID);
 	FB_ExecuteQueryNoReturn( sql );
 }
 

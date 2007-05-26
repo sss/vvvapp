@@ -35,9 +35,9 @@ void CVolumes::FB_DbInsert(void)
 	if( VolumeID.IsNull() )
 		VolumeID = FB_GenNewValue( wxT("GEN_VOLUMES_ID") );
 	if( VolumeDescription.empty() )
-		sql = "INSERT INTO VOLUMES (VOLUME_ID, VOLUME_NAME) VALUES (" +  long2string(VolumeID) + ", '" + ExpandSingleQuotes(VolumeName) + "')";
+		sql = "INSERT INTO VOLUMES (VOLUME_ID, VOLUME_NAME) VALUES (" +  CUtils::long2string(VolumeID) + ", '" + ExpandSingleQuotes(VolumeName) + "')";
 	else
-		sql = "INSERT INTO VOLUMES (VOLUME_ID, VOLUME_NAME, VOLUME_DESCRIPTION) VALUES (" +  long2string(VolumeID) + ", '" + ExpandSingleQuotes(VolumeName) + "', '" + ExpandSingleQuotes(VolumeDescription) + "')";
+		sql = "INSERT INTO VOLUMES (VOLUME_ID, VOLUME_NAME, VOLUME_DESCRIPTION) VALUES (" +  CUtils::long2string(VolumeID) + ", '" + ExpandSingleQuotes(VolumeName) + "', '" + ExpandSingleQuotes(VolumeDescription) + "')";
 
 	FB_ExecuteQueryNoReturn( sql );
 }
@@ -49,9 +49,9 @@ void CVolumes::FB_DbUpdate(void)
 
 //	sql = "UPDATE VOLUMES SET VOLUME_NAME = '" + ExpandSingleQuotes(VolumeName) + "' WHERE VOLUME_ID = " + long2string( VolumeID );
 	if( VolumeDescription.empty() )
-		sql = "UPDATE VOLUMES SET VOLUME_NAME = '" + ExpandSingleQuotes(VolumeName) + "', VOLUME_DESCRIPTION = NULL WHERE VOLUME_ID = " + long2string( VolumeID );
+		sql = "UPDATE VOLUMES SET VOLUME_NAME = '" + ExpandSingleQuotes(VolumeName) + "', VOLUME_DESCRIPTION = NULL WHERE VOLUME_ID = " + CUtils::long2string( VolumeID );
 	else
-		sql = "UPDATE VOLUMES SET VOLUME_NAME = '" + ExpandSingleQuotes(VolumeName) + "', VOLUME_DESCRIPTION = '" + ExpandSingleQuotes(VolumeDescription) + "' WHERE VOLUME_ID = " + long2string( VolumeID );
+		sql = "UPDATE VOLUMES SET VOLUME_NAME = '" + ExpandSingleQuotes(VolumeName) + "', VOLUME_DESCRIPTION = '" + ExpandSingleQuotes(VolumeDescription) + "' WHERE VOLUME_ID = " + CUtils::long2string( VolumeID );
 	
 	FB_ExecuteQueryNoReturn( sql );
 }

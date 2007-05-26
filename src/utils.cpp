@@ -25,6 +25,7 @@
 wxString CUtils::applicationName = wxT("VVV");
 wxString CUtils::applicationVersion = wxT("0.5");
 int CUtils::expectedDatabaseVersion = 2;
+wxString CUtils::strucUpdateDbName = wxT("vvv-struct-update.fdb");
 
 std::string CUtils::wx2std(const wxString& input, wxMBConv* conv)
 {
@@ -88,3 +89,16 @@ wxString CUtils::GetApplicationVersion(void) {
 int CUtils::GetExpectedDatabaseVersion(void) {
 	return expectedDatabaseVersion;
 }
+
+wxString CUtils::GetStructUpdateDbName(void) {
+	return strucUpdateDbName;
+}
+
+
+// converts a long to a string
+wxString CUtils::long2string( long val ) {
+	wxString retVal;
+	retVal.Printf( "%d", val );
+	return retVal;
+}
+

@@ -38,11 +38,11 @@ protected:
 	// sets the correct database type
 	static void SetDatabaseType( DBType dbt );
 
+	// gets the current database type
+	static DBType GetDatabaseType( void );
+
 	// doubles single-quote charachters in a string, used to create SQL statements
 	wxString ExpandSingleQuotes( wxString txt );
-
-	// converts a long to a string
-	wxString long2string( long val );
 
 	// true if we are past the end of the result set
 	bool eof;

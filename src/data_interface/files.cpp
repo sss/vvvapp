@@ -31,7 +31,7 @@ CFiles::~CFiles(void) {
 }
 
 void CFiles::DBStartQueryListFiles( long PathID ) {
-	wxString sql = "SELECT * FROM FILES WHERE PATH_ID = " + long2string(PathID) + " ORDER BY FILE_NAME";
+	wxString sql = "SELECT * FROM FILES WHERE PATH_ID = " + CUtils::long2string(PathID) + " ORDER BY FILE_NAME";
 	DBStartMultiRowQuery( sql, true );
 }
 

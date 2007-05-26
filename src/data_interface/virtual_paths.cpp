@@ -36,7 +36,7 @@ void CVirtualPaths::DBStartQueryListPaths( CNullableLong FathID ) {
 	if( FathID.IsNull() )
 		sql = "SELECT * FROM VIRTUAL_PATHS WHERE FATHER_ID IS NULL ORDER BY PATH";
 	else
-		sql = "SELECT * FROM VIRTUAL_PATHS WHERE FATHER_ID = " + long2string(FathID) + " ORDER BY PATH";
+		sql = "SELECT * FROM VIRTUAL_PATHS WHERE FATHER_ID = " + CUtils::long2string(FathID) + " ORDER BY PATH";
 
 	DBStartMultiRowQuery( sql, true );
 }

@@ -36,13 +36,13 @@ void CFiles::FB_DbInsert(void)
 		sql += "FILE_ID, ";
 	sql += "FILE_NAME, FILE_EXT, FILE_SIZE, FILE_DATETIME, PATH_FILE_ID, PATH_ID) VALUES (";
 	if( !FileID.IsNull() )
-		sql += long2string(FileID) + ", ";
+		sql += CUtils::long2string(FileID) + ", ";
 	sql += "'" + ExpandSingleQuotes(FileName) + "', '" + 
 		         ExpandSingleQuotes(FileExt) + "', " + 
                  FileSize.ToString() + ", " +
 				 DateTime.Format( "'%Y-%m-%d %H:%M:%S'" ) + ", " +
-				 (PathFileID.IsNull() ? "NULL" : long2string(PathFileID) ) + ", " +
-				 long2string(PathID) + ")";
+				 (PathFileID.IsNull() ? "NULL" : CUtils::long2string(PathFileID) ) + ", " +
+				 CUtils::long2string(PathID) + ")";
 	FB_ExecuteQueryNoReturn( sql );
 }
 
@@ -69,7 +69,7 @@ void CFiles::FB_DbDelete(void)
 {
 	wxString sql;
 
-	sql = "DELETE FROM FILES WHERE FILE_ID = " + long2string( FileID );
+	sql = "DELETE FROM FILES WHERE FILE_ID = " + CUtils::long2string( FileID );
 	FB_ExecuteQueryNoReturn( sql );
 }
 

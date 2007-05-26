@@ -37,6 +37,13 @@ public:
 
 	wxString Connect(void);
 	void Disconnect(void);
+	
+	// returns the database version
+	int GetDatabaseVersion(void);
+
+	// upgrades the database to a newer version
+	// current version is the current version of the database
+	void UpgradeDatabase( int currentVersion );
 
 	IBPP::Database GetIBPPDB(void) {return db;};
 

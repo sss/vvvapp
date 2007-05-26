@@ -59,6 +59,7 @@
 #include "wx/aboutdlg.h"
 #include "wx/stdpaths.h"
 #include "wx/textfile.h"
+#include "wx/busyinfo.h"
 #include "mainframe.h"
 #include "data_interface/data_error.h"
 #include "mytreeitemdata.h"
@@ -772,7 +773,7 @@ void CMainFrame::OnOPENClick( wxCommandEvent& WXUNUSED(event) )
 	if( fd.ShowModal() == wxID_OK ) {
 		wxString path = fd.GetPath();
 		if ( path.empty() ) return;
-		OpenDatabase( path );
+		OpenDatabase( path, CUtils::GetExpectedDatabaseVersion() );
 	}
 }
 
@@ -1532,12 +1533,12 @@ void CMainFrame::OnMRUFile( wxCommandEvent& event ) {
 		m_fileHistory->RemoveFileFromHistory( i );
 		return;
 	}
-	OpenDatabase( fileName );
+	OpenDatabase( fileName, CUtils::GetExpectedDatabaseVersion() );
 
 }
 
 
-void CMainFrame::OpenDatabase( wxString fileName ) {
+void CMainFrame::OpenDatabase( wxString fileName, int expectedVersion ) {
 
 	wxBusyCursor wait;
 
@@ -1549,6 +1550,20 @@ void CMainFrame::OpenDatabase( wxString fileName ) {
 	
 	CBaseDB::CreateFirebirdDatabase( "", fileName, "SYSDBA", "masterkey" );
 	wxString stmp = CBaseDB::GetDatabase()->Connect();
+
+	int dbVersion = CBaseDB::GetDatabase()->GetDatabaseVersion();
+
+	if( dbVersion < expectedVersion ) {
+		// we need to upgrade the database
+
+		if( !wxFileExists(CUtils::GetStructUpdateDbName() ) ) {
+			CUtils::MsgErr( _("This catalog has been created with a previous version of the program and it needs to be upgraded, but the file containing the upgrades list is missing.\n\nYou can try reinstalling the program to solve this problem.") );
+			return;
+		}
+
+		wxBusyInfo bi( _("Upgrading the catalog, please wait...") );
+		CBaseDB::GetDatabase()->UpgradeDatabase( dbVersion );
+	}
 
 	LoadTreeControl();
 	LoadVirtualTreeControl();
@@ -1790,7 +1805,7 @@ void CMainFrame::OnNEWClick( wxCommandEvent& WXUNUSED(event) )
 #endif
 
 	// open the database
-	OpenDatabase( databaseFile );
+	OpenDatabase( databaseFile, CUtils::GetExpectedDatabaseVersion() );
 
 }
 

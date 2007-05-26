@@ -37,9 +37,9 @@ void CVirtualFiles::FB_DbInsert(void)
 		sql += "FILE_ID, ";
 	sql += "VIRTUAL_PATH_ID, PHYSICAL_FILE_ID) VALUES (";
 	if( !FileID.IsNull() )
-		sql += long2string(FileID) + ", ";
-	sql += long2string(VirtualPathID) + ", " + 
-		   long2string(PhysicalFileID) + ")";
+		sql += CUtils::long2string(FileID) + ", ";
+	sql += CUtils::long2string(VirtualPathID) + ", " + 
+		   CUtils::long2string(PhysicalFileID) + ")";
 	FB_ExecuteQueryNoReturn( sql );
 }
 
@@ -48,9 +48,9 @@ void CVirtualFiles::FB_DbUpdate(void)
 	wxString sql;
 
 	sql = "UPDATE VIRTUAL_FILES SET ";
-	sql += "VIRTUAL_PATH_ID = " + long2string(VirtualPathID) + ", ";
-	sql += "PHYSICAL_FILE_ID = " + long2string(PhysicalFileID) + " ";
-	sql += "WHERE FILE_ID = " + long2string(FileID);
+	sql += "VIRTUAL_PATH_ID = " + CUtils::long2string(VirtualPathID) + ", ";
+	sql += "PHYSICAL_FILE_ID = " + CUtils::long2string(PhysicalFileID) + " ";
+	sql += "WHERE FILE_ID = " + CUtils::long2string(FileID);
 	FB_ExecuteQueryNoReturn( sql );
 }
 
@@ -58,7 +58,7 @@ void CVirtualFiles::FB_DbDelete(void)
 {
 	wxString sql;
 
-	sql = "DELETE FROM VIRTUAL_FILES WHERE FILE_ID = " + long2string( FileID );
+	sql = "DELETE FROM VIRTUAL_FILES WHERE FILE_ID = " + CUtils::long2string( FileID );
 	FB_ExecuteQueryNoReturn( sql );
 }
 

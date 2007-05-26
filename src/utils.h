@@ -57,6 +57,12 @@ public:
 	// returns the expected database version
 	static int GetExpectedDatabaseVersion(void);
 
+	// converts a long to a string
+	static wxString long2string( long val );
+
+	// returns the name of the database containing the catalog structure changes, used to dynamically update a catalog
+	static wxString GetStructUpdateDbName(void);
+
 private:
 	// name of the current application
 	static wxString applicationName;
@@ -66,6 +72,9 @@ private:
 
 	// the current version of the application expects this database version
 	static int expectedDatabaseVersion;
+
+	// name of the database that contains the database changes from version to version
+	static wxString strucUpdateDbName;
 
 };
 

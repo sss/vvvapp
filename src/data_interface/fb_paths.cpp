@@ -40,12 +40,12 @@ void CPaths::FB_DbInsert(void)
 		sql += "PATH_ID, ";
 	sql += "VOLUME_ID, PATH_NAME, FATHER_ID) VALUES (";
 	if( !PathID.IsNull() )
-		sql += long2string(PathID) + ", ";
-	sql += long2string(VolumeID) + ", '" + ExpandSingleQuotes(PathName) + "', ";
+		sql += CUtils::long2string(PathID) + ", ";
+	sql += CUtils::long2string(VolumeID) + ", '" + ExpandSingleQuotes(PathName) + "', ";
 	if( FatherID.IsNull() )
 		sql += "NULL";
 	else
-		sql += long2string(FatherID);
+		sql += CUtils::long2string(FatherID);
 	sql += ")";
 	FB_ExecuteQueryNoReturn( sql );
 }
@@ -55,14 +55,14 @@ void CPaths::FB_DbUpdate(void)
 	wxString sql;
 
 	sql = "UPDATE PATHS SET ";
-	sql += "VOLUME_ID = " + long2string(VolumeID) + ", ";
+	sql += "VOLUME_ID = " + CUtils::long2string(VolumeID) + ", ";
 	sql += "PATH_NAME = '" + ExpandSingleQuotes(PathName) + "', ";
 	sql += "FATHER_ID = ";
 	if( FatherID.IsNull() )
 		sql += "NULL ";
 	else
-		sql += long2string(FatherID) + " ";
-	sql += " WHERE PATH_ID = "  + long2string(PathID);
+		sql += CUtils::long2string(FatherID) + " ";
+	sql += " WHERE PATH_ID = "  + CUtils::long2string(PathID);
 	FB_ExecuteQueryNoReturn( sql );
 }
 
@@ -70,7 +70,7 @@ void CPaths::FB_DbDelete(void)
 {
 	wxString sql;
 
-	sql = "DELETE FROM PATHS WHERE PATH_ID = " + long2string( PathID );
+	sql = "DELETE FROM PATHS WHERE PATH_ID = " + CUtils::long2string( PathID );
 	FB_ExecuteQueryNoReturn( sql );
 }
 

@@ -311,7 +311,9 @@ private:
 	wxFileHistory* m_fileHistory;
 
 	// opens a database
-	void OpenDatabase( wxString fileName );
+	// expectedVersion is the database version that the program is designed to use
+	// if the database version is lower it will upgrade the database
+	void OpenDatabase( wxString fileName, int expectedVersion );
 
 	// width of the listview columns in physical view
 	int m_ListviewColWidthPhysical[4];

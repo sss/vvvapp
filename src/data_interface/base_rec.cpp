@@ -64,6 +64,10 @@ void CBaseRec::SetDatabaseType( DBType dbt ) {
 	DatabaseType = dbt;
 }
 
+CBaseRec::DBType CBaseRec::GetDatabaseType(void) {
+	return DatabaseType;
+}
+
 
 wxString CBaseRec::ExpandSingleQuotes( wxString txt ) {
 	// doubles single-quote charachters in a string, used to create SQL statements
@@ -82,14 +86,6 @@ wxString CBaseRec::ExpandSingleQuotes( wxString txt ) {
 //	return retVal;
 }
 
-
-
-// converts a long to a string
-wxString CBaseRec::long2string( long val ) {
-	wxString retVal;
-	retVal.Printf( "%d", val );
-	return retVal;
-}
 
 
 void CBaseRec::DBStartMultiRowQuery( wxString sql, bool readOnly ) {

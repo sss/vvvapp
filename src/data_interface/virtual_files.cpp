@@ -32,7 +32,7 @@ void CVirtualFiles::DBStartQueryListFiles( long PathID ) {
 	wxString sql = "select virtual_files.file_id, virtual_files.virtual_path_id, virtual_files.physical_file_id, virtual_files.virtual_path_file_id, files.file_name, files.file_size, files.file_ext, files.file_datetime, files.path_id, files.path_file_id ";
     sql += "from virtual_files inner join files ";
 	sql += "on virtual_files.physical_file_id = files.file_id ";
-	sql += "where virtual_files.virtual_path_id = " + long2string(PathID) + " ";
+	sql += "where virtual_files.virtual_path_id = " + CUtils::long2string(PathID) + " ";
 	sql += "order by files.file_name";
 	DBStartMultiRowQuery( sql, true );
 }

@@ -57,6 +57,13 @@ public:
 	// rolls back the transaction
 	virtual void TransactionRollback(void) = 0;
 
+	// returns the database version
+	int GetDatabaseVersion(void);
+
+	// upgrades the database to a newer version
+	// current version is the current version of the database
+	void UpgradeDatabase( int currentVersion );
+
 	// called to create an empty Firebird physical database on disk
 	static void CreateFirebirdDatabaseOnDisk( wxString serverName, wxString userName, wxString password, wxString backupName, wxString databaseName );
 
