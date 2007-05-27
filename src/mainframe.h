@@ -222,8 +222,8 @@ public:
     /// wxEVT_COMMAND_TREE_ITEM_EXPANDING event handler for ID_TREE_CONTROL
     void OnTreeControlItemExpanding( wxTreeEvent& event );
 
-    /// wxEVT_CONTEXT_MENU event handler for ID_TREE_CONTROL
-    void OnTreeControlContextMenu( wxContextMenuEvent& event );
+    /// wxEVT_COMMAND_TREE_ITEM_MENU event handler for ID_TREE_CONTROL
+    void OnTreeControlItemMenu( wxTreeEvent& event );
 
     /// wxEVT_COMMAND_LIST_COL_CLICK event handler for ID_LIST_CONTROL
     void OnListControlColLeftClick( wxListEvent& event );
@@ -253,8 +253,8 @@ public:
     /// wxEVT_COMMAND_TREE_SEL_CHANGED event handler for ID_TREE_CONTROL_VIRTUAL
     void OnTreeControlVirtualSelChanged( wxTreeEvent& event );
 
-    /// wxEVT_CONTEXT_MENU event handler for ID_TREE_CONTROL_VIRTUAL
-    void OnTreeControlVirtualContextMenu( wxContextMenuEvent& event );
+    /// wxEVT_COMMAND_TREE_ITEM_MENU event handler for ID_TREE_CONTROL_VIRTUAL
+    void OnTreeControlVirtualItemMenu( wxTreeEvent& event );
 
 	// creates a new virtual folder from user input
 	// FatherID is the primary key of the father of this folder in the database: it can be NULL for root folders
