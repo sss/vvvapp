@@ -86,16 +86,34 @@ void CFirebirdDB::CreateDatabaseOnDisk( wxString serverName, wxString userName, 
 
 int CFirebirdDB::GetDatabaseVersion(void) {
 	int64_t tmp;
+	int currentVersion;
 
 	TransactionStart();
 	Statement st = StatementFactory( GetIBPPDB(), TransactionGetReference() );
-	st->Prepare( "SELECT DB_VERSION FROM SERVICE WHERE SERVICE_ID = 1" );
-	st->Execute();
-	st->Fetch();
-	st->Get( "DB_VERSION", tmp );
+	try {
+		st->Prepare( "SELECT DB_VERSION FROM SERVICE WHERE SERVICE_ID = 1" );
+		st->Execute();
+		st->Fetch();
+		st->Get( "DB_VERSION", tmp );
+		currentVersion = tmp;
+	}
+	catch( IBPP::SQLException& e ) {
+		if( e.EngineCode() == 335544569 ) {
+			// table not found: this is a very old database that does not contain the SERVICE table
+			// we must create that table
+			st->ExecuteImmediate( "CREATE TABLE SERVICE (SERVICE_ID BIGINT NOT NULL, DB_VERSION INTEGER NOT NULL)" );
+			st->ExecuteImmediate( "ALTER TABLE SERVICE ADD CONSTRAINT PK_SERVICE PRIMARY KEY (SERVICE_ID)" );
+			st->ExecuteImmediate( "UPDATE RDB$RELATIONS SET RDB$DESCRIPTION = 'This table contains service data' WHERE (RDB$RELATION_NAME = 'SERVICE')" );
+			tr->CommitRetain();
+			st->ExecuteImmediate( "INSERT INTO SERVICE (SERVICE_ID, DB_VERSION) VALUES (1, 0)" );
+			currentVersion = 0;
+		}
+		else
+			throw;
+	}
 	TransactionCommit();
 
-	return tmp;
+	return currentVersion;
 }
 
 void CFirebirdDB::UpgradeDatabase( int currentVersion ) {
