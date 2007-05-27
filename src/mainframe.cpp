@@ -1006,6 +1006,9 @@ void CMainFrame::ShowVirtualFolderFiles( wxTreeItemId itemID ) {
 	CVirtualFiles files;
 	files.DBStartQueryListFiles( itemData->GetPathID() );
 	while( !files.IsEOF() ) {
+		wxString prevFileName = files.FileName;
+		bool wasFolder = files.IsFolder();
+
 		// adds the file to the list control
 		int imageIndex = (files.IsFolder() ? 0 : 1 );
 
@@ -1020,6 +1023,22 @@ void CMainFrame::ShowVirtualFolderFiles( wxTreeItemId itemID ) {
 		lctl->SetItemData( i, (long) new MyListItemData( files.FileName, files.FileExt, files.FileSize, files.DateTime, files.IsFolder(), files.FullPhysicalPath ) );
 
 		files.DBNextRow();
+
+		// removes possible duplicate folder rows. If this folder contains physical folders from different volumes
+		// but with the same name the query will return more than one folder with the same name
+		if( wasFolder ) {
+			while( !files.IsEOF() ) {
+
+				if( files.FileName != prevFileName ) break;
+				if( !files.IsFolder() ) break;
+
+				// here if the current row is a folder with the same name as the one already in the listview
+				lctl->SetItem( i, 4, "" );	// remove physical path since it has no meaning (there are more than one)
+
+				files.DBNextRow();	// sjip this row
+			}
+		}
+
 	}
 
 	lctl->SortItems( ListControlCompareFunction, 0 );
