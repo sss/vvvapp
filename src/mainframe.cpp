@@ -73,6 +73,7 @@
 #include "graphics/tlb_catalog.xpm"
 #include "graphics/tlb_physical.xpm"
 #include "graphics/tlb_virtual.xpm"
+#include "graphics/tlb_search.xpm"
 ////@end XPM images
 
 #include "graphics/folder_closed.xpm"
@@ -208,6 +209,9 @@ BEGIN_EVENT_TABLE( CMainFrame, wxFrame )
     EVT_MENU( ID_VIEW_VIRTUAL, CMainFrame::OnViewVirtualClick )
     EVT_UPDATE_UI( ID_VIEW_VIRTUAL, CMainFrame::OnViewVirtualUpdate )
 
+    EVT_MENU( ID_VIEW_SEARCH, CMainFrame::OnViewSearchClick )
+    EVT_UPDATE_UI( ID_VIEW_SEARCH, CMainFrame::OnViewSearchUpdate )
+
     EVT_MENU( ID_VIEW_TOOLBAR, CMainFrame::OnViewToolbarClick )
 
     EVT_MENU( wxID_ABOUT, CMainFrame::OnABOUTClick )
@@ -309,6 +313,13 @@ void CMainFrame::Init()
 ////@end CMainFrame member initialisation
 	m_ChooseVirtualFolderDialog = NULL;
 
+    m_SearchPanel = NULL;
+    m_FilenameRadioBox = NULL;
+    m_SearchFileName = NULL;
+    m_SearchExtension = NULL;
+    m_SearchRadioBox = NULL;
+    m_SearchButton = NULL;
+
 	m_fileHistory = new wxFileHistory();
 	
 	m_CurrentView = Physical;	// let's start with the physical view
@@ -332,32 +343,33 @@ void CMainFrame::CreateControls()
     m_fileMenu->AppendSeparator();
     m_fileMenu->Append(wxID_EXIT, _("Exit"), _T(""), wxITEM_NORMAL);
     menuBar->Append(m_fileMenu, _("File"));
-    wxMenu* itemMenu15 = new wxMenu;
-    itemMenu15->Append(ID_ADD_VIRTUAL_FOLDER, _("Add To Virtual Folder..."), _T(""), wxITEM_NORMAL);
-    itemMenu15->AppendSeparator();
-    itemMenu15->Append(ID_EDIT_VOLUME_DESCRIPTION, _("Volume Description..."), _T(""), wxITEM_NORMAL);
-    itemMenu15->Append(ID_RENAME_VOLUME, _("Rename Volume..."), _T(""), wxITEM_NORMAL);
-    itemMenu15->Append(ID_DELETE_VOLUME, _("Delete Volume"), _T(""), wxITEM_NORMAL);
-    itemMenu15->AppendSeparator();
-    itemMenu15->Append(ID_NEW_VIRTUAL_ROOT_FOLDER, _("New Virtual Root Folder..."), _T(""), wxITEM_NORMAL);
-    itemMenu15->Append(ID_NEW_VIRTUAL_SUBFOLDER, _("New Virtual Subfolder..."), _T(""), wxITEM_NORMAL);
-    itemMenu15->Append(ID_RENAME_VIRTUAL_FOLDER, _("Rename Virtual Folder..."), _T(""), wxITEM_NORMAL);
-    itemMenu15->Append(ID_DELETE_VIRTUAL_FOLDER, _("Delete Virtual Folder"), _T(""), wxITEM_NORMAL);
-    menuBar->Append(itemMenu15, _("Edit"));
-    wxMenu* itemMenu26 = new wxMenu;
-    itemMenu26->Append(ID_CATALOG_VOLUME, _("Catalog Volume..."), _T(""), wxITEM_NORMAL);
-    menuBar->Append(itemMenu26, _("Volumes"));
-    wxMenu* itemMenu28 = new wxMenu;
-    itemMenu28->Append(ID_VIEW_PHYSICAL, _("Physical View"), _T(""), wxITEM_RADIO);
-    itemMenu28->Check(ID_VIEW_PHYSICAL, true);
-    itemMenu28->Append(ID_VIEW_VIRTUAL, _("Virtual View"), _T(""), wxITEM_RADIO);
-    itemMenu28->AppendSeparator();
-    itemMenu28->Append(ID_VIEW_TOOLBAR, _("Toolbar"), _T(""), wxITEM_CHECK);
-    itemMenu28->Check(ID_VIEW_TOOLBAR, true);
-    menuBar->Append(itemMenu28, _("View"));
-    wxMenu* itemMenu33 = new wxMenu;
-    itemMenu33->Append(wxID_ABOUT, _("About VVV..."), _T(""), wxITEM_NORMAL);
-    menuBar->Append(itemMenu33, _("Help"));
+    wxMenu* itemMenu16 = new wxMenu;
+    itemMenu16->Append(ID_ADD_VIRTUAL_FOLDER, _("Add To Virtual Folder..."), _T(""), wxITEM_NORMAL);
+    itemMenu16->AppendSeparator();
+    itemMenu16->Append(ID_EDIT_VOLUME_DESCRIPTION, _("Volume Description..."), _T(""), wxITEM_NORMAL);
+    itemMenu16->Append(ID_RENAME_VOLUME, _("Rename Volume..."), _T(""), wxITEM_NORMAL);
+    itemMenu16->Append(ID_DELETE_VOLUME, _("Delete Volume"), _T(""), wxITEM_NORMAL);
+    itemMenu16->AppendSeparator();
+    itemMenu16->Append(ID_NEW_VIRTUAL_ROOT_FOLDER, _("New Virtual Root Folder..."), _T(""), wxITEM_NORMAL);
+    itemMenu16->Append(ID_NEW_VIRTUAL_SUBFOLDER, _("New Virtual Subfolder..."), _T(""), wxITEM_NORMAL);
+    itemMenu16->Append(ID_RENAME_VIRTUAL_FOLDER, _("Rename Virtual Folder..."), _T(""), wxITEM_NORMAL);
+    itemMenu16->Append(ID_DELETE_VIRTUAL_FOLDER, _("Delete Virtual Folder"), _T(""), wxITEM_NORMAL);
+    menuBar->Append(itemMenu16, _("Edit"));
+    wxMenu* itemMenu27 = new wxMenu;
+    itemMenu27->Append(ID_CATALOG_VOLUME, _("Catalog Volume..."), _T(""), wxITEM_NORMAL);
+    menuBar->Append(itemMenu27, _("Volumes"));
+    wxMenu* itemMenu29 = new wxMenu;
+    itemMenu29->Append(ID_VIEW_PHYSICAL, _("Physical View"), _T(""), wxITEM_RADIO);
+    itemMenu29->Check(ID_VIEW_PHYSICAL, true);
+    itemMenu29->Append(ID_VIEW_VIRTUAL, _("Virtual View"), _T(""), wxITEM_RADIO);
+    itemMenu29->Append(ID_VIEW_SEARCH, _("Search View"), _T(""), wxITEM_RADIO);
+    itemMenu29->AppendSeparator();
+    itemMenu29->Append(ID_VIEW_TOOLBAR, _("Toolbar"), _T(""), wxITEM_CHECK);
+    itemMenu29->Check(ID_VIEW_TOOLBAR, true);
+    menuBar->Append(itemMenu29, _("View"));
+    wxMenu* itemMenu35 = new wxMenu;
+    itemMenu35->Append(wxID_ABOUT, _("About VVV..."), _T(""), wxITEM_NORMAL);
+    menuBar->Append(itemMenu35, _("Help"));
     itemFrame1->SetMenuBar(menuBar);
 
     m_Toolbar = CreateToolBar( wxTB_FLAT|wxTB_HORIZONTAL|wxTB_TEXT, ID_TOOLBAR1 );
@@ -377,21 +389,24 @@ void CMainFrame::CreateControls()
     wxBitmap itemtool8Bitmap(itemFrame1->GetBitmapResource(wxT("graphics/tlb_virtual.xpm")));
     wxBitmap itemtool8BitmapDisabled;
     m_Toolbar->AddTool(ID_VIEW_VIRTUAL, _("Virtual"), itemtool8Bitmap, itemtool8BitmapDisabled, wxITEM_RADIO, _("Show the virtual view"), wxEmptyString);
+    wxBitmap itemtool9Bitmap(itemFrame1->GetBitmapResource(wxT("graphics/tlb_search.xpm")));
+    wxBitmap itemtool9BitmapDisabled;
+    m_Toolbar->AddTool(ID_VIEW_SEARCH, _("Search"), itemtool9Bitmap, itemtool9BitmapDisabled, wxITEM_RADIO, _("Show the search view"), wxEmptyString);
     m_Toolbar->Realize();
     itemFrame1->SetToolBar(m_Toolbar);
 
-    wxStatusBar* itemStatusBar35 = new wxStatusBar( itemFrame1, ID_STATUSBAR1, wxST_SIZEGRIP );
-    itemStatusBar35->SetFieldsCount(2);
-    itemFrame1->SetStatusBar(itemStatusBar35);
+    wxStatusBar* itemStatusBar37 = new wxStatusBar( itemFrame1, ID_STATUSBAR1, wxST_SIZEGRIP );
+    itemStatusBar37->SetFieldsCount(2);
+    itemFrame1->SetStatusBar(itemStatusBar37);
 
-    wxSplitterWindow* itemSplitterWindow36 = new wxSplitterWindow( itemFrame1, ID_SPLITTERWINDOW1, wxDefaultPosition, wxSize(100, 100), wxSP_3DBORDER|wxSP_3DSASH|wxSP_NO_XP_THEME|wxNO_BORDER );
-    itemSplitterWindow36->SetMinimumPaneSize(0);
+    wxSplitterWindow* itemSplitterWindow38 = new wxSplitterWindow( itemFrame1, ID_SPLITTERWINDOW1, wxDefaultPosition, wxSize(100, 100), wxSP_3DBORDER|wxSP_3DSASH|wxSP_NO_XP_THEME|wxNO_BORDER );
+    itemSplitterWindow38->SetMinimumPaneSize(0);
 
-    wxTreeCtrl* itemTreeCtrl37 = new wxTreeCtrl( itemSplitterWindow36, ID_TREE_CONTROL, wxDefaultPosition, wxSize(100, 100), wxTR_HAS_BUTTONS |wxTR_HIDE_ROOT|wxTR_SINGLE|wxNO_BORDER|wxTR_DEFAULT_STYLE );
+    wxTreeCtrl* itemTreeCtrl39 = new wxTreeCtrl( itemSplitterWindow38, ID_TREE_CONTROL, wxDefaultPosition, wxSize(100, 100), wxTR_HAS_BUTTONS |wxTR_HIDE_ROOT|wxTR_SINGLE|wxNO_BORDER|wxTR_DEFAULT_STYLE );
 
-    wxListCtrl* itemListCtrl38 = new wxListCtrl( itemSplitterWindow36, ID_LIST_CONTROL, wxDefaultPosition, wxSize(100, 100), wxLC_REPORT|wxNO_BORDER );
+    wxListCtrl* itemListCtrl40 = new wxListCtrl( itemSplitterWindow38, ID_LIST_CONTROL, wxDefaultPosition, wxSize(100, 100), wxLC_REPORT|wxNO_BORDER );
 
-    itemSplitterWindow36->SplitVertically(itemTreeCtrl37, itemListCtrl38, 50);
+    itemSplitterWindow38->SplitVertically(itemTreeCtrl39, itemListCtrl40, 50);
 
 ////@end CMainFrame content construction
 
@@ -406,6 +421,51 @@ void CMainFrame::CreateControls()
 	m_treePhysicalCtl = (wxTreeCtrl*) FindWindow( ID_TREE_CONTROL );
 	m_treeVirtualCtl = (wxTreeCtrl*) FindWindow( ID_TREE_CONTROL_VIRTUAL );
 	m_listCtl = (wxListCtrl*) FindWindow( ID_LIST_CONTROL );
+
+	// creates the search panel
+	{
+		m_SearchPanel = new wxPanel( m_splitterWindow, ID_SEARCH_PANEL, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL );
+
+		wxBoxSizer* itemBoxSizer3 = new wxBoxSizer(wxVERTICAL);
+		m_SearchPanel->SetSizer(itemBoxSizer3);
+
+		wxArrayString m_FilenameRadioBoxStrings;
+		m_FilenameRadioBoxStrings.Add(_("Is &equal to:"));
+		m_FilenameRadioBoxStrings.Add(_("S&tarts with:"));
+		m_FilenameRadioBoxStrings.Add(_("&Contains:"));
+		m_FilenameRadioBox = new wxRadioBox( m_SearchPanel, ID_RADIOBOX_FILENAME, _("File name"), wxDefaultPosition, wxDefaultSize, m_FilenameRadioBoxStrings, 1, wxRA_SPECIFY_COLS );
+		m_FilenameRadioBox->SetSelection(0);
+		itemBoxSizer3->Add(m_FilenameRadioBox, 0, wxALIGN_LEFT|wxALL, 5);
+
+		m_SearchFileName = new wxTextCtrl( m_SearchPanel, ID_SEARCH_FILE_NAME, _T(""), wxDefaultPosition, wxSize(120, -1), 0 );
+		itemBoxSizer3->Add(m_SearchFileName, 0, wxALIGN_LEFT|wxALL, 5);
+
+		itemBoxSizer3->Add(5, 3, 0, wxALIGN_CENTER_HORIZONTAL|wxALL, 5);
+
+		wxStaticText* itemStaticText7 = new wxStaticText( m_SearchPanel, wxID_STATIC, _("E&xtension:"), wxDefaultPosition, wxDefaultSize, 0 );
+		itemBoxSizer3->Add(itemStaticText7, 0, wxALIGN_LEFT|wxALL, 5);
+
+		m_SearchExtension = new wxTextCtrl( m_SearchPanel, ID_SEARCH_EXTENSION, _T(""), wxDefaultPosition, wxSize(60, -1), 0 );
+		itemBoxSizer3->Add(m_SearchExtension, 0, wxALIGN_LEFT|wxALL, 5);
+
+		itemBoxSizer3->Add(5, 3, 0, wxALIGN_CENTER_HORIZONTAL|wxALL, 5);
+
+		wxArrayString m_SearchRadioBoxStrings;
+		m_SearchRadioBoxStrings.Add(_("&All physical volumes"));
+		m_SearchRadioBoxStrings.Add(_("Selected &physical folder"));
+		m_SearchRadioBoxStrings.Add(_("Selected &virtual folder"));
+		m_SearchRadioBox = new wxRadioBox( m_SearchPanel, ID_RADIOBOX_SEARCH, _("Search"), wxDefaultPosition, wxDefaultSize, m_SearchRadioBoxStrings, 1, wxRA_SPECIFY_COLS );
+		m_SearchRadioBox->SetSelection(0);
+		itemBoxSizer3->Add(m_SearchRadioBox, 0, wxALIGN_LEFT|wxALL, 5);
+
+		itemBoxSizer3->Add(5, 3, 0, wxALIGN_CENTER_HORIZONTAL|wxALL, 5);
+
+		m_SearchButton = new wxButton( m_SearchPanel, ID_BUTTON_SEARCH, _("&Search"), wxDefaultPosition, wxDefaultSize, 0 );
+		m_SearchButton->SetDefault();
+		itemBoxSizer3->Add(m_SearchButton, 0, wxALIGN_LEFT|wxALL, 5);
+
+		m_SearchPanel->Show( false );
+	}
 
 	// associates the MRU files list
 	m_fileHistory->UseMenu( m_fileMenu );
@@ -454,6 +514,11 @@ wxBitmap CMainFrame::GetBitmapResource( const wxString& name )
     else if (name == _T("graphics/tlb_virtual.xpm"))
     {
         wxBitmap bitmap(tlb_virtual_xpm);
+        return bitmap;
+    }
+    else if (name == _T("graphics/tlb_search.xpm"))
+    {
+        wxBitmap bitmap(tlb_search_xpm);
         return bitmap;
     }
     return wxNullBitmap;
@@ -833,24 +898,26 @@ CMainFrame::~CMainFrame() {
 void CMainFrame::OnViewPhysicalClick( wxCommandEvent& event )
 {
 	if( !event.IsChecked() ) return;
+	if( m_CurrentView == Physical ) return;
 
-	// shows the physical tree view
-	wxTreeCtrl* tctlPhysical = GetTreePhysicalControl();
-	if( !tctlPhysical->IsShown() ) {
-		StoreListControlVirtualWidth();
-		wxTreeCtrl* tctlVirtual = GetTreeVirtualControl();
-		wxSplitterWindow* sw = GetSplitterWindow();
-		long sp = sw->GetSashPosition();
-		wxListCtrl* lctl = GetListControl();
-		sw->Unsplit();
-		tctlVirtual->Show( false );
-		tctlPhysical->Show( true );
-		sw->SplitVertically( tctlPhysical, lctl );
-		sw->SetSashPosition( sp );
-		m_CurrentView = Physical;
-		CreateListControlHeaders();
-		ShowSelectedFolderFiles();
+	wxSplitterWindow* sw = GetSplitterWindow();
+	long sp = sw->GetSashPosition();
+	wxListCtrl* lctl = GetListControl();
+	sw->Unsplit();
+	switch( m_CurrentView ) {
+		case Virtual:
+			HideVirtualView();
+			break;
+		case Search:
+			HideSearchView();
+			break;
+		default:
+			wxASSERT(true);
 	}
+	ShowPhysicalView();
+	sw->SplitVertically( GetTreePhysicalControl(), lctl );
+	sw->SetSashPosition( sp );
+
 }
 
 /*!
@@ -860,24 +927,26 @@ void CMainFrame::OnViewPhysicalClick( wxCommandEvent& event )
 void CMainFrame::OnViewVirtualClick( wxCommandEvent& event )
 {
 	if( !event.IsChecked() ) return;
+	if( m_CurrentView == Virtual ) return;
 
-	// shows the virtual tree view
-	wxTreeCtrl* tctlVirtual = GetTreeVirtualControl();
-	if( !tctlVirtual->IsShown() ) {
-		StoreListControlPhysicalWidth();
-		wxTreeCtrl* tctlPhysical = GetTreePhysicalControl();
-		wxSplitterWindow* sw = GetSplitterWindow();
-		long sp = sw->GetSashPosition();
-		wxListCtrl* lctl = GetListControl();
-		sw->Unsplit();
-		tctlVirtual->Show( true );
-		tctlPhysical->Show( false );
-		sw->SplitVertically( tctlVirtual, lctl );
-		sw->SetSashPosition( sp );
-		m_CurrentView = Virtual;
-		CreateListControlHeaders();
-		ShowSelectedVirtualFolderFiles();
+	wxSplitterWindow* sw = GetSplitterWindow();
+	long sp = sw->GetSashPosition();
+	wxListCtrl* lctl = GetListControl();
+	sw->Unsplit();
+	switch( m_CurrentView ) {
+		case Physical:
+			HidePhysicalView();
+			break;
+		case Search:
+			HideSearchView();
+			break;
+		default:
+			wxASSERT(true);
 	}
+	ShowVirtualView();
+	sw->SplitVertically( GetTreeVirtualControl(), lctl );
+	sw->SetSashPosition( sp );
+
 }
 
 
@@ -1859,5 +1928,87 @@ void CMainFrame::OnTreeControlVirtualItemMenu( wxTreeEvent& event )
 	PopupMenu( &menu, pt );
 
 	event.Skip();
+}
+
+/*!
+ * wxEVT_COMMAND_MENU_SELECTED event handler for ID_VIEW_SEARCH
+ */
+
+void CMainFrame::OnViewSearchClick( wxCommandEvent& event )
+{
+	if( !event.IsChecked() ) return;
+	if( m_CurrentView == Search ) return;
+
+	wxSplitterWindow* sw = GetSplitterWindow();
+	long sp = sw->GetSashPosition();
+	wxListCtrl* lctl = GetListControl();
+	sw->Unsplit();
+	switch( m_CurrentView ) {
+		case Physical:
+			HidePhysicalView();
+			break;
+		case Virtual:
+			HideVirtualView();
+			break;
+		default:
+			wxASSERT(true);
+	}
+	ShowSearchView();
+	sw->SplitVertically( m_SearchPanel, lctl );
+	sw->SetSashPosition( sp );
+}
+
+/*!
+ * wxEVT_UPDATE_UI event handler for ID_VIEW_SEARCH
+ */
+
+void CMainFrame::OnViewSearchUpdate( wxUpdateUIEvent& event )
+{
+	event.Enable( CBaseDB::GetDatabase() != NULL );
+	
+	if( m_CurrentView == Search )
+		event.Check(true);
+	else
+		event.Check(false);
+}
+
+void CMainFrame::ShowPhysicalView(void) {
+	wxTreeCtrl* tctlPhysical = GetTreePhysicalControl();
+	tctlPhysical->Show( true );
+	m_CurrentView = Physical;
+	CreateListControlHeaders();
+	ShowSelectedFolderFiles();
+}
+
+void CMainFrame::HidePhysicalView(void) {
+	StoreListControlPhysicalWidth();
+	wxTreeCtrl* tctlPhysical = GetTreePhysicalControl();
+	tctlPhysical->Show( false );
+
+}
+
+void CMainFrame::ShowVirtualView(void) {
+	wxTreeCtrl* tctlVirtual = GetTreeVirtualControl();
+	tctlVirtual->Show( true );
+	m_CurrentView = Virtual;
+	CreateListControlHeaders();
+	ShowSelectedVirtualFolderFiles();
+
+}
+
+void CMainFrame::HideVirtualView(void) {
+	StoreListControlVirtualWidth();
+	wxTreeCtrl* tctlVirtual = GetTreeVirtualControl();
+	tctlVirtual->Show( false );
+
+}
+
+void CMainFrame::ShowSearchView(void) {
+	m_SearchPanel->Show( true );
+	m_CurrentView = Search;
+}
+
+void CMainFrame::HideSearchView(void) {
+	m_SearchPanel->Show( false );
 }
 

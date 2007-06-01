@@ -80,6 +80,7 @@ class wxMenu;
 #define ID_CATALOG_VOLUME 10001
 #define ID_VIEW_PHYSICAL 10011
 #define ID_VIEW_VIRTUAL 10012
+#define ID_VIEW_SEARCH 10036
 #define ID_ADD_VIRTUAL_FOLDER 10015
 #define ID_EDIT_VOLUME_DESCRIPTION 10029
 #define ID_RENAME_VOLUME 10013
@@ -99,7 +100,18 @@ class wxMenu;
 #define SYMBOL_CMAINFRAME_SIZE wxSize(400, 300)
 #define SYMBOL_CMAINFRAME_POSITION wxDefaultPosition
 ////@end control identifiers
+
+// virtual view
 #define ID_TREE_CONTROL_VIRTUAL 10007
+
+// search view
+#define ID_SEARCH_PANEL 10031
+#define ID_RADIOBOX_FILENAME 10037
+#define ID_SEARCH_FILE_NAME 10032
+#define ID_SEARCH_EXTENSION 10033
+#define ID_RADIOBOX_SEARCH 10034
+#define ID_BUTTON_SEARCH 10035
+
 
 /*!
  * Compatibility
@@ -210,6 +222,12 @@ public:
     /// wxEVT_UPDATE_UI event handler for ID_VIEW_VIRTUAL
     void OnViewVirtualUpdate( wxUpdateUIEvent& event );
 
+    /// wxEVT_COMMAND_MENU_SELECTED event handler for ID_VIEW_SEARCH
+    void OnViewSearchClick( wxCommandEvent& event );
+
+    /// wxEVT_UPDATE_UI event handler for ID_VIEW_SEARCH
+    void OnViewSearchUpdate( wxUpdateUIEvent& event );
+
     /// wxEVT_COMMAND_MENU_SELECTED event handler for ID_VIEW_TOOLBAR
     void OnViewToolbarClick( wxCommandEvent& event );
 
@@ -247,6 +265,14 @@ public:
     wxMenu* m_fileMenu;
 ////@end CMainFrame member variables
 
+	// search panel member variables
+    wxPanel* m_SearchPanel;
+    wxRadioBox* m_FilenameRadioBox;
+    wxTextCtrl* m_SearchFileName;
+    wxTextCtrl* m_SearchExtension;
+    wxRadioBox* m_SearchRadioBox;
+    wxButton* m_SearchButton;
+
     /// wxEVT_COMMAND_TREE_ITEM_EXPANDING event handler for ID_TREE_CONTROL_VIRTUAL
     void OnTreeControlVirtualItemExpanding( wxTreeEvent& event );
 
@@ -273,7 +299,8 @@ private:
 	// the possible views available in the program
 	enum CurrentView {
 		Physical,
-		Virtual
+		Virtual,
+		Search
 	};
 	// holds the current view
 	CurrentView m_CurrentView;
@@ -324,6 +351,19 @@ private:
 	void StoreListControlPhysicalWidth();
 	// stores the column widths of the list control columns in virtual view
 	void StoreListControlVirtualWidth();
+
+	// shows the physical view
+	void ShowPhysicalView(void);
+	// shows the virtual view
+	void ShowVirtualView(void);
+	// shows the search view
+	void ShowSearchView(void);
+	// hides the physical view
+	void HidePhysicalView(void);
+	// hides the virtual view
+	void HideVirtualView(void);
+	// hides the search view
+	void HideSearchView(void);
 
 protected:
 	// shows in the listview the files contained in the passed folder
