@@ -373,6 +373,7 @@ void CMainFrame::CreateControls()
     itemFrame1->SetMenuBar(menuBar);
 
     m_Toolbar = CreateToolBar( wxTB_FLAT|wxTB_HORIZONTAL|wxTB_TEXT, ID_TOOLBAR1 );
+    m_Toolbar->SetToolBitmapSize(wxSize(16, 16));
     wxBitmap itemtool3Bitmap(itemFrame1->GetBitmapResource(wxT("graphics/tlb_new.xpm")));
     wxBitmap itemtool3BitmapDisabled;
     m_Toolbar->AddTool(wxID_NEW, _("New"), itemtool3Bitmap, itemtool3BitmapDisabled, wxITEM_NORMAL, _("Create a new catalog"), wxEmptyString);
@@ -493,12 +494,12 @@ wxBitmap CMainFrame::GetBitmapResource( const wxString& name )
     wxUnusedVar(name);
     if (name == _T("graphics/tlb_new.xpm"))
     {
-        wxBitmap bitmap(new_xpm);
+        wxBitmap bitmap(tlb_new_xpm);
         return bitmap;
     }
     else if (name == _T("graphics/tlb_open.xpm"))
     {
-        wxBitmap bitmap(open_xpm);
+        wxBitmap bitmap(tlb_open_xpm);
         return bitmap;
     }
     else if (name == _T("graphics/tlb_catalog.xpm"))

@@ -527,7 +527,7 @@
             <string name="proxy-Data variable">""</string>
             <string name="proxy-Data validator">""</string>
             <long name="proxy-Bitmap width">16</long>
-            <long name="proxy-Bitmap height">15</long>
+            <long name="proxy-Bitmap height">16</long>
             <long name="proxy-Margin width">0</long>
             <long name="proxy-Margin height">0</long>
             <long name="proxy-Tool packing">1</long>
