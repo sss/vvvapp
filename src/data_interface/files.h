@@ -52,6 +52,14 @@ public:
 	// true if this row represents a folder
 	bool IsFolder(void) { return !PathFileID.IsNull(); }
 
+	// searches all the files of a given volume
+	// if volumeID is null searches all the stored volumes
+	// if useFileNameWildcards == true the file name contains wildcards, fileName wildcards must already be escaped
+	void DBStartSearchVolumeFiles( wxString fileName, bool useFileNameWildcards, wxString ext, CNullableLong volumeID );
+
+	// searches all the files in a folder and its subfolders
+	void DBStartSearchFolderFiles( wxString fileName, bool useFileNameWildcards, wxString ext, long folderID );
+
 protected:
 
 	// Firebird implementation of the database methods

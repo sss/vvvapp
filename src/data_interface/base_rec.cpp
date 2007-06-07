@@ -70,7 +70,7 @@ CBaseRec::DBType CBaseRec::GetDatabaseType(void) {
 
 
 wxString CBaseRec::ExpandSingleQuotes( wxString txt ) {
-	// doubles single-quote charachters in a string, used to create SQL statements
+	// doubles single-quote characters in a string, used to create SQL statements
 //	wxString retVal;
 
 	txt.Replace( "'", "''", true );
@@ -86,6 +86,16 @@ wxString CBaseRec::ExpandSingleQuotes( wxString txt ) {
 //	return retVal;
 }
 
+
+wxString CBaseRec::EscapeWildcards( wxString txt, wxString escape ) {
+	wxString retVal;
+
+	retVal = ExpandSingleQuotes( txt );
+	retVal.Replace( "_", escape + "_", true );
+	retVal.Replace( "%", escape + "%", true );
+
+	return retVal;
+}
 
 
 void CBaseRec::DBStartMultiRowQuery( wxString sql, bool readOnly ) {

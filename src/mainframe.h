@@ -282,6 +282,9 @@ public:
     /// wxEVT_COMMAND_TREE_ITEM_MENU event handler for ID_TREE_CONTROL_VIRTUAL
     void OnTreeControlVirtualItemMenu( wxTreeEvent& event );
 
+    /// wxEVT_COMMAND_BUTTON_CLICKED event handler for ID_BUTTON_SEARCH
+    void OnButtonSearchClick( wxCommandEvent& event );
+
 	// creates a new virtual folder from user input
 	// FatherID is the primary key of the father of this folder in the database: it can be NULL for root folders
 	// windowTitle is the title of the window that will ask for the new folder's name
@@ -304,6 +307,20 @@ private:
 	};
 	// holds the current view
 	CurrentView m_CurrentView;
+
+	// possible choices for file name search
+	enum FilenameSearchKind {
+		IsEqual = 0,
+		StartsWith,
+		Contains
+	};
+
+	// possible search choices
+	enum SearchScope {
+		AllPhysicalVolumes = 0,
+		SelectedPhysicalFolder,
+		SelectedVirtualFolder
+	};
 
 	// pointers to some windows used in the main frame
 	wxListCtrl* m_listCtl;	// the list control
@@ -364,6 +381,13 @@ private:
 	void HideVirtualView(void);
 	// hides the search view
 	void HideSearchView(void);
+
+	// searches a physical folder for files, appends them to the list control, then recursion
+	void SearchPhysicalFolder( wxString fileName, bool useFileNameWildcards, wxString ext, long folderID, long volumeID );
+
+	// adds a row to the listview in Virtual or Search mode
+	// return the index position of the newly inserted row
+	int AddRowToVirtualListControl( wxListCtrl* lctl, bool isFolder, wxString fileName, wxLongLong fileSize, wxString ext, wxDateTime dateTime, wxString physicalPath );
 
 protected:
 	// shows in the listview the files contained in the passed folder

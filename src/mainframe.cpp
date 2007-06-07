@@ -230,6 +230,8 @@ BEGIN_EVENT_TABLE( CMainFrame, wxFrame )
 
 	EVT_MENU_RANGE( wxID_FILE1, wxID_FILE9, CMainFrame::OnMRUFile)
 
+    EVT_BUTTON( ID_BUTTON_SEARCH, CMainFrame::OnButtonSearchClick )
+
 END_EVENT_TABLE()
 
 /*!
@@ -783,7 +785,7 @@ void CMainFrame::CreateListControlHeaders(void) {
 	itemCol.SetAlign( wxLIST_FORMAT_LEFT );
 	lctl->InsertColumn( 3, itemCol );
 
-	if( m_CurrentView == Virtual ) {
+	if( m_CurrentView == Virtual || m_CurrentView == Search ) {
 		itemCol.SetText( _("Physical path") );
 		itemCol.SetAlign( wxLIST_FORMAT_LEFT );
 		lctl->InsertColumn( 4, itemCol );
@@ -1077,19 +1079,7 @@ void CMainFrame::ShowVirtualFolderFiles( wxTreeItemId itemID ) {
 		wxString prevFileName = files.FileName;
 		bool wasFolder = files.IsFolder();
 
-		// adds the file to the list control
-		int imageIndex = (files.IsFolder() ? 0 : 1 );
-
-		wxListItem item;
-		item.SetMask( wxLIST_MASK_STATE|wxLIST_MASK_TEXT|wxLIST_MASK_IMAGE|wxLIST_MASK_DATA );
-		int i = lctl->InsertItem( item );
-		lctl->SetItem( i, 0, files.FileName, imageIndex );
-		lctl->SetItem( i, 1, files.IsFolder() ? "" : CUtils::HumanReadableFileSize(files.FileSize) );
-		lctl->SetItem( i, 2, files.FileExt );
-		lctl->SetItem( i, 3, files.DateTime.FormatDate() + " " + files.DateTime.FormatTime() );
-		lctl->SetItem( i, 4, files.FullPhysicalPath );
-		lctl->SetItemData( i, (long) new MyListItemData( files.FileName, files.FileExt, files.FileSize, files.DateTime, files.IsFolder(), files.FullPhysicalPath ) );
-
+		int i = AddRowToVirtualListControl( lctl, files.IsFolder(), files.FileName, files.FileSize, files.FileExt, files.DateTime, files.FullPhysicalPath );
 		files.DBNextRow();
 
 		// removes possible duplicate folder rows. If this folder contains physical folders from different volumes
@@ -1957,6 +1947,7 @@ void CMainFrame::OnViewSearchClick( wxCommandEvent& event )
 	ShowSearchView();
 	sw->SplitVertically( m_SearchPanel, lctl );
 	sw->SetSashPosition( sp );
+	DeleteAllListControlItems();
 }
 
 /*!
@@ -2007,9 +1998,156 @@ void CMainFrame::HideVirtualView(void) {
 void CMainFrame::ShowSearchView(void) {
 	m_SearchPanel->Show( true );
 	m_CurrentView = Search;
+	CreateListControlHeaders();
+
+	// checks if there is a selected item in the tree controls and enables/disables the radio buttons
+	// physical...
+	wxTreeCtrl *tctl = GetTreePhysicalControl();
+	bool isFolderSelected = false;	// true if the selected item is a volume
+	if( tctl->GetCount() > 0 ) {
+		wxTreeItemId item = tctl->GetSelection();
+		if( item.IsOk() ) {
+			isFolderSelected = true;
+		}
+	}
+	m_SearchRadioBox->Enable( SelectedPhysicalFolder, isFolderSelected );
+	// virtual...
+	tctl = GetTreeVirtualControl();
+	isFolderSelected = false;	// true if the selected item is a volume
+	if( tctl->GetCount() > 0 ) {
+		wxTreeItemId item = tctl->GetSelection();
+		if( item.IsOk() ) {
+			isFolderSelected = true;
+		}
+	}
+	m_SearchRadioBox->Enable( SelectedVirtualFolder, isFolderSelected );
+
 }
 
 void CMainFrame::HideSearchView(void) {
 	m_SearchPanel->Show( false );
 }
 
+void CMainFrame::OnButtonSearchClick( wxCommandEvent& WXUNUSED(event) ) {
+	bool useWildcards;
+
+	wxString fileName = m_SearchFileName->GetValue();
+	wxString ext = m_SearchExtension->GetValue();
+
+	if( fileName.empty() && ext.empty() ) {
+		CUtils::MsgErr( _("Please enter a file name or extension") );
+		return;
+	}
+
+	// escapes wildcards chars typed by the user
+	FilenameSearchKind searchKind = (FilenameSearchKind) m_FilenameRadioBox->GetSelection();
+	useWildcards = false;
+	if( !fileName.empty() ) {
+		switch( searchKind ) {
+			case StartsWith:
+				useWildcards = true;
+				fileName = CBaseRec::EscapeWildcards( fileName, "/" );
+				fileName = fileName + "%";
+				break;
+			case Contains:
+				useWildcards = true;
+				fileName = CBaseRec::EscapeWildcards( fileName, "/" );
+				fileName = "%" + fileName + "%";
+				break;
+		}
+	}
+
+	SearchScope scope = (SearchScope) m_SearchRadioBox->GetSelection();
+	wxBusyCursor wait;
+	wxListCtrl* lctl = GetListControl();
+	
+	// assigns the image list
+	wxImageList* iml = new wxImageList( 16, 16 );
+	iml->Add(wxIcon(folder_closed_xpm));
+	iml->Add(wxIcon(deffile_xpm));
+	lctl->AssignImageList( iml, wxIMAGE_LIST_SMALL );
+
+	DeleteAllListControlItems();
+	lctl->Hide();	// to speed up things
+
+	switch( scope ) {
+		case AllPhysicalVolumes : {
+			CFiles files;
+			CNullableLong nl;
+			nl.SetNull(true);
+			files.DBStartSearchVolumeFiles( fileName, useWildcards, ext, nl );
+			while( !files.IsEOF() ) {
+				AddRowToVirtualListControl( lctl, files.IsFolder(), files.FileName, files.FileSize, files.FileExt, files.DateTime, CPaths::GetFullPath(files.PathID) );
+				files.DBNextRow();
+			}
+			break;
+		}
+		case SelectedPhysicalFolder: {
+			wxTreeCtrl *tctl = GetTreePhysicalControl();
+			wxASSERT( tctl->GetCount() > 0 );
+			wxTreeItemId item = tctl->GetSelection();
+			wxASSERT( item.IsOk() );
+		    MyTreeItemData *itemData = (MyTreeItemData *) tctl->GetItemData(item);
+
+			if( tctl->GetItemParent(item) == tctl->GetRootItem() ) {
+				// the user selected a volume
+				CFiles files;
+				files.DBStartSearchVolumeFiles( fileName, useWildcards, ext, itemData->GetVolumeID() );
+				while( !files.IsEOF() ) {
+					AddRowToVirtualListControl( lctl, files.IsFolder(), files.FileName, files.FileSize, files.FileExt, files.DateTime, CPaths::GetFullPath(files.PathID) );
+					files.DBNextRow();
+				}
+			}
+			else {
+				// the user selected a folder: recursion
+				CBaseDB::GetDatabase()->TransactionStart( true );
+				SearchPhysicalFolder( fileName,  useWildcards, ext, itemData->GetPathID(), itemData->GetVolumeID() );
+				CBaseDB::GetDatabase()->TransactionCommit();
+			}
+			break;
+		}
+		default:
+			wxASSERT( true );
+			break;
+	}
+
+	lctl->SortItems( ListControlCompareFunction, 0 );
+	lctl->Show();
+
+}
+
+int CMainFrame::AddRowToVirtualListControl( wxListCtrl* lctl, bool isFolder, wxString fileName, wxLongLong fileSize, wxString ext, wxDateTime dateTime, wxString physicalPath ) {
+	int imageIndex = (isFolder ? 0 : 1 );
+	wxListItem item;
+	item.SetMask( wxLIST_MASK_STATE|wxLIST_MASK_TEXT|wxLIST_MASK_IMAGE|wxLIST_MASK_DATA );
+	int i = lctl->InsertItem( item );
+	lctl->SetItem( i, 0, fileName, imageIndex );
+	lctl->SetItem( i, 1, isFolder ? "" : CUtils::HumanReadableFileSize(fileSize) );
+	lctl->SetItem( i, 2, ext );
+	lctl->SetItem( i, 3, dateTime.FormatDate() + " " + dateTime.FormatTime() );
+	lctl->SetItem( i, 4, physicalPath );
+	lctl->SetItemData( i, (long) new MyListItemData( fileName, ext, fileSize, dateTime, isFolder, physicalPath ) );
+
+	return i;
+}
+
+void CMainFrame::SearchPhysicalFolder( wxString fileName, bool useFileNameWildcards, wxString ext, long folderID, long volumeID ) {
+
+	// searches the current folder
+	CFiles files;
+	wxListCtrl* lctl = GetListControl();
+	files.DBStartSearchFolderFiles( fileName, useFileNameWildcards, ext, folderID );
+	while( !files.IsEOF() ) {
+		AddRowToVirtualListControl( lctl, files.IsFolder(), files.FileName, files.FileSize, files.FileExt, files.DateTime, CPaths::GetFullPath(files.PathID) );
+		files.DBNextRow();
+	}
+
+	// recursion in the subfolders
+	CPaths pth;
+	pth.DBStartQueryListPaths( volumeID, folderID );
+	while( !pth.IsEOF() ) {
+		SearchPhysicalFolder( fileName, useFileNameWildcards, ext, pth.PathID, volumeID );
+		pth.DBNextRow();
+	}
+
+}

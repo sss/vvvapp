@@ -41,9 +41,6 @@ protected:
 	// gets the current database type
 	static DBType GetDatabaseType( void );
 
-	// doubles single-quote charachters in a string, used to create SQL statements
-	wxString ExpandSingleQuotes( wxString txt );
-
 	// true if we are past the end of the result set
 	bool eof;
 
@@ -88,6 +85,13 @@ public:
 	void DBStartMultiRowQuery( wxString sql, bool readOnly );
 	// moves to the next row, possibly setting EOF
 	void DBNextRow(void);
+
+	// doubles single-quote characters in a string, used to create SQL statements
+	static wxString ExpandSingleQuotes( wxString txt );
+
+	// doubles single-quote characters in a string and escapes '_' and '%' characters with the passed character
+	// used for Firebird queries
+	static wxString EscapeWildcards( wxString txt, wxString escape );
 
 
 };

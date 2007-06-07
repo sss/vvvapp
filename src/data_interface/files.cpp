@@ -35,3 +35,51 @@ void CFiles::DBStartQueryListFiles( long PathID ) {
 	DBStartMultiRowQuery( sql, true );
 }
 
+void CFiles::DBStartSearchVolumeFiles( wxString fileName, bool useFileNameWildcards, wxString ext, CNullableLong volumeID ) {
+	wxString sql;
+
+	fileName = fileName.MakeUpper();
+	ext = ext.MakeUpper();
+
+	if( volumeID.IsNull() ) {
+		// all volumes
+		sql = "SELECT * FROM FILES WHERE PATH_FILE_ID IS NULL";
+		if( !fileName.empty() && useFileNameWildcards )
+			sql += " AND UPPER(FILE_NAME) LIKE '" + fileName + "' ESCAPE '\\'";
+		if( !fileName.empty() && !useFileNameWildcards )
+			sql += " AND UPPER(FILE_NAME) = '" + fileName + "'";
+		if( !ext.empty() )
+			sql += " AND UPPER(FILE_EXT) = '" + ExpandSingleQuotes(ext) + "'";
+	}
+	else {
+		sql = "SELECT FILES.* FROM FILES INNER JOIN PATHS on FILES.PATH_ID = PATHS.PATH_ID WHERE PATH_FILE_ID IS NULL AND PATHS.VOLUME_ID = " + CUtils::long2string(volumeID);
+		if( !fileName.empty() && useFileNameWildcards )
+			sql += " AND UPPER(FILE_NAME) LIKE '" + fileName + "' ESCAPE '\\'";
+		if( !fileName.empty() && !useFileNameWildcards )
+			sql += " AND UPPER(FILE_NAME) = '" + fileName + "'";
+		if( !ext.empty() )
+			sql += " AND UPPER(FILE_EXT) = '" + ExpandSingleQuotes(ext) + "'";
+	}
+
+	DBStartMultiRowQuery( sql, true );
+
+}
+
+void CFiles::DBStartSearchFolderFiles( wxString fileName, bool useFileNameWildcards, wxString ext, long folderID ) {
+	wxString sql;
+
+	fileName = fileName.MakeUpper();
+	ext = ext.MakeUpper();
+
+	sql = "SELECT * FROM FILES WHERE PATH_FILE_ID IS NULL AND PATH_ID = " + CUtils::long2string(folderID);
+	if( !fileName.empty() && useFileNameWildcards )
+		sql += " AND UPPER(FILE_NAME) LIKE '" + fileName + "' ESCAPE '\\'";
+	if( !fileName.empty() && !useFileNameWildcards )
+		sql += " AND UPPER(FILE_NAME) = '" + fileName + "'";
+	if( !ext.empty() )
+		sql += " AND UPPER(FILE_EXT) = '" + ExpandSingleQuotes(ext) + "'";
+
+	DBStartMultiRowQuery( sql, true );
+
+}
+
