@@ -56,6 +56,9 @@ public:
 	// always returns a join between VIRTUAL_FILES and FILES
 	void DBStartQueryListFiles( long VirtualPathID );
 
+	// searches all the files in a folder and its subfolders
+	void DBStartSearchFolderFiles( wxString fileName, bool useFileNameWildcards, wxString ext, long folderID );
+
 	// true if this row represents a folder
 	bool IsFolder(void) { return !VirtualPathFileID.IsNull(); }
 

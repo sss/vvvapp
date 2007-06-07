@@ -385,6 +385,9 @@ private:
 	// searches a physical folder for files, appends them to the list control, then recursion
 	void SearchPhysicalFolder( wxString fileName, bool useFileNameWildcards, wxString ext, long folderID, long volumeID );
 
+	// searches a virtual folder for files, appends them to the list control, then recursion
+	void SearchVirtualFolder( wxString fileName, bool useFileNameWildcards, wxString ext, long folderID );
+
 	// adds a row to the listview in Virtual or Search mode
 	// return the index position of the newly inserted row
 	int AddRowToVirtualListControl( wxListCtrl* lctl, bool isFolder, wxString fileName, wxLongLong fileSize, wxString ext, wxDateTime dateTime, wxString physicalPath );

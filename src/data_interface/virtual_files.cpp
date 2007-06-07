@@ -39,4 +39,21 @@ void CVirtualFiles::DBStartQueryListFiles( long PathID ) {
 	DBStartMultiRowQuery( sql, true );
 }
 
+void CVirtualFiles::DBStartSearchFolderFiles( wxString fileName, bool useFileNameWildcards, wxString ext, long folderID ) {
+	wxString sql;
+
+	fileName = fileName.MakeUpper();
+	ext = ext.MakeUpper();
+
+	sql = "SELECT * FROM VIRTUAL_FILES INNER JOIN FILES ON VIRTUAL_FILES.PHYSICAL_FILE_ID = FILES.FILE_ID WHERE VIRTUAL_FILES.VIRTUAL_PATH_FILE_ID IS NULL AND VIRTUAL_FILES.VIRTUAL_PATH_ID = " + CUtils::long2string(folderID);
+	if( !fileName.empty() && useFileNameWildcards )
+		sql += " AND UPPER(FILES.FILE_NAME) LIKE '" + fileName + "' ESCAPE '\\'";
+	if( !fileName.empty() && !useFileNameWildcards )
+		sql += " AND UPPER(FILES.FILE_NAME) = '" + fileName + "'";
+	if( !ext.empty() )
+		sql += " AND UPPER(FILES.FILE_EXT) = '" + ExpandSingleQuotes(ext) + "'";
+
+	DBStartMultiRowQuery( sql, true );
+
+}
 

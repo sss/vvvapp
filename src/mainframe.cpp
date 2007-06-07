@@ -2101,9 +2101,20 @@ void CMainFrame::OnButtonSearchClick( wxCommandEvent& WXUNUSED(event) ) {
 			else {
 				// the user selected a folder: recursion
 				CBaseDB::GetDatabase()->TransactionStart( true );
-				SearchPhysicalFolder( fileName,  useWildcards, ext, itemData->GetPathID(), itemData->GetVolumeID() );
+				SearchPhysicalFolder( fileName, useWildcards, ext, itemData->GetPathID(), itemData->GetVolumeID() );
 				CBaseDB::GetDatabase()->TransactionCommit();
 			}
+			break;
+		}
+		case SelectedVirtualFolder: {
+			wxTreeCtrl *tctl = GetTreeVirtualControl();
+			wxASSERT( tctl->GetCount() > 0 );
+			wxTreeItemId item = tctl->GetSelection();
+			wxASSERT( item.IsOk() );
+		    MyTreeItemData *itemData = (MyTreeItemData *) tctl->GetItemData(item);
+			CBaseDB::GetDatabase()->TransactionStart( true );
+			SearchVirtualFolder( fileName, useWildcards, ext, itemData->GetPathID() );
+			CBaseDB::GetDatabase()->TransactionCommit();
 			break;
 		}
 		default:
@@ -2129,6 +2140,27 @@ int CMainFrame::AddRowToVirtualListControl( wxListCtrl* lctl, bool isFolder, wxS
 	lctl->SetItemData( i, (long) new MyListItemData( fileName, ext, fileSize, dateTime, isFolder, physicalPath ) );
 
 	return i;
+}
+
+void CMainFrame::SearchVirtualFolder( wxString fileName, bool useFileNameWildcards, wxString ext, long folderID ) {
+
+	// searches the current folder
+	CVirtualFiles files;
+	wxListCtrl* lctl = GetListControl();
+	files.DBStartSearchFolderFiles( fileName, useFileNameWildcards, ext, folderID );
+	while( !files.IsEOF() ) {
+		AddRowToVirtualListControl( lctl, files.IsFolder(), files.FileName, files.FileSize, files.FileExt, files.DateTime, files.FullPhysicalPath );
+		files.DBNextRow();
+	}
+
+	// recursion in the subfolders
+	CVirtualPaths pth;
+	pth.DBStartQueryListPaths( folderID );
+	while( !pth.IsEOF() ) {
+		SearchVirtualFolder( fileName, useFileNameWildcards, ext, pth.PathID );
+		pth.DBNextRow();
+	}
+
 }
 
 void CMainFrame::SearchPhysicalFolder( wxString fileName, bool useFileNameWildcards, wxString ext, long folderID, long volumeID ) {
