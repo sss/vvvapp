@@ -66,6 +66,10 @@ void CFirebirdDB::TransactionCommit(void) {
 	tr = NULL;
 }
 
+void CFirebirdDB::TransactionCommitRetain(void) {
+	tr->CommitRetain();
+}
+
 void CFirebirdDB::TransactionRollback(void) {
 	tr->Rollback();
 	tr = NULL;
@@ -116,6 +120,7 @@ int CFirebirdDB::GetDatabaseVersion(void) {
 	return currentVersion;
 }
 
+
 void CFirebirdDB::UpgradeDatabase( int currentVersion ) {
 
 	// opens the database containing the metadata changes and reads them
@@ -127,12 +132,14 @@ void CFirebirdDB::UpgradeDatabase( int currentVersion ) {
 	Statement stUpg = StatementFactory( upgDb, upgTr );
 	stUpg->Execute( CUtils::wx2std(sql) );
 	wxArrayString scripts;
+	wxArrayString versions;
 	int finalVersion = 0;
 	while( stUpg->Fetch() ) {
 		string s;
 		stUpg->Get( "VERSION_NUMBER", finalVersion );
 		stUpg->Get( "SCRIPT_CODE", s );
 		scripts.Add( CUtils::std2wx(s) );
+		versions.Add( CUtils::long2string(finalVersion) );
 	}
 	upgTr->Commit();
 	upgDb->Disconnect();
@@ -146,8 +153,11 @@ void CFirebirdDB::UpgradeDatabase( int currentVersion ) {
 	Statement st = StatementFactory( GetIBPPDB(), TransactionGetReference() );
 	for( int k = 0; k < (int) scripts.GetCount(); k ++ ) {
 		st->ExecuteImmediate( CUtils::wx2std(scripts[k]) );
+		sql = "UPDATE SERVICE SET DB_VERSION = " + versions[k] + " WHERE SERVICE_ID = 1";
+		st->ExecuteImmediate( CUtils::wx2std(sql) );
+		TransactionCommitRetain();
 	}
-	sql = "UPDATE SERVICE SET DB_VERSION = " + CUtils::long2string(finalVersion) + "WHERE SERVICE_ID = 1";
+	sql = "UPDATE SERVICE SET DB_VERSION = " + CUtils::long2string(finalVersion) + " WHERE SERVICE_ID = 1";
 	st->ExecuteImmediate( CUtils::wx2std(sql) );
 	TransactionCommit();
 

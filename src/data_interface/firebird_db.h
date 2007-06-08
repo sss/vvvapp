@@ -51,6 +51,8 @@ public:
 	void TransactionStart( bool readOnly = false );
 	// commit the transaction
 	void TransactionCommit(void);
+	// commit retaining
+	void TransactionCommitRetain(void);
 	// rolls back the transaction
 	void TransactionRollback(void);
 	// returns true if the transaction is started
