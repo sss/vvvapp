@@ -67,7 +67,7 @@
 #include "volume_description.h"
 
 ////@begin XPM images
-#include "graphics/vvv.xpm"
+#include "graphics/vvv32.xpm"
 #include "graphics/tlb_new.xpm"
 #include "graphics/tlb_open.xpm"
 #include "graphics/tlb_catalog.xpm"
@@ -260,7 +260,7 @@ bool CMainFrame::Create( wxWindow* parent, wxWindowID id, const wxString& captio
     wxFrame::Create( parent, id, caption, pos, size, style );
 
     CreateControls();
-    SetIcon(GetIconResource(wxT("graphics/vvv.xpm")));
+    SetIcon(GetIconResource(wxT("graphics/vvv32.xpm")));
     Centre();
 ////@end CMainFrame creation
 
@@ -537,9 +537,9 @@ wxIcon CMainFrame::GetIconResource( const wxString& name )
     // Icon retrieval
 ////@begin CMainFrame icon retrieval
     wxUnusedVar(name);
-    if (name == _T("graphics/vvv.xpm"))
+    if (name == _T("graphics/vvv32.xpm"))
     {
-        wxIcon icon(vvv_xpm);
+        wxIcon icon(vvv32_xpm);
         return icon;
     }
     return wxNullIcon;
