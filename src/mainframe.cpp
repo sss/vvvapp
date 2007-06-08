@@ -220,6 +220,7 @@ BEGIN_EVENT_TABLE( CMainFrame, wxFrame )
     EVT_TREE_ITEM_EXPANDING( ID_TREE_CONTROL, CMainFrame::OnTreeControlItemExpanding )
     EVT_TREE_ITEM_MENU( ID_TREE_CONTROL, CMainFrame::OnTreeControlItemMenu )
 
+    EVT_LIST_ITEM_ACTIVATED( ID_LIST_CONTROL, CMainFrame::OnListControlItemActivated )
     EVT_LIST_COL_CLICK( ID_LIST_CONTROL, CMainFrame::OnListControlColLeftClick )
 
 ////@end CMainFrame event table entries
@@ -1027,7 +1028,7 @@ void CMainFrame::ShowFolderFiles( wxTreeItemId itemID ) {
 		lctl->SetItem( i, 1, files.IsFolder() ? "" : CUtils::HumanReadableFileSize(files.FileSize) );
 		lctl->SetItem( i, 2, files.FileExt );
 		lctl->SetItem( i, 3, files.DateTime.FormatDate() + " " + files.DateTime.FormatTime() );
-		lctl->SetItemData( i, (long) new MyListItemData( files.FileName, files.FileExt, files.FileSize, files.DateTime, files.IsFolder() ) );
+		lctl->SetItemData( i, (long) new MyListItemData( files.PathFileID.IsNull() ? 0 : (long) files.PathFileID, files.FileName, files.FileExt, files.FileSize, files.DateTime, files.IsFolder() ) );
 
 		files.DBNextRow();
 	}
@@ -1079,7 +1080,7 @@ void CMainFrame::ShowVirtualFolderFiles( wxTreeItemId itemID ) {
 		wxString prevFileName = files.FileName;
 		bool wasFolder = files.IsFolder();
 
-		int i = AddRowToVirtualListControl( lctl, files.IsFolder(), files.FileName, files.FileSize, files.FileExt, files.DateTime, files.FullPhysicalPath );
+		int i = AddRowToVirtualListControl( lctl, files.IsFolder(), files.FileName, files.FileSize, files.FileExt, files.DateTime, files.FullPhysicalPath, files.VirtualPathFileID.IsNull() ? 0 : files.VirtualPathFileID );
 		files.DBNextRow();
 
 		// removes possible duplicate folder rows. If this folder contains physical folders from different volumes
@@ -2077,7 +2078,7 @@ void CMainFrame::OnButtonSearchClick( wxCommandEvent& WXUNUSED(event) ) {
 			nl.SetNull(true);
 			files.DBStartSearchVolumeFiles( fileName, useWildcards, ext, nl );
 			while( !files.IsEOF() ) {
-				AddRowToVirtualListControl( lctl, files.IsFolder(), files.FileName, files.FileSize, files.FileExt, files.DateTime, CPaths::GetFullPath(files.PathID) );
+				AddRowToVirtualListControl( lctl, files.IsFolder(), files.FileName, files.FileSize, files.FileExt, files.DateTime, CPaths::GetFullPath(files.PathID), files.PathFileID.IsNull() ? 0 : files.PathFileID );
 				files.DBNextRow();
 			}
 			break;
@@ -2094,7 +2095,7 @@ void CMainFrame::OnButtonSearchClick( wxCommandEvent& WXUNUSED(event) ) {
 				CFiles files;
 				files.DBStartSearchVolumeFiles( fileName, useWildcards, ext, itemData->GetVolumeID() );
 				while( !files.IsEOF() ) {
-					AddRowToVirtualListControl( lctl, files.IsFolder(), files.FileName, files.FileSize, files.FileExt, files.DateTime, CPaths::GetFullPath(files.PathID) );
+					AddRowToVirtualListControl( lctl, files.IsFolder(), files.FileName, files.FileSize, files.FileExt, files.DateTime, CPaths::GetFullPath(files.PathID), files.PathFileID.IsNull() ? 0 : files.PathFileID );
 					files.DBNextRow();
 				}
 			}
@@ -2127,7 +2128,7 @@ void CMainFrame::OnButtonSearchClick( wxCommandEvent& WXUNUSED(event) ) {
 
 }
 
-int CMainFrame::AddRowToVirtualListControl( wxListCtrl* lctl, bool isFolder, wxString fileName, wxLongLong fileSize, wxString ext, wxDateTime dateTime, wxString physicalPath ) {
+int CMainFrame::AddRowToVirtualListControl( wxListCtrl* lctl, bool isFolder, wxString fileName, wxLongLong fileSize, wxString ext, wxDateTime dateTime, wxString physicalPath, long virtualPathFileID ) {
 	int imageIndex = (isFolder ? 0 : 1 );
 	wxListItem item;
 	item.SetMask( wxLIST_MASK_STATE|wxLIST_MASK_TEXT|wxLIST_MASK_IMAGE|wxLIST_MASK_DATA );
@@ -2137,7 +2138,7 @@ int CMainFrame::AddRowToVirtualListControl( wxListCtrl* lctl, bool isFolder, wxS
 	lctl->SetItem( i, 2, ext );
 	lctl->SetItem( i, 3, dateTime.FormatDate() + " " + dateTime.FormatTime() );
 	lctl->SetItem( i, 4, physicalPath );
-	lctl->SetItemData( i, (long) new MyListItemData( fileName, ext, fileSize, dateTime, isFolder, physicalPath ) );
+	lctl->SetItemData( i, (long) new MyListItemData( virtualPathFileID, fileName, ext, fileSize, dateTime, isFolder, physicalPath ) );
 	if( physicalPath.empty() ) lctl->SetItemTextColour( i, *wxBLUE );
 
 	return i;
@@ -2150,7 +2151,7 @@ void CMainFrame::SearchVirtualFolder( wxString fileName, bool useFileNameWildcar
 	wxListCtrl* lctl = GetListControl();
 	files.DBStartSearchFolderFiles( fileName, useFileNameWildcards, ext, folderID );
 	while( !files.IsEOF() ) {
-		AddRowToVirtualListControl( lctl, files.IsFolder(), files.FileName, files.FileSize, files.FileExt, files.DateTime, files.FullPhysicalPath );
+		AddRowToVirtualListControl( lctl, files.IsFolder(), files.FileName, files.FileSize, files.FileExt, files.DateTime, files.FullPhysicalPath, files.VirtualPathFileID.IsNull() ? 0 : files.VirtualPathFileID );
 		files.DBNextRow();
 	}
 
@@ -2171,7 +2172,7 @@ void CMainFrame::SearchPhysicalFolder( wxString fileName, bool useFileNameWildca
 	wxListCtrl* lctl = GetListControl();
 	files.DBStartSearchFolderFiles( fileName, useFileNameWildcards, ext, folderID );
 	while( !files.IsEOF() ) {
-		AddRowToVirtualListControl( lctl, files.IsFolder(), files.FileName, files.FileSize, files.FileExt, files.DateTime, CPaths::GetFullPath(files.PathID) );
+		AddRowToVirtualListControl( lctl, files.IsFolder(), files.FileName, files.FileSize, files.FileExt, files.DateTime, CPaths::GetFullPath(files.PathID), files.PathFileID.IsNull() ? 0 : files.PathFileID );
 		files.DBNextRow();
 	}
 
@@ -2184,3 +2185,47 @@ void CMainFrame::SearchPhysicalFolder( wxString fileName, bool useFileNameWildca
 	}
 
 }
+
+
+/*!
+ * wxEVT_COMMAND_LIST_ITEM_ACTIVATED event handler for ID_LIST_CONTROL
+ */
+
+void CMainFrame::OnListControlItemActivated( wxListEvent& event )
+{
+	int i = event.GetIndex();
+	wxListCtrl* lctl = GetListControl();
+	MyListItemData *itemData = (MyListItemData *) lctl->GetItemData( i );
+
+	if( !itemData->IsFolder() ) return;
+	long pathFileID = itemData->GetPathFileID();
+	if( pathFileID == 0 ) return;
+
+	wxTreeCtrl *tctl = NULL;
+	switch( m_CurrentView ) {
+		case Physical:
+			tctl = GetTreePhysicalControl();
+			break;
+		case Virtual:
+			tctl = GetTreeVirtualControl();
+			break;
+		default:
+			wxASSERT( true );
+	}
+	// this is the selected item in the tree control
+	wxTreeItemId itemFather = tctl->GetSelection();
+
+	// looks for the child corresponding to the folder in the list view
+	wxTreeItemIdValue cookie;
+	wxTreeItemId itemChild = tctl->GetFirstChild( itemFather, cookie );
+	while( itemChild.IsOk() ) {
+		MyTreeItemData *tid = (MyTreeItemData *) tctl->GetItemData(itemChild);
+		if( tid->GetPathID() == pathFileID ) {
+			tctl->SelectItem( itemChild );
+			break;
+		}
+		itemChild = tctl->GetNextChild( itemFather, cookie );
+	}
+
+}
+

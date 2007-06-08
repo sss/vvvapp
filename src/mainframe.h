@@ -243,6 +243,9 @@ public:
     /// wxEVT_COMMAND_TREE_ITEM_MENU event handler for ID_TREE_CONTROL
     void OnTreeControlItemMenu( wxTreeEvent& event );
 
+    /// wxEVT_COMMAND_LIST_ITEM_ACTIVATED event handler for ID_LIST_CONTROL
+    void OnListControlItemActivated( wxListEvent& event );
+
     /// wxEVT_COMMAND_LIST_COL_CLICK event handler for ID_LIST_CONTROL
     void OnListControlColLeftClick( wxListEvent& event );
 
@@ -390,7 +393,7 @@ private:
 
 	// adds a row to the listview in Virtual or Search mode
 	// return the index position of the newly inserted row
-	int AddRowToVirtualListControl( wxListCtrl* lctl, bool isFolder, wxString fileName, wxLongLong fileSize, wxString ext, wxDateTime dateTime, wxString physicalPath );
+	int AddRowToVirtualListControl( wxListCtrl* lctl, bool isFolder, wxString fileName, wxLongLong fileSize, wxString ext, wxDateTime dateTime, wxString physicalPath, long virtualPathFileID );
 
 protected:
 	// shows in the listview the files contained in the passed folder
