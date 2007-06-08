@@ -2138,6 +2138,7 @@ int CMainFrame::AddRowToVirtualListControl( wxListCtrl* lctl, bool isFolder, wxS
 	lctl->SetItem( i, 3, dateTime.FormatDate() + " " + dateTime.FormatTime() );
 	lctl->SetItem( i, 4, physicalPath );
 	lctl->SetItemData( i, (long) new MyListItemData( fileName, ext, fileSize, dateTime, isFolder, physicalPath ) );
+	if( physicalPath.empty() ) lctl->SetItemTextColour( i, *wxBLUE );
 
 	return i;
 }
