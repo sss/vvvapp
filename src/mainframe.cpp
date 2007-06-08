@@ -313,6 +313,7 @@ void CMainFrame::Init()
 ////@begin CMainFrame member initialisation
     m_Toolbar = NULL;
     m_fileMenu = NULL;
+    m_StatusBar = NULL;
 ////@end CMainFrame member initialisation
 	m_ChooseVirtualFolderDialog = NULL;
 
@@ -329,6 +330,9 @@ void CMainFrame::Init()
 
 	m_ListViewSortColumn = 0;
 	m_ListViewSortAscending = true;
+
+	nPhysicalFiles = nVirtualFiles = nSearchFiles = 0;
+	sizePhysicalFiles = sizeVirtualFiles =  sizeSearchFiles = 0;
 }
 /*!
  * Control creation for Prova
@@ -399,9 +403,15 @@ void CMainFrame::CreateControls()
     m_Toolbar->Realize();
     itemFrame1->SetToolBar(m_Toolbar);
 
-    wxStatusBar* itemStatusBar37 = new wxStatusBar( itemFrame1, ID_STATUSBAR1, wxST_SIZEGRIP );
-    itemStatusBar37->SetFieldsCount(2);
-    itemFrame1->SetStatusBar(itemStatusBar37);
+    m_StatusBar = new wxStatusBar( itemFrame1, ID_STATUSBAR1, wxST_SIZEGRIP );
+    m_StatusBar->SetFieldsCount(4);
+    int m_StatusBarWidths[4];
+    m_StatusBarWidths[0] = 300;
+    m_StatusBarWidths[1] = 150;
+    m_StatusBarWidths[2] = 150;
+    m_StatusBarWidths[3] = -1;
+    m_StatusBar->SetStatusWidths(4, m_StatusBarWidths);
+    itemFrame1->SetStatusBar(m_StatusBar);
 
     wxSplitterWindow* itemSplitterWindow38 = new wxSplitterWindow( itemFrame1, ID_SPLITTERWINDOW1, wxDefaultPosition, wxSize(100, 100), wxSP_3DBORDER|wxSP_3DSASH|wxSP_NO_XP_THEME|wxNO_BORDER );
     itemSplitterWindow38->SetMinimumPaneSize(0);
@@ -921,6 +931,7 @@ void CMainFrame::OnViewPhysicalClick( wxCommandEvent& event )
 	ShowPhysicalView();
 	sw->SplitVertically( GetTreePhysicalControl(), lctl );
 	sw->SetSashPosition( sp );
+	UpdateStatusBar( nPhysicalFiles, sizePhysicalFiles );
 
 }
 
@@ -950,6 +961,7 @@ void CMainFrame::OnViewVirtualClick( wxCommandEvent& event )
 	ShowVirtualView();
 	sw->SplitVertically( GetTreeVirtualControl(), lctl );
 	sw->SetSashPosition( sp );
+	UpdateStatusBar( nVirtualFiles, sizeVirtualFiles );
 
 }
 
@@ -1015,6 +1027,8 @@ void CMainFrame::ShowFolderFiles( wxTreeItemId itemID ) {
 	DeleteAllListControlItems();
 
 	// retrieves the files contained in the selected folder
+	nPhysicalFiles = 0;
+	sizePhysicalFiles = 0;
 	CFiles files;
 	files.DBStartQueryListFiles( itemData->GetPathID() );
 	while( !files.IsEOF() ) {
@@ -1029,13 +1043,16 @@ void CMainFrame::ShowFolderFiles( wxTreeItemId itemID ) {
 		lctl->SetItem( i, 2, files.FileExt );
 		lctl->SetItem( i, 3, files.DateTime.FormatDate() + " " + files.DateTime.FormatTime() );
 		lctl->SetItemData( i, (long) new MyListItemData( files.PathFileID.IsNull() ? 0 : (long) files.PathFileID, files.FileName, files.FileExt, files.FileSize, files.DateTime, files.IsFolder() ) );
+		nPhysicalFiles++;
+		sizePhysicalFiles += files.FileSize;
 
 		files.DBNextRow();
 	}
 
 	lctl->SortItems( ListControlCompareFunction, 0 );
-
 	lctl->Show();
+
+	UpdateStatusBar( nPhysicalFiles, sizePhysicalFiles );
 }
 
 // shows in the listview the files contained in the currently selected folder
@@ -1074,6 +1091,8 @@ void CMainFrame::ShowVirtualFolderFiles( wxTreeItemId itemID ) {
 	DeleteAllListControlItems();
 
 	// retrieves the files contained in the selected folder
+	nVirtualFiles = 0;
+	sizeVirtualFiles = 0;
 	CVirtualFiles files;
 	files.DBStartQueryListFiles( itemData->GetPathID() );
 	while( !files.IsEOF() ) {
@@ -1081,6 +1100,10 @@ void CMainFrame::ShowVirtualFolderFiles( wxTreeItemId itemID ) {
 		bool wasFolder = files.IsFolder();
 
 		int i = AddRowToVirtualListControl( lctl, files.IsFolder(), files.FileName, files.FileSize, files.FileExt, files.DateTime, files.FullPhysicalPath, files.VirtualPathFileID.IsNull() ? 0 : files.VirtualPathFileID );
+
+		nVirtualFiles++;
+		sizeVirtualFiles += files.FileSize;
+
 		files.DBNextRow();
 
 		// removes possible duplicate folder rows. If this folder contains physical folders from different volumes
@@ -1101,8 +1124,9 @@ void CMainFrame::ShowVirtualFolderFiles( wxTreeItemId itemID ) {
 	}
 
 	lctl->SortItems( ListControlCompareFunction, 0 );
-
 	lctl->Show();
+
+	UpdateStatusBar( nVirtualFiles, sizeVirtualFiles );
 }
 
 // shows in the listview the files contained in the currently selected virtual folder
@@ -1949,6 +1973,10 @@ void CMainFrame::OnViewSearchClick( wxCommandEvent& event )
 	sw->SplitVertically( m_SearchPanel, lctl );
 	sw->SetSashPosition( sp );
 	DeleteAllListControlItems();
+
+	nSearchFiles = 0;
+	sizeSearchFiles = 0;
+	UpdateStatusBar( nSearchFiles, sizeSearchFiles );
 }
 
 /*!
@@ -2068,6 +2096,9 @@ void CMainFrame::OnButtonSearchClick( wxCommandEvent& WXUNUSED(event) ) {
 	iml->Add(wxIcon(deffile_xpm));
 	lctl->AssignImageList( iml, wxIMAGE_LIST_SMALL );
 
+	nSearchFiles = 0;
+	sizeSearchFiles = 0;
+
 	DeleteAllListControlItems();
 	lctl->Hide();	// to speed up things
 
@@ -2079,6 +2110,8 @@ void CMainFrame::OnButtonSearchClick( wxCommandEvent& WXUNUSED(event) ) {
 			files.DBStartSearchVolumeFiles( fileName, useWildcards, ext, nl );
 			while( !files.IsEOF() ) {
 				AddRowToVirtualListControl( lctl, files.IsFolder(), files.FileName, files.FileSize, files.FileExt, files.DateTime, CPaths::GetFullPath(files.PathID), files.PathFileID.IsNull() ? 0 : files.PathFileID );
+				nSearchFiles++;
+				sizeSearchFiles += files.FileSize;
 				files.DBNextRow();
 			}
 			break;
@@ -2096,6 +2129,8 @@ void CMainFrame::OnButtonSearchClick( wxCommandEvent& WXUNUSED(event) ) {
 				files.DBStartSearchVolumeFiles( fileName, useWildcards, ext, itemData->GetVolumeID() );
 				while( !files.IsEOF() ) {
 					AddRowToVirtualListControl( lctl, files.IsFolder(), files.FileName, files.FileSize, files.FileExt, files.DateTime, CPaths::GetFullPath(files.PathID), files.PathFileID.IsNull() ? 0 : files.PathFileID );
+					nSearchFiles++;
+					sizeSearchFiles += files.FileSize;
 					files.DBNextRow();
 				}
 			}
@@ -2126,6 +2161,7 @@ void CMainFrame::OnButtonSearchClick( wxCommandEvent& WXUNUSED(event) ) {
 	lctl->SortItems( ListControlCompareFunction, 0 );
 	lctl->Show();
 
+	UpdateStatusBar( nSearchFiles, sizeSearchFiles );
 }
 
 int CMainFrame::AddRowToVirtualListControl( wxListCtrl* lctl, bool isFolder, wxString fileName, wxLongLong fileSize, wxString ext, wxDateTime dateTime, wxString physicalPath, long virtualPathFileID ) {
@@ -2152,6 +2188,8 @@ void CMainFrame::SearchVirtualFolder( wxString fileName, bool useFileNameWildcar
 	files.DBStartSearchFolderFiles( fileName, useFileNameWildcards, ext, folderID );
 	while( !files.IsEOF() ) {
 		AddRowToVirtualListControl( lctl, files.IsFolder(), files.FileName, files.FileSize, files.FileExt, files.DateTime, files.FullPhysicalPath, files.VirtualPathFileID.IsNull() ? 0 : files.VirtualPathFileID );
+		nSearchFiles++;
+		sizeSearchFiles += files.FileSize;
 		files.DBNextRow();
 	}
 
@@ -2173,6 +2211,8 @@ void CMainFrame::SearchPhysicalFolder( wxString fileName, bool useFileNameWildca
 	files.DBStartSearchFolderFiles( fileName, useFileNameWildcards, ext, folderID );
 	while( !files.IsEOF() ) {
 		AddRowToVirtualListControl( lctl, files.IsFolder(), files.FileName, files.FileSize, files.FileExt, files.DateTime, CPaths::GetFullPath(files.PathID), files.PathFileID.IsNull() ? 0 : files.PathFileID );
+		nSearchFiles++;
+		sizeSearchFiles += files.FileSize;
 		files.DBNextRow();
 	}
 
@@ -2228,4 +2268,23 @@ void CMainFrame::OnListControlItemActivated( wxListEvent& event )
 	}
 
 }
+
+void CMainFrame::UpdateStatusBar( long nObjects, wxLongLong sizeObjects ) {
+
+	if( nObjects == 0 )
+		m_StatusBar->SetStatusText( "", ObjectsNumber );
+	else {
+		wxString s = _("Objects: ") + CUtils::long2string( nObjects );
+		m_StatusBar->SetStatusText( s, ObjectsNumber );
+	}
+
+	if( sizeObjects == 0 )
+		m_StatusBar->SetStatusText( "", ObjectsSize );
+	else {
+		wxString s = _("Total size: ") + CUtils::HumanReadableFileSize( sizeObjects );
+		m_StatusBar->SetStatusText( s, ObjectsSize );
+	}
+
+}
+
 

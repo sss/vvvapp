@@ -68,6 +68,7 @@
 
 ////@begin forward declarations
 class wxMenu;
+class wxStatusBar;
 ////@end forward declarations
 
 /*!
@@ -266,6 +267,7 @@ public:
 ////@begin CMainFrame member variables
     wxToolBar* m_Toolbar;
     wxMenu* m_fileMenu;
+    wxStatusBar* m_StatusBar;
 ////@end CMainFrame member variables
 
 	// search panel member variables
@@ -324,6 +326,17 @@ private:
 		SelectedPhysicalFolder,
 		SelectedVirtualFolder
 	};
+
+	// values for the Status bar elements
+	enum StatusBarElements {
+		MenuDescription = 0,
+		ObjectsNumber,
+		ObjectsSize
+	};
+
+	// number and total size of the files shown in each view
+	long nPhysicalFiles, nVirtualFiles, nSearchFiles;
+	wxLongLong sizePhysicalFiles, sizeVirtualFiles, sizeSearchFiles;
 
 	// pointers to some windows used in the main frame
 	wxListCtrl* m_listCtl;	// the list control
@@ -394,6 +407,9 @@ private:
 	// adds a row to the listview in Virtual or Search mode
 	// return the index position of the newly inserted row
 	int AddRowToVirtualListControl( wxListCtrl* lctl, bool isFolder, wxString fileName, wxLongLong fileSize, wxString ext, wxDateTime dateTime, wxString physicalPath, long virtualPathFileID );
+
+	// updates the content of the status bar: it does not use the first element because it is used by the menu/toolbar
+	void UpdateStatusBar( long nObjects, wxLongLong sizeObjects );
 
 protected:
 	// shows in the listview the files contained in the passed folder

@@ -1261,7 +1261,7 @@
             <string name="proxy-Id name">"ID_STATUSBAR1"</string>
             <long name="proxy-Id value">10004</long>
             <string name="proxy-Class">"wxStatusBar"</string>
-            <string name="proxy-Member variable name">""</string>
+            <string name="proxy-Member variable name">"m_StatusBar"</string>
             <string name="proxy-Help text">""</string>
             <string name="proxy-Tooltip text">""</string>
             <string name="proxy-Background colour">""</string>
@@ -1270,9 +1270,9 @@
             <bool name="proxy-Hidden">0</bool>
             <bool name="proxy-Enabled">1</bool>
             <string name="proxy-Platform">"&lt;Any platform&gt;"</string>
-            <long name="proxy-Field count">2</long>
+            <long name="proxy-Field count">4</long>
             <string name="proxy-Field text">""</string>
-            <string name="proxy-Field widths">""</string>
+            <string name="proxy-Field widths">"300|150|150|-1"</string>
             <bool name="proxy-wxST_SIZEGRIP">1</bool>
             <bool name="proxy-wxNO_BORDER">0</bool>
             <bool name="proxy-wxSIMPLE_BORDER">0</bool>
