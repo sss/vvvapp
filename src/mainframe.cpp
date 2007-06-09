@@ -1099,7 +1099,7 @@ void CMainFrame::ShowVirtualFolderFiles( wxTreeItemId itemID ) {
 		wxString prevFileName = files.FileName;
 		bool wasFolder = files.IsFolder();
 
-		int i = AddRowToVirtualListControl( lctl, files.IsFolder(), files.FileName, files.FileSize, files.FileExt, files.DateTime, files.FullPhysicalPath, files.VirtualPathFileID.IsNull() ? 0 : files.VirtualPathFileID );
+		int i = AddRowToVirtualListControl( lctl, files.IsFolder(), files.FileName, files.FileSize, files.FileExt, files.DateTime, files.FullPhysicalPath, files.VirtualPathFileID.IsNull() ? 0 : (long) files.VirtualPathFileID );
 
 		nVirtualFiles++;
 		sizeVirtualFiles += files.FileSize;
@@ -1729,7 +1729,7 @@ void CMainFrame::OnABOUTClick( wxCommandEvent& WXUNUSED(event) )
 	info.SetName( "VVV" );
 	info.SetVersion( CUtils::GetApplicationVersion() );
 	info.SetWebSite( "http://vvvapp.sourceforge.net/" );
-	info.SetDescription( _("VVV (Virtual Volumes View): a program to catalog removable devices like CDs and DVDs\n\n(The mud of Venaus is the blood of this land)") );
+	info.SetDescription( _("VVV (Virtual Volumes View): a program to catalog removable devices like CDs and DVDs\n\n\"The mud of Venaus is the blood of this land\"") );
 	info.SetCopyright( _("Copyright (C) 2007 The VVV Team") );
 	info.AddDeveloper( "Fulvio Senore" );
 	info.AddArtist( _("This program uses the Tango icons (http://tango.freedesktop.org/Tango_Desktop_Project)") );
@@ -2111,7 +2111,7 @@ void CMainFrame::OnButtonSearchClick( wxCommandEvent& WXUNUSED(event) ) {
 			nl.SetNull(true);
 			files.DBStartSearchVolumeFiles( fileName, useWildcards, ext, nl );
 			while( !files.IsEOF() ) {
-				AddRowToVirtualListControl( lctl, files.IsFolder(), files.FileName, files.FileSize, files.FileExt, files.DateTime, CPaths::GetFullPath(files.PathID), files.PathFileID.IsNull() ? 0 : files.PathFileID );
+				AddRowToVirtualListControl( lctl, files.IsFolder(), files.FileName, files.FileSize, files.FileExt, files.DateTime, CPaths::GetFullPath(files.PathID), files.PathFileID.IsNull() ? 0 : (long) files.PathFileID );
 				nSearchFiles++;
 				sizeSearchFiles += files.FileSize;
 				files.DBNextRow();
@@ -2130,7 +2130,7 @@ void CMainFrame::OnButtonSearchClick( wxCommandEvent& WXUNUSED(event) ) {
 				CFiles files;
 				files.DBStartSearchVolumeFiles( fileName, useWildcards, ext, itemData->GetVolumeID() );
 				while( !files.IsEOF() ) {
-					AddRowToVirtualListControl( lctl, files.IsFolder(), files.FileName, files.FileSize, files.FileExt, files.DateTime, CPaths::GetFullPath(files.PathID), files.PathFileID.IsNull() ? 0 : files.PathFileID );
+					AddRowToVirtualListControl( lctl, files.IsFolder(), files.FileName, files.FileSize, files.FileExt, files.DateTime, CPaths::GetFullPath(files.PathID), files.PathFileID.IsNull() ? 0 : (long) files.PathFileID );
 					nSearchFiles++;
 					sizeSearchFiles += files.FileSize;
 					files.DBNextRow();
@@ -2189,7 +2189,7 @@ void CMainFrame::SearchVirtualFolder( wxString fileName, bool useFileNameWildcar
 	wxListCtrl* lctl = GetListControl();
 	files.DBStartSearchFolderFiles( fileName, useFileNameWildcards, ext, folderID );
 	while( !files.IsEOF() ) {
-		AddRowToVirtualListControl( lctl, files.IsFolder(), files.FileName, files.FileSize, files.FileExt, files.DateTime, files.FullPhysicalPath, files.VirtualPathFileID.IsNull() ? 0 : files.VirtualPathFileID );
+		AddRowToVirtualListControl( lctl, files.IsFolder(), files.FileName, files.FileSize, files.FileExt, files.DateTime, files.FullPhysicalPath, files.VirtualPathFileID.IsNull() ? 0 : (long) files.VirtualPathFileID );
 		nSearchFiles++;
 		sizeSearchFiles += files.FileSize;
 		files.DBNextRow();
@@ -2212,7 +2212,7 @@ void CMainFrame::SearchPhysicalFolder( wxString fileName, bool useFileNameWildca
 	wxListCtrl* lctl = GetListControl();
 	files.DBStartSearchFolderFiles( fileName, useFileNameWildcards, ext, folderID );
 	while( !files.IsEOF() ) {
-		AddRowToVirtualListControl( lctl, files.IsFolder(), files.FileName, files.FileSize, files.FileExt, files.DateTime, CPaths::GetFullPath(files.PathID), files.PathFileID.IsNull() ? 0 : files.PathFileID );
+		AddRowToVirtualListControl( lctl, files.IsFolder(), files.FileName, files.FileSize, files.FileExt, files.DateTime, CPaths::GetFullPath(files.PathID), files.PathFileID.IsNull() ? 0 : (long) files.PathFileID );
 		nSearchFiles++;
 		sizeSearchFiles += files.FileSize;
 		files.DBNextRow();
