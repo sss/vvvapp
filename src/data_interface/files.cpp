@@ -45,7 +45,7 @@ void CFiles::DBStartSearchVolumeFiles( wxString fileName, bool useFileNameWildca
 		// all volumes
 		sql = "SELECT * FROM FILES WHERE PATH_FILE_ID IS NULL";
 		if( !fileName.empty() && useFileNameWildcards )
-			sql += " AND UPPER(FILE_NAME) LIKE '" + fileName + "' ESCAPE '\\'";
+			sql += " AND UPPER(FILE_NAME) LIKE '" + fileName + "' ESCAPE '/'";
 		if( !fileName.empty() && !useFileNameWildcards )
 			sql += " AND UPPER(FILE_NAME) = '" + fileName + "'";
 		if( !ext.empty() )
@@ -54,7 +54,7 @@ void CFiles::DBStartSearchVolumeFiles( wxString fileName, bool useFileNameWildca
 	else {
 		sql = "SELECT FILES.* FROM FILES INNER JOIN PATHS on FILES.PATH_ID = PATHS.PATH_ID WHERE PATH_FILE_ID IS NULL AND PATHS.VOLUME_ID = " + CUtils::long2string(volumeID);
 		if( !fileName.empty() && useFileNameWildcards )
-			sql += " AND UPPER(FILE_NAME) LIKE '" + fileName + "' ESCAPE '\\'";
+			sql += " AND UPPER(FILE_NAME) LIKE '" + fileName + "' ESCAPE '/'";
 		if( !fileName.empty() && !useFileNameWildcards )
 			sql += " AND UPPER(FILE_NAME) = '" + fileName + "'";
 		if( !ext.empty() )
@@ -73,7 +73,7 @@ void CFiles::DBStartSearchFolderFiles( wxString fileName, bool useFileNameWildca
 
 	sql = "SELECT * FROM FILES WHERE PATH_FILE_ID IS NULL AND PATH_ID = " + CUtils::long2string(folderID);
 	if( !fileName.empty() && useFileNameWildcards )
-		sql += " AND UPPER(FILE_NAME) LIKE '" + fileName + "' ESCAPE '\\'";
+		sql += " AND UPPER(FILE_NAME) LIKE '" + fileName + "' ESCAPE '/'";
 	if( !fileName.empty() && !useFileNameWildcards )
 		sql += " AND UPPER(FILE_NAME) = '" + fileName + "'";
 	if( !ext.empty() )
