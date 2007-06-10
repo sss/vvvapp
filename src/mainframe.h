@@ -91,6 +91,7 @@ class wxStatusBar;
 #define ID_RENAME_VIRTUAL_FOLDER 10020
 #define ID_DELETE_VIRTUAL_FOLDER 10021
 #define ID_VIEW_TOOLBAR 10025
+#define ID_VIEW_STATUS_BAR 10038
 #define ID_STATUSBAR1 10004
 #define ID_SPLITTERWINDOW1 10003
 #define ID_TREE_CONTROL 10005
@@ -231,6 +232,9 @@ public:
 
     /// wxEVT_COMMAND_MENU_SELECTED event handler for ID_VIEW_TOOLBAR
     void OnViewToolbarClick( wxCommandEvent& event );
+
+    /// wxEVT_COMMAND_MENU_SELECTED event handler for ID_VIEW_STATUS_BAR
+    void OnViewStatusBarClick( wxCommandEvent& event );
 
     /// wxEVT_COMMAND_MENU_SELECTED event handler for wxID_ABOUT
     void OnABOUTClick( wxCommandEvent& event );

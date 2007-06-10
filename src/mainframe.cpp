@@ -214,6 +214,8 @@ BEGIN_EVENT_TABLE( CMainFrame, wxFrame )
 
     EVT_MENU( ID_VIEW_TOOLBAR, CMainFrame::OnViewToolbarClick )
 
+    EVT_MENU( ID_VIEW_STATUS_BAR, CMainFrame::OnViewStatusBarClick )
+
     EVT_MENU( wxID_ABOUT, CMainFrame::OnABOUTClick )
 
     EVT_TREE_SEL_CHANGED( ID_TREE_CONTROL, CMainFrame::OnTreeControlSelChanged )
@@ -373,10 +375,12 @@ void CMainFrame::CreateControls()
     itemMenu29->AppendSeparator();
     itemMenu29->Append(ID_VIEW_TOOLBAR, _("Toolbar"), _T(""), wxITEM_CHECK);
     itemMenu29->Check(ID_VIEW_TOOLBAR, true);
+    itemMenu29->Append(ID_VIEW_STATUS_BAR, _("Status Bar"), _T(""), wxITEM_CHECK);
+    itemMenu29->Check(ID_VIEW_STATUS_BAR, true);
     menuBar->Append(itemMenu29, _("View"));
-    wxMenu* itemMenu35 = new wxMenu;
-    itemMenu35->Append(wxID_ABOUT, _("About VVV..."), _T(""), wxITEM_NORMAL);
-    menuBar->Append(itemMenu35, _("Help"));
+    wxMenu* itemMenu36 = new wxMenu;
+    itemMenu36->Append(wxID_ABOUT, _("About VVV..."), _T(""), wxITEM_NORMAL);
+    menuBar->Append(itemMenu36, _("Help"));
     itemFrame1->SetMenuBar(menuBar);
 
     m_Toolbar = CreateToolBar( wxTB_FLAT|wxTB_HORIZONTAL|wxTB_TEXT, ID_TOOLBAR1 );
@@ -413,14 +417,14 @@ void CMainFrame::CreateControls()
     m_StatusBar->SetStatusWidths(4, m_StatusBarWidths);
     itemFrame1->SetStatusBar(m_StatusBar);
 
-    wxSplitterWindow* itemSplitterWindow38 = new wxSplitterWindow( itemFrame1, ID_SPLITTERWINDOW1, wxDefaultPosition, wxSize(100, 100), wxSP_3DBORDER|wxSP_3DSASH|wxSP_NO_XP_THEME|wxNO_BORDER );
-    itemSplitterWindow38->SetMinimumPaneSize(0);
+    wxSplitterWindow* itemSplitterWindow39 = new wxSplitterWindow( itemFrame1, ID_SPLITTERWINDOW1, wxDefaultPosition, wxSize(100, 100), wxSP_3DBORDER|wxSP_3DSASH|wxSP_NO_XP_THEME|wxNO_BORDER );
+    itemSplitterWindow39->SetMinimumPaneSize(0);
 
-    wxTreeCtrl* itemTreeCtrl39 = new wxTreeCtrl( itemSplitterWindow38, ID_TREE_CONTROL, wxDefaultPosition, wxSize(100, 100), wxTR_HAS_BUTTONS |wxTR_HIDE_ROOT|wxTR_SINGLE|wxNO_BORDER|wxTR_DEFAULT_STYLE );
+    wxTreeCtrl* itemTreeCtrl40 = new wxTreeCtrl( itemSplitterWindow39, ID_TREE_CONTROL, wxDefaultPosition, wxSize(100, 100), wxTR_HAS_BUTTONS |wxTR_HIDE_ROOT|wxTR_SINGLE|wxNO_BORDER|wxTR_DEFAULT_STYLE );
 
-    wxListCtrl* itemListCtrl40 = new wxListCtrl( itemSplitterWindow38, ID_LIST_CONTROL, wxDefaultPosition, wxSize(100, 100), wxLC_REPORT|wxNO_BORDER );
+    wxListCtrl* itemListCtrl41 = new wxListCtrl( itemSplitterWindow39, ID_LIST_CONTROL, wxDefaultPosition, wxSize(100, 100), wxLC_REPORT|wxNO_BORDER );
 
-    itemSplitterWindow38->SplitVertically(itemTreeCtrl39, itemListCtrl40, 50);
+    itemSplitterWindow39->SplitVertically(itemTreeCtrl40, itemListCtrl41, 50);
 
 ////@end CMainFrame content construction
 
@@ -2289,4 +2293,25 @@ void CMainFrame::UpdateStatusBar( long nObjects, wxLongLong sizeObjects ) {
 
 }
 
+
+/*!
+ * wxEVT_COMMAND_MENU_SELECTED event handler for ID_VIEW_STATUS_BAR
+ */
+
+void CMainFrame::OnViewStatusBarClick( wxCommandEvent& event )
+{
+	if( event.IsChecked() )
+		GetStatusBar()->Show(true);
+	else {
+		GetStatusBar()->Show(false);
+	}
+
+#ifdef __WXMSW__
+	SendSizeEvent();
+#else
+	wxSize s = GetSize();
+	Fit();
+	SetSize(s);
+#endif
+}
 
