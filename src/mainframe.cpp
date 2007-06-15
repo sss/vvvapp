@@ -60,6 +60,7 @@
 #include "wx/stdpaths.h"
 #include "wx/textfile.h"
 #include "wx/busyinfo.h"
+#include "vvv.h"
 #include "mainframe.h"
 #include "data_interface/data_error.h"
 #include "mytreeitemdata.h"
@@ -301,6 +302,17 @@ bool CMainFrame::Create( wxWindow* parent, wxWindowID id, const wxString& captio
 	m_ListviewColWidthVirtual[4] = pConfig->Read(wxT("cw4"), 200);
 
 	CreateListControlHeaders();
+
+	// checks to see if a catalog name has been passed in the command line
+	wxString catalogName = wxGetApp().GetParameterCatalog();
+	if( !catalogName.empty() ) {
+		if( !wxFileName::FileExists(catalogName) ) {
+			CUtils::MsgErr( "This catalog file does not exist:\n\n" + catalogName );
+			catalogName = "";
+		}
+	}
+	if( !catalogName.empty() )
+		OpenDatabase( catalogName, CUtils::GetExpectedDatabaseVersion() );
 
 	return true;
 }

@@ -54,6 +54,8 @@
 ////@end includes
 
 #include "wx/log.h"
+#include "wx/cmdline.h"
+#include "wx/filename.h"
 
 #include "vvv.h"
 #include "data_interface/base_db.h"
@@ -87,6 +89,14 @@ BEGIN_EVENT_TABLE( CVvvApp, wxApp )
 
 END_EVENT_TABLE()
 
+
+static const wxCmdLineEntryDesc g_cmdLineDesc[] = 
+{
+	{ wxCMD_LINE_PARAM, NULL, NULL, wxT("input catalog"), wxCMD_LINE_VAL_STRING, wxCMD_LINE_PARAM_OPTIONAL },
+	{ wxCMD_LINE_NONE }
+};
+
+
 /*!
  * Constructor for CVvvApp
  */
@@ -115,7 +125,30 @@ bool CVvvApp::OnInit()
 	// sets the config object
 	SetVendorName(wxT("VVV"));
 	SetAppName(wxT("VVV"));
-	
+
+    wxLocale m_locale;
+    m_locale.Init();
+
+	// parse the command line
+	wxCmdLineParser cmdParser( g_cmdLineDesc, argc, argv );
+	int res;
+	{
+		wxLogNull log;
+		res = cmdParser.Parse( false );
+	}
+	if( res == -1 || res > 0 ) {
+		m_CatalogName = "";
+	}
+	else {
+		if( cmdParser.GetParamCount() > 0 ) {
+			m_CatalogName = cmdParser.GetParam(0);
+			wxFileName fName( m_CatalogName );
+			fName.Normalize( wxPATH_NORM_LONG | wxPATH_NORM_DOTS | wxPATH_NORM_TILDE | wxPATH_NORM_ABSOLUTE );
+			m_CatalogName = fName.GetFullPath();
+		}
+		else m_CatalogName = "";
+	}
+
 ////@begin CVvvApp initialisation
 	// Remove the comment markers above and below this block
 	// to make permanent changes to the code.
@@ -136,8 +169,6 @@ bool CVvvApp::OnInit()
 	mainWindow->Show(true);
 ////@end CVvvApp initialisation
 
-    wxLocale m_locale;
-    m_locale.Init();
 
 	return true;
 }

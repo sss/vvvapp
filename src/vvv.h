@@ -87,6 +87,9 @@ public:
     /// Called on exit
     virtual int OnExit();
 
+	// returns the name of the catalog passed in the command line (or "" if none)
+	wxString GetParameterCatalog() { return m_CatalogName; }
+
 ////@begin CVvvApp event handler declarations
 
 ////@end CVvvApp event handler declarations
@@ -97,6 +100,12 @@ public:
 
 ////@begin CVvvApp member variables
 ////@end CVvvApp member variables
+
+
+private:
+
+	// name of the catalog passed in the command line
+	wxString m_CatalogName;
 };
 
 /*!
@@ -106,6 +115,7 @@ public:
 ////@begin declare app
 DECLARE_APP(CVvvApp)
 ////@end declare app
+
 
 #endif
     // _VVV_H_
