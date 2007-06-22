@@ -297,7 +297,11 @@ void CDialogCatalogVolume::OnButtonCatalogClick( wxCommandEvent& WXUNUSED(event)
 	// catalogs the folders
 	CNullableLong FatherID;
 	FatherID.SetNull(true);
+#ifdef __WXMSW__
+	CatalogSingleFolderWindows( db, path, vol.VolumeID, FatherID, NULL );
+#else
 	CatalogSingleFolder( db, path, vol.VolumeID, FatherID, NULL );
+#endif
 
 	// commits the transaction
 	db->TransactionCommit();

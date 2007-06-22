@@ -48,6 +48,7 @@
 #include "wx/dirctrl.h"
 ////@end includes
 
+#include <wx/stattext.h>
 #include "data_interface/base_db.h"
 #include "data_interface/db_null.h"
 #include "data_interface/files.h"
@@ -152,6 +153,12 @@ private:
 	// PathFile contains the data of the file that will store data about the current folder (if not NULL)
 	//   each instance of this method will add the ID oof the path and it will save it in the database
 	void CatalogSingleFolder( CBaseDB* db, wxString path, long VolumeID, CNullableLong& FatherID, CFiles* PathFile );
+
+	// Windows-specific version because the standard one was rather slow
+#ifdef __WXMSW__
+	void CatalogSingleFolderWindows( CBaseDB* db, wxString path, long VolumeID, CNullableLong& FatherID, CFiles* PathFile );
+#endif
+
 };
 
 #endif
