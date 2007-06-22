@@ -72,6 +72,7 @@
 #include "graphics/tlb_new.xpm"
 #include "graphics/tlb_open.xpm"
 #include "graphics/tlb_catalog.xpm"
+#include "graphics/tlb_up.xpm"
 #include "graphics/tlb_physical.xpm"
 #include "graphics/tlb_virtual.xpm"
 #include "graphics/tlb_search.xpm"
@@ -212,6 +213,9 @@ BEGIN_EVENT_TABLE( CMainFrame, wxFrame )
 
     EVT_MENU( ID_VIEW_SEARCH, CMainFrame::OnViewSearchClick )
     EVT_UPDATE_UI( ID_VIEW_SEARCH, CMainFrame::OnViewSearchUpdate )
+
+    EVT_MENU( ID_UP_ONE_FOLDER, CMainFrame::OnUpOneFolderClick )
+    EVT_UPDATE_UI( ID_UP_ONE_FOLDER, CMainFrame::OnUpOneFolderUpdate )
 
     EVT_MENU( ID_VIEW_TOOLBAR, CMainFrame::OnViewToolbarClick )
 
@@ -364,35 +368,37 @@ void CMainFrame::CreateControls()
     m_fileMenu->AppendSeparator();
     m_fileMenu->Append(wxID_EXIT, _("Exit"), _T(""), wxITEM_NORMAL);
     menuBar->Append(m_fileMenu, _("File"));
-    wxMenu* itemMenu16 = new wxMenu;
-    itemMenu16->Append(ID_ADD_VIRTUAL_FOLDER, _("Add To Virtual Folder..."), _T(""), wxITEM_NORMAL);
-    itemMenu16->AppendSeparator();
-    itemMenu16->Append(ID_EDIT_VOLUME_DESCRIPTION, _("Volume Description..."), _T(""), wxITEM_NORMAL);
-    itemMenu16->Append(ID_RENAME_VOLUME, _("Rename Volume..."), _T(""), wxITEM_NORMAL);
-    itemMenu16->Append(ID_DELETE_VOLUME, _("Delete Volume"), _T(""), wxITEM_NORMAL);
-    itemMenu16->AppendSeparator();
-    itemMenu16->Append(ID_NEW_VIRTUAL_ROOT_FOLDER, _("New Virtual Root Folder..."), _T(""), wxITEM_NORMAL);
-    itemMenu16->Append(ID_NEW_VIRTUAL_SUBFOLDER, _("New Virtual Subfolder..."), _T(""), wxITEM_NORMAL);
-    itemMenu16->Append(ID_RENAME_VIRTUAL_FOLDER, _("Rename Virtual Folder..."), _T(""), wxITEM_NORMAL);
-    itemMenu16->Append(ID_DELETE_VIRTUAL_FOLDER, _("Delete Virtual Folder"), _T(""), wxITEM_NORMAL);
-    menuBar->Append(itemMenu16, _("Edit"));
-    wxMenu* itemMenu27 = new wxMenu;
-    itemMenu27->Append(ID_CATALOG_VOLUME, _("Catalog Volume..."), _T(""), wxITEM_NORMAL);
-    menuBar->Append(itemMenu27, _("Volumes"));
-    wxMenu* itemMenu29 = new wxMenu;
-    itemMenu29->Append(ID_VIEW_PHYSICAL, _("Physical View"), _T(""), wxITEM_RADIO);
-    itemMenu29->Check(ID_VIEW_PHYSICAL, true);
-    itemMenu29->Append(ID_VIEW_VIRTUAL, _("Virtual View"), _T(""), wxITEM_RADIO);
-    itemMenu29->Append(ID_VIEW_SEARCH, _("Search View"), _T(""), wxITEM_RADIO);
-    itemMenu29->AppendSeparator();
-    itemMenu29->Append(ID_VIEW_TOOLBAR, _("Toolbar"), _T(""), wxITEM_CHECK);
-    itemMenu29->Check(ID_VIEW_TOOLBAR, true);
-    itemMenu29->Append(ID_VIEW_STATUS_BAR, _("Status Bar"), _T(""), wxITEM_CHECK);
-    itemMenu29->Check(ID_VIEW_STATUS_BAR, true);
-    menuBar->Append(itemMenu29, _("View"));
-    wxMenu* itemMenu36 = new wxMenu;
-    itemMenu36->Append(wxID_ABOUT, _("About VVV..."), _T(""), wxITEM_NORMAL);
-    menuBar->Append(itemMenu36, _("Help"));
+    wxMenu* itemMenu17 = new wxMenu;
+    itemMenu17->Append(ID_ADD_VIRTUAL_FOLDER, _("Add To Virtual Folder..."), _T(""), wxITEM_NORMAL);
+    itemMenu17->AppendSeparator();
+    itemMenu17->Append(ID_EDIT_VOLUME_DESCRIPTION, _("Volume Description..."), _T(""), wxITEM_NORMAL);
+    itemMenu17->Append(ID_RENAME_VOLUME, _("Rename Volume..."), _T(""), wxITEM_NORMAL);
+    itemMenu17->Append(ID_DELETE_VOLUME, _("Delete Volume"), _T(""), wxITEM_NORMAL);
+    itemMenu17->AppendSeparator();
+    itemMenu17->Append(ID_NEW_VIRTUAL_ROOT_FOLDER, _("New Virtual Root Folder..."), _T(""), wxITEM_NORMAL);
+    itemMenu17->Append(ID_NEW_VIRTUAL_SUBFOLDER, _("New Virtual Subfolder..."), _T(""), wxITEM_NORMAL);
+    itemMenu17->Append(ID_RENAME_VIRTUAL_FOLDER, _("Rename Virtual Folder..."), _T(""), wxITEM_NORMAL);
+    itemMenu17->Append(ID_DELETE_VIRTUAL_FOLDER, _("Delete Virtual Folder"), _T(""), wxITEM_NORMAL);
+    menuBar->Append(itemMenu17, _("Edit"));
+    wxMenu* itemMenu28 = new wxMenu;
+    itemMenu28->Append(ID_CATALOG_VOLUME, _("Catalog Volume..."), _T(""), wxITEM_NORMAL);
+    menuBar->Append(itemMenu28, _("Volumes"));
+    wxMenu* itemMenu30 = new wxMenu;
+    itemMenu30->Append(ID_VIEW_PHYSICAL, _("Physical View"), _T(""), wxITEM_RADIO);
+    itemMenu30->Check(ID_VIEW_PHYSICAL, true);
+    itemMenu30->Append(ID_VIEW_VIRTUAL, _("Virtual View"), _T(""), wxITEM_RADIO);
+    itemMenu30->Append(ID_VIEW_SEARCH, _("Search View"), _T(""), wxITEM_RADIO);
+    itemMenu30->AppendSeparator();
+    itemMenu30->Append(ID_UP_ONE_FOLDER, _("Up one folder"), _T(""), wxITEM_NORMAL);
+    itemMenu30->AppendSeparator();
+    itemMenu30->Append(ID_VIEW_TOOLBAR, _("Toolbar"), _T(""), wxITEM_CHECK);
+    itemMenu30->Check(ID_VIEW_TOOLBAR, true);
+    itemMenu30->Append(ID_VIEW_STATUS_BAR, _("Status Bar"), _T(""), wxITEM_CHECK);
+    itemMenu30->Check(ID_VIEW_STATUS_BAR, true);
+    menuBar->Append(itemMenu30, _("View"));
+    wxMenu* itemMenu39 = new wxMenu;
+    itemMenu39->Append(wxID_ABOUT, _("About VVV..."), _T(""), wxITEM_NORMAL);
+    menuBar->Append(itemMenu39, _("Help"));
     itemFrame1->SetMenuBar(menuBar);
 
     m_Toolbar = CreateToolBar( wxTB_FLAT|wxTB_HORIZONTAL|wxTB_TEXT, ID_TOOLBAR1 );
@@ -406,16 +412,19 @@ void CMainFrame::CreateControls()
     wxBitmap itemtool5Bitmap(itemFrame1->GetBitmapResource(wxT("graphics/tlb_catalog.xpm")));
     wxBitmap itemtool5BitmapDisabled;
     m_Toolbar->AddTool(ID_CATALOG_VOLUME, _("Catalog"), itemtool5Bitmap, itemtool5BitmapDisabled, wxITEM_NORMAL, _("Catalog a new volume"), wxEmptyString);
+    wxBitmap itemtool6Bitmap(itemFrame1->GetBitmapResource(wxT("graphics/tlb_up.xpm")));
+    wxBitmap itemtool6BitmapDisabled;
+    m_Toolbar->AddTool(ID_UP_ONE_FOLDER, _("Up"), itemtool6Bitmap, itemtool6BitmapDisabled, wxITEM_NORMAL, _("Move up one folder"), wxEmptyString);
     m_Toolbar->AddSeparator();
-    wxBitmap itemtool7Bitmap(itemFrame1->GetBitmapResource(wxT("graphics/tlb_physical.xpm")));
-    wxBitmap itemtool7BitmapDisabled;
-    m_Toolbar->AddTool(ID_VIEW_PHYSICAL, _("Physical"), itemtool7Bitmap, itemtool7BitmapDisabled, wxITEM_RADIO, _("Show the physical view"), wxEmptyString);
-    wxBitmap itemtool8Bitmap(itemFrame1->GetBitmapResource(wxT("graphics/tlb_virtual.xpm")));
+    wxBitmap itemtool8Bitmap(itemFrame1->GetBitmapResource(wxT("graphics/tlb_physical.xpm")));
     wxBitmap itemtool8BitmapDisabled;
-    m_Toolbar->AddTool(ID_VIEW_VIRTUAL, _("Virtual"), itemtool8Bitmap, itemtool8BitmapDisabled, wxITEM_RADIO, _("Show the virtual view"), wxEmptyString);
-    wxBitmap itemtool9Bitmap(itemFrame1->GetBitmapResource(wxT("graphics/tlb_search.xpm")));
+    m_Toolbar->AddTool(ID_VIEW_PHYSICAL, _("Physical"), itemtool8Bitmap, itemtool8BitmapDisabled, wxITEM_RADIO, _("Show the physical view"), wxEmptyString);
+    wxBitmap itemtool9Bitmap(itemFrame1->GetBitmapResource(wxT("graphics/tlb_virtual.xpm")));
     wxBitmap itemtool9BitmapDisabled;
-    m_Toolbar->AddTool(ID_VIEW_SEARCH, _("Search"), itemtool9Bitmap, itemtool9BitmapDisabled, wxITEM_RADIO, _("Show the search view"), wxEmptyString);
+    m_Toolbar->AddTool(ID_VIEW_VIRTUAL, _("Virtual"), itemtool9Bitmap, itemtool9BitmapDisabled, wxITEM_RADIO, _("Show the virtual view"), wxEmptyString);
+    wxBitmap itemtool10Bitmap(itemFrame1->GetBitmapResource(wxT("graphics/tlb_search.xpm")));
+    wxBitmap itemtool10BitmapDisabled;
+    m_Toolbar->AddTool(ID_VIEW_SEARCH, _("Search"), itemtool10Bitmap, itemtool10BitmapDisabled, wxITEM_RADIO, _("Show the search view"), wxEmptyString);
     m_Toolbar->Realize();
     itemFrame1->SetToolBar(m_Toolbar);
 
@@ -429,14 +438,14 @@ void CMainFrame::CreateControls()
     m_StatusBar->SetStatusWidths(4, m_StatusBarWidths);
     itemFrame1->SetStatusBar(m_StatusBar);
 
-    wxSplitterWindow* itemSplitterWindow39 = new wxSplitterWindow( itemFrame1, ID_SPLITTERWINDOW1, wxDefaultPosition, wxSize(100, 100), wxSP_3DBORDER|wxSP_3DSASH|wxSP_NO_XP_THEME|wxNO_BORDER );
-    itemSplitterWindow39->SetMinimumPaneSize(0);
+    wxSplitterWindow* itemSplitterWindow42 = new wxSplitterWindow( itemFrame1, ID_SPLITTERWINDOW1, wxDefaultPosition, wxSize(100, 100), wxSP_3DBORDER|wxSP_3DSASH|wxSP_NO_XP_THEME|wxNO_BORDER );
+    itemSplitterWindow42->SetMinimumPaneSize(0);
 
-    wxTreeCtrl* itemTreeCtrl40 = new wxTreeCtrl( itemSplitterWindow39, ID_TREE_CONTROL, wxDefaultPosition, wxSize(100, 100), wxTR_HAS_BUTTONS |wxTR_HIDE_ROOT|wxTR_SINGLE|wxNO_BORDER|wxTR_DEFAULT_STYLE );
+    wxTreeCtrl* itemTreeCtrl43 = new wxTreeCtrl( itemSplitterWindow42, ID_TREE_CONTROL, wxDefaultPosition, wxSize(100, 100), wxTR_HAS_BUTTONS |wxTR_HIDE_ROOT|wxTR_SINGLE|wxNO_BORDER|wxTR_DEFAULT_STYLE );
 
-    wxListCtrl* itemListCtrl41 = new wxListCtrl( itemSplitterWindow39, ID_LIST_CONTROL, wxDefaultPosition, wxSize(100, 100), wxLC_REPORT|wxNO_BORDER );
+    wxListCtrl* itemListCtrl44 = new wxListCtrl( itemSplitterWindow42, ID_LIST_CONTROL, wxDefaultPosition, wxSize(100, 100), wxLC_REPORT|wxNO_BORDER );
 
-    itemSplitterWindow39->SplitVertically(itemTreeCtrl40, itemListCtrl41, 50);
+    itemSplitterWindow42->SplitVertically(itemTreeCtrl43, itemListCtrl44, 50);
 
 ////@end CMainFrame content construction
 
@@ -534,6 +543,11 @@ wxBitmap CMainFrame::GetBitmapResource( const wxString& name )
     else if (name == _T("graphics/tlb_catalog.xpm"))
     {
         wxBitmap bitmap(tlb_catalog_xpm);
+        return bitmap;
+    }
+    else if (name == _T("graphics/tlb_up.xpm"))
+    {
+        wxBitmap bitmap(tlb_up_xpm);
         return bitmap;
     }
     else if (name == _T("graphics/tlb_physical.xpm"))
@@ -2325,5 +2339,39 @@ void CMainFrame::OnViewStatusBarClick( wxCommandEvent& event )
 	Fit();
 	SetSize(s);
 #endif
+}
+
+/*!
+ * wxEVT_COMMAND_MENU_SELECTED event handler for ID_UP_ONE_FOLDER
+ */
+
+void CMainFrame::OnUpOneFolderClick( wxCommandEvent& WXUNUSED(event) )
+{
+	wxTreeCtrl *tctl = (m_CurrentView == Physical) ? GetTreePhysicalControl() : GetTreeVirtualControl();
+	wxTreeItemId item = tctl->GetSelection();
+	tctl->SelectItem( tctl->GetItemParent(item) );
+}
+
+/*!
+ * wxEVT_UPDATE_UI event handler for ID_UP_ONE_FOLDER
+ */
+
+void CMainFrame::OnUpOneFolderUpdate( wxUpdateUIEvent& event )
+{
+	if( CBaseDB::GetDatabase() == NULL || m_CurrentView == Search ) {
+		event.Enable(false);
+		return;
+	}
+	
+	bool hideElement = true;
+	wxTreeCtrl *tctl = m_CurrentView == Physical ? GetTreePhysicalControl() : GetTreeVirtualControl();
+	if( tctl->GetCount() > 0 ) {
+		wxTreeItemId item = tctl->GetSelection();
+		if( item.IsOk() ) {
+			if( tctl->GetItemParent(item) != tctl->GetRootItem() ) hideElement = false;
+		}
+	}
+
+	event.Enable( !hideElement );
 }
 

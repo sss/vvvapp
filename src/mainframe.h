@@ -79,6 +79,7 @@ class wxStatusBar;
 #define ID_MAIN_FRAME 10000
 #define ID_TOOLBAR1 10022
 #define ID_CATALOG_VOLUME 10001
+#define ID_UP_ONE_FOLDER 10039
 #define ID_VIEW_PHYSICAL 10011
 #define ID_VIEW_VIRTUAL 10012
 #define ID_VIEW_SEARCH 10036
@@ -229,6 +230,12 @@ public:
 
     /// wxEVT_UPDATE_UI event handler for ID_VIEW_SEARCH
     void OnViewSearchUpdate( wxUpdateUIEvent& event );
+
+    /// wxEVT_COMMAND_MENU_SELECTED event handler for ID_UP_ONE_FOLDER
+    void OnUpOneFolderClick( wxCommandEvent& event );
+
+    /// wxEVT_UPDATE_UI event handler for ID_UP_ONE_FOLDER
+    void OnUpOneFolderUpdate( wxUpdateUIEvent& event );
 
     /// wxEVT_COMMAND_MENU_SELECTED event handler for ID_VIEW_TOOLBAR
     void OnViewToolbarClick( wxCommandEvent& event );
