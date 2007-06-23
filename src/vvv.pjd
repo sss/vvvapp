@@ -653,7 +653,7 @@
               <string name="proxy-Label">"Up"</string>
               <string name="proxy-Kind">"Normal"</string>
               <bool name="proxy-Enabled">1</bool>
-              <string name="proxy-Tooltip">"Move up one folder"</string>
+              <string name="proxy-Tooltip">"Move up one level"</string>
               <string name="proxy-Help text">""</string>
               <string name="proxy-Platform">"&lt;Any platform&gt;"</string>
             </document>
@@ -1208,7 +1208,7 @@
                 <string name="proxy-Platform">"&lt;Any platform&gt;"</string>
               </document>
               <document>
-                <string name="title">"Up one folder: ID_UP_ONE_FOLDER"</string>
+                <string name="title">"Go Up One Level: ID_UP_ONE_FOLDER"</string>
                 <string name="type">"dialog-control-document"</string>
                 <string name="filename">""</string>
                 <string name="icon-name">"menuitem"</string>
@@ -1222,7 +1222,7 @@
                 <string name="event-handler-1">"wxEVT_UPDATE_UI|OnUpOneFolderUpdate|NONE||"</string>
                 <string name="proxy-Id name">"ID_UP_ONE_FOLDER"</string>
                 <long name="proxy-Id value">10039</long>
-                <string name="proxy-Label">"Up one folder"</string>
+                <string name="proxy-Label">"Go Up One Level"</string>
                 <string name="proxy-Kind">"Normal"</string>
                 <bool name="proxy-Checked">0</bool>
                 <bool name="proxy-Enabled">1</bool>

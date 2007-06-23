@@ -389,7 +389,7 @@ void CMainFrame::CreateControls()
     itemMenu30->Append(ID_VIEW_VIRTUAL, _("Virtual View"), _T(""), wxITEM_RADIO);
     itemMenu30->Append(ID_VIEW_SEARCH, _("Search View"), _T(""), wxITEM_RADIO);
     itemMenu30->AppendSeparator();
-    itemMenu30->Append(ID_UP_ONE_FOLDER, _("Up one folder"), _T(""), wxITEM_NORMAL);
+    itemMenu30->Append(ID_UP_ONE_FOLDER, _("Go Up One Level"), _T(""), wxITEM_NORMAL);
     itemMenu30->AppendSeparator();
     itemMenu30->Append(ID_VIEW_TOOLBAR, _("Toolbar"), _T(""), wxITEM_CHECK);
     itemMenu30->Check(ID_VIEW_TOOLBAR, true);
@@ -414,7 +414,7 @@ void CMainFrame::CreateControls()
     m_Toolbar->AddTool(ID_CATALOG_VOLUME, _("Catalog"), itemtool5Bitmap, itemtool5BitmapDisabled, wxITEM_NORMAL, _("Catalog a new volume"), wxEmptyString);
     wxBitmap itemtool6Bitmap(itemFrame1->GetBitmapResource(wxT("graphics/tlb_up.xpm")));
     wxBitmap itemtool6BitmapDisabled;
-    m_Toolbar->AddTool(ID_UP_ONE_FOLDER, _("Up"), itemtool6Bitmap, itemtool6BitmapDisabled, wxITEM_NORMAL, _("Move up one folder"), wxEmptyString);
+    m_Toolbar->AddTool(ID_UP_ONE_FOLDER, _("Up"), itemtool6Bitmap, itemtool6BitmapDisabled, wxITEM_NORMAL, _("Move up one level"), wxEmptyString);
     m_Toolbar->AddSeparator();
     wxBitmap itemtool8Bitmap(itemFrame1->GetBitmapResource(wxT("graphics/tlb_physical.xpm")));
     wxBitmap itemtool8BitmapDisabled;
