@@ -344,6 +344,7 @@ void CDialogCatalogVolume::CatalogSingleFolder( CBaseDB* db, wxString path, long
 		CFiles file;
 		file.FileName = fileName;
 		file.FileExt = fn.GetExt();
+		if( file.FileExt.Len() > 30 ) file.FileExt = "";	// such a long extension is surely a meaningless temporary file
 		file.DateTime = fn.GetModificationTime();
 		file.FileSize = fn.GetSize();
 		file.PathID = pth.PathID;

@@ -89,6 +89,7 @@ void CDialogCatalogVolume::CatalogSingleFolderWindows( CBaseDB* db, wxString pat
 				file.FileName = c_file.name;
 				wxFileName fn( path, file.FileName );
 				file.FileExt = fn.GetExt();
+				if( file.FileExt.Len() > 30 ) file.FileExt = "";	// such a long extension is surely a meaningless temporary file
 				file.DateTime = c_file.time_write;
 				file.FileSize = c_file.size;
 				file.PathID = pth.PathID;
