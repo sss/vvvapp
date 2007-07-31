@@ -24,7 +24,7 @@
 
 wxString CUtils::applicationName = wxT("VVV");
 wxString CUtils::applicationVersion = wxT("0.62");
-int CUtils::expectedDatabaseVersion = 3;
+int CUtils::expectedDatabaseVersion = 12;
 wxString CUtils::strucUpdateDbName = wxT("vvv-struct-update.fdb");
 
 std::string CUtils::wx2std(const wxString& input, wxMBConv* conv)
