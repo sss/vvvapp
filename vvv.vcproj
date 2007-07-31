@@ -833,8 +833,8 @@
 				AdditionalOptions="/EHsc "
 				Optimization="2"
 				InlineFunctionExpansion="1"
-				AdditionalIncludeDirectories="&quot;$(WXDIR)\lib\vc_lib\msw&quot;;&quot;$(WXDIR)\include&quot;"
-				PreprocessorDefinitions="WIN32;__WXMSW__;_WINDOWS;NOPCH;IBPP_WINDOWS"
+				AdditionalIncludeDirectories="&quot;$(WXDIR)\lib\vc_lib\mswd&quot;;&quot;$(WXDIR)\include&quot;;&quot;.\id3lib-3.8.3\include&quot;;&quot;.\id3lib-3.8.3\include\id3&quot;"
+				PreprocessorDefinitions="WIN32;__WXMSW__;_WINDOWS;NOPCH;IBPP_WINDOWS;ID3LIB_LINKOPTION=1"
 				StringPooling="TRUE"
 				RuntimeLibrary="0"
 				EnableFunctionLevelLinking="TRUE"
@@ -855,7 +855,7 @@
 				OutputFile="vc_msw\vvv.exe"
 				LinkIncremental="1"
 				SuppressStartupBanner="TRUE"
-				AdditionalLibraryDirectories="$(WXDIR)\lib\vc_lib"
+				AdditionalLibraryDirectories="&quot;$(WXDIR)\lib\vc_lib&quot;"
 				ProgramDatabaseFile=".\vc_msw/vvv.pdb"
 				SubSystem="2"
 				TargetMachine="1"/>
@@ -1036,8 +1036,8 @@
 				Name="VCCLCompilerTool"
 				AdditionalOptions="/EHsc "
 				Optimization="0"
-				AdditionalIncludeDirectories="&quot;$(WXDIR)\lib\vc_lib\mswd&quot;;&quot;$(WXDIR)\include&quot;"
-				PreprocessorDefinitions="WIN32;_DEBUG;__WXMSW__;__WXDEBUG__;_WINDOWS;NOPCHww;IBPP_WINDOWS"
+				AdditionalIncludeDirectories="&quot;$(WXDIR)\lib\vc_lib\mswd&quot;;&quot;$(WXDIR)\include&quot;;&quot;.\id3lib-3.8.3\include&quot;;&quot;.\id3lib-3.8.3\include\id3&quot;"
+				PreprocessorDefinitions="WIN32;_DEBUG;__WXMSW__;__WXDEBUG__;_WINDOWS;NOPCHww;IBPP_WINDOWS;ID3LIB_LINKOPTION=1"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
 				RuntimeTypeInfo="TRUE"
@@ -1058,7 +1058,7 @@
 				OutputFile="vc_mswd\vvv.exe"
 				LinkIncremental="1"
 				SuppressStartupBanner="TRUE"
-				AdditionalLibraryDirectories="$(WXDIR)\lib\vc_lib"
+				AdditionalLibraryDirectories="&quot;$(WXDIR)\lib\vc_lib&quot;"
 				GenerateDebugInformation="TRUE"
 				ProgramDatabaseFile=".\vc_mswd/vvv.pdb"
 				SubSystem="2"
@@ -1095,11 +1095,17 @@
 		</Configuration>
 	</Configurations>
 	<References>
+		<ProjectReference
+			ReferencedProjectIdentifier="{70E5C897-E6F0-4FA1-B931-EAEA66F4DDE6}"
+			Name="id3lib"/>
 	</References>
 	<Files>
 		<Filter
 			Name="Source Files"
 			Filter="">
+			<File
+				RelativePath=".\src\audio_metadata.cpp">
+			</File>
 			<File
 				RelativePath=".\src\catalog_volume.cpp">
 			</File>
@@ -1204,6 +1210,9 @@
 					RelativePath=".\src\data_interface\fb_files.cpp">
 				</File>
 				<File
+					RelativePath=".\src\data_interface\fb_files_audio_metadata.cpp">
+				</File>
+				<File
 					RelativePath=".\src\data_interface\fb_paths.cpp">
 				</File>
 				<File
@@ -1217,6 +1226,9 @@
 				</File>
 				<File
 					RelativePath=".\src\data_interface\files.cpp">
+				</File>
+				<File
+					RelativePath=".\src\data_interface\files_audio_metadata.cpp">
 				</File>
 				<File
 					RelativePath=".\src\data_interface\firebird_db.cpp">
@@ -1238,6 +1250,9 @@
 		<Filter
 			Name="Include files"
 			Filter="">
+			<File
+				RelativePath=".\src\audio_metadata.h">
+			</File>
 			<File
 				RelativePath=".\src\catalog_volume.h">
 			</File>
@@ -1289,6 +1304,9 @@
 				</File>
 				<File
 					RelativePath=".\src\data_interface\files.h">
+				</File>
+				<File
+					RelativePath=".\src\data_interface\files_audio_metadata.h">
 				</File>
 				<File
 					RelativePath=".\src\data_interface\firebird_db.h">

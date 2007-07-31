@@ -29,9 +29,11 @@
 #include <wx/filename.h>
 #include "catalog_volume.h"
 #include "windows_specific.h"
+#include "audio_metadata.h"
 #include "data_interface/volumes.h"
 #include "data_interface/paths.h"
 #include "data_interface/files.h"
+#include "data_interface/files_audio_metadata.h"
 
 // return the name of a volume specified in a way like "C:\"
 // return an empty string in case of error
@@ -95,6 +97,14 @@ void CDialogCatalogVolume::CatalogSingleFolderWindows( CBaseDB* db, wxString pat
 				file.PathID = pth.PathID;
 				file.PathFileID.SetNull(true);
 				file.DbInsert();
+
+				if( file.FileExt == "mp3" ) {
+					CFilesAudioMetadata metaData;
+					if( CAudioMetadata::ReadMP3Metadata( fn.GetFullPath(), metaData ) ) {
+						metaData.FileID = file.FileID;
+						metaData.DbInsert();
+					}
+				}
 			}
 
 		} while( _findnext( hFile, &c_file ) == 0 );

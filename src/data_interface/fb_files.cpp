@@ -31,6 +31,9 @@ void CFiles::FB_DbInsert(void)
 {
 	wxString sql;
 
+	if( FileID.IsNull() )
+		FileID = FB_GenNewValue( wxT("GEN_FILES_ID") );
+
 	sql = "INSERT INTO FILES (";
 	if( !FileID.IsNull() )
 		sql += "FILE_ID, ";
