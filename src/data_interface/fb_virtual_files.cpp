@@ -100,6 +100,18 @@ void CVirtualFiles::FB_FetchRow(void) {
 		}
 		FB_st->Get("PATH_ID", tmp);
 		PhysicalPathID = (long) tmp;
+		if( FB_st->IsNull("FILE_DESCRIPTION") ) {
+			FileDescription = "";
+		}
+		else {
+			// reads the blob
+			CFirebirdDB* db = (CFirebirdDB*) CBaseDB::GetDatabase();
+			Blob bl = BlobFactory( db->GetIBPPDB(), db->TransactionGetReference() );
+			string s;
+			FB_st->Get( "FILE_DESCRIPTION", bl );
+			bl->Load( s );
+			FileDescription = CUtils::std2wx( s );
+		}
 		FullPhysicalPath = CPaths::GetFullPath( PhysicalPathID );
 	}
 	else {

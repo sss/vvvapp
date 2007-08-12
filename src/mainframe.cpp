@@ -65,7 +65,7 @@
 #include "data_interface/data_error.h"
 #include "mytreeitemdata.h"
 #include "mylistitemdata.h"
-#include "volume_description.h"
+#include "object_description.h"
 
 ////@begin XPM images
 #include "graphics/vvv32.xpm"
@@ -88,8 +88,12 @@ int m_ListViewSortColumn;
 // sorting order
 bool m_ListViewSortAscending;
 
-int wxCALLBACK ListControlCompareFunction( long item1, long item2, long WXUNUSED(sortData) ) {
+int wxCALLBACK ListControlCompareFunction( long item1, long item2, long sortData ) {
+	// possible values of sortData:
+	//   0: we are in the physical view
+	//   1: we are not in the physical view
 	int retVal = 0;
+	bool inPhysicalView = (sortData == 0);
 
 	MyListItemData* itemData1 = (MyListItemData*) item1;
 	MyListItemData* itemData2 = (MyListItemData*) item2;
@@ -98,39 +102,41 @@ int wxCALLBACK ListControlCompareFunction( long item1, long item2, long WXUNUSED
 	if( itemData1->IsFolder() && !itemData2->IsFolder() ) return -1;
 	if( !itemData1->IsFolder() && itemData2->IsFolder() ) return 1;
 
-	switch( m_ListViewSortColumn ) {
-		case 0:
-			// filename
+	if( m_ListViewSortColumn == 0 ) {
+		// filename
+		if( m_ListViewSortAscending )
+			retVal = wxStricmp( itemData1->GetName(), itemData2->GetName() );
+		else
+			retVal = wxStricmp( itemData2->GetName(), itemData1->GetName() );
+	}
+
+	if( m_ListViewSortColumn == 1 ) {
+		// size
+		if( itemData1->GetSize() == itemData2->GetSize() )
+			retVal = 0;
+		else {
+			if( m_ListViewSortAscending )
+				retVal = (itemData1->GetSize() < itemData2->GetSize() ? -1 : 1);
+			else
+				retVal = (itemData1->GetSize() > itemData2->GetSize() ? -1 : 1);
+		}
+	}
+
+	if( m_ListViewSortColumn == 2 ) {
+		// extension
+		if( m_ListViewSortAscending )
+			retVal = wxStricmp( itemData1->GetExt(), itemData2->GetExt() );
+		else
+			retVal = wxStricmp( itemData2->GetExt(), itemData1->GetExt() );
+		if( retVal == 0 ) {
 			if( m_ListViewSortAscending )
 				retVal = wxStricmp( itemData1->GetName(), itemData2->GetName() );
 			else
 				retVal = wxStricmp( itemData2->GetName(), itemData1->GetName() );
-			break;
-		case 1:
-			// size
-			if( itemData1->GetSize() == itemData2->GetSize() )
-				retVal = 0;
-			else {
-				if( m_ListViewSortAscending )
-					retVal = (itemData1->GetSize() < itemData2->GetSize() ? -1 : 1);
-				else
-					retVal = (itemData1->GetSize() > itemData2->GetSize() ? -1 : 1);
-			}
-			break;
-		case 2:
-			// extension
-			if( m_ListViewSortAscending )
-				retVal = wxStricmp( itemData1->GetExt(), itemData2->GetExt() );
-			else
-				retVal = wxStricmp( itemData2->GetExt(), itemData1->GetExt() );
-			if( retVal == 0 ) {
-				if( m_ListViewSortAscending )
-					retVal = wxStricmp( itemData1->GetName(), itemData2->GetName() );
-				else
-					retVal = wxStricmp( itemData2->GetName(), itemData1->GetName() );
-			}
-			break;
-		case 3:
+		}
+	}
+
+	if( m_ListViewSortColumn == 3 ) {
 			// datetime
 			if( itemData1->GetDateTime() == itemData2->GetDateTime() )
 				retVal = 0;
@@ -140,8 +146,9 @@ int wxCALLBACK ListControlCompareFunction( long item1, long item2, long WXUNUSED
 				else
 					retVal = (itemData1->GetDateTime() > itemData2->GetDateTime() ? -1 : 1);
 			}
-			break;
-		case 4:
+	}
+
+	if( m_ListViewSortColumn == 4 && !inPhysicalView ) {
 			// full physical path
 			if( m_ListViewSortAscending )
 				retVal = wxStricmp( itemData1->GetFullPhysicalPath(), itemData2->GetFullPhysicalPath() );
@@ -153,8 +160,79 @@ int wxCALLBACK ListControlCompareFunction( long item1, long item2, long WXUNUSED
 				else
 					retVal = wxStricmp( itemData2->GetName(), itemData1->GetName() );
 			}
-			break;
 	}
+
+	if( (m_ListViewSortColumn == 4 && inPhysicalView) || (m_ListViewSortColumn == 5 && !inPhysicalView) ) {
+			// description
+			if( m_ListViewSortAscending )
+				retVal = wxStricmp( itemData1->GetObjectDescription(), itemData2->GetObjectDescription() );
+			else
+				retVal = wxStricmp( itemData2->GetObjectDescription(), itemData1->GetObjectDescription() );
+			if( retVal == 0 ) {
+				if( m_ListViewSortAscending )
+					retVal = wxStricmp( itemData1->GetName(), itemData2->GetName() );
+				else
+					retVal = wxStricmp( itemData2->GetName(), itemData1->GetName() );
+			}
+	}
+	//switch( m_ListViewSortColumn ) {
+	//	case 0:
+	//		// filename
+	//		if( m_ListViewSortAscending )
+	//			retVal = wxStricmp( itemData1->GetName(), itemData2->GetName() );
+	//		else
+	//			retVal = wxStricmp( itemData2->GetName(), itemData1->GetName() );
+	//		break;
+	//	case 1:
+	//		// size
+	//		if( itemData1->GetSize() == itemData2->GetSize() )
+	//			retVal = 0;
+	//		else {
+	//			if( m_ListViewSortAscending )
+	//				retVal = (itemData1->GetSize() < itemData2->GetSize() ? -1 : 1);
+	//			else
+	//				retVal = (itemData1->GetSize() > itemData2->GetSize() ? -1 : 1);
+	//		}
+	//		break;
+	//	case 2:
+	//		// extension
+	//		if( m_ListViewSortAscending )
+	//			retVal = wxStricmp( itemData1->GetExt(), itemData2->GetExt() );
+	//		else
+	//			retVal = wxStricmp( itemData2->GetExt(), itemData1->GetExt() );
+	//		if( retVal == 0 ) {
+	//			if( m_ListViewSortAscending )
+	//				retVal = wxStricmp( itemData1->GetName(), itemData2->GetName() );
+	//			else
+	//				retVal = wxStricmp( itemData2->GetName(), itemData1->GetName() );
+	//		}
+	//		break;
+	//	case 3:
+	//		// datetime
+	//		if( itemData1->GetDateTime() == itemData2->GetDateTime() )
+	//			retVal = 0;
+	//		else {
+	//			if( m_ListViewSortAscending )
+	//				retVal = (itemData1->GetDateTime() < itemData2->GetDateTime() ? -1 : 1);
+	//			else
+	//				retVal = (itemData1->GetDateTime() > itemData2->GetDateTime() ? -1 : 1);
+	//		}
+	//		break;
+	//	case 4:
+	//		// full physical path
+	//		if( m_ListViewSortAscending )
+	//			retVal = wxStricmp( itemData1->GetFullPhysicalPath(), itemData2->GetFullPhysicalPath() );
+	//		else
+	//			retVal = wxStricmp( itemData2->GetFullPhysicalPath(), itemData1->GetFullPhysicalPath() );
+	//		if( retVal == 0 ) {
+	//			if( m_ListViewSortAscending )
+	//				retVal = wxStricmp( itemData1->GetName(), itemData2->GetName() );
+	//			else
+	//				retVal = wxStricmp( itemData2->GetName(), itemData1->GetName() );
+	//		}
+	//		break;
+	//}
+
 	return retVal;
 }
 
@@ -181,8 +259,8 @@ BEGIN_EVENT_TABLE( CMainFrame, wxFrame )
     EVT_MENU( ID_ADD_VIRTUAL_FOLDER, CMainFrame::OnAddVirtualFolderClick )
     EVT_UPDATE_UI( ID_ADD_VIRTUAL_FOLDER, CMainFrame::OnAddVirtualFolderUpdate )
 
-    EVT_MENU( ID_EDIT_VOLUME_DESCRIPTION, CMainFrame::OnEditVolumeDescriptionClick )
-    EVT_UPDATE_UI( ID_EDIT_VOLUME_DESCRIPTION, CMainFrame::OnEditVolumeDescriptionUpdate )
+    EVT_MENU( ID_EDIT_OBJECT_DESCRIPTION, CMainFrame::OnEditObjectDescriptionClick )
+    EVT_UPDATE_UI( ID_EDIT_OBJECT_DESCRIPTION, CMainFrame::OnEditObjectDescriptionUpdate )
 
     EVT_MENU( ID_RENAME_VOLUME, CMainFrame::OnRenameVolumeClick )
     EVT_UPDATE_UI( ID_RENAME_VOLUME, CMainFrame::OnRenameVolumeUpdate )
@@ -298,12 +376,14 @@ bool CMainFrame::Create( wxWindow* parent, wxWindowID id, const wxString& captio
 	m_ListviewColWidthPhysical[1] = pConfig->Read(wxT("cw1"), 100);
 	m_ListviewColWidthPhysical[2] = pConfig->Read(wxT("cw2"), 100);
 	m_ListviewColWidthPhysical[3] = pConfig->Read(wxT("cw3"), 200);
+	m_ListviewColWidthPhysical[4] = pConfig->Read(wxT("cw4"), 100);
 	pConfig->SetPath(wxT("/Mainframe/Layout/ListViewVirtual"));
 	m_ListviewColWidthVirtual[0] = pConfig->Read(wxT("cw0"), 200);
 	m_ListviewColWidthVirtual[1] = pConfig->Read(wxT("cw1"), 100);
 	m_ListviewColWidthVirtual[2] = pConfig->Read(wxT("cw2"), 100);
 	m_ListviewColWidthVirtual[3] = pConfig->Read(wxT("cw3"), 200);
 	m_ListviewColWidthVirtual[4] = pConfig->Read(wxT("cw4"), 200);
+	m_ListviewColWidthVirtual[5] = pConfig->Read(wxT("cw5"), 100);
 
 	CreateListControlHeaders();
 
@@ -345,6 +425,7 @@ void CMainFrame::Init()
 	m_fileHistory = new wxFileHistory();
 	
 	m_CurrentView = Physical;	// let's start with the physical view
+	m_ListViewHasFocus = false;
 
 	m_ListViewSortColumn = 0;
 	m_ListViewSortAscending = true;
@@ -371,7 +452,7 @@ void CMainFrame::CreateControls()
     wxMenu* itemMenu17 = new wxMenu;
     itemMenu17->Append(ID_ADD_VIRTUAL_FOLDER, _("Add To Virtual Folder..."), _T(""), wxITEM_NORMAL);
     itemMenu17->AppendSeparator();
-    itemMenu17->Append(ID_EDIT_VOLUME_DESCRIPTION, _("Volume Description..."), _T(""), wxITEM_NORMAL);
+    itemMenu17->Append(ID_EDIT_OBJECT_DESCRIPTION, _("Object Description..."), _T(""), wxITEM_NORMAL);
     itemMenu17->Append(ID_RENAME_VOLUME, _("Rename Volume..."), _T(""), wxITEM_NORMAL);
     itemMenu17->Append(ID_DELETE_VOLUME, _("Delete Volume"), _T(""), wxITEM_NORMAL);
     itemMenu17->AppendSeparator();
@@ -447,6 +528,10 @@ void CMainFrame::CreateControls()
 
     itemSplitterWindow42->SplitVertically(itemTreeCtrl43, itemListCtrl44, 50);
 
+    // Connect events and objects
+    itemListCtrl44->Connect(ID_LIST_CONTROL, wxEVT_CONTEXT_MENU, wxContextMenuEventHandler(CMainFrame::OnListControlContextMenu), NULL, this);
+    itemListCtrl44->Connect(ID_LIST_CONTROL, wxEVT_SET_FOCUS, wxFocusEventHandler(CMainFrame::OnListViewSetFocus), NULL, this);
+    itemListCtrl44->Connect(ID_LIST_CONTROL, wxEVT_KILL_FOCUS, wxFocusEventHandler(CMainFrame::OnListViewKillFocus), NULL, this);
 ////@end CMainFrame content construction
 
 	// creates the tree control used to show virtual folders
@@ -650,7 +735,7 @@ void CMainFrame::LoadVolumeInTreeControl( CVolumes vol, wxTreeCtrl* tctl, wxTree
 		wxString name = pth.PathName;
 		// adds the folder to the tree
 		wxTreeItemId itemID = tctl->AppendItem( volumeID, name, 1, 2, 
-							new MyTreeItemData(name, vol.VolumeID, pth.PathID, false, "") );
+							new MyTreeItemData(name, vol.VolumeID, pth.PathID, false, pth.PathDescription) );
 		// sets the expanded images
 		tctl->SetItemImage( itemID, 1, wxTreeItemIcon_Expanded );
 		tctl->SetItemImage( itemID, 2, wxTreeItemIcon_SelectedExpanded );
@@ -672,7 +757,7 @@ void CMainFrame::LoadFolderInTreeControl( long VolumeID, wxTreeCtrl* tctl, wxTre
 		name = name.AfterLast( wxFileName::GetPathSeparator() );
 		// adds the folder to the tree
 		wxTreeItemId itemID = tctl->AppendItem( fatherTreeID, name, 1, 2, 
-							new MyTreeItemData(name, VolumeID, pth.PathID, false, "") );
+							new MyTreeItemData(name, VolumeID, pth.PathID, false, pth.PathDescription) );
 		// sets the expanded images
 		tctl->SetItemImage( itemID, 1, wxTreeItemIcon_Expanded );
 		tctl->SetItemImage( itemID, 2, wxTreeItemIcon_SelectedExpanded );
@@ -830,6 +915,14 @@ void CMainFrame::CreateListControlHeaders(void) {
 		itemCol.SetText( _("Physical path") );
 		itemCol.SetAlign( wxLIST_FORMAT_LEFT );
 		lctl->InsertColumn( 4, itemCol );
+		itemCol.SetText( _("Description") );
+		itemCol.SetAlign( wxLIST_FORMAT_LEFT );
+		lctl->InsertColumn( 5, itemCol );
+	}
+	else {
+		itemCol.SetText( _("Description") );
+		itemCol.SetAlign( wxLIST_FORMAT_LEFT );
+		lctl->InsertColumn( 4, itemCol );
 	}
 
 	// assigns the image list
@@ -855,6 +948,7 @@ void CMainFrame::CreateListControlHeaders(void) {
 		lctl->SetColumnWidth( 1, m_ListviewColWidthPhysical[1] );
 		lctl->SetColumnWidth( 2, m_ListviewColWidthPhysical[2] );
 		lctl->SetColumnWidth( 3, m_ListviewColWidthPhysical[3] );
+		lctl->SetColumnWidth( 4, m_ListviewColWidthPhysical[4] );
 	}
 	else {
 		lctl->SetColumnWidth( 0, m_ListviewColWidthVirtual[0] );
@@ -862,6 +956,7 @@ void CMainFrame::CreateListControlHeaders(void) {
 		lctl->SetColumnWidth( 2, m_ListviewColWidthVirtual[2] );
 		lctl->SetColumnWidth( 3, m_ListviewColWidthVirtual[3] );
 		lctl->SetColumnWidth( 4, m_ListviewColWidthVirtual[4] );
+		lctl->SetColumnWidth( 5, m_ListviewColWidthVirtual[5] );
 	}
 
 	lctl->DeleteAllItems();
@@ -924,12 +1019,14 @@ CMainFrame::~CMainFrame() {
 	pConfig->Write(wxT("cw1"), (long) m_ListviewColWidthPhysical[1]);
 	pConfig->Write(wxT("cw2"), (long) m_ListviewColWidthPhysical[2]);
 	pConfig->Write(wxT("cw3"), (long) m_ListviewColWidthPhysical[3]);
+	pConfig->Write(wxT("cw4"), (long) m_ListviewColWidthPhysical[4]);
 	pConfig->SetPath(wxT("/Mainframe/Layout/ListViewVirtual"));
 	pConfig->Write(wxT("cw0"), (long) m_ListviewColWidthVirtual[0]);
 	pConfig->Write(wxT("cw1"), (long) m_ListviewColWidthVirtual[1]);
 	pConfig->Write(wxT("cw2"), (long) m_ListviewColWidthVirtual[2]);
 	pConfig->Write(wxT("cw3"), (long) m_ListviewColWidthVirtual[3]);
 	pConfig->Write(wxT("cw4"), (long) m_ListviewColWidthVirtual[4]);
+	pConfig->Write(wxT("cw5"), (long) m_ListviewColWidthVirtual[5]);
 
 	// delete the virtual folders window
 	if( m_ChooseVirtualFolderDialog != NULL ) delete m_ChooseVirtualFolderDialog;
@@ -1072,14 +1169,15 @@ void CMainFrame::ShowFolderFiles( wxTreeItemId itemID ) {
 		lctl->SetItem( i, 1, files.IsFolder() ? "" : CUtils::HumanReadableFileSize(files.FileSize) );
 		lctl->SetItem( i, 2, files.FileExt );
 		lctl->SetItem( i, 3, files.DateTime.FormatDate() + " " + files.DateTime.FormatTime() );
-		lctl->SetItemData( i, (long) new MyListItemData( files.PathFileID.IsNull() ? 0 : (long) files.PathFileID, files.FileName, files.FileExt, files.FileSize, files.DateTime, files.IsFolder() ) );
+		lctl->SetItem( i, 4, FormatObjectDescriptionForListView(files.FileDescription) );
+		lctl->SetItemData( i, (long) new MyListItemData( files.FileID, files.PathFileID.IsNull() ? 0 : (long) files.PathFileID, files.FileName, files.FileExt, files.FileSize, files.DateTime, files.IsFolder(), "", files.FileDescription ) );
 		nPhysicalFiles++;
 		sizePhysicalFiles += files.FileSize;
 
 		files.DBNextRow();
 	}
 
-	lctl->SortItems( ListControlCompareFunction, 0 );
+	lctl->SortItems( ListControlCompareFunction, m_CurrentView == Physical ? 0 : 1 );
 	lctl->Show();
 
 	UpdateStatusBar( nPhysicalFiles, sizePhysicalFiles );
@@ -1129,7 +1227,7 @@ void CMainFrame::ShowVirtualFolderFiles( wxTreeItemId itemID ) {
 		wxString prevFileName = files.FileName;
 		bool wasFolder = files.IsFolder();
 
-		int i = AddRowToVirtualListControl( lctl, files.IsFolder(), files.FileName, files.FileSize, files.FileExt, files.DateTime, files.FullPhysicalPath, files.VirtualPathFileID.IsNull() ? 0 : (long) files.VirtualPathFileID );
+		int i = AddRowToVirtualListControl( lctl, files.IsFolder(), files.FileName, files.FileSize, files.FileExt, files.DateTime, files.FullPhysicalPath, files.FileID, files.VirtualPathFileID.IsNull() ? 0 : (long) files.VirtualPathFileID, files.FileDescription );
 
 		nVirtualFiles++;
 		sizeVirtualFiles += files.FileSize;
@@ -1153,7 +1251,7 @@ void CMainFrame::ShowVirtualFolderFiles( wxTreeItemId itemID ) {
 
 	}
 
-	lctl->SortItems( ListControlCompareFunction, 0 );
+	lctl->SortItems( ListControlCompareFunction, m_CurrentView == Physical ? 0 : 1 );
 	lctl->Show();
 
 	UpdateStatusBar( nVirtualFiles, sizeVirtualFiles );
@@ -1238,7 +1336,9 @@ void CMainFrame::OnRenameVolumeClick( wxCommandEvent& WXUNUSED(event) )
 {
 	wxTreeCtrl *tctl = GetTreePhysicalControl();
 	wxTreeItemId item = tctl->GetSelection();
-	wxString oldName = tctl->GetItemText(item);
+    MyTreeItemData *itemData = (MyTreeItemData *) tctl->GetItemData(item);
+	wxString oldName = itemData->GetDesc();
+//	wxString oldName = tctl->GetItemText(item);
 
 	// asks for the new volume name
 	wxTextEntryDialog ted( this, _("Enter the new volume name"), _("Rename volume"), oldName, wxOK | wxCANCEL );
@@ -1247,7 +1347,6 @@ void CMainFrame::OnRenameVolumeClick( wxCommandEvent& WXUNUSED(event) )
 	if( newName == oldName || newName.empty() ) return;
 
 	// changes the volume name in the database
-    MyTreeItemData *itemData = (MyTreeItemData *) tctl->GetItemData(item);
 	CVolumes vol( itemData->GetVolumeID() );	// loads the current data
 	vol.VolumeName = newName;
 	try {
@@ -1263,7 +1362,8 @@ void CMainFrame::OnRenameVolumeClick( wxCommandEvent& WXUNUSED(event) )
 	}
 
 	// changes the volume name in the tree control
-	tctl->SetItemText( item, newName );
+	tctl->SetItemText( item, CreateVolumeLabel(newName, itemData->GetObjectDescription()) );
+	itemData->SetDesc( newName );
 
 }
 
@@ -1449,6 +1549,7 @@ void CMainFrame::OnRenameVirtualFolderClick( wxCommandEvent& WXUNUSED(event) )
 {
 	wxTreeCtrl *tctl = GetTreeVirtualControl();
 	wxTreeItemId item = tctl->GetSelection();
+    MyTreeItemData *itemData = (MyTreeItemData *) tctl->GetItemData(item);
 	wxString oldName = tctl->GetItemText(item);
 
 	// asks for the new volume name
@@ -1458,7 +1559,6 @@ void CMainFrame::OnRenameVirtualFolderClick( wxCommandEvent& WXUNUSED(event) )
 	if( newName == oldName || newName.empty() ) return;
 
 	// changes the folder name in the database
-    MyTreeItemData *itemData = (MyTreeItemData *) tctl->GetItemData(item);
 	try {
 		CVirtualPaths::Rename( itemData->GetPathID(), newName );
 	}
@@ -1629,7 +1729,7 @@ void CMainFrame::OnListControlColLeftClick( wxListEvent& event )
 	}
 
 	wxListCtrl* lctl = GetListControl();
-	lctl->SortItems( ListControlCompareFunction, 0 );
+	lctl->SortItems( ListControlCompareFunction, m_CurrentView == Physical ? 0 : 1 );
 
 }
 
@@ -1694,18 +1794,18 @@ void CMainFrame::OnViewToolbarClick( wxCommandEvent& event )
 void CMainFrame::StoreListControlVirtualWidth(void) {
 
 	wxListCtrl* lctl = GetListControl();
-	wxASSERT(lctl->GetColumnCount() == 5);
+	wxASSERT(lctl->GetColumnCount() == 6);
 
-	for( int k = 0; k < 5; k++ )
+	for( int k = 0; k < 6; k++ )
 		m_ListviewColWidthVirtual[k] = lctl->GetColumnWidth(k);
 }
 
 void CMainFrame::StoreListControlPhysicalWidth(void) {
 
 	wxListCtrl* lctl = GetListControl();
-	wxASSERT(lctl->GetColumnCount() == 4);
+	wxASSERT(lctl->GetColumnCount() == 5);
 
-	for( int k = 0; k < 4; k++ )
+	for( int k = 0; k < 5; k++ )
 		m_ListviewColWidthPhysical[k] = lctl->GetColumnWidth(k);
 }
 
@@ -1843,63 +1943,114 @@ void CMainFrame::OnNEWClick( wxCommandEvent& WXUNUSED(event) )
 }
 
 /*!
- * wxEVT_COMMAND_MENU_SELECTED event handler for ID_EDIT_VOLUME_DESCRIPTION
+ * wxEVT_COMMAND_MENU_SELECTED event handler for ID_EDIT_OPJECT_DESCRIPTION
  */
 
-void CMainFrame::OnEditVolumeDescriptionClick( wxCommandEvent& WXUNUSED(event) )
+void CMainFrame::OnEditObjectDescriptionClick( wxCommandEvent& WXUNUSED(event) )
 {
-	wxTreeCtrl *tctl = GetTreePhysicalControl();
-	wxTreeItemId item = tctl->GetSelection();
-	wxString volumeName = tctl->GetItemText( item );
-    MyTreeItemData *itemData = (MyTreeItemData *) tctl->GetItemData(item);
+	if( m_ListViewHasFocus ) {
+		wxListCtrl *lctl = GetListControl();
+		int nSelectedObjects = lctl->GetSelectedItemCount();
+		wxASSERT( nSelectedObjects > 0 );
+		wxString objectName;
+		wxString orgDescr = "";
+		if( nSelectedObjects > 1 )
+			objectName = _("Multiple items") + wxString::Format( " (%d)", nSelectedObjects );
+		else {
+			long item = -1;
+			item = lctl->GetNextItem( item, wxLIST_NEXT_ALL, wxLIST_STATE_SELECTED );
+			objectName = lctl->GetItemText( item );
+			MyListItemData *itemData = (MyListItemData *) lctl->GetItemData( item );
+			orgDescr = itemData->GetObjectDescription();
+		}
 
-	CDialogVolumeDescription dialog( this, ID_DIALOG_VOLUME_DESCRIPTION, _("Volume description") );
-	dialog.SetVolumeName( volumeName );
-	wxString orgDescr = itemData->GetVolumeDescription();
-	dialog.SetDescription( orgDescr );
+		CDialogObjectDescription dialog( this, ID_DIALOG_OBJECT_DESCRIPTION, _("Object description") );
+		dialog.SetObjectName( objectName );
+		dialog.SetDescription( orgDescr );
 
-	if( dialog.ShowModal() != wxID_OK ) return;
+		if( dialog.ShowModal() != wxID_OK ) return;
 
-	wxString newDescr = dialog.GetDescription();
-	if( newDescr == orgDescr) return;
+		wxString newDescr = dialog.GetDescription();
+		if( newDescr == orgDescr) return;
 
-	CVolumes vol;
-	vol.VolumeID = itemData->GetVolumeID();
-	vol.VolumeName = itemData->GetDesc();
-	vol.VolumeDescription = newDescr;
-	vol.DbUpdate();
+		// loops over all the selected items
+		long item = -1;
+		for( ;; ) {
+			item = lctl->GetNextItem( item, wxLIST_NEXT_ALL, wxLIST_STATE_SELECTED );
+			if( item == -1 ) break;
+			MyListItemData *itemData = (MyListItemData *) lctl->GetItemData( item );
+			itemData->SetObjectDescription( newDescr );
+			if( itemData->IsFolder() ) {
+				CPaths::UpdateDescription( itemData->GetPathFileID(), newDescr );
+			}
+			else {
+				CFiles::UpdateDescription( itemData->GetFileID(), newDescr );
+			}
+		}
 
-	itemData->SetVolumeDescription( newDescr );
+	}
+	else {
+		wxTreeCtrl *tctl = GetTreePhysicalControl();
+		wxTreeItemId item = tctl->GetSelection();
+		MyTreeItemData *itemData = (MyTreeItemData *) tctl->GetItemData(item);
+//		wxString objectName = tctl->GetItemText( item );
+		wxString objectName = itemData->GetDesc();
 
-	// updates the tree control
-	tctl->SetItemText( item, CreateVolumeLabel(vol.VolumeName, newDescr) );
+		CDialogObjectDescription dialog( this, ID_DIALOG_OBJECT_DESCRIPTION, _("Object description") );
+		dialog.SetObjectName( objectName );
+		wxString orgDescr = itemData->GetObjectDescription();
+		dialog.SetDescription( orgDescr );
 
+		if( dialog.ShowModal() != wxID_OK ) return;
+
+		wxString newDescr = dialog.GetDescription();
+		if( newDescr == orgDescr) return;
+
+		if( itemData->IsVolume() ) {
+			CVolumes vol;
+			vol.VolumeID = itemData->GetVolumeID();
+			vol.VolumeName = itemData->GetDesc();
+			vol.VolumeDescription = newDescr;
+			vol.DbUpdate();
+
+			// updates the tree control
+			tctl->SetItemText( item, CreateVolumeLabel(vol.VolumeName, newDescr) );
+		}
+		else {
+			CPaths::UpdateDescription( itemData->GetPathID(), newDescr );
+		}
+
+		itemData->SetObjectDescription( newDescr );
+
+	}
 }
 
 /*!
  * wxEVT_UPDATE_UI event handler for ID_EDIT_VOLUME_DESCRIPTION
  */
 
-void CMainFrame::OnEditVolumeDescriptionUpdate( wxUpdateUIEvent& event )
+void CMainFrame::OnEditObjectDescriptionUpdate( wxUpdateUIEvent& event )
 {
-	if( CBaseDB::GetDatabase() == NULL || m_CurrentView != Physical ) {
+	if( CBaseDB::GetDatabase() == NULL|| m_CurrentView != Physical ) {
 		event.Enable(false);
 		return;
 	}
-	
-	bool hideElement = false;
-	wxTreeCtrl *tctl = GetTreePhysicalControl();
-	if( tctl->GetCount() > 0 ) {
-		wxTreeItemId item = tctl->GetSelection();
-		if( item.IsOk() ) {
-			if( tctl->GetItemParent(item) != tctl->GetRootItem() ) hideElement = true;
-		}
-		else {
-			hideElement = true;
+
+	bool hideElement = true;
+	if( m_ListViewHasFocus ) {
+		wxListCtrl *lctl = GetListControl();
+		if( lctl->GetSelectedItemCount() > 0 )
+			hideElement = false;
+	}
+	else {
+		wxTreeCtrl *tctl = GetTreePhysicalControl();
+		if( tctl->GetCount() > 0 ) {
+			wxTreeItemId item = tctl->GetSelection();
+			if( item.IsOk() ) {
+				hideElement = false;
+			}
 		}
 	}
-	else
-		hideElement = true;
 
 	event.Enable( !hideElement );
 }
@@ -1912,6 +2063,16 @@ wxString CMainFrame::CreateVolumeLabel( const wxString& VolumeName, const wxStri
 		wxString s = VolumeDescription.Left(20);
 		s.Replace( "\n", " " );
 		retVal += " - " + s;
+	}
+	return retVal;
+}
+
+wxString CMainFrame::FormatObjectDescriptionForListView( const wxString& ObjectDescription ) {
+	wxString retVal;
+
+	retVal = ObjectDescription.Left(50);
+	if( !retVal.empty() ) {
+		retVal.Replace( "\n", " " );
 	}
 	return retVal;
 }
@@ -1935,11 +2096,11 @@ void CMainFrame::OnTreeControlItemMenu( wxTreeEvent& event )
 
 	wxMenu menu;
 	menu.Append( ID_ADD_VIRTUAL_FOLDER, _("Add To Virtual Folder") );
+	menu.AppendSeparator();
+	menu.Append( ID_EDIT_OBJECT_DESCRIPTION, _("Edit Description...") );
 	if( tctl->GetItemParent(item) == tctl->GetRootItem() ) {
 		// only for voume nodes, not for folders
-	    menu.AppendSeparator();
-		menu.Append( ID_EDIT_VOLUME_DESCRIPTION, _("Edit description") );
-		menu.Append( ID_RENAME_VOLUME, _("Rename") );
+		menu.Append( ID_RENAME_VOLUME, _("Rename...") );
 		menu.Append( ID_DELETE_VOLUME, _("Delete") );
 	}
 
@@ -2141,7 +2302,7 @@ void CMainFrame::OnButtonSearchClick( wxCommandEvent& WXUNUSED(event) ) {
 			nl.SetNull(true);
 			files.DBStartSearchVolumeFiles( fileName, useWildcards, ext, nl );
 			while( !files.IsEOF() ) {
-				AddRowToVirtualListControl( lctl, files.IsFolder(), files.FileName, files.FileSize, files.FileExt, files.DateTime, CPaths::GetFullPath(files.PathID), files.PathFileID.IsNull() ? 0 : (long) files.PathFileID );
+				AddRowToVirtualListControl( lctl, files.IsFolder(), files.FileName, files.FileSize, files.FileExt, files.DateTime, CPaths::GetFullPath(files.PathID), files.FileID, files.PathFileID.IsNull() ? 0 : (long) files.PathFileID, files.FileDescription );
 				nSearchFiles++;
 				sizeSearchFiles += files.FileSize;
 				files.DBNextRow();
@@ -2160,7 +2321,7 @@ void CMainFrame::OnButtonSearchClick( wxCommandEvent& WXUNUSED(event) ) {
 				CFiles files;
 				files.DBStartSearchVolumeFiles( fileName, useWildcards, ext, itemData->GetVolumeID() );
 				while( !files.IsEOF() ) {
-					AddRowToVirtualListControl( lctl, files.IsFolder(), files.FileName, files.FileSize, files.FileExt, files.DateTime, CPaths::GetFullPath(files.PathID), files.PathFileID.IsNull() ? 0 : (long) files.PathFileID );
+					AddRowToVirtualListControl( lctl, files.IsFolder(), files.FileName, files.FileSize, files.FileExt, files.DateTime, CPaths::GetFullPath(files.PathID), files.FileID, files.PathFileID.IsNull() ? 0 : (long) files.PathFileID, files.FileDescription );
 					nSearchFiles++;
 					sizeSearchFiles += files.FileSize;
 					files.DBNextRow();
@@ -2190,13 +2351,13 @@ void CMainFrame::OnButtonSearchClick( wxCommandEvent& WXUNUSED(event) ) {
 			break;
 	}
 
-	lctl->SortItems( ListControlCompareFunction, 0 );
+	lctl->SortItems( ListControlCompareFunction, m_CurrentView == Physical ? 0 : 1 );
 	lctl->Show();
 
 	UpdateStatusBar( nSearchFiles, sizeSearchFiles );
 }
 
-int CMainFrame::AddRowToVirtualListControl( wxListCtrl* lctl, bool isFolder, wxString fileName, wxLongLong fileSize, wxString ext, wxDateTime dateTime, wxString physicalPath, long virtualPathFileID ) {
+int CMainFrame::AddRowToVirtualListControl( wxListCtrl* lctl, bool isFolder, wxString fileName, wxLongLong fileSize, wxString ext, wxDateTime dateTime, wxString physicalPath, long fileID, long virtualPathFileID, wxString fileDescription ) {
 	int imageIndex = (isFolder ? 0 : 1 );
 	wxListItem item;
 	item.SetMask( wxLIST_MASK_STATE|wxLIST_MASK_TEXT|wxLIST_MASK_IMAGE|wxLIST_MASK_DATA );
@@ -2206,7 +2367,8 @@ int CMainFrame::AddRowToVirtualListControl( wxListCtrl* lctl, bool isFolder, wxS
 	lctl->SetItem( i, 2, ext );
 	lctl->SetItem( i, 3, dateTime.FormatDate() + " " + dateTime.FormatTime() );
 	lctl->SetItem( i, 4, physicalPath );
-	lctl->SetItemData( i, (long) new MyListItemData( virtualPathFileID, fileName, ext, fileSize, dateTime, isFolder, physicalPath ) );
+	lctl->SetItem( i, 5, FormatObjectDescriptionForListView(fileDescription) );
+	lctl->SetItemData( i, (long) new MyListItemData( fileID, virtualPathFileID, fileName, ext, fileSize, dateTime, isFolder, physicalPath, fileDescription ) );
 	if( physicalPath.empty() ) lctl->SetItemTextColour( i, *wxBLUE );
 
 	return i;
@@ -2219,7 +2381,7 @@ void CMainFrame::SearchVirtualFolder( wxString fileName, bool useFileNameWildcar
 	wxListCtrl* lctl = GetListControl();
 	files.DBStartSearchFolderFiles( fileName, useFileNameWildcards, ext, folderID );
 	while( !files.IsEOF() ) {
-		AddRowToVirtualListControl( lctl, files.IsFolder(), files.FileName, files.FileSize, files.FileExt, files.DateTime, files.FullPhysicalPath, files.VirtualPathFileID.IsNull() ? 0 : (long) files.VirtualPathFileID );
+		AddRowToVirtualListControl( lctl, files.IsFolder(), files.FileName, files.FileSize, files.FileExt, files.DateTime, files.FullPhysicalPath, files.FileID, files.VirtualPathFileID.IsNull() ? 0 : (long) files.VirtualPathFileID, files.FileDescription );
 		nSearchFiles++;
 		sizeSearchFiles += files.FileSize;
 		files.DBNextRow();
@@ -2242,7 +2404,7 @@ void CMainFrame::SearchPhysicalFolder( wxString fileName, bool useFileNameWildca
 	wxListCtrl* lctl = GetListControl();
 	files.DBStartSearchFolderFiles( fileName, useFileNameWildcards, ext, folderID );
 	while( !files.IsEOF() ) {
-		AddRowToVirtualListControl( lctl, files.IsFolder(), files.FileName, files.FileSize, files.FileExt, files.DateTime, CPaths::GetFullPath(files.PathID), files.PathFileID.IsNull() ? 0 : (long) files.PathFileID );
+		AddRowToVirtualListControl( lctl, files.IsFolder(), files.FileName, files.FileSize, files.FileExt, files.DateTime, CPaths::GetFullPath(files.PathID), files.FileID, files.PathFileID.IsNull() ? 0 : (long) files.PathFileID, files.FileDescription );
 		nSearchFiles++;
 		sizeSearchFiles += files.FileSize;
 		files.DBNextRow();
@@ -2373,5 +2535,58 @@ void CMainFrame::OnUpOneFolderUpdate( wxUpdateUIEvent& event )
 	}
 
 	event.Enable( !hideElement );
+}
+
+
+/*!
+ * wxEVT_SET_FOCUS event handler for ID_LIST_CONTROL
+ */
+
+void CMainFrame::OnListViewSetFocus( wxFocusEvent& WXUNUSED(event) )
+{
+	m_ListViewHasFocus = true;
+}
+
+
+/*!
+ * wxEVT_KILL_FOCUS event handler for ID_LIST_CONTROL
+ */
+
+void CMainFrame::OnListViewKillFocus( wxFocusEvent& WXUNUSED(event) )
+{
+	m_ListViewHasFocus = false;
+}
+
+
+/*!
+ * wxEVT_CONTEXT_MENU event handler for ID_LIST_CONTROL
+ */
+
+void CMainFrame::OnListControlContextMenu( wxContextMenuEvent& event )
+{
+	event.Skip();
+
+	if( m_CurrentView != Physical ) return;
+	if( GetListControl()->GetSelectedItemCount() <= 0 ) return;
+
+	wxPoint point = event.GetPosition();
+	// If from keyboard
+	if (point.x == -1 && point.y == -1) {
+		wxSize size = GetSize();
+		point.x = size.x / 2;
+		point.y = size.y / 2;
+	} else {
+		point = ScreenToClient(point);
+		// if there is a toolbar we need to correct the coordinates
+		wxPoint origin = GetClientAreaOrigin();
+		point += origin;
+	}
+
+	wxMenu menu;
+//	menu.Append( ID_ADD_VIRTUAL_FOLDER, _("Add To Virtual Folder") );
+//	menu.AppendSeparator();
+	menu.Append( ID_EDIT_OBJECT_DESCRIPTION, _("Edit Description...") );
+
+	PopupMenu( &menu, point );
 }
 

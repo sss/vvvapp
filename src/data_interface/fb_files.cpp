@@ -37,7 +37,7 @@ void CFiles::FB_DbInsert(void)
 	sql = "INSERT INTO FILES (";
 	if( !FileID.IsNull() )
 		sql += "FILE_ID, ";
-	sql += "FILE_NAME, FILE_EXT, FILE_SIZE, FILE_DATETIME, PATH_FILE_ID, PATH_ID) VALUES (";
+	sql += "FILE_NAME, FILE_EXT, FILE_SIZE, FILE_DATETIME, PATH_FILE_ID, PATH_ID, FILE_DESCRIPTION) VALUES (";
 	if( !FileID.IsNull() )
 		sql += CUtils::long2string(FileID) + ", ";
 	sql += "'" + ExpandSingleQuotes(FileName) + "', '" + 
@@ -45,27 +45,27 @@ void CFiles::FB_DbInsert(void)
                  FileSize.ToString() + ", " +
 				 DateTime.Format( "'%Y-%m-%d %H:%M:%S'" ) + ", " +
 				 (PathFileID.IsNull() ? "NULL" : CUtils::long2string(PathFileID) ) + ", " +
-				 CUtils::long2string(PathID) + ")";
+				 CUtils::long2string(PathID) + 
+				 (FileDescription.empty() ? "NULL" : "'" + ExpandSingleQuotes(FileDescription) + "'") +
+				 ")";
 	FB_ExecuteQueryNoReturn( sql );
 }
 
 void CFiles::FB_DbUpdate(void)
 {
-// not used (and not working)
 
-	//wxString sql;
+	wxString sql;
 
-	//sql = "UPDATE FILES SET ";
-	//sql += "FILE_NAME = '" + ExpandSingleQuotes(FileName) + "', ";
-	//sql += "FILE_EXT = '" + ExpandSingleQuotes(FileExt) + "', ";
-	//sql += "FILE_SIZE = " + FileSize.ToString() + ", ";
-	//sql += "FILE_DATETIME = " + DateTime.Format( "'%Y-%m-%d %H:%M:%S'" ) + ", ";
-	//sql += "IS_FOLDER = '";
-	//sql += "', ";
-	//sql += "IS_FOLDER = '" + wxString(IsFolder ? "T" : "F") + "', ";
-	//sql += "PATH_ID = " + long2string(PathID) + " ";
-	//sql += "WHERE FILE_ID = "  + long2string(FileID);
-	//FB_ExecuteQueryNoReturn( sql );
+	sql = "UPDATE FILES SET ";
+	sql += "FILE_NAME = '" + ExpandSingleQuotes(FileName) + "', ";
+	sql += "FILE_EXT = '" + ExpandSingleQuotes(FileExt) + "', ";
+	sql += "FILE_SIZE = " + FileSize.ToString() + ", ";
+	sql += "FILE_DATETIME = " + DateTime.Format( "'%Y-%m-%d %H:%M:%S'" ) + ", " +
+	       "PATH_FILE_ID = " + (PathFileID.IsNull() ? "NULL" : CUtils::long2string(PathFileID) ) + ", ";
+	sql += "PATH_ID = " + CUtils::long2string(PathID) + ", " +
+	       "FILE_DESCRIPTION = " + (FileDescription.empty() ? "NULL" : "'" + ExpandSingleQuotes(FileDescription) + "'") + " ";
+	sql += "WHERE FILE_ID = "  + CUtils::long2string(FileID);
+	FB_ExecuteQueryNoReturn( sql );
 }
 
 void CFiles::FB_DbDelete(void)
@@ -103,6 +103,18 @@ void CFiles::FB_FetchRow(void) {
 		}
 		FB_st->Get("PATH_ID", tmp);
 		PathID = (long) tmp;
+		if( FB_st->IsNull("FILE_DESCRIPTION") ) {
+			FileDescription = "";
+		}
+		else {
+			// reads the blob
+			CFirebirdDB* db = (CFirebirdDB*) CBaseDB::GetDatabase();
+			Blob bl = BlobFactory( db->GetIBPPDB(), db->TransactionGetReference() );
+			string s;
+			FB_st->Get( "FILE_DESCRIPTION", bl );
+			bl->Load( s );
+			FileDescription = CUtils::std2wx( s );
+		}
 	}
 	else {
 		// end of the rowset
@@ -114,3 +126,14 @@ void CFiles::FB_FetchRow(void) {
 		TransactionAlreadyStarted = false;
 	}
 }
+
+
+void CFiles::FB_UpdateDescription( long FileID, const wxString& descr ) {
+	wxString sql;
+
+	sql = "UPDATE FILES SET FILE_DESCRIPTION = ";
+	sql += (descr.empty() ? "NULL" : "'" + ExpandSingleQuotes(descr) + "'");
+	sql += " WHERE FILE_ID = " + CUtils::long2string( FileID );
+	FB_ExecuteQueryNoReturn( sql );
+}
+

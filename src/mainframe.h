@@ -84,7 +84,7 @@ class wxStatusBar;
 #define ID_VIEW_VIRTUAL 10012
 #define ID_VIEW_SEARCH 10036
 #define ID_ADD_VIRTUAL_FOLDER 10015
-#define ID_EDIT_VOLUME_DESCRIPTION 10029
+#define ID_EDIT_OBJECT_DESCRIPTION 10029
 #define ID_RENAME_VOLUME 10013
 #define ID_DELETE_VOLUME 10014
 #define ID_NEW_VIRTUAL_ROOT_FOLDER 10019
@@ -165,11 +165,11 @@ public:
     /// wxEVT_UPDATE_UI event handler for ID_ADD_VIRTUAL_FOLDER
     void OnAddVirtualFolderUpdate( wxUpdateUIEvent& event );
 
-    /// wxEVT_COMMAND_MENU_SELECTED event handler for ID_EDIT_VOLUME_DESCRIPTION
-    void OnEditVolumeDescriptionClick( wxCommandEvent& event );
+    /// wxEVT_COMMAND_MENU_SELECTED event handler for ID_EDIT_OBJECT_DESCRIPTION
+    void OnEditObjectDescriptionClick( wxCommandEvent& event );
 
-    /// wxEVT_UPDATE_UI event handler for ID_EDIT_VOLUME_DESCRIPTION
-    void OnEditVolumeDescriptionUpdate( wxUpdateUIEvent& event );
+    /// wxEVT_UPDATE_UI event handler for ID_EDIT_OBJECT_DESCRIPTION
+    void OnEditObjectDescriptionUpdate( wxUpdateUIEvent& event );
 
     /// wxEVT_COMMAND_MENU_SELECTED event handler for ID_RENAME_VOLUME
     void OnRenameVolumeClick( wxCommandEvent& event );
@@ -261,6 +261,15 @@ public:
     /// wxEVT_COMMAND_LIST_COL_CLICK event handler for ID_LIST_CONTROL
     void OnListControlColLeftClick( wxListEvent& event );
 
+    /// wxEVT_CONTEXT_MENU event handler for ID_LIST_CONTROL
+    void OnListControlContextMenu( wxContextMenuEvent& event );
+
+    /// wxEVT_SET_FOCUS event handler for ID_LIST_CONTROL
+    void OnListViewSetFocus( wxFocusEvent& event );
+
+    /// wxEVT_KILL_FOCUS event handler for ID_LIST_CONTROL
+    void OnListViewKillFocus( wxFocusEvent& event );
+
 ////@end CMainFrame event handler declarations
 
 ////@begin CMainFrame member function declarations
@@ -312,6 +321,8 @@ public:
 	// creates the volume label for a tree control
 	wxString CreateVolumeLabel( const wxString& VolumeName, const wxString& VolumeDescription );
 
+	// formats an object decription for display in the listview
+	wxString FormatObjectDescriptionForListView( const wxString& ObjectDescription );
 
 private:
 
@@ -323,6 +334,9 @@ private:
 	};
 	// holds the current view
 	CurrentView m_CurrentView;
+
+	// true if the listview has the focus
+	bool m_ListViewHasFocus;
 
 	// possible choices for file name search
 	enum FilenameSearchKind {
@@ -387,9 +401,9 @@ private:
 	void OpenDatabase( wxString fileName, int expectedVersion );
 
 	// width of the listview columns in physical view
-	int m_ListviewColWidthPhysical[4];
+	int m_ListviewColWidthPhysical[5];
 	// width of the listview columns in virtual view
-	int m_ListviewColWidthVirtual[5];
+	int m_ListviewColWidthVirtual[6];
 
 	// stores the column widths of the list control columns in physical view
 	void StoreListControlPhysicalWidth();
@@ -417,7 +431,7 @@ private:
 
 	// adds a row to the listview in Virtual or Search mode
 	// return the index position of the newly inserted row
-	int AddRowToVirtualListControl( wxListCtrl* lctl, bool isFolder, wxString fileName, wxLongLong fileSize, wxString ext, wxDateTime dateTime, wxString physicalPath, long virtualPathFileID );
+	int AddRowToVirtualListControl( wxListCtrl* lctl, bool isFolder, wxString fileName, wxLongLong fileSize, wxString ext, wxDateTime dateTime, wxString physicalPath, long fileID, long virtualPathFileID, wxString fileDescription );
 
 	// updates the content of the status bar: it does not use the first element because it is used by the menu/toolbar
 	void UpdateStatusBar( long nObjects, wxLongLong sizeObjects );

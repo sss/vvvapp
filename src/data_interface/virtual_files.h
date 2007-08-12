@@ -49,6 +49,7 @@ public:
 	long PhysicalPathID;
 	CNullableLong PathFileID;
 	wxString FullPhysicalPath;	// the full physical path to this file
+	wxString FileDescription;
 
 	// methods -----------------------------------
 

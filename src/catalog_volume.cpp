@@ -56,10 +56,12 @@
 #include "wx/config.h"
 #include "catalog_volume.h"
 #include "utils.h"
+#include "audio_metadata.h"
 #include "data_interface/volumes.h"
 #include "data_interface/paths.h"
 #include "data_interface/files.h"
 #include "data_interface/data_error.h"
+#include "data_interface/files_audio_metadata.h"
 
 #ifdef __WXMSW__
 #include "windows_specific.h"
@@ -350,6 +352,14 @@ void CDialogCatalogVolume::CatalogSingleFolder( CBaseDB* db, wxString path, long
 		file.PathID = pth.PathID;
 		file.PathFileID.SetNull(true);
 		file.DbInsert();
+
+		if( file.FileExt == "mp3" ) {
+			CFilesAudioMetadata metaData;
+			if( CAudioMetadata::ReadMP3Metadata( fn.GetFullPath(), metaData ) ) {
+				metaData.FileID = file.FileID;
+				metaData.DbInsert();
+			}
+		}
 
 		cont = dir.GetNext(&fileName);
 	}

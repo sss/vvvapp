@@ -53,7 +53,7 @@ protected:
 	virtual void FB_DbUpdate(void) = 0;
 	virtual void FB_DbDelete(void) = 0;
 	// executes a query that does not return rows
-	void FB_ExecuteQueryNoReturn( wxString sql );
+	static void FB_ExecuteQueryNoReturn( wxString sql );
 	// current statement, used to mantain state between calls for multi row queries
 	IBPP::Statement FB_st;
 	void FB_DBStartMultiRowQuery( wxString sql, bool readOnly );

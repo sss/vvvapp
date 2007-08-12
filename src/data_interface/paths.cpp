@@ -24,6 +24,7 @@
 
 CPaths::CPaths(void) {
 	PathName = "";
+	PathDescription = "";
 }
 
 CPaths::~CPaths(void) {
@@ -54,4 +55,12 @@ wxString CPaths::GetFullPath( long PathID ) {
 	return retVal;
 }
 
+void CPaths::UpdateDescription( long PathID, const wxString& descr ) {
+
+	switch( DatabaseType ) {
+		case dbtFirebird:
+			FB_UpdateDescription( PathID, descr );
+			break;
+	}
+}
 

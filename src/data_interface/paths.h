@@ -40,6 +40,7 @@ public:
 	CNullableLong PathID;
 	CNullableLong VolumeID;
 	CNullableLong FatherID;
+	wxString PathDescription;
 
 	// methods -----------------------------------
 
@@ -48,6 +49,9 @@ public:
 
 	// returns the full path
 	static wxString GetFullPath( long PathID );
+
+	// updates the decription
+	static void UpdateDescription( long PathID, const wxString& descr );
 
 
 protected:
@@ -59,6 +63,7 @@ protected:
 	void FB_FetchRow(void);
 
 	static wxString FB_GetFullPath( long PathID );
+	static void FB_UpdateDescription( long PathID, const wxString& descr );
 
 };
 

@@ -35,8 +35,8 @@ class MyListItemData {
 
 public:
 
-	MyListItemData( long pathFileID,  const wxString& name, const wxString& ext, wxLongLong size, wxDateTime dateTime, bool isFolder, const wxString& fullPhysicalPath = "" ) :
-	                m_PathFileID(pathFileID), m_name(name), m_ext(ext), m_size(size), m_dateTime(dateTime), m_isFolder(isFolder), m_fullPhysicalPath(fullPhysicalPath) {}
+	MyListItemData( long fileID, long pathFileID, const wxString& name, const wxString& ext, wxLongLong size, wxDateTime dateTime, bool isFolder, const wxString& fullPhysicalPath = "", const wxString& objectDescription = "" ) :
+	                m_FileID(fileID), m_PathFileID(pathFileID), m_name(name), m_ext(ext), m_size(size), m_dateTime(dateTime), m_isFolder(isFolder), m_fullPhysicalPath(fullPhysicalPath), m_objectDescription(objectDescription) {}
 
 	const wxString& GetName() const { return m_name; }
 	const wxString& GetExt() const { return m_ext; }
@@ -45,6 +45,9 @@ public:
 	bool IsFolder() { return m_isFolder; }
 	const wxString& GetFullPhysicalPath() const { return m_fullPhysicalPath; }
 	long GetPathFileID() { return m_PathFileID; }
+	long GetFileID() { return m_FileID; }
+	const wxString GetObjectDescription() const { return m_objectDescription; }
+	void SetObjectDescription( const wxString& ObjDescr ) { m_objectDescription = ObjDescr; }
 
 private:
 
@@ -54,6 +57,7 @@ private:
 	bool m_isFolder;
 	wxDateTime m_dateTime;
 	wxString m_fullPhysicalPath;	// only used in virtual view
+	wxString m_objectDescription;
 
 	// database data
 	
@@ -61,6 +65,8 @@ private:
 	// if this is a folder it contains the primary key of the 
 	// corresponding row in the PATHS or VIRTUAL_PATHS table
 	long m_PathFileID;
+
+	long m_FileID;	// primary key of the database row
 
 };
 

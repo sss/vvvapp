@@ -43,6 +43,7 @@ public:
 	wxLongLong FileSize;
 	long PathID;
 	CNullableLong PathFileID;
+	wxString FileDescription;
 
 	// methods -----------------------------------
 
@@ -60,6 +61,9 @@ public:
 	// searches all the files in a folder and its subfolders
 	void DBStartSearchFolderFiles( wxString fileName, bool useFileNameWildcards, wxString ext, long folderID );
 
+	// updates the decription
+	static void UpdateDescription( long FileID, const wxString& descr );
+
 protected:
 
 	// Firebird implementation of the database methods
@@ -68,6 +72,7 @@ protected:
 	void FB_DbDelete(void);
 	void FB_FetchRow(void);
 
+	static void FB_UpdateDescription( long FileID, const wxString& descr );
 };
 
 

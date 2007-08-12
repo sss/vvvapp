@@ -25,6 +25,7 @@
 CFiles::CFiles(void) {
 	FileName = "";
 	FileExt = "";
+	FileDescription = "";
 }
 
 CFiles::~CFiles(void) {
@@ -80,6 +81,15 @@ void CFiles::DBStartSearchFolderFiles( wxString fileName, bool useFileNameWildca
 		sql += " AND UPPER(FILE_EXT) = '" + ExpandSingleQuotes(ext) + "'";
 
 	DBStartMultiRowQuery( sql, true );
-
 }
+
+void CFiles::UpdateDescription( long FileID, const wxString& descr ) {
+
+	switch( DatabaseType ) {
+		case dbtFirebird:
+			FB_UpdateDescription( FileID, descr );
+			break;
+	}
+}
+
 

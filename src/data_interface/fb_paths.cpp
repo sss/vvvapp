@@ -38,7 +38,7 @@ void CPaths::FB_DbInsert(void)
 	sql = "INSERT INTO PATHS (";
 	if( !PathID.IsNull() )
 		sql += "PATH_ID, ";
-	sql += "VOLUME_ID, PATH_NAME, FATHER_ID) VALUES (";
+	sql += "VOLUME_ID, PATH_NAME, FATHER_ID, PATH_DESCRIPTION) VALUES (";
 	if( !PathID.IsNull() )
 		sql += CUtils::long2string(PathID) + ", ";
 	sql += CUtils::long2string(VolumeID) + ", '" + ExpandSingleQuotes(PathName) + "', ";
@@ -46,6 +46,10 @@ void CPaths::FB_DbInsert(void)
 		sql += "NULL";
 	else
 		sql += CUtils::long2string(FatherID);
+	if( !PathDescription.empty() )
+		sql += ", '" + ExpandSingleQuotes(PathDescription) + "'";
+	else
+		sql += ", NULL";
 	sql += ")";
 	FB_ExecuteQueryNoReturn( sql );
 }
@@ -59,10 +63,15 @@ void CPaths::FB_DbUpdate(void)
 	sql += "PATH_NAME = '" + ExpandSingleQuotes(PathName) + "', ";
 	sql += "FATHER_ID = ";
 	if( FatherID.IsNull() )
-		sql += "NULL ";
+		sql += "NULL, ";
 	else
-		sql += CUtils::long2string(FatherID) + " ";
-	sql += " WHERE PATH_ID = "  + CUtils::long2string(PathID);
+		sql += CUtils::long2string(FatherID) + ", ";
+	sql += "PATH_DESCRIPTION = ";
+	if( !PathDescription.empty() )
+		sql += "'" + ExpandSingleQuotes(PathDescription) + "' ";
+	else
+		sql += "NULL ";
+	sql += "WHERE PATH_ID = "  + CUtils::long2string(PathID);
 	FB_ExecuteQueryNoReturn( sql );
 }
 
@@ -93,6 +102,18 @@ void CPaths::FB_FetchRow(void) {
 		else {
 			FB_st->Get("FATHER_ID", tmp);
 			FatherID = (long) tmp;
+		}
+		if( FB_st->IsNull("PATH_DESCRIPTION") ) {
+			PathDescription = "";
+		}
+		else {
+			// reads the blob
+			CFirebirdDB* db = (CFirebirdDB*) CBaseDB::GetDatabase();
+			Blob bl = BlobFactory( db->GetIBPPDB(), db->TransactionGetReference() );
+			string s;
+			FB_st->Get( "PATH_DESCRIPTION", bl );
+			bl->Load( s );
+			PathDescription = CUtils::std2wx( s );
 		}
 	}
 	else {
@@ -128,5 +149,22 @@ wxString CPaths::FB_GetFullPath( long PathID ) {
 
 	st->Get( 1, stmp );
 	return CUtils::std2wx( stmp );
+
+}
+
+void CPaths::FB_UpdateDescription( long PathID, const wxString& descr ) {
+	wxString sql;
+
+	// updates the path
+	sql = "UPDATE PATHS SET PATH_DESCRIPTION = ";
+	sql += (descr.empty() ? "NULL" : "'" + ExpandSingleQuotes(descr) + "'");
+	sql += " WHERE PATH_ID = " + CUtils::long2string( PathID );
+	FB_ExecuteQueryNoReturn( sql );
+
+	// now upadates the corresponding file enty
+	sql = "UPDATE FILES SET FILE_DESCRIPTION = ";
+	sql += (descr.empty() ? "NULL" : "'" + ExpandSingleQuotes(descr) + "'");
+	sql += " WHERE PATH_FILE_ID = " + CUtils::long2string( PathID );
+	FB_ExecuteQueryNoReturn( sql );
 
 }
