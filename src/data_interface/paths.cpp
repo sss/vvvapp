@@ -35,9 +35,9 @@ void CPaths::DBStartQueryListPaths( long VolID, CNullableLong FathID ) {
 	wxString sql;
 
 	if( FathID.IsNull() )
-		sql = "SELECT * FROM PATHS WHERE VOLUME_ID = " + CUtils::long2string(VolID) + " AND FATHER_ID IS NULL ORDER BY PATH_NAME";
+		sql = "SELECT * FROM PATHS WHERE VOLUME_ID = " + CUtils::long2string(VolID) + " AND FATHER_ID IS NULL ORDER BY UPPER(PATH_NAME)";
 	else
-		sql = "SELECT * FROM PATHS WHERE VOLUME_ID = " + CUtils::long2string(VolID) + " AND FATHER_ID = " + CUtils::long2string(FathID) + " ORDER BY PATH_NAME";
+		sql = "SELECT * FROM PATHS WHERE VOLUME_ID = " + CUtils::long2string(VolID) + " AND FATHER_ID = " + CUtils::long2string(FathID) + " ORDER BY UPPER(PATH_NAME)";
 
 	DBStartMultiRowQuery( sql, true );
 }

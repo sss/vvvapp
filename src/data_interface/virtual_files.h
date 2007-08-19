@@ -58,7 +58,7 @@ public:
 	void DBStartQueryListFiles( long VirtualPathID );
 
 	// searches all the files in a folder and its subfolders
-	void DBStartSearchFolderFiles( wxString fileName, bool useFileNameWildcards, wxString ext, long folderID );
+	void DBStartSearchFolderFiles( wxString fileName, bool useFileNameWildcards, wxString ext, wxString description, bool useDescriptionWildcards, long folderID );
 
 	// true if this row represents a folder
 	bool IsFolder(void) { return !VirtualPathFileID.IsNull(); }

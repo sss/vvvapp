@@ -107,13 +107,8 @@ void CFiles::FB_FetchRow(void) {
 			FileDescription = "";
 		}
 		else {
-			// reads the blob
-			CFirebirdDB* db = (CFirebirdDB*) CBaseDB::GetDatabase();
-			Blob bl = BlobFactory( db->GetIBPPDB(), db->TransactionGetReference() );
-			string s;
-			FB_st->Get( "FILE_DESCRIPTION", bl );
-			bl->Load( s );
-			FileDescription = CUtils::std2wx( s );
+			FB_st->Get( "FILE_DESCRIPTION", stmp );
+			FileDescription = CUtils::std2wx( stmp );
 		}
 	}
 	else {

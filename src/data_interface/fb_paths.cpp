@@ -107,13 +107,8 @@ void CPaths::FB_FetchRow(void) {
 			PathDescription = "";
 		}
 		else {
-			// reads the blob
-			CFirebirdDB* db = (CFirebirdDB*) CBaseDB::GetDatabase();
-			Blob bl = BlobFactory( db->GetIBPPDB(), db->TransactionGetReference() );
-			string s;
-			FB_st->Get( "PATH_DESCRIPTION", bl );
-			bl->Load( s );
-			PathDescription = CUtils::std2wx( s );
+			FB_st->Get( "PATH_DESCRIPTION", stmp );
+			PathDescription = CUtils::std2wx( stmp );
 		}
 	}
 	else {

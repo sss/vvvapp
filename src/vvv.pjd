@@ -453,7 +453,7 @@
           <long name="use-xrc">0</long>
           <long name="working-mode">0</long>
           <string name="proxy-Id name">"ID_MAIN_FRAME"</string>
-          <long name="proxy-Id value">10000</long>
+          <long name="proxy-Id value">10003</long>
           <string name="proxy-Class">"CMainFrame"</string>
           <string name="proxy-Base class">"wxFrame"</string>
           <string name="proxy-Implementation filename">"mainframe.cpp"</string>
@@ -519,7 +519,7 @@
             <string name="created">"30/4/2007"</string>
             <string name="proxy-type">"wbToolBarProxy"</string>
             <string name="proxy-Id name">"ID_TOOLBAR1"</string>
-            <long name="proxy-Id value">10022</long>
+            <long name="proxy-Id value">10004</long>
             <string name="proxy-Class">"wxToolBar"</string>
             <string name="proxy-Base class">"wxToolBar"</string>
             <bool name="proxy-External implementation">1</bool>
@@ -636,7 +636,7 @@
               <string name="created">"1/5/2007"</string>
               <string name="proxy-type">"wbToolBarButtonProxy"</string>
               <string name="proxy-Id name">"ID_CATALOG_VOLUME"</string>
-              <long name="proxy-Id value">10001</long>
+              <long name="proxy-Id value">10005</long>
               <string name="proxy-Bitmap">"graphics/tlb_catalog.xpm"</string>
               <string name="proxy-Bitmap (disabled)">""</string>
               <string name="proxy-Label">"Catalog"</string>
@@ -658,7 +658,7 @@
               <string name="created">"22/6/2007"</string>
               <string name="proxy-type">"wbToolBarButtonProxy"</string>
               <string name="proxy-Id name">"ID_UP_ONE_FOLDER"</string>
-              <long name="proxy-Id value">10039</long>
+              <long name="proxy-Id value">10006</long>
               <string name="proxy-Bitmap">"graphics/tlb_up.xpm"</string>
               <string name="proxy-Bitmap (disabled)">""</string>
               <string name="proxy-Label">"Up"</string>
@@ -737,7 +737,7 @@
               <string name="created">"31/5/2007"</string>
               <string name="proxy-type">"wbToolBarButtonProxy"</string>
               <string name="proxy-Id name">"ID_VIEW_SEARCH"</string>
-              <long name="proxy-Id value">10036</long>
+              <long name="proxy-Id value">10013</long>
               <string name="proxy-Bitmap">"graphics/tlb_search.xpm"</string>
               <string name="proxy-Bitmap (disabled)">""</string>
               <string name="proxy-Label">"Search"</string>
@@ -761,6 +761,7 @@
             <string name="proxy-type">"wbMenuBarProxy"</string>
             <string name="proxy-Id name">"ID_MAINMENUBAR"</string>
             <string name="proxy-Platform">"&lt;Any platform&gt;"</string>
+            <long name="proxy-Id value">10014</long>
             <document>
               <string name="title">"File"</string>
               <string name="type">"dialog-control-document"</string>
@@ -921,7 +922,7 @@
                 <string name="event-handler-0">"wxEVT_COMMAND_MENU_SELECTED|OnEditObjectDescriptionClick|NONE||"</string>
                 <string name="event-handler-1">"wxEVT_UPDATE_UI|OnEditObjectDescriptionUpdate|NONE||"</string>
                 <string name="proxy-Id name">"ID_EDIT_OBJECT_DESCRIPTION"</string>
-                <long name="proxy-Id value">10029</long>
+                <long name="proxy-Id value">10018</long>
                 <string name="proxy-Label">"Object Description..."</string>
                 <string name="proxy-Kind">"Normal"</string>
                 <bool name="proxy-Checked">0</bool>
@@ -944,7 +945,7 @@
                 <string name="event-handler-0">"wxEVT_COMMAND_MENU_SELECTED|OnRenameVolumeClick"</string>
                 <string name="event-handler-1">"wxEVT_UPDATE_UI|OnRenameVolumeUpdate"</string>
                 <string name="proxy-Id name">"ID_RENAME_VOLUME"</string>
-                <long name="proxy-Id value">10013</long>
+                <long name="proxy-Id value">10019</long>
                 <string name="proxy-Label">"Rename Volume..."</string>
                 <string name="proxy-Kind">"Normal"</string>
                 <bool name="proxy-Checked">0</bool>
@@ -967,7 +968,7 @@
                 <string name="event-handler-0">"wxEVT_COMMAND_MENU_SELECTED|OnDeleteVolumeClick|NONE||"</string>
                 <string name="event-handler-1">"wxEVT_UPDATE_UI|OnDeleteVolumeUpdate|||"</string>
                 <string name="proxy-Id name">"ID_DELETE_VOLUME"</string>
-                <long name="proxy-Id value">10014</long>
+                <long name="proxy-Id value">10020</long>
                 <string name="proxy-Label">"Delete Volume"</string>
                 <string name="proxy-Kind">"Normal"</string>
                 <bool name="proxy-Checked">0</bool>
@@ -1003,7 +1004,7 @@
                 <string name="event-handler-0">"wxEVT_COMMAND_MENU_SELECTED|OnNewVirtualRootFolderClick"</string>
                 <string name="event-handler-1">"wxEVT_UPDATE_UI|OnNewVirtualRootFolderUpdate"</string>
                 <string name="proxy-Id name">"ID_NEW_VIRTUAL_ROOT_FOLDER"</string>
-                <long name="proxy-Id value">10019</long>
+                <long name="proxy-Id value">10021</long>
                 <string name="proxy-Label">"New Virtual Root Folder..."</string>
                 <string name="proxy-Kind">"Normal"</string>
                 <bool name="proxy-Checked">0</bool>
@@ -1026,7 +1027,7 @@
                 <string name="event-handler-0">"wxEVT_COMMAND_MENU_SELECTED|OnNewVirtualSubfolderClick"</string>
                 <string name="event-handler-1">"wxEVT_UPDATE_UI|OnNewVirtualSubfolderUpdate"</string>
                 <string name="proxy-Id name">"ID_NEW_VIRTUAL_SUBFOLDER"</string>
-                <long name="proxy-Id value">10018</long>
+                <long name="proxy-Id value">10022</long>
                 <string name="proxy-Label">"New Virtual Subfolder..."</string>
                 <string name="proxy-Kind">"Normal"</string>
                 <bool name="proxy-Checked">0</bool>
@@ -1049,7 +1050,7 @@
                 <string name="event-handler-0">"wxEVT_COMMAND_MENU_SELECTED|OnRenameVirtualFolderClick"</string>
                 <string name="event-handler-1">"wxEVT_UPDATE_UI|OnRenameVirtualFolderUpdate"</string>
                 <string name="proxy-Id name">"ID_RENAME_VIRTUAL_FOLDER"</string>
-                <long name="proxy-Id value">10020</long>
+                <long name="proxy-Id value">10025</long>
                 <string name="proxy-Label">"Rename Virtual Folder..."</string>
                 <string name="proxy-Kind">"Normal"</string>
                 <bool name="proxy-Checked">0</bool>
@@ -1072,7 +1073,7 @@
                 <string name="event-handler-0">"wxEVT_COMMAND_MENU_SELECTED|OnDeleteVirtualFolderClick"</string>
                 <string name="event-handler-1">"wxEVT_UPDATE_UI|OnDeleteVirtualFolderUpdate"</string>
                 <string name="proxy-Id name">"ID_DELETE_VIRTUAL_FOLDER"</string>
-                <long name="proxy-Id value">10021</long>
+                <long name="proxy-Id value">10029</long>
                 <string name="proxy-Label">"Delete Virtual Folder"</string>
                 <string name="proxy-Kind">"Normal"</string>
                 <bool name="proxy-Checked">0</bool>
@@ -1111,7 +1112,7 @@
                 <string name="event-handler-0">"wxEVT_COMMAND_MENU_SELECTED|OnCatalogVolumeClick|SHOWWINDOW|ID_DIALOG_CATALOG_VOLUME|"</string>
                 <string name="event-handler-1">"wxEVT_UPDATE_UI|OnCatalogVolumeUpdate|NONE||"</string>
                 <string name="proxy-Id name">"ID_CATALOG_VOLUME"</string>
-                <long name="proxy-Id value">10001</long>
+                <long name="proxy-Id value">10036</long>
                 <string name="proxy-Label">"Catalog Volume..."</string>
                 <string name="proxy-Kind">"Normal"</string>
                 <bool name="proxy-Checked">0</bool>
@@ -1150,7 +1151,7 @@
                 <string name="event-handler-0">"wxEVT_COMMAND_MENU_SELECTED|OnViewPhysicalClick|||"</string>
                 <string name="event-handler-1">"wxEVT_UPDATE_UI|OnViewPhysicalUpdate|NONE||"</string>
                 <string name="proxy-Id name">"ID_VIEW_PHYSICAL"</string>
-                <long name="proxy-Id value">10011</long>
+                <long name="proxy-Id value">10038</long>
                 <string name="proxy-Label">"Physical View"</string>
                 <string name="proxy-Kind">"Radio"</string>
                 <bool name="proxy-Checked">1</bool>
@@ -1173,7 +1174,7 @@
                 <string name="event-handler-0">"wxEVT_COMMAND_MENU_SELECTED|OnViewVirtualClick|||"</string>
                 <string name="event-handler-1">"wxEVT_UPDATE_UI|OnViewVirtualUpdate|NONE||"</string>
                 <string name="proxy-Id name">"ID_VIEW_VIRTUAL"</string>
-                <long name="proxy-Id value">10012</long>
+                <long name="proxy-Id value">10039</long>
                 <string name="proxy-Label">"Virtual View"</string>
                 <string name="proxy-Kind">"Radio"</string>
                 <bool name="proxy-Checked">0</bool>
@@ -1196,7 +1197,7 @@
                 <string name="event-handler-0">"wxEVT_COMMAND_MENU_SELECTED|OnViewSearchClick|NONE||"</string>
                 <string name="event-handler-1">"wxEVT_UPDATE_UI|OnViewSearchUpdate|NONE||"</string>
                 <string name="proxy-Id name">"ID_VIEW_SEARCH"</string>
-                <long name="proxy-Id value">10036</long>
+                <long name="proxy-Id value">10040</long>
                 <string name="proxy-Label">"Search View"</string>
                 <string name="proxy-Kind">"Radio"</string>
                 <bool name="proxy-Checked">0</bool>
@@ -1232,7 +1233,7 @@
                 <string name="event-handler-0">"wxEVT_COMMAND_MENU_SELECTED|OnUpOneFolderClick|NONE||"</string>
                 <string name="event-handler-1">"wxEVT_UPDATE_UI|OnUpOneFolderUpdate|NONE||"</string>
                 <string name="proxy-Id name">"ID_UP_ONE_FOLDER"</string>
-                <long name="proxy-Id value">10039</long>
+                <long name="proxy-Id value">10041</long>
                 <string name="proxy-Label">"Go Up One Level"</string>
                 <string name="proxy-Kind">"Normal"</string>
                 <bool name="proxy-Checked">0</bool>
@@ -1267,7 +1268,7 @@
                 <string name="proxy-type">"wbMenuItemProxy"</string>
                 <string name="event-handler-0">"wxEVT_COMMAND_MENU_SELECTED|OnViewToolbarClick|NONE||"</string>
                 <string name="proxy-Id name">"ID_VIEW_TOOLBAR"</string>
-                <long name="proxy-Id value">10025</long>
+                <long name="proxy-Id value">10042</long>
                 <string name="proxy-Label">"Toolbar"</string>
                 <string name="proxy-Kind">"Check"</string>
                 <bool name="proxy-Checked">1</bool>
@@ -1289,7 +1290,7 @@
                 <string name="proxy-type">"wbMenuItemProxy"</string>
                 <string name="event-handler-0">"wxEVT_COMMAND_MENU_SELECTED|OnViewStatusBarClick|NONE||"</string>
                 <string name="proxy-Id name">"ID_VIEW_STATUS_BAR"</string>
-                <long name="proxy-Id value">10038</long>
+                <long name="proxy-Id value">10043</long>
                 <string name="proxy-Label">"Status Bar"</string>
                 <string name="proxy-Kind">"Check"</string>
                 <bool name="proxy-Checked">1</bool>
@@ -1327,7 +1328,7 @@
                 <string name="proxy-type">"wbMenuItemProxy"</string>
                 <string name="event-handler-0">"wxEVT_COMMAND_MENU_SELECTED|OnABOUTClick|NONE||"</string>
                 <string name="proxy-Id name">"wxID_ABOUT"</string>
-                <long name="proxy-Id value">5013</long>
+                <long name="proxy-Id value">5014</long>
                 <string name="proxy-Label">"About VVV..."</string>
                 <string name="proxy-Kind">"Normal"</string>
                 <bool name="proxy-Checked">0</bool>
@@ -1350,7 +1351,7 @@
             <string name="created">"16/12/2006"</string>
             <string name="proxy-type">"wbStatusBarProxy"</string>
             <string name="proxy-Id name">"ID_STATUSBAR1"</string>
-            <long name="proxy-Id value">10004</long>
+            <long name="proxy-Id value">10044</long>
             <string name="proxy-Class">"wxStatusBar"</string>
             <string name="proxy-Member variable name">"m_StatusBar"</string>
             <string name="proxy-Help text">""</string>
@@ -1406,7 +1407,7 @@
             <string name="created">"16/12/2006"</string>
             <string name="proxy-type">"wbSplitterWindowProxy"</string>
             <string name="proxy-Id name">"ID_SPLITTERWINDOW1"</string>
-            <long name="proxy-Id value">10003</long>
+            <long name="proxy-Id value">10045</long>
             <string name="proxy-Class">"wxSplitterWindow"</string>
             <string name="proxy-Base class">"wxSplitterWindow"</string>
             <bool name="proxy-External implementation">1</bool>
@@ -1478,7 +1479,7 @@
               <string name="event-handler-1">"wxEVT_COMMAND_TREE_ITEM_EXPANDING|OnTreeControlItemExpanding|||"</string>
               <string name="event-handler-2">"wxEVT_COMMAND_TREE_ITEM_MENU|OnTreeControlItemMenu|NONE||"</string>
               <string name="proxy-Id name">"ID_TREE_CONTROL"</string>
-              <long name="proxy-Id value">10005</long>
+              <long name="proxy-Id value">10046</long>
               <string name="proxy-Class">"wxTreeCtrl"</string>
               <string name="proxy-Base class">"wxTreeCtrl"</string>
               <bool name="proxy-External implementation">1</bool>
@@ -1555,7 +1556,7 @@
               <string name="event-handler-3">"wxEVT_SET_FOCUS|OnListViewSetFocus|NONE||"</string>
               <string name="event-handler-4">"wxEVT_KILL_FOCUS|OnListViewKillFocus|NONE||"</string>
               <string name="proxy-Id name">"ID_LIST_CONTROL"</string>
-              <long name="proxy-Id value">10006</long>
+              <long name="proxy-Id value">10047</long>
               <string name="proxy-Class">"wxListCtrl"</string>
               <string name="proxy-Base class">"wxListCtrl"</string>
               <bool name="proxy-External implementation">1</bool>
@@ -2950,7 +2951,7 @@
           <long name="proxy-X">-1</long>
           <long name="proxy-Y">-1</long>
           <long name="proxy-Width">400</long>
-          <long name="proxy-Height">300</long>
+          <long name="proxy-Height">500</long>
           <bool name="proxy-AUI manager">0</bool>
           <string name="proxy-Event sources">""</string>
           <document>
@@ -3174,7 +3175,6 @@
                 <bool name="proxy-wxFIXED_MINSIZE">0</bool>
                 <string name="proxy-Custom arguments">""</string>
                 <string name="proxy-Custom ctor arguments">""</string>
-                <bool name="proxy-wxTE_LINEWRAP">0</bool>
               </document>
               <document>
                 <string name="title">"Spacer"</string>
@@ -3340,7 +3340,6 @@
                 <bool name="proxy-wxFIXED_MINSIZE">0</bool>
                 <string name="proxy-Custom arguments">""</string>
                 <string name="proxy-Custom ctor arguments">""</string>
-                <bool name="proxy-wxTE_LINEWRAP">0</bool>
               </document>
               <document>
                 <string name="title">"Spacer"</string>
@@ -3355,6 +3354,165 @@
                 <string name="proxy-type">"wbSpacerProxy"</string>
                 <long name="proxy-Width">5</long>
                 <long name="proxy-Height">3</long>
+                <string name="proxy-AlignH">"Centre"</string>
+                <string name="proxy-AlignV">"Centre"</string>
+                <long name="proxy-Stretch factor">0</long>
+                <long name="proxy-Border">5</long>
+                <bool name="proxy-wxLEFT">1</bool>
+                <bool name="proxy-wxRIGHT">1</bool>
+                <bool name="proxy-wxTOP">1</bool>
+                <bool name="proxy-wxBOTTOM">1</bool>
+                <bool name="proxy-wxSHAPED">0</bool>
+                <bool name="proxy-wxADJUST_MINSIZE">0</bool>
+                <bool name="proxy-wxFIXED_MINSIZE">0</bool>
+                <string name="proxy-Platform">"&lt;Any platform&gt;"</string>
+              </document>
+              <document>
+                <string name="title">"wxRadioBox: ID_RADIOBOX_DESCRIPTION"</string>
+                <string name="type">"dialog-control-document"</string>
+                <string name="filename">""</string>
+                <string name="icon-name">"radiobox"</string>
+                <long name="is-transient">0</long>
+                <long name="owns-file">1</long>
+                <long name="title-mode">0</long>
+                <long name="locked">0</long>
+                <string name="created">"14/8/2007"</string>
+                <string name="proxy-type">"wbRadioBoxProxy"</string>
+                <string name="proxy-Id name">"ID_RADIOBOX_DESCRIPTION"</string>
+                <long name="proxy-Id value">10000</long>
+                <string name="proxy-Class">"wxRadioBox"</string>
+                <string name="proxy-Base class">"wxRadioBox"</string>
+                <bool name="proxy-External implementation">1</bool>
+                <bool name="proxy-Separate files">0</bool>
+                <string name="proxy-Implementation filename">""</string>
+                <string name="proxy-Header filename">""</string>
+                <string name="proxy-Member variable name">"m_DescriptionRadioBox"</string>
+                <string name="proxy-Label">"Description"</string>
+                <long name="proxy-Major dimension count">1</long>
+                <string name="proxy-Items">"Is &amp;equal to:|S&amp;tarts with:|&amp;Contains:"</string>
+                <long name="proxy-Initial value">0</long>
+                <string name="proxy-Help text">""</string>
+                <string name="proxy-Tooltip text">""</string>
+                <string name="proxy-Background colour">""</string>
+                <string name="proxy-Foreground colour">""</string>
+                <string name="proxy-Font">""</string>
+                <bool name="proxy-Hidden">0</bool>
+                <bool name="proxy-Enabled">1</bool>
+                <string name="proxy-Platform">"&lt;Any platform&gt;"</string>
+                <string name="proxy-Data variable">""</string>
+                <string name="proxy-Data validator">""</string>
+                <bool name="proxy-wxRA_SPECIFY_ROWS">0</bool>
+                <bool name="proxy-wxRA_SPECIFY_COLS">1</bool>
+                <bool name="proxy-wxWANTS_CHARS">0</bool>
+                <bool name="proxy-wxNO_FULL_REPAINT_ON_RESIZE">0</bool>
+                <bool name="proxy-wxFULL_REPAINT_ON_RESIZE">0</bool>
+                <string name="proxy-Custom styles">""</string>
+                <long name="proxy-X">-1</long>
+                <long name="proxy-Y">-1</long>
+                <long name="proxy-Width">-1</long>
+                <long name="proxy-Height">-1</long>
+                <string name="proxy-AlignH">"Left"</string>
+                <string name="proxy-AlignV">"Centre"</string>
+                <long name="proxy-Stretch factor">0</long>
+                <long name="proxy-Border">5</long>
+                <bool name="proxy-wxLEFT">1</bool>
+                <bool name="proxy-wxRIGHT">1</bool>
+                <bool name="proxy-wxTOP">1</bool>
+                <bool name="proxy-wxBOTTOM">1</bool>
+                <bool name="proxy-wxSHAPED">0</bool>
+                <bool name="proxy-wxADJUST_MINSIZE">0</bool>
+                <bool name="proxy-wxFIXED_MINSIZE">0</bool>
+                <string name="proxy-Custom arguments">""</string>
+                <string name="proxy-Custom ctor arguments">""</string>
+              </document>
+              <document>
+                <string name="title">"wxTextCtrl: ID_SEARCH_DESCRIPTION"</string>
+                <string name="type">"dialog-control-document"</string>
+                <string name="filename">""</string>
+                <string name="icon-name">"textctrl"</string>
+                <long name="is-transient">0</long>
+                <long name="owns-file">1</long>
+                <long name="title-mode">0</long>
+                <long name="locked">0</long>
+                <string name="created">"14/8/2007"</string>
+                <string name="proxy-type">"wbTextCtrlProxy"</string>
+                <string name="proxy-Id name">"ID_SEARCH_DESCRIPTION"</string>
+                <long name="proxy-Id value">10001</long>
+                <string name="proxy-Class">"wxTextCtrl"</string>
+                <string name="proxy-Base class">"wxTextCtrl"</string>
+                <bool name="proxy-External implementation">1</bool>
+                <bool name="proxy-Separate files">0</bool>
+                <string name="proxy-Implementation filename">""</string>
+                <string name="proxy-Header filename">""</string>
+                <string name="proxy-Member variable name">"m_SearchDescription"</string>
+                <string name="proxy-Initial value">""</string>
+                <long name="proxy-Max length">0</long>
+                <string name="proxy-Help text">""</string>
+                <string name="proxy-Tooltip text">""</string>
+                <string name="proxy-Background colour">""</string>
+                <string name="proxy-Foreground colour">""</string>
+                <string name="proxy-Font">""</string>
+                <bool name="proxy-Hidden">0</bool>
+                <bool name="proxy-Enabled">1</bool>
+                <string name="proxy-Platform">"&lt;Any platform&gt;"</string>
+                <string name="proxy-Data variable">""</string>
+                <string name="proxy-Data validator">""</string>
+                <bool name="proxy-wxTE_MULTILINE">0</bool>
+                <bool name="proxy-wxTE_PROCESS_ENTER">0</bool>
+                <bool name="proxy-wxTE_PROCESS_TAB">0</bool>
+                <bool name="proxy-wxTE_PASSWORD">0</bool>
+                <bool name="proxy-wxTE_READONLY">0</bool>
+                <bool name="proxy-wxTE_RICH">0</bool>
+                <bool name="proxy-wxTE_RICH2">0</bool>
+                <bool name="proxy-wxTE_AUTO_URL">0</bool>
+                <bool name="proxy-wxTE_NOHIDESEL">0</bool>
+                <bool name="proxy-wxTE_LEFT">0</bool>
+                <bool name="proxy-wxTE_CENTRE">0</bool>
+                <bool name="proxy-wxTE_RIGHT">0</bool>
+                <bool name="proxy-wxHSCROLL">0</bool>
+                <bool name="proxy-wxTE_CHARWRAP">0</bool>
+                <bool name="proxy-wxTE_WORDWRAP">0</bool>
+                <bool name="proxy-wxNO_BORDER">0</bool>
+                <bool name="proxy-wxSIMPLE_BORDER">0</bool>
+                <bool name="proxy-wxDOUBLE_BORDER">0</bool>
+                <bool name="proxy-wxSUNKEN_BORDER">0</bool>
+                <bool name="proxy-wxRAISED_BORDER">0</bool>
+                <bool name="proxy-wxSTATIC_BORDER">0</bool>
+                <bool name="proxy-wxWANTS_CHARS">0</bool>
+                <bool name="proxy-wxNO_FULL_REPAINT_ON_RESIZE">0</bool>
+                <bool name="proxy-wxFULL_REPAINT_ON_RESIZE">0</bool>
+                <string name="proxy-Custom styles">""</string>
+                <long name="proxy-X">-1</long>
+                <long name="proxy-Y">-1</long>
+                <long name="proxy-Width">120</long>
+                <long name="proxy-Height">-1</long>
+                <string name="proxy-AlignH">"Left"</string>
+                <string name="proxy-AlignV">"Centre"</string>
+                <long name="proxy-Stretch factor">0</long>
+                <long name="proxy-Border">5</long>
+                <bool name="proxy-wxLEFT">1</bool>
+                <bool name="proxy-wxRIGHT">1</bool>
+                <bool name="proxy-wxTOP">1</bool>
+                <bool name="proxy-wxBOTTOM">1</bool>
+                <bool name="proxy-wxSHAPED">0</bool>
+                <bool name="proxy-wxADJUST_MINSIZE">0</bool>
+                <bool name="proxy-wxFIXED_MINSIZE">0</bool>
+                <string name="proxy-Custom arguments">""</string>
+                <string name="proxy-Custom ctor arguments">""</string>
+              </document>
+              <document>
+                <string name="title">"Spacer"</string>
+                <string name="type">"dialog-control-document"</string>
+                <string name="filename">""</string>
+                <string name="icon-name">"spacer"</string>
+                <long name="is-transient">0</long>
+                <long name="owns-file">1</long>
+                <long name="title-mode">0</long>
+                <long name="locked">0</long>
+                <string name="created">"14/8/2007"</string>
+                <string name="proxy-type">"wbSpacerProxy"</string>
+                <long name="proxy-Width">5</long>
+                <long name="proxy-Height">5</long>
                 <string name="proxy-AlignH">"Centre"</string>
                 <string name="proxy-AlignV">"Centre"</string>
                 <long name="proxy-Stretch factor">0</long>

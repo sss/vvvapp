@@ -421,6 +421,8 @@ void CMainFrame::Init()
     m_SearchExtension = NULL;
     m_SearchRadioBox = NULL;
     m_SearchButton = NULL;
+    m_DescriptionRadioBox = NULL;
+    m_SearchDescription = NULL;
 
 	m_fileHistory = new wxFileHistory();
 	
@@ -573,6 +575,19 @@ void CMainFrame::CreateControls()
 		itemBoxSizer3->Add(m_SearchExtension, 0, wxALIGN_LEFT|wxALL, 5);
 
 		itemBoxSizer3->Add(5, 3, 0, wxALIGN_CENTER_HORIZONTAL|wxALL, 5);
+
+		wxArrayString m_DescriptionRadioBoxStrings;
+		m_DescriptionRadioBoxStrings.Add(_("Is equal to:"));
+		m_DescriptionRadioBoxStrings.Add(_("Starts with:"));
+		m_DescriptionRadioBoxStrings.Add(_("Contains:"));
+		m_DescriptionRadioBox = new wxRadioBox( m_SearchPanel, ID_RADIOBOX_DESCRIPTION, _("Description"), wxDefaultPosition, wxDefaultSize, m_DescriptionRadioBoxStrings, 1, wxRA_SPECIFY_COLS );
+		m_DescriptionRadioBox->SetSelection(0);
+		itemBoxSizer3->Add(m_DescriptionRadioBox, 0, wxALIGN_LEFT|wxALL, 5);
+
+		m_SearchDescription = new wxTextCtrl( m_SearchPanel, ID_SEARCH_DESCRIPTION, _T(""), wxDefaultPosition, wxSize(120, -1), 0 );
+		itemBoxSizer3->Add(m_SearchDescription, 0, wxALIGN_LEFT|wxALL, 5);
+
+		itemBoxSizer3->Add(5, 5, 0, wxALIGN_CENTER_HORIZONTAL|wxALL, 5);
 
 		wxArrayString m_SearchRadioBoxStrings;
 		m_SearchRadioBoxStrings.Add(_("&All physical volumes"));
@@ -2251,30 +2266,49 @@ void CMainFrame::HideSearchView(void) {
 }
 
 void CMainFrame::OnButtonSearchClick( wxCommandEvent& WXUNUSED(event) ) {
-	bool useWildcards;
+	bool useWildcardsFilename, useWildcardsDescription;
 
 	wxString fileName = m_SearchFileName->GetValue();
 	wxString ext = m_SearchExtension->GetValue();
+	wxString description = m_SearchDescription->GetValue();
 
-	if( fileName.empty() && ext.empty() ) {
-		CUtils::MsgErr( _("Please enter a file name or extension") );
+	if( fileName.empty() && ext.empty() && description.empty() ) {
+		CUtils::MsgErr( _("Please enter some search data") );
 		return;
 	}
 
-	// escapes wildcards chars typed by the user
+	// escapes wildcard chars typed by the user
+	// ...filename
 	FilenameSearchKind searchKind = (FilenameSearchKind) m_FilenameRadioBox->GetSelection();
-	useWildcards = false;
+	useWildcardsFilename = false;
 	if( !fileName.empty() ) {
 		switch( searchKind ) {
 			case StartsWith:
-				useWildcards = true;
+				useWildcardsFilename = true;
 				fileName = CBaseRec::EscapeWildcards( fileName, "/" );
 				fileName = fileName + "%";
 				break;
 			case Contains:
-				useWildcards = true;
+				useWildcardsFilename = true;
 				fileName = CBaseRec::EscapeWildcards( fileName, "/" );
 				fileName = "%" + fileName + "%";
+				break;
+		}
+	}
+	// ...description
+	searchKind = (FilenameSearchKind) m_DescriptionRadioBox->GetSelection();
+	useWildcardsDescription = false;
+	if( !description.empty() ) {
+		switch( searchKind ) {
+			case StartsWith:
+				useWildcardsDescription = true;
+				description = CBaseRec::EscapeWildcards( description, "/" );
+				description = description + "%";
+				break;
+			case Contains:
+				useWildcardsDescription = true;
+				description = CBaseRec::EscapeWildcards( description, "/" );
+				description = "%" + description + "%";
 				break;
 		}
 	}
@@ -2300,7 +2334,7 @@ void CMainFrame::OnButtonSearchClick( wxCommandEvent& WXUNUSED(event) ) {
 			CFiles files;
 			CNullableLong nl;
 			nl.SetNull(true);
-			files.DBStartSearchVolumeFiles( fileName, useWildcards, ext, nl );
+			files.DBStartSearchVolumeFiles( fileName, useWildcardsFilename, ext, description, useWildcardsDescription, nl );
 			while( !files.IsEOF() ) {
 				AddRowToVirtualListControl( lctl, files.IsFolder(), files.FileName, files.FileSize, files.FileExt, files.DateTime, CPaths::GetFullPath(files.PathID), files.FileID, files.PathFileID.IsNull() ? 0 : (long) files.PathFileID, files.FileDescription );
 				nSearchFiles++;
@@ -2319,7 +2353,7 @@ void CMainFrame::OnButtonSearchClick( wxCommandEvent& WXUNUSED(event) ) {
 			if( tctl->GetItemParent(item) == tctl->GetRootItem() ) {
 				// the user selected a volume
 				CFiles files;
-				files.DBStartSearchVolumeFiles( fileName, useWildcards, ext, itemData->GetVolumeID() );
+				files.DBStartSearchVolumeFiles( fileName, useWildcardsFilename, ext, description, useWildcardsDescription, itemData->GetVolumeID() );
 				while( !files.IsEOF() ) {
 					AddRowToVirtualListControl( lctl, files.IsFolder(), files.FileName, files.FileSize, files.FileExt, files.DateTime, CPaths::GetFullPath(files.PathID), files.FileID, files.PathFileID.IsNull() ? 0 : (long) files.PathFileID, files.FileDescription );
 					nSearchFiles++;
@@ -2330,7 +2364,7 @@ void CMainFrame::OnButtonSearchClick( wxCommandEvent& WXUNUSED(event) ) {
 			else {
 				// the user selected a folder: recursion
 				CBaseDB::GetDatabase()->TransactionStart( true );
-				SearchPhysicalFolder( fileName, useWildcards, ext, itemData->GetPathID(), itemData->GetVolumeID() );
+				SearchPhysicalFolder( fileName, useWildcardsFilename, ext, description, useWildcardsDescription, itemData->GetPathID(), itemData->GetVolumeID() );
 				CBaseDB::GetDatabase()->TransactionCommit();
 			}
 			break;
@@ -2342,7 +2376,7 @@ void CMainFrame::OnButtonSearchClick( wxCommandEvent& WXUNUSED(event) ) {
 			wxASSERT( item.IsOk() );
 		    MyTreeItemData *itemData = (MyTreeItemData *) tctl->GetItemData(item);
 			CBaseDB::GetDatabase()->TransactionStart( true );
-			SearchVirtualFolder( fileName, useWildcards, ext, itemData->GetPathID() );
+			SearchVirtualFolder( fileName, useWildcardsFilename, ext, description, useWildcardsDescription, itemData->GetPathID() );
 			CBaseDB::GetDatabase()->TransactionCommit();
 			break;
 		}
@@ -2374,12 +2408,12 @@ int CMainFrame::AddRowToVirtualListControl( wxListCtrl* lctl, bool isFolder, wxS
 	return i;
 }
 
-void CMainFrame::SearchVirtualFolder( wxString fileName, bool useFileNameWildcards, wxString ext, long folderID ) {
+void CMainFrame::SearchVirtualFolder( wxString fileName, bool useFileNameWildcards, wxString ext, wxString description, bool useDescriptionWildcards, long folderID ) {
 
 	// searches the current folder
 	CVirtualFiles files;
 	wxListCtrl* lctl = GetListControl();
-	files.DBStartSearchFolderFiles( fileName, useFileNameWildcards, ext, folderID );
+	files.DBStartSearchFolderFiles( fileName, useFileNameWildcards, ext, description, useDescriptionWildcards, folderID );
 	while( !files.IsEOF() ) {
 		AddRowToVirtualListControl( lctl, files.IsFolder(), files.FileName, files.FileSize, files.FileExt, files.DateTime, files.FullPhysicalPath, files.FileID, files.VirtualPathFileID.IsNull() ? 0 : (long) files.VirtualPathFileID, files.FileDescription );
 		nSearchFiles++;
@@ -2391,18 +2425,18 @@ void CMainFrame::SearchVirtualFolder( wxString fileName, bool useFileNameWildcar
 	CVirtualPaths pth;
 	pth.DBStartQueryListPaths( folderID );
 	while( !pth.IsEOF() ) {
-		SearchVirtualFolder( fileName, useFileNameWildcards, ext, pth.PathID );
+		SearchVirtualFolder( fileName, useFileNameWildcards, ext, description, useDescriptionWildcards, pth.PathID );
 		pth.DBNextRow();
 	}
 
 }
 
-void CMainFrame::SearchPhysicalFolder( wxString fileName, bool useFileNameWildcards, wxString ext, long folderID, long volumeID ) {
+void CMainFrame::SearchPhysicalFolder( wxString fileName, bool useFileNameWildcards, wxString ext, wxString description, bool useDescriptionWildcards, long folderID, long volumeID ) {
 
 	// searches the current folder
 	CFiles files;
 	wxListCtrl* lctl = GetListControl();
-	files.DBStartSearchFolderFiles( fileName, useFileNameWildcards, ext, folderID );
+	files.DBStartSearchFolderFiles( fileName, useFileNameWildcards, ext, description, useDescriptionWildcards, folderID );
 	while( !files.IsEOF() ) {
 		AddRowToVirtualListControl( lctl, files.IsFolder(), files.FileName, files.FileSize, files.FileExt, files.DateTime, CPaths::GetFullPath(files.PathID), files.FileID, files.PathFileID.IsNull() ? 0 : (long) files.PathFileID, files.FileDescription );
 		nSearchFiles++;
@@ -2414,7 +2448,7 @@ void CMainFrame::SearchPhysicalFolder( wxString fileName, bool useFileNameWildca
 	CPaths pth;
 	pth.DBStartQueryListPaths( volumeID, folderID );
 	while( !pth.IsEOF() ) {
-		SearchPhysicalFolder( fileName, useFileNameWildcards, ext, pth.PathID, volumeID );
+		SearchPhysicalFolder( fileName, useFileNameWildcards, ext, description, useDescriptionWildcards, pth.PathID, volumeID );
 		pth.DBNextRow();
 	}
 
@@ -2427,6 +2461,8 @@ void CMainFrame::SearchPhysicalFolder( wxString fileName, bool useFileNameWildca
 
 void CMainFrame::OnListControlItemActivated( wxListEvent& event )
 {
+	if( m_CurrentView == Search ) return;
+
 	int i = event.GetIndex();
 	wxListCtrl* lctl = GetListControl();
 	MyListItemData *itemData = (MyListItemData *) lctl->GetItemData( i );

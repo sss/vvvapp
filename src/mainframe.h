@@ -76,27 +76,27 @@ class wxStatusBar;
  */
 
 ////@begin control identifiers
-#define ID_MAIN_FRAME 10000
-#define ID_TOOLBAR1 10022
-#define ID_CATALOG_VOLUME 10001
-#define ID_UP_ONE_FOLDER 10039
+#define ID_MAIN_FRAME 10003
+#define ID_TOOLBAR1 10004
+#define ID_CATALOG_VOLUME 10005
+#define ID_UP_ONE_FOLDER 10006
 #define ID_VIEW_PHYSICAL 10011
 #define ID_VIEW_VIRTUAL 10012
-#define ID_VIEW_SEARCH 10036
+#define ID_VIEW_SEARCH 10013
 #define ID_ADD_VIRTUAL_FOLDER 10015
-#define ID_EDIT_OBJECT_DESCRIPTION 10029
-#define ID_RENAME_VOLUME 10013
-#define ID_DELETE_VOLUME 10014
-#define ID_NEW_VIRTUAL_ROOT_FOLDER 10019
-#define ID_NEW_VIRTUAL_SUBFOLDER 10018
-#define ID_RENAME_VIRTUAL_FOLDER 10020
-#define ID_DELETE_VIRTUAL_FOLDER 10021
-#define ID_VIEW_TOOLBAR 10025
-#define ID_VIEW_STATUS_BAR 10038
-#define ID_STATUSBAR1 10004
-#define ID_SPLITTERWINDOW1 10003
-#define ID_TREE_CONTROL 10005
-#define ID_LIST_CONTROL 10006
+#define ID_EDIT_OBJECT_DESCRIPTION 10018
+#define ID_RENAME_VOLUME 10019
+#define ID_DELETE_VOLUME 10020
+#define ID_NEW_VIRTUAL_ROOT_FOLDER 10021
+#define ID_NEW_VIRTUAL_SUBFOLDER 10022
+#define ID_RENAME_VIRTUAL_FOLDER 10025
+#define ID_DELETE_VIRTUAL_FOLDER 10029
+#define ID_VIEW_TOOLBAR 10042
+#define ID_VIEW_STATUS_BAR 10043
+#define ID_STATUSBAR1 10044
+#define ID_SPLITTERWINDOW1 10045
+#define ID_TREE_CONTROL 10046
+#define ID_LIST_CONTROL 10047
 #define SYMBOL_CMAINFRAME_STYLE wxDEFAULT_FRAME_STYLE|wxCAPTION
 #define SYMBOL_CMAINFRAME_TITLE _("VVV")
 #define SYMBOL_CMAINFRAME_IDNAME ID_MAIN_FRAME
@@ -114,7 +114,8 @@ class wxStatusBar;
 #define ID_SEARCH_EXTENSION 10033
 #define ID_RADIOBOX_SEARCH 10034
 #define ID_BUTTON_SEARCH 10035
-
+#define ID_RADIOBOX_DESCRIPTION 10040
+#define ID_SEARCH_DESCRIPTION 10041
 
 /*!
  * Compatibility
@@ -297,6 +298,8 @@ public:
     wxTextCtrl* m_SearchExtension;
     wxRadioBox* m_SearchRadioBox;
     wxButton* m_SearchButton;
+    wxRadioBox* m_DescriptionRadioBox;
+    wxTextCtrl* m_SearchDescription;
 
     /// wxEVT_COMMAND_TREE_ITEM_EXPANDING event handler for ID_TREE_CONTROL_VIRTUAL
     void OnTreeControlVirtualItemExpanding( wxTreeEvent& event );
@@ -424,10 +427,10 @@ private:
 	void HideSearchView(void);
 
 	// searches a physical folder for files, appends them to the list control, then recursion
-	void SearchPhysicalFolder( wxString fileName, bool useFileNameWildcards, wxString ext, long folderID, long volumeID );
+	void SearchPhysicalFolder( wxString fileName, bool useFileNameWildcards, wxString ext, wxString description, bool useDescriptionWildcards, long folderID, long volumeID );
 
 	// searches a virtual folder for files, appends them to the list control, then recursion
-	void SearchVirtualFolder( wxString fileName, bool useFileNameWildcards, wxString ext, long folderID );
+	void SearchVirtualFolder( wxString fileName, bool useFileNameWildcards, wxString ext, wxString description, bool useDescriptionWildcards, long folderID );
 
 	// adds a row to the listview in Virtual or Search mode
 	// return the index position of the newly inserted row

@@ -36,49 +36,78 @@ void CFiles::DBStartQueryListFiles( long PathID ) {
 	DBStartMultiRowQuery( sql, true );
 }
 
-void CFiles::DBStartSearchVolumeFiles( wxString fileName, bool useFileNameWildcards, wxString ext, CNullableLong volumeID ) {
-	wxString sql;
+void CFiles::DBStartSearchVolumeFiles( wxString fileName, bool useFileNameWildcards, wxString ext, wxString description, bool useDescriptionWildcards, CNullableLong volumeID ) {
+	wxString sql, wh;
 
 	fileName = fileName.MakeUpper();
 	ext = ext.MakeUpper();
+	description = description.MakeUpper();
+
+	wh = "";
+	if( !fileName.empty() && useFileNameWildcards ) {
+		if( !wh.empty() ) wh += " AND";
+		wh += " UPPER(FILE_NAME) LIKE '" + fileName + "' ESCAPE '/'";
+	}
+	if( !fileName.empty() && !useFileNameWildcards ) {
+		if( !wh.empty() ) wh += " AND";
+		wh += " UPPER(FILE_NAME) = '" + fileName + "'";
+	}
+	if( !ext.empty() ) {
+		if( !wh.empty() ) wh += " AND";
+		wh += " UPPER(FILE_EXT) = '" + ExpandSingleQuotes(ext) + "'";
+	}
+	if( !description.empty() && useDescriptionWildcards ) {
+		if( !wh.empty() ) wh += " AND";
+		wh += " UPPER(FILE_DESCRIPTION) LIKE '" + description + "' ESCAPE '/'";
+	}
+	if( !description.empty() && !useDescriptionWildcards ) {
+		if( !wh.empty() ) wh += " AND";
+		wh += " UPPER(FILE_DESCRIPTION) = '" + description + "'";
+	}
 
 	if( volumeID.IsNull() ) {
 		// all volumes
-		sql = "SELECT * FROM FILES WHERE PATH_FILE_ID IS NULL";
-		if( !fileName.empty() && useFileNameWildcards )
-			sql += " AND UPPER(FILE_NAME) LIKE '" + fileName + "' ESCAPE '/'";
-		if( !fileName.empty() && !useFileNameWildcards )
-			sql += " AND UPPER(FILE_NAME) = '" + fileName + "'";
-		if( !ext.empty() )
-			sql += " AND UPPER(FILE_EXT) = '" + ExpandSingleQuotes(ext) + "'";
+//		sql = "SELECT * FROM FILES WHERE PATH_FILE_ID IS NULL";
+		sql = "SELECT * FROM FILES WHERE " + wh;
 	}
 	else {
-		sql = "SELECT FILES.* FROM FILES INNER JOIN PATHS on FILES.PATH_ID = PATHS.PATH_ID WHERE PATH_FILE_ID IS NULL AND PATHS.VOLUME_ID = " + CUtils::long2string(volumeID);
-		if( !fileName.empty() && useFileNameWildcards )
-			sql += " AND UPPER(FILE_NAME) LIKE '" + fileName + "' ESCAPE '/'";
-		if( !fileName.empty() && !useFileNameWildcards )
-			sql += " AND UPPER(FILE_NAME) = '" + fileName + "'";
-		if( !ext.empty() )
-			sql += " AND UPPER(FILE_EXT) = '" + ExpandSingleQuotes(ext) + "'";
+		sql = "SELECT FILES.* FROM FILES INNER JOIN PATHS on FILES.PATH_ID = PATHS.PATH_ID WHERE PATHS.VOLUME_ID = " + CUtils::long2string(volumeID) + " AND " + wh;
 	}
 
 	DBStartMultiRowQuery( sql, true );
 
 }
 
-void CFiles::DBStartSearchFolderFiles( wxString fileName, bool useFileNameWildcards, wxString ext, long folderID ) {
-	wxString sql;
+void CFiles::DBStartSearchFolderFiles( wxString fileName, bool useFileNameWildcards, wxString ext, wxString description, bool useDescriptionWildcards, long folderID ) {
+	wxString sql, wh;
 
 	fileName = fileName.MakeUpper();
 	ext = ext.MakeUpper();
+	description = description.MakeUpper();
 
-	sql = "SELECT * FROM FILES WHERE PATH_FILE_ID IS NULL AND PATH_ID = " + CUtils::long2string(folderID);
-	if( !fileName.empty() && useFileNameWildcards )
-		sql += " AND UPPER(FILE_NAME) LIKE '" + fileName + "' ESCAPE '/'";
-	if( !fileName.empty() && !useFileNameWildcards )
-		sql += " AND UPPER(FILE_NAME) = '" + fileName + "'";
-	if( !ext.empty() )
-		sql += " AND UPPER(FILE_EXT) = '" + ExpandSingleQuotes(ext) + "'";
+	wh = "";
+	if( !fileName.empty() && useFileNameWildcards ) {
+		if( !wh.empty() ) wh += " AND";
+		wh += " UPPER(FILE_NAME) LIKE '" + fileName + "' ESCAPE '/'";
+	}
+	if( !fileName.empty() && !useFileNameWildcards ) {
+		if( !wh.empty() ) wh += " AND";
+		wh += " UPPER(FILE_NAME) = '" + fileName + "'";
+	}
+	if( !ext.empty() ) {
+		if( !wh.empty() ) wh += " AND";
+		wh += " UPPER(FILE_EXT) = '" + ExpandSingleQuotes(ext) + "'";
+	}
+	if( !description.empty() && useDescriptionWildcards ) {
+		if( !wh.empty() ) wh += " AND";
+		wh += " UPPER(FILE_DESCRIPTION) LIKE '" + description + "' ESCAPE '/'";
+	}
+	if( !description.empty() && !useDescriptionWildcards ) {
+		if( !wh.empty() ) wh += " AND";
+		wh += " UPPER(FILE_DESCRIPTION) = '" + description + "'";
+	}
+
+	sql = "SELECT * FROM FILES WHERE PATH_ID = " + CUtils::long2string(folderID) + " AND " + wh;
 
 	DBStartMultiRowQuery( sql, true );
 }
