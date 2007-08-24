@@ -60,6 +60,7 @@
 #include "data_interface/files.h"
 #include "data_interface/virtual_paths.h"
 #include "data_interface/virtual_files.h"
+#include "data_interface/files_audio_metadata.h"
 #include "choose_virtual_folder.h"
 
 /*!
@@ -362,6 +363,32 @@ private:
 		ObjectsSize
 	};
 
+	static const N_BASE_COLS_PHYSICAL = 5;	// number of base columns in the physical view
+	static const N_BASE_COLS_VIRTUAL = 6;	// number of columns in the virtual and search view
+	static const N_AUDIO_METADATA_COLUMNS = 11;
+	
+	// audio metadata columns
+	enum AMDColumns {
+		amdArtist = 0,
+		amdAlbum,
+		amdTitle,
+		amdYear,
+		amdComment,
+		amdNumber,
+		amdGenre,
+		amdLength,
+		amdBitrate,
+		amdSampleRate,
+		amdChannels
+	};
+
+	// each element of the array is true id the corresponding audio metadata column must be shown
+	// it is false if the column must be hidden
+	bool *m_amdColumnsToShow;
+
+	// true if the list control is showing audio metadata, false otherwise
+	bool m_CurrentlyShowingAudioMetadata;
+
 	// number and total size of the files shown in each view
 	long nPhysicalFiles, nVirtualFiles, nSearchFiles;
 	wxLongLong sizePhysicalFiles, sizeVirtualFiles, sizeSearchFiles;
@@ -391,6 +418,12 @@ private:
 
 	// create the headers for the list control in report mode
 	void CreateListControlHeaders(void);
+
+	// adds the audio metadata columns to the list control
+	void CreateAudioMetadataListControlHeaders( void );
+
+	// deletes the audio metadata columns from the list control
+	void DeleteAudioMetadataListControlHeaders( void );
 
 	// dialog used to choose a virtual folder
 	CDialogChooseVirtualFolder* m_ChooseVirtualFolderDialog;
@@ -434,10 +467,15 @@ private:
 
 	// adds a row to the listview in Virtual or Search mode
 	// return the index position of the newly inserted row
-	int AddRowToVirtualListControl( wxListCtrl* lctl, bool isFolder, wxString fileName, wxLongLong fileSize, wxString ext, wxDateTime dateTime, wxString physicalPath, long fileID, long virtualPathFileID, wxString fileDescription );
+	// fileID contains the primary key of the current row: it may be the physical or virtual file id, depnding on the current view
+	// physicalFileID is always the ID od the FILES table
+	int AddRowToVirtualListControl( wxListCtrl* lctl, bool isFolder, wxString fileName, wxLongLong fileSize, wxString ext, wxDateTime dateTime, wxString physicalPath, long fileID, long virtualPathFileID, wxString fileDescription, long physicalFileID );
 
 	// updates the content of the status bar: it does not use the first element because it is used by the menu/toolbar
 	void UpdateStatusBar( long nObjects, wxLongLong sizeObjects );
+
+	// adds the audio metadata to the current listview row
+	void AddAudioMetatataToListControl( CFilesAudioMetadata fam, wxListCtrl *lctl, int itemIndex, int firstColumnIndex );
 
 protected:
 	// shows in the listview the files contained in the passed folder

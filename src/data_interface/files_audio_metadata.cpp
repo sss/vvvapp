@@ -28,6 +28,15 @@ CFilesAudioMetadata::CFilesAudioMetadata(void)
 	Year = Number = Bitrate = SampleRate = Length = Channels = 0;
 }
 
+bool CFilesAudioMetadata::DBReadMetadata() {
+	wxString sql = "SELECT * FROM FILES_AUDIO_METADATA WHERE FILE_ID = " + CUtils::long2string(FileID);
+	DBStartMultiRowQuery( sql, true );
+	return !this->IsEOF();
+}
+
+
+
+
 CFilesAudioMetadata::~CFilesAudioMetadata(void)
 {
 }

@@ -175,63 +175,6 @@ int wxCALLBACK ListControlCompareFunction( long item1, long item2, long sortData
 					retVal = wxStricmp( itemData2->GetName(), itemData1->GetName() );
 			}
 	}
-	//switch( m_ListViewSortColumn ) {
-	//	case 0:
-	//		// filename
-	//		if( m_ListViewSortAscending )
-	//			retVal = wxStricmp( itemData1->GetName(), itemData2->GetName() );
-	//		else
-	//			retVal = wxStricmp( itemData2->GetName(), itemData1->GetName() );
-	//		break;
-	//	case 1:
-	//		// size
-	//		if( itemData1->GetSize() == itemData2->GetSize() )
-	//			retVal = 0;
-	//		else {
-	//			if( m_ListViewSortAscending )
-	//				retVal = (itemData1->GetSize() < itemData2->GetSize() ? -1 : 1);
-	//			else
-	//				retVal = (itemData1->GetSize() > itemData2->GetSize() ? -1 : 1);
-	//		}
-	//		break;
-	//	case 2:
-	//		// extension
-	//		if( m_ListViewSortAscending )
-	//			retVal = wxStricmp( itemData1->GetExt(), itemData2->GetExt() );
-	//		else
-	//			retVal = wxStricmp( itemData2->GetExt(), itemData1->GetExt() );
-	//		if( retVal == 0 ) {
-	//			if( m_ListViewSortAscending )
-	//				retVal = wxStricmp( itemData1->GetName(), itemData2->GetName() );
-	//			else
-	//				retVal = wxStricmp( itemData2->GetName(), itemData1->GetName() );
-	//		}
-	//		break;
-	//	case 3:
-	//		// datetime
-	//		if( itemData1->GetDateTime() == itemData2->GetDateTime() )
-	//			retVal = 0;
-	//		else {
-	//			if( m_ListViewSortAscending )
-	//				retVal = (itemData1->GetDateTime() < itemData2->GetDateTime() ? -1 : 1);
-	//			else
-	//				retVal = (itemData1->GetDateTime() > itemData2->GetDateTime() ? -1 : 1);
-	//		}
-	//		break;
-	//	case 4:
-	//		// full physical path
-	//		if( m_ListViewSortAscending )
-	//			retVal = wxStricmp( itemData1->GetFullPhysicalPath(), itemData2->GetFullPhysicalPath() );
-	//		else
-	//			retVal = wxStricmp( itemData2->GetFullPhysicalPath(), itemData1->GetFullPhysicalPath() );
-	//		if( retVal == 0 ) {
-	//			if( m_ListViewSortAscending )
-	//				retVal = wxStricmp( itemData1->GetName(), itemData2->GetName() );
-	//			else
-	//				retVal = wxStricmp( itemData2->GetName(), itemData1->GetName() );
-	//		}
-	//		break;
-	//}
 
 	return retVal;
 }
@@ -434,6 +377,13 @@ void CMainFrame::Init()
 
 	nPhysicalFiles = nVirtualFiles = nSearchFiles = 0;
 	sizePhysicalFiles = sizeVirtualFiles =  sizeSearchFiles = 0;
+
+	m_amdColumnsToShow = new bool[N_AUDIO_METADATA_COLUMNS];
+	for( int k = 0; k < N_AUDIO_METADATA_COLUMNS; k++ )
+		m_amdColumnsToShow[k] = true;
+	m_amdColumnsToShow[amdComment] = false;
+
+	m_CurrentlyShowingAudioMetadata = false;
 }
 /*!
  * Control creation for Prova
@@ -899,16 +849,18 @@ void CMainFrame::OnTreeControlVirtualSelChanged( wxTreeEvent& event )
 
 
 void CMainFrame::CreateListControlHeaders(void) {
+	int k;
 
 	wxListCtrl* lctl = GetListControl();
-	DeleteAllListControlItems();
 
 	lctl->Hide();
 
+	DeleteAllListControlItems();
 	lctl->ClearAll();
 
 	// adds the columns to the list control
 	wxListItem itemCol;
+
 	itemCol.SetText( _("Name") );
 	itemCol.SetAlign( wxLIST_FORMAT_LEFT );
 	itemCol.SetImage( -1 );
@@ -959,24 +911,90 @@ void CMainFrame::CreateListControlHeaders(void) {
 		lctl->SetItem( i, 4, "a" );
 
 	if( m_CurrentView == Physical ) {
-		lctl->SetColumnWidth( 0, m_ListviewColWidthPhysical[0] );
-		lctl->SetColumnWidth( 1, m_ListviewColWidthPhysical[1] );
-		lctl->SetColumnWidth( 2, m_ListviewColWidthPhysical[2] );
-		lctl->SetColumnWidth( 3, m_ListviewColWidthPhysical[3] );
-		lctl->SetColumnWidth( 4, m_ListviewColWidthPhysical[4] );
+		for( k = 0; k < N_BASE_COLS_PHYSICAL; k++ )
+			lctl->SetColumnWidth( k, m_ListviewColWidthPhysical[k] );
 	}
 	else {
-		lctl->SetColumnWidth( 0, m_ListviewColWidthVirtual[0] );
-		lctl->SetColumnWidth( 1, m_ListviewColWidthVirtual[1] );
-		lctl->SetColumnWidth( 2, m_ListviewColWidthVirtual[2] );
-		lctl->SetColumnWidth( 3, m_ListviewColWidthVirtual[3] );
-		lctl->SetColumnWidth( 4, m_ListviewColWidthVirtual[4] );
-		lctl->SetColumnWidth( 5, m_ListviewColWidthVirtual[5] );
+		for( k = 0; k < N_BASE_COLS_VIRTUAL; k++ )
+			lctl->SetColumnWidth( k, m_ListviewColWidthVirtual[k] );
 	}
 
+	m_CurrentlyShowingAudioMetadata = false;
 	lctl->DeleteAllItems();
 	lctl->Show();
 }
+
+void CMainFrame::CreateAudioMetadataListControlHeaders( void ) {
+	wxListItem itemCol;
+	wxListCtrl *lctl = GetListControl();
+	int k = m_CurrentView == Physical ? N_BASE_COLS_PHYSICAL : N_BASE_COLS_VIRTUAL;
+	if( m_amdColumnsToShow[amdArtist] ) {
+		itemCol.SetText( _("Artist") );
+		itemCol.SetAlign( wxLIST_FORMAT_LEFT );
+		lctl->InsertColumn( k++, itemCol );
+	}
+	if( m_amdColumnsToShow[amdAlbum] ) {
+		itemCol.SetText( _("Album") );
+		itemCol.SetAlign( wxLIST_FORMAT_LEFT );
+		lctl->InsertColumn( k++, itemCol );
+	}
+	if( m_amdColumnsToShow[amdTitle] ) {
+		itemCol.SetText( _("Title") );
+		itemCol.SetAlign( wxLIST_FORMAT_LEFT );
+		lctl->InsertColumn( k++, itemCol );
+	}
+	if( m_amdColumnsToShow[amdYear] ) {
+		itemCol.SetText( _("Year") );
+		itemCol.SetAlign( wxLIST_FORMAT_RIGHT );
+		lctl->InsertColumn( k++, itemCol );
+	}
+	if( m_amdColumnsToShow[amdComment] ) {
+		itemCol.SetText( _("Comment") );
+		itemCol.SetAlign( wxLIST_FORMAT_LEFT );
+		lctl->InsertColumn( k++, itemCol );
+	}
+	if( m_amdColumnsToShow[amdNumber] ) {
+		itemCol.SetText( _("Number") );
+		itemCol.SetAlign( wxLIST_FORMAT_RIGHT );
+		lctl->InsertColumn( k++, itemCol );
+	}
+	if( m_amdColumnsToShow[amdGenre] ) {
+		itemCol.SetText( _("Genre") );
+		itemCol.SetAlign( wxLIST_FORMAT_LEFT );
+		lctl->InsertColumn( k++, itemCol );
+	}
+	if( m_amdColumnsToShow[amdLength] ) {
+		itemCol.SetText( _("Length") );
+		itemCol.SetAlign( wxLIST_FORMAT_RIGHT );
+		lctl->InsertColumn( k++, itemCol );
+	}
+	if( m_amdColumnsToShow[amdBitrate] ) {
+		itemCol.SetText( _("Bitrate") );
+		itemCol.SetAlign( wxLIST_FORMAT_RIGHT );
+		lctl->InsertColumn( k++, itemCol );
+	}
+	if( m_amdColumnsToShow[amdSampleRate] ) {
+		itemCol.SetText( _("Sample rate") );
+		itemCol.SetAlign( wxLIST_FORMAT_RIGHT );
+		lctl->InsertColumn( k++, itemCol );
+	}
+	if( m_amdColumnsToShow[amdChannels] ) {
+		itemCol.SetText( _("Channels") );
+		itemCol.SetAlign( wxLIST_FORMAT_RIGHT );
+		lctl->InsertColumn( k++, itemCol );
+	}
+	m_CurrentlyShowingAudioMetadata = true;
+}
+
+void CMainFrame::DeleteAudioMetadataListControlHeaders( void ) {
+	wxListCtrl *lctl = GetListControl();
+	int firstCol = m_CurrentView == Physical ? N_BASE_COLS_PHYSICAL : N_BASE_COLS_VIRTUAL;
+	for( int k = 0; k < N_AUDIO_METADATA_COLUMNS; k ++ )
+		if( m_amdColumnsToShow[k] )
+			lctl->DeleteColumn( firstCol );
+	m_CurrentlyShowingAudioMetadata = false;
+}
+
 
 /*!
  * wxEVT_COMMAND_MENU_SELECTED event handler for wxID_OPEN
@@ -1045,6 +1063,8 @@ CMainFrame::~CMainFrame() {
 
 	// delete the virtual folders window
 	if( m_ChooseVirtualFolderDialog != NULL ) delete m_ChooseVirtualFolderDialog;
+
+	delete []m_amdColumnsToShow;
 
 }
 /*!
@@ -1145,6 +1165,45 @@ void CMainFrame::DeleteAllListControlItems(void) {
 	lctl->DeleteAllItems();
 }
 
+void CMainFrame::AddAudioMetatataToListControl( CFilesAudioMetadata fam, wxListCtrl *lctl, int itemIndex, int firstColumnIndex ) {
+	int k = firstColumnIndex;
+	if( m_amdColumnsToShow[amdArtist] ) lctl->SetItem( itemIndex, k++, fam.Artist );
+	if( m_amdColumnsToShow[amdAlbum] ) lctl->SetItem( itemIndex, k++, fam.Album );
+	if( m_amdColumnsToShow[amdTitle] ) lctl->SetItem( itemIndex, k++, fam.Title );
+	if( m_amdColumnsToShow[amdYear] ) lctl->SetItem( itemIndex, k++, fam.Year == 0 ? "" : CUtils::long2string(fam.Year) );
+	if( m_amdColumnsToShow[amdComment] ) lctl->SetItem( itemIndex, k++, fam.Comment );
+	if( m_amdColumnsToShow[amdNumber] ) lctl->SetItem( itemIndex, k++, fam.Number == 0 ? "" : CUtils::long2string(fam.Number) );
+	if( m_amdColumnsToShow[amdGenre] ) lctl->SetItem( itemIndex, k++, fam.Genre );
+
+	if( m_amdColumnsToShow[amdLength] ) {
+		// length
+		int h, m, s;
+		h = m = 0;
+		s = fam.Length;
+		while( s >= 60 ) {
+			s -= 60;
+			m++;
+		}
+		while( m >= 60 ) {
+			m -= 60;
+			h++;
+		}
+		wxDateTime dt( h, m, s );
+		wxString sl = dt.FormatTime();
+		wxString stmp;
+		if( sl.StartsWith("0.0", &stmp) )
+			sl = stmp;
+		else {
+			if( sl.StartsWith("0.", &stmp) )
+				sl = stmp;
+		}
+		lctl->SetItem( itemIndex, k++, sl );
+	}
+
+	if( m_amdColumnsToShow[amdBitrate] ) lctl->SetItem( itemIndex, k++, fam.Bitrate == 0 ? "" : CUtils::long2string(fam.Bitrate) );
+	if( m_amdColumnsToShow[amdSampleRate] ) lctl->SetItem( itemIndex, k++, fam.SampleRate == 0 ? "" : CUtils::long2string(fam.SampleRate) );
+	if( m_amdColumnsToShow[amdChannels] ) lctl->SetItem( itemIndex, k++, fam.Channels == 0 ? "" : CUtils::long2string(fam.Channels) );
+}
 
 
 // shows in the listview the files contained in the passed folder
@@ -1172,8 +1231,18 @@ void CMainFrame::ShowFolderFiles( wxTreeItemId itemID ) {
 	nPhysicalFiles = 0;
 	sizePhysicalFiles = 0;
 	CFiles files;
+	CFilesAudioMetadata fam;
+	bool foundAudioFiles = false;
 	files.DBStartQueryListFiles( itemData->GetPathID() );
 	while( !files.IsEOF() ) {
+
+		bool audioMetadataAvailable = false;
+		if( files.FileExt.Upper() == "MP3" ) {
+			fam.FileID = files.FileID;
+			audioMetadataAvailable = fam.DBReadMetadata();
+			foundAudioFiles = true;
+		}
+
 		// adds the file to the list control
 		int imageIndex = (files.IsFolder() ? 0 : 1 );
 
@@ -1185,12 +1254,21 @@ void CMainFrame::ShowFolderFiles( wxTreeItemId itemID ) {
 		lctl->SetItem( i, 2, files.FileExt );
 		lctl->SetItem( i, 3, files.DateTime.FormatDate() + " " + files.DateTime.FormatTime() );
 		lctl->SetItem( i, 4, FormatObjectDescriptionForListView(files.FileDescription) );
+		if( audioMetadataAvailable ) {
+			if( !m_CurrentlyShowingAudioMetadata )
+				CreateAudioMetadataListControlHeaders();
+			AddAudioMetatataToListControl( fam, lctl, i, 5 );
+		}
+
 		lctl->SetItemData( i, (long) new MyListItemData( files.FileID, files.PathFileID.IsNull() ? 0 : (long) files.PathFileID, files.FileName, files.FileExt, files.FileSize, files.DateTime, files.IsFolder(), "", files.FileDescription ) );
 		nPhysicalFiles++;
 		sizePhysicalFiles += files.FileSize;
 
 		files.DBNextRow();
 	}
+
+	if( !foundAudioFiles && m_CurrentlyShowingAudioMetadata )
+		DeleteAudioMetadataListControlHeaders();
 
 	lctl->SortItems( ListControlCompareFunction, m_CurrentView == Physical ? 0 : 1 );
 	lctl->Show();
@@ -1237,12 +1315,17 @@ void CMainFrame::ShowVirtualFolderFiles( wxTreeItemId itemID ) {
 	nVirtualFiles = 0;
 	sizeVirtualFiles = 0;
 	CVirtualFiles files;
+	bool foundAudioFiles = false;
 	files.DBStartQueryListFiles( itemData->GetPathID() );
 	while( !files.IsEOF() ) {
 		wxString prevFileName = files.FileName;
 		bool wasFolder = files.IsFolder();
 
-		int i = AddRowToVirtualListControl( lctl, files.IsFolder(), files.FileName, files.FileSize, files.FileExt, files.DateTime, files.FullPhysicalPath, files.FileID, files.VirtualPathFileID.IsNull() ? 0 : (long) files.VirtualPathFileID, files.FileDescription );
+		if( files.FileExt.Upper() == "MP3" ) {
+			foundAudioFiles = true;
+		}
+
+		int i = AddRowToVirtualListControl( lctl, files.IsFolder(), files.FileName, files.FileSize, files.FileExt, files.DateTime, files.FullPhysicalPath, files.FileID, files.VirtualPathFileID.IsNull() ? 0 : (long) files.VirtualPathFileID, files.FileDescription, files.PhysicalFileID );
 
 		nVirtualFiles++;
 		sizeVirtualFiles += files.FileSize;
@@ -1265,6 +1348,9 @@ void CMainFrame::ShowVirtualFolderFiles( wxTreeItemId itemID ) {
 		}
 
 	}
+
+	if( !foundAudioFiles && m_CurrentlyShowingAudioMetadata )
+		DeleteAudioMetadataListControlHeaders();
 
 	lctl->SortItems( ListControlCompareFunction, m_CurrentView == Physical ? 0 : 1 );
 	lctl->Show();
@@ -1809,18 +1895,18 @@ void CMainFrame::OnViewToolbarClick( wxCommandEvent& event )
 void CMainFrame::StoreListControlVirtualWidth(void) {
 
 	wxListCtrl* lctl = GetListControl();
-	wxASSERT(lctl->GetColumnCount() == 6);
+//	wxASSERT(lctl->GetColumnCount() == N_BASE_COLS_VIRTUAL + N_AUDIO_METADATA_COLUMNS);
 
-	for( int k = 0; k < 6; k++ )
+	for( int k = 0; k < N_BASE_COLS_VIRTUAL; k++ )
 		m_ListviewColWidthVirtual[k] = lctl->GetColumnWidth(k);
 }
 
 void CMainFrame::StoreListControlPhysicalWidth(void) {
 
 	wxListCtrl* lctl = GetListControl();
-	wxASSERT(lctl->GetColumnCount() == 5);
+//	wxASSERT(lctl->GetColumnCount() == N_BASE_COLS_PHYSICAL + N_AUDIO_METADATA_COLUMNS);
 
-	for( int k = 0; k < 5; k++ )
+	for( int k = 0; k < N_BASE_COLS_PHYSICAL; k++ )
 		m_ListviewColWidthPhysical[k] = lctl->GetColumnWidth(k);
 }
 
@@ -2329,6 +2415,7 @@ void CMainFrame::OnButtonSearchClick( wxCommandEvent& WXUNUSED(event) ) {
 	DeleteAllListControlItems();
 	lctl->Hide();	// to speed up things
 
+	bool foundAudioFiles = false;
 	switch( scope ) {
 		case AllPhysicalVolumes : {
 			CFiles files;
@@ -2336,11 +2423,16 @@ void CMainFrame::OnButtonSearchClick( wxCommandEvent& WXUNUSED(event) ) {
 			nl.SetNull(true);
 			files.DBStartSearchVolumeFiles( fileName, useWildcardsFilename, ext, description, useWildcardsDescription, nl );
 			while( !files.IsEOF() ) {
-				AddRowToVirtualListControl( lctl, files.IsFolder(), files.FileName, files.FileSize, files.FileExt, files.DateTime, CPaths::GetFullPath(files.PathID), files.FileID, files.PathFileID.IsNull() ? 0 : (long) files.PathFileID, files.FileDescription );
+				if( files.FileExt.Upper() == "MP3" ) {
+					foundAudioFiles = true;
+				}
+				AddRowToVirtualListControl( lctl, files.IsFolder(), files.FileName, files.FileSize, files.FileExt, files.DateTime, CPaths::GetFullPath(files.PathID), files.FileID, files.PathFileID.IsNull() ? 0 : (long) files.PathFileID, files.FileDescription, files.FileID );
 				nSearchFiles++;
 				sizeSearchFiles += files.FileSize;
 				files.DBNextRow();
 			}
+			if( !foundAudioFiles && m_CurrentlyShowingAudioMetadata )
+				DeleteAudioMetadataListControlHeaders();
 			break;
 		}
 		case SelectedPhysicalFolder: {
@@ -2355,11 +2447,17 @@ void CMainFrame::OnButtonSearchClick( wxCommandEvent& WXUNUSED(event) ) {
 				CFiles files;
 				files.DBStartSearchVolumeFiles( fileName, useWildcardsFilename, ext, description, useWildcardsDescription, itemData->GetVolumeID() );
 				while( !files.IsEOF() ) {
-					AddRowToVirtualListControl( lctl, files.IsFolder(), files.FileName, files.FileSize, files.FileExt, files.DateTime, CPaths::GetFullPath(files.PathID), files.FileID, files.PathFileID.IsNull() ? 0 : (long) files.PathFileID, files.FileDescription );
+					if( files.FileExt.Upper() == "MP3" ) {
+						foundAudioFiles = true;
+					}
+					AddRowToVirtualListControl( lctl, files.IsFolder(), files.FileName, files.FileSize, files.FileExt, files.DateTime, CPaths::GetFullPath(files.PathID), files.FileID, files.PathFileID.IsNull() ? 0 : (long) files.PathFileID, files.FileDescription, files.FileID );
 					nSearchFiles++;
 					sizeSearchFiles += files.FileSize;
 					files.DBNextRow();
 				}
+				if( !foundAudioFiles && m_CurrentlyShowingAudioMetadata )
+					DeleteAudioMetadataListControlHeaders();
+				break;
 			}
 			else {
 				// the user selected a folder: recursion
@@ -2391,7 +2489,15 @@ void CMainFrame::OnButtonSearchClick( wxCommandEvent& WXUNUSED(event) ) {
 	UpdateStatusBar( nSearchFiles, sizeSearchFiles );
 }
 
-int CMainFrame::AddRowToVirtualListControl( wxListCtrl* lctl, bool isFolder, wxString fileName, wxLongLong fileSize, wxString ext, wxDateTime dateTime, wxString physicalPath, long fileID, long virtualPathFileID, wxString fileDescription ) {
+int CMainFrame::AddRowToVirtualListControl( wxListCtrl* lctl, bool isFolder, wxString fileName, wxLongLong fileSize, wxString ext, wxDateTime dateTime, wxString physicalPath, long fileID, long virtualPathFileID, wxString fileDescription, long physicalFileID ) {
+
+	CFilesAudioMetadata fam;
+	bool audioMetadataAvailable = false;
+	if( ext.Upper() == "MP3" ) {
+		fam.FileID = physicalFileID;
+		audioMetadataAvailable = fam.DBReadMetadata();
+	}
+
 	int imageIndex = (isFolder ? 0 : 1 );
 	wxListItem item;
 	item.SetMask( wxLIST_MASK_STATE|wxLIST_MASK_TEXT|wxLIST_MASK_IMAGE|wxLIST_MASK_DATA );
@@ -2402,6 +2508,11 @@ int CMainFrame::AddRowToVirtualListControl( wxListCtrl* lctl, bool isFolder, wxS
 	lctl->SetItem( i, 3, dateTime.FormatDate() + " " + dateTime.FormatTime() );
 	lctl->SetItem( i, 4, physicalPath );
 	lctl->SetItem( i, 5, FormatObjectDescriptionForListView(fileDescription) );
+	if( audioMetadataAvailable ) {
+			if( !m_CurrentlyShowingAudioMetadata )
+				CreateAudioMetadataListControlHeaders();
+		AddAudioMetatataToListControl( fam, lctl, i, 6 );
+	}
 	lctl->SetItemData( i, (long) new MyListItemData( fileID, virtualPathFileID, fileName, ext, fileSize, dateTime, isFolder, physicalPath, fileDescription ) );
 	if( physicalPath.empty() ) lctl->SetItemTextColour( i, *wxBLUE );
 
@@ -2413,13 +2524,19 @@ void CMainFrame::SearchVirtualFolder( wxString fileName, bool useFileNameWildcar
 	// searches the current folder
 	CVirtualFiles files;
 	wxListCtrl* lctl = GetListControl();
+	bool foundAudioFiles = false;
 	files.DBStartSearchFolderFiles( fileName, useFileNameWildcards, ext, description, useDescriptionWildcards, folderID );
 	while( !files.IsEOF() ) {
-		AddRowToVirtualListControl( lctl, files.IsFolder(), files.FileName, files.FileSize, files.FileExt, files.DateTime, files.FullPhysicalPath, files.FileID, files.VirtualPathFileID.IsNull() ? 0 : (long) files.VirtualPathFileID, files.FileDescription );
+		if( files.FileExt.Upper() == "MP3" ) {
+			foundAudioFiles = true;
+		}
+		AddRowToVirtualListControl( lctl, files.IsFolder(), files.FileName, files.FileSize, files.FileExt, files.DateTime, files.FullPhysicalPath, files.FileID, files.VirtualPathFileID.IsNull() ? 0 : (long) files.VirtualPathFileID, files.FileDescription, files.PhysicalFileID );
 		nSearchFiles++;
 		sizeSearchFiles += files.FileSize;
 		files.DBNextRow();
 	}
+	if( !foundAudioFiles && m_CurrentlyShowingAudioMetadata )
+		DeleteAudioMetadataListControlHeaders();
 
 	// recursion in the subfolders
 	CVirtualPaths pth;
@@ -2436,13 +2553,19 @@ void CMainFrame::SearchPhysicalFolder( wxString fileName, bool useFileNameWildca
 	// searches the current folder
 	CFiles files;
 	wxListCtrl* lctl = GetListControl();
+	bool foundAudioFiles = false;
 	files.DBStartSearchFolderFiles( fileName, useFileNameWildcards, ext, description, useDescriptionWildcards, folderID );
 	while( !files.IsEOF() ) {
-		AddRowToVirtualListControl( lctl, files.IsFolder(), files.FileName, files.FileSize, files.FileExt, files.DateTime, CPaths::GetFullPath(files.PathID), files.FileID, files.PathFileID.IsNull() ? 0 : (long) files.PathFileID, files.FileDescription );
+		if( files.FileExt.Upper() == "MP3" ) {
+			foundAudioFiles = true;
+		}
+		AddRowToVirtualListControl( lctl, files.IsFolder(), files.FileName, files.FileSize, files.FileExt, files.DateTime, CPaths::GetFullPath(files.PathID), files.FileID, files.PathFileID.IsNull() ? 0 : (long) files.PathFileID, files.FileDescription, files.FileID );
 		nSearchFiles++;
 		sizeSearchFiles += files.FileSize;
 		files.DBNextRow();
 	}
+	if( !foundAudioFiles && m_CurrentlyShowingAudioMetadata )
+		DeleteAudioMetadataListControlHeaders();
 
 	// recursion in the subfolders
 	CPaths pth;

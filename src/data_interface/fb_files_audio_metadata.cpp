@@ -21,6 +21,7 @@
 */
 
 #include "files_audio_metadata.h"
+#include "firebird_db.h"
 #include "../ibpp/core/ibpp.h"
 
 using namespace IBPP;
@@ -82,5 +83,36 @@ void CFilesAudioMetadata::FB_DbDelete(void)
 }
 
 void CFilesAudioMetadata::FB_FetchRow(void) {
+	int64_t tmp;
+	string stmp;
+	Timestamp ts;
+
+	if( FB_st->Fetch() ) {
+		// fetches a record
+		eof = false;
+		FB_st->Get("FILE_ID", tmp);
+		FileID = (long) tmp;
+		Title = FB_st->Get( "TRACK_TITLE", stmp ) ? "" : CUtils::std2wx( stmp );
+		Artist = FB_st->Get( "TRACK_ARTIST", stmp ) ? "" : CUtils::std2wx( stmp );
+		Album = FB_st->Get( "TRACK_ALBUM", stmp ) ? "" : CUtils::std2wx( stmp );
+		Title = FB_st->Get( "TRACK_TITLE", stmp ) ? "" : CUtils::std2wx( stmp );
+		Year = FB_st->Get( "TRACK_YEAR", tmp ) ? 0 : (int) tmp;
+		Comment = FB_st->Get( "TRACK_COMMENT", stmp ) ? "" : CUtils::std2wx( stmp );
+		Number = FB_st->Get( "TRACK_NUMBER", tmp ) ? 0 : (int) tmp;
+		Genre = FB_st->Get( "TRACK_GENRE", stmp ) ? "" : CUtils::std2wx( stmp );
+		Bitrate = FB_st->Get( "TRACK_BITRATE", tmp ) ? 0 : (int) tmp;
+		SampleRate = FB_st->Get( "TRACK_SAMPLE_RATE", tmp ) ? 0 : (int) tmp;
+		Channels = FB_st->Get( "TRACK_CHANNELS", tmp ) ? 0 : (int) tmp;
+		Length = FB_st->Get( "TRACK_LENGTH", tmp ) ? 0 : (int) tmp;
+	}
+	else {
+		// end of the rowset
+		eof = true;
+		if( !TransactionAlreadyStarted ) {
+			CFirebirdDB* db = (CFirebirdDB*) CBaseDB::GetDatabase();
+			db->TransactionCommit();
+		}
+		TransactionAlreadyStarted = false;
+	}
 }
 

@@ -32,6 +32,10 @@ public:
 	CFilesAudioMetadata(void);
 	~CFilesAudioMetadata(void);
 
+	// reads the audio metadata for a file. FileID is in this->FileID
+	// returns true if the record is found and sets the fields of this instance
+	// returns false if the record is not found
+	bool DBReadMetadata();
 
 	// data members ----------------------------
 	CNullableLong FileID;	// primary key
