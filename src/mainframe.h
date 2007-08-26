@@ -332,9 +332,9 @@ private:
 
 	// the possible views available in the program
 	enum CurrentView {
-		Physical,
-		Virtual,
-		Search
+		cvPhysical,
+		cvVirtual,
+		cvSearch
 	};
 	// holds the current view
 	CurrentView m_CurrentView;
@@ -344,23 +344,23 @@ private:
 
 	// possible choices for file name search
 	enum FilenameSearchKind {
-		IsEqual = 0,
-		StartsWith,
-		Contains
+		fskIsEqual = 0,
+		fskStartsWith,
+		fskContains
 	};
 
 	// possible search choices
 	enum SearchScope {
-		AllPhysicalVolumes = 0,
-		SelectedPhysicalFolder,
-		SelectedVirtualFolder
+		ssAllPhysicalVolumes = 0,
+		ssSelectedPhysicalFolder,
+		ssSelectedVirtualFolder
 	};
 
 	// values for the Status bar elements
 	enum StatusBarElements {
-		MenuDescription = 0,
-		ObjectsNumber,
-		ObjectsSize
+		sbeMenuDescription = 0,
+		sbeObjectsNumber,
+		sbeObjectsSize
 	};
 
 	static const N_BASE_COLS_PHYSICAL = 5;	// number of base columns in the physical view
@@ -437,9 +437,9 @@ private:
 	void OpenDatabase( wxString fileName, int expectedVersion );
 
 	// width of the listview columns in physical view
-	int m_ListviewColWidthPhysical[5];
+	int m_ListviewColWidthPhysical[N_BASE_COLS_PHYSICAL + N_AUDIO_METADATA_COLUMNS];
 	// width of the listview columns in virtual view
-	int m_ListviewColWidthVirtual[6];
+	int m_ListviewColWidthVirtual[N_BASE_COLS_VIRTUAL + N_AUDIO_METADATA_COLUMNS];
 
 	// stores the column widths of the list control columns in physical view
 	void StoreListControlPhysicalWidth();
@@ -476,6 +476,10 @@ private:
 
 	// adds the audio metadata to the current listview row
 	void AddAudioMetatataToListControl( CFilesAudioMetadata fam, wxListCtrl *lctl, int itemIndex, int firstColumnIndex );
+
+	// receives as input the number of a visible column and returns the number that the same column would have
+	// if no columns were hidden
+	int ColumnNumIfNoColumnsHidden( int inColNum );
 
 protected:
 	// shows in the listview the files contained in the passed folder

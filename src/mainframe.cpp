@@ -83,7 +83,8 @@
 #include "graphics/removable.xpm"
 #include "graphics/deffile.xpm"
 
-// column used to sort the listview
+// column used to sort the listview: it is the number that the column would have if no columns were hidden
+// columns that are not visible are always counted to make things simpler
 int m_ListViewSortColumn;
 // sorting order
 bool m_ListViewSortAscending;
@@ -137,43 +138,191 @@ int wxCALLBACK ListControlCompareFunction( long item1, long item2, long sortData
 	}
 
 	if( m_ListViewSortColumn == 3 ) {
-			// datetime
-			if( itemData1->GetDateTime() == itemData2->GetDateTime() )
-				retVal = 0;
-			else {
-				if( m_ListViewSortAscending )
-					retVal = (itemData1->GetDateTime() < itemData2->GetDateTime() ? -1 : 1);
-				else
-					retVal = (itemData1->GetDateTime() > itemData2->GetDateTime() ? -1 : 1);
-			}
+		// datetime
+		if( itemData1->GetDateTime() == itemData2->GetDateTime() )
+			retVal = 0;
+		else {
+			if( m_ListViewSortAscending )
+				retVal = (itemData1->GetDateTime() < itemData2->GetDateTime() ? -1 : 1);
+			else
+				retVal = (itemData1->GetDateTime() > itemData2->GetDateTime() ? -1 : 1);
+		}
 	}
 
 	if( m_ListViewSortColumn == 4 && !inPhysicalView ) {
-			// full physical path
+		// full physical path
+		if( m_ListViewSortAscending )
+			retVal = wxStricmp( itemData1->GetFullPhysicalPath(), itemData2->GetFullPhysicalPath() );
+		else
+			retVal = wxStricmp( itemData2->GetFullPhysicalPath(), itemData1->GetFullPhysicalPath() );
+		if( retVal == 0 ) {
 			if( m_ListViewSortAscending )
-				retVal = wxStricmp( itemData1->GetFullPhysicalPath(), itemData2->GetFullPhysicalPath() );
+				retVal = wxStricmp( itemData1->GetName(), itemData2->GetName() );
 			else
-				retVal = wxStricmp( itemData2->GetFullPhysicalPath(), itemData1->GetFullPhysicalPath() );
-			if( retVal == 0 ) {
-				if( m_ListViewSortAscending )
-					retVal = wxStricmp( itemData1->GetName(), itemData2->GetName() );
-				else
-					retVal = wxStricmp( itemData2->GetName(), itemData1->GetName() );
-			}
+				retVal = wxStricmp( itemData2->GetName(), itemData1->GetName() );
+		}
 	}
 
 	if( (m_ListViewSortColumn == 4 && inPhysicalView) || (m_ListViewSortColumn == 5 && !inPhysicalView) ) {
-			// description
+		// description
+		if( m_ListViewSortAscending )
+			retVal = wxStricmp( itemData1->GetObjectDescription(), itemData2->GetObjectDescription() );
+		else
+			retVal = wxStricmp( itemData2->GetObjectDescription(), itemData1->GetObjectDescription() );
+		if( retVal == 0 ) {
 			if( m_ListViewSortAscending )
-				retVal = wxStricmp( itemData1->GetObjectDescription(), itemData2->GetObjectDescription() );
+				retVal = wxStricmp( itemData1->GetName(), itemData2->GetName() );
 			else
-				retVal = wxStricmp( itemData2->GetObjectDescription(), itemData1->GetObjectDescription() );
-			if( retVal == 0 ) {
-				if( m_ListViewSortAscending )
-					retVal = wxStricmp( itemData1->GetName(), itemData2->GetName() );
-				else
-					retVal = wxStricmp( itemData2->GetName(), itemData1->GetName() );
-			}
+				retVal = wxStricmp( itemData2->GetName(), itemData1->GetName() );
+		}
+	}
+
+	if( (m_ListViewSortColumn == 5 && inPhysicalView) || (m_ListViewSortColumn == 6 && !inPhysicalView) ) {
+		// artist
+		if( m_ListViewSortAscending )
+			retVal = wxStricmp( itemData1->GetArtist(), itemData2->GetArtist() );
+		else
+			retVal = wxStricmp( itemData2->GetArtist(), itemData1->GetArtist() );
+		if( retVal == 0 ) {
+			if( m_ListViewSortAscending )
+				retVal = wxStricmp( itemData1->GetAlbum(), itemData2->GetAlbum() );
+			else
+				retVal = wxStricmp( itemData2->GetAlbum(), itemData1->GetAlbum() );
+		}
+	}
+
+	if( (m_ListViewSortColumn == 6 && inPhysicalView) || (m_ListViewSortColumn == 7 && !inPhysicalView) ) {
+		// album
+		if( m_ListViewSortAscending )
+			retVal = wxStricmp( itemData1->GetAlbum(), itemData2->GetAlbum() );
+		else
+			retVal = wxStricmp( itemData2->GetAlbum(), itemData1->GetAlbum() );
+		if( retVal == 0 ) {
+			if( m_ListViewSortAscending )
+				retVal = wxStricmp( itemData1->GetTitle(), itemData2->GetTitle() );
+			else
+				retVal = wxStricmp( itemData2->GetTitle(), itemData1->GetTitle() );
+		}
+	}
+
+	if( (m_ListViewSortColumn == 7 && inPhysicalView) || (m_ListViewSortColumn == 8 && !inPhysicalView) ) {
+		// title
+		if( m_ListViewSortAscending )
+			retVal = wxStricmp( itemData1->GetTitle(), itemData2->GetTitle() );
+		else
+			retVal = wxStricmp( itemData2->GetTitle(), itemData1->GetTitle() );
+		if( retVal == 0 ) {
+			if( m_ListViewSortAscending )
+				retVal = wxStricmp( itemData1->GetArtist(), itemData2->GetArtist() );
+			else
+				retVal = wxStricmp( itemData2->GetArtist(), itemData1->GetArtist() );
+		}
+	}
+
+	if( (m_ListViewSortColumn == 8 && inPhysicalView) || (m_ListViewSortColumn == 9 && !inPhysicalView) ) {
+		// year
+		if( m_ListViewSortAscending )
+			retVal = itemData1->GetYear() - itemData2->GetYear();
+		else
+			retVal = itemData2->GetYear() - itemData1->GetYear();
+		if( retVal == 0 ) {
+			if( m_ListViewSortAscending )
+				retVal = wxStricmp( itemData1->GetArtist(), itemData2->GetArtist() );
+			else
+				retVal = wxStricmp( itemData2->GetArtist(), itemData1->GetArtist() );
+		}
+	}
+
+	if( (m_ListViewSortColumn == 9 && inPhysicalView) || (m_ListViewSortColumn == 10 && !inPhysicalView) ) {
+		// comment
+		if( m_ListViewSortAscending )
+			retVal = wxStricmp( itemData1->GetComment(), itemData2->GetComment() );
+		else
+			retVal = wxStricmp( itemData2->GetComment(), itemData1->GetComment() );
+		if( retVal == 0 ) {
+			if( m_ListViewSortAscending )
+				retVal = wxStricmp( itemData1->GetArtist(), itemData2->GetArtist() );
+			else
+				retVal = wxStricmp( itemData2->GetArtist(), itemData1->GetArtist() );
+		}
+	}
+
+	if( (m_ListViewSortColumn == 10 && inPhysicalView) || (m_ListViewSortColumn == 11 && !inPhysicalView) ) {
+		// number
+		if( m_ListViewSortAscending )
+			retVal = itemData1->GetNumber() - itemData2->GetNumber();
+		else
+			retVal = itemData2->GetNumber() - itemData1->GetNumber();
+		if( retVal == 0 ) {
+			if( m_ListViewSortAscending )
+				retVal = wxStricmp( itemData1->GetAlbum(), itemData2->GetAlbum() );
+			else
+				retVal = wxStricmp( itemData2->GetAlbum(), itemData1->GetAlbum() );
+		}
+	}
+
+	if( (m_ListViewSortColumn == 11 && inPhysicalView) || (m_ListViewSortColumn == 12 && !inPhysicalView) ) {
+		// genre
+		if( m_ListViewSortAscending )
+			retVal = wxStricmp( itemData1->GetGenre(), itemData2->GetGenre() );
+		else
+			retVal = wxStricmp( itemData2->GetGenre(), itemData1->GetGenre() );
+		if( retVal == 0 ) {
+			if( m_ListViewSortAscending )
+				retVal = wxStricmp( itemData1->GetAlbum(), itemData2->GetAlbum() );
+			else
+				retVal = wxStricmp( itemData2->GetAlbum(), itemData1->GetAlbum() );
+		}
+	}
+
+	if( (m_ListViewSortColumn == 12 && inPhysicalView) || (m_ListViewSortColumn == 13 && !inPhysicalView) ) {
+		// length
+		if( m_ListViewSortAscending )
+			retVal = itemData1->GetLength() - itemData2->GetLength();
+		else
+			retVal = itemData2->GetLength() - itemData1->GetLength();
+	}
+
+	if( (m_ListViewSortColumn == 13 && inPhysicalView) || (m_ListViewSortColumn == 14 && !inPhysicalView) ) {
+		// bitrate
+		if( m_ListViewSortAscending )
+			retVal = itemData1->GetBitrate() - itemData2->GetBitrate();
+		else
+			retVal = itemData2->GetBitrate() - itemData1->GetBitrate();
+		if( retVal == 0 ) {
+			if( m_ListViewSortAscending )
+				retVal = wxStricmp( itemData1->GetAlbum(), itemData2->GetAlbum() );
+			else
+				retVal = wxStricmp( itemData2->GetAlbum(), itemData1->GetAlbum() );
+		}
+	}
+
+	if( (m_ListViewSortColumn == 14 && inPhysicalView) || (m_ListViewSortColumn == 15 && !inPhysicalView) ) {
+		// samplerate
+		if( m_ListViewSortAscending )
+			retVal = itemData1->GetSamplerate() - itemData2->GetSamplerate();
+		else
+			retVal = itemData2->GetSamplerate() - itemData1->GetSamplerate();
+		if( retVal == 0 ) {
+			if( m_ListViewSortAscending )
+				retVal = wxStricmp( itemData1->GetAlbum(), itemData2->GetAlbum() );
+			else
+				retVal = wxStricmp( itemData2->GetAlbum(), itemData1->GetAlbum() );
+		}
+	}
+
+	if( (m_ListViewSortColumn == 15 && inPhysicalView) || (m_ListViewSortColumn == 16 && !inPhysicalView) ) {
+		// channels
+		if( m_ListViewSortAscending )
+			retVal = itemData1->GetChannels() - itemData2->GetChannels();
+		else
+			retVal = itemData2->GetChannels() - itemData1->GetChannels();
+		if( retVal == 0 ) {
+			if( m_ListViewSortAscending )
+				retVal = wxStricmp( itemData1->GetAlbum(), itemData2->GetAlbum() );
+			else
+				retVal = wxStricmp( itemData2->GetAlbum(), itemData1->GetAlbum() );
+		}
 	}
 
 	return retVal;
@@ -314,19 +463,46 @@ bool CMainFrame::Create( wxWindow* parent, wxWindowID id, const wxString& captio
 	m_fileHistory->Load( *pConfig );
 
 	// reads the listview columns width
+	int k = 0;
 	pConfig->SetPath(wxT("/Mainframe/Layout/ListViewPhysical"));
-	m_ListviewColWidthPhysical[0] = pConfig->Read(wxT("cw0"), 200);
-	m_ListviewColWidthPhysical[1] = pConfig->Read(wxT("cw1"), 100);
-	m_ListviewColWidthPhysical[2] = pConfig->Read(wxT("cw2"), 100);
-	m_ListviewColWidthPhysical[3] = pConfig->Read(wxT("cw3"), 200);
-	m_ListviewColWidthPhysical[4] = pConfig->Read(wxT("cw4"), 100);
+	m_ListviewColWidthPhysical[k++] = pConfig->Read(wxT("cw0"), 200);
+	m_ListviewColWidthPhysical[k++] = pConfig->Read(wxT("cw1"), 100);
+	m_ListviewColWidthPhysical[k++] = pConfig->Read(wxT("cw2"), 100);
+	m_ListviewColWidthPhysical[k++] = pConfig->Read(wxT("cw3"), 200);
+	m_ListviewColWidthPhysical[k++] = pConfig->Read(wxT("cw4"), 100);
+	// audio metadata
+	m_ListviewColWidthPhysical[k++] = pConfig->Read(wxT("cw5"), 150);
+	m_ListviewColWidthPhysical[k++] = pConfig->Read(wxT("cw6"), 150);
+	m_ListviewColWidthPhysical[k++] = pConfig->Read(wxT("cw7"), 150);
+	m_ListviewColWidthPhysical[k++] = pConfig->Read(wxT("cw8"), 50);
+	m_ListviewColWidthPhysical[k++] = pConfig->Read(wxT("cw9"), 100);
+	m_ListviewColWidthPhysical[k++] = pConfig->Read(wxT("cw10"), 70);
+	m_ListviewColWidthPhysical[k++] = pConfig->Read(wxT("cw11"), 90);
+	m_ListviewColWidthPhysical[k++] = pConfig->Read(wxT("cw12"), 70);
+	m_ListviewColWidthPhysical[k++] = pConfig->Read(wxT("cw13"), 70);
+	m_ListviewColWidthPhysical[k++] = pConfig->Read(wxT("cw14"), 90);
+	m_ListviewColWidthPhysical[k++] = pConfig->Read(wxT("cw15"), 70);
+
+	k = 0;
 	pConfig->SetPath(wxT("/Mainframe/Layout/ListViewVirtual"));
-	m_ListviewColWidthVirtual[0] = pConfig->Read(wxT("cw0"), 200);
-	m_ListviewColWidthVirtual[1] = pConfig->Read(wxT("cw1"), 100);
-	m_ListviewColWidthVirtual[2] = pConfig->Read(wxT("cw2"), 100);
-	m_ListviewColWidthVirtual[3] = pConfig->Read(wxT("cw3"), 200);
-	m_ListviewColWidthVirtual[4] = pConfig->Read(wxT("cw4"), 200);
-	m_ListviewColWidthVirtual[5] = pConfig->Read(wxT("cw5"), 100);
+	m_ListviewColWidthVirtual[k++] = pConfig->Read(wxT("cw0"), 200);
+	m_ListviewColWidthVirtual[k++] = pConfig->Read(wxT("cw1"), 100);
+	m_ListviewColWidthVirtual[k++] = pConfig->Read(wxT("cw2"), 100);
+	m_ListviewColWidthVirtual[k++] = pConfig->Read(wxT("cw3"), 200);
+	m_ListviewColWidthVirtual[k++] = pConfig->Read(wxT("cw4"), 200);
+	m_ListviewColWidthVirtual[k++] = pConfig->Read(wxT("cw5"), 100);
+	// audio metadata
+	m_ListviewColWidthVirtual[k++] = pConfig->Read(wxT("cw6"), 150);
+	m_ListviewColWidthVirtual[k++] = pConfig->Read(wxT("cw7"), 150);
+	m_ListviewColWidthVirtual[k++] = pConfig->Read(wxT("cw8"), 150);
+	m_ListviewColWidthVirtual[k++] = pConfig->Read(wxT("cw9"), 50);
+	m_ListviewColWidthVirtual[k++] = pConfig->Read(wxT("cw10"), 100);
+	m_ListviewColWidthVirtual[k++] = pConfig->Read(wxT("cw11"), 70);
+	m_ListviewColWidthVirtual[k++] = pConfig->Read(wxT("cw12"), 90);
+	m_ListviewColWidthVirtual[k++] = pConfig->Read(wxT("cw13"), 70);
+	m_ListviewColWidthVirtual[k++] = pConfig->Read(wxT("cw14"), 70);
+	m_ListviewColWidthVirtual[k++] = pConfig->Read(wxT("cw15"), 90);
+	m_ListviewColWidthVirtual[k++] = pConfig->Read(wxT("cw16"), 70);
 
 	CreateListControlHeaders();
 
@@ -369,7 +545,7 @@ void CMainFrame::Init()
 
 	m_fileHistory = new wxFileHistory();
 	
-	m_CurrentView = Physical;	// let's start with the physical view
+	m_CurrentView = cvPhysical;	// let's start with the physical view
 	m_ListViewHasFocus = false;
 
 	m_ListViewSortColumn = 0;
@@ -381,10 +557,10 @@ void CMainFrame::Init()
 	m_amdColumnsToShow = new bool[N_AUDIO_METADATA_COLUMNS];
 	for( int k = 0; k < N_AUDIO_METADATA_COLUMNS; k++ )
 		m_amdColumnsToShow[k] = true;
-	m_amdColumnsToShow[amdComment] = false;
 
 	m_CurrentlyShowingAudioMetadata = false;
 }
+
 /*!
  * Control creation for Prova
  */
@@ -828,7 +1004,7 @@ void CMainFrame::OnTreeControlItemExpanding( wxTreeEvent& event )
 
 void CMainFrame::OnTreeControlSelChanged( wxTreeEvent& event )
 {
-	if( m_CurrentView != Physical ) return;
+	if( m_CurrentView != cvPhysical ) return;
 
 	wxTreeItemId itemID = event.GetItem();
 	ShowFolderFiles( itemID );
@@ -841,7 +1017,7 @@ void CMainFrame::OnTreeControlSelChanged( wxTreeEvent& event )
 
 void CMainFrame::OnTreeControlVirtualSelChanged( wxTreeEvent& event )
 {
-	if( m_CurrentView != Virtual ) return;
+	if( m_CurrentView != cvVirtual ) return;
 	
 	wxTreeItemId itemID = event.GetItem();
 	ShowVirtualFolderFiles( itemID );
@@ -878,7 +1054,7 @@ void CMainFrame::CreateListControlHeaders(void) {
 	itemCol.SetAlign( wxLIST_FORMAT_LEFT );
 	lctl->InsertColumn( 3, itemCol );
 
-	if( m_CurrentView == Virtual || m_CurrentView == Search ) {
+	if( m_CurrentView == cvVirtual || m_CurrentView == cvSearch ) {
 		itemCol.SetText( _("Physical path") );
 		itemCol.SetAlign( wxLIST_FORMAT_LEFT );
 		lctl->InsertColumn( 4, itemCol );
@@ -907,10 +1083,10 @@ void CMainFrame::CreateListControlHeaders(void) {
 	lctl->SetItem( i, 1, "a" );
 	lctl->SetItem( i, 2, "a" );
 	lctl->SetItem( i, 3, "a" );
-	if( m_CurrentView == Virtual )
+	if( m_CurrentView == cvVirtual )
 		lctl->SetItem( i, 4, "a" );
 
-	if( m_CurrentView == Physical ) {
+	if( m_CurrentView == cvPhysical ) {
 		for( k = 0; k < N_BASE_COLS_PHYSICAL; k++ )
 			lctl->SetColumnWidth( k, m_ListviewColWidthPhysical[k] );
 	}
@@ -927,7 +1103,7 @@ void CMainFrame::CreateListControlHeaders(void) {
 void CMainFrame::CreateAudioMetadataListControlHeaders( void ) {
 	wxListItem itemCol;
 	wxListCtrl *lctl = GetListControl();
-	int k = m_CurrentView == Physical ? N_BASE_COLS_PHYSICAL : N_BASE_COLS_VIRTUAL;
+	int k = m_CurrentView == cvPhysical ? N_BASE_COLS_PHYSICAL : N_BASE_COLS_VIRTUAL;
 	if( m_amdColumnsToShow[amdArtist] ) {
 		itemCol.SetText( _("Artist") );
 		itemCol.SetAlign( wxLIST_FORMAT_LEFT );
@@ -987,8 +1163,14 @@ void CMainFrame::CreateAudioMetadataListControlHeaders( void ) {
 }
 
 void CMainFrame::DeleteAudioMetadataListControlHeaders( void ) {
+	
+	if( m_CurrentView == cvPhysical )
+		StoreListControlPhysicalWidth();
+	else
+		StoreListControlVirtualWidth();
+	
 	wxListCtrl *lctl = GetListControl();
-	int firstCol = m_CurrentView == Physical ? N_BASE_COLS_PHYSICAL : N_BASE_COLS_VIRTUAL;
+	int firstCol = m_CurrentView == cvPhysical ? N_BASE_COLS_PHYSICAL : N_BASE_COLS_VIRTUAL;
 	for( int k = 0; k < N_AUDIO_METADATA_COLUMNS; k ++ )
 		if( m_amdColumnsToShow[k] )
 			lctl->DeleteColumn( firstCol );
@@ -1014,7 +1196,7 @@ void CMainFrame::OnOPENClick( wxCommandEvent& WXUNUSED(event) )
 
 CMainFrame::~CMainFrame() {
 
-	if( m_CurrentView == Physical ) 
+	if( m_CurrentView == cvPhysical ) 
 		StoreListControlPhysicalWidth();
 	else
 		StoreListControlVirtualWidth();
@@ -1047,19 +1229,43 @@ CMainFrame::~CMainFrame() {
 	delete m_fileHistory;
 
 	// saves the listview columns width
+	int k = 0;
 	pConfig->SetPath(wxT("/Mainframe/Layout/ListViewPhysical"));
-	pConfig->Write(wxT("cw0"), (long) m_ListviewColWidthPhysical[0]);
-	pConfig->Write(wxT("cw1"), (long) m_ListviewColWidthPhysical[1]);
-	pConfig->Write(wxT("cw2"), (long) m_ListviewColWidthPhysical[2]);
-	pConfig->Write(wxT("cw3"), (long) m_ListviewColWidthPhysical[3]);
-	pConfig->Write(wxT("cw4"), (long) m_ListviewColWidthPhysical[4]);
+	pConfig->Write(wxT("cw0"), (long) m_ListviewColWidthPhysical[k++]);
+	pConfig->Write(wxT("cw1"), (long) m_ListviewColWidthPhysical[k++]);
+	pConfig->Write(wxT("cw2"), (long) m_ListviewColWidthPhysical[k++]);
+	pConfig->Write(wxT("cw3"), (long) m_ListviewColWidthPhysical[k++]);
+	pConfig->Write(wxT("cw4"), (long) m_ListviewColWidthPhysical[k++]);
+	pConfig->Write(wxT("cw5"), (long) m_ListviewColWidthPhysical[k++]);
+	pConfig->Write(wxT("cw6"), (long) m_ListviewColWidthPhysical[k++]);
+	pConfig->Write(wxT("cw7"), (long) m_ListviewColWidthPhysical[k++]);
+	pConfig->Write(wxT("cw8"), (long) m_ListviewColWidthPhysical[k++]);
+	pConfig->Write(wxT("cw9"), (long) m_ListviewColWidthPhysical[k++]);
+	pConfig->Write(wxT("cw10"), (long) m_ListviewColWidthPhysical[k++]);
+	pConfig->Write(wxT("cw11"), (long) m_ListviewColWidthPhysical[k++]);
+	pConfig->Write(wxT("cw12"), (long) m_ListviewColWidthPhysical[k++]);
+	pConfig->Write(wxT("cw13"), (long) m_ListviewColWidthPhysical[k++]);
+	pConfig->Write(wxT("cw14"), (long) m_ListviewColWidthPhysical[k++]);
+	pConfig->Write(wxT("cw15"), (long) m_ListviewColWidthPhysical[k++]);
+	k = 0;
 	pConfig->SetPath(wxT("/Mainframe/Layout/ListViewVirtual"));
-	pConfig->Write(wxT("cw0"), (long) m_ListviewColWidthVirtual[0]);
-	pConfig->Write(wxT("cw1"), (long) m_ListviewColWidthVirtual[1]);
-	pConfig->Write(wxT("cw2"), (long) m_ListviewColWidthVirtual[2]);
-	pConfig->Write(wxT("cw3"), (long) m_ListviewColWidthVirtual[3]);
-	pConfig->Write(wxT("cw4"), (long) m_ListviewColWidthVirtual[4]);
-	pConfig->Write(wxT("cw5"), (long) m_ListviewColWidthVirtual[5]);
+	pConfig->Write(wxT("cw0"), (long) m_ListviewColWidthVirtual[k++]);
+	pConfig->Write(wxT("cw1"), (long) m_ListviewColWidthVirtual[k++]);
+	pConfig->Write(wxT("cw2"), (long) m_ListviewColWidthVirtual[k++]);
+	pConfig->Write(wxT("cw3"), (long) m_ListviewColWidthVirtual[k++]);
+	pConfig->Write(wxT("cw4"), (long) m_ListviewColWidthVirtual[k++]);
+	pConfig->Write(wxT("cw5"), (long) m_ListviewColWidthVirtual[k++]);
+	pConfig->Write(wxT("cw6"), (long) m_ListviewColWidthVirtual[k++]);
+	pConfig->Write(wxT("cw7"), (long) m_ListviewColWidthVirtual[k++]);
+	pConfig->Write(wxT("cw8"), (long) m_ListviewColWidthVirtual[k++]);
+	pConfig->Write(wxT("cw9"), (long) m_ListviewColWidthVirtual[k++]);
+	pConfig->Write(wxT("cw10"), (long) m_ListviewColWidthVirtual[k++]);
+	pConfig->Write(wxT("cw11"), (long) m_ListviewColWidthVirtual[k++]);
+	pConfig->Write(wxT("cw12"), (long) m_ListviewColWidthVirtual[k++]);
+	pConfig->Write(wxT("cw13"), (long) m_ListviewColWidthVirtual[k++]);
+	pConfig->Write(wxT("cw14"), (long) m_ListviewColWidthVirtual[k++]);
+	pConfig->Write(wxT("cw15"), (long) m_ListviewColWidthVirtual[k++]);
+	pConfig->Write(wxT("cw16"), (long) m_ListviewColWidthVirtual[k++]);
 
 	// delete the virtual folders window
 	if( m_ChooseVirtualFolderDialog != NULL ) delete m_ChooseVirtualFolderDialog;
@@ -1074,17 +1280,17 @@ CMainFrame::~CMainFrame() {
 void CMainFrame::OnViewPhysicalClick( wxCommandEvent& event )
 {
 	if( !event.IsChecked() ) return;
-	if( m_CurrentView == Physical ) return;
+	if( m_CurrentView == cvPhysical ) return;
 
 	wxSplitterWindow* sw = GetSplitterWindow();
 	long sp = sw->GetSashPosition();
 	wxListCtrl* lctl = GetListControl();
 	sw->Unsplit();
 	switch( m_CurrentView ) {
-		case Virtual:
+		case cvVirtual:
 			HideVirtualView();
 			break;
-		case Search:
+		case cvSearch:
 			HideSearchView();
 			break;
 		default:
@@ -1104,17 +1310,17 @@ void CMainFrame::OnViewPhysicalClick( wxCommandEvent& event )
 void CMainFrame::OnViewVirtualClick( wxCommandEvent& event )
 {
 	if( !event.IsChecked() ) return;
-	if( m_CurrentView == Virtual ) return;
+	if( m_CurrentView == cvVirtual ) return;
 
 	wxSplitterWindow* sw = GetSplitterWindow();
 	long sp = sw->GetSashPosition();
 	wxListCtrl* lctl = GetListControl();
 	sw->Unsplit();
 	switch( m_CurrentView ) {
-		case Physical:
+		case cvPhysical:
 			HidePhysicalView();
 			break;
-		case Search:
+		case cvSearch:
 			HideSearchView();
 			break;
 		default:
@@ -1203,6 +1409,15 @@ void CMainFrame::AddAudioMetatataToListControl( CFilesAudioMetadata fam, wxListC
 	if( m_amdColumnsToShow[amdBitrate] ) lctl->SetItem( itemIndex, k++, fam.Bitrate == 0 ? "" : CUtils::long2string(fam.Bitrate) );
 	if( m_amdColumnsToShow[amdSampleRate] ) lctl->SetItem( itemIndex, k++, fam.SampleRate == 0 ? "" : CUtils::long2string(fam.SampleRate) );
 	if( m_amdColumnsToShow[amdChannels] ) lctl->SetItem( itemIndex, k++, fam.Channels == 0 ? "" : CUtils::long2string(fam.Channels) );
+
+	// sets the width of the metadata columns
+	k = firstColumnIndex;
+	for( int i = 0; i < N_AUDIO_METADATA_COLUMNS; i++ )
+		if( m_amdColumnsToShow[i] ) {
+			lctl->SetColumnWidth( k, m_CurrentView == cvPhysical ? m_ListviewColWidthPhysical[firstColumnIndex + i] : m_ListviewColWidthVirtual[firstColumnIndex + i] );
+			k++;
+		}
+
 }
 
 
@@ -1254,13 +1469,16 @@ void CMainFrame::ShowFolderFiles( wxTreeItemId itemID ) {
 		lctl->SetItem( i, 2, files.FileExt );
 		lctl->SetItem( i, 3, files.DateTime.FormatDate() + " " + files.DateTime.FormatTime() );
 		lctl->SetItem( i, 4, FormatObjectDescriptionForListView(files.FileDescription) );
+		MyListItemData *itemData = new MyListItemData( files.FileID, files.PathFileID.IsNull() ? 0 : (long) files.PathFileID, files.FileName, files.FileExt, files.FileSize, files.DateTime, files.IsFolder(), "", files.FileDescription );
+		lctl->SetItemData( i, (long) itemData );
+
 		if( audioMetadataAvailable ) {
 			if( !m_CurrentlyShowingAudioMetadata )
 				CreateAudioMetadataListControlHeaders();
 			AddAudioMetatataToListControl( fam, lctl, i, 5 );
+			itemData->AddAudioMetadata( fam );
 		}
 
-		lctl->SetItemData( i, (long) new MyListItemData( files.FileID, files.PathFileID.IsNull() ? 0 : (long) files.PathFileID, files.FileName, files.FileExt, files.FileSize, files.DateTime, files.IsFolder(), "", files.FileDescription ) );
 		nPhysicalFiles++;
 		sizePhysicalFiles += files.FileSize;
 
@@ -1270,7 +1488,7 @@ void CMainFrame::ShowFolderFiles( wxTreeItemId itemID ) {
 	if( !foundAudioFiles && m_CurrentlyShowingAudioMetadata )
 		DeleteAudioMetadataListControlHeaders();
 
-	lctl->SortItems( ListControlCompareFunction, m_CurrentView == Physical ? 0 : 1 );
+	lctl->SortItems( ListControlCompareFunction, m_CurrentView == cvPhysical ? 0 : 1 );
 	lctl->Show();
 
 	UpdateStatusBar( nPhysicalFiles, sizePhysicalFiles );
@@ -1352,7 +1570,7 @@ void CMainFrame::ShowVirtualFolderFiles( wxTreeItemId itemID ) {
 	if( !foundAudioFiles && m_CurrentlyShowingAudioMetadata )
 		DeleteAudioMetadataListControlHeaders();
 
-	lctl->SortItems( ListControlCompareFunction, m_CurrentView == Physical ? 0 : 1 );
+	lctl->SortItems( ListControlCompareFunction, m_CurrentView == cvPhysical ? 0 : 1 );
 	lctl->Show();
 
 	UpdateStatusBar( nVirtualFiles, sizeVirtualFiles );
@@ -1378,7 +1596,7 @@ void CMainFrame::ShowSelectedVirtualFolderFiles(void ) {
 
 void CMainFrame::OnRenameVolumeUpdate( wxUpdateUIEvent& event )
 {
-	if( CBaseDB::GetDatabase() == NULL || m_CurrentView != Physical ) {
+	if( CBaseDB::GetDatabase() == NULL || m_CurrentView != cvPhysical ) {
 		event.Enable(false);
 		return;
 	}
@@ -1406,7 +1624,7 @@ void CMainFrame::OnRenameVolumeUpdate( wxUpdateUIEvent& event )
 
 void CMainFrame::OnDeleteVolumeUpdate( wxUpdateUIEvent& event )
 {
-	if( CBaseDB::GetDatabase() == NULL || m_CurrentView != Physical ) {
+	if( CBaseDB::GetDatabase() == NULL || m_CurrentView != cvPhysical ) {
 		event.Enable(false);
 		return;
 	}
@@ -1513,7 +1731,7 @@ void CMainFrame::OnAddVirtualFolderUpdate( wxUpdateUIEvent& event )
 		return;
 	}
 	
-	bool isEnabled = m_CurrentView == Physical;
+	bool isEnabled = m_CurrentView == cvPhysical;
 	if( isEnabled ) {
 		wxTreeCtrl* tctl = GetTreePhysicalControl();
 		isEnabled = (tctl->GetCount() > 0);
@@ -1548,7 +1766,7 @@ void CMainFrame::OnNewVirtualRootFolderUpdate( wxUpdateUIEvent& event )
 		return;
 	}
 	
-	event.Enable( m_CurrentView == Virtual );
+	event.Enable( m_CurrentView == cvVirtual );
 }
 
 /*!
@@ -1630,7 +1848,7 @@ void CMainFrame::OnNewVirtualSubfolderUpdate( wxUpdateUIEvent& event )
 		return;
 	}
 	
-	bool isEnabled = m_CurrentView == Virtual;
+	bool isEnabled = m_CurrentView == cvVirtual;
 	if( isEnabled ) {
 		wxTreeCtrl* tctl = GetTreeVirtualControl();
 		isEnabled = (tctl->GetCount() > 0);
@@ -1689,7 +1907,7 @@ void CMainFrame::OnRenameVirtualFolderUpdate( wxUpdateUIEvent& event )
 		return;
 	}
 	
-	bool isEnabled = m_CurrentView == Virtual;
+	bool isEnabled = m_CurrentView == cvVirtual;
 	if( isEnabled ) {
 		wxTreeCtrl* tctl = GetTreeVirtualControl();
 		isEnabled = (tctl->GetCount() > 0);
@@ -1742,7 +1960,7 @@ void CMainFrame::OnDeleteVirtualFolderUpdate( wxUpdateUIEvent& event )
 		return;
 	}
 	
-	bool isEnabled = m_CurrentView == Virtual;
+	bool isEnabled = m_CurrentView == cvVirtual;
 	if( isEnabled ) {
 		wxTreeCtrl* tctl = GetTreeVirtualControl();
 		isEnabled = (tctl->GetCount() > 0);
@@ -1820,7 +2038,7 @@ void CMainFrame::OpenDatabase( wxString fileName, int expectedVersion ) {
 
 void CMainFrame::OnListControlColLeftClick( wxListEvent& event )
 {
-	int nCol = event.GetColumn();
+	int nCol = ColumnNumIfNoColumnsHidden( event.GetColumn() );
 	if( nCol == m_ListViewSortColumn ) {
 		m_ListViewSortAscending = !m_ListViewSortAscending;
 	}
@@ -1830,7 +2048,7 @@ void CMainFrame::OnListControlColLeftClick( wxListEvent& event )
 	}
 
 	wxListCtrl* lctl = GetListControl();
-	lctl->SortItems( ListControlCompareFunction, m_CurrentView == Physical ? 0 : 1 );
+	lctl->SortItems( ListControlCompareFunction, m_CurrentView == cvPhysical ? 0 : 1 );
 
 }
 
@@ -1843,7 +2061,7 @@ void CMainFrame::OnViewPhysicalUpdate( wxUpdateUIEvent& event )
 {
 	event.Enable( CBaseDB::GetDatabase() != NULL );
 	
-	if( m_CurrentView == Physical )
+	if( m_CurrentView == cvPhysical )
 		event.Check(true);
 	else
 		event.Check(false);
@@ -1857,7 +2075,7 @@ void CMainFrame::OnViewVirtualUpdate( wxUpdateUIEvent& event )
 {
 	event.Enable( CBaseDB::GetDatabase() != NULL );
 	
-	if( m_CurrentView == Virtual )
+	if( m_CurrentView == cvVirtual )
 		event.Check(true);
 	else
 		event.Check(false);
@@ -1895,19 +2113,37 @@ void CMainFrame::OnViewToolbarClick( wxCommandEvent& event )
 void CMainFrame::StoreListControlVirtualWidth(void) {
 
 	wxListCtrl* lctl = GetListControl();
-//	wxASSERT(lctl->GetColumnCount() == N_BASE_COLS_VIRTUAL + N_AUDIO_METADATA_COLUMNS);
 
 	for( int k = 0; k < N_BASE_COLS_VIRTUAL; k++ )
 		m_ListviewColWidthVirtual[k] = lctl->GetColumnWidth(k);
+
+	if( m_CurrentlyShowingAudioMetadata ) {
+		// stores the width of the audio metadata columns
+		k = N_BASE_COLS_VIRTUAL;
+		for( int i = 0; i < N_AUDIO_METADATA_COLUMNS; i++ )
+			if( m_amdColumnsToShow[i] ) {
+				m_ListviewColWidthVirtual[N_BASE_COLS_VIRTUAL + i] = lctl->GetColumnWidth(k);
+				k++;
+			}
+	}
 }
 
 void CMainFrame::StoreListControlPhysicalWidth(void) {
 
 	wxListCtrl* lctl = GetListControl();
-//	wxASSERT(lctl->GetColumnCount() == N_BASE_COLS_PHYSICAL + N_AUDIO_METADATA_COLUMNS);
 
 	for( int k = 0; k < N_BASE_COLS_PHYSICAL; k++ )
 		m_ListviewColWidthPhysical[k] = lctl->GetColumnWidth(k);
+
+	if( m_CurrentlyShowingAudioMetadata ) {
+		// stores the width of the audio metadata columns
+		k = N_BASE_COLS_PHYSICAL;
+		for( int i = 0; i < N_AUDIO_METADATA_COLUMNS; i++ )
+			if( m_amdColumnsToShow[i] ) {
+				m_ListviewColWidthPhysical[N_BASE_COLS_PHYSICAL + i] = lctl->GetColumnWidth(k);
+				k++;
+			}
+	}
 }
 
 /*!
@@ -2087,6 +2323,7 @@ void CMainFrame::OnEditObjectDescriptionClick( wxCommandEvent& WXUNUSED(event) )
 			else {
 				CFiles::UpdateDescription( itemData->GetFileID(), newDescr );
 			}
+			lctl->SetItem( item, m_CurrentView == cvPhysical ? 4 : 5, FormatObjectDescriptionForListView(newDescr) );
 		}
 
 	}
@@ -2094,7 +2331,6 @@ void CMainFrame::OnEditObjectDescriptionClick( wxCommandEvent& WXUNUSED(event) )
 		wxTreeCtrl *tctl = GetTreePhysicalControl();
 		wxTreeItemId item = tctl->GetSelection();
 		MyTreeItemData *itemData = (MyTreeItemData *) tctl->GetItemData(item);
-//		wxString objectName = tctl->GetItemText( item );
 		wxString objectName = itemData->GetDesc();
 
 		CDialogObjectDescription dialog( this, ID_DIALOG_OBJECT_DESCRIPTION, _("Object description") );
@@ -2132,7 +2368,7 @@ void CMainFrame::OnEditObjectDescriptionClick( wxCommandEvent& WXUNUSED(event) )
 
 void CMainFrame::OnEditObjectDescriptionUpdate( wxUpdateUIEvent& event )
 {
-	if( CBaseDB::GetDatabase() == NULL|| m_CurrentView != Physical ) {
+	if( CBaseDB::GetDatabase() == NULL|| m_CurrentView != cvPhysical ) {
 		event.Enable(false);
 		return;
 	}
@@ -2247,17 +2483,17 @@ void CMainFrame::OnTreeControlVirtualItemMenu( wxTreeEvent& event )
 void CMainFrame::OnViewSearchClick( wxCommandEvent& event )
 {
 	if( !event.IsChecked() ) return;
-	if( m_CurrentView == Search ) return;
+	if( m_CurrentView == cvSearch ) return;
 
 	wxSplitterWindow* sw = GetSplitterWindow();
 	long sp = sw->GetSashPosition();
 	wxListCtrl* lctl = GetListControl();
 	sw->Unsplit();
 	switch( m_CurrentView ) {
-		case Physical:
+		case cvPhysical:
 			HidePhysicalView();
 			break;
-		case Virtual:
+		case cvVirtual:
 			HideVirtualView();
 			break;
 		default:
@@ -2281,7 +2517,7 @@ void CMainFrame::OnViewSearchUpdate( wxUpdateUIEvent& event )
 {
 	event.Enable( CBaseDB::GetDatabase() != NULL );
 	
-	if( m_CurrentView == Search )
+	if( m_CurrentView == cvSearch )
 		event.Check(true);
 	else
 		event.Check(false);
@@ -2290,7 +2526,7 @@ void CMainFrame::OnViewSearchUpdate( wxUpdateUIEvent& event )
 void CMainFrame::ShowPhysicalView(void) {
 	wxTreeCtrl* tctlPhysical = GetTreePhysicalControl();
 	tctlPhysical->Show( true );
-	m_CurrentView = Physical;
+	m_CurrentView = cvPhysical;
 	CreateListControlHeaders();
 	ShowSelectedFolderFiles();
 }
@@ -2305,7 +2541,7 @@ void CMainFrame::HidePhysicalView(void) {
 void CMainFrame::ShowVirtualView(void) {
 	wxTreeCtrl* tctlVirtual = GetTreeVirtualControl();
 	tctlVirtual->Show( true );
-	m_CurrentView = Virtual;
+	m_CurrentView = cvVirtual;
 	CreateListControlHeaders();
 	ShowSelectedVirtualFolderFiles();
 
@@ -2320,7 +2556,7 @@ void CMainFrame::HideVirtualView(void) {
 
 void CMainFrame::ShowSearchView(void) {
 	m_SearchPanel->Show( true );
-	m_CurrentView = Search;
+	m_CurrentView = cvSearch;
 	CreateListControlHeaders();
 
 	// checks if there is a selected item in the tree controls and enables/disables the radio buttons
@@ -2333,7 +2569,7 @@ void CMainFrame::ShowSearchView(void) {
 			isFolderSelected = true;
 		}
 	}
-	m_SearchRadioBox->Enable( SelectedPhysicalFolder, isFolderSelected );
+	m_SearchRadioBox->Enable( ssSelectedPhysicalFolder, isFolderSelected );
 	// virtual...
 	tctl = GetTreeVirtualControl();
 	isFolderSelected = false;	// true if the selected item is a volume
@@ -2343,7 +2579,7 @@ void CMainFrame::ShowSearchView(void) {
 			isFolderSelected = true;
 		}
 	}
-	m_SearchRadioBox->Enable( SelectedVirtualFolder, isFolderSelected );
+	m_SearchRadioBox->Enable( ssSelectedVirtualFolder, isFolderSelected );
 
 }
 
@@ -2369,12 +2605,12 @@ void CMainFrame::OnButtonSearchClick( wxCommandEvent& WXUNUSED(event) ) {
 	useWildcardsFilename = false;
 	if( !fileName.empty() ) {
 		switch( searchKind ) {
-			case StartsWith:
+			case fskStartsWith:
 				useWildcardsFilename = true;
 				fileName = CBaseRec::EscapeWildcards( fileName, "/" );
 				fileName = fileName + "%";
 				break;
-			case Contains:
+			case fskContains:
 				useWildcardsFilename = true;
 				fileName = CBaseRec::EscapeWildcards( fileName, "/" );
 				fileName = "%" + fileName + "%";
@@ -2386,12 +2622,12 @@ void CMainFrame::OnButtonSearchClick( wxCommandEvent& WXUNUSED(event) ) {
 	useWildcardsDescription = false;
 	if( !description.empty() ) {
 		switch( searchKind ) {
-			case StartsWith:
+			case fskStartsWith:
 				useWildcardsDescription = true;
 				description = CBaseRec::EscapeWildcards( description, "/" );
 				description = description + "%";
 				break;
-			case Contains:
+			case fskContains:
 				useWildcardsDescription = true;
 				description = CBaseRec::EscapeWildcards( description, "/" );
 				description = "%" + description + "%";
@@ -2417,7 +2653,7 @@ void CMainFrame::OnButtonSearchClick( wxCommandEvent& WXUNUSED(event) ) {
 
 	bool foundAudioFiles = false;
 	switch( scope ) {
-		case AllPhysicalVolumes : {
+		case ssAllPhysicalVolumes : {
 			CFiles files;
 			CNullableLong nl;
 			nl.SetNull(true);
@@ -2435,7 +2671,7 @@ void CMainFrame::OnButtonSearchClick( wxCommandEvent& WXUNUSED(event) ) {
 				DeleteAudioMetadataListControlHeaders();
 			break;
 		}
-		case SelectedPhysicalFolder: {
+		case ssSelectedPhysicalFolder: {
 			wxTreeCtrl *tctl = GetTreePhysicalControl();
 			wxASSERT( tctl->GetCount() > 0 );
 			wxTreeItemId item = tctl->GetSelection();
@@ -2467,7 +2703,7 @@ void CMainFrame::OnButtonSearchClick( wxCommandEvent& WXUNUSED(event) ) {
 			}
 			break;
 		}
-		case SelectedVirtualFolder: {
+		case ssSelectedVirtualFolder: {
 			wxTreeCtrl *tctl = GetTreeVirtualControl();
 			wxASSERT( tctl->GetCount() > 0 );
 			wxTreeItemId item = tctl->GetSelection();
@@ -2483,7 +2719,7 @@ void CMainFrame::OnButtonSearchClick( wxCommandEvent& WXUNUSED(event) ) {
 			break;
 	}
 
-	lctl->SortItems( ListControlCompareFunction, m_CurrentView == Physical ? 0 : 1 );
+	lctl->SortItems( ListControlCompareFunction, m_CurrentView == cvPhysical ? 0 : 1 );
 	lctl->Show();
 
 	UpdateStatusBar( nSearchFiles, sizeSearchFiles );
@@ -2508,12 +2744,14 @@ int CMainFrame::AddRowToVirtualListControl( wxListCtrl* lctl, bool isFolder, wxS
 	lctl->SetItem( i, 3, dateTime.FormatDate() + " " + dateTime.FormatTime() );
 	lctl->SetItem( i, 4, physicalPath );
 	lctl->SetItem( i, 5, FormatObjectDescriptionForListView(fileDescription) );
+	MyListItemData *itemData = new MyListItemData( fileID, virtualPathFileID, fileName, ext, fileSize, dateTime, isFolder, physicalPath, fileDescription );
+	lctl->SetItemData( i, (long) itemData );
 	if( audioMetadataAvailable ) {
 			if( !m_CurrentlyShowingAudioMetadata )
 				CreateAudioMetadataListControlHeaders();
 		AddAudioMetatataToListControl( fam, lctl, i, 6 );
+		itemData->AddAudioMetadata( fam );
 	}
-	lctl->SetItemData( i, (long) new MyListItemData( fileID, virtualPathFileID, fileName, ext, fileSize, dateTime, isFolder, physicalPath, fileDescription ) );
 	if( physicalPath.empty() ) lctl->SetItemTextColour( i, *wxBLUE );
 
 	return i;
@@ -2584,7 +2822,7 @@ void CMainFrame::SearchPhysicalFolder( wxString fileName, bool useFileNameWildca
 
 void CMainFrame::OnListControlItemActivated( wxListEvent& event )
 {
-	if( m_CurrentView == Search ) return;
+	if( m_CurrentView == cvSearch ) return;
 
 	int i = event.GetIndex();
 	wxListCtrl* lctl = GetListControl();
@@ -2596,10 +2834,10 @@ void CMainFrame::OnListControlItemActivated( wxListEvent& event )
 
 	wxTreeCtrl *tctl = NULL;
 	switch( m_CurrentView ) {
-		case Physical:
+		case cvPhysical:
 			tctl = GetTreePhysicalControl();
 			break;
-		case Virtual:
+		case cvVirtual:
 			tctl = GetTreeVirtualControl();
 			break;
 		default:
@@ -2625,17 +2863,17 @@ void CMainFrame::OnListControlItemActivated( wxListEvent& event )
 void CMainFrame::UpdateStatusBar( long nObjects, wxLongLong sizeObjects ) {
 
 	if( nObjects == 0 )
-		m_StatusBar->SetStatusText( "", ObjectsNumber );
+		m_StatusBar->SetStatusText( "", sbeObjectsNumber );
 	else {
 		wxString s = _("Objects: ") + CUtils::long2string( nObjects );
-		m_StatusBar->SetStatusText( s, ObjectsNumber );
+		m_StatusBar->SetStatusText( s, sbeObjectsNumber );
 	}
 
 	if( sizeObjects == 0 )
-		m_StatusBar->SetStatusText( "", ObjectsSize );
+		m_StatusBar->SetStatusText( "", sbeObjectsSize );
 	else {
 		wxString s = _("Total size: ") + CUtils::HumanReadableFileSize( sizeObjects );
-		m_StatusBar->SetStatusText( s, ObjectsSize );
+		m_StatusBar->SetStatusText( s, sbeObjectsSize );
 	}
 
 }
@@ -2668,7 +2906,7 @@ void CMainFrame::OnViewStatusBarClick( wxCommandEvent& event )
 
 void CMainFrame::OnUpOneFolderClick( wxCommandEvent& WXUNUSED(event) )
 {
-	wxTreeCtrl *tctl = (m_CurrentView == Physical) ? GetTreePhysicalControl() : GetTreeVirtualControl();
+	wxTreeCtrl *tctl = (m_CurrentView == cvPhysical) ? GetTreePhysicalControl() : GetTreeVirtualControl();
 	wxTreeItemId item = tctl->GetSelection();
 	tctl->SelectItem( tctl->GetItemParent(item) );
 }
@@ -2679,13 +2917,13 @@ void CMainFrame::OnUpOneFolderClick( wxCommandEvent& WXUNUSED(event) )
 
 void CMainFrame::OnUpOneFolderUpdate( wxUpdateUIEvent& event )
 {
-	if( CBaseDB::GetDatabase() == NULL || m_CurrentView == Search ) {
+	if( CBaseDB::GetDatabase() == NULL || m_CurrentView == cvSearch ) {
 		event.Enable(false);
 		return;
 	}
 	
 	bool hideElement = true;
-	wxTreeCtrl *tctl = m_CurrentView == Physical ? GetTreePhysicalControl() : GetTreeVirtualControl();
+	wxTreeCtrl *tctl = m_CurrentView == cvPhysical ? GetTreePhysicalControl() : GetTreeVirtualControl();
 	if( tctl->GetCount() > 0 ) {
 		wxTreeItemId item = tctl->GetSelection();
 		if( item.IsOk() ) {
@@ -2725,7 +2963,7 @@ void CMainFrame::OnListControlContextMenu( wxContextMenuEvent& event )
 {
 	event.Skip();
 
-	if( m_CurrentView != Physical ) return;
+	if( m_CurrentView != cvPhysical ) return;
 	if( GetListControl()->GetSelectedItemCount() <= 0 ) return;
 
 	wxPoint point = event.GetPosition();
@@ -2749,3 +2987,21 @@ void CMainFrame::OnListControlContextMenu( wxContextMenuEvent& event )
 	PopupMenu( &menu, point );
 }
 
+int CMainFrame::ColumnNumIfNoColumnsHidden( int inColNum ) {
+
+	int firstMetadataColumn = m_CurrentView == cvPhysical ? N_BASE_COLS_PHYSICAL : N_BASE_COLS_VIRTUAL;
+	if( inColNum < firstMetadataColumn ) return inColNum;	// only metadata columns may be hidden
+
+	int k = firstMetadataColumn;	// k is increased from visible column to visible column
+	int i = 0;						// i points to the array of possible metadata columns
+	int retVal = inColNum;
+	while( k <= inColNum ) {
+		while( !m_amdColumnsToShow[i] ) {
+			retVal++;
+			i++;
+		}
+		k++;
+		i++;
+	}
+	return retVal;
+}
