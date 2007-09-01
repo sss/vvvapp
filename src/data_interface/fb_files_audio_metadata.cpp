@@ -55,13 +55,13 @@ void CFilesAudioMetadata::FB_DbInsert(void) {
 	
 	sql = "INSERT INTO FILES_AUDIO_METADATA (FILE_ID, TRACK_TITLE, TRACK_ARTIST, TRACK_ALBUM, TRACK_YEAR, TRACK_COMMENT, TRACK_NUMBER, TRACK_GENRE, TRACK_BITRATE, TRACK_SAMPLE_RATE, TRACK_CHANNELS, TRACK_LENGTH) VALUES (";
 	sql += CUtils::long2string(FileID) + ", " +
-	       String2SQL(Title) + ", " + 
-	       String2SQL(Artist) + ", " + 
-	       String2SQL(Album) + ", " + 
+	       String2SQL(Title.Left(100)) + ", " + 
+	       String2SQL(Artist.Left(100)) + ", " + 
+	       String2SQL(Album.Left(100)) + ", " + 
 		   Long2SQL( Year ) + ", " + 
-	       String2SQL(Comment) + ", " + 
+	       String2SQL(Comment.Left(500)) + ", " + 
 		   Long2SQL( Number ) + ", " + 
-	       String2SQL(Genre) + ", " + 
+	       String2SQL(Genre.Left(100)) + ", " + 
 		   Long2SQL( Bitrate ) + ", " + 
 		   Long2SQL( SampleRate ) + ", " + 
 		   Long2SQL( Channels ) + ", " + 

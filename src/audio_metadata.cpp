@@ -66,7 +66,7 @@ bool CAudioMetadata::ReadMP3Metadata( wxString fileName, CFilesAudioMetadata& me
 		ID3_Field* myField = myFrame->GetField(ID3FN_TEXT);
 		if( myField != NULL ) {
 			myField->Get(str1, 1024);
-			metaData.Album = str1;
+			metaData.Comment = str1;
 			found = true;
 		}
 	}
