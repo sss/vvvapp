@@ -2134,9 +2134,10 @@ void CMainFrame::OnViewToolbarClick( wxCommandEvent& event )
 
 void CMainFrame::StoreListControlVirtualWidth(void) {
 
+	int k;
 	wxListCtrl* lctl = GetListControl();
 
-	for( int k = 0; k < N_BASE_COLS_VIRTUAL; k++ )
+	for( k = 0; k < N_BASE_COLS_VIRTUAL; k++ )
 		m_ListviewColWidthVirtual[k] = lctl->GetColumnWidth(k);
 
 	if( m_CurrentlyShowingAudioMetadata ) {
@@ -2152,9 +2153,10 @@ void CMainFrame::StoreListControlVirtualWidth(void) {
 
 void CMainFrame::StoreListControlPhysicalWidth(void) {
 
+	int k;
 	wxListCtrl* lctl = GetListControl();
 
-	for( int k = 0; k < N_BASE_COLS_PHYSICAL; k++ )
+	for( k = 0; k < N_BASE_COLS_PHYSICAL; k++ )
 		m_ListviewColWidthPhysical[k] = lctl->GetColumnWidth(k);
 
 	if( m_CurrentlyShowingAudioMetadata ) {

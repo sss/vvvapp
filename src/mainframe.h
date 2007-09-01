@@ -126,6 +126,12 @@ class wxStatusBar;
 #define wxCLOSE_BOX 0x1000
 #endif
 
+// number of base columns in the physical view
+#define N_BASE_COLS_PHYSICAL 5
+// number of columns in the virtual and search view
+#define N_BASE_COLS_VIRTUAL 6
+#define N_AUDIO_METADATA_COLUMNS 11
+
 /*!
  * CMainFrame class declaration
  */
@@ -363,10 +369,6 @@ private:
 		sbeObjectsSize
 	};
 
-	static const N_BASE_COLS_PHYSICAL = 5;	// number of base columns in the physical view
-	static const N_BASE_COLS_VIRTUAL = 6;	// number of columns in the virtual and search view
-	static const N_AUDIO_METADATA_COLUMNS = 11;
-	
 	// audio metadata columns
 	enum AMDColumns {
 		amdArtist = 0,
