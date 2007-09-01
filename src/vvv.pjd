@@ -1553,8 +1553,8 @@
               <string name="event-handler-0">"wxEVT_COMMAND_LIST_ITEM_ACTIVATED|OnListControlItemActivated|NONE||"</string>
               <string name="event-handler-1">"wxEVT_COMMAND_LIST_COL_CLICK|OnListControlColLeftClick|||"</string>
               <string name="event-handler-2">"wxEVT_CONTEXT_MENU|OnListControlContextMenu|NONE||"</string>
-              <string name="event-handler-3">"wxEVT_SET_FOCUS|OnListViewSetFocus|NONE||"</string>
-              <string name="event-handler-4">"wxEVT_KILL_FOCUS|OnListViewKillFocus|NONE||"</string>
+              <string name="event-handler-3">"wxEVT_SET_FOCUS|OnListControlSetFocus|NONE||"</string>
+              <string name="event-handler-4">"wxEVT_KILL_FOCUS|OnListControlKillFocus|NONE||"</string>
               <string name="proxy-Id name">"ID_LIST_CONTROL"</string>
               <long name="proxy-Id value">10047</long>
               <string name="proxy-Class">"wxListCtrl"</string>

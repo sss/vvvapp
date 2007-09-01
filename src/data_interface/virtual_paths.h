@@ -54,6 +54,9 @@ public:
 	// creates a virtual folder named as the volume name and copies data in it
 	static void AppendVolume( long VolumeID, long PhysicalPathID, long VirtualPathID );
 
+	// adds a physical file to the virtual path
+	static void AddPhysicalFile( long PhysicalFileID, long VirtualPathID );
+
 	// renames a virtual path.
 	static void Rename( long VirtualPathID, wxString newName );
 
@@ -72,6 +75,7 @@ protected:
 	static void FB_AppendPhysicalPath( long PhysicalPathID, long VirtualPathID );
 	static void FB_AppendVolume( long VolumeID, long PhysicalPathID, long VirtualPathID );
 	static void FB_Rename( long VirtualPathID, wxString newName );
+	static void FB_AddPhysicalFile( long PhysicalFileID, long VirtualPathID );
 
 };
 

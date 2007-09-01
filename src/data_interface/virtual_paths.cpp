@@ -34,9 +34,9 @@ void CVirtualPaths::DBStartQueryListPaths( CNullableLong FathID ) {
 	wxString sql;
 
 	if( FathID.IsNull() )
-		sql = "SELECT * FROM VIRTUAL_PATHS WHERE FATHER_ID IS NULL ORDER BY PATH";
+		sql = "SELECT * FROM VIRTUAL_PATHS WHERE FATHER_ID IS NULL ORDER BY UPPER(PATH)";
 	else
-		sql = "SELECT * FROM VIRTUAL_PATHS WHERE FATHER_ID = " + CUtils::long2string(FathID) + " ORDER BY PATH";
+		sql = "SELECT * FROM VIRTUAL_PATHS WHERE FATHER_ID = " + CUtils::long2string(FathID) + " ORDER BY UPPER(PATH)";
 
 	DBStartMultiRowQuery( sql, true );
 }
@@ -65,3 +65,12 @@ void CVirtualPaths::Rename( long VirtualPathID, wxString newName ) {
 			break;
 	}
 }
+
+void CVirtualPaths::AddPhysicalFile( long PhysicalFileID, long VirtualPathID ) {
+	switch( DatabaseType ) {
+		case dbtFirebird:
+			FB_AddPhysicalFile( PhysicalFileID, VirtualPathID );
+			break;
+	}
+}
+

@@ -23,7 +23,7 @@
 #include "utils.h"
 
 wxString CUtils::applicationName = wxT("VVV");
-wxString CUtils::applicationVersion = wxT("0.63");
+wxString CUtils::applicationVersion = wxT("0.7");
 int CUtils::expectedDatabaseVersion = 13;
 wxString CUtils::strucUpdateDbName = wxT("vvv-struct-update.fdb");
 

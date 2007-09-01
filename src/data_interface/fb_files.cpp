@@ -45,7 +45,7 @@ void CFiles::FB_DbInsert(void)
                  FileSize.ToString() + ", " +
 				 DateTime.Format( "'%Y-%m-%d %H:%M:%S'" ) + ", " +
 				 (PathFileID.IsNull() ? "NULL" : CUtils::long2string(PathFileID) ) + ", " +
-				 CUtils::long2string(PathID) + 
+				 CUtils::long2string(PathID) + ", " +
 				 (FileDescription.empty() ? "NULL" : "'" + ExpandSingleQuotes(FileDescription) + "'") +
 				 ")";
 	FB_ExecuteQueryNoReturn( sql );

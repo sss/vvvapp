@@ -658,8 +658,8 @@ void CMainFrame::CreateControls()
 
     // Connect events and objects
     itemListCtrl44->Connect(ID_LIST_CONTROL, wxEVT_CONTEXT_MENU, wxContextMenuEventHandler(CMainFrame::OnListControlContextMenu), NULL, this);
-    itemListCtrl44->Connect(ID_LIST_CONTROL, wxEVT_SET_FOCUS, wxFocusEventHandler(CMainFrame::OnListViewSetFocus), NULL, this);
-    itemListCtrl44->Connect(ID_LIST_CONTROL, wxEVT_KILL_FOCUS, wxFocusEventHandler(CMainFrame::OnListViewKillFocus), NULL, this);
+    itemListCtrl44->Connect(ID_LIST_CONTROL, wxEVT_SET_FOCUS, wxFocusEventHandler(CMainFrame::OnListControlSetFocus), NULL, this);
+    itemListCtrl44->Connect(ID_LIST_CONTROL, wxEVT_KILL_FOCUS, wxFocusEventHandler(CMainFrame::OnListControlKillFocus), NULL, this);
 ////@end CMainFrame content construction
 
 	// creates the tree control used to show virtual folders
@@ -1596,7 +1596,7 @@ void CMainFrame::ShowSelectedVirtualFolderFiles(void ) {
 
 void CMainFrame::OnRenameVolumeUpdate( wxUpdateUIEvent& event )
 {
-	if( CBaseDB::GetDatabase() == NULL || m_CurrentView != cvPhysical ) {
+	if( CBaseDB::GetDatabase() == NULL || m_CurrentView != cvPhysical || m_ListViewHasFocus ) {
 		event.Enable(false);
 		return;
 	}
@@ -1624,7 +1624,7 @@ void CMainFrame::OnRenameVolumeUpdate( wxUpdateUIEvent& event )
 
 void CMainFrame::OnDeleteVolumeUpdate( wxUpdateUIEvent& event )
 {
-	if( CBaseDB::GetDatabase() == NULL || m_CurrentView != cvPhysical ) {
+	if( CBaseDB::GetDatabase() == NULL || m_CurrentView != cvPhysical  || m_ListViewHasFocus) {
 		event.Enable(false);
 		return;
 	}
@@ -1693,26 +1693,48 @@ void CMainFrame::OnRenameVolumeClick( wxCommandEvent& WXUNUSED(event) )
 
 void CMainFrame::OnAddVirtualFolderClick( wxCommandEvent& WXUNUSED(event) )
 {
+	bool listViewHadFocus = m_ListViewHasFocus;	// we store the value because it changes when opening the dialog
+
 	m_ChooseVirtualFolderDialog->ShowModal();
 	long virtualFolderId = m_ChooseVirtualFolderDialog->GetVirtualFolderID();
+	m_ListViewHasFocus = listViewHadFocus;
 	if( virtualFolderId < 0 ) return;
-
-	bool isVolumeItem = false;	// true if the user has selected a volume (not a folder)
-	wxTreeCtrl *tctl = GetTreePhysicalControl();
-	wxTreeItemId item = tctl->GetSelection();
-	if( tctl->GetItemParent(item) == tctl->GetRootItem() ) isVolumeItem = true;
 
 	wxBusyCursor wait;
 
-	MyTreeItemData *itemData = (MyTreeItemData *) tctl->GetItemData(item);
-	long physicalFolderId = itemData->GetPathID();
+	if( m_ListViewHasFocus ) {
+		wxListCtrl *lctl = GetListControl();
+		int nSelectedObjects = lctl->GetSelectedItemCount();
+		wxASSERT( nSelectedObjects > 0 );
 
-	if( isVolumeItem ) {
-		long volumeID = itemData->GetVolumeID();
-		CVirtualPaths::AppendVolume( volumeID, physicalFolderId, virtualFolderId );
+		// loops over all the selected items
+		long item = -1;
+		for( ;; ) {
+			item = lctl->GetNextItem( item, wxLIST_NEXT_ALL, wxLIST_STATE_SELECTED );
+			if( item == -1 ) break;
+			MyListItemData *itemData = (MyListItemData *) lctl->GetItemData( item );
+			if( itemData->IsFolder() )
+				CVirtualPaths::AppendPhysicalPath( itemData->GetPathFileID(), virtualFolderId );
+			else
+				CVirtualPaths::AddPhysicalFile( itemData->GetFileID(), virtualFolderId );
+		}
 	}
-	else
-		CVirtualPaths::AppendPhysicalPath( physicalFolderId, virtualFolderId );
+	else {
+		bool isVolumeItem = false;	// true if the user has selected a volume (not a folder)
+		wxTreeCtrl *tctl = GetTreePhysicalControl();
+		wxTreeItemId item = tctl->GetSelection();
+		if( tctl->GetItemParent(item) == tctl->GetRootItem() ) isVolumeItem = true;
+
+		MyTreeItemData *itemData = (MyTreeItemData *) tctl->GetItemData(item);
+		long physicalFolderId = itemData->GetPathID();
+
+		if( isVolumeItem ) {
+			long volumeID = itemData->GetVolumeID();
+			CVirtualPaths::AppendVolume( volumeID, physicalFolderId, virtualFolderId );
+		}
+		else
+			CVirtualPaths::AppendPhysicalPath( physicalFolderId, virtualFolderId );
+	}
 
 	// updates the tree controls
 	m_ChooseVirtualFolderDialog->Refresh();
@@ -1843,7 +1865,7 @@ void CMainFrame::CreateNewVirtualFolder( CNullableLong FatherID, wxString window
 
 void CMainFrame::OnNewVirtualSubfolderUpdate( wxUpdateUIEvent& event )
 {
-	if( CBaseDB::GetDatabase() == NULL ) {
+	if( CBaseDB::GetDatabase() == NULL || m_ListViewHasFocus ) {
 		event.Enable(false);
 		return;
 	}
@@ -1902,7 +1924,7 @@ void CMainFrame::OnRenameVirtualFolderClick( wxCommandEvent& WXUNUSED(event) )
 
 void CMainFrame::OnRenameVirtualFolderUpdate( wxUpdateUIEvent& event )
 {
-	if( CBaseDB::GetDatabase() == NULL ) {
+	if( CBaseDB::GetDatabase() == NULL || m_ListViewHasFocus ) {
 		event.Enable(false);
 		return;
 	}
@@ -1955,7 +1977,7 @@ void CMainFrame::OnDeleteVirtualFolderClick( wxCommandEvent& WXUNUSED(event) )
 
 void CMainFrame::OnDeleteVirtualFolderUpdate( wxUpdateUIEvent& event )
 {
-	if( CBaseDB::GetDatabase() == NULL ) {
+	if( CBaseDB::GetDatabase() == NULL || m_ListViewHasFocus ) {
 		event.Enable(false);
 		return;
 	}
@@ -2939,20 +2961,12 @@ void CMainFrame::OnUpOneFolderUpdate( wxUpdateUIEvent& event )
  * wxEVT_SET_FOCUS event handler for ID_LIST_CONTROL
  */
 
-void CMainFrame::OnListViewSetFocus( wxFocusEvent& WXUNUSED(event) )
+void CMainFrame::OnListControlSetFocus( wxFocusEvent& WXUNUSED(event) )
 {
 	m_ListViewHasFocus = true;
 }
 
 
-/*!
- * wxEVT_KILL_FOCUS event handler for ID_LIST_CONTROL
- */
-
-void CMainFrame::OnListViewKillFocus( wxFocusEvent& WXUNUSED(event) )
-{
-	m_ListViewHasFocus = false;
-}
 
 
 /*!
@@ -2980,8 +2994,8 @@ void CMainFrame::OnListControlContextMenu( wxContextMenuEvent& event )
 	}
 
 	wxMenu menu;
-//	menu.Append( ID_ADD_VIRTUAL_FOLDER, _("Add To Virtual Folder") );
-//	menu.AppendSeparator();
+	menu.Append( ID_ADD_VIRTUAL_FOLDER, _("Add To Virtual Folder") );
+	menu.AppendSeparator();
 	menu.Append( ID_EDIT_OBJECT_DESCRIPTION, _("Edit Description...") );
 
 	PopupMenu( &menu, point );
@@ -3005,3 +3019,14 @@ int CMainFrame::ColumnNumIfNoColumnsHidden( int inColNum ) {
 	}
 	return retVal;
 }
+
+
+/*!
+ * wxEVT_KILL_FOCUS event handler for ID_LIST_CONTROL
+ */
+
+void CMainFrame::OnListControlKillFocus( wxFocusEvent& WXUNUSED(event) )
+{
+	m_ListViewHasFocus = false;
+}
+

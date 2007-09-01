@@ -267,10 +267,10 @@ public:
     void OnListControlContextMenu( wxContextMenuEvent& event );
 
     /// wxEVT_SET_FOCUS event handler for ID_LIST_CONTROL
-    void OnListViewSetFocus( wxFocusEvent& event );
+    void OnListControlSetFocus( wxFocusEvent& event );
 
     /// wxEVT_KILL_FOCUS event handler for ID_LIST_CONTROL
-    void OnListViewKillFocus( wxFocusEvent& event );
+    void OnListControlKillFocus( wxFocusEvent& event );
 
 ////@end CMainFrame event handler declarations
 
@@ -308,7 +308,7 @@ public:
     /// wxEVT_COMMAND_TREE_SEL_CHANGED event handler for ID_TREE_CONTROL_VIRTUAL
     void OnTreeControlVirtualSelChanged( wxTreeEvent& event );
 
-    /// wxEVT_COMMAND_TREE_ITEM_MENU event handler for ID_TREE_CONTROL_VIRTUAL
+	/// wxEVT_COMMAND_TREE_ITEM_MENU event handler for ID_TREE_CONTROL_VIRTUAL
     void OnTreeControlVirtualItemMenu( wxTreeEvent& event );
 
     /// wxEVT_COMMAND_BUTTON_CLICKED event handler for ID_BUTTON_SEARCH
