@@ -111,9 +111,6 @@ public:
     /// wxEVT_COMMAND_BUTTON_CLICKED event handler for wxID_OK
     void OnOKClick( wxCommandEvent& event );
 
-    /// wxEVT_COMMAND_BUTTON_CLICKED event handler for wxID_CANCEL
-    void OnCANCELClick( wxCommandEvent& event );
-
 ////@end CDialogChooseVirtualFolder event handler declarations
 
 ////@begin CDialogChooseVirtualFolder member function declarations

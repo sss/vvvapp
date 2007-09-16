@@ -82,8 +82,6 @@ BEGIN_EVENT_TABLE( CDialogChooseVirtualFolder, wxDialog )
 
     EVT_BUTTON( wxID_OK, CDialogChooseVirtualFolder::OnOKClick )
 
-    EVT_BUTTON( wxID_CANCEL, CDialogChooseVirtualFolder::OnCANCELClick )
-
 ////@end CDialogChooseVirtualFolder event table entries
 
 END_EVENT_TABLE()
@@ -312,23 +310,9 @@ void CDialogChooseVirtualFolder::OnOKClick( wxCommandEvent& WXUNUSED(event) )
 		m_VirtualFolderID = -1;
 	}
 
-	if( m_VirtualFolderID > 0 )
-		SetReturnCode( wxID_OK );
-	else
-		SetReturnCode( wxID_CANCEL );
-	this->Show(false);
+	EndModal( wxID_OK );
 }
 
-/*!
- * wxEVT_COMMAND_BUTTON_CLICKED event handler for wxID_CANCEL
- */
-
-void CDialogChooseVirtualFolder::OnCANCELClick( wxCommandEvent& WXUNUSED(event) )
-{
-	m_VirtualFolderID = -1;
-	SetReturnCode( wxID_CANCEL );
-	this->Show(false);
-}
 
 
 void CDialogChooseVirtualFolder::GetCurrentPathArray( wxArrayString& as ) {
