@@ -47,7 +47,8 @@
 ////@begin includes
 #include "wx/treectrl.h"
 ////@end includes
-#include "wx/imaglist.h"
+#include <wx/imaglist.h>
+#include <wx/arrstr.h>
 
 /*!
  * Forward declarations
@@ -135,6 +136,12 @@ public:
 
 	// reloads the tree from the database
 	void Refresh() { LoadVirtualTreeControl(); }
+
+	// fills a wxArrayString with the name of the current folder and all its parents
+	void GetCurrentPathArray( wxArrayString& as );
+
+	// selects the folder saved in the array. The array has been previously filled by GetCurrentPathArray()
+	void SetCurrentPathArray( wxArrayString& as );
 
 private:
 

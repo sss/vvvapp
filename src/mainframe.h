@@ -54,6 +54,7 @@
 ////@end includes
 
 #include "wx/docview.h"
+#include <wx/arrstr.h>
 
 #include "data_interface/volumes.h"
 #include "data_interface/paths.h"
@@ -427,11 +428,11 @@ private:
 	// deletes the audio metadata columns from the list control
 	void DeleteAudioMetadataListControlHeaders( void );
 
-	// dialog used to choose a virtual folder
-	CDialogChooseVirtualFolder* m_ChooseVirtualFolderDialog;
-
 	// used to handle the list of recently opened files
 	wxFileHistory* m_fileHistory;
+
+	// used to save the selected folder in the @Add to virtual folder@ dialog box
+	wxArrayString m_SelectedVirtualFolderForAdd;
 
 	// opens a database
 	// expectedVersion is the database version that the program is designed to use

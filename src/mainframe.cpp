@@ -532,7 +532,6 @@ void CMainFrame::Init()
     m_fileMenu = NULL;
     m_StatusBar = NULL;
 ////@end CMainFrame member initialisation
-	m_ChooseVirtualFolderDialog = NULL;
 
     m_SearchPanel = NULL;
     m_FilenameRadioBox = NULL;
@@ -1267,9 +1266,6 @@ CMainFrame::~CMainFrame() {
 	pConfig->Write(wxT("cw15"), (long) m_ListviewColWidthVirtual[k++]);
 	pConfig->Write(wxT("cw16"), (long) m_ListviewColWidthVirtual[k++]);
 
-	// delete the virtual folders window
-	if( m_ChooseVirtualFolderDialog != NULL ) delete m_ChooseVirtualFolderDialog;
-
 	delete []m_amdColumnsToShow;
 
 }
@@ -1695,8 +1691,14 @@ void CMainFrame::OnAddVirtualFolderClick( wxCommandEvent& WXUNUSED(event) )
 {
 	bool listViewHadFocus = m_ListViewHasFocus;	// we store the value because it changes when opening the dialog
 
-	m_ChooseVirtualFolderDialog->ShowModal();
-	long virtualFolderId = m_ChooseVirtualFolderDialog->GetVirtualFolderID();
+	CDialogChooseVirtualFolder cvf(this, ID_DIALOG_CHOOSE_VIRTUAL_FOLDER, _("Choose virtual folder"));
+	cvf.SetCurrentPathArray( m_SelectedVirtualFolderForAdd );
+	if( cvf.ShowModal() != wxID_OK ) {
+		m_ListViewHasFocus = listViewHadFocus;
+		return;
+	}
+	long virtualFolderId = cvf.GetVirtualFolderID();
+	cvf.GetCurrentPathArray( m_SelectedVirtualFolderForAdd );
 	m_ListViewHasFocus = listViewHadFocus;
 	if( virtualFolderId < 0 ) return;
 
@@ -1737,7 +1739,6 @@ void CMainFrame::OnAddVirtualFolderClick( wxCommandEvent& WXUNUSED(event) )
 	}
 
 	// updates the tree controls
-	m_ChooseVirtualFolderDialog->Refresh();
 	LoadVirtualTreeControl();
 }
 
@@ -1773,8 +1774,6 @@ void CMainFrame::OnNewVirtualRootFolderClick( wxCommandEvent& WXUNUSED(event) )
 	nl.SetNull( true );
 
 	CreateNewVirtualFolder( nl, _("New virtual root folder") );
-
-	m_ChooseVirtualFolderDialog->Refresh();
 }
 
 /*!
@@ -1803,8 +1802,6 @@ void CMainFrame::OnNewVirtualSubfolderClick( wxCommandEvent& WXUNUSED(event) )
 	long FatherID = itemData->GetPathID();
 
 	CreateNewVirtualFolder( FatherID, _("New virtual subfolder") );
-
-	m_ChooseVirtualFolderDialog->Refresh();
 }
 
 void CMainFrame::CreateNewVirtualFolder( CNullableLong FatherID, wxString windowTitle ) {
@@ -1855,8 +1852,6 @@ void CMainFrame::CreateNewVirtualFolder( CNullableLong FatherID, wxString window
 	// updates the listview
 	if( !FatherID.IsNull() ) 
 		ShowVirtualFolderFiles( fatherItem );
-
-	m_ChooseVirtualFolderDialog->Refresh();
 }
 
 /*!
@@ -1914,8 +1909,6 @@ void CMainFrame::OnRenameVirtualFolderClick( wxCommandEvent& WXUNUSED(event) )
 
 	// changes the volume name in the tree control
 	tctl->SetItemText( item, newName );
-
-	m_ChooseVirtualFolderDialog->Refresh();
 }
 
 /*!
@@ -1967,8 +1960,6 @@ void CMainFrame::OnDeleteVirtualFolderClick( wxCommandEvent& WXUNUSED(event) )
 	// deletes from the tree control
 	tctl->DeleteChildren(item);
 	tctl->Delete(item);
-
-	m_ChooseVirtualFolderDialog->Refresh();
 }
 
 /*!
@@ -2041,11 +2032,6 @@ void CMainFrame::OpenDatabase( wxString fileName, int expectedVersion ) {
 	LoadVirtualTreeControl();
 
 	DeleteAllListControlItems();
-
-	// creates the dialog used to choose a virtual folder
-	// we use a global object to keep folders selection between dialog calls
-	if( m_ChooseVirtualFolderDialog != NULL ) delete m_ChooseVirtualFolderDialog;
-	m_ChooseVirtualFolderDialog = new CDialogChooseVirtualFolder(this, ID_DIALOG_CHOOSE_VIRTUAL_FOLDER, _("Choose virtual folder"));
 
 	// stores the file in the MRU list
 	m_fileHistory->AddFileToHistory( fileName );

@@ -331,3 +331,50 @@ void CDialogChooseVirtualFolder::OnCANCELClick( wxCommandEvent& WXUNUSED(event) 
 }
 
 
+void CDialogChooseVirtualFolder::GetCurrentPathArray( wxArrayString& as ) {
+
+	as.Empty();
+	wxTreeItemId itemID = m_TreeCtrl->GetSelection();
+	
+	if( !itemID.IsOk() ) return;		// empty array
+
+	while( itemID != m_TreeCtrl->GetRootItem() ) {
+		as.Add( m_TreeCtrl->GetItemText(itemID) );
+		itemID = m_TreeCtrl->GetItemParent( itemID );
+	}
+}
+
+void CDialogChooseVirtualFolder::SetCurrentPathArray( wxArrayString& as ) {
+	int i;
+
+	if( as.GetCount() == 0 ) return;
+
+	wxTreeItemId fatherID = m_TreeCtrl->GetRootItem();
+	i = as.GetCount() - 1;
+	while( i >= 0 ) {
+		// selects the right child of the current item
+		wxTreeItemIdValue cookie;
+		wxTreeItemId childID = m_TreeCtrl->GetFirstChild( fatherID, cookie );
+		while( childID.IsOk() ) {
+			wxString aa = m_TreeCtrl->GetItemText(childID);
+			wxString bb = as[i];
+			if( m_TreeCtrl->GetItemText(childID) == as[i] ) {
+				// found! select this item
+				m_TreeCtrl->SelectItem( childID );
+				fatherID = childID;
+				wxSafeYield();
+				break;
+			}
+
+			childID = m_TreeCtrl->GetNextChild( fatherID, cookie );
+			if( !childID.IsOk() )
+				return;		// we did not find the folder
+		}
+
+		i--;
+	}
+
+
+}
+
+
