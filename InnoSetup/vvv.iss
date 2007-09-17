@@ -8,7 +8,7 @@
 
 #define AppName "VVV (Virtual Volumes View)"
 #define ExeName "vvv.exe"
-#define AppVersion "0.6"
+#define AppVersion "0.7"
 
 [Setup]
 AppId=VVV-fu-ku-jitsu
@@ -22,7 +22,7 @@ VersionInfoVersion={#AppVersion}
 ChangesAssociations=yes
 OutputDir=.
 ;OutputBaseFilename=VVV- + {#AppVersion} + -Setup
-OutputBaseFilename=VVV-0.6-Setup
+OutputBaseFilename=VVV-0.7-Setup
 
 [Tasks]
 Name: desktopicon; Description: {cm:CreateDesktopIcon}
