@@ -20,6 +20,8 @@
     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
+#include <wx/stdpaths.h>
+#include <wx/filename.h>
 #include "utils.h"
 
 wxString CUtils::applicationName = wxT("VVV");
@@ -91,7 +93,11 @@ int CUtils::GetExpectedDatabaseVersion(void) {
 }
 
 wxString CUtils::GetStructUpdateDbName(void) {
-	return strucUpdateDbName;
+	wxString appPath = wxStandardPaths::Get().GetExecutablePath();
+	wxFileName fn( appPath );
+	fn.SetFullName( strucUpdateDbName );
+	wxString fullName = fn.GetFullPath();
+	return fullName;
 }
 
 
