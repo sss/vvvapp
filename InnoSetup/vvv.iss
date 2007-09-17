@@ -40,7 +40,7 @@ Source: License.txt; DestDir: {app}
 Source: msvcp71.dll; DestDir: {app}
 Source: intl\fbintl.dll; DestDir: {app}\intl
 Source: intl\fbintl.conf; DestDir: {app}\intl
-Source: ..\vvv-struct-update.fdb; DestDir: {app}
+Source: ..\vvv-struct-update.fdb; DestDir: {app}; Attribs: readonly; Flags: overwritereadonly uninsremovereadonly
 Source: ..\VVV.fbk; DestDir: {app}
 
 
