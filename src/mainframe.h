@@ -73,6 +73,8 @@ class wxMenu;
 class wxStatusBar;
 ////@end forward declarations
 
+class CRightPaneList;
+
 /*!
  * Control identifiers
  */
@@ -104,6 +106,10 @@ class wxStatusBar;
 #define SYMBOL_CMAINFRAME_IDNAME ID_MAIN_FRAME
 #define SYMBOL_CMAINFRAME_SIZE wxSize(400, 300)
 #define SYMBOL_CMAINFRAME_POSITION wxDefaultPosition
+#define SYMBOL_CRIGHTPANELIST_STYLE wxLC_REPORT|wxNO_BORDER
+#define SYMBOL_CRIGHTPANELIST_IDNAME ID_LIST_CONTROL
+#define SYMBOL_CRIGHTPANELIST_SIZE wxSize(100, 100)
+#define SYMBOL_CRIGHTPANELIST_POSITION wxDefaultPosition
 ////@end control identifiers
 
 // virtual view
@@ -139,7 +145,9 @@ class wxStatusBar;
 
 class CMainFrame: public wxFrame
 {    
-    DECLARE_CLASS( CMainFrame )
+	friend class CRightPaneList;
+	
+	DECLARE_CLASS( CMainFrame )
     DECLARE_EVENT_TABLE()
 
 public:
@@ -264,22 +272,14 @@ public:
     /// wxEVT_COMMAND_TREE_ITEM_MENU event handler for ID_TREE_CONTROL
     void OnTreeControlItemMenu( wxTreeEvent& event );
 
-    /// wxEVT_COMMAND_LIST_ITEM_ACTIVATED event handler for ID_LIST_CONTROL
-    void OnListControlItemActivated( wxListEvent& event );
+////@end CMainFrame event handler declarations
 
-    /// wxEVT_COMMAND_LIST_COL_CLICK event handler for ID_LIST_CONTROL
     void OnListControlColLeftClick( wxListEvent& event );
-
-    /// wxEVT_CONTEXT_MENU event handler for ID_LIST_CONTROL
-    void OnListControlContextMenu( wxContextMenuEvent& event );
-
-    /// wxEVT_SET_FOCUS event handler for ID_LIST_CONTROL
+    void OnListControlItemActivated( wxListEvent& event );
     void OnListControlSetFocus( wxFocusEvent& event );
-
-    /// wxEVT_KILL_FOCUS event handler for ID_LIST_CONTROL
+    void OnListControlContextMenu( wxContextMenuEvent& event );
     void OnListControlKillFocus( wxFocusEvent& event );
 
-////@end CMainFrame event handler declarations
 
 ////@begin CMainFrame member function declarations
 
@@ -397,13 +397,13 @@ private:
 	wxLongLong sizePhysicalFiles, sizeVirtualFiles, sizeSearchFiles;
 
 	// pointers to some windows used in the main frame
-	wxListCtrl* m_listCtl;	// the list control
+	CRightPaneList* m_listCtl;	// the list control
 	wxTreeCtrl* m_treePhysicalCtl;	// the tree control with the physical view
 	wxTreeCtrl* m_treeVirtualCtl;		// the tree control with the virtual view
 	wxSplitterWindow* m_splitterWindow;	// the splitter window
 
 	// accessors for the above windows
-	wxListCtrl* GetListControl() { return m_listCtl; }
+	CRightPaneList* GetListControl() { return m_listCtl; }
 	wxTreeCtrl* GetTreePhysicalControl() { return m_treePhysicalCtl; }
 	wxTreeCtrl* GetTreeVirtualControl() { return m_treeVirtualCtl; }
 	wxSplitterWindow* GetSplitterWindow() { return m_splitterWindow; }
@@ -497,6 +497,66 @@ protected:
 
 	// deletes all the list control items
 	void DeleteAllListControlItems(void);
+};
+
+/*!
+ * CRightPaneList class declaration
+ */
+
+class CRightPaneList: public wxListCtrl
+{    
+    DECLARE_CLASS( CRightPaneList )
+    DECLARE_EVENT_TABLE()
+
+public:
+    /// Constructors
+    CRightPaneList();
+    CRightPaneList(wxWindow* parent, wxWindowID id, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxLC_ICON, const wxValidator& validator = wxDefaultValidator);
+
+    /// Creation
+    bool Create(wxWindow* parent, wxWindowID id, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxLC_ICON, const wxValidator& validator = wxDefaultValidator);
+
+    /// Destructor
+    ~CRightPaneList();
+
+    /// Initialises member variables
+    void Init();
+
+    /// Creates the controls and sizers
+    void CreateControls();
+
+////@begin CRightPaneList event handler declarations
+
+    /// wxEVT_COMMAND_LIST_ITEM_ACTIVATED event handler for ID_LIST_CONTROL
+    void OnListControlItemActivated( wxListEvent& event );
+
+    /// wxEVT_COMMAND_LIST_COL_CLICK event handler for ID_LIST_CONTROL
+    void OnListControlColLeftClick( wxListEvent& event );
+
+    /// wxEVT_CONTEXT_MENU event handler for ID_LIST_CONTROL
+    void OnListControlContextMenu( wxContextMenuEvent& event );
+
+    /// wxEVT_SET_FOCUS event handler for ID_LIST_CONTROL
+    void OnListControlSetFocus( wxFocusEvent& event );
+
+    /// wxEVT_KILL_FOCUS event handler for ID_LIST_CONTROL
+    void OnListControlKillFocus( wxFocusEvent& event );
+
+////@end CRightPaneList event handler declarations
+
+////@begin CRightPaneList member function declarations
+
+////@end CRightPaneList member function declarations
+
+////@begin CRightPaneList member variables
+////@end CRightPaneList member variables
+
+	// stores a reference to the main frame object, needed to call mainframe's member functions
+	void SetMainFrame( CMainFrame* mfp ) { m_MainFrame = mfp; }
+
+private:
+
+	CMainFrame* m_MainFrame;
 };
 
 #endif

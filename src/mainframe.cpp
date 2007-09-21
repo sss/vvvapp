@@ -397,9 +397,6 @@ BEGIN_EVENT_TABLE( CMainFrame, wxFrame )
     EVT_TREE_ITEM_EXPANDING( ID_TREE_CONTROL, CMainFrame::OnTreeControlItemExpanding )
     EVT_TREE_ITEM_MENU( ID_TREE_CONTROL, CMainFrame::OnTreeControlItemMenu )
 
-    EVT_LIST_ITEM_ACTIVATED( ID_LIST_CONTROL, CMainFrame::OnListControlItemActivated )
-    EVT_LIST_COL_CLICK( ID_LIST_CONTROL, CMainFrame::OnListControlColLeftClick )
-
 ////@end CMainFrame event table entries
 
     EVT_TREE_SEL_CHANGED( ID_TREE_CONTROL_VIRTUAL, CMainFrame::OnTreeControlVirtualSelChanged )
@@ -651,14 +648,9 @@ void CMainFrame::CreateControls()
 
     wxTreeCtrl* itemTreeCtrl43 = new wxTreeCtrl( itemSplitterWindow42, ID_TREE_CONTROL, wxDefaultPosition, wxSize(100, 100), wxTR_HAS_BUTTONS |wxTR_HIDE_ROOT|wxTR_SINGLE|wxNO_BORDER|wxTR_DEFAULT_STYLE );
 
-    wxListCtrl* itemListCtrl44 = new wxListCtrl( itemSplitterWindow42, ID_LIST_CONTROL, wxDefaultPosition, wxSize(100, 100), wxLC_REPORT|wxNO_BORDER );
-
+    CRightPaneList* itemListCtrl44 = new CRightPaneList( itemSplitterWindow42, ID_LIST_CONTROL, wxDefaultPosition, wxSize(100, 100), wxLC_REPORT|wxNO_BORDER );
     itemSplitterWindow42->SplitVertically(itemTreeCtrl43, itemListCtrl44, 50);
 
-    // Connect events and objects
-    itemListCtrl44->Connect(ID_LIST_CONTROL, wxEVT_CONTEXT_MENU, wxContextMenuEventHandler(CMainFrame::OnListControlContextMenu), NULL, this);
-    itemListCtrl44->Connect(ID_LIST_CONTROL, wxEVT_SET_FOCUS, wxFocusEventHandler(CMainFrame::OnListControlSetFocus), NULL, this);
-    itemListCtrl44->Connect(ID_LIST_CONTROL, wxEVT_KILL_FOCUS, wxFocusEventHandler(CMainFrame::OnListControlKillFocus), NULL, this);
 ////@end CMainFrame content construction
 
 	// creates the tree control used to show virtual folders
@@ -671,7 +663,8 @@ void CMainFrame::CreateControls()
 	m_splitterWindow = sw;
 	m_treePhysicalCtl = (wxTreeCtrl*) FindWindow( ID_TREE_CONTROL );
 	m_treeVirtualCtl = (wxTreeCtrl*) FindWindow( ID_TREE_CONTROL_VIRTUAL );
-	m_listCtl = (wxListCtrl*) FindWindow( ID_LIST_CONTROL );
+	m_listCtl = (CRightPaneList*) FindWindow( ID_LIST_CONTROL );
+	m_listCtl->SetMainFrame( this );
 
 	// creates the search panel
 	{
@@ -2963,8 +2956,6 @@ void CMainFrame::OnListControlSetFocus( wxFocusEvent& WXUNUSED(event) )
 
 void CMainFrame::OnListControlContextMenu( wxContextMenuEvent& event )
 {
-	event.Skip();
-
 	if( m_CurrentView != cvPhysical ) return;
 	if( GetListControl()->GetSelectedItemCount() <= 0 ) return;
 
@@ -3016,5 +3007,150 @@ int CMainFrame::ColumnNumIfNoColumnsHidden( int inColNum ) {
 void CMainFrame::OnListControlKillFocus( wxFocusEvent& WXUNUSED(event) )
 {
 	m_ListViewHasFocus = false;
+}
+
+
+
+/*!
+ * CRightPaneList type definition
+ */
+
+IMPLEMENT_CLASS( CRightPaneList, wxListCtrl )
+
+
+/*!
+ * CRightPaneList event table definition
+ */
+
+BEGIN_EVENT_TABLE( CRightPaneList, wxListCtrl )
+
+////@begin CRightPaneList event table entries
+    EVT_LIST_ITEM_ACTIVATED( ID_LIST_CONTROL, CRightPaneList::OnListControlItemActivated )
+    EVT_LIST_COL_CLICK( ID_LIST_CONTROL, CRightPaneList::OnListControlColLeftClick )
+    EVT_CONTEXT_MENU( CRightPaneList::OnListControlContextMenu )
+    EVT_SET_FOCUS( CRightPaneList::OnListControlSetFocus )
+    EVT_KILL_FOCUS( CRightPaneList::OnListControlKillFocus )
+
+////@end CRightPaneList event table entries
+
+END_EVENT_TABLE()
+
+
+/*!
+ * CRightPaneList constructors
+ */
+
+CRightPaneList::CRightPaneList()
+{
+    Init();
+}
+
+CRightPaneList::CRightPaneList(wxWindow* parent, wxWindowID id, const wxPoint& pos, const wxSize& size, long style, const wxValidator& validator)
+{
+    Init();
+    Create(parent, id, pos, size, style, validator);
+}
+
+
+/*!
+ * CRightPaneList creator
+ */
+
+bool CRightPaneList::Create(wxWindow* parent, wxWindowID id, const wxPoint& pos, const wxSize& size, long style, const wxValidator& validator)
+{
+////@begin CRightPaneList creation
+    wxListCtrl::Create(parent, id, pos, size, style, validator);
+    CreateControls();
+////@end CRightPaneList creation
+    return true;
+}
+
+
+/*!
+ * CRightPaneList destructor
+ */
+
+CRightPaneList::~CRightPaneList()
+{
+////@begin CRightPaneList destruction
+////@end CRightPaneList destruction
+}
+
+
+/*!
+ * Member initialisation
+ */
+
+void CRightPaneList::Init()
+{
+////@begin CRightPaneList member initialisation
+////@end CRightPaneList member initialisation
+	m_MainFrame = NULL;
+}
+
+
+/*!
+ * Control creation for CRightPaneList
+ */
+
+void CRightPaneList::CreateControls()
+{    
+////@begin CRightPaneList content construction
+////@end CRightPaneList content construction
+}
+
+
+/*!
+ * wxEVT_COMMAND_LIST_ITEM_ACTIVATED event handler for ID_LIST_CONTROL
+ */
+
+void CRightPaneList::OnListControlItemActivated( wxListEvent& event )
+{
+	wxASSERT( m_MainFrame != NULL );
+	m_MainFrame->OnListControlItemActivated( event );
+}
+
+
+/*!
+ * wxEVT_COMMAND_LIST_COL_CLICK event handler for ID_LIST_CONTROL
+ */
+
+void CRightPaneList::OnListControlColLeftClick( wxListEvent& event )
+{
+	wxASSERT( m_MainFrame != NULL );
+	m_MainFrame->OnListControlColLeftClick( event );
+}
+
+
+/*!
+ * wxEVT_CONTEXT_MENU event handler for ID_LIST_CONTROL
+ */
+
+void CRightPaneList::OnListControlContextMenu( wxContextMenuEvent& event )
+{
+	wxASSERT( m_MainFrame != NULL );
+	m_MainFrame->OnListControlContextMenu( event );
+}
+
+
+/*!
+ * wxEVT_SET_FOCUS event handler for ID_LIST_CONTROL
+ */
+
+void CRightPaneList::OnListControlSetFocus( wxFocusEvent& event )
+{
+	wxASSERT( m_MainFrame != NULL );
+	m_MainFrame->OnListControlSetFocus( event );
+}
+
+
+/*!
+ * wxEVT_KILL_FOCUS event handler for ID_LIST_CONTROL
+ */
+
+void CRightPaneList::OnListControlKillFocus( wxFocusEvent& event )
+{
+	wxASSERT( m_MainFrame != NULL );
+	m_MainFrame->OnListControlKillFocus( event );
 }
 

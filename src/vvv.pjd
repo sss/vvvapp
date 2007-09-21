@@ -1540,7 +1540,7 @@
               <string name="proxy-Custom ctor arguments">""</string>
             </document>
             <document>
-              <string name="title">"wxListCtrl: ID_LIST_CONTROL"</string>
+              <string name="title">"CRightPaneList: ID_LIST_CONTROL"</string>
               <string name="type">"dialog-control-document"</string>
               <string name="filename">""</string>
               <string name="icon-name">"listctrl"</string>
@@ -1557,9 +1557,9 @@
               <string name="event-handler-4">"wxEVT_KILL_FOCUS|OnListControlKillFocus|NONE||"</string>
               <string name="proxy-Id name">"ID_LIST_CONTROL"</string>
               <long name="proxy-Id value">10047</long>
-              <string name="proxy-Class">"wxListCtrl"</string>
+              <string name="proxy-Class">"CRightPaneList"</string>
               <string name="proxy-Base class">"wxListCtrl"</string>
-              <bool name="proxy-External implementation">1</bool>
+              <bool name="proxy-External implementation">0</bool>
               <bool name="proxy-Separate files">0</bool>
               <string name="proxy-Implementation filename">""</string>
               <string name="proxy-Header filename">""</string>
@@ -2561,6 +2561,14 @@
             <string name="proxy-type">"wbBoxSizerProxy"</string>
             <string name="proxy-Orientation">"Vertical"</string>
             <string name="proxy-Member variable name">""</string>
+            <string name="proxy-AlignH">"Centre"</string>
+            <string name="proxy-AlignV">"Centre"</string>
+            <long name="proxy-Stretch factor">0</long>
+            <long name="proxy-Border">5</long>
+            <bool name="proxy-wxLEFT">1</bool>
+            <bool name="proxy-wxRIGHT">1</bool>
+            <bool name="proxy-wxTOP">1</bool>
+            <bool name="proxy-wxBOTTOM">1</bool>
             <bool name="proxy-wxSHAPED">0</bool>
             <bool name="proxy-wxADJUST_MINSIZE">0</bool>
             <bool name="proxy-wxFIXED_MINSIZE">0</bool>
