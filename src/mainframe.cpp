@@ -1700,7 +1700,6 @@ void CMainFrame::OnAddVirtualFolderClick( wxCommandEvent& WXUNUSED(event) )
 
 	if( m_ListViewHasFocus ) {
 		wxListCtrl *lctl = GetListControl();
-		int nSelectedObjects = lctl->GetSelectedItemCount();
 		wxASSERT( nSelectedObjects > 0 );
 
 		// loops over all the selected items
