@@ -543,6 +543,7 @@ void CMainFrame::Init()
 	
 	m_CurrentView = cvPhysical;	// let's start with the physical view
 	m_ListViewHasFocus = false;
+	m_PoppingUpContextMenu = false;
 
 	m_ListViewSortColumn = 0;
 	m_ListViewSortAscending = true;
@@ -2944,7 +2945,8 @@ void CMainFrame::OnUpOneFolderUpdate( wxUpdateUIEvent& event )
 
 void CMainFrame::OnListControlSetFocus( wxFocusEvent& WXUNUSED(event) )
 {
-	m_ListViewHasFocus = true;
+	if( !m_PoppingUpContextMenu )
+		m_ListViewHasFocus = true;
 }
 
 
@@ -2977,7 +2979,9 @@ void CMainFrame::OnListControlContextMenu( wxContextMenuEvent& event )
 	menu.AppendSeparator();
 	menu.Append( ID_EDIT_OBJECT_DESCRIPTION, _("Edit Description...") );
 
+	m_PoppingUpContextMenu = true;
 	PopupMenu( &menu, point );
+	m_PoppingUpContextMenu = false;
 }
 
 int CMainFrame::ColumnNumIfNoColumnsHidden( int inColNum ) {
@@ -3006,7 +3010,8 @@ int CMainFrame::ColumnNumIfNoColumnsHidden( int inColNum ) {
 
 void CMainFrame::OnListControlKillFocus( wxFocusEvent& WXUNUSED(event) )
 {
-	m_ListViewHasFocus = false;
+	if( !m_PoppingUpContextMenu )
+		m_ListViewHasFocus = false;
 }
 
 

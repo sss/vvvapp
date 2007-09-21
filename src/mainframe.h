@@ -349,6 +349,11 @@ private:
 	// true if the listview has the focus
 	bool m_ListViewHasFocus;
 
+	// true if we are popping up a context menu from the list control
+	// we need this because popping up a menu causes a listcontrol lostfocus event in wxGTK that would
+	// set m_ListViewHasFocus = 0 causing wrong behaviours
+	bool m_PoppingUpContextMenu;
+
 	// possible choices for file name search
 	enum FilenameSearchKind {
 		fskIsEqual = 0,
