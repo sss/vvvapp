@@ -97,6 +97,7 @@ class CRightPaneList;
 #define ID_DELETE_VIRTUAL_FOLDER 10029
 #define ID_VIEW_TOOLBAR 10042
 #define ID_VIEW_STATUS_BAR 10043
+#define ID_TOOLS_OPTIONS 10014
 #define ID_STATUSBAR1 10044
 #define ID_SPLITTERWINDOW1 10045
 #define ID_TREE_CONTROL 10046
@@ -259,6 +260,9 @@ public:
 
     /// wxEVT_COMMAND_MENU_SELECTED event handler for ID_VIEW_STATUS_BAR
     void OnViewStatusBarClick( wxCommandEvent& event );
+
+    /// wxEVT_COMMAND_MENU_SELECTED event handler for ID_TOOLS_OPTIONS
+    void OnToolsOptionsClick( wxCommandEvent& event );
 
     /// wxEVT_COMMAND_MENU_SELECTED event handler for wxID_ABOUT
     void OnABOUTClick( wxCommandEvent& event );

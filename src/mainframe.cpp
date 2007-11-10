@@ -66,6 +66,7 @@
 #include "mytreeitemdata.h"
 #include "mylistitemdata.h"
 #include "object_description.h"
+#include "settings.h"
 
 ////@begin XPM images
 #include "graphics/vvv32.xpm"
@@ -391,6 +392,8 @@ BEGIN_EVENT_TABLE( CMainFrame, wxFrame )
 
     EVT_MENU( ID_VIEW_STATUS_BAR, CMainFrame::OnViewStatusBarClick )
 
+    EVT_MENU( ID_TOOLS_OPTIONS, CMainFrame::OnToolsOptionsClick )
+
     EVT_MENU( wxID_ABOUT, CMainFrame::OnABOUTClick )
 
     EVT_TREE_SEL_CHANGED( ID_TREE_CONTROL, CMainFrame::OnTreeControlSelChanged )
@@ -603,8 +606,11 @@ void CMainFrame::CreateControls()
     itemMenu30->Check(ID_VIEW_STATUS_BAR, true);
     menuBar->Append(itemMenu30, _("View"));
     wxMenu* itemMenu39 = new wxMenu;
-    itemMenu39->Append(wxID_ABOUT, _("About VVV..."), _T(""), wxITEM_NORMAL);
-    menuBar->Append(itemMenu39, _("Help"));
+    itemMenu39->Append(ID_TOOLS_OPTIONS, _("Options..."), _T(""), wxITEM_NORMAL);
+    menuBar->Append(itemMenu39, _("Tools"));
+    wxMenu* itemMenu41 = new wxMenu;
+    itemMenu41->Append(wxID_ABOUT, _("About VVV..."), _T(""), wxITEM_NORMAL);
+    menuBar->Append(itemMenu41, _("Help"));
     itemFrame1->SetMenuBar(menuBar);
 
     m_Toolbar = CreateToolBar( wxTB_FLAT|wxTB_HORIZONTAL|wxTB_TEXT, ID_TOOLBAR1 );
@@ -644,13 +650,13 @@ void CMainFrame::CreateControls()
     m_StatusBar->SetStatusWidths(4, m_StatusBarWidths);
     itemFrame1->SetStatusBar(m_StatusBar);
 
-    wxSplitterWindow* itemSplitterWindow42 = new wxSplitterWindow( itemFrame1, ID_SPLITTERWINDOW1, wxDefaultPosition, wxSize(100, 100), wxSP_3DBORDER|wxSP_3DSASH|wxSP_NO_XP_THEME|wxNO_BORDER );
-    itemSplitterWindow42->SetMinimumPaneSize(0);
+    wxSplitterWindow* itemSplitterWindow44 = new wxSplitterWindow( itemFrame1, ID_SPLITTERWINDOW1, wxDefaultPosition, wxSize(100, 100), wxSP_3DBORDER|wxSP_3DSASH|wxSP_NO_XP_THEME|wxNO_BORDER );
+    itemSplitterWindow44->SetMinimumPaneSize(0);
 
-    wxTreeCtrl* itemTreeCtrl43 = new wxTreeCtrl( itemSplitterWindow42, ID_TREE_CONTROL, wxDefaultPosition, wxSize(100, 100), wxTR_HAS_BUTTONS |wxTR_HIDE_ROOT|wxTR_SINGLE|wxNO_BORDER|wxTR_DEFAULT_STYLE );
+    wxTreeCtrl* itemTreeCtrl45 = new wxTreeCtrl( itemSplitterWindow44, ID_TREE_CONTROL, wxDefaultPosition, wxSize(100, 100), wxTR_HAS_BUTTONS |wxTR_HIDE_ROOT|wxTR_SINGLE|wxNO_BORDER|wxTR_DEFAULT_STYLE );
 
-    CRightPaneList* itemListCtrl44 = new CRightPaneList( itemSplitterWindow42, ID_LIST_CONTROL, wxDefaultPosition, wxSize(100, 100), wxLC_REPORT|wxNO_BORDER );
-    itemSplitterWindow42->SplitVertically(itemTreeCtrl43, itemListCtrl44, 50);
+    CRightPaneList* itemListCtrl46 = new CRightPaneList( itemSplitterWindow44, ID_LIST_CONTROL, wxDefaultPosition, wxSize(100, 100), wxLC_REPORT|wxNO_BORDER );
+    itemSplitterWindow44->SplitVertically(itemTreeCtrl45, itemListCtrl46, 50);
 
 ////@end CMainFrame content construction
 
@@ -1700,7 +1706,6 @@ void CMainFrame::OnAddVirtualFolderClick( wxCommandEvent& WXUNUSED(event) )
 
 	if( m_ListViewHasFocus ) {
 		wxListCtrl *lctl = GetListControl();
-		wxASSERT( nSelectedObjects > 0 );
 
 		// loops over all the selected items
 		long item = -1;
@@ -3014,6 +3019,25 @@ void CMainFrame::OnListControlKillFocus( wxFocusEvent& WXUNUSED(event) )
 }
 
 
+/*!
+ * wxEVT_COMMAND_MENU_SELECTED event handler for ID_TOOLS_OPTIONS
+ */
+
+void CMainFrame::OnToolsOptionsClick( wxCommandEvent& WXUNUSED(event) )
+{
+	//CDialogSettings *dlg = new CDialogSettings( this, ID_DIALOG_SETTINGS, _("Settings") );
+	//if( dlg->ShowModal() ) {
+	//}
+	//dlg->Destroy();
+	CDialogSettings dlg( this, ID_DIALOG_SETTINGS, _("Settings") );
+	if( dlg.ShowModal() ) {
+	}
+
+}
+
+
+
+
 
 /*!
  * CRightPaneList type definition
@@ -3157,4 +3181,5 @@ void CRightPaneList::OnListControlKillFocus( wxFocusEvent& event )
 	wxASSERT( m_MainFrame != NULL );
 	m_MainFrame->OnListControlKillFocus( event );
 }
+
 

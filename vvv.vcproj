@@ -1119,6 +1119,9 @@
 				RelativePath=".\src\object_description.cpp">
 			</File>
 			<File
+				RelativePath=".\src\settings.cpp">
+			</File>
+			<File
 				RelativePath=".\src\utils.cpp">
 			</File>
 			<File
@@ -1270,6 +1273,9 @@
 			</File>
 			<File
 				RelativePath=".\src\object_description.h">
+			</File>
+			<File
+				RelativePath=".\src\settings.h">
 			</File>
 			<File
 				RelativePath=".\src\utils.h">
