@@ -504,6 +504,14 @@ bool CMainFrame::Create( wxWindow* parent, wxWindowID id, const wxString& captio
 	m_ListviewColWidthVirtual[k++] = pConfig->Read(wxT("cw15"), 90);
 	m_ListviewColWidthVirtual[k++] = pConfig->Read(wxT("cw16"), 70);
 
+	// reads the visibility state of audio metadata columns
+	m_amdColumnsToShow = new bool[N_AUDIO_METADATA_COLUMNS];
+	pConfig->SetPath(wxT("/Mainframe/Layout"));
+	for( k = 0; k < N_AUDIO_METADATA_COLUMNS; k++ ) {
+		wxString key = wxT("amdColumnVisible") + CUtils::long2string( k );
+		m_amdColumnsToShow[k] = pConfig->Read( key, true );
+	}
+
 	CreateListControlHeaders();
 
 	// checks to see if a catalog name has been passed in the command line
@@ -553,10 +561,6 @@ void CMainFrame::Init()
 
 	nPhysicalFiles = nVirtualFiles = nSearchFiles = 0;
 	sizePhysicalFiles = sizeVirtualFiles =  sizeSearchFiles = 0;
-
-	m_amdColumnsToShow = new bool[N_AUDIO_METADATA_COLUMNS];
-	for( int k = 0; k < N_AUDIO_METADATA_COLUMNS; k++ )
-		m_amdColumnsToShow[k] = true;
 
 	m_CurrentlyShowingAudioMetadata = false;
 }
@@ -1265,6 +1269,13 @@ CMainFrame::~CMainFrame() {
 	pConfig->Write(wxT("cw14"), (long) m_ListviewColWidthVirtual[k++]);
 	pConfig->Write(wxT("cw15"), (long) m_ListviewColWidthVirtual[k++]);
 	pConfig->Write(wxT("cw16"), (long) m_ListviewColWidthVirtual[k++]);
+
+	// saves the visibility state of audio metadata columns
+	pConfig->SetPath(wxT("/Mainframe/Layout"));
+	for( k = 0; k < N_AUDIO_METADATA_COLUMNS; k++ ) {
+		wxString key = wxT("amdColumnVisible") + CUtils::long2string( k );
+		pConfig->Write( key, m_amdColumnsToShow[k] );
+	}
 
 	delete []m_amdColumnsToShow;
 
