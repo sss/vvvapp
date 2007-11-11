@@ -118,6 +118,17 @@ CDialogSettings::~CDialogSettings()
 void CDialogSettings::Init()
 {
 ////@begin CDialogSettings member initialisation
+    m_chkArtist = NULL;
+    m_chkAlbum = NULL;
+    m_chkTitle = NULL;
+    m_chkYear = NULL;
+    m_chkComment = NULL;
+    m_chkTrackNumber = NULL;
+    m_chkGenre = NULL;
+    m_chkLength = NULL;
+    m_chkBitrate = NULL;
+    m_chkSampleRate = NULL;
+    m_chkChannels = NULL;
 ////@end CDialogSettings member initialisation
 }
 
@@ -154,46 +165,56 @@ void CDialogSettings::CreateControls()
 
     itemBoxSizer8->Add(5, 5, 0, wxALIGN_CENTER_HORIZONTAL|wxALL, 5);
 
-    wxCheckBox* itemCheckBox11 = new wxCheckBox( itemPanel6, ID_CHECKBOX1, _("Artist"), wxDefaultPosition, wxDefaultSize, 0 );
-    itemCheckBox11->SetValue(false);
-    itemBoxSizer8->Add(itemCheckBox11, 0, wxALIGN_LEFT|wxALL, 5);
+    m_chkArtist = new wxCheckBox( itemPanel6, ID_DS_ARTIST, _("Artist"), wxDefaultPosition, wxDefaultSize, 0 );
+    m_chkArtist->SetValue(false);
+    itemBoxSizer8->Add(m_chkArtist, 0, wxALIGN_LEFT|wxALL, 5);
 
-    wxCheckBox* itemCheckBox12 = new wxCheckBox( itemPanel6, ID_CHECKBOX2, _("Album"), wxDefaultPosition, wxDefaultSize, 0 );
-    itemCheckBox12->SetValue(false);
-    itemBoxSizer8->Add(itemCheckBox12, 0, wxALIGN_LEFT|wxALL, 5);
+    m_chkAlbum = new wxCheckBox( itemPanel6, ID_DS_ALBUM, _("Album"), wxDefaultPosition, wxDefaultSize, 0 );
+    m_chkAlbum->SetValue(false);
+    itemBoxSizer8->Add(m_chkAlbum, 0, wxALIGN_LEFT|wxALL, 5);
 
-    wxCheckBox* itemCheckBox13 = new wxCheckBox( itemPanel6, ID_CHECKBOX3, _("Title"), wxDefaultPosition, wxDefaultSize, 0 );
-    itemCheckBox13->SetValue(false);
-    itemBoxSizer8->Add(itemCheckBox13, 0, wxALIGN_LEFT|wxALL, 5);
+    m_chkTitle = new wxCheckBox( itemPanel6, ID_DS_TITLE, _("Title"), wxDefaultPosition, wxDefaultSize, 0 );
+    m_chkTitle->SetValue(false);
+    itemBoxSizer8->Add(m_chkTitle, 0, wxALIGN_LEFT|wxALL, 5);
 
-    wxCheckBox* itemCheckBox14 = new wxCheckBox( itemPanel6, ID_CHECKBOX4, _("Year"), wxDefaultPosition, wxDefaultSize, 0 );
-    itemCheckBox14->SetValue(false);
-    itemBoxSizer8->Add(itemCheckBox14, 0, wxALIGN_LEFT|wxALL, 5);
+    m_chkYear = new wxCheckBox( itemPanel6, ID_DS_YEAR, _("Year"), wxDefaultPosition, wxDefaultSize, 0 );
+    m_chkYear->SetValue(false);
+    itemBoxSizer8->Add(m_chkYear, 0, wxALIGN_LEFT|wxALL, 5);
 
-    wxCheckBox* itemCheckBox15 = new wxCheckBox( itemPanel6, ID_CHECKBOX5, _("Comment"), wxDefaultPosition, wxDefaultSize, 0 );
-    itemCheckBox15->SetValue(false);
-    itemBoxSizer8->Add(itemCheckBox15, 0, wxALIGN_LEFT|wxALL, 5);
+    m_chkComment = new wxCheckBox( itemPanel6, ID_DS_COMMENT, _("Comment"), wxDefaultPosition, wxDefaultSize, 0 );
+    m_chkComment->SetValue(false);
+    itemBoxSizer8->Add(m_chkComment, 0, wxALIGN_LEFT|wxALL, 5);
 
-    wxCheckBox* itemCheckBox16 = new wxCheckBox( itemPanel6, ID_CHECKBOX6, _("Track number"), wxDefaultPosition, wxDefaultSize, 0 );
-    itemCheckBox16->SetValue(false);
-    itemBoxSizer8->Add(itemCheckBox16, 0, wxALIGN_LEFT|wxALL, 5);
+    m_chkTrackNumber = new wxCheckBox( itemPanel6, ID_DS_TRACK_NUMBER, _("Track number"), wxDefaultPosition, wxDefaultSize, 0 );
+    m_chkTrackNumber->SetValue(false);
+    itemBoxSizer8->Add(m_chkTrackNumber, 0, wxALIGN_LEFT|wxALL, 5);
 
-    wxCheckBox* itemCheckBox17 = new wxCheckBox( itemPanel6, ID_CHECKBOX7, _("Bitrate"), wxDefaultPosition, wxDefaultSize, 0 );
-    itemCheckBox17->SetValue(false);
-    itemBoxSizer8->Add(itemCheckBox17, 0, wxALIGN_LEFT|wxALL, 5);
+    m_chkGenre = new wxCheckBox( itemPanel6, ID_DS_GENRE, _("Genre"), wxDefaultPosition, wxDefaultSize, 0 );
+    m_chkGenre->SetValue(false);
+    itemBoxSizer8->Add(m_chkGenre, 0, wxALIGN_LEFT|wxALL, 5);
 
-    wxCheckBox* itemCheckBox18 = new wxCheckBox( itemPanel6, ID_CHECKBOX8, _("Sample rate"), wxDefaultPosition, wxDefaultSize, 0 );
-    itemCheckBox18->SetValue(false);
-    itemBoxSizer8->Add(itemCheckBox18, 0, wxALIGN_LEFT|wxALL, 5);
+    m_chkLength = new wxCheckBox( itemPanel6, ID_DS_LENGTH, _("Length"), wxDefaultPosition, wxDefaultSize, 0 );
+    m_chkLength->SetValue(false);
+    itemBoxSizer8->Add(m_chkLength, 0, wxALIGN_LEFT|wxALL, 5);
 
-    wxCheckBox* itemCheckBox19 = new wxCheckBox( itemPanel6, ID_CHECKBOX9, _("Channels"), wxDefaultPosition, wxDefaultSize, 0 );
-    itemCheckBox19->SetValue(false);
-    itemBoxSizer8->Add(itemCheckBox19, 0, wxALIGN_LEFT|wxALL, 5);
+    m_chkBitrate = new wxCheckBox( itemPanel6, ID_DS_BITRATE, _("Bitrate"), wxDefaultPosition, wxDefaultSize, 0 );
+    m_chkBitrate->SetValue(false);
+    itemBoxSizer8->Add(m_chkBitrate, 0, wxALIGN_LEFT|wxALL, 5);
+
+    m_chkSampleRate = new wxCheckBox( itemPanel6, ID_DS_SAMPLE_RATE, _("Sample rate"), wxDefaultPosition, wxDefaultSize, 0 );
+    m_chkSampleRate->SetValue(false);
+    itemBoxSizer8->Add(m_chkSampleRate, 0, wxALIGN_LEFT|wxALL, 5);
+
+    m_chkChannels = new wxCheckBox( itemPanel6, ID_DS_CHANNELS, _("Channels"), wxDefaultPosition, wxDefaultSize, 0 );
+    m_chkChannels->SetValue(false);
+    itemBoxSizer8->Add(m_chkChannels, 0, wxALIGN_LEFT|wxALL, 5);
 
     itemBoxSizer8->Add(5, 5, 0, wxALIGN_CENTER_HORIZONTAL|wxALL, 5);
 
     GetBookCtrl()->AddPage(itemPanel6, _("MP3"));
 
+    // Set validators
+    itemCheckBox5->SetValidator( wxGenericValidator(& m_ReopenCatalog) );
 ////@end CDialogSettings content construction
 }
 
@@ -232,3 +253,44 @@ wxIcon CDialogSettings::GetIconResource( const wxString& name )
     return wxNullIcon;
 ////@end CDialogSettings icon retrieval
 }
+
+
+bool CDialogSettings::TransferDataToWindow() {
+
+	m_chkArtist->SetValue( m_amdColumnsToShow[CMainFrame::AMDColumns::amdArtist] );
+	m_chkAlbum->SetValue( m_amdColumnsToShow[CMainFrame::AMDColumns::amdAlbum] );
+	m_chkTitle->SetValue( m_amdColumnsToShow[CMainFrame::AMDColumns::amdTitle] );
+	m_chkYear->SetValue( m_amdColumnsToShow[CMainFrame::AMDColumns::amdYear] );
+	m_chkGenre->SetValue( m_amdColumnsToShow[CMainFrame::AMDColumns::amdGenre] );
+	m_chkLength->SetValue( m_amdColumnsToShow[CMainFrame::AMDColumns::amdLength] );
+	m_chkComment->SetValue( m_amdColumnsToShow[CMainFrame::AMDColumns::amdComment] );
+	m_chkTrackNumber->SetValue( m_amdColumnsToShow[CMainFrame::AMDColumns::amdNumber] );
+	m_chkBitrate->SetValue( m_amdColumnsToShow[CMainFrame::AMDColumns::amdBitrate] );
+	m_chkSampleRate->SetValue( m_amdColumnsToShow[CMainFrame::AMDColumns::amdSampleRate] );
+	m_chkChannels->SetValue( m_amdColumnsToShow[CMainFrame::AMDColumns::amdChannels] );
+
+	return wxPropertySheetDialog::TransferDataToWindow();
+}
+
+
+bool CDialogSettings::TransferDataFromWindow() {
+
+	wxPropertySheetDialog::TransferDataFromWindow();
+
+	m_amdColumnsToShow[CMainFrame::AMDColumns::amdArtist] = m_chkArtist->GetValue();
+	m_amdColumnsToShow[CMainFrame::AMDColumns::amdAlbum] = m_chkAlbum->GetValue();
+	m_amdColumnsToShow[CMainFrame::AMDColumns::amdTitle] = m_chkTitle->GetValue();
+	m_amdColumnsToShow[CMainFrame::AMDColumns::amdYear] = m_chkYear->GetValue();
+	m_amdColumnsToShow[CMainFrame::AMDColumns::amdComment] = m_chkComment->GetValue();
+	m_amdColumnsToShow[CMainFrame::AMDColumns::amdNumber] = m_chkTrackNumber->GetValue();
+	m_amdColumnsToShow[CMainFrame::AMDColumns::amdGenre] = m_chkGenre->GetValue();
+	m_amdColumnsToShow[CMainFrame::AMDColumns::amdLength] = m_chkLength->GetValue();
+	m_amdColumnsToShow[CMainFrame::AMDColumns::amdBitrate] = m_chkBitrate->GetValue();
+	m_amdColumnsToShow[CMainFrame::AMDColumns::amdSampleRate] = m_chkSampleRate->GetValue();
+	m_amdColumnsToShow[CMainFrame::AMDColumns::amdChannels] = m_chkChannels->GetValue();
+
+	return true;
+}
+
+
+

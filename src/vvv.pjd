@@ -4440,6 +4440,8 @@
           <string name="id-suffix">""</string>
           <long name="use-xrc">0</long>
           <long name="working-mode">0</long>
+          <string name="variable-0">"m_amdColumnsToShow|bool*|AmdColumnsToShow||2|0|array of bools for visibility of audio metadata fields"</string>
+          <string name="variable-1">"m_ReopenCatalog|bool|ReopenCatalog||2|0|"</string>
           <string name="proxy-Id name">"ID_DIALOG_SETTINGS"</string>
           <long name="proxy-Id value">10048</long>
           <string name="proxy-Class">"CDialogSettings"</string>
@@ -4656,8 +4658,8 @@
                   <bool name="proxy-Initial value">0</bool>
                   <string name="proxy-Help text">""</string>
                   <string name="proxy-Tooltip text">""</string>
-                  <string name="proxy-Data variable">""</string>
-                  <string name="proxy-Data validator">""</string>
+                  <string name="proxy-Data variable">"m_ReopenCatalog"</string>
+                  <string name="proxy-Data validator">"wxGenericValidator(&amp; %VARIABLE%)"</string>
                   <string name="proxy-Data source">""</string>
                   <string name="proxy-Data class name">""</string>
                   <string name="proxy-Data class implementation filename">""</string>
@@ -4920,7 +4922,7 @@
                   <string name="proxy-Platform">"&lt;Any platform&gt;"</string>
                 </document>
                 <document>
-                  <string name="title">"wxCheckBox: ID_CHECKBOX1"</string>
+                  <string name="title">"wxCheckBox: ID_DS_ARTIST"</string>
                   <string name="type">"dialog-control-document"</string>
                   <string name="filename">""</string>
                   <string name="icon-name">"checkbox"</string>
@@ -4930,7 +4932,7 @@
                   <long name="locked">0</long>
                   <string name="created">"10/11/2007"</string>
                   <string name="proxy-type">"wbCheckBoxProxy"</string>
-                  <string name="proxy-Id name">"ID_CHECKBOX1"</string>
+                  <string name="proxy-Id name">"ID_DS_ARTIST"</string>
                   <long name="proxy-Id value">10052</long>
                   <string name="proxy-Name">""</string>
                   <string name="proxy-Class">"wxCheckBox"</string>
@@ -4939,7 +4941,7 @@
                   <bool name="proxy-Separate files">0</bool>
                   <string name="proxy-Implementation filename">""</string>
                   <string name="proxy-Header filename">""</string>
-                  <string name="proxy-Member variable name">""</string>
+                  <string name="proxy-Member variable name">"m_chkArtist"</string>
                   <string name="proxy-Label">"Artist"</string>
                   <bool name="proxy-Initial value">0</bool>
                   <string name="proxy-Help text">""</string>
@@ -4984,7 +4986,7 @@
                   <string name="proxy-Custom ctor arguments">""</string>
                 </document>
                 <document>
-                  <string name="title">"wxCheckBox: ID_CHECKBOX2"</string>
+                  <string name="title">"wxCheckBox: ID_DS_ALBUM"</string>
                   <string name="type">"dialog-control-document"</string>
                   <string name="filename">""</string>
                   <string name="icon-name">"checkbox"</string>
@@ -4994,7 +4996,7 @@
                   <long name="locked">0</long>
                   <string name="created">"10/11/2007"</string>
                   <string name="proxy-type">"wbCheckBoxProxy"</string>
-                  <string name="proxy-Id name">"ID_CHECKBOX2"</string>
+                  <string name="proxy-Id name">"ID_DS_ALBUM"</string>
                   <long name="proxy-Id value">10053</long>
                   <string name="proxy-Name">""</string>
                   <string name="proxy-Class">"wxCheckBox"</string>
@@ -5003,7 +5005,7 @@
                   <bool name="proxy-Separate files">0</bool>
                   <string name="proxy-Implementation filename">""</string>
                   <string name="proxy-Header filename">""</string>
-                  <string name="proxy-Member variable name">""</string>
+                  <string name="proxy-Member variable name">"m_chkAlbum"</string>
                   <string name="proxy-Label">"Album"</string>
                   <bool name="proxy-Initial value">0</bool>
                   <string name="proxy-Help text">""</string>
@@ -5048,7 +5050,7 @@
                   <string name="proxy-Custom ctor arguments">""</string>
                 </document>
                 <document>
-                  <string name="title">"wxCheckBox: ID_CHECKBOX3"</string>
+                  <string name="title">"wxCheckBox: ID_DS_TITLE"</string>
                   <string name="type">"dialog-control-document"</string>
                   <string name="filename">""</string>
                   <string name="icon-name">"checkbox"</string>
@@ -5058,7 +5060,7 @@
                   <long name="locked">0</long>
                   <string name="created">"10/11/2007"</string>
                   <string name="proxy-type">"wbCheckBoxProxy"</string>
-                  <string name="proxy-Id name">"ID_CHECKBOX3"</string>
+                  <string name="proxy-Id name">"ID_DS_TITLE"</string>
                   <long name="proxy-Id value">10054</long>
                   <string name="proxy-Name">""</string>
                   <string name="proxy-Class">"wxCheckBox"</string>
@@ -5067,7 +5069,7 @@
                   <bool name="proxy-Separate files">0</bool>
                   <string name="proxy-Implementation filename">""</string>
                   <string name="proxy-Header filename">""</string>
-                  <string name="proxy-Member variable name">""</string>
+                  <string name="proxy-Member variable name">"m_chkTitle"</string>
                   <string name="proxy-Label">"Title"</string>
                   <bool name="proxy-Initial value">0</bool>
                   <string name="proxy-Help text">""</string>
@@ -5112,7 +5114,7 @@
                   <string name="proxy-Custom ctor arguments">""</string>
                 </document>
                 <document>
-                  <string name="title">"wxCheckBox: ID_CHECKBOX4"</string>
+                  <string name="title">"wxCheckBox: ID_DS_YEAR"</string>
                   <string name="type">"dialog-control-document"</string>
                   <string name="filename">""</string>
                   <string name="icon-name">"checkbox"</string>
@@ -5122,7 +5124,7 @@
                   <long name="locked">0</long>
                   <string name="created">"10/11/2007"</string>
                   <string name="proxy-type">"wbCheckBoxProxy"</string>
-                  <string name="proxy-Id name">"ID_CHECKBOX4"</string>
+                  <string name="proxy-Id name">"ID_DS_YEAR"</string>
                   <long name="proxy-Id value">10055</long>
                   <string name="proxy-Name">""</string>
                   <string name="proxy-Class">"wxCheckBox"</string>
@@ -5131,7 +5133,7 @@
                   <bool name="proxy-Separate files">0</bool>
                   <string name="proxy-Implementation filename">""</string>
                   <string name="proxy-Header filename">""</string>
-                  <string name="proxy-Member variable name">""</string>
+                  <string name="proxy-Member variable name">"m_chkYear"</string>
                   <string name="proxy-Label">"Year"</string>
                   <bool name="proxy-Initial value">0</bool>
                   <string name="proxy-Help text">""</string>
@@ -5176,7 +5178,7 @@
                   <string name="proxy-Custom ctor arguments">""</string>
                 </document>
                 <document>
-                  <string name="title">"wxCheckBox: ID_CHECKBOX5"</string>
+                  <string name="title">"wxCheckBox: ID_DS_COMMENT"</string>
                   <string name="type">"dialog-control-document"</string>
                   <string name="filename">""</string>
                   <string name="icon-name">"checkbox"</string>
@@ -5186,7 +5188,7 @@
                   <long name="locked">0</long>
                   <string name="created">"10/11/2007"</string>
                   <string name="proxy-type">"wbCheckBoxProxy"</string>
-                  <string name="proxy-Id name">"ID_CHECKBOX5"</string>
+                  <string name="proxy-Id name">"ID_DS_COMMENT"</string>
                   <long name="proxy-Id value">10056</long>
                   <string name="proxy-Name">""</string>
                   <string name="proxy-Class">"wxCheckBox"</string>
@@ -5195,7 +5197,7 @@
                   <bool name="proxy-Separate files">0</bool>
                   <string name="proxy-Implementation filename">""</string>
                   <string name="proxy-Header filename">""</string>
-                  <string name="proxy-Member variable name">""</string>
+                  <string name="proxy-Member variable name">"m_chkComment"</string>
                   <string name="proxy-Label">"Comment"</string>
                   <bool name="proxy-Initial value">0</bool>
                   <string name="proxy-Help text">""</string>
@@ -5240,7 +5242,7 @@
                   <string name="proxy-Custom ctor arguments">""</string>
                 </document>
                 <document>
-                  <string name="title">"wxCheckBox: ID_CHECKBOX6"</string>
+                  <string name="title">"wxCheckBox: ID_DS_TRACK_NUMBER"</string>
                   <string name="type">"dialog-control-document"</string>
                   <string name="filename">""</string>
                   <string name="icon-name">"checkbox"</string>
@@ -5250,7 +5252,7 @@
                   <long name="locked">0</long>
                   <string name="created">"10/11/2007"</string>
                   <string name="proxy-type">"wbCheckBoxProxy"</string>
-                  <string name="proxy-Id name">"ID_CHECKBOX6"</string>
+                  <string name="proxy-Id name">"ID_DS_TRACK_NUMBER"</string>
                   <long name="proxy-Id value">10057</long>
                   <string name="proxy-Name">""</string>
                   <string name="proxy-Class">"wxCheckBox"</string>
@@ -5259,7 +5261,7 @@
                   <bool name="proxy-Separate files">0</bool>
                   <string name="proxy-Implementation filename">""</string>
                   <string name="proxy-Header filename">""</string>
-                  <string name="proxy-Member variable name">""</string>
+                  <string name="proxy-Member variable name">"m_chkTrackNumber"</string>
                   <string name="proxy-Label">"Track number"</string>
                   <bool name="proxy-Initial value">0</bool>
                   <string name="proxy-Help text">""</string>
@@ -5304,7 +5306,135 @@
                   <string name="proxy-Custom ctor arguments">""</string>
                 </document>
                 <document>
-                  <string name="title">"wxCheckBox: ID_CHECKBOX7"</string>
+                  <string name="title">"wxCheckBox: ID_DS_GENRE"</string>
+                  <string name="type">"dialog-control-document"</string>
+                  <string name="filename">""</string>
+                  <string name="icon-name">"checkbox"</string>
+                  <long name="is-transient">0</long>
+                  <long name="owns-file">1</long>
+                  <long name="title-mode">0</long>
+                  <long name="locked">0</long>
+                  <string name="created">"11/11/2007"</string>
+                  <string name="proxy-type">"wbCheckBoxProxy"</string>
+                  <string name="proxy-Id name">"ID_DS_GENRE"</string>
+                  <long name="proxy-Id value">10061</long>
+                  <string name="proxy-Name">""</string>
+                  <string name="proxy-Class">"wxCheckBox"</string>
+                  <string name="proxy-Base class">"wxCheckBox"</string>
+                  <bool name="proxy-External implementation">1</bool>
+                  <bool name="proxy-Separate files">0</bool>
+                  <string name="proxy-Implementation filename">""</string>
+                  <string name="proxy-Header filename">""</string>
+                  <string name="proxy-Member variable name">"m_chkGenre"</string>
+                  <string name="proxy-Label">"Genre"</string>
+                  <bool name="proxy-Initial value">0</bool>
+                  <string name="proxy-Help text">""</string>
+                  <string name="proxy-Tooltip text">""</string>
+                  <string name="proxy-Data variable">""</string>
+                  <string name="proxy-Data validator">""</string>
+                  <string name="proxy-Data source">""</string>
+                  <string name="proxy-Data class name">""</string>
+                  <string name="proxy-Data class implementation filename">""</string>
+                  <string name="proxy-Data class header filename">""</string>
+                  <string name="proxy-Data class manager window">""</string>
+                  <string name="proxy-Background colour">""</string>
+                  <string name="proxy-Foreground colour">""</string>
+                  <string name="proxy-Font">""</string>
+                  <bool name="proxy-Hidden">0</bool>
+                  <bool name="proxy-Enabled">1</bool>
+                  <string name="proxy-Platform">"&lt;Any platform&gt;"</string>
+                  <bool name="proxy-wxALIGN_RIGHT">0</bool>
+                  <bool name="proxy-wxCHK_2STATE">0</bool>
+                  <bool name="proxy-wxCHK_3STATE">0</bool>
+                  <bool name="proxy-wxCHK_ALLOW_3RD_STATE_FOR_USER">0</bool>
+                  <bool name="proxy-wxWANTS_CHARS">0</bool>
+                  <bool name="proxy-wxNO_FULL_REPAINT_ON_RESIZE">0</bool>
+                  <bool name="proxy-wxFULL_REPAINT_ON_RESIZE">0</bool>
+                  <string name="proxy-Custom styles">""</string>
+                  <long name="proxy-X">-1</long>
+                  <long name="proxy-Y">-1</long>
+                  <long name="proxy-Width">-1</long>
+                  <long name="proxy-Height">-1</long>
+                  <string name="proxy-AlignH">"Left"</string>
+                  <string name="proxy-AlignV">"Centre"</string>
+                  <long name="proxy-Stretch factor">0</long>
+                  <long name="proxy-Border">5</long>
+                  <bool name="proxy-wxLEFT">1</bool>
+                  <bool name="proxy-wxRIGHT">1</bool>
+                  <bool name="proxy-wxTOP">1</bool>
+                  <bool name="proxy-wxBOTTOM">1</bool>
+                  <bool name="proxy-wxSHAPED">0</bool>
+                  <bool name="proxy-wxADJUST_MINSIZE">0</bool>
+                  <bool name="proxy-wxFIXED_MINSIZE">0</bool>
+                  <string name="proxy-Custom arguments">""</string>
+                  <string name="proxy-Custom ctor arguments">""</string>
+                </document>
+                <document>
+                  <string name="title">"wxCheckBox: ID_DS_LENGTH"</string>
+                  <string name="type">"dialog-control-document"</string>
+                  <string name="filename">""</string>
+                  <string name="icon-name">"checkbox"</string>
+                  <long name="is-transient">0</long>
+                  <long name="owns-file">1</long>
+                  <long name="title-mode">0</long>
+                  <long name="locked">0</long>
+                  <string name="created">"11/11/2007"</string>
+                  <string name="proxy-type">"wbCheckBoxProxy"</string>
+                  <string name="proxy-Id name">"ID_DS_LENGTH"</string>
+                  <long name="proxy-Id value">10062</long>
+                  <string name="proxy-Name">""</string>
+                  <string name="proxy-Class">"wxCheckBox"</string>
+                  <string name="proxy-Base class">"wxCheckBox"</string>
+                  <bool name="proxy-External implementation">1</bool>
+                  <bool name="proxy-Separate files">0</bool>
+                  <string name="proxy-Implementation filename">""</string>
+                  <string name="proxy-Header filename">""</string>
+                  <string name="proxy-Member variable name">"m_chkLength"</string>
+                  <string name="proxy-Label">"Length"</string>
+                  <bool name="proxy-Initial value">0</bool>
+                  <string name="proxy-Help text">""</string>
+                  <string name="proxy-Tooltip text">""</string>
+                  <string name="proxy-Data variable">""</string>
+                  <string name="proxy-Data validator">""</string>
+                  <string name="proxy-Data source">""</string>
+                  <string name="proxy-Data class name">""</string>
+                  <string name="proxy-Data class implementation filename">""</string>
+                  <string name="proxy-Data class header filename">""</string>
+                  <string name="proxy-Data class manager window">""</string>
+                  <string name="proxy-Background colour">""</string>
+                  <string name="proxy-Foreground colour">""</string>
+                  <string name="proxy-Font">""</string>
+                  <bool name="proxy-Hidden">0</bool>
+                  <bool name="proxy-Enabled">1</bool>
+                  <string name="proxy-Platform">"&lt;Any platform&gt;"</string>
+                  <bool name="proxy-wxALIGN_RIGHT">0</bool>
+                  <bool name="proxy-wxCHK_2STATE">0</bool>
+                  <bool name="proxy-wxCHK_3STATE">0</bool>
+                  <bool name="proxy-wxCHK_ALLOW_3RD_STATE_FOR_USER">0</bool>
+                  <bool name="proxy-wxWANTS_CHARS">0</bool>
+                  <bool name="proxy-wxNO_FULL_REPAINT_ON_RESIZE">0</bool>
+                  <bool name="proxy-wxFULL_REPAINT_ON_RESIZE">0</bool>
+                  <string name="proxy-Custom styles">""</string>
+                  <long name="proxy-X">-1</long>
+                  <long name="proxy-Y">-1</long>
+                  <long name="proxy-Width">-1</long>
+                  <long name="proxy-Height">-1</long>
+                  <string name="proxy-AlignH">"Left"</string>
+                  <string name="proxy-AlignV">"Centre"</string>
+                  <long name="proxy-Stretch factor">0</long>
+                  <long name="proxy-Border">5</long>
+                  <bool name="proxy-wxLEFT">1</bool>
+                  <bool name="proxy-wxRIGHT">1</bool>
+                  <bool name="proxy-wxTOP">1</bool>
+                  <bool name="proxy-wxBOTTOM">1</bool>
+                  <bool name="proxy-wxSHAPED">0</bool>
+                  <bool name="proxy-wxADJUST_MINSIZE">0</bool>
+                  <bool name="proxy-wxFIXED_MINSIZE">0</bool>
+                  <string name="proxy-Custom arguments">""</string>
+                  <string name="proxy-Custom ctor arguments">""</string>
+                </document>
+                <document>
+                  <string name="title">"wxCheckBox: ID_DS_BITRATE"</string>
                   <string name="type">"dialog-control-document"</string>
                   <string name="filename">""</string>
                   <string name="icon-name">"checkbox"</string>
@@ -5314,7 +5444,7 @@
                   <long name="locked">0</long>
                   <string name="created">"10/11/2007"</string>
                   <string name="proxy-type">"wbCheckBoxProxy"</string>
-                  <string name="proxy-Id name">"ID_CHECKBOX7"</string>
+                  <string name="proxy-Id name">"ID_DS_BITRATE"</string>
                   <long name="proxy-Id value">10058</long>
                   <string name="proxy-Name">""</string>
                   <string name="proxy-Class">"wxCheckBox"</string>
@@ -5323,7 +5453,7 @@
                   <bool name="proxy-Separate files">0</bool>
                   <string name="proxy-Implementation filename">""</string>
                   <string name="proxy-Header filename">""</string>
-                  <string name="proxy-Member variable name">""</string>
+                  <string name="proxy-Member variable name">"m_chkBitrate"</string>
                   <string name="proxy-Label">"Bitrate"</string>
                   <bool name="proxy-Initial value">0</bool>
                   <string name="proxy-Help text">""</string>
@@ -5368,7 +5498,7 @@
                   <string name="proxy-Custom ctor arguments">""</string>
                 </document>
                 <document>
-                  <string name="title">"wxCheckBox: ID_CHECKBOX8"</string>
+                  <string name="title">"wxCheckBox: ID_DS_SAMPLE_RATE"</string>
                   <string name="type">"dialog-control-document"</string>
                   <string name="filename">""</string>
                   <string name="icon-name">"checkbox"</string>
@@ -5378,7 +5508,7 @@
                   <long name="locked">0</long>
                   <string name="created">"10/11/2007"</string>
                   <string name="proxy-type">"wbCheckBoxProxy"</string>
-                  <string name="proxy-Id name">"ID_CHECKBOX8"</string>
+                  <string name="proxy-Id name">"ID_DS_SAMPLE_RATE"</string>
                   <long name="proxy-Id value">10059</long>
                   <string name="proxy-Name">""</string>
                   <string name="proxy-Class">"wxCheckBox"</string>
@@ -5387,7 +5517,7 @@
                   <bool name="proxy-Separate files">0</bool>
                   <string name="proxy-Implementation filename">""</string>
                   <string name="proxy-Header filename">""</string>
-                  <string name="proxy-Member variable name">""</string>
+                  <string name="proxy-Member variable name">"m_chkSampleRate"</string>
                   <string name="proxy-Label">"Sample rate"</string>
                   <bool name="proxy-Initial value">0</bool>
                   <string name="proxy-Help text">""</string>
@@ -5432,7 +5562,7 @@
                   <string name="proxy-Custom ctor arguments">""</string>
                 </document>
                 <document>
-                  <string name="title">"wxCheckBox: ID_CHECKBOX9"</string>
+                  <string name="title">"wxCheckBox: ID_DS_CHANNELS"</string>
                   <string name="type">"dialog-control-document"</string>
                   <string name="filename">""</string>
                   <string name="icon-name">"checkbox"</string>
@@ -5442,7 +5572,7 @@
                   <long name="locked">0</long>
                   <string name="created">"10/11/2007"</string>
                   <string name="proxy-type">"wbCheckBoxProxy"</string>
-                  <string name="proxy-Id name">"ID_CHECKBOX9"</string>
+                  <string name="proxy-Id name">"ID_DS_CHANNELS"</string>
                   <long name="proxy-Id value">10060</long>
                   <string name="proxy-Name">""</string>
                   <string name="proxy-Class">"wxCheckBox"</string>
@@ -5451,7 +5581,7 @@
                   <bool name="proxy-Separate files">0</bool>
                   <string name="proxy-Implementation filename">""</string>
                   <string name="proxy-Header filename">""</string>
-                  <string name="proxy-Member variable name">""</string>
+                  <string name="proxy-Member variable name">"m_chkChannels"</string>
                   <string name="proxy-Label">"Channels"</string>
                   <bool name="proxy-Initial value">0</bool>
                   <string name="proxy-Help text">""</string>

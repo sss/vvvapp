@@ -339,6 +339,21 @@ public:
 	// formats an object decription for display in the listview
 	wxString FormatObjectDescriptionForListView( const wxString& ObjectDescription );
 
+	// audio metadata columns
+	enum AMDColumns {
+		amdArtist = 0,
+		amdAlbum,
+		amdTitle,
+		amdYear,
+		amdComment,
+		amdNumber,
+		amdGenre,
+		amdLength,
+		amdBitrate,
+		amdSampleRate,
+		amdChannels
+	};
+
 private:
 
 	// the possible views available in the program
@@ -377,21 +392,6 @@ private:
 		sbeMenuDescription = 0,
 		sbeObjectsNumber,
 		sbeObjectsSize
-	};
-
-	// audio metadata columns
-	enum AMDColumns {
-		amdArtist = 0,
-		amdAlbum,
-		amdTitle,
-		amdYear,
-		amdComment,
-		amdNumber,
-		amdGenre,
-		amdLength,
-		amdBitrate,
-		amdSampleRate,
-		amdChannels
 	};
 
 	// each element of the array is true id the corresponding audio metadata column must be shown
@@ -470,6 +470,8 @@ private:
 	void HideVirtualView(void);
 	// hides the search view
 	void HideSearchView(void);
+	// redraws the current view (conceptually equivalent to switching to another view and back to the original)
+	void RefreshCurrentView(void);
 
 	// searches a physical folder for files, appends them to the list control, then recursion
 	void SearchPhysicalFolder( wxString fileName, bool useFileNameWildcards, wxString ext, wxString description, bool useDescriptionWildcards, long folderID, long volumeID );

@@ -2595,6 +2595,22 @@ void CMainFrame::HideSearchView(void) {
 	m_SearchPanel->Show( false );
 }
 
+void CMainFrame::RefreshCurrentView(void) {
+	switch( m_CurrentView ) {
+		case cvPhysical:
+			ShowPhysicalView();
+			break;
+		case cvVirtual:
+			ShowVirtualView();
+			break;
+		case cvSearch:
+			ShowSearchView();
+			break;
+	}
+}
+
+
+
 void CMainFrame::OnButtonSearchClick( wxCommandEvent& WXUNUSED(event) ) {
 	bool useWildcardsFilename, useWildcardsDescription;
 
@@ -3025,12 +3041,11 @@ void CMainFrame::OnListControlKillFocus( wxFocusEvent& WXUNUSED(event) )
 
 void CMainFrame::OnToolsOptionsClick( wxCommandEvent& WXUNUSED(event) )
 {
-	//CDialogSettings *dlg = new CDialogSettings( this, ID_DIALOG_SETTINGS, _("Settings") );
-	//if( dlg->ShowModal() ) {
-	//}
-	//dlg->Destroy();
 	CDialogSettings dlg( this, ID_DIALOG_SETTINGS, _("Settings") );
+	dlg.SetAmdColumnsToShow( m_amdColumnsToShow );
 	if( dlg.ShowModal() ) {
+		m_amdColumnsToShow = dlg.GetAmdColumnsToShow();
+		RefreshCurrentView();	// if the user changes the columns to show
 	}
 
 }

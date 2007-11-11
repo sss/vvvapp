@@ -33,7 +33,9 @@
 
 ////@begin includes
 #include "wx/propdlg.h"
+#include "wx/valgen.h"
 ////@end includes
+#include "mainframe.h"
 
 /*!
  * Forward declarations
@@ -51,15 +53,17 @@
 #define ID_DS_GENERAL 10049
 #define ID_DS_REOPEN_CATALOG 10051
 #define ID_DS_MP3 10050
-#define ID_CHECKBOX1 10052
-#define ID_CHECKBOX2 10053
-#define ID_CHECKBOX3 10054
-#define ID_CHECKBOX4 10055
-#define ID_CHECKBOX5 10056
-#define ID_CHECKBOX6 10057
-#define ID_CHECKBOX7 10058
-#define ID_CHECKBOX8 10059
-#define ID_CHECKBOX9 10060
+#define ID_DS_ARTIST 10052
+#define ID_DS_ALBUM 10053
+#define ID_DS_TITLE 10054
+#define ID_DS_YEAR 10055
+#define ID_DS_COMMENT 10056
+#define ID_DS_TRACK_NUMBER 10057
+#define ID_DS_GENRE 10061
+#define ID_DS_LENGTH 10062
+#define ID_DS_BITRATE 10058
+#define ID_DS_SAMPLE_RATE 10059
+#define ID_DS_CHANNELS 10060
 #define SYMBOL_CDIALOGSETTINGS_STYLE wxCAPTION|wxRESIZE_BORDER|wxSYSTEM_MENU|wxCLOSE_BOX
 #define SYMBOL_CDIALOGSETTINGS_TITLE _("Settings")
 #define SYMBOL_CDIALOGSETTINGS_IDNAME ID_DIALOG_SETTINGS
@@ -100,6 +104,12 @@ public:
 
 ////@begin CDialogSettings member function declarations
 
+    bool* GetAmdColumnsToShow() const { return m_amdColumnsToShow ; }
+    void SetAmdColumnsToShow(bool* value) { m_amdColumnsToShow = value ; }
+
+    bool GetReopenCatalog() const { return m_ReopenCatalog ; }
+    void SetReopenCatalog(bool value) { m_ReopenCatalog = value ; }
+
     /// Retrieves bitmap resources
     wxBitmap GetBitmapResource( const wxString& name );
 
@@ -111,7 +121,25 @@ public:
     static bool ShowToolTips();
 
 ////@begin CDialogSettings member variables
+    wxCheckBox* m_chkArtist;
+    wxCheckBox* m_chkAlbum;
+    wxCheckBox* m_chkTitle;
+    wxCheckBox* m_chkYear;
+    wxCheckBox* m_chkComment;
+    wxCheckBox* m_chkTrackNumber;
+    wxCheckBox* m_chkGenre;
+    wxCheckBox* m_chkLength;
+    wxCheckBox* m_chkBitrate;
+    wxCheckBox* m_chkSampleRate;
+    wxCheckBox* m_chkChannels;
+private:
+    bool* m_amdColumnsToShow; // array of bools for visibility of audio metadata fields
+    bool m_ReopenCatalog;
 ////@end CDialogSettings member variables
+
+	bool TransferDataToWindow();
+	bool TransferDataFromWindow();
+
 };
 
 #endif
