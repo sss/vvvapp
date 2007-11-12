@@ -417,6 +417,9 @@ private:
 	wxTreeCtrl* GetTreeVirtualControl() { return m_treeVirtualCtl; }
 	wxSplitterWindow* GetSplitterWindow() { return m_splitterWindow; }
 
+	// true if we want to reopen the last used catalog at startup
+	bool m_reopenLastUsedCatalog;
+
 	// fills the physical tree control
 	void LoadTreeControl(void);
 	// loads a volume and its folders in the tree control

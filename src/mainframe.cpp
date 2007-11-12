@@ -509,13 +509,23 @@ bool CMainFrame::Create( wxWindow* parent, wxWindowID id, const wxString& captio
 	pConfig->SetPath(wxT("/Mainframe/Layout"));
 	for( k = 0; k < N_AUDIO_METADATA_COLUMNS; k++ ) {
 		wxString key = wxT("amdColumnVisible") + CUtils::long2string( k );
-		m_amdColumnsToShow[k] = pConfig->Read( key, true );
+		pConfig->Read( key, &m_amdColumnsToShow[k], true );
 	}
+
+	// reads program settings
+	pConfig->SetPath(wxT("/Settings"));
+	pConfig->Read( wxT("ReopenCatalog"), &m_reopenLastUsedCatalog, true );
+
 
 	CreateListControlHeaders();
 
 	// checks to see if a catalog name has been passed in the command line
+	// or if the program must reload the last used catalog
 	wxString catalogName = wxGetApp().GetParameterCatalog();
+	if( catalogName.empty() && m_reopenLastUsedCatalog && (m_fileHistory->GetCount() > 0) ) {
+		// no parameter passed, looks for auto load of last used catalog
+		catalogName = m_fileHistory->GetHistoryFile( 0 );
+	}
 	if( !catalogName.empty() ) {
 		if( !wxFileName::FileExists(catalogName) ) {
 			CUtils::MsgErr( "This catalog file does not exist:\n\n" + catalogName );
@@ -1276,6 +1286,11 @@ CMainFrame::~CMainFrame() {
 		wxString key = wxT("amdColumnVisible") + CUtils::long2string( k );
 		pConfig->Write( key, m_amdColumnsToShow[k] );
 	}
+
+	// saves program settings
+	pConfig->SetPath(wxT("/Settings"));
+	pConfig->Write( wxT("ReopenCatalog"), m_reopenLastUsedCatalog );
+
 
 	delete []m_amdColumnsToShow;
 
@@ -3054,7 +3069,9 @@ void CMainFrame::OnToolsOptionsClick( wxCommandEvent& WXUNUSED(event) )
 {
 	CDialogSettings dlg( this, ID_DIALOG_SETTINGS, _("Settings") );
 	dlg.SetAmdColumnsToShow( m_amdColumnsToShow );
+	dlg.SetReopenCatalog( m_reopenLastUsedCatalog );
 	if( dlg.ShowModal() ) {
+		m_reopenLastUsedCatalog = dlg.GetReopenCatalog();
 		m_amdColumnsToShow = dlg.GetAmdColumnsToShow();
 		RefreshCurrentView();	// if the user changes the columns to show
 	}
