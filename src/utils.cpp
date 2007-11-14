@@ -53,6 +53,11 @@ void CUtils::MsgErr( wxString errMsg ){
 	dialog.ShowModal();
 }
 
+void CUtils::MsgInfo( wxString infoMsg ){
+	wxMessageDialog dialog( NULL, infoMsg, applicationName, wxOK|wxICON_INFORMATION );
+	dialog.ShowModal();
+}
+
 bool CUtils::MsgAskNo( wxString msg ){
 	wxMessageDialog dialog( NULL, msg, applicationName, wxYES_NO|wxNO_DEFAULT|wxICON_EXCLAMATION );
 	return dialog.ShowModal() == wxID_YES;

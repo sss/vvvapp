@@ -40,6 +40,7 @@
 ////@end includes
 
 #include "settings.h"
+#include "ibpp/core/ibpp.h"
 
 ////@begin XPM images
 ////@end XPM images
@@ -59,6 +60,15 @@ IMPLEMENT_DYNAMIC_CLASS( CDialogSettings, wxPropertySheetDialog )
 BEGIN_EVENT_TABLE( CDialogSettings, wxPropertySheetDialog )
 
 ////@begin CDialogSettings event table entries
+    EVT_UPDATE_UI( ID_DS_SERVERNAME, CDialogSettings::OnDsServernameUpdate )
+
+    EVT_UPDATE_UI( ID_DS_USERNAME, CDialogSettings::OnDsUsernameUpdate )
+
+    EVT_UPDATE_UI( ID_DS_PASSWORD, CDialogSettings::OnDsPasswordUpdate )
+
+    EVT_BUTTON( ID_DS_TEST_CONNECTION, CDialogSettings::OnDsTestConnectionClick )
+    EVT_UPDATE_UI( ID_DS_TEST_CONNECTION, CDialogSettings::OnDsTestConnectionUpdate )
+
 ////@end CDialogSettings event table entries
 
 END_EVENT_TABLE()
@@ -129,6 +139,10 @@ void CDialogSettings::Init()
     m_chkBitrate = NULL;
     m_chkSampleRate = NULL;
     m_chkChannels = NULL;
+    m_ConnectServerCtrl = NULL;
+    m_ServerNameCtrl = NULL;
+    m_UsernameCtrl = NULL;
+    m_PasswordCtrl = NULL;
 ////@end CDialogSettings member initialisation
 }
 
@@ -213,8 +227,55 @@ void CDialogSettings::CreateControls()
 
     GetBookCtrl()->AddPage(itemPanel6, _("MP3"));
 
+    wxPanel* itemPanel23 = new wxPanel( GetBookCtrl(), ID_DS_SERVER, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL );
+    wxBoxSizer* itemBoxSizer24 = new wxBoxSizer(wxVERTICAL);
+    itemPanel23->SetSizer(itemBoxSizer24);
+
+    wxBoxSizer* itemBoxSizer25 = new wxBoxSizer(wxVERTICAL);
+    itemBoxSizer24->Add(itemBoxSizer25, 0, wxGROW|wxALL, 5);
+    wxStaticText* itemStaticText26 = new wxStaticText( itemPanel23, wxID_STATIC, _("Check the checkbox below if you want to access catalogs stored\nin a network server. Each computer in the network will be able to\naccess the same catalogs stored in the server.\nDO NOT check the checkbox if you only want to access catalogs\nstored in this computer and you do not want to share them\nwith other computers."), wxDefaultPosition, wxDefaultSize, wxALIGN_LEFT );
+    itemBoxSizer25->Add(itemStaticText26, 0, wxGROW|wxALL, 5);
+
+    itemBoxSizer25->Add(5, 5, 0, wxALIGN_CENTER_HORIZONTAL|wxALL, 5);
+
+    m_ConnectServerCtrl = new wxCheckBox( itemPanel23, ID_DS_CONNECT_SERVER, _("Connect to a network server"), wxDefaultPosition, wxDefaultSize, 0 );
+    m_ConnectServerCtrl->SetValue(false);
+    itemBoxSizer25->Add(m_ConnectServerCtrl, 0, wxALIGN_LEFT|wxALL, 5);
+
+    wxFlexGridSizer* itemFlexGridSizer29 = new wxFlexGridSizer(3, 2, 0, 0);
+    itemFlexGridSizer29->AddGrowableCol(1);
+    itemBoxSizer25->Add(itemFlexGridSizer29, 0, wxGROW|wxALL, 5);
+    wxStaticText* itemStaticText30 = new wxStaticText( itemPanel23, wxID_STATIC, _("Server"), wxDefaultPosition, wxDefaultSize, 0 );
+    itemFlexGridSizer29->Add(itemStaticText30, 0, wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxALL, 5);
+
+    m_ServerNameCtrl = new wxTextCtrl( itemPanel23, ID_DS_SERVERNAME, _T(""), wxDefaultPosition, wxDefaultSize, 0 );
+    itemFlexGridSizer29->Add(m_ServerNameCtrl, 0, wxGROW|wxALIGN_CENTER_VERTICAL|wxALL, 5);
+
+    wxStaticText* itemStaticText32 = new wxStaticText( itemPanel23, wxID_STATIC, _("Username"), wxDefaultPosition, wxDefaultSize, 0 );
+    itemFlexGridSizer29->Add(itemStaticText32, 0, wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxALL, 5);
+
+    m_UsernameCtrl = new wxTextCtrl( itemPanel23, ID_DS_USERNAME, _T(""), wxDefaultPosition, wxDefaultSize, 0 );
+    itemFlexGridSizer29->Add(m_UsernameCtrl, 0, wxGROW|wxALIGN_CENTER_VERTICAL|wxALL, 5);
+
+    wxStaticText* itemStaticText34 = new wxStaticText( itemPanel23, wxID_STATIC, _("Password"), wxDefaultPosition, wxDefaultSize, 0 );
+    itemFlexGridSizer29->Add(itemStaticText34, 0, wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxALL, 5);
+
+    m_PasswordCtrl = new wxTextCtrl( itemPanel23, ID_DS_PASSWORD, _T(""), wxDefaultPosition, wxDefaultSize, wxTE_PASSWORD );
+    itemFlexGridSizer29->Add(m_PasswordCtrl, 0, wxGROW|wxALIGN_CENTER_VERTICAL|wxALL, 5);
+
+    itemBoxSizer25->Add(5, 5, 0, wxALIGN_CENTER_HORIZONTAL|wxALL, 5);
+
+    wxButton* itemButton37 = new wxButton( itemPanel23, ID_DS_TEST_CONNECTION, _("Test server connection"), wxDefaultPosition, wxDefaultSize, 0 );
+    itemBoxSizer25->Add(itemButton37, 0, wxALIGN_RIGHT|wxALL, 5);
+
+    GetBookCtrl()->AddPage(itemPanel23, _("Server"));
+
     // Set validators
     itemCheckBox5->SetValidator( wxGenericValidator(& m_ReopenCatalog) );
+    m_ConnectServerCtrl->SetValidator( wxGenericValidator(& m_ConnectServer) );
+    m_ServerNameCtrl->SetValidator( wxGenericValidator(& m_ServerName) );
+    m_UsernameCtrl->SetValidator( wxGenericValidator(& m_Username) );
+    m_PasswordCtrl->SetValidator( wxGenericValidator(& m_Password) );
 ////@end CDialogSettings content construction
 }
 
@@ -289,8 +350,97 @@ bool CDialogSettings::TransferDataFromWindow() {
 	m_amdColumnsToShow[CMainFrame::AMDColumns::amdSampleRate] = m_chkSampleRate->GetValue();
 	m_amdColumnsToShow[CMainFrame::AMDColumns::amdChannels] = m_chkChannels->GetValue();
 
-	return true;
+	bool ok = true;
+	if( m_ConnectServer ) {
+		if( ok && m_ServerName.empty() ) {
+			ok = false;
+			CUtils::MsgErr( _("You must enter a server name or address") );
+		}
+		if( ok && m_Username.empty() ) {
+			ok = false;
+			CUtils::MsgErr( _("You must enter a username") );
+		}
+		if( ok && m_Password.empty() ) {
+			ok = false;
+			CUtils::MsgErr( _("You must enter a password") );
+		}
+	}
+
+	return ok;
 }
 
 
+
+
+
+
+/*!
+ * wxEVT_UPDATE_UI event handler for ID_DS_TEST_CONNECTION
+ */
+
+void CDialogSettings::OnDsTestConnectionUpdate( wxUpdateUIEvent& event )
+{
+	event.Enable( m_ConnectServerCtrl->IsChecked() );
+}
+
+
+/*!
+ * wxEVT_UPDATE_UI event handler for ID_DS_SERVERNAME
+ */
+
+void CDialogSettings::OnDsServernameUpdate( wxUpdateUIEvent& event )
+{
+	event.Enable( m_ConnectServerCtrl->IsChecked() );
+}
+
+
+/*!
+ * wxEVT_UPDATE_UI event handler for ID_DS_USERNAME
+ */
+
+void CDialogSettings::OnDsUsernameUpdate( wxUpdateUIEvent& event )
+{
+	event.Enable( m_ConnectServerCtrl->IsChecked() );
+}
+
+
+/*!
+ * wxEVT_UPDATE_UI event handler for ID_DS_PASSWORD
+ */
+
+void CDialogSettings::OnDsPasswordUpdate( wxUpdateUIEvent& event )
+{
+	event.Enable( m_ConnectServerCtrl->IsChecked() );
+}
+
+
+/*!
+ * wxEVT_COMMAND_BUTTON_CLICKED event handler for ID_DS_TEST_CONNECTION
+ */
+
+void CDialogSettings::OnDsTestConnectionClick( wxCommandEvent& WXUNUSED(event) )
+{
+	wxString sn;
+	wxBusyCursor bc;
+
+	sn = m_ServerNameCtrl->GetValue();
+	if( sn.empty() ) {
+		CUtils::MsgErr( _("You must enter the server name or address") );
+		return;
+	}
+
+	// try to connect to a non existing database with random username and password, just to see if we can find the server
+	IBPP::Database db = IBPP::DatabaseFactory( CUtils::wx2std(sn), "aasnmnfurhdtr", "dnmcunfjf", "mdsifnfj" );
+	
+	try {
+		db->Connect();
+		db->Disconnect();
+	}
+	catch( IBPP::SQLException& e ) {
+		if( e.EngineCode() == 335544721 )
+			CUtils::MsgErr( _("Unable to connect to the server" ) );
+		else
+			CUtils::MsgInfo( _("Server connection successful") );
+	}
+}
 

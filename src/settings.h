@@ -64,6 +64,12 @@
 #define ID_DS_BITRATE 10058
 #define ID_DS_SAMPLE_RATE 10059
 #define ID_DS_CHANNELS 10060
+#define ID_DS_SERVER 10063
+#define ID_DS_CONNECT_SERVER 10064
+#define ID_DS_SERVERNAME 10065
+#define ID_DS_USERNAME 10066
+#define ID_DS_PASSWORD 10067
+#define ID_DS_TEST_CONNECTION 10068
 #define SYMBOL_CDIALOGSETTINGS_STYLE wxCAPTION|wxRESIZE_BORDER|wxSYSTEM_MENU|wxCLOSE_BOX
 #define SYMBOL_CDIALOGSETTINGS_TITLE _("Settings")
 #define SYMBOL_CDIALOGSETTINGS_IDNAME ID_DIALOG_SETTINGS
@@ -100,6 +106,21 @@ public:
 
 ////@begin CDialogSettings event handler declarations
 
+    /// wxEVT_UPDATE_UI event handler for ID_DS_SERVERNAME
+    void OnDsServernameUpdate( wxUpdateUIEvent& event );
+
+    /// wxEVT_UPDATE_UI event handler for ID_DS_USERNAME
+    void OnDsUsernameUpdate( wxUpdateUIEvent& event );
+
+    /// wxEVT_UPDATE_UI event handler for ID_DS_PASSWORD
+    void OnDsPasswordUpdate( wxUpdateUIEvent& event );
+
+    /// wxEVT_COMMAND_BUTTON_CLICKED event handler for ID_DS_TEST_CONNECTION
+    void OnDsTestConnectionClick( wxCommandEvent& event );
+
+    /// wxEVT_UPDATE_UI event handler for ID_DS_TEST_CONNECTION
+    void OnDsTestConnectionUpdate( wxUpdateUIEvent& event );
+
 ////@end CDialogSettings event handler declarations
 
 ////@begin CDialogSettings member function declarations
@@ -109,6 +130,18 @@ public:
 
     bool GetReopenCatalog() const { return m_ReopenCatalog ; }
     void SetReopenCatalog(bool value) { m_ReopenCatalog = value ; }
+
+    bool GetConnectServer() const { return m_ConnectServer ; }
+    void SetConnectServer(bool value) { m_ConnectServer = value ; }
+
+    wxString GetServerName() const { return m_ServerName ; }
+    void SetServerName(wxString value) { m_ServerName = value ; }
+
+    wxString GetUsername() const { return m_Username ; }
+    void SetUsername(wxString value) { m_Username = value ; }
+
+    wxString GetPassword() const { return m_Password ; }
+    void SetPassword(wxString value) { m_Password = value ; }
 
     /// Retrieves bitmap resources
     wxBitmap GetBitmapResource( const wxString& name );
@@ -132,6 +165,14 @@ public:
     wxCheckBox* m_chkBitrate;
     wxCheckBox* m_chkSampleRate;
     wxCheckBox* m_chkChannels;
+    wxCheckBox* m_ConnectServerCtrl;
+    wxTextCtrl* m_ServerNameCtrl;
+    wxTextCtrl* m_UsernameCtrl;
+    wxTextCtrl* m_PasswordCtrl;
+    bool m_ConnectServer;
+    wxString m_ServerName;
+    wxString m_Username;
+    wxString m_Password;
 private:
     bool* m_amdColumnsToShow; // array of bools for visibility of audio metadata fields
     bool m_ReopenCatalog;

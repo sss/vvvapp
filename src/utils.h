@@ -44,6 +44,9 @@ public:
 	// displays an error message
 	static void MsgErr( wxString errMsg );
 
+	// displays an information message
+	static void MsgInfo( wxString infoMsg );
+
 	// ask a question to the user. possible answers: yes or no (default)
 	// returns true if the user has chosen yes
 	static bool MsgAskNo( wxString msg );
