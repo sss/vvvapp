@@ -1694,7 +1694,7 @@ void CMainFrame::OnRenameVolumeClick( wxCommandEvent& WXUNUSED(event) )
 		vol.DbUpdate();
 	}
 	catch( CDataErrorException& e ) {
-		if( e.GetErrorCause() == CDataErrorException::Unique ) {
+		if( e.GetErrorCause() == CDataErrorException::ecUnique ) {
 			CUtils::MsgErr( _("The new volume name is already present in the database") );
 			return;
 		}
@@ -1857,7 +1857,7 @@ void CMainFrame::CreateNewVirtualFolder( CNullableLong FatherID, wxString window
 		pth.DbInsert();
 	}
 	catch( CDataErrorException& e ) {
-		if( e.GetErrorCause() == CDataErrorException::Unique ) {
+		if( e.GetErrorCause() == CDataErrorException::ecUnique ) {
 			CUtils::MsgErr( _("The new folder name is already present in the database") );
 			return;
 		}
@@ -1923,7 +1923,7 @@ void CMainFrame::OnRenameVirtualFolderClick( wxCommandEvent& WXUNUSED(event) )
 		CVirtualPaths::Rename( itemData->GetPathID(), newName );
 	}
 	catch( CDataErrorException& e ) {
-		if( e.GetErrorCause() == CDataErrorException::Unique ) {
+		if( e.GetErrorCause() == CDataErrorException::ecUnique ) {
 			CUtils::MsgErr( _("The new folder name is already present in the database") );
 			return;
 		}
@@ -2036,7 +2036,7 @@ void CMainFrame::OpenDatabase( wxString fileName, int expectedVersion ) {
 	}
 	
 	CBaseDB::CreateFirebirdDatabase( "", fileName, "SYSDBA", "masterkey" );
-	wxString stmp = CBaseDB::GetDatabase()->Connect();
+	CBaseDB::GetDatabase()->Connect();
 
 	int dbVersion = CBaseDB::GetDatabase()->GetDatabaseVersion();
 
@@ -2199,7 +2199,7 @@ void CMainFrame::OnDeleteVolumeClick( wxCommandEvent& WXUNUSED(event) )
 		vol.DbDelete();
 	}
 	catch( CDataErrorException& e ) {
-		if( e.GetErrorCause() == CDataErrorException::ReferentialIntegrity ) {
+		if( e.GetErrorCause() == CDataErrorException::ecReferentialIntegrity ) {
 			CUtils::MsgErr( _("Unable to delete this volume: at least one of its files is used in the virtual view") );
 			return;
 		}

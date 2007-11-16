@@ -429,18 +429,9 @@ void CDialogSettings::OnDsTestConnectionClick( wxCommandEvent& WXUNUSED(event) )
 		return;
 	}
 
-	// try to connect to a non existing database with random username and password, just to see if we can find the server
-	IBPP::Database db = IBPP::DatabaseFactory( CUtils::wx2std(sn), "aasnmnfurhdtr", "dnmcunfjf", "mdsifnfj" );
-	
-	try {
-		db->Connect();
-		db->Disconnect();
-	}
-	catch( IBPP::SQLException& e ) {
-		if( e.EngineCode() == 335544721 )
-			CUtils::MsgErr( _("Unable to connect to the server" ) );
-		else
-			CUtils::MsgInfo( _("Server connection successful") );
-	}
+	if( !CBaseDB::GetDatabase()->TestServerConnection(sn) )
+		CUtils::MsgErr( _("Unable to connect to the server" ) );
+	else
+		CUtils::MsgInfo( _("Server connection successful") );
 }
 

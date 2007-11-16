@@ -46,9 +46,12 @@ public:
 	static CBaseDB* GetDatabase(void);
 
 	// connects to the database
-	virtual wxString Connect(void) = 0;
+	virtual void Connect(void) = 0;
 	// disconnects from the database
 	virtual void Disconnect(void) = 0;
+
+	// tries to connect to a server: it returns true if the connection is succesful, false otherwise
+	virtual bool TestServerConnection( wxString serverName ) = 0;
 
 	// creates and starts a transaction
 	virtual void TransactionStart( bool readOnly = false ) = 0;

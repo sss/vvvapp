@@ -21,6 +21,7 @@
 */
 
 #include "firebird_db.h"
+#include "data_error.h"
 
 using namespace IBPP;
 
@@ -39,18 +40,36 @@ CFirebirdDB::~CFirebirdDB(void)
 {
 }
 
-wxString CFirebirdDB::Connect(void) {
-	wxString msgErr;
+void CFirebirdDB::Connect(void) {
 	try {
 		db->Connect();
-		msgErr.Empty();
 	}
-	catch( Exception& e ) {
-		msgErr = e.ErrorMessage();
+	catch( IBPP::SQLException& e ) {
+		CDataErrorException::ErrorCause ec;
+		if( CDataErrorException::ConvertFirebirdError( e.EngineCode(), ec )  )
+			throw CDataErrorException( e.ErrorMessage(), ec );
+		else
+			throw;
 	}
-	return msgErr;
 }
 
+bool CFirebirdDB::TestServerConnection( wxString serverName ) {
+	bool retVal;
+
+	// try to connect to a non existing database with random username and password, just to see if we can find the server
+	IBPP::Database db = IBPP::DatabaseFactory( CUtils::wx2std(serverName), "aasnmnfurhdtr", "dnmcunfjf", "mdsifnfj" );
+
+	retVal = true;
+	try {
+		db->Connect();
+		db->Disconnect();
+	}
+	catch( IBPP::SQLException& e ) {
+		if( e.EngineCode() == 335544721 )
+			retVal = false;
+	}
+	return retVal;
+}
 
 void CFirebirdDB::Disconnect(void) {
 	db->Disconnect();

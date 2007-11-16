@@ -287,7 +287,7 @@ void CDialogCatalogVolume::OnButtonCatalogClick( wxCommandEvent& WXUNUSED(event)
 		vol.DbInsert();
 	}
 	catch( CDataErrorException& e ) {
-		if( e.GetErrorCause() == CDataErrorException::Unique ) {
+		if( e.GetErrorCause() == CDataErrorException::ecUnique ) {
 			SetCursor(curCursor);
 			CUtils::MsgErr( _("This volume name is already present in the database") );
 			return;

@@ -35,7 +35,12 @@ public:
 	CFirebirdDB( wxString serverName, wxString databaseName, wxString userName, wxString password );
 	~CFirebirdDB(void);
 
-	wxString Connect(void);
+	// tries to connect to a server: it returns true if the connection is succesful, false otherwise
+	bool TestServerConnection( wxString serverName );
+	
+	// connects to the database, thows an exception in case of error
+	void Connect(void);
+	
 	void Disconnect(void);
 	
 	// returns the database version

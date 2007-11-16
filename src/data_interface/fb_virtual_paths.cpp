@@ -65,7 +65,7 @@ void CVirtualPaths::FB_DbInsert(void) {
 	st->Get( 1, tmp );
 	if( tmp < 0 ) {
 		db->TransactionRollback();
-		throw CDataErrorException( "Duplicate virtual path name", CDataErrorException::Unique );
+		throw CDataErrorException( "Duplicate virtual path name", CDataErrorException::ecUnique );
 	}
 	PathID = tmp;
 
@@ -259,7 +259,7 @@ void CVirtualPaths::FB_Rename( long VirtualPathID, wxString newName ) {
 	if( tmp != 0 ) {
 		// the folder name would be duplicated
 		db->TransactionRollback();
-		throw CDataErrorException( "Duplicate virtual path name", CDataErrorException::Unique );
+		throw CDataErrorException( "Duplicate virtual path name", CDataErrorException::ecUnique );
 	}
 
 	if( !inTransaction ) {

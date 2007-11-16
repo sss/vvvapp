@@ -37,15 +37,19 @@ bool CDataErrorException::ConvertFirebirdError( long gdscode, ErrorCause& ec ) {
 
 	switch( gdscode ) {
 		case 335544558:
-			ec = Check;
+			ec = ecCheck;
 			retVal = true;
 			break;
 		case 335544665:
-			ec = Unique;
+			ec = ecUnique;
 			retVal = true;
 			break;
 		case 335544466:
-			ec = ReferentialIntegrity;
+			ec = ecReferentialIntegrity;
+			retVal = true;
+			break;
+		case 335544721:
+			ec = ecServerNotFound;
 			retVal = true;
 			break;
 	}
