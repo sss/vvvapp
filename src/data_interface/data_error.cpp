@@ -52,6 +52,14 @@ bool CDataErrorException::ConvertFirebirdError( long gdscode, ErrorCause& ec ) {
 			ec = ecServerNotFound;
 			retVal = true;
 			break;
+		case 335544344:
+			ec = ecDatabaseNotFound;
+			retVal = true;
+			break;
+		case 335544472:
+			ec = ecWrongUsernameOrPassword;
+			retVal = true;
+			break;
 	}
 
 	return retVal;

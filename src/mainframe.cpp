@@ -59,6 +59,7 @@
 #include "wx/aboutdlg.h"
 #include "wx/stdpaths.h"
 #include "wx/textfile.h"
+#include "wx/textdlg.h"
 #include "wx/busyinfo.h"
 #include "vvv.h"
 #include "mainframe.h"
@@ -1208,13 +1209,22 @@ void CMainFrame::DeleteAudioMetadataListControlHeaders( void ) {
 void CMainFrame::OnOPENClick( wxCommandEvent& WXUNUSED(event) )
 {
 	wxString caption = _("Open catalog");
-	wxString wildcard = _("VVV  files (*.vvv)|*.vvv|All files (*.*)|*.*");
-	wxFileDialog fd( this, caption, wxEmptyString, wxEmptyString, wildcard, wxOPEN );
-	if( fd.ShowModal() == wxID_OK ) {
-		wxString path = fd.GetPath();
-		if ( path.empty() ) return;
-		OpenDatabase( path, CUtils::GetExpectedDatabaseVersion() );
+	wxString databaseName = "";
+	if( !DBConnectionData.connectToServer ) {
+		// open a local file
+		wxString wildcard = _("VVV  files (*.vvv)|*.vvv|All files (*.*)|*.*");
+		wxFileDialog fd( this, caption, wxEmptyString, wxEmptyString, wildcard, wxOPEN );
+		if( fd.ShowModal() == wxID_OK )
+			databaseName = fd.GetPath();
+	} else {
+		wxTextEntryDialog dlg( this, "You are about to open a catalog located on the server.\n\nEnter the alias or the complete path to the catalog file.\nRemember that the path must be relative to the server, not to the client.",
+			                   caption, "", wxOK | wxCANCEL );
+		if( dlg.ShowModal() == wxID_OK )
+			databaseName = dlg.GetValue();
 	}
+
+	if( !databaseName.empty() )
+		OpenDatabase( databaseName, CUtils::GetExpectedDatabaseVersion() );
 }
 
 CMainFrame::~CMainFrame() {
@@ -2044,6 +2054,8 @@ void CMainFrame::OnMRUFile( wxCommandEvent& event ) {
 void CMainFrame::OpenDatabase( wxString fileName, int expectedVersion ) {
 
 	wxBusyCursor wait;
+	wxString serverName, userName, password;
+	bool errorOpeningDB;
 
 	CBaseDB *db = CBaseDB::GetDatabase();
 	if( db != NULL ) {
@@ -2051,8 +2063,44 @@ void CMainFrame::OpenDatabase( wxString fileName, int expectedVersion ) {
 		CBaseDB::DeleteFirebirdDatabase();
 	}
 	
-	CBaseDB::CreateFirebirdDatabase( "", fileName, "SYSDBA", "masterkey" );
-	CBaseDB::GetDatabase()->Connect();
+	if( DBConnectionData.connectToServer ) {
+		serverName = DBConnectionData.serverName;
+		userName = DBConnectionData.userName;
+		password = DBConnectionData.password;
+	}
+	else {
+		// parameters for embedded server
+		serverName = "";
+		userName = "SYSDBA";
+		password = "masterkey";
+	}
+	CBaseDB::CreateFirebirdDatabase( serverName, fileName, userName, password );
+	errorOpeningDB = false;
+	try {
+		CBaseDB::GetDatabase()->Connect();
+	}
+	catch( CDataErrorException e ) {
+		switch( e.GetErrorCause()  ) {
+			case CDataErrorException::ecDatabaseNotFound:
+				CUtils::MsgErr( _("Database not found:\n\n") + fileName );
+				errorOpeningDB = true;
+				break;
+			case CDataErrorException::ecWrongUsernameOrPassword:
+				CUtils::MsgErr( _("Incorrect username or password for the following database:\n\n") + fileName );
+				errorOpeningDB = true;
+				break;
+			default:
+				throw;
+		}
+
+		if( errorOpeningDB ) {
+			CBaseDB::DeleteFirebirdDatabase();
+			LoadTreeControl();
+			LoadVirtualTreeControl();
+			DeleteAllListControlItems();
+			return;
+		}
+	}
 
 	int dbVersion = CBaseDB::GetDatabase()->GetDatabaseVersion();
 
