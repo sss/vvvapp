@@ -518,9 +518,13 @@ bool CMainFrame::Create( wxWindow* parent, wxWindowID id, const wxString& captio
 	pConfig->SetPath(wxT("/Settings/DatabaseServer"));
 	pConfig->Read( "ConnectToServer", &DBConnectionData.connectToServer, false );
 	DBConnectionData.serverName = pConfig->Read( "ServerName", "" );
-	DBConnectionData.userName = pConfig->Read( "UserName", "" );
-	wxString pwd = pConfig->Read( "Password", "" );
-	if( pwd != "" )	pwd = CUtils::Encrypt( pwd );
+	DBConnectionData.userName = pConfig->Read( "UserName", "SYSDBA" );
+	wxString pwd = pConfig->Read( "Password", "m1a1s1t1e1r1k1e1y1i1m1p1o1s1s1i1b1l1e1d1e1f1a1u1l1t1p1a1s1s1w1o1r1d" );
+	if( pwd == "m1a1s1t1e1r1k1e1y1i1m1p1o1s1s1i1b1l1e1d1e1f1a1u1l1t1p1a1s1s1w1o1r1d" ) 
+		pwd = "masterkey";	// default password for Firebird servers
+	else {
+		if( pwd != "" )	pwd = CUtils::Encrypt( pwd );
+	}
 	DBConnectionData.password = pwd;
 
 	CreateListControlHeaders();
