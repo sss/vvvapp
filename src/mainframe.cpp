@@ -515,7 +515,13 @@ bool CMainFrame::Create( wxWindow* parent, wxWindowID id, const wxString& captio
 	// reads program settings
 	pConfig->SetPath(wxT("/Settings"));
 	pConfig->Read( wxT("ReopenCatalog"), &m_reopenLastUsedCatalog, true );
-
+	pConfig->SetPath(wxT("/Settings/DatabaseServer"));
+	pConfig->Read( "ConnectToServer", &DBConnectionData.connectToServer, false );
+	DBConnectionData.serverName = pConfig->Read( "ServerName", "" );
+	DBConnectionData.userName = pConfig->Read( "UserName", "" );
+	wxString pwd = pConfig->Read( "Password", "" );
+	if( pwd != "" )	pwd = CUtils::Encrypt( pwd );
+	DBConnectionData.password = pwd;
 
 	CreateListControlHeaders();
 
@@ -1290,7 +1296,13 @@ CMainFrame::~CMainFrame() {
 	// saves program settings
 	pConfig->SetPath(wxT("/Settings"));
 	pConfig->Write( wxT("ReopenCatalog"), m_reopenLastUsedCatalog );
-
+	pConfig->SetPath(wxT("/Settings/DatabaseServer"));
+	pConfig->Write( "ConnectToServer", DBConnectionData.connectToServer );
+	pConfig->Write( "ServerName",  DBConnectionData.serverName );
+	pConfig->Write( "UserName",  DBConnectionData.userName );
+	wxString pwd = DBConnectionData.password;
+	if( pwd != "" )	pwd = CUtils::Encrypt( pwd );
+	pConfig->Write( "Password",  pwd );
 
 	delete []m_amdColumnsToShow;
 
@@ -3070,16 +3082,21 @@ void CMainFrame::OnToolsOptionsClick( wxCommandEvent& WXUNUSED(event) )
 	CDialogSettings dlg( this, ID_DIALOG_SETTINGS, _("Settings") );
 	dlg.SetAmdColumnsToShow( m_amdColumnsToShow );
 	dlg.SetReopenCatalog( m_reopenLastUsedCatalog );
+	dlg.SetConnectServer( DBConnectionData.connectToServer );
+	dlg.SetServerName( DBConnectionData.serverName );
+	dlg.SetUsername( DBConnectionData.userName );
+	dlg.SetPassword( DBConnectionData.password );
 	if( dlg.ShowModal() ) {
 		m_reopenLastUsedCatalog = dlg.GetReopenCatalog();
 		m_amdColumnsToShow = dlg.GetAmdColumnsToShow();
+		DBConnectionData.connectToServer = dlg.GetConnectServer();
+		DBConnectionData.serverName = dlg.GetServerName();
+		DBConnectionData.userName = dlg.GetUsername();
+		DBConnectionData.password = dlg.GetPassword();
 		RefreshCurrentView();	// if the user changes the columns to show
 	}
 
 }
-
-
-
 
 
 /*!

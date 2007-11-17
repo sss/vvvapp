@@ -113,3 +113,17 @@ wxString CUtils::long2string( long val ) {
 	return retVal;
 }
 
+
+
+wxString CUtils::Encrypt( wxString s ) {
+	wxString key = "w2m5t7i0g4ndnra5s4lfdpvlyrepfjemwksdjfrpwuanrtogbjentruglk60947235128";
+	wxString sout( " ", s.Len() );
+	size_t k;
+
+	for( k = 0; k < s.Len(); k++ ) {
+		char ch = s[k] ^ key[k % key.Len()];
+		sout[k] = ch;
+	}
+
+	return sout;
+}

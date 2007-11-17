@@ -405,6 +405,14 @@ private:
 	long nPhysicalFiles, nVirtualFiles, nSearchFiles;
 	wxLongLong sizePhysicalFiles, sizeVirtualFiles, sizeSearchFiles;
 
+	// struct to hold data for database server connection
+	struct CDBConnectionData {
+		bool connectToServer;	// true of we want to connect to a server
+		wxString serverName;
+		wxString userName;
+		wxString password;
+	} DBConnectionData;
+
 	// pointers to some windows used in the main frame
 	CRightPaneList* m_listCtl;	// the list control
 	wxTreeCtrl* m_treePhysicalCtl;	// the tree control with the physical view
