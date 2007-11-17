@@ -318,17 +318,17 @@ wxIcon CDialogSettings::GetIconResource( const wxString& name )
 
 bool CDialogSettings::TransferDataToWindow() {
 
-	m_chkArtist->SetValue( m_amdColumnsToShow[CMainFrame::AMDColumns::amdArtist] );
-	m_chkAlbum->SetValue( m_amdColumnsToShow[CMainFrame::AMDColumns::amdAlbum] );
-	m_chkTitle->SetValue( m_amdColumnsToShow[CMainFrame::AMDColumns::amdTitle] );
-	m_chkYear->SetValue( m_amdColumnsToShow[CMainFrame::AMDColumns::amdYear] );
-	m_chkGenre->SetValue( m_amdColumnsToShow[CMainFrame::AMDColumns::amdGenre] );
-	m_chkLength->SetValue( m_amdColumnsToShow[CMainFrame::AMDColumns::amdLength] );
-	m_chkComment->SetValue( m_amdColumnsToShow[CMainFrame::AMDColumns::amdComment] );
-	m_chkTrackNumber->SetValue( m_amdColumnsToShow[CMainFrame::AMDColumns::amdNumber] );
-	m_chkBitrate->SetValue( m_amdColumnsToShow[CMainFrame::AMDColumns::amdBitrate] );
-	m_chkSampleRate->SetValue( m_amdColumnsToShow[CMainFrame::AMDColumns::amdSampleRate] );
-	m_chkChannels->SetValue( m_amdColumnsToShow[CMainFrame::AMDColumns::amdChannels] );
+	m_chkArtist->SetValue( m_amdColumnsToShow[CMainFrame::amdArtist] );
+	m_chkAlbum->SetValue( m_amdColumnsToShow[CMainFrame::amdAlbum] );
+	m_chkTitle->SetValue( m_amdColumnsToShow[CMainFrame::amdTitle] );
+	m_chkYear->SetValue( m_amdColumnsToShow[CMainFrame::amdYear] );
+	m_chkGenre->SetValue( m_amdColumnsToShow[CMainFrame::amdGenre] );
+	m_chkLength->SetValue( m_amdColumnsToShow[CMainFrame::amdLength] );
+	m_chkComment->SetValue( m_amdColumnsToShow[CMainFrame::amdComment] );
+	m_chkTrackNumber->SetValue( m_amdColumnsToShow[CMainFrame::amdNumber] );
+	m_chkBitrate->SetValue( m_amdColumnsToShow[CMainFrame::amdBitrate] );
+	m_chkSampleRate->SetValue( m_amdColumnsToShow[CMainFrame::amdSampleRate] );
+	m_chkChannels->SetValue( m_amdColumnsToShow[CMainFrame::amdChannels] );
 
 	return wxPropertySheetDialog::TransferDataToWindow();
 }
@@ -338,17 +338,17 @@ bool CDialogSettings::TransferDataFromWindow() {
 
 	wxPropertySheetDialog::TransferDataFromWindow();
 
-	m_amdColumnsToShow[CMainFrame::AMDColumns::amdArtist] = m_chkArtist->GetValue();
-	m_amdColumnsToShow[CMainFrame::AMDColumns::amdAlbum] = m_chkAlbum->GetValue();
-	m_amdColumnsToShow[CMainFrame::AMDColumns::amdTitle] = m_chkTitle->GetValue();
-	m_amdColumnsToShow[CMainFrame::AMDColumns::amdYear] = m_chkYear->GetValue();
-	m_amdColumnsToShow[CMainFrame::AMDColumns::amdComment] = m_chkComment->GetValue();
-	m_amdColumnsToShow[CMainFrame::AMDColumns::amdNumber] = m_chkTrackNumber->GetValue();
-	m_amdColumnsToShow[CMainFrame::AMDColumns::amdGenre] = m_chkGenre->GetValue();
-	m_amdColumnsToShow[CMainFrame::AMDColumns::amdLength] = m_chkLength->GetValue();
-	m_amdColumnsToShow[CMainFrame::AMDColumns::amdBitrate] = m_chkBitrate->GetValue();
-	m_amdColumnsToShow[CMainFrame::AMDColumns::amdSampleRate] = m_chkSampleRate->GetValue();
-	m_amdColumnsToShow[CMainFrame::AMDColumns::amdChannels] = m_chkChannels->GetValue();
+	m_amdColumnsToShow[CMainFrame::amdArtist] = m_chkArtist->GetValue();
+	m_amdColumnsToShow[CMainFrame::amdAlbum] = m_chkAlbum->GetValue();
+	m_amdColumnsToShow[CMainFrame::amdTitle] = m_chkTitle->GetValue();
+	m_amdColumnsToShow[CMainFrame::amdYear] = m_chkYear->GetValue();
+	m_amdColumnsToShow[CMainFrame::amdComment] = m_chkComment->GetValue();
+	m_amdColumnsToShow[CMainFrame::amdNumber] = m_chkTrackNumber->GetValue();
+	m_amdColumnsToShow[CMainFrame::amdGenre] = m_chkGenre->GetValue();
+	m_amdColumnsToShow[CMainFrame::amdLength] = m_chkLength->GetValue();
+	m_amdColumnsToShow[CMainFrame::amdBitrate] = m_chkBitrate->GetValue();
+	m_amdColumnsToShow[CMainFrame::amdSampleRate] = m_chkSampleRate->GetValue();
+	m_amdColumnsToShow[CMainFrame::amdChannels] = m_chkChannels->GetValue();
 
 	bool ok = true;
 	if( m_ConnectServer ) {
