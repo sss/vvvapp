@@ -196,7 +196,11 @@ int CVvvApp::OnRun() {
 		return wxApp::OnRun();
 	}
 	catch( CDataErrorException& e ) {
-		wxString s = _("An unexpected error has occurred. Here is a description of the error:\n\n");
+		wxString s;
+		if( e.GetErrorCause() == CDataErrorException::ecServerNotFound )
+			s = _("Unable to connect to the server\n\n");
+		else
+			s = _("An unexpected error has occurred. Here is a description of the error:\n\n");
 		s += e.what();
 		wxLogError( "%s", s.c_str() );
 		return 3;

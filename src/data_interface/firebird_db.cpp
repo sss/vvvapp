@@ -181,3 +181,4 @@ void CFirebirdDB::UpgradeDatabase( int currentVersion ) {
 	TransactionCommit();
 
 }
+

@@ -2089,6 +2089,10 @@ void CMainFrame::OpenDatabase( wxString fileName, int expectedVersion ) {
 				CUtils::MsgErr( _("Incorrect username or password for the following database:\n\n") + fileName );
 				errorOpeningDB = true;
 				break;
+			case CDataErrorException::ecServerNotFound:
+				CUtils::MsgErr( _("Unable to connect to the following server:\n\n") + serverName );
+				errorOpeningDB = true;
+				break;
 			default:
 				throw;
 		}
