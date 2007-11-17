@@ -2041,7 +2041,7 @@ void CMainFrame::OnMRUFile( wxCommandEvent& event ) {
 	int i = event.GetId() - wxID_FILE1;
 	wxString fileName = m_fileHistory->GetHistoryFile( i );
 	if( fileName.empty() ) return;
-	if( !wxFileName::FileExists(fileName) ) {
+	if( !DBConnectionData.connectToServer && !wxFileName::FileExists(fileName) ) {
 		CUtils::MsgErr( "This catalog file does not exist any more" );
 		m_fileHistory->RemoveFileFromHistory( i );
 		return;
