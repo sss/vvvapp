@@ -2084,7 +2084,7 @@ void CMainFrame::OpenDatabase( wxString fileName, int expectedVersion ) {
 	catch( CDataErrorException e ) {
 		switch( e.GetErrorCause()  ) {
 			case CDataErrorException::ecDatabaseNotFound:
-				CUtils::MsgErr( _("Database not found:\n\n") + fileName );
+				CUtils::MsgErr( _("Catalog not found:\n\n") + fileName );
 				errorOpeningDB = true;
 				break;
 			case CDataErrorException::ecWrongUsernameOrPassword:
@@ -2092,7 +2092,10 @@ void CMainFrame::OpenDatabase( wxString fileName, int expectedVersion ) {
 				errorOpeningDB = true;
 				break;
 			case CDataErrorException::ecServerNotFound:
-				CUtils::MsgErr( _("Unable to connect to the following server:\n\n") + serverName );
+				if( DBConnectionData.connectToServer )
+					CUtils::MsgErr( _("Unable to connect to the following server:\n\n") + serverName );
+				else
+					CUtils::MsgErr( _("Unable to open the catalog.\nPlease note that you are not connected to a database server so you cannot open a catalog located on another computer in the network.\nIf you want to open a catalog on another computer you must connect to the database server (Tools/Options menu).") );
 				errorOpeningDB = true;
 				break;
 			default:
