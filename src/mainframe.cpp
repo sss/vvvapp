@@ -2260,7 +2260,7 @@ void CMainFrame::OnDeleteVolumeClick( wxCommandEvent& WXUNUSED(event) )
 	wxTreeItemId item = tctl->GetSelection();
     MyTreeItemData *itemData = (MyTreeItemData *) tctl->GetItemData(item);
 
-	if( !CUtils::MsgAskNo( _("This command will delete this volume:\n\n") + tctl->GetItemText(item) + _("\n\nDo you really want to delete this volume?") ) )
+	if( !CUtils::MsgAskNo( _("This command will delete this volume:\n\n") + tctl->GetItemText(item) + _("\n\nfrom the VVV catalog. It will not delete any file from your disk.\n\nDo you really want to delete this volume?") ) )
 		return;
 
 	CVolumes vol;
