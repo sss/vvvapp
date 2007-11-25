@@ -68,6 +68,7 @@
 #include "mylistitemdata.h"
 #include "object_description.h"
 #include "settings.h"
+#include "opencatalog.h"
 
 ////@begin XPM images
 #include "graphics/vvv32.xpm"
@@ -1217,10 +1218,11 @@ void CMainFrame::OnOPENClick( wxCommandEvent& WXUNUSED(event) )
 		if( fd.ShowModal() == wxID_OK )
 			databaseName = fd.GetPath();
 	} else {
-		wxTextEntryDialog dlg( this, "You are about to open a catalog located on the server.\n\nEnter the alias or the complete path to the catalog file.\nRemember that the path must be relative to the server, not to the client.",
-			                   caption, "", wxOK | wxCANCEL );
+		CDialogOpenCatalog dlg( this );
+		dlg.SetAction( "O" );
+		dlg.SetShowBrowseButton( DBConnectionData.IsLocalhost() );
 		if( dlg.ShowModal() == wxID_OK )
-			databaseName = dlg.GetValue();
+			databaseName = dlg.GetCatalogName();
 	}
 
 	if( !databaseName.empty() )

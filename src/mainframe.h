@@ -411,6 +411,7 @@ private:
 		wxString serverName;
 		wxString userName;
 		wxString password;
+		bool IsLocalhost() { return (serverName == "localhost") || (serverName == "127.0.0.1"); }
 	} DBConnectionData;
 
 	// pointers to some windows used in the main frame
