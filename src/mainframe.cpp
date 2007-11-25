@@ -2315,12 +2315,28 @@ void CMainFrame::OnABOUTClick( wxCommandEvent& WXUNUSED(event) )
 
 void CMainFrame::OnNEWClick( wxCommandEvent& WXUNUSED(event) )
 {
+	if( DBConnectionData.connectToServer && !DBConnectionData.IsLocalhost() ) {
+		CUtils::MsgErr( "Unable to create a new catalog.\n\nYou are connecting to a database server on another computer. You must execute this program on the server to be able to create a new catalog." );
+		return;
+	}
+
 	wxString caption = _("New catalog");
 	wxString wildcard = _("VVV  files (*.vvv)|*.vvv|All files (*.*)|*.*");
-	wxFileDialog fd( this, caption, wxEmptyString, wxEmptyString, wildcard, wxSAVE );
-	if( fd.ShowModal() != wxID_OK ) return;
+	wxString databaseFile = "";
+	if( !DBConnectionData.connectToServer ) {
+		// create a local file
+		wxString wildcard = _("VVV  files (*.vvv)|*.vvv|All files (*.*)|*.*");
+		wxFileDialog fd( this, caption, wxEmptyString, wxEmptyString, wildcard, wxSAVE );
+		if( fd.ShowModal() == wxID_OK )
+			databaseFile = fd.GetPath();
+	} else {
+		CDialogOpenCatalog dlg( this );
+		dlg.SetAction( "N" );
+		dlg.SetShowBrowseButton( DBConnectionData.IsLocalhost() );
+		if( dlg.ShowModal() == wxID_OK )
+			databaseFile = dlg.GetCatalogName();
+	}
 
-	wxString databaseFile = fd.GetPath();
 	if ( databaseFile.empty() ) return;
 
 	// add an extension if needed
