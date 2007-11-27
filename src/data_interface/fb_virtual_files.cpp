@@ -83,7 +83,7 @@ void CVirtualFiles::FB_FetchRow(void) {
 		FB_st->Get( "FILE_EXT", stmp );
 		FileExt = CUtils::std2wx( stmp );
 		FB_st->Get("FILE_SIZE", tmp);
-		FileSize = (long) tmp;
+		FileSize = (wxLongLong) tmp;
 		FB_st->Get("FILE_DATETIME", ts);
 		DateTime.Set( ts.Day(), (wxDateTime::Month) (wxDateTime::Jan + ts.Month() - 1), ts.Year(), ts.Hours(), ts.Minutes(), ts.Seconds() );
 		if( FB_st->IsNull("VIRTUAL_PATH_FILE_ID") )
