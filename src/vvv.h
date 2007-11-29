@@ -47,6 +47,9 @@
 #include "mainframe.h"
 ////@end includes
 
+#include "wx/help.h"
+#include "wx/fs_zip.h"
+
 /*!
  * Forward declarations
  */
@@ -90,6 +93,8 @@ public:
 	// returns the name of the catalog passed in the command line (or "" if none)
 	wxString GetParameterCatalog() { return m_CatalogName; }
 
+	wxHelpController *GetHelpController() { return m_HelpController; }
+
 ////@begin CVvvApp event handler declarations
 
 ////@end CVvvApp event handler declarations
@@ -106,6 +111,9 @@ private:
 
 	// name of the catalog passed in the command line
 	wxString m_CatalogName;
+
+	// help controller
+	wxHelpController *m_HelpController;
 };
 
 /*!

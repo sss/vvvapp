@@ -129,6 +129,11 @@ bool CVvvApp::OnInit()
     wxLocale m_locale;
     m_locale.Init();
 
+	// initialize help
+	wxFileSystem::AddHandler( new wxZipFSHandler );
+	m_HelpController = new wxHelpController;
+	m_HelpController->Initialize( "vvv" );
+
 	// parse the command line
 	wxCmdLineParser cmdParser( g_cmdLineDesc, argc, argv );
 	int res;
@@ -183,6 +188,8 @@ int CVvvApp::OnExit()
 		CBaseDB::GetDatabase()->Disconnect();
 		CBaseDB::DeleteFirebirdDatabase();
 	}
+
+	delete m_HelpController;
 
 ////@begin CVvvApp cleanup
 	return wxApp::OnExit();

@@ -1,0 +1,22 @@
+[OPTIONS]
+Compatibility=1.1 or later
+Compiled file=vvv.chm
+Contents file=vvv.hhc
+Default Window=Default
+Default topic=html\index.html
+Display compile progress=No
+Language=0x409 Inglese (Stati Uniti)
+
+[WINDOWS]
+Default="VVV Help","vvv.hhc",,"html\index.html",,,,,,0x42120,,0x3006,,,,,,,,0
+
+
+[FILES]
+html\server_settings.html
+html\general_settings.html
+html\mp3_settings.html
+html\network_usage.html
+html\index.html
+
+[INFOTYPES]
+

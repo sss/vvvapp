@@ -396,6 +396,8 @@ BEGIN_EVENT_TABLE( CMainFrame, wxFrame )
 
     EVT_MENU( ID_TOOLS_OPTIONS, CMainFrame::OnToolsOptionsClick )
 
+    EVT_MENU( ID_HELP_CONTENTS, CMainFrame::OnHelpContentsClick )
+
     EVT_MENU( wxID_ABOUT, CMainFrame::OnABOUTClick )
 
     EVT_TREE_SEL_CHANGED( ID_TREE_CONTROL, CMainFrame::OnTreeControlSelChanged )
@@ -635,6 +637,8 @@ void CMainFrame::CreateControls()
     itemMenu39->Append(ID_TOOLS_OPTIONS, _("Options..."), _T(""), wxITEM_NORMAL);
     menuBar->Append(itemMenu39, _("Tools"));
     wxMenu* itemMenu41 = new wxMenu;
+    itemMenu41->Append(ID_HELP_CONTENTS, _("Help Contents"), _T(""), wxITEM_NORMAL);
+    itemMenu41->AppendSeparator();
     itemMenu41->Append(wxID_ABOUT, _("About VVV..."), _T(""), wxITEM_NORMAL);
     menuBar->Append(itemMenu41, _("Help"));
     itemFrame1->SetMenuBar(menuBar);
@@ -676,13 +680,13 @@ void CMainFrame::CreateControls()
     m_StatusBar->SetStatusWidths(4, m_StatusBarWidths);
     itemFrame1->SetStatusBar(m_StatusBar);
 
-    wxSplitterWindow* itemSplitterWindow44 = new wxSplitterWindow( itemFrame1, ID_SPLITTERWINDOW1, wxDefaultPosition, wxSize(100, 100), wxSP_3DBORDER|wxSP_3DSASH|wxSP_NO_XP_THEME|wxNO_BORDER );
-    itemSplitterWindow44->SetMinimumPaneSize(0);
+    wxSplitterWindow* itemSplitterWindow46 = new wxSplitterWindow( itemFrame1, ID_SPLITTERWINDOW1, wxDefaultPosition, wxSize(100, 100), wxSP_3DBORDER|wxSP_3DSASH|wxSP_NO_XP_THEME|wxNO_BORDER );
+    itemSplitterWindow46->SetMinimumPaneSize(0);
 
-    wxTreeCtrl* itemTreeCtrl45 = new wxTreeCtrl( itemSplitterWindow44, ID_TREE_CONTROL, wxDefaultPosition, wxSize(100, 100), wxTR_HAS_BUTTONS |wxTR_HIDE_ROOT|wxTR_SINGLE|wxNO_BORDER|wxTR_DEFAULT_STYLE );
+    wxTreeCtrl* itemTreeCtrl47 = new wxTreeCtrl( itemSplitterWindow46, ID_TREE_CONTROL, wxDefaultPosition, wxSize(100, 100), wxTR_HAS_BUTTONS |wxTR_HIDE_ROOT|wxTR_SINGLE|wxNO_BORDER|wxTR_DEFAULT_STYLE );
 
-    CRightPaneList* itemListCtrl46 = new CRightPaneList( itemSplitterWindow44, ID_LIST_CONTROL, wxDefaultPosition, wxSize(100, 100), wxLC_REPORT|wxNO_BORDER );
-    itemSplitterWindow44->SplitVertically(itemTreeCtrl45, itemListCtrl46, 50);
+    CRightPaneList* itemListCtrl48 = new CRightPaneList( itemSplitterWindow46, ID_LIST_CONTROL, wxDefaultPosition, wxSize(100, 100), wxLC_REPORT|wxNO_BORDER );
+    itemSplitterWindow46->SplitVertically(itemTreeCtrl47, itemListCtrl48, 50);
 
 ////@end CMainFrame content construction
 
@@ -3175,6 +3179,18 @@ void CMainFrame::OnToolsOptionsClick( wxCommandEvent& WXUNUSED(event) )
 
 }
 
+/*!
+ * wxEVT_COMMAND_MENU_SELECTED event handler for ID_HELP_CONTENTS
+ */
+
+void CMainFrame::OnHelpContentsClick( wxCommandEvent& WXUNUSED(event) )
+{
+	wxGetApp().GetHelpController()->DisplayContents();
+}
+
+
+
+
 
 /*!
  * CRightPaneList type definition
@@ -3318,5 +3334,6 @@ void CRightPaneList::OnListControlKillFocus( wxFocusEvent& event )
 	wxASSERT( m_MainFrame != NULL );
 	m_MainFrame->OnListControlKillFocus( event );
 }
+
 
 
