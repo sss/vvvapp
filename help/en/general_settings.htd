@@ -1,0 +1,2 @@
+If <B>Reopen the last used catalog at startup</B> is checked VVV  will automatically open the last used catalog when you will start the program again.
+If it is not checked VVV will not open any catalog at startup.

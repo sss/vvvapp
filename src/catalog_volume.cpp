@@ -55,6 +55,7 @@
 #include <wx/filename.h>
 #include "wx/config.h"
 #include "catalog_volume.h"
+#include "vvv.h"
 #include "utils.h"
 #include "audio_metadata.h"
 #include "data_interface/volumes.h"
@@ -88,6 +89,8 @@ BEGIN_EVENT_TABLE( CDialogCatalogVolume, wxDialog )
     EVT_BUTTON( ID_GET_VOLUME_NAME, CDialogCatalogVolume::OnGetVolumeNameClick )
 
     EVT_BUTTON( ID_BUTTON_CATALOG, CDialogCatalogVolume::OnButtonCatalogClick )
+
+    EVT_BUTTON( wxID_HELP, CDialogCatalogVolume::OnHelpClick )
 
 ////@end CDialogCatalogVolume event table entries
 
@@ -192,10 +195,13 @@ void CDialogCatalogVolume::CreateControls()
     wxButton* itemButton13 = new wxButton( itemDialog1, ID_BUTTON_CATALOG, _("Catalog"), wxDefaultPosition, wxDefaultSize, 0 );
     itemBoxSizer12->Add(itemButton13, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5);
 
+    wxButton* itemButton14 = new wxButton( itemDialog1, wxID_HELP, _("&Help"), wxDefaultPosition, wxDefaultSize, 0 );
+    itemBoxSizer12->Add(itemButton14, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5);
+
     itemBoxSizer12->Add(5, 5, 1, wxALIGN_CENTER_VERTICAL|wxALL, 5);
 
-    wxButton* itemButton15 = new wxButton( itemDialog1, wxID_CANCEL, _("&Close"), wxDefaultPosition, wxDefaultSize, 0 );
-    itemBoxSizer12->Add(itemButton15, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5);
+    wxButton* itemButton16 = new wxButton( itemDialog1, wxID_CANCEL, _("&Close"), wxDefaultPosition, wxDefaultSize, 0 );
+    itemBoxSizer12->Add(itemButton16, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5);
 
     m_CurrentFolder = new wxStaticText( itemDialog1, ID_CURRENT_FOLDER, _("Current folder"), wxDefaultPosition, wxDefaultSize, 0 );
     itemBoxSizer3->Add(m_CurrentFolder, 0, wxGROW|wxALL, 5);
@@ -407,3 +413,14 @@ CDialogCatalogVolume::~CDialogCatalogVolume() {
 	wxString catalogPath = m_VolumePath->GetValue();
 	pConfig->Write( wxT("CatalogPath"), catalogPath );
 }
+
+
+/*!
+ * wxEVT_COMMAND_BUTTON_CLICKED event handler for wxID_HELP
+ */
+
+void CDialogCatalogVolume::OnHelpClick( wxCommandEvent& WXUNUSED(event) )
+{
+	wxGetApp().GetHelpController()->DisplaySection( wxT("catalog_volume.htm") );
+}
+

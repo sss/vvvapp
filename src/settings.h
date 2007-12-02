@@ -104,6 +104,9 @@ public:
     /// Creates the controls and sizers
     void CreateControls();
 
+    /// wxEVT_COMMAND_BUTTON_CLICKED event handler for wxID_HELP
+    void OnHelpClick( wxCommandEvent& event );
+
 ////@begin CDialogSettings event handler declarations
 
     /// wxEVT_UPDATE_UI event handler for ID_DS_SERVERNAME

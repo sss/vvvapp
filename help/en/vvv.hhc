@@ -9,15 +9,15 @@
 <UL>
   <LI><OBJECT type="text/sitemap">
       <param name="Name" value="Welcome to VVV">
-      <param name="Local" value="doc-0009.htm">
+      <param name="Local" value="welcome.htm">
       </OBJECT>
   <LI><OBJECT type="text/sitemap">
       <param name="Name" value="Getting started">
-      <param name="Local" value="doc-0011.htm">
+      <param name="Local" value="getting_started.htm">
       </OBJECT>
   <LI><OBJECT type="text/sitemap">
       <param name="Name" value="Network usage">
-      <param name="Local" value="doc-0003.htm">
+      <param name="Local" value="network_usage.htm">
       </OBJECT>
   <LI><OBJECT type="text/sitemap">
       <param name="Name" value="VVV Dialogs">
@@ -26,19 +26,19 @@
   <UL>
     <LI><OBJECT type="text/sitemap">
         <param name="Name" value="Catalog volume">
-        <param name="Local" value="doc-0012.htm">
+        <param name="Local" value="catalog_volume.htm">
         </OBJECT>
     <LI><OBJECT type="text/sitemap">
         <param name="Name" value="General settings">
-        <param name="Local" value="doc-0006.htm">
+        <param name="Local" value="general_settings.htm">
         </OBJECT>
     <LI><OBJECT type="text/sitemap">
         <param name="Name" value="MP3 settings">
-        <param name="Local" value="doc-0007.htm">
+        <param name="Local" value="mp3_settings.htm">
         </OBJECT>
     <LI><OBJECT type="text/sitemap">
         <param name="Name" value="Server settings">
-        <param name="Local" value="doc-0008.htm">
+        <param name="Local" value="server_settings.htm">
         </OBJECT>
   </UL>
 </UL>

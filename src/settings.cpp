@@ -40,6 +40,7 @@
 ////@end includes
 
 #include "settings.h"
+#include "vvv.h"
 #include "ibpp/core/ibpp.h"
 
 ////@begin XPM images
@@ -71,6 +72,8 @@ BEGIN_EVENT_TABLE( CDialogSettings, wxPropertySheetDialog )
 
 ////@end CDialogSettings event table entries
 
+    EVT_BUTTON( wxID_HELP, CDialogSettings::OnHelpClick )
+
 END_EVENT_TABLE()
 
 
@@ -101,7 +104,7 @@ bool CDialogSettings::Create( wxWindow* parent, wxWindowID id, const wxString& c
     wxPropertySheetDialog::Create( parent, id, caption, pos, size, style );
 
     SetSheetStyle(wxPROPSHEET_DEFAULT);
-    CreateButtons(wxOK|wxCANCEL);
+    CreateButtons(wxOK|wxCANCEL|wxHELP);
     CreateControls();
     LayoutDialog();
     Centre();
@@ -434,4 +437,25 @@ void CDialogSettings::OnDsTestConnectionClick( wxCommandEvent& WXUNUSED(event) )
 	else
 		CUtils::MsgInfo( _("Server connection successful") );
 }
+
+/*!
+ * wxEVT_COMMAND_BUTTON_CLICKED event handler for wxID_HELP
+ */
+
+void CDialogSettings::OnHelpClick( wxCommandEvent& WXUNUSED(event) )
+{
+	int nPageSelected = GetBookCtrl()->GetSelection();
+	switch( nPageSelected ) {
+		case 0:
+			wxGetApp().GetHelpController()->DisplaySection( wxT("general_settings.htm") );
+			break;
+		case 1:
+			wxGetApp().GetHelpController()->DisplaySection( wxT("mp3_settings.htm") );
+			break;
+		case 2:
+			wxGetApp().GetHelpController()->DisplaySection( wxT("server_settings.htm") );
+			break;
+	}
+}
+
 

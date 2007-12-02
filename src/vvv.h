@@ -48,6 +48,7 @@
 ////@end includes
 
 #include "wx/help.h"
+#include "wx/html/helpctrl.h"
 #include "wx/fs_zip.h"
 
 /*!
@@ -93,6 +94,7 @@ public:
 	// returns the name of the catalog passed in the command line (or "" if none)
 	wxString GetParameterCatalog() { return m_CatalogName; }
 
+//	wxHtmlHelpController *GetHelpController() { return m_HelpController; }
 	wxHelpController *GetHelpController() { return m_HelpController; }
 
 ////@begin CVvvApp event handler declarations
@@ -113,6 +115,7 @@ private:
 	wxString m_CatalogName;
 
 	// help controller
+//	wxHtmlHelpController *m_HelpController;
 	wxHelpController *m_HelpController;
 };
 

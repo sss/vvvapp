@@ -131,6 +131,7 @@ bool CVvvApp::OnInit()
 
 	// initialize help
 	wxFileSystem::AddHandler( new wxZipFSHandler );
+//	m_HelpController = new wxHtmlHelpController;
 	m_HelpController = new wxHelpController;
 	m_HelpController->Initialize( "vvv" );
 
