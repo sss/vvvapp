@@ -1,6 +1,0 @@
-This window is used to catalog the content of a volume, like a CD or a DVD disk.<P>
-
-Insert a disk, select or type the path of the CD/DVD drive and press the <B>Get volume name</B> button to see the disk name in the <B>Volume name</B> textbox.<BR>
-You can edit the volume name: that name will be used to show the volume in the program.<P>
-Now press the <B>Catalog</B> button to read the disk content.<BR>
-You can insert another disk and repeat these steps many times if you like, then press the <B>Close</B> button to return to the main window.<P>
