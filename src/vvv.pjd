@@ -2348,7 +2348,7 @@
                   <long name="locked">0</long>
                   <string name="created">"31/12/2006"</string>
                   <string name="proxy-type">"wbButtonProxy"</string>
-                  <string name="event-handler-0">"wxEVT_COMMAND_BUTTON_CLICKED|OnGetVolumeNameClick"</string>
+                  <string name="event-handler-0">"wxEVT_COMMAND_BUTTON_CLICKED|OnGetVolumeNameClick|||CDialogCatalogVolume"</string>
                   <string name="proxy-Id name">"ID_GET_VOLUME_NAME"</string>
                   <long name="proxy-Id value">10009</long>
                   <string name="proxy-Name">""</string>
@@ -2375,7 +2375,7 @@
                   <string name="proxy-Font">""</string>
                   <bool name="proxy-Hidden">0</bool>
                   <bool name="proxy-Enabled">1</bool>
-                  <string name="proxy-Platform">"__WXMSW__"</string>
+                  <string name="proxy-Platform">"&lt;Any platform&gt;"</string>
                   <bool name="proxy-wxBU_LEFT">0</bool>
                   <bool name="proxy-wxBU_RIGHT">0</bool>
                   <bool name="proxy-wxBU_TOP">0</bool>

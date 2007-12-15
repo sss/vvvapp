@@ -120,11 +120,9 @@ public:
     /// wxEVT_COMMAND_TREE_SEL_CHANGED event handler for ID_DIR_CTRL
     void OnDirCtrlSelChanged( wxTreeEvent& event );
 
-#if defined(__WXMSW__)
     /// wxEVT_COMMAND_BUTTON_CLICKED event handler for ID_GET_VOLUME_NAME
     void OnGetVolumeNameClick( wxCommandEvent& event );
 
-#endif
     /// wxEVT_COMMAND_BUTTON_CLICKED event handler for ID_BUTTON_CATALOG
     void OnButtonCatalogClick( wxCommandEvent& event );
 
