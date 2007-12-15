@@ -847,8 +847,8 @@ wxIcon CMainFrame::GetIconResource( const wxString& name )
 
 void CMainFrame::OnCatalogVolumeClick( wxCommandEvent& WXUNUSED(event) )
 {
-    CDialogCatalogVolume* window = new CDialogCatalogVolume(this, ID_DIALOG_CATALOG_VOLUME, _("Catalog volume"));
-    window->ShowModal();
+    CDialogCatalogVolume dialog(this, ID_DIALOG_CATALOG_VOLUME, _("Catalog volume"));
+    dialog.ShowModal();
 	LoadTreeControl();
 }
 
