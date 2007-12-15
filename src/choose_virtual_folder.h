@@ -49,6 +49,7 @@
 ////@end includes
 #include <wx/imaglist.h>
 #include <wx/arrstr.h>
+#include "window_position.h"
 
 /*!
  * Forward declarations
@@ -96,6 +97,9 @@ public:
 
     /// Creation
     bool Create( wxWindow* parent, wxWindowID id = SYMBOL_CDIALOGCHOOSEVIRTUALFOLDER_IDNAME, const wxString& caption = SYMBOL_CDIALOGCHOOSEVIRTUALFOLDER_TITLE, const wxPoint& pos = SYMBOL_CDIALOGCHOOSEVIRTUALFOLDER_POSITION, const wxSize& size = SYMBOL_CDIALOGCHOOSEVIRTUALFOLDER_SIZE, long style = SYMBOL_CDIALOGCHOOSEVIRTUALFOLDER_STYLE );
+
+    /// Destructor
+    ~CDialogChooseVirtualFolder();
 
     /// Initialises member variables
     void Init();
@@ -146,6 +150,8 @@ private:
 	void LoadVirtualFolderInTreeControl( wxTreeCtrl* tctl, wxTreeItemId fatherTreeID, long fatherID);
 
 	long m_VirtualFolderID;		// primary key of the choosen virtual foder
+
+	CWindowPosition m_WindowPosition;
 };
 
 #endif

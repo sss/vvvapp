@@ -118,7 +118,11 @@ bool CDialogChooseVirtualFolder::Create( wxWindow* parent, wxWindowID id, const 
     }
     Centre();
 ////@end CDialogChooseVirtualFolder creation
-    return true;
+
+	m_WindowPosition.SetWindow( this );
+	m_WindowPosition.RestorePosition();
+	
+	return true;
 }
 
 /*!
@@ -361,4 +365,11 @@ void CDialogChooseVirtualFolder::SetCurrentPathArray( wxArrayString& as ) {
 
 }
 
+
+
+
+
+CDialogChooseVirtualFolder::~CDialogChooseVirtualFolder() {
+	m_WindowPosition.SavePosition();
+}
 
