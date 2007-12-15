@@ -67,8 +67,8 @@ void CWindowPosition::RestorePosition( void ) {
 	wxDisplaySize( &dw, &dh );
 	if( x > (dw - 200) ) return;
 	if( y > (dh - 200) ) return;
-	if( x < 100 ) return;
-	if( y < 100 ) return;
+	if( x < 0 ) return;
+	if( y < 50 ) return;
 
 	// move and resize the window
 	window->Move(x, y);
