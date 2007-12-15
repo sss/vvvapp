@@ -134,6 +134,9 @@ bool CDialogCatalogVolume::Create( wxWindow* parent, wxWindowID id, const wxStri
 	wxString catalogPath = pConfig->Read( wxT("CatalogPath"), wxT("") );
 	m_VolumePath->SetValue( catalogPath );
 	
+	m_WindowPosition.SetWindow( this );
+	m_WindowPosition.RestorePosition();
+
 	return true;
 }
 
@@ -412,6 +415,8 @@ CDialogCatalogVolume::~CDialogCatalogVolume() {
 	pConfig->SetPath(wxT("/CatalogVolume"));
 	wxString catalogPath = m_VolumePath->GetValue();
 	pConfig->Write( wxT("CatalogPath"), catalogPath );
+
+	m_WindowPosition.SavePosition();
 }
 
 

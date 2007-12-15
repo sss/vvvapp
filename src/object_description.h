@@ -33,6 +33,7 @@
 
 ////@begin includes
 ////@end includes
+#include "window_position.h"
 
 /*!
  * Forward declarations
@@ -112,6 +113,11 @@ public:
     wxStaticText* m_ObjectNameStatic;
     wxTextCtrl* m_TextControl;
 ////@end CDialogObjectDescription member variables
+
+private:
+
+	CWindowPosition m_WindowPosition;
+
 };
 
 #endif

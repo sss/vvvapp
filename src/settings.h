@@ -36,6 +36,7 @@
 #include "wx/valgen.h"
 ////@end includes
 #include "mainframe.h"
+#include "window_position.h"
 
 /*!
  * Forward declarations
@@ -183,6 +184,8 @@ private:
 
 	bool TransferDataToWindow();
 	bool TransferDataFromWindow();
+
+	CWindowPosition m_WindowPosition;
 
 };
 

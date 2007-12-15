@@ -111,7 +111,11 @@ bool CDialogOpenCatalog::Create( wxWindow* parent, wxWindowID id, const wxString
     }
     Centre();
 ////@end CDialogOpenCatalog creation
-    return true;
+
+	m_WindowPosition.SetWindow( this );
+	m_WindowPosition.RestorePosition();
+	
+	return true;
 }
 
 
@@ -123,6 +127,8 @@ CDialogOpenCatalog::~CDialogOpenCatalog()
 {
 ////@begin CDialogOpenCatalog destruction
 ////@end CDialogOpenCatalog destruction
+
+	m_WindowPosition.SavePosition();
 }
 
 

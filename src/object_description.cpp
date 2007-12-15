@@ -96,7 +96,11 @@ bool CDialogObjectDescription::Create( wxWindow* parent, wxWindowID id, const wx
     }
     Centre();
 ////@end CDialogObjectDescription creation
-    return true;
+
+	m_WindowPosition.SetWindow( this );
+	m_WindowPosition.RestorePosition();
+	
+	return true;
 }
 
 
@@ -108,6 +112,8 @@ CDialogObjectDescription::~CDialogObjectDescription()
 {
 ////@begin CDialogObjectDescription destruction
 ////@end CDialogObjectDescription destruction
+
+	m_WindowPosition.SavePosition();
 }
 
 

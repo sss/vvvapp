@@ -45,6 +45,7 @@
 ////@begin includes
 #include "wx/valgen.h"
 ////@end includes
+#include "window_position.h"
 
 /*!
  * Forward declarations
@@ -134,6 +135,9 @@ private:
     wxString m_Action; // "O" for OPEN, "N" for NEW
     bool m_ShowBrowseButton; // if true the dialog will show a "Browse" button near the catalog name
 ////@end CDialogOpenCatalog member variables
+
+	CWindowPosition m_WindowPosition;
+
 };
 
 #endif

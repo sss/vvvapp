@@ -109,6 +109,10 @@ bool CDialogSettings::Create( wxWindow* parent, wxWindowID id, const wxString& c
     LayoutDialog();
     Centre();
 ////@end CDialogSettings creation
+
+	m_WindowPosition.SetWindow( this );
+	m_WindowPosition.RestorePosition();
+
     return true;
 }
 
@@ -121,6 +125,8 @@ CDialogSettings::~CDialogSettings()
 {
 ////@begin CDialogSettings destruction
 ////@end CDialogSettings destruction
+	
+	m_WindowPosition.SavePosition();
 }
 
 

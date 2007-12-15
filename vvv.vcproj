@@ -1134,6 +1134,9 @@
 				RelativePath=".\src\vvv.rc">
 			</File>
 			<File
+				RelativePath=".\src\window_position.cpp">
+			</File>
+			<File
 				RelativePath=".\src\windows_specific.cpp">
 			</File>
 			<Filter
@@ -1288,6 +1291,9 @@
 			</File>
 			<File
 				RelativePath=".\src\vvv.h">
+			</File>
+			<File
+				RelativePath=".\src\window_position.h">
 			</File>
 			<File
 				RelativePath=".\src\windows_specific.h">
