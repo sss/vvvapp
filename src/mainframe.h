@@ -93,7 +93,6 @@ class CRightPaneList;
 #define ID_EDIT_OBJECT_DESCRIPTION 10018
 #define ID_NEW_VIRTUAL_ROOT_FOLDER 10021
 #define ID_NEW_VIRTUAL_SUBFOLDER 10022
-#define ID_DELETE_VIRTUAL_FOLDER 10029
 #define ID_VIEW_TOOLBAR 10042
 #define ID_VIEW_STATUS_BAR 10043
 #define ID_TOOLS_OPTIONS 10014
@@ -212,12 +211,6 @@ public:
 
     /// wxEVT_UPDATE_UI event handler for ID_NEW_VIRTUAL_SUBFOLDER
     void OnNewVirtualSubfolderUpdate( wxUpdateUIEvent& event );
-
-    /// wxEVT_COMMAND_MENU_SELECTED event handler for ID_DELETE_VIRTUAL_FOLDER
-    void OnDeleteVirtualFolderClick( wxCommandEvent& event );
-
-    /// wxEVT_UPDATE_UI event handler for ID_DELETE_VIRTUAL_FOLDER
-    void OnDeleteVirtualFolderUpdate( wxUpdateUIEvent& event );
 
     /// wxEVT_COMMAND_MENU_SELECTED event handler for ID_CATALOG_VOLUME
     void OnCatalogVolumeClick( wxCommandEvent& event );
