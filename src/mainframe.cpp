@@ -332,6 +332,157 @@ int wxCALLBACK ListControlCompareFunction( long item1, long item2, long sortData
 }
 
 
+
+/*!
+ * CRightPaneList type definition
+ */
+
+IMPLEMENT_CLASS( CRightPaneList, wxListCtrl )
+
+
+/*!
+ * CRightPaneList event table definition
+ */
+
+BEGIN_EVENT_TABLE( CRightPaneList, wxListCtrl )
+
+////@begin CRightPaneList event table entries
+    EVT_LIST_ITEM_ACTIVATED( ID_LIST_CONTROL, CRightPaneList::OnListControlItemActivated )
+    EVT_LIST_COL_CLICK( ID_LIST_CONTROL, CRightPaneList::OnListControlColLeftClick )
+    EVT_CONTEXT_MENU( CRightPaneList::OnListControlContextMenu )
+    EVT_SET_FOCUS( CRightPaneList::OnListControlSetFocus )
+    EVT_KILL_FOCUS( CRightPaneList::OnListControlKillFocus )
+
+////@end CRightPaneList event table entries
+
+END_EVENT_TABLE()
+
+
+/*!
+ * CRightPaneList constructors
+ */
+
+CRightPaneList::CRightPaneList()
+{
+    Init();
+}
+
+CRightPaneList::CRightPaneList(wxWindow* parent, wxWindowID id, const wxPoint& pos, const wxSize& size, long style, const wxValidator& validator)
+{
+    Init();
+    Create(parent, id, pos, size, style, validator);
+}
+
+
+/*!
+ * CRightPaneList creator
+ */
+
+bool CRightPaneList::Create(wxWindow* parent, wxWindowID id, const wxPoint& pos, const wxSize& size, long style, const wxValidator& validator)
+{
+////@begin CRightPaneList creation
+    wxListCtrl::Create(parent, id, pos, size, style, validator);
+    CreateControls();
+////@end CRightPaneList creation
+    return true;
+}
+
+
+/*!
+ * CRightPaneList destructor
+ */
+
+CRightPaneList::~CRightPaneList()
+{
+////@begin CRightPaneList destruction
+////@end CRightPaneList destruction
+}
+
+
+/*!
+ * Member initialisation
+ */
+
+void CRightPaneList::Init()
+{
+////@begin CRightPaneList member initialisation
+////@end CRightPaneList member initialisation
+	m_MainFrame = NULL;
+}
+
+
+/*!
+ * Control creation for CRightPaneList
+ */
+
+void CRightPaneList::CreateControls()
+{    
+////@begin CRightPaneList content construction
+////@end CRightPaneList content construction
+}
+
+
+/*!
+ * wxEVT_COMMAND_LIST_ITEM_ACTIVATED event handler for ID_LIST_CONTROL
+ */
+
+void CRightPaneList::OnListControlItemActivated( wxListEvent& event )
+{
+	wxASSERT( m_MainFrame != NULL );
+	m_MainFrame->OnListControlItemActivated( event );
+}
+
+
+/*!
+ * wxEVT_COMMAND_LIST_COL_CLICK event handler for ID_LIST_CONTROL
+ */
+
+void CRightPaneList::OnListControlColLeftClick( wxListEvent& event )
+{
+	wxASSERT( m_MainFrame != NULL );
+	m_MainFrame->OnListControlColLeftClick( event );
+}
+
+
+/*!
+ * wxEVT_CONTEXT_MENU event handler for ID_LIST_CONTROL
+ */
+
+void CRightPaneList::OnListControlContextMenu( wxContextMenuEvent& event )
+{
+	wxASSERT( m_MainFrame != NULL );
+	m_MainFrame->OnListControlContextMenu( event );
+}
+
+
+/*!
+ * wxEVT_SET_FOCUS event handler for ID_LIST_CONTROL
+ */
+
+void CRightPaneList::OnListControlSetFocus( wxFocusEvent& event )
+{
+	wxASSERT( m_MainFrame != NULL );
+	m_MainFrame->OnListControlSetFocus( event );
+}
+
+
+/*!
+ * wxEVT_KILL_FOCUS event handler for ID_LIST_CONTROL
+ */
+
+void CRightPaneList::OnListControlKillFocus( wxFocusEvent& event )
+{
+	wxASSERT( m_MainFrame != NULL );
+	m_MainFrame->OnListControlKillFocus( event );
+}
+
+
+
+
+
+
+
+
 /*!
  * CMainFrame type definition
  */
@@ -354,23 +505,20 @@ BEGIN_EVENT_TABLE( CMainFrame, wxFrame )
     EVT_MENU( ID_ADD_VIRTUAL_FOLDER, CMainFrame::OnAddVirtualFolderClick )
     EVT_UPDATE_UI( ID_ADD_VIRTUAL_FOLDER, CMainFrame::OnAddVirtualFolderUpdate )
 
+    EVT_MENU( ID_EDIT_RENAME, CMainFrame::OnEditRenameClick )
+    EVT_UPDATE_UI( ID_EDIT_RENAME, CMainFrame::OnEditRenameUpdate )
+
+    EVT_MENU( ID_EDIT_DELETE, CMainFrame::OnEditDeleteClick )
+    EVT_UPDATE_UI( ID_EDIT_DELETE, CMainFrame::OnEditDeleteUpdate )
+
     EVT_MENU( ID_EDIT_OBJECT_DESCRIPTION, CMainFrame::OnEditObjectDescriptionClick )
     EVT_UPDATE_UI( ID_EDIT_OBJECT_DESCRIPTION, CMainFrame::OnEditObjectDescriptionUpdate )
-
-    EVT_MENU( ID_RENAME_VOLUME, CMainFrame::OnRenameVolumeClick )
-    EVT_UPDATE_UI( ID_RENAME_VOLUME, CMainFrame::OnRenameVolumeUpdate )
-
-    EVT_MENU( ID_DELETE_VOLUME, CMainFrame::OnDeleteVolumeClick )
-    EVT_UPDATE_UI( ID_DELETE_VOLUME, CMainFrame::OnDeleteVolumeUpdate )
 
     EVT_MENU( ID_NEW_VIRTUAL_ROOT_FOLDER, CMainFrame::OnNewVirtualRootFolderClick )
     EVT_UPDATE_UI( ID_NEW_VIRTUAL_ROOT_FOLDER, CMainFrame::OnNewVirtualRootFolderUpdate )
 
     EVT_MENU( ID_NEW_VIRTUAL_SUBFOLDER, CMainFrame::OnNewVirtualSubfolderClick )
     EVT_UPDATE_UI( ID_NEW_VIRTUAL_SUBFOLDER, CMainFrame::OnNewVirtualSubfolderUpdate )
-
-    EVT_MENU( ID_RENAME_VIRTUAL_FOLDER, CMainFrame::OnRenameVirtualFolderClick )
-    EVT_UPDATE_UI( ID_RENAME_VIRTUAL_FOLDER, CMainFrame::OnRenameVirtualFolderUpdate )
 
     EVT_MENU( ID_DELETE_VIRTUAL_FOLDER, CMainFrame::OnDeleteVirtualFolderClick )
     EVT_UPDATE_UI( ID_DELETE_VIRTUAL_FOLDER, CMainFrame::OnDeleteVirtualFolderUpdate )
@@ -608,13 +756,13 @@ void CMainFrame::CreateControls()
     wxMenu* itemMenu17 = new wxMenu;
     itemMenu17->Append(ID_ADD_VIRTUAL_FOLDER, _("Add To Virtual Folder..."), _T(""), wxITEM_NORMAL);
     itemMenu17->AppendSeparator();
+    itemMenu17->Append(ID_EDIT_RENAME, _("Rename...\tF2"), _T(""), wxITEM_NORMAL);
+    itemMenu17->Append(ID_EDIT_DELETE, _("Delete"), _T(""), wxITEM_NORMAL);
+    itemMenu17->AppendSeparator();
     itemMenu17->Append(ID_EDIT_OBJECT_DESCRIPTION, _("Object Description..."), _T(""), wxITEM_NORMAL);
-    itemMenu17->Append(ID_RENAME_VOLUME, _("Rename Volume..."), _T(""), wxITEM_NORMAL);
-    itemMenu17->Append(ID_DELETE_VOLUME, _("Delete Volume"), _T(""), wxITEM_NORMAL);
     itemMenu17->AppendSeparator();
     itemMenu17->Append(ID_NEW_VIRTUAL_ROOT_FOLDER, _("New Virtual Root Folder..."), _T(""), wxITEM_NORMAL);
     itemMenu17->Append(ID_NEW_VIRTUAL_SUBFOLDER, _("New Virtual Subfolder..."), _T(""), wxITEM_NORMAL);
-    itemMenu17->Append(ID_RENAME_VIRTUAL_FOLDER, _("Rename Virtual Folder..."), _T(""), wxITEM_NORMAL);
     itemMenu17->Append(ID_DELETE_VIRTUAL_FOLDER, _("Delete Virtual Folder"), _T(""), wxITEM_NORMAL);
     menuBar->Append(itemMenu17, _("Edit"));
     wxMenu* itemMenu28 = new wxMenu;
@@ -1645,103 +1793,6 @@ void CMainFrame::ShowSelectedVirtualFolderFiles(void ) {
 
 
 /*!
- * wxEVT_UPDATE_UI event handler for ID_RENAME_VOLUME
- */
-
-void CMainFrame::OnRenameVolumeUpdate( wxUpdateUIEvent& event )
-{
-	if( CBaseDB::GetDatabase() == NULL || m_CurrentView != cvPhysical || m_ListViewHasFocus ) {
-		event.Enable(false);
-		return;
-	}
-	
-	bool hideElement = false;
-	wxTreeCtrl *tctl = GetTreePhysicalControl();
-	if( tctl->GetCount() > 0 ) {
-		wxTreeItemId item = tctl->GetSelection();
-		if( item.IsOk() ) {
-			if( tctl->GetItemParent(item) != tctl->GetRootItem() ) hideElement = true;
-		}
-		else {
-			hideElement = true;
-		}
-	}
-	else
-		hideElement = true;
-
-	event.Enable( !hideElement );
-}
-
-/*!
- * wxEVT_UPDATE_UI event handler for ID_DELETE_VOLUME
- */
-
-void CMainFrame::OnDeleteVolumeUpdate( wxUpdateUIEvent& event )
-{
-	if( CBaseDB::GetDatabase() == NULL || m_CurrentView != cvPhysical  || m_ListViewHasFocus) {
-		event.Enable(false);
-		return;
-	}
-	
-	bool hideElement = false;
-	wxTreeCtrl *tctl = GetTreePhysicalControl();
-	if( tctl->GetCount() > 0 ) {
-		wxTreeItemId item = tctl->GetSelection();
-		if( item.IsOk() ) {
-			if( tctl->GetItemParent(item) != tctl->GetRootItem() ) hideElement = true;
-		}
-		else {
-			hideElement = true;
-		}
-	}
-	else
-		hideElement = true;
-
-	event.Enable( !hideElement );
-}
-
-
-/*!
- * wxEVT_COMMAND_MENU_SELECTED event handler for ID_RENAME_VOLUME
- */
-
-void CMainFrame::OnRenameVolumeClick( wxCommandEvent& WXUNUSED(event) )
-{
-	wxTreeCtrl *tctl = GetTreePhysicalControl();
-	wxTreeItemId item = tctl->GetSelection();
-    MyTreeItemData *itemData = (MyTreeItemData *) tctl->GetItemData(item);
-	wxString oldName = itemData->GetDesc();
-//	wxString oldName = tctl->GetItemText(item);
-
-	// asks for the new volume name
-	wxTextEntryDialog ted( this, _("Enter the new volume name"), _("Rename volume"), oldName, wxOK | wxCANCEL );
-	if( ted.ShowModal() != wxID_OK ) return;
-	wxString newName = ted.GetValue();
-	if( newName == oldName || newName.empty() ) return;
-
-	// changes the volume name in the database
-	CVolumes vol( itemData->GetVolumeID() );	// loads the current data
-	vol.VolumeName = newName;
-	try {
-		vol.DbUpdate();
-	}
-	catch( CDataErrorException& e ) {
-		if( e.GetErrorCause() == CDataErrorException::ecUnique ) {
-			CUtils::MsgErr( _("The new volume name is already present in the database") );
-			return;
-		}
-		else
-			throw;
-	}
-
-	// changes the volume name in the tree control
-	tctl->SetItemText( item, CreateVolumeLabel(newName, itemData->GetObjectDescription()) );
-	itemData->SetDesc( newName );
-
-}
-
-
-/*!
  * wxEVT_COMMAND_MENU_SELECTED event handler for ID_ADD_VIRTUAL_FOLDER
  */
 
@@ -1933,67 +1984,6 @@ void CMainFrame::OnNewVirtualSubfolderUpdate( wxUpdateUIEvent& event )
 	event.Enable( isEnabled );
 }
 
-/*!
- * wxEVT_COMMAND_MENU_SELECTED event handler for ID_RENAME_VIRTUAL_FOLDER
- */
-
-void CMainFrame::OnRenameVirtualFolderClick( wxCommandEvent& WXUNUSED(event) )
-{
-	wxTreeCtrl *tctl = GetTreeVirtualControl();
-	wxTreeItemId item = tctl->GetSelection();
-    MyTreeItemData *itemData = (MyTreeItemData *) tctl->GetItemData(item);
-	wxString oldName = tctl->GetItemText(item);
-
-	// asks for the new volume name
-	wxTextEntryDialog ted( this, _("Enter the new forder name"), _("Rename virtual folder"), oldName, wxOK | wxCANCEL );
-	if( ted.ShowModal() != wxID_OK ) return;
-	wxString newName = ted.GetValue();
-	if( newName == oldName || newName.empty() ) return;
-
-	// changes the folder name in the database
-	try {
-		CVirtualPaths::Rename( itemData->GetPathID(), newName );
-	}
-	catch( CDataErrorException& e ) {
-		if( e.GetErrorCause() == CDataErrorException::ecUnique ) {
-			CUtils::MsgErr( _("The new folder name is already present in the database") );
-			return;
-		}
-		else
-			throw;
-	}
-
-	// changes the volume name in the tree control
-	tctl->SetItemText( item, newName );
-}
-
-/*!
- * wxEVT_UPDATE_UI event handler for ID_RENAME_VIRTUAL_FOLDER
- */
-
-void CMainFrame::OnRenameVirtualFolderUpdate( wxUpdateUIEvent& event )
-{
-	if( CBaseDB::GetDatabase() == NULL || m_ListViewHasFocus ) {
-		event.Enable(false);
-		return;
-	}
-	
-	bool isEnabled = m_CurrentView == cvVirtual;
-	if( isEnabled ) {
-		wxTreeCtrl* tctl = GetTreeVirtualControl();
-		isEnabled = (tctl->GetCount() > 0);
-		if( isEnabled ) {
-			wxTreeItemId item = tctl->GetSelection();
-			if( item.IsOk() ) {
-				MyTreeItemData *itemData = (MyTreeItemData *) tctl->GetItemData(item);
-				isEnabled = itemData->GetPhysPathID().IsNull();
-			}
-			else
-				isEnabled = false;
-		}
-	}
-	event.Enable( isEnabled );
-}
 
 /*!
  * wxEVT_COMMAND_MENU_SELECTED event handler for ID_DELETE_VIRTUAL_FOLDER
@@ -2001,21 +1991,7 @@ void CMainFrame::OnRenameVirtualFolderUpdate( wxUpdateUIEvent& event )
 
 void CMainFrame::OnDeleteVirtualFolderClick( wxCommandEvent& WXUNUSED(event) )
 {
-	if( !CUtils::MsgAskNo( _("This command will delete the selected virtual foder, but it will not change the folders in the physical view.\n\nDo you really want to delete the selected virtual folder?") ) )
-		return;
-	
-	wxTreeCtrl *tctl = GetTreeVirtualControl();
-	wxTreeItemId item = tctl->GetSelection();
-    MyTreeItemData *itemData = (MyTreeItemData *) tctl->GetItemData(item);
-
-	// deletes from the database
-	CVirtualPaths vp;
-	vp.PathID = itemData->GetPathID();
-	vp.DbDelete();
-
-	// deletes from the tree control
-	tctl->DeleteChildren(item);
-	tctl->Delete(item);
+	DeleteSelectedVirtualFolder();
 }
 
 /*!
@@ -2255,37 +2231,6 @@ void CMainFrame::StoreListControlPhysicalWidth(void) {
 				k++;
 			}
 	}
-}
-
-/*!
- * wxEVT_COMMAND_MENU_SELECTED event handler for ID_DELETE_VOLUME
- */
-
-void CMainFrame::OnDeleteVolumeClick( wxCommandEvent& WXUNUSED(event) )
-{
-	wxTreeCtrl *tctl = GetTreePhysicalControl();
-	wxTreeItemId item = tctl->GetSelection();
-    MyTreeItemData *itemData = (MyTreeItemData *) tctl->GetItemData(item);
-
-	if( !CUtils::MsgAskNo( _("This command will delete this volume:\n\n") + tctl->GetItemText(item) + _("\n\nfrom the VVV catalog. It will not delete any file from your disk.\n\nDo you really want to delete this volume?") ) )
-		return;
-
-	CVolumes vol;
-	vol.VolumeID = itemData->GetVolumeID();
-	try {
-		vol.DbDelete();
-	}
-	catch( CDataErrorException& e ) {
-		if( e.GetErrorCause() == CDataErrorException::ecReferentialIntegrity ) {
-			CUtils::MsgErr( _("Unable to delete this volume: at least one of its files is used in the virtual view") );
-			return;
-		}
-		else
-			throw;
-	}
-
-	// removes the item from the tree control
-	tctl->Delete(item);
 }
 
 /*!
@@ -2564,8 +2509,8 @@ void CMainFrame::OnTreeControlItemMenu( wxTreeEvent& event )
 	menu.Append( ID_EDIT_OBJECT_DESCRIPTION, _("Edit Description...") );
 	if( tctl->GetItemParent(item) == tctl->GetRootItem() ) {
 		// only for voume nodes, not for folders
-		menu.Append( ID_RENAME_VOLUME, _("Rename...") );
-		menu.Append( ID_DELETE_VOLUME, _("Delete") );
+		menu.Append( ID_EDIT_RENAME, _("Rename...") );
+		menu.Append( ID_EDIT_DELETE, _("Delete") );
 	}
 
 	PopupMenu( &menu, pt );
@@ -2594,8 +2539,8 @@ void CMainFrame::OnTreeControlVirtualItemMenu( wxTreeEvent& event )
 		// only if we have a selected item
 		menu.Append( ID_NEW_VIRTUAL_SUBFOLDER, _("New Subfolder") );
 	    MyTreeItemData *itemData = (MyTreeItemData *) tctl->GetItemData(item);
-		if( itemData->GetPhysPathID().IsNull() ) menu.Append( ID_RENAME_VIRTUAL_FOLDER, _("Rename") );
-		menu.Append( ID_DELETE_VIRTUAL_FOLDER, _("Delete") );
+		if( itemData->GetPhysPathID().IsNull() ) menu.Append( ID_EDIT_RENAME, _("Rename") );
+		menu.Append( ID_EDIT_DELETE, _("Delete") );
 	}
 
 	PopupMenu( &menu, pt );
@@ -3193,147 +3138,243 @@ void CMainFrame::OnHelpContentsClick( wxCommandEvent& WXUNUSED(event) )
 
 
 /*!
- * CRightPaneList type definition
+ * wxEVT_COMMAND_MENU_SELECTED event handler for ID_EDIT_RENAME
  */
 
-IMPLEMENT_CLASS( CRightPaneList, wxListCtrl )
-
-
-/*!
- * CRightPaneList event table definition
- */
-
-BEGIN_EVENT_TABLE( CRightPaneList, wxListCtrl )
-
-////@begin CRightPaneList event table entries
-    EVT_LIST_ITEM_ACTIVATED( ID_LIST_CONTROL, CRightPaneList::OnListControlItemActivated )
-    EVT_LIST_COL_CLICK( ID_LIST_CONTROL, CRightPaneList::OnListControlColLeftClick )
-    EVT_CONTEXT_MENU( CRightPaneList::OnListControlContextMenu )
-    EVT_SET_FOCUS( CRightPaneList::OnListControlSetFocus )
-    EVT_KILL_FOCUS( CRightPaneList::OnListControlKillFocus )
-
-////@end CRightPaneList event table entries
-
-END_EVENT_TABLE()
-
-
-/*!
- * CRightPaneList constructors
- */
-
-CRightPaneList::CRightPaneList()
+void CMainFrame::OnEditRenameClick( wxCommandEvent& WXUNUSED(event) )
 {
-    Init();
-}
+	if( m_CurrentView == cvPhysical )
+		RenameSelectedVolume();
 
-CRightPaneList::CRightPaneList(wxWindow* parent, wxWindowID id, const wxPoint& pos, const wxSize& size, long style, const wxValidator& validator)
-{
-    Init();
-    Create(parent, id, pos, size, style, validator);
-}
-
-
-/*!
- * CRightPaneList creator
- */
-
-bool CRightPaneList::Create(wxWindow* parent, wxWindowID id, const wxPoint& pos, const wxSize& size, long style, const wxValidator& validator)
-{
-////@begin CRightPaneList creation
-    wxListCtrl::Create(parent, id, pos, size, style, validator);
-    CreateControls();
-////@end CRightPaneList creation
-    return true;
+	if( m_CurrentView == cvVirtual )
+		RenameSelectedVirtualFolder();
 }
 
 
 /*!
- * CRightPaneList destructor
+ * wxEVT_UPDATE_UI event handler for ID_EDIT_RENAME
  */
 
-CRightPaneList::~CRightPaneList()
+void CMainFrame::OnEditRenameUpdate( wxUpdateUIEvent& event )
 {
-////@begin CRightPaneList destruction
-////@end CRightPaneList destruction
+
+	if( CBaseDB::GetDatabase() == NULL || m_ListViewHasFocus ) {
+		event.Enable(false);
+		return;
+	}
+
+	bool enableItem = false;
+
+	if( m_CurrentView == cvPhysical ) {
+		bool hideElement = false;
+		wxTreeCtrl *tctl = GetTreePhysicalControl();
+		if( tctl->GetCount() > 0 ) {
+			wxTreeItemId item = tctl->GetSelection();
+			if( item.IsOk() ) {
+				if( tctl->GetItemParent(item) != tctl->GetRootItem() ) hideElement = true;
+			}
+			else {
+				hideElement = true;
+			}
+		}
+		else
+			hideElement = true;
+		enableItem = !hideElement;
+	}
+
+	if( m_CurrentView == cvVirtual ) {
+		bool isEnabled = true;
+		if( isEnabled ) {
+			wxTreeCtrl* tctl = GetTreeVirtualControl();
+			isEnabled = (tctl->GetCount() > 0);
+			if( isEnabled ) {
+				wxTreeItemId item = tctl->GetSelection();
+				if( item.IsOk() ) {
+					MyTreeItemData *itemData = (MyTreeItemData *) tctl->GetItemData(item);
+					isEnabled = itemData->GetPhysPathID().IsNull();
+				}
+				else
+					isEnabled = false;
+			}
+		}
+		enableItem = isEnabled;
+	}
+
+	event.Enable( enableItem );
 }
 
 
 /*!
- * Member initialisation
+ * wxEVT_COMMAND_MENU_SELECTED event handler for ID_EDIT_DELETE
  */
 
-void CRightPaneList::Init()
+void CMainFrame::OnEditDeleteClick( wxCommandEvent& WXUNUSED(event) )
 {
-////@begin CRightPaneList member initialisation
-////@end CRightPaneList member initialisation
-	m_MainFrame = NULL;
+	if( m_CurrentView == cvPhysical )
+		DeleteSelectedVolume();
+
+	if( m_CurrentView == cvVirtual )
+		DeleteSelectedVirtualFolder();
 }
 
 
 /*!
- * Control creation for CRightPaneList
+ * wxEVT_UPDATE_UI event handler for ID_EDIT_DELETE
  */
 
-void CRightPaneList::CreateControls()
-{    
-////@begin CRightPaneList content construction
-////@end CRightPaneList content construction
-}
-
-
-/*!
- * wxEVT_COMMAND_LIST_ITEM_ACTIVATED event handler for ID_LIST_CONTROL
- */
-
-void CRightPaneList::OnListControlItemActivated( wxListEvent& event )
+void CMainFrame::OnEditDeleteUpdate( wxUpdateUIEvent& event )
 {
-	wxASSERT( m_MainFrame != NULL );
-	m_MainFrame->OnListControlItemActivated( event );
+
+	if( CBaseDB::GetDatabase() == NULL || m_ListViewHasFocus ) {
+		event.Enable(false);
+		return;
+	}
+
+	bool enableItem = false;
+
+	if( m_CurrentView == cvPhysical ) {
+		bool hideElement = false;
+		wxTreeCtrl *tctl = GetTreePhysicalControl();
+		if( tctl->GetCount() > 0 ) {
+			wxTreeItemId item = tctl->GetSelection();
+			if( item.IsOk() ) {
+				if( tctl->GetItemParent(item) != tctl->GetRootItem() ) hideElement = true;
+			}
+			else {
+				hideElement = true;
+			}
+		}
+		else
+			hideElement = true;
+		enableItem = !hideElement;
+	}
+
+	if( m_CurrentView == cvVirtual ) {
+		bool isEnabled = true;
+		if( isEnabled ) {
+			wxTreeCtrl* tctl = GetTreeVirtualControl();
+			isEnabled = (tctl->GetCount() > 0);
+			if( isEnabled ) {
+				wxTreeItemId item = tctl->GetSelection();
+				isEnabled = item.IsOk();
+			}
+		}
+		enableItem = isEnabled;
+	}
+
+	event.Enable( enableItem );
+}
+
+void CMainFrame::DeleteSelectedVirtualFolder() {
+	if( !CUtils::MsgAskNo( _("This command will delete the selected virtual foder, but it will not change the folders in the physical view.\n\nDo you really want to delete the selected virtual folder?") ) )
+		return;
+	
+	wxTreeCtrl *tctl = GetTreeVirtualControl();
+	wxTreeItemId item = tctl->GetSelection();
+    MyTreeItemData *itemData = (MyTreeItemData *) tctl->GetItemData(item);
+
+	// deletes from the database
+	CVirtualPaths vp;
+	vp.PathID = itemData->GetPathID();
+	vp.DbDelete();
+
+	// deletes from the tree control
+	tctl->DeleteChildren(item);
+	tctl->Delete(item);
 }
 
 
-/*!
- * wxEVT_COMMAND_LIST_COL_CLICK event handler for ID_LIST_CONTROL
- */
+void CMainFrame::DeleteSelectedVolume() {
+	wxTreeCtrl *tctl = GetTreePhysicalControl();
+	wxTreeItemId item = tctl->GetSelection();
+    MyTreeItemData *itemData = (MyTreeItemData *) tctl->GetItemData(item);
 
-void CRightPaneList::OnListControlColLeftClick( wxListEvent& event )
-{
-	wxASSERT( m_MainFrame != NULL );
-	m_MainFrame->OnListControlColLeftClick( event );
+	if( !CUtils::MsgAskNo( _("This command will delete this volume:\n\n") + tctl->GetItemText(item) + _("\n\nfrom the VVV catalog. It will not delete any file from your disk.\n\nDo you really want to delete this volume?") ) )
+		return;
+
+	CVolumes vol;
+	vol.VolumeID = itemData->GetVolumeID();
+	try {
+		vol.DbDelete();
+	}
+	catch( CDataErrorException& e ) {
+		if( e.GetErrorCause() == CDataErrorException::ecReferentialIntegrity ) {
+			CUtils::MsgErr( _("Unable to delete this volume: at least one of its files is used in the virtual view") );
+			return;
+		}
+		else
+			throw;
+	}
+
+	// removes the item from the tree control
+	tctl->Delete(item);
 }
 
 
-/*!
- * wxEVT_CONTEXT_MENU event handler for ID_LIST_CONTROL
- */
+void CMainFrame::RenameSelectedVolume() {
+	wxTreeCtrl *tctl = GetTreePhysicalControl();
+	wxTreeItemId item = tctl->GetSelection();
+    MyTreeItemData *itemData = (MyTreeItemData *) tctl->GetItemData(item);
+	wxString oldName = itemData->GetDesc();
 
-void CRightPaneList::OnListControlContextMenu( wxContextMenuEvent& event )
-{
-	wxASSERT( m_MainFrame != NULL );
-	m_MainFrame->OnListControlContextMenu( event );
+	// asks for the new volume name
+	wxTextEntryDialog ted( this, _("Enter the new volume name"), _("Rename volume"), oldName, wxOK | wxCANCEL );
+	if( ted.ShowModal() != wxID_OK ) return;
+	wxString newName = ted.GetValue();
+	if( newName == oldName || newName.empty() ) return;
+
+	// changes the volume name in the database
+	CVolumes vol( itemData->GetVolumeID() );	// loads the current data
+	vol.VolumeName = newName;
+	try {
+		vol.DbUpdate();
+	}
+	catch( CDataErrorException& e ) {
+		if( e.GetErrorCause() == CDataErrorException::ecUnique ) {
+			CUtils::MsgErr( _("The new volume name is already present in the database") );
+			return;
+		}
+		else
+			throw;
+	}
+
+	// changes the volume name in the tree control
+	tctl->SetItemText( item, CreateVolumeLabel(newName, itemData->GetObjectDescription()) );
+	itemData->SetDesc( newName );
 }
 
 
-/*!
- * wxEVT_SET_FOCUS event handler for ID_LIST_CONTROL
- */
+void CMainFrame::RenameSelectedVirtualFolder() {
+	wxTreeCtrl *tctl = GetTreeVirtualControl();
+	wxTreeItemId item = tctl->GetSelection();
+    MyTreeItemData *itemData = (MyTreeItemData *) tctl->GetItemData(item);
+	wxString oldName = tctl->GetItemText(item);
 
-void CRightPaneList::OnListControlSetFocus( wxFocusEvent& event )
-{
-	wxASSERT( m_MainFrame != NULL );
-	m_MainFrame->OnListControlSetFocus( event );
+	// asks for the new volume name
+	wxTextEntryDialog ted( this, _("Enter the new forder name"), _("Rename virtual folder"), oldName, wxOK | wxCANCEL );
+	if( ted.ShowModal() != wxID_OK ) return;
+	wxString newName = ted.GetValue();
+	if( newName == oldName || newName.empty() ) return;
+
+	// changes the folder name in the database
+	try {
+		CVirtualPaths::Rename( itemData->GetPathID(), newName );
+	}
+	catch( CDataErrorException& e ) {
+		if( e.GetErrorCause() == CDataErrorException::ecUnique ) {
+			CUtils::MsgErr( _("The new folder name is already present in the database") );
+			return;
+		}
+		else
+			throw;
+	}
+
+	// changes the volume name in the tree control
+	tctl->SetItemText( item, newName );
 }
 
 
-/*!
- * wxEVT_KILL_FOCUS event handler for ID_LIST_CONTROL
- */
 
-void CRightPaneList::OnListControlKillFocus( wxFocusEvent& event )
-{
-	wxASSERT( m_MainFrame != NULL );
-	m_MainFrame->OnListControlKillFocus( event );
-}
 
 
 

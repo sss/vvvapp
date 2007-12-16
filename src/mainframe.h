@@ -88,12 +88,11 @@ class CRightPaneList;
 #define ID_VIEW_VIRTUAL 10012
 #define ID_VIEW_SEARCH 10013
 #define ID_ADD_VIRTUAL_FOLDER 10015
+#define ID_EDIT_RENAME 10073
+#define ID_EDIT_DELETE 10074
 #define ID_EDIT_OBJECT_DESCRIPTION 10018
-#define ID_RENAME_VOLUME 10019
-#define ID_DELETE_VOLUME 10020
 #define ID_NEW_VIRTUAL_ROOT_FOLDER 10021
 #define ID_NEW_VIRTUAL_SUBFOLDER 10022
-#define ID_RENAME_VIRTUAL_FOLDER 10025
 #define ID_DELETE_VIRTUAL_FOLDER 10029
 #define ID_VIEW_TOOLBAR 10042
 #define ID_VIEW_STATUS_BAR 10043
@@ -184,23 +183,23 @@ public:
     /// wxEVT_UPDATE_UI event handler for ID_ADD_VIRTUAL_FOLDER
     void OnAddVirtualFolderUpdate( wxUpdateUIEvent& event );
 
+    /// wxEVT_COMMAND_MENU_SELECTED event handler for ID_EDIT_RENAME
+    void OnEditRenameClick( wxCommandEvent& event );
+
+    /// wxEVT_UPDATE_UI event handler for ID_EDIT_RENAME
+    void OnEditRenameUpdate( wxUpdateUIEvent& event );
+
+    /// wxEVT_COMMAND_MENU_SELECTED event handler for ID_EDIT_DELETE
+    void OnEditDeleteClick( wxCommandEvent& event );
+
+    /// wxEVT_UPDATE_UI event handler for ID_EDIT_DELETE
+    void OnEditDeleteUpdate( wxUpdateUIEvent& event );
+
     /// wxEVT_COMMAND_MENU_SELECTED event handler for ID_EDIT_OBJECT_DESCRIPTION
     void OnEditObjectDescriptionClick( wxCommandEvent& event );
 
     /// wxEVT_UPDATE_UI event handler for ID_EDIT_OBJECT_DESCRIPTION
     void OnEditObjectDescriptionUpdate( wxUpdateUIEvent& event );
-
-    /// wxEVT_COMMAND_MENU_SELECTED event handler for ID_RENAME_VOLUME
-    void OnRenameVolumeClick( wxCommandEvent& event );
-
-    /// wxEVT_UPDATE_UI event handler for ID_RENAME_VOLUME
-    void OnRenameVolumeUpdate( wxUpdateUIEvent& event );
-
-    /// wxEVT_COMMAND_MENU_SELECTED event handler for ID_DELETE_VOLUME
-    void OnDeleteVolumeClick( wxCommandEvent& event );
-
-    /// wxEVT_UPDATE_UI event handler for ID_DELETE_VOLUME
-    void OnDeleteVolumeUpdate( wxUpdateUIEvent& event );
 
     /// wxEVT_COMMAND_MENU_SELECTED event handler for ID_NEW_VIRTUAL_ROOT_FOLDER
     void OnNewVirtualRootFolderClick( wxCommandEvent& event );
@@ -213,12 +212,6 @@ public:
 
     /// wxEVT_UPDATE_UI event handler for ID_NEW_VIRTUAL_SUBFOLDER
     void OnNewVirtualSubfolderUpdate( wxUpdateUIEvent& event );
-
-    /// wxEVT_COMMAND_MENU_SELECTED event handler for ID_RENAME_VIRTUAL_FOLDER
-    void OnRenameVirtualFolderClick( wxCommandEvent& event );
-
-    /// wxEVT_UPDATE_UI event handler for ID_RENAME_VIRTUAL_FOLDER
-    void OnRenameVirtualFolderUpdate( wxUpdateUIEvent& event );
 
     /// wxEVT_COMMAND_MENU_SELECTED event handler for ID_DELETE_VIRTUAL_FOLDER
     void OnDeleteVirtualFolderClick( wxCommandEvent& event );
@@ -510,6 +503,18 @@ private:
 	// receives as input the number of a visible column and returns the number that the same column would have
 	// if no columns were hidden
 	int ColumnNumIfNoColumnsHidden( int inColNum );
+
+	// deletes the currently selected virtual folder
+	void DeleteSelectedVirtualFolder();
+
+	// deletes the currently selected volume
+	void DeleteSelectedVolume();
+
+	// renames the currently selected volume
+	void RenameSelectedVolume();
+
+	// renames the currently selected virtual folder
+	void RenameSelectedVirtualFolder();
 
 protected:
 	// shows in the listview the files contained in the passed folder

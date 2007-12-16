@@ -928,6 +928,65 @@
                 <string name="proxy-Platform">"&lt;Any platform&gt;"</string>
               </document>
               <document>
+                <string name="title">"Rename...\tF2: ID_EDIT_RENAME"</string>
+                <string name="type">"dialog-control-document"</string>
+                <string name="filename">""</string>
+                <string name="icon-name">"menuitem"</string>
+                <long name="is-transient">0</long>
+                <long name="owns-file">1</long>
+                <long name="title-mode">0</long>
+                <long name="locked">0</long>
+                <string name="created">"16/12/2007"</string>
+                <string name="proxy-type">"wbMenuItemProxy"</string>
+                <string name="event-handler-0">"wxEVT_COMMAND_MENU_SELECTED|OnEditRenameClick|NONE||CMainFrame"</string>
+                <string name="event-handler-1">"wxEVT_UPDATE_UI|OnEditRenameUpdate|NONE||"</string>
+                <string name="proxy-Id name">"ID_EDIT_RENAME"</string>
+                <long name="proxy-Id value">10073</long>
+                <string name="proxy-Label">"Rename...\tF2"</string>
+                <string name="proxy-Kind">"Normal"</string>
+                <bool name="proxy-Checked">0</bool>
+                <bool name="proxy-Enabled">1</bool>
+                <string name="proxy-Help text">""</string>
+                <string name="proxy-Bitmap">""</string>
+                <string name="proxy-Platform">"&lt;Any platform&gt;"</string>
+              </document>
+              <document>
+                <string name="title">"Delete: ID_EDIT_DELETE"</string>
+                <string name="type">"dialog-control-document"</string>
+                <string name="filename">""</string>
+                <string name="icon-name">"menuitem"</string>
+                <long name="is-transient">0</long>
+                <long name="owns-file">1</long>
+                <long name="title-mode">0</long>
+                <long name="locked">0</long>
+                <string name="created">"16/12/2007"</string>
+                <string name="proxy-type">"wbMenuItemProxy"</string>
+                <string name="event-handler-0">"wxEVT_COMMAND_MENU_SELECTED|OnEditDeleteClick|NONE||CMainFrame"</string>
+                <string name="event-handler-1">"wxEVT_UPDATE_UI|OnEditDeleteUpdate|NONE||"</string>
+                <string name="proxy-Id name">"ID_EDIT_DELETE"</string>
+                <long name="proxy-Id value">10074</long>
+                <string name="proxy-Label">"Delete"</string>
+                <string name="proxy-Kind">"Normal"</string>
+                <bool name="proxy-Checked">0</bool>
+                <bool name="proxy-Enabled">1</bool>
+                <string name="proxy-Help text">""</string>
+                <string name="proxy-Bitmap">""</string>
+                <string name="proxy-Platform">"&lt;Any platform&gt;"</string>
+              </document>
+              <document>
+                <string name="title">"------------"</string>
+                <string name="type">"dialog-control-document"</string>
+                <string name="filename">""</string>
+                <string name="icon-name">"menuitem"</string>
+                <long name="is-transient">0</long>
+                <long name="owns-file">1</long>
+                <long name="title-mode">0</long>
+                <long name="locked">0</long>
+                <string name="created">"16/12/2007"</string>
+                <string name="proxy-type">"wbMenuSeparatorProxy"</string>
+                <string name="proxy-Platform">"&lt;Any platform&gt;"</string>
+              </document>
+              <document>
                 <string name="title">"Object Description...: ID_EDIT_OBJECT_DESCRIPTION"</string>
                 <string name="type">"dialog-control-document"</string>
                 <string name="filename">""</string>
@@ -943,52 +1002,6 @@
                 <string name="proxy-Id name">"ID_EDIT_OBJECT_DESCRIPTION"</string>
                 <long name="proxy-Id value">10018</long>
                 <string name="proxy-Label">"Object Description..."</string>
-                <string name="proxy-Kind">"Normal"</string>
-                <bool name="proxy-Checked">0</bool>
-                <bool name="proxy-Enabled">1</bool>
-                <string name="proxy-Help text">""</string>
-                <string name="proxy-Bitmap">""</string>
-                <string name="proxy-Platform">"&lt;Any platform&gt;"</string>
-              </document>
-              <document>
-                <string name="title">"Rename Volume...: ID_RENAME_VOLUME"</string>
-                <string name="type">"dialog-control-document"</string>
-                <string name="filename">""</string>
-                <string name="icon-name">"menuitem"</string>
-                <long name="is-transient">0</long>
-                <long name="owns-file">1</long>
-                <long name="title-mode">0</long>
-                <long name="locked">0</long>
-                <string name="created">"16/4/2007"</string>
-                <string name="proxy-type">"wbMenuItemProxy"</string>
-                <string name="event-handler-0">"wxEVT_COMMAND_MENU_SELECTED|OnRenameVolumeClick"</string>
-                <string name="event-handler-1">"wxEVT_UPDATE_UI|OnRenameVolumeUpdate"</string>
-                <string name="proxy-Id name">"ID_RENAME_VOLUME"</string>
-                <long name="proxy-Id value">10019</long>
-                <string name="proxy-Label">"Rename Volume..."</string>
-                <string name="proxy-Kind">"Normal"</string>
-                <bool name="proxy-Checked">0</bool>
-                <bool name="proxy-Enabled">1</bool>
-                <string name="proxy-Help text">""</string>
-                <string name="proxy-Bitmap">""</string>
-                <string name="proxy-Platform">"&lt;Any platform&gt;"</string>
-              </document>
-              <document>
-                <string name="title">"Delete Volume: ID_DELETE_VOLUME"</string>
-                <string name="type">"dialog-control-document"</string>
-                <string name="filename">""</string>
-                <string name="icon-name">"menuitem"</string>
-                <long name="is-transient">0</long>
-                <long name="owns-file">1</long>
-                <long name="title-mode">0</long>
-                <long name="locked">0</long>
-                <string name="created">"16/4/2007"</string>
-                <string name="proxy-type">"wbMenuItemProxy"</string>
-                <string name="event-handler-0">"wxEVT_COMMAND_MENU_SELECTED|OnDeleteVolumeClick|NONE||"</string>
-                <string name="event-handler-1">"wxEVT_UPDATE_UI|OnDeleteVolumeUpdate|||"</string>
-                <string name="proxy-Id name">"ID_DELETE_VOLUME"</string>
-                <long name="proxy-Id value">10020</long>
-                <string name="proxy-Label">"Delete Volume"</string>
                 <string name="proxy-Kind">"Normal"</string>
                 <bool name="proxy-Checked">0</bool>
                 <bool name="proxy-Enabled">1</bool>
@@ -1056,29 +1069,6 @@
                 <string name="proxy-Platform">"&lt;Any platform&gt;"</string>
               </document>
               <document>
-                <string name="title">"Rename Virtual Folder...: ID_RENAME_VIRTUAL_FOLDER"</string>
-                <string name="type">"dialog-control-document"</string>
-                <string name="filename">""</string>
-                <string name="icon-name">"menuitem"</string>
-                <long name="is-transient">0</long>
-                <long name="owns-file">1</long>
-                <long name="title-mode">0</long>
-                <long name="locked">0</long>
-                <string name="created">"20/4/2007"</string>
-                <string name="proxy-type">"wbMenuItemProxy"</string>
-                <string name="event-handler-0">"wxEVT_COMMAND_MENU_SELECTED|OnRenameVirtualFolderClick"</string>
-                <string name="event-handler-1">"wxEVT_UPDATE_UI|OnRenameVirtualFolderUpdate"</string>
-                <string name="proxy-Id name">"ID_RENAME_VIRTUAL_FOLDER"</string>
-                <long name="proxy-Id value">10025</long>
-                <string name="proxy-Label">"Rename Virtual Folder..."</string>
-                <string name="proxy-Kind">"Normal"</string>
-                <bool name="proxy-Checked">0</bool>
-                <bool name="proxy-Enabled">1</bool>
-                <string name="proxy-Help text">""</string>
-                <string name="proxy-Bitmap">""</string>
-                <string name="proxy-Platform">"&lt;Any platform&gt;"</string>
-              </document>
-              <document>
                 <string name="title">"Delete Virtual Folder: ID_DELETE_VIRTUAL_FOLDER"</string>
                 <string name="type">"dialog-control-document"</string>
                 <string name="filename">""</string>
@@ -1087,7 +1077,7 @@
                 <long name="owns-file">1</long>
                 <long name="title-mode">0</long>
                 <long name="locked">0</long>
-                <string name="created">"20/4/2007"</string>
+                <string name="created">"16/12/2007"</string>
                 <string name="proxy-type">"wbMenuItemProxy"</string>
                 <string name="event-handler-0">"wxEVT_COMMAND_MENU_SELECTED|OnDeleteVirtualFolderClick"</string>
                 <string name="event-handler-1">"wxEVT_UPDATE_UI|OnDeleteVirtualFolderUpdate"</string>
@@ -1833,6 +1823,14 @@
             <string name="proxy-type">"wbBoxSizerProxy"</string>
             <string name="proxy-Orientation">"Vertical"</string>
             <string name="proxy-Member variable name">""</string>
+            <string name="proxy-AlignH">"Centre"</string>
+            <string name="proxy-AlignV">"Centre"</string>
+            <long name="proxy-Stretch factor">0</long>
+            <long name="proxy-Border">5</long>
+            <bool name="proxy-wxLEFT">1</bool>
+            <bool name="proxy-wxRIGHT">1</bool>
+            <bool name="proxy-wxTOP">1</bool>
+            <bool name="proxy-wxBOTTOM">1</bool>
             <bool name="proxy-wxSHAPED">0</bool>
             <bool name="proxy-wxADJUST_MINSIZE">0</bool>
             <bool name="proxy-wxFIXED_MINSIZE">0</bool>
