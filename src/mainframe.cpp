@@ -3109,6 +3109,8 @@ void CMainFrame::OnHelpContentsClick( wxCommandEvent& WXUNUSED(event) )
 
 void CMainFrame::OnEditRenameClick( wxCommandEvent& WXUNUSED(event) )
 {
+	if( !IsEditRenameEnabled() ) return;
+
 	if( m_CurrentView == cvPhysical )
 		RenameSelectedVolume();
 
@@ -3123,50 +3125,7 @@ void CMainFrame::OnEditRenameClick( wxCommandEvent& WXUNUSED(event) )
 
 void CMainFrame::OnEditRenameUpdate( wxUpdateUIEvent& event )
 {
-
-	if( CBaseDB::GetDatabase() == NULL || m_ListViewHasFocus ) {
-		event.Enable(false);
-		return;
-	}
-
-	bool enableItem = false;
-
-	if( m_CurrentView == cvPhysical ) {
-		bool hideElement = false;
-		wxTreeCtrl *tctl = GetTreePhysicalControl();
-		if( tctl->GetCount() > 0 ) {
-			wxTreeItemId item = tctl->GetSelection();
-			if( item.IsOk() ) {
-				if( tctl->GetItemParent(item) != tctl->GetRootItem() ) hideElement = true;
-			}
-			else {
-				hideElement = true;
-			}
-		}
-		else
-			hideElement = true;
-		enableItem = !hideElement;
-	}
-
-	if( m_CurrentView == cvVirtual ) {
-		bool isEnabled = true;
-		if( isEnabled ) {
-			wxTreeCtrl* tctl = GetTreeVirtualControl();
-			isEnabled = (tctl->GetCount() > 0);
-			if( isEnabled ) {
-				wxTreeItemId item = tctl->GetSelection();
-				if( item.IsOk() ) {
-					MyTreeItemData *itemData = (MyTreeItemData *) tctl->GetItemData(item);
-					isEnabled = itemData->GetPhysPathID().IsNull();
-				}
-				else
-					isEnabled = false;
-			}
-		}
-		enableItem = isEnabled;
-	}
-
-	event.Enable( enableItem );
+	event.Enable( IsEditRenameEnabled() );
 }
 
 
@@ -3176,6 +3135,8 @@ void CMainFrame::OnEditRenameUpdate( wxUpdateUIEvent& event )
 
 void CMainFrame::OnEditDeleteClick( wxCommandEvent& WXUNUSED(event) )
 {
+	if( !IsEditDeleteEnabled() ) return;
+
 	if( m_CurrentView == cvPhysical )
 		DeleteSelectedVolume();
 
@@ -3190,45 +3151,7 @@ void CMainFrame::OnEditDeleteClick( wxCommandEvent& WXUNUSED(event) )
 
 void CMainFrame::OnEditDeleteUpdate( wxUpdateUIEvent& event )
 {
-
-	if( CBaseDB::GetDatabase() == NULL || m_ListViewHasFocus ) {
-		event.Enable(false);
-		return;
-	}
-
-	bool enableItem = false;
-
-	if( m_CurrentView == cvPhysical ) {
-		bool hideElement = false;
-		wxTreeCtrl *tctl = GetTreePhysicalControl();
-		if( tctl->GetCount() > 0 ) {
-			wxTreeItemId item = tctl->GetSelection();
-			if( item.IsOk() ) {
-				if( tctl->GetItemParent(item) != tctl->GetRootItem() ) hideElement = true;
-			}
-			else {
-				hideElement = true;
-			}
-		}
-		else
-			hideElement = true;
-		enableItem = !hideElement;
-	}
-
-	if( m_CurrentView == cvVirtual ) {
-		bool isEnabled = true;
-		if( isEnabled ) {
-			wxTreeCtrl* tctl = GetTreeVirtualControl();
-			isEnabled = (tctl->GetCount() > 0);
-			if( isEnabled ) {
-				wxTreeItemId item = tctl->GetSelection();
-				isEnabled = item.IsOk();
-			}
-		}
-		enableItem = isEnabled;
-	}
-
-	event.Enable( enableItem );
+	event.Enable( IsEditDeleteEnabled() );
 }
 
 void CMainFrame::DeleteSelectedVirtualFolder() {
@@ -3311,6 +3234,7 @@ void CMainFrame::RenameSelectedVolume() {
 
 
 void CMainFrame::RenameSelectedVirtualFolder() {
+
 	wxTreeCtrl *tctl = GetTreeVirtualControl();
 	wxTreeItemId item = tctl->GetSelection();
     MyTreeItemData *itemData = (MyTreeItemData *) tctl->GetItemData(item);
@@ -3340,7 +3264,91 @@ void CMainFrame::RenameSelectedVirtualFolder() {
 }
 
 
+bool CMainFrame::IsEditRenameEnabled() {
 
+	if( CBaseDB::GetDatabase() == NULL || m_ListViewHasFocus ) {
+		return false;
+	}
 
+	bool enableItem = false;
+
+	if( m_CurrentView == cvPhysical ) {
+		bool hideElement = false;
+		wxTreeCtrl *tctl = GetTreePhysicalControl();
+		if( tctl->GetCount() > 0 ) {
+			wxTreeItemId item = tctl->GetSelection();
+			if( item.IsOk() ) {
+				if( tctl->GetItemParent(item) != tctl->GetRootItem() ) hideElement = true;
+			}
+			else {
+				hideElement = true;
+			}
+		}
+		else
+			hideElement = true;
+		enableItem = !hideElement;
+	}
+
+	if( m_CurrentView == cvVirtual ) {
+		bool isEnabled = true;
+		if( isEnabled ) {
+			wxTreeCtrl* tctl = GetTreeVirtualControl();
+			isEnabled = (tctl->GetCount() > 0);
+			if( isEnabled ) {
+				wxTreeItemId item = tctl->GetSelection();
+				if( item.IsOk() ) {
+					MyTreeItemData *itemData = (MyTreeItemData *) tctl->GetItemData(item);
+					isEnabled = itemData->GetPhysPathID().IsNull();
+				}
+				else
+					isEnabled = false;
+			}
+		}
+		enableItem = isEnabled;
+	}
+
+	return enableItem;
+}
+
+bool CMainFrame::IsEditDeleteEnabled() {
+
+	if( CBaseDB::GetDatabase() == NULL || m_ListViewHasFocus ) {
+		return false;
+	}
+
+	bool enableItem = false;
+
+	if( m_CurrentView == cvPhysical ) {
+		bool hideElement = false;
+		wxTreeCtrl *tctl = GetTreePhysicalControl();
+		if( tctl->GetCount() > 0 ) {
+			wxTreeItemId item = tctl->GetSelection();
+			if( item.IsOk() ) {
+				if( tctl->GetItemParent(item) != tctl->GetRootItem() ) hideElement = true;
+			}
+			else {
+				hideElement = true;
+			}
+		}
+		else
+			hideElement = true;
+		enableItem = !hideElement;
+	}
+
+	if( m_CurrentView == cvVirtual ) {
+		bool isEnabled = true;
+		if( isEnabled ) {
+			wxTreeCtrl* tctl = GetTreeVirtualControl();
+			isEnabled = (tctl->GetCount() > 0);
+			if( isEnabled ) {
+				wxTreeItemId item = tctl->GetSelection();
+				isEnabled = item.IsOk();
+			}
+		}
+		enableItem = isEnabled;
+	}
+
+	return enableItem;
+}
 
 

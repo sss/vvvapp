@@ -509,6 +509,13 @@ private:
 	// renames the currently selected virtual folder
 	void RenameSelectedVirtualFolder();
 
+	// returns true if the Edit/Rename command must be enabled
+	bool IsEditRenameEnabled();
+
+	// returns true if the Edit/Delete command must be enabled
+	bool IsEditDeleteEnabled();
+
+
 protected:
 	// shows in the listview the files contained in the passed folder
 	void ShowFolderFiles( wxTreeItemId itemID );
