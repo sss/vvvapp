@@ -2776,6 +2776,9 @@ void CMainFrame::OnButtonSearchClick( wxCommandEvent& WXUNUSED(event) ) {
 	lctl->SortItems( ListControlCompareFunction, m_CurrentView == cvPhysical ? 0 : 1 );
 	lctl->Show();
 
+	if( lctl->GetItemCount() == 0 )
+		CUtils::MsgInfo( _("The search did not find anything") );
+
 	UpdateStatusBar( nSearchFiles, sizeSearchFiles );
 }
 
