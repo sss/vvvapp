@@ -3011,7 +3011,11 @@ void CMainFrame::OnListControlSetFocus( wxFocusEvent& WXUNUSED(event) )
 
 void CMainFrame::OnListControlContextMenu( wxContextMenuEvent& event )
 {
-	if( m_CurrentView != cvPhysical ) return;
+	bool virtualFilesSelected = false;
+	if( m_ListViewHasFocus && m_CurrentView == cvVirtual )
+		virtualFilesSelected = AreOnlyVirtualFilesSelected();
+
+	if( m_CurrentView != cvPhysical && !virtualFilesSelected ) return;
 	if( GetListControl()->GetSelectedItemCount() <= 0 ) return;
 
 	wxPoint point = event.GetPosition();
@@ -3028,9 +3032,14 @@ void CMainFrame::OnListControlContextMenu( wxContextMenuEvent& event )
 	}
 
 	wxMenu menu;
-	menu.Append( ID_ADD_VIRTUAL_FOLDER, _("Add To Virtual Folder") );
-	menu.AppendSeparator();
-	menu.Append( ID_EDIT_OBJECT_DESCRIPTION, _("Edit Description...") );
+	if( virtualFilesSelected ) {
+		menu.Append( ID_EDIT_DELETE, _("Delete") );
+	}
+	else {
+		menu.Append( ID_ADD_VIRTUAL_FOLDER, _("Add To Virtual Folder") );
+		menu.AppendSeparator();
+		menu.Append( ID_EDIT_OBJECT_DESCRIPTION, _("Edit Description...") );
+	}
 
 	m_PoppingUpContextMenu = true;
 	PopupMenu( &menu, point );
@@ -3140,10 +3149,13 @@ void CMainFrame::OnEditDeleteClick( wxCommandEvent& WXUNUSED(event) )
 {
 	if( !IsEditDeleteEnabled() ) return;
 
-	if( m_CurrentView == cvPhysical )
+	if( m_ListViewHasFocus && m_CurrentView == cvVirtual )
+		DeleteSelectedVirtualFiles();
+
+	if( !m_ListViewHasFocus && m_CurrentView == cvPhysical )
 		DeleteSelectedVolume();
 
-	if( m_CurrentView == cvVirtual )
+	if( !m_ListViewHasFocus && m_CurrentView == cvVirtual )
 		DeleteSelectedVirtualFolder();
 }
 
@@ -3158,7 +3170,7 @@ void CMainFrame::OnEditDeleteUpdate( wxUpdateUIEvent& event )
 }
 
 void CMainFrame::DeleteSelectedVirtualFolder() {
-	if( !CUtils::MsgAskNo( _("This command will delete the selected virtual foder, but it will not change the folders in the physical view.\n\nDo you really want to delete the selected virtual folder?") ) )
+	if( !CUtils::MsgAskNo( _("This command will delete the selected virtual folder, but it will not change the folders in the physical view.\n\nDo you really want to delete the selected virtual folder?") ) )
 		return;
 	
 	wxTreeCtrl *tctl = GetTreeVirtualControl();
@@ -3315,13 +3327,17 @@ bool CMainFrame::IsEditRenameEnabled() {
 
 bool CMainFrame::IsEditDeleteEnabled() {
 
-	if( CBaseDB::GetDatabase() == NULL || m_ListViewHasFocus ) {
+	if( CBaseDB::GetDatabase() == NULL ) {
 		return false;
 	}
 
 	bool enableItem = false;
 
-	if( m_CurrentView == cvPhysical ) {
+	if( m_ListViewHasFocus && m_CurrentView == cvVirtual ) {
+		enableItem = AreOnlyVirtualFilesSelected();
+	}
+
+	if( !m_ListViewHasFocus && m_CurrentView == cvPhysical ) {
 		bool hideElement = false;
 		wxTreeCtrl *tctl = GetTreePhysicalControl();
 		if( tctl->GetCount() > 0 ) {
@@ -3338,7 +3354,7 @@ bool CMainFrame::IsEditDeleteEnabled() {
 		enableItem = !hideElement;
 	}
 
-	if( m_CurrentView == cvVirtual ) {
+	if( !m_ListViewHasFocus && m_CurrentView == cvVirtual ) {
 		bool isEnabled = true;
 		if( isEnabled ) {
 			wxTreeCtrl* tctl = GetTreeVirtualControl();
@@ -3353,5 +3369,53 @@ bool CMainFrame::IsEditDeleteEnabled() {
 
 	return enableItem;
 }
+
+void CMainFrame::DeleteSelectedVirtualFiles() {
+
+	wxASSERT( m_ListViewHasFocus );
+
+	if( !CUtils::MsgAskNo( _("This command will delete the selected virtual files, but it will not change the files in the physical view.\n\nDo you really want to delete the selected virtual files?") ) )
+		return;
+
+	// loops over all the selected items
+	wxListCtrl* lctl = GetListControl();
+	long item = -1;
+	for( ;; ) {
+		item = lctl->GetNextItem( -1, wxLIST_NEXT_ALL, wxLIST_STATE_SELECTED );
+		if( item == -1 ) break;
+		MyListItemData *itemData = (MyListItemData *) lctl->GetItemData( item );
+
+		wxASSERT( !itemData->IsFolder() );
+
+		CVirtualFiles vf;
+		vf.FileID = itemData->GetFileID();
+		vf.DbDelete();
+		delete itemData;
+		lctl->DeleteItem( item );
+	}
+
+	m_ListViewHasFocus = true;	// make sure that the value is correct (it might have been lost showing the dialog)
+}
+
+
+bool CMainFrame::AreOnlyVirtualFilesSelected() {
+
+	if( !m_ListViewHasFocus ) return false;
+	if( !m_CurrentView == cvVirtual ) return false;
+
+	bool retVal = true;
+	long item = -1;
+	wxListCtrl* lctl = GetListControl();
+	for( ;; ) {
+		item = lctl->GetNextItem( item, wxLIST_NEXT_ALL, wxLIST_STATE_SELECTED );
+		if( item == -1 ) break;
+		MyListItemData *itemData = (MyListItemData *) lctl->GetItemData( item );
+		retVal = !itemData->IsFolder();
+		if( !retVal ) break;
+	}
+
+	return retVal;
+}
+
 
 

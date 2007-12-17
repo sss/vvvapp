@@ -515,6 +515,11 @@ private:
 	// returns true if the Edit/Delete command must be enabled
 	bool IsEditDeleteEnabled();
 
+	// deletes the virtual file(s) currently selected in the list control
+	void DeleteSelectedVirtualFiles();
+
+	// returns true if only virtual files are selected in the listview (no virtual folders)
+	bool AreOnlyVirtualFilesSelected();
 
 protected:
 	// shows in the listview the files contained in the passed folder
