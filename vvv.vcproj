@@ -1113,6 +1113,9 @@
 				RelativePath=".\src\choose_virtual_folder.cpp">
 			</File>
 			<File
+				RelativePath=".\src\long_task_beep.cpp">
+			</File>
+			<File
 				RelativePath=".\src\mainframe.cpp">
 			</File>
 			<File
@@ -1267,6 +1270,9 @@
 			</File>
 			<File
 				RelativePath=".\src\choose_virtual_folder.h">
+			</File>
+			<File
+				RelativePath=".\src\long_task_beep.h">
 			</File>
 			<File
 				RelativePath=".\src\mainframe.h">

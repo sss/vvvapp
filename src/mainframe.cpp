@@ -69,6 +69,7 @@
 #include "object_description.h"
 #include "settings.h"
 #include "opencatalog.h"
+#include "long_task_beep.h"
 
 ////@begin XPM images
 #include "graphics/vvv32.xpm"
@@ -693,6 +694,9 @@ bool CMainFrame::Create( wxWindow* parent, wxWindowID id, const wxString& captio
 	}
 	if( !catalogName.empty() )
 		OpenDatabase( catalogName, CUtils::GetExpectedDatabaseVersion() );
+
+	// sets the "long task beep" time
+	CLongTaskBeep::SetMinSecondsForBell( 5 );
 
 	return true;
 }
@@ -1808,6 +1812,7 @@ void CMainFrame::OnAddVirtualFolderClick( wxCommandEvent& WXUNUSED(event) )
 	if( virtualFolderId < 0 ) return;
 
 	wxBusyCursor wait;
+	CLongTaskBeep ltb;
 
 	if( m_ListViewHasFocus ) {
 		wxListCtrl *lctl = GetListControl();
@@ -2652,6 +2657,8 @@ void CMainFrame::OnButtonSearchClick( wxCommandEvent& WXUNUSED(event) ) {
 		CUtils::MsgErr( _("Please enter some search data") );
 		return;
 	}
+
+	CLongTaskBeep ltb;
 
 	// escapes wildcard chars typed by the user
 	// ...filename

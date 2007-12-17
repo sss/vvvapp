@@ -58,6 +58,7 @@
 #include "vvv.h"
 #include "utils.h"
 #include "audio_metadata.h"
+#include "long_task_beep.h"
 #include "data_interface/volumes.h"
 #include "data_interface/paths.h"
 #include "data_interface/files.h"
@@ -282,6 +283,7 @@ void CDialogCatalogVolume::OnButtonCatalogClick( wxCommandEvent& WXUNUSED(event)
 
 	wxCursor curCursor = GetCursor();
 	SetCursor(wxCursor(wxCURSOR_WAIT));
+	CLongTaskBeep ltb;
 
 	// starts a transaction
 	CBaseDB* db = CBaseDB::GetDatabase();
