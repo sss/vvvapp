@@ -45,10 +45,10 @@
  */
 
 ////@begin includes
-#include "wx/dirctrl.h"
 ////@end includes
 
 #include <wx/stattext.h>
+#include <wx/textctrl.h>
 #include "data_interface/base_db.h"
 #include "data_interface/db_null.h"
 #include "data_interface/files.h"
@@ -59,7 +59,6 @@
  */
 
 ////@begin forward declarations
-class wxGenericDirCtrl;
 ////@end forward declarations
 
 /*!
@@ -68,13 +67,13 @@ class wxGenericDirCtrl;
 
 ////@begin control identifiers
 #define ID_DIALOG_CATALOG_VOLUME 10002
-#define ID_DIR_CTRL 10007
 #define ID_VOLUME_PATH 10023
+#define ID_VOLUME_BROWSE 10019
 #define ID_VOLUME_NAME 10008
 #define ID_GET_VOLUME_NAME 10009
 #define ID_BUTTON_CATALOG 10010
 #define ID_CURRENT_FOLDER 10024
-#define SYMBOL_CDIALOGCATALOGVOLUME_STYLE wxCAPTION|wxSYSTEM_MENU|wxCLOSE_BOX
+#define SYMBOL_CDIALOGCATALOGVOLUME_STYLE wxCAPTION|wxRESIZE_BORDER|wxSYSTEM_MENU|wxCLOSE_BOX
 #define SYMBOL_CDIALOGCATALOGVOLUME_TITLE _("Catalog volume")
 #define SYMBOL_CDIALOGCATALOGVOLUME_IDNAME ID_DIALOG_CATALOG_VOLUME
 #define SYMBOL_CDIALOGCATALOGVOLUME_SIZE wxSize(400, 300)
@@ -117,8 +116,8 @@ public:
 
 ////@begin CDialogCatalogVolume event handler declarations
 
-    /// wxEVT_COMMAND_TREE_SEL_CHANGED event handler for ID_DIR_CTRL
-    void OnDirCtrlSelChanged( wxTreeEvent& event );
+    /// wxEVT_COMMAND_BUTTON_CLICKED event handler for ID_VOLUME_BROWSE
+    void OnVolumeBrowseClick( wxCommandEvent& event );
 
 #if defined(__WXMSW__)
     /// wxEVT_COMMAND_BUTTON_CLICKED event handler for ID_GET_VOLUME_NAME
@@ -146,7 +145,6 @@ public:
     static bool ShowToolTips();
 
 ////@begin CDialogCatalogVolume member variables
-    wxGenericDirCtrl* m_DirControl;
     wxTextCtrl* m_VolumePath;
     wxTextCtrl* m_VolumeName;
     wxStaticText* m_CurrentFolder;

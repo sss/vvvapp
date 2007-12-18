@@ -53,7 +53,8 @@
 
 #include <wx/dir.h>
 #include <wx/filename.h>
-#include "wx/config.h"
+#include <wx/config.h>
+#include <wx/dirdlg.h>
 #include "catalog_volume.h"
 #include "vvv.h"
 #include "utils.h"
@@ -85,7 +86,7 @@ IMPLEMENT_DYNAMIC_CLASS( CDialogCatalogVolume, wxDialog )
 BEGIN_EVENT_TABLE( CDialogCatalogVolume, wxDialog )
 
 ////@begin CDialogCatalogVolume event table entries
-    EVT_TREE_SEL_CHANGED( wxID_TREECTRL, CDialogCatalogVolume::OnDirCtrlSelChanged )
+    EVT_BUTTON( ID_VOLUME_BROWSE, CDialogCatalogVolume::OnVolumeBrowseClick )
 
 #if defined(__WXMSW__)
     EVT_BUTTON( ID_GET_VOLUME_NAME, CDialogCatalogVolume::OnGetVolumeNameClick )
@@ -150,7 +151,6 @@ bool CDialogCatalogVolume::Create( wxWindow* parent, wxWindowID id, const wxStri
 void CDialogCatalogVolume::Init()
 {
 ////@begin CDialogCatalogVolume member initialisation
-    m_DirControl = NULL;
     m_VolumePath = NULL;
     m_VolumeName = NULL;
     m_CurrentFolder = NULL;
@@ -169,19 +169,19 @@ void CDialogCatalogVolume::CreateControls()
     itemDialog1->SetSizer(itemBoxSizer2);
 
     wxBoxSizer* itemBoxSizer3 = new wxBoxSizer(wxVERTICAL);
-    itemBoxSizer2->Add(itemBoxSizer3, 0, wxALIGN_CENTER_HORIZONTAL|wxALL, 5);
+    itemBoxSizer2->Add(itemBoxSizer3, 0, wxGROW|wxALL, 5);
 
-    wxStaticText* itemStaticText4 = new wxStaticText( itemDialog1, wxID_STATIC, _("Select the volume to catalog"), wxDefaultPosition, wxDefaultSize, 0 );
-    itemBoxSizer3->Add(itemStaticText4, 0, wxALIGN_LEFT|wxALL, 5);
+    wxStaticText* itemStaticText4 = new wxStaticText( itemDialog1, wxID_STATIC, _("Enter or select the volume to catalog"), wxDefaultPosition, wxDefaultSize, 0 );
+    itemBoxSizer3->Add(itemStaticText4, 0, wxALIGN_LEFT|wxALL|wxADJUST_MINSIZE, 5);
 
-    m_DirControl = new wxGenericDirCtrl( itemDialog1, ID_DIR_CTRL, _T(""), wxDefaultPosition, wxSize(-1, 150), wxDIRCTRL_DIR_ONLY, _T("All files (*.*)|*.*"), 0 );
-    itemBoxSizer3->Add(m_DirControl, 0, wxGROW|wxALL, 5);
-
-    wxStaticText* itemStaticText6 = new wxStaticText( itemDialog1, wxID_STATIC, _("You can also type the volume path"), wxDefaultPosition, wxDefaultSize, 0 );
-    itemBoxSizer3->Add(itemStaticText6, 0, wxALIGN_LEFT|wxALL, 5);
+    wxBoxSizer* itemBoxSizer5 = new wxBoxSizer(wxHORIZONTAL);
+    itemBoxSizer3->Add(itemBoxSizer5, 0, wxGROW|wxBOTTOM, 5);
 
     m_VolumePath = new wxTextCtrl( itemDialog1, ID_VOLUME_PATH, _T(""), wxDefaultPosition, wxDefaultSize, 0 );
-    itemBoxSizer3->Add(m_VolumePath, 0, wxGROW|wxALL, 5);
+    itemBoxSizer5->Add(m_VolumePath, 1, wxALIGN_CENTER_VERTICAL|wxALL, 5);
+
+    wxButton* itemButton7 = new wxButton( itemDialog1, ID_VOLUME_BROWSE, _("..."), wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT );
+    itemBoxSizer5->Add(itemButton7, 0, wxALIGN_CENTER_VERTICAL|wxRIGHT|wxTOP|wxBOTTOM, 5);
 
     wxStaticText* itemStaticText8 = new wxStaticText( itemDialog1, wxID_STATIC, _("Volume name"), wxDefaultPosition, wxDefaultSize, 0 );
     itemBoxSizer3->Add(itemStaticText8, 0, wxALIGN_LEFT|wxLEFT|wxRIGHT|wxTOP, 5);
@@ -194,7 +194,7 @@ void CDialogCatalogVolume::CreateControls()
 
 #if defined(__WXMSW__)
     wxButton* itemButton11 = new wxButton( itemDialog1, ID_GET_VOLUME_NAME, _("Get volume name"), wxDefaultPosition, wxDefaultSize, 0 );
-    itemBoxSizer9->Add(itemButton11, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5);
+    itemBoxSizer9->Add(itemButton11, 0, wxALIGN_CENTER_VERTICAL|wxRIGHT|wxTOP|wxBOTTOM, 5);
 
 #endif
 
@@ -401,19 +401,6 @@ void CDialogCatalogVolume::CatalogSingleFolder( CBaseDB* db, wxString path, long
 
 }
 
-/*!
- * wxEVT_COMMAND_TREE_SEL_CHANGED event handler for ID_DIR_CTRL
- */
-
-void CDialogCatalogVolume::OnDirCtrlSelChanged( wxTreeEvent& WXUNUSED(event) )
-{
-	// copies the selected path to the text box
-	if(m_DirControl == NULL) return;
-	wxString p = m_DirControl->GetPath();
-	if( !p.empty() ) {
-		m_VolumePath->SetValue( p );
-	}
-}
 
 
 CDialogCatalogVolume::~CDialogCatalogVolume() {
@@ -434,5 +421,17 @@ CDialogCatalogVolume::~CDialogCatalogVolume() {
 void CDialogCatalogVolume::OnHelpClick( wxCommandEvent& WXUNUSED(event) )
 {
 	wxGetApp().GetHelpController()->DisplaySection( wxT("catalog_volume.htm") );
+}
+
+
+/*!
+ * wxEVT_COMMAND_BUTTON_CLICKED event handler for ID_VOLUME_BROWSE
+ */
+
+void CDialogCatalogVolume::OnVolumeBrowseClick( wxCommandEvent& WXUNUSED(event) )
+{
+	wxDirDialog dlg( this, _("Select the volume to catalog"), "", wxDD_DEFAULT_STYLE|wxDD_DIR_MUST_EXIST );
+	if( dlg.ShowModal() == wxID_OK )
+		m_VolumePath->SetValue( dlg.GetPath() );
 }
 
