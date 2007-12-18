@@ -87,7 +87,9 @@ BEGIN_EVENT_TABLE( CDialogCatalogVolume, wxDialog )
 ////@begin CDialogCatalogVolume event table entries
     EVT_TREE_SEL_CHANGED( wxID_TREECTRL, CDialogCatalogVolume::OnDirCtrlSelChanged )
 
+#if defined(__WXMSW__)
     EVT_BUTTON( ID_GET_VOLUME_NAME, CDialogCatalogVolume::OnGetVolumeNameClick )
+#endif
 
     EVT_BUTTON( ID_BUTTON_CATALOG, CDialogCatalogVolume::OnButtonCatalogClick )
 
@@ -190,8 +192,11 @@ void CDialogCatalogVolume::CreateControls()
     m_VolumeName = new wxTextCtrl( itemDialog1, ID_VOLUME_NAME, _T(""), wxDefaultPosition, wxSize(200, -1), 0 );
     itemBoxSizer9->Add(m_VolumeName, 1, wxALIGN_CENTER_VERTICAL|wxALL, 5);
 
+#if defined(__WXMSW__)
     wxButton* itemButton11 = new wxButton( itemDialog1, ID_GET_VOLUME_NAME, _("Get volume name"), wxDefaultPosition, wxDefaultSize, 0 );
     itemBoxSizer9->Add(itemButton11, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5);
+
+#endif
 
     wxBoxSizer* itemBoxSizer12 = new wxBoxSizer(wxHORIZONTAL);
     itemBoxSizer3->Add(itemBoxSizer12, 0, wxGROW|wxTOP|wxBOTTOM, 5);
@@ -253,15 +258,15 @@ wxIcon CDialogCatalogVolume::GetIconResource( const wxString& name )
  * wxEVT_COMMAND_BUTTON_CLICKED event handler for ID_GET_VOLUME_NAME
  */
 
-void CDialogCatalogVolume::OnGetVolumeNameClick( wxCommandEvent& WXUNUSED(event) ) {
 #ifdef __WXMSW__
+void CDialogCatalogVolume::OnGetVolumeNameClick( wxCommandEvent& WXUNUSED(event) ) {
 	wxString path = m_VolumePath->GetValue();
 	if( !path.EndsWith(wxT("\\")) )
 		path += wxT("\\");
 	wxString vn = GetVolumeName( path );
 	m_VolumeName->SetValue( vn );
-#endif
 }
+#endif
 
 
 /*!
