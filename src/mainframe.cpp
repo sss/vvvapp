@@ -665,6 +665,7 @@ bool CMainFrame::Create( wxWindow* parent, wxWindowID id, const wxString& captio
 	// reads program settings
 	pConfig->SetPath(wxT("/Settings"));
 	pConfig->Read( wxT("ReopenCatalog"), &m_reopenLastUsedCatalog, true );
+	pConfig->Read( wxT("LongTaskBeepTime"), &m_BeepTime, 5 );
 	pConfig->SetPath(wxT("/Settings/DatabaseServer"));
 	pConfig->Read( "ConnectToServer", &DBConnectionData.connectToServer, false );
 	DBConnectionData.serverName = pConfig->Read( "ServerName", "" );
@@ -696,7 +697,7 @@ bool CMainFrame::Create( wxWindow* parent, wxWindowID id, const wxString& captio
 		OpenDatabase( catalogName, CUtils::GetExpectedDatabaseVersion() );
 
 	// sets the "long task beep" time
-	CLongTaskBeep::SetMinSecondsForBell( 5 );
+	CLongTaskBeep::SetMinSecondsForBell( m_BeepTime );
 
 	return true;
 }
@@ -1464,6 +1465,7 @@ CMainFrame::~CMainFrame() {
 	// saves program settings
 	pConfig->SetPath(wxT("/Settings"));
 	pConfig->Write( wxT("ReopenCatalog"), m_reopenLastUsedCatalog );
+	pConfig->Write( wxT("LongTaskBeepTime"), m_BeepTime );
 	pConfig->SetPath(wxT("/Settings/DatabaseServer"));
 	pConfig->Write( "ConnectToServer", DBConnectionData.connectToServer );
 	pConfig->Write( "ServerName",  DBConnectionData.serverName );
@@ -3099,6 +3101,7 @@ void CMainFrame::OnToolsOptionsClick( wxCommandEvent& WXUNUSED(event) )
 	dlg.SetServerName( DBConnectionData.serverName );
 	dlg.SetUsername( DBConnectionData.userName );
 	dlg.SetPassword( DBConnectionData.password );
+	dlg.SetBeepTime( m_BeepTime );
 	if( dlg.ShowModal() ) {
 		m_reopenLastUsedCatalog = dlg.GetReopenCatalog();
 		m_amdColumnsToShow = dlg.GetAmdColumnsToShow();
@@ -3106,6 +3109,8 @@ void CMainFrame::OnToolsOptionsClick( wxCommandEvent& WXUNUSED(event) )
 		DBConnectionData.serverName = dlg.GetServerName();
 		DBConnectionData.userName = dlg.GetUsername();
 		DBConnectionData.password = dlg.GetPassword();
+		m_BeepTime = dlg.GetBeepTime();
+		CLongTaskBeep::SetMinSecondsForBell( m_BeepTime );
 		RefreshCurrentView();	// if the user changes the columns to show
 	}
 

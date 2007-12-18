@@ -34,6 +34,7 @@
 ////@begin includes
 #include "wx/propdlg.h"
 #include "wx/valgen.h"
+#include "wx/spinctrl.h"
 ////@end includes
 #include "mainframe.h"
 #include "window_position.h"
@@ -43,6 +44,7 @@
  */
 
 ////@begin forward declarations
+class wxSpinCtrl;
 ////@end forward declarations
 
 /*!
@@ -53,6 +55,7 @@
 #define ID_DIALOG_SETTINGS 10048
 #define ID_DS_GENERAL 10049
 #define ID_DS_REOPEN_CATALOG 10051
+#define ID_SPIN_BEEP_TIME 10020
 #define ID_DS_MP3 10050
 #define ID_DS_ARTIST 10052
 #define ID_DS_ALBUM 10053
@@ -147,6 +150,9 @@ public:
     wxString GetPassword() const { return m_Password ; }
     void SetPassword(wxString value) { m_Password = value ; }
 
+    int GetBeepTime() const { return m_BeepTime ; }
+    void SetBeepTime(int value) { m_BeepTime = value ; }
+
     /// Retrieves bitmap resources
     wxBitmap GetBitmapResource( const wxString& name );
 
@@ -158,6 +164,7 @@ public:
     static bool ShowToolTips();
 
 ////@begin CDialogSettings member variables
+    wxSpinCtrl* m_BeepTimeCtrl;
     wxCheckBox* m_chkArtist;
     wxCheckBox* m_chkAlbum;
     wxCheckBox* m_chkTitle;
@@ -173,13 +180,14 @@ public:
     wxTextCtrl* m_ServerNameCtrl;
     wxTextCtrl* m_UsernameCtrl;
     wxTextCtrl* m_PasswordCtrl;
+private:
+    bool* m_amdColumnsToShow; // array of bools for visibility of audio metadata fields
+    bool m_ReopenCatalog;
     bool m_ConnectServer;
     wxString m_ServerName;
     wxString m_Username;
     wxString m_Password;
-private:
-    bool* m_amdColumnsToShow; // array of bools for visibility of audio metadata fields
-    bool m_ReopenCatalog;
+    int m_BeepTime;
 ////@end CDialogSettings member variables
 
 	bool TransferDataToWindow();

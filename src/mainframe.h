@@ -404,6 +404,9 @@ private:
 		bool IsLocalhost() { return (serverName == "localhost") || (serverName == "127.0.0.1"); }
 	} DBConnectionData;
 
+	// minimum duration of a task (in seconds) before playing a beep at task end
+	int m_BeepTime;
+
 	// pointers to some windows used in the main frame
 	CRightPaneList* m_listCtl;	// the list control
 	wxTreeCtrl* m_treePhysicalCtl;	// the tree control with the physical view
