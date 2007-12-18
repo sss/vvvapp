@@ -38,12 +38,17 @@ public:
 	CLongTaskBeep();
 	~CLongTaskBeep();
 
+	// catt this function to disable bell playing
+	void DoNotPlayBell();
+
 	// sets the minimun time before ringing the bell
 	static void SetMinSecondsForBell( int nSeconds );
 
 private:
 
 	wxDateTime start;
+
+	bool doPlayBell;
 
 	// the minimum number of seconds that the task must take to complete before ringing the bell
 	static int minSecondsForBell;

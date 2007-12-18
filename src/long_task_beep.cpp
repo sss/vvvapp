@@ -24,6 +24,7 @@
 
 CLongTaskBeep::CLongTaskBeep() {
 	start = wxDateTime::Now();
+	doPlayBell = true;
 }
 
 
@@ -32,7 +33,7 @@ CLongTaskBeep::~CLongTaskBeep() {
 	wxDateTime end = wxDateTime::Now();
 	wxTimeSpan ts = (end - start);
 
-	if( ts.GetSeconds() > minSecondsForBell )
+	if( (ts.GetSeconds() > minSecondsForBell) && doPlayBell )
 		wxBell();
 }
 
@@ -40,5 +41,9 @@ int CLongTaskBeep::minSecondsForBell = 0;
 
 void CLongTaskBeep::SetMinSecondsForBell( int nSeconds ) {
 	minSecondsForBell = nSeconds;
+}
+
+void CLongTaskBeep::DoNotPlayBell() {
+	doPlayBell = false;
 }
 
