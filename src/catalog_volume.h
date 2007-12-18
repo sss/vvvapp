@@ -49,6 +49,7 @@
 
 #include <wx/stattext.h>
 #include <wx/textctrl.h>
+#include <wx/listbox.h>
 #include "data_interface/base_db.h"
 #include "data_interface/db_null.h"
 #include "data_interface/files.h"
@@ -73,6 +74,7 @@
 #define ID_GET_VOLUME_NAME 10009
 #define ID_BUTTON_CATALOG 10010
 #define ID_CURRENT_FOLDER 10024
+#define ID_LISTBOX_HISTORY 10007
 #define SYMBOL_CDIALOGCATALOGVOLUME_STYLE wxCAPTION|wxRESIZE_BORDER|wxSYSTEM_MENU|wxCLOSE_BOX
 #define SYMBOL_CDIALOGCATALOGVOLUME_TITLE _("Catalog volume")
 #define SYMBOL_CDIALOGCATALOGVOLUME_IDNAME ID_DIALOG_CATALOG_VOLUME
@@ -148,6 +150,7 @@ public:
     wxTextCtrl* m_VolumePath;
     wxTextCtrl* m_VolumeName;
     wxStaticText* m_CurrentFolder;
+    wxListBox* m_HistoryListBox;
 ////@end CDialogCatalogVolume member variables
 
 private:
@@ -159,6 +162,9 @@ private:
 	void CatalogSingleFolder( CBaseDB* db, wxString path, long VolumeID, CNullableLong& FatherID, CFiles* PathFile );
 
 	CWindowPosition m_WindowPosition;
+
+	// the name read directly from the volume (useful if the user will change it)
+	wxString m_realVolumeName;
 
 	// Windows-specific version because the standard one was rather slow
 #ifdef __WXMSW__
