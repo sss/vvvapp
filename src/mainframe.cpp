@@ -688,7 +688,7 @@ bool CMainFrame::Create( wxWindow* parent, wxWindowID id, const wxString& captio
 		catalogName = m_fileHistory->GetHistoryFile( 0 );
 	}
 	if( !catalogName.empty() ) {
-		if( !wxFileName::FileExists(catalogName) ) {
+		if( !DBConnectionData.connectToServer && !wxFileName::FileExists(catalogName) ) {
 			CUtils::MsgErr( "This catalog file does not exist:\n\n" + catalogName );
 			catalogName = "";
 		}

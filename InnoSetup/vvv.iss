@@ -29,16 +29,16 @@ Name: desktopicon; Description: {cm:CreateDesktopIcon}
 
 [Files]
 Source: ..\vc_msw\{#ExeName}; DestDir: {app}
-Source: msvcr71.dll; DestDir: {app}
-Source: fbclient.dll; DestDir: {app}
-Source: firebird.msg; DestDir: {app}
-Source: icudt30.dll; DestDir: {app}
-Source: icuin30.dll; DestDir: {app}
-Source: icuuc30.dll; DestDir: {app}
+Source: msvcr71.dll; DestDir: {app}; Flags: replacesameversion; Tasks: 
+Source: fbclient.dll; DestDir: {app}; Flags: replacesameversion
+Source: firebird.msg; DestDir: {app}; Flags: replacesameversion
+Source: icudt30.dll; DestDir: {app}; Flags: replacesameversion
+Source: icuin30.dll; DestDir: {app}; Flags: replacesameversion
+Source: icuuc30.dll; DestDir: {app}; Flags: replacesameversion
 Source: License.txt; DestDir: {app}
-Source: msvcp71.dll; DestDir: {app}
-Source: intl\fbintl.dll; DestDir: {app}\intl
-Source: intl\fbintl.conf; DestDir: {app}\intl
+Source: msvcp71.dll; DestDir: {app}; Flags: replacesameversion
+Source: intl\fbintl.dll; DestDir: {app}\intl; Flags: replacesameversion
+Source: intl\fbintl.conf; DestDir: {app}\intl; Flags: replacesameversion
 Source: ..\vvv-struct-update.fdb; DestDir: {app}; Attribs: readonly; Flags: overwritereadonly uninsremovereadonly
 Source: ..\VVV.fbk; DestDir: {app}
 Source: ..\help\en\vvv.chm; DestDir: {app}
