@@ -53,5 +53,5 @@ bool CVolumes::NameExists(void) {
 }
 
 void CVolumes::DBStartQueryListVolumes(void) {
-	DBStartMultiRowQuery( "SELECT * FROM VOLUMES ORDER BY VOLUME_NAME", true );
+	DBStartMultiRowQuery( "SELECT * FROM VOLUMES ORDER BY UPPER(VOLUME_NAME)", true );
 }

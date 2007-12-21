@@ -1008,7 +1008,6 @@ void CMainFrame::LoadTreeControl(void) {
 	wxImageList* iml = new wxImageList( 16, 16 );
 	wxIcon ico(removable_xpm);
 	iml->Add(ico);
-//	iml->Add(wxIcon(removable_xpm));
 	iml->Add(wxIcon(folder_closed_xpm));
 	iml->Add(wxIcon(folder_opened_xpm));
 	tctl->AssignImageList( iml );
