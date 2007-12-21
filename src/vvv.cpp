@@ -133,7 +133,7 @@ bool CVvvApp::OnInit()
 	wxFileSystem::AddHandler( new wxZipFSHandler );
 //	m_HelpController = new wxHtmlHelpController;
 	m_HelpController = new wxHelpController;
-	m_HelpController->Initialize( "vvv" );
+	m_HelpController->Initialize( CUtils::GetHelpFileName() );
 
 	// parse the command line
 	wxCmdLineParser cmdParser( g_cmdLineDesc, argc, argv );

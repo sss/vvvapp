@@ -69,6 +69,9 @@ public:
 	// encrypts/decrypts a string with a simple XOR
 	static wxString Encrypt( wxString s );
 
+	// returns the name of the help file
+	static wxString GetHelpFileName();
+
 private:
 	// name of the current application
 	static wxString applicationName;

@@ -8,7 +8,7 @@
 
 #define AppName "VVV (Virtual Volumes View)"
 #define ExeName "vvv.exe"
-#define AppVersion "0.7"
+#define AppVersion "0.8"
 
 [Setup]
 AppId=VVV-fu-ku-jitsu
@@ -22,7 +22,7 @@ VersionInfoVersion={#AppVersion}
 ChangesAssociations=yes
 OutputDir=.
 ;OutputBaseFilename=VVV- + {#AppVersion} + -Setup
-OutputBaseFilename=VVV-0.7-Setup
+OutputBaseFilename=VVV-0.8-Setup
 
 [Tasks]
 Name: desktopicon; Description: {cm:CreateDesktopIcon}
@@ -35,13 +35,13 @@ Source: firebird.msg; DestDir: {app}
 Source: icudt30.dll; DestDir: {app}
 Source: icuin30.dll; DestDir: {app}
 Source: icuuc30.dll; DestDir: {app}
-Source: instructions.html; DestDir: {app}
 Source: License.txt; DestDir: {app}
 Source: msvcp71.dll; DestDir: {app}
 Source: intl\fbintl.dll; DestDir: {app}\intl
 Source: intl\fbintl.conf; DestDir: {app}\intl
 Source: ..\vvv-struct-update.fdb; DestDir: {app}; Attribs: readonly; Flags: overwritereadonly uninsremovereadonly
 Source: ..\VVV.fbk; DestDir: {app}
+Source: ..\help\en\vvv.chm; DestDir: {app}
 
 
 [Icons]

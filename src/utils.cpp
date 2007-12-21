@@ -127,3 +127,13 @@ wxString CUtils::Encrypt( wxString s ) {
 
 	return sout;
 }
+
+wxString CUtils::GetHelpFileName(void) {
+	wxString appPath = wxStandardPaths::Get().GetExecutablePath();
+	wxFileName fn( appPath );
+	fn.SetFullName( "vvv" );
+	wxString fullName = fn.GetFullPath();
+	return fullName;
+}
+
+
