@@ -1,0 +1,46 @@
+When you start VVV you will see its main window. This window contains two panes: the left pane shows the volumes and their folder structure, the right pane shows the content on the selected folder.
+
+<H3>Create a catalog</H3>
+
+First you need to create a catalog file: select the <B>File/New</B> menu or press the <B>New</B> button in the toolbar to create a new catalog. Catalogs have the "vvv" extension. If you have already created a catalog you can open it with the <B>File/Open</B> menu or with the <B>Open</B> toolbar button.
+
+<H3>Catalog volumes</H3>
+
+Now you need to catalog some disks: select the <B>Volumes/Catalog Volume</B> menu or press the <B>Catalog</B> toolbar button to open the <B>Catalog Volume</B> window.<BR>
+Insert a disk, select or type the path of the CD/DVD drive and press the <B>Get volume name</B> button to see the disk name in the <B>Volume name</B> textbox. At the moment this button is only available in the Windows version.<BR>
+You can edit the volume name: that name will be used to show the volume in the program.<BR>
+Now press the <B>Catalog</B> button to read the disk content.<BR>
+You can insert another disk and repeat these steps many times if you like, then press the <B>Close</B> button to return to the main window.<P>
+
+You will see the cataloged disks in the left pane and you will be able to browse their folders and look at the contained files. Now it's time to look at the virtual view.
+
+<H3>Virtual view</H3>
+
+Select the <B>View/Virtual View</B> menu or press the <B>Virtual</B> toolbar button: the left pane will change to show the virtual file system view. Now the view is empty so you need to create some folders: select the <B>Edit/New Virtual Root Folder</B> menu to add virtual folders. You can also right click an existing folder to show a context menu.<BR>
+The folders created by the user are shown in blue, while physical folders are shown in black.<P>
+
+Now it's time to put something in the virtual folders. Press the <B>Physical</B> button to return to the physical view, then select a volume or a folder. Right-click and select the <B>Add To Virtual Folder</B> menu to open the <B>Choose virtual folder</B> window. Choose a virtual folder an press <B>OK</B> to add the physical folder to the virtual folder and to close the window. Return to the virtual view and look at the virtual folder: it will contain the physical folder.<P>
+
+You can use the <B>Add To Virtual Folder</B> menu with both elements from the left or right pane of the program's window, but there is a difference: you can only select a single volume or folder from the left pane, while you can select many folders or files from the right pane and assign them all to a virtual folder in a single step.<P>
+
+You can add the same physical folder to many virtual folders, and you can add files from different disks to the same virtual folder. Virtual folders are a powerful tool that let you rearrange your data in a logical way and group related files even if they are stored on different disks.
+
+<H3>Searching</H3>
+
+You can also search the catalog for files meeting your specifications. Press the <B>Search</B> toolbar button or select the <B>View/Search View</B> menu : the left pane will change to show the search tools. You can type one or more of the following:  file name, file extension, description. For the file name and the description you can choose among three matching modes:<P>
+
+<UL><LI>Check <B>Is equal to</B> for an exact match. The program will only return results that are equal to the typed text. Please notice that the file name also includes the extension, so you must type something like "MyDocument.pdf" if you want to match a pdf file. Typing "MyDocument" will not match the pdf file.
+<LI>Check <B>Starts with</B> to match all the results that start with the text that you have typed. So if you type "game" the program will match "game", "games" and so on, but it will not match "MyGame".
+<LI>Check <B>Contains</B> to match all the results that contain the text that you have typed. So if you type "game" the program will match "game", "games", "MyGame" and so on.</UL><P>
+
+The searches are not case sensitive, so typing "game" will match "game", "Game" and "GAME".<P>
+
+When you have typed some text you can choose the scope of your search. You can search<P>
+
+<UL><LI>all the physical volumes stored in the catalog
+<LI>only the selected physical folder, i.e. the selected folder in the physical view
+<LI>only the selected virtual folder, i.e. the selected folder in the virtual view</UL><P>
+
+Now press the <B>Search</B> button to start the search.<P>
+
+These are the main VVV commands. After you have experimented with them you can look at the <B>Edit</B> menu that contains commands to rename and delete volumes and folders. It is also possible to add a description to files and folders.
