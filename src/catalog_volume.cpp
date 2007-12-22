@@ -332,7 +332,7 @@ void CDialogCatalogVolume::OnButtonCatalogClick( wxCommandEvent& WXUNUSED(event)
 	db->TransactionCommit();
 
 	// adds this volume to the history listbox
-	wxString s = m_VolumeName->GetLabel();
+	wxString s = m_VolumeName->GetValue();
 	if( !m_realVolumeName.empty() )
 		s += " - " + m_realVolumeName;
 	m_HistoryListBox->InsertItems( 1, &s, 0 );
