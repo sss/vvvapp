@@ -792,12 +792,12 @@
               <long name="locked">0</long>
               <string name="created">"16/12/2006"</string>
               <string name="proxy-type">"wbMenuProxy"</string>
-              <string name="proxy-Label">"File"</string>
+              <string name="proxy-Label">"&amp;File"</string>
               <bool name="proxy-Enabled">1</bool>
               <string name="proxy-Member variable name">"m_fileMenu"</string>
               <string name="proxy-Platform">"&lt;Any platform&gt;"</string>
               <document>
-                <string name="title">"New...: wxID_NEW"</string>
+                <string name="title">"&amp;New...: wxID_NEW"</string>
                 <string name="type">"dialog-control-document"</string>
                 <string name="filename">""</string>
                 <string name="icon-name">"menuitem"</string>
@@ -810,7 +810,7 @@
                 <string name="event-handler-0">"wxEVT_COMMAND_MENU_SELECTED|OnNEWClick|NONE||"</string>
                 <string name="proxy-Id name">"wxID_NEW"</string>
                 <long name="proxy-Id value">5002</long>
-                <string name="proxy-Label">"New..."</string>
+                <string name="proxy-Label">"&amp;New..."</string>
                 <string name="proxy-Kind">"Normal"</string>
                 <bool name="proxy-Checked">0</bool>
                 <bool name="proxy-Enabled">1</bool>
@@ -819,7 +819,7 @@
                 <string name="proxy-Platform">"&lt;Any platform&gt;"</string>
               </document>
               <document>
-                <string name="title">"Open...: wxID_OPEN"</string>
+                <string name="title">"&amp;Open...: wxID_OPEN"</string>
                 <string name="type">"dialog-control-document"</string>
                 <string name="filename">""</string>
                 <string name="icon-name">"menuitem"</string>
@@ -832,7 +832,7 @@
                 <string name="event-handler-0">"wxEVT_COMMAND_MENU_SELECTED|OnOPENClick"</string>
                 <string name="proxy-Id name">"wxID_OPEN"</string>
                 <long name="proxy-Id value">5000</long>
-                <string name="proxy-Label">"Open..."</string>
+                <string name="proxy-Label">"&amp;Open..."</string>
                 <string name="proxy-Kind">"Normal"</string>
                 <bool name="proxy-Checked">0</bool>
                 <bool name="proxy-Enabled">1</bool>
@@ -854,7 +854,7 @@
                 <string name="proxy-Platform">"&lt;Any platform&gt;"</string>
               </document>
               <document>
-                <string name="title">"Exit: wxID_EXIT"</string>
+                <string name="title">"E&amp;xit: wxID_EXIT"</string>
                 <string name="type">"dialog-control-document"</string>
                 <string name="filename">""</string>
                 <string name="icon-name">"menuitem"</string>
@@ -867,7 +867,7 @@
                 <string name="event-handler-0">"wxEVT_COMMAND_MENU_SELECTED|OnEXITClick|||"</string>
                 <string name="proxy-Id name">"wxID_EXIT"</string>
                 <long name="proxy-Id value">5006</long>
-                <string name="proxy-Label">"Exit"</string>
+                <string name="proxy-Label">"E&amp;xit"</string>
                 <string name="proxy-Kind">"Normal"</string>
                 <bool name="proxy-Checked">0</bool>
                 <bool name="proxy-Enabled">1</bool>
@@ -887,12 +887,12 @@
               <long name="locked">0</long>
               <string name="created">"16/4/2007"</string>
               <string name="proxy-type">"wbMenuProxy"</string>
-              <string name="proxy-Label">"Edit"</string>
+              <string name="proxy-Label">"&amp;Edit"</string>
               <bool name="proxy-Enabled">1</bool>
               <string name="proxy-Member variable name">""</string>
               <string name="proxy-Platform">"&lt;Any platform&gt;"</string>
               <document>
-                <string name="title">"Add To Virtual Folder...: ID_ADD_VIRTUAL_FOLDER"</string>
+                <string name="title">"&amp;Add To Virtual Folder...: ID_ADD_VIRTUAL_FOLDER"</string>
                 <string name="type">"dialog-control-document"</string>
                 <string name="filename">""</string>
                 <string name="icon-name">"menuitem"</string>
@@ -906,7 +906,7 @@
                 <string name="event-handler-1">"wxEVT_UPDATE_UI|OnAddVirtualFolderUpdate"</string>
                 <string name="proxy-Id name">"ID_ADD_VIRTUAL_FOLDER"</string>
                 <long name="proxy-Id value">10015</long>
-                <string name="proxy-Label">"Add To Virtual Folder..."</string>
+                <string name="proxy-Label">"&amp;Add To Virtual Folder..."</string>
                 <string name="proxy-Kind">"Normal"</string>
                 <bool name="proxy-Checked">0</bool>
                 <bool name="proxy-Enabled">1</bool>
@@ -928,7 +928,7 @@
                 <string name="proxy-Platform">"&lt;Any platform&gt;"</string>
               </document>
               <document>
-                <string name="title">"Rename...\tF2: ID_EDIT_RENAME"</string>
+                <string name="title">"&amp;Rename...\tF2: ID_EDIT_RENAME"</string>
                 <string name="type">"dialog-control-document"</string>
                 <string name="filename">""</string>
                 <string name="icon-name">"menuitem"</string>
@@ -942,7 +942,7 @@
                 <string name="event-handler-1">"wxEVT_UPDATE_UI|OnEditRenameUpdate|NONE||"</string>
                 <string name="proxy-Id name">"ID_EDIT_RENAME"</string>
                 <long name="proxy-Id value">10073</long>
-                <string name="proxy-Label">"Rename...\tF2"</string>
+                <string name="proxy-Label">"&amp;Rename...\tF2"</string>
                 <string name="proxy-Kind">"Normal"</string>
                 <bool name="proxy-Checked">0</bool>
                 <bool name="proxy-Enabled">1</bool>
@@ -951,7 +951,7 @@
                 <string name="proxy-Platform">"&lt;Any platform&gt;"</string>
               </document>
               <document>
-                <string name="title">"Delete: ID_EDIT_DELETE"</string>
+                <string name="title">"&amp;Delete: ID_EDIT_DELETE"</string>
                 <string name="type">"dialog-control-document"</string>
                 <string name="filename">""</string>
                 <string name="icon-name">"menuitem"</string>
@@ -965,7 +965,7 @@
                 <string name="event-handler-1">"wxEVT_UPDATE_UI|OnEditDeleteUpdate|NONE||"</string>
                 <string name="proxy-Id name">"ID_EDIT_DELETE"</string>
                 <long name="proxy-Id value">10074</long>
-                <string name="proxy-Label">"Delete"</string>
+                <string name="proxy-Label">"&amp;Delete"</string>
                 <string name="proxy-Kind">"Normal"</string>
                 <bool name="proxy-Checked">0</bool>
                 <bool name="proxy-Enabled">1</bool>
@@ -987,7 +987,7 @@
                 <string name="proxy-Platform">"&lt;Any platform&gt;"</string>
               </document>
               <document>
-                <string name="title">"Object Description...: ID_EDIT_OBJECT_DESCRIPTION"</string>
+                <string name="title">"&amp;Object Description...: ID_EDIT_OBJECT_DESCRIPTION"</string>
                 <string name="type">"dialog-control-document"</string>
                 <string name="filename">""</string>
                 <string name="icon-name">"menuitem"</string>
@@ -1001,7 +1001,7 @@
                 <string name="event-handler-1">"wxEVT_UPDATE_UI|OnEditObjectDescriptionUpdate|NONE||"</string>
                 <string name="proxy-Id name">"ID_EDIT_OBJECT_DESCRIPTION"</string>
                 <long name="proxy-Id value">10018</long>
-                <string name="proxy-Label">"Object Description..."</string>
+                <string name="proxy-Label">"&amp;Object Description..."</string>
                 <string name="proxy-Kind">"Normal"</string>
                 <bool name="proxy-Checked">0</bool>
                 <bool name="proxy-Enabled">1</bool>
@@ -1023,7 +1023,7 @@
                 <string name="proxy-Platform">"&lt;Any platform&gt;"</string>
               </document>
               <document>
-                <string name="title">"New Virtual Root Folder...: ID_NEW_VIRTUAL_ROOT_FOLDER"</string>
+                <string name="title">"&amp;New Virtual Root Folder...: ID_NEW_VIRTUAL_ROOT_FOLDER"</string>
                 <string name="type">"dialog-control-document"</string>
                 <string name="filename">""</string>
                 <string name="icon-name">"menuitem"</string>
@@ -1037,7 +1037,7 @@
                 <string name="event-handler-1">"wxEVT_UPDATE_UI|OnNewVirtualRootFolderUpdate"</string>
                 <string name="proxy-Id name">"ID_NEW_VIRTUAL_ROOT_FOLDER"</string>
                 <long name="proxy-Id value">10021</long>
-                <string name="proxy-Label">"New Virtual Root Folder..."</string>
+                <string name="proxy-Label">"&amp;New Virtual Root Folder..."</string>
                 <string name="proxy-Kind">"Normal"</string>
                 <bool name="proxy-Checked">0</bool>
                 <bool name="proxy-Enabled">1</bool>
@@ -1046,7 +1046,7 @@
                 <string name="proxy-Platform">"&lt;Any platform&gt;"</string>
               </document>
               <document>
-                <string name="title">"New Virtual Subfolder...: ID_NEW_VIRTUAL_SUBFOLDER"</string>
+                <string name="title">"New Virtual &amp;Subfolder...: ID_NEW_VIRTUAL_SUBFOLDER"</string>
                 <string name="type">"dialog-control-document"</string>
                 <string name="filename">""</string>
                 <string name="icon-name">"menuitem"</string>
@@ -1060,7 +1060,7 @@
                 <string name="event-handler-1">"wxEVT_UPDATE_UI|OnNewVirtualSubfolderUpdate"</string>
                 <string name="proxy-Id name">"ID_NEW_VIRTUAL_SUBFOLDER"</string>
                 <long name="proxy-Id value">10022</long>
-                <string name="proxy-Label">"New Virtual Subfolder..."</string>
+                <string name="proxy-Label">"New Virtual &amp;Subfolder..."</string>
                 <string name="proxy-Kind">"Normal"</string>
                 <bool name="proxy-Checked">0</bool>
                 <bool name="proxy-Enabled">1</bool>
@@ -1080,12 +1080,12 @@
               <long name="locked">0</long>
               <string name="created">"29/12/2006"</string>
               <string name="proxy-type">"wbMenuProxy"</string>
-              <string name="proxy-Label">"Volumes"</string>
+              <string name="proxy-Label">"&amp;Volumes"</string>
               <bool name="proxy-Enabled">1</bool>
               <string name="proxy-Member variable name">""</string>
               <string name="proxy-Platform">"&lt;Any platform&gt;"</string>
               <document>
-                <string name="title">"Catalog Volume...: ID_CATALOG_VOLUME"</string>
+                <string name="title">"&amp;Catalog Volume...: ID_CATALOG_VOLUME"</string>
                 <string name="type">"dialog-control-document"</string>
                 <string name="filename">""</string>
                 <string name="icon-name">"menuitem"</string>
@@ -1099,7 +1099,7 @@
                 <string name="event-handler-1">"wxEVT_UPDATE_UI|OnCatalogVolumeUpdate|NONE||"</string>
                 <string name="proxy-Id name">"ID_CATALOG_VOLUME"</string>
                 <long name="proxy-Id value">10036</long>
-                <string name="proxy-Label">"Catalog Volume..."</string>
+                <string name="proxy-Label">"&amp;Catalog Volume..."</string>
                 <string name="proxy-Kind">"Normal"</string>
                 <bool name="proxy-Checked">0</bool>
                 <bool name="proxy-Enabled">1</bool>
@@ -1119,12 +1119,12 @@
               <long name="locked">0</long>
               <string name="created">"16/3/2007"</string>
               <string name="proxy-type">"wbMenuProxy"</string>
-              <string name="proxy-Label">"View"</string>
+              <string name="proxy-Label">"Vie&amp;w"</string>
               <bool name="proxy-Enabled">1</bool>
               <string name="proxy-Member variable name">""</string>
               <string name="proxy-Platform">"&lt;Any platform&gt;"</string>
               <document>
-                <string name="title">"Physical View: ID_VIEW_PHYSICAL"</string>
+                <string name="title">"&amp;Physical View: ID_VIEW_PHYSICAL"</string>
                 <string name="type">"dialog-control-document"</string>
                 <string name="filename">""</string>
                 <string name="icon-name">"menuitem"</string>
@@ -1138,7 +1138,7 @@
                 <string name="event-handler-1">"wxEVT_UPDATE_UI|OnViewPhysicalUpdate|NONE||"</string>
                 <string name="proxy-Id name">"ID_VIEW_PHYSICAL"</string>
                 <long name="proxy-Id value">10038</long>
-                <string name="proxy-Label">"Physical View"</string>
+                <string name="proxy-Label">"&amp;Physical View"</string>
                 <string name="proxy-Kind">"Radio"</string>
                 <bool name="proxy-Checked">1</bool>
                 <bool name="proxy-Enabled">1</bool>
@@ -1147,7 +1147,7 @@
                 <string name="proxy-Platform">"&lt;Any platform&gt;"</string>
               </document>
               <document>
-                <string name="title">"Virtual View: ID_VIEW_VIRTUAL"</string>
+                <string name="title">"&amp;Virtual View: ID_VIEW_VIRTUAL"</string>
                 <string name="type">"dialog-control-document"</string>
                 <string name="filename">""</string>
                 <string name="icon-name">"menuitem"</string>
@@ -1161,7 +1161,7 @@
                 <string name="event-handler-1">"wxEVT_UPDATE_UI|OnViewVirtualUpdate|NONE||"</string>
                 <string name="proxy-Id name">"ID_VIEW_VIRTUAL"</string>
                 <long name="proxy-Id value">10039</long>
-                <string name="proxy-Label">"Virtual View"</string>
+                <string name="proxy-Label">"&amp;Virtual View"</string>
                 <string name="proxy-Kind">"Radio"</string>
                 <bool name="proxy-Checked">0</bool>
                 <bool name="proxy-Enabled">1</bool>
@@ -1170,7 +1170,7 @@
                 <string name="proxy-Platform">"&lt;Any platform&gt;"</string>
               </document>
               <document>
-                <string name="title">"Search View: ID_VIEW_SEARCH"</string>
+                <string name="title">"&amp;Search View: ID_VIEW_SEARCH"</string>
                 <string name="type">"dialog-control-document"</string>
                 <string name="filename">""</string>
                 <string name="icon-name">"menuitem"</string>
@@ -1184,7 +1184,7 @@
                 <string name="event-handler-1">"wxEVT_UPDATE_UI|OnViewSearchUpdate|NONE||"</string>
                 <string name="proxy-Id name">"ID_VIEW_SEARCH"</string>
                 <long name="proxy-Id value">10040</long>
-                <string name="proxy-Label">"Search View"</string>
+                <string name="proxy-Label">"&amp;Search View"</string>
                 <string name="proxy-Kind">"Radio"</string>
                 <bool name="proxy-Checked">0</bool>
                 <bool name="proxy-Enabled">1</bool>
@@ -1206,7 +1206,7 @@
                 <string name="proxy-Platform">"&lt;Any platform&gt;"</string>
               </document>
               <document>
-                <string name="title">"Go Up One Level: ID_UP_ONE_FOLDER"</string>
+                <string name="title">"Go &amp;Up One Level: ID_UP_ONE_FOLDER"</string>
                 <string name="type">"dialog-control-document"</string>
                 <string name="filename">""</string>
                 <string name="icon-name">"menuitem"</string>
@@ -1220,7 +1220,7 @@
                 <string name="event-handler-1">"wxEVT_UPDATE_UI|OnUpOneFolderUpdate|NONE||"</string>
                 <string name="proxy-Id name">"ID_UP_ONE_FOLDER"</string>
                 <long name="proxy-Id value">10041</long>
-                <string name="proxy-Label">"Go Up One Level"</string>
+                <string name="proxy-Label">"Go &amp;Up One Level"</string>
                 <string name="proxy-Kind">"Normal"</string>
                 <bool name="proxy-Checked">0</bool>
                 <bool name="proxy-Enabled">1</bool>
@@ -1242,7 +1242,7 @@
                 <string name="proxy-Platform">"&lt;Any platform&gt;"</string>
               </document>
               <document>
-                <string name="title">"Toolbar: ID_VIEW_TOOLBAR"</string>
+                <string name="title">"&amp;Toolbar: ID_VIEW_TOOLBAR"</string>
                 <string name="type">"dialog-control-document"</string>
                 <string name="filename">""</string>
                 <string name="icon-name">"menuitem"</string>
@@ -1255,7 +1255,7 @@
                 <string name="event-handler-0">"wxEVT_COMMAND_MENU_SELECTED|OnViewToolbarClick|NONE||"</string>
                 <string name="proxy-Id name">"ID_VIEW_TOOLBAR"</string>
                 <long name="proxy-Id value">10042</long>
-                <string name="proxy-Label">"Toolbar"</string>
+                <string name="proxy-Label">"&amp;Toolbar"</string>
                 <string name="proxy-Kind">"Check"</string>
                 <bool name="proxy-Checked">1</bool>
                 <bool name="proxy-Enabled">1</bool>
@@ -1264,7 +1264,7 @@
                 <string name="proxy-Platform">"&lt;Any platform&gt;"</string>
               </document>
               <document>
-                <string name="title">"Status Bar: ID_VIEW_STATUS_BAR"</string>
+                <string name="title">"Status &amp;Bar: ID_VIEW_STATUS_BAR"</string>
                 <string name="type">"dialog-control-document"</string>
                 <string name="filename">""</string>
                 <string name="icon-name">"menuitem"</string>
@@ -1277,7 +1277,7 @@
                 <string name="event-handler-0">"wxEVT_COMMAND_MENU_SELECTED|OnViewStatusBarClick|NONE||"</string>
                 <string name="proxy-Id name">"ID_VIEW_STATUS_BAR"</string>
                 <long name="proxy-Id value">10043</long>
-                <string name="proxy-Label">"Status Bar"</string>
+                <string name="proxy-Label">"Status &amp;Bar"</string>
                 <string name="proxy-Kind">"Check"</string>
                 <bool name="proxy-Checked">1</bool>
                 <bool name="proxy-Enabled">1</bool>
@@ -1297,12 +1297,12 @@
               <long name="locked">0</long>
               <string name="created">"10/11/2007"</string>
               <string name="proxy-type">"wbMenuProxy"</string>
-              <string name="proxy-Label">"Tools"</string>
+              <string name="proxy-Label">"&amp;Tools"</string>
               <bool name="proxy-Enabled">1</bool>
               <string name="proxy-Member variable name">""</string>
               <string name="proxy-Platform">"&lt;Any platform&gt;"</string>
               <document>
-                <string name="title">"Options...: ID_TOOLS_OPTIONS"</string>
+                <string name="title">"&amp;Options...: ID_TOOLS_OPTIONS"</string>
                 <string name="type">"dialog-control-document"</string>
                 <string name="filename">""</string>
                 <string name="icon-name">"menuitem"</string>
@@ -1315,7 +1315,7 @@
                 <string name="event-handler-0">"wxEVT_COMMAND_MENU_SELECTED|OnToolsOptionsClick|NONE||CMainFrame"</string>
                 <string name="proxy-Id name">"ID_TOOLS_OPTIONS"</string>
                 <long name="proxy-Id value">10014</long>
-                <string name="proxy-Label">"Options..."</string>
+                <string name="proxy-Label">"&amp;Options..."</string>
                 <string name="proxy-Kind">"Normal"</string>
                 <bool name="proxy-Checked">0</bool>
                 <bool name="proxy-Enabled">1</bool>
@@ -1335,12 +1335,12 @@
               <long name="locked">0</long>
               <string name="created">"15/5/2007"</string>
               <string name="proxy-type">"wbMenuProxy"</string>
-              <string name="proxy-Label">"Help"</string>
+              <string name="proxy-Label">"&amp;Help"</string>
               <bool name="proxy-Enabled">1</bool>
               <string name="proxy-Member variable name">""</string>
               <string name="proxy-Platform">"&lt;Any platform&gt;"</string>
               <document>
-                <string name="title">"Help Contents: ID_HELP_CONTENTS"</string>
+                <string name="title">"Help &amp;Contents: ID_HELP_CONTENTS"</string>
                 <string name="type">"dialog-control-document"</string>
                 <string name="filename">""</string>
                 <string name="icon-name">"menuitem"</string>
@@ -1353,7 +1353,7 @@
                 <string name="event-handler-0">"wxEVT_COMMAND_MENU_SELECTED|OnHelpContentsClick|NONE||CMainFrame"</string>
                 <string name="proxy-Id name">"ID_HELP_CONTENTS"</string>
                 <long name="proxy-Id value">10072</long>
-                <string name="proxy-Label">"Help Contents"</string>
+                <string name="proxy-Label">"Help &amp;Contents"</string>
                 <string name="proxy-Kind">"Normal"</string>
                 <bool name="proxy-Checked">0</bool>
                 <bool name="proxy-Enabled">1</bool>
@@ -1375,7 +1375,7 @@
                 <string name="proxy-Platform">"&lt;Any platform&gt;"</string>
               </document>
               <document>
-                <string name="title">"About VVV...: wxID_ABOUT"</string>
+                <string name="title">"&amp;About VVV...: wxID_ABOUT"</string>
                 <string name="type">"dialog-control-document"</string>
                 <string name="filename">""</string>
                 <string name="icon-name">"menuitem"</string>
@@ -1388,7 +1388,7 @@
                 <string name="event-handler-0">"wxEVT_COMMAND_MENU_SELECTED|OnABOUTClick|NONE||"</string>
                 <string name="proxy-Id name">"wxID_ABOUT"</string>
                 <long name="proxy-Id value">5014</long>
-                <string name="proxy-Label">"About VVV..."</string>
+                <string name="proxy-Label">"&amp;About VVV..."</string>
                 <string name="proxy-Kind">"Normal"</string>
                 <bool name="proxy-Checked">0</bool>
                 <bool name="proxy-Enabled">1</bool>
@@ -1800,6 +1800,14 @@
             <string name="proxy-type">"wbBoxSizerProxy"</string>
             <string name="proxy-Orientation">"Vertical"</string>
             <string name="proxy-Member variable name">""</string>
+            <string name="proxy-AlignH">"Centre"</string>
+            <string name="proxy-AlignV">"Centre"</string>
+            <long name="proxy-Stretch factor">0</long>
+            <long name="proxy-Border">5</long>
+            <bool name="proxy-wxLEFT">1</bool>
+            <bool name="proxy-wxRIGHT">1</bool>
+            <bool name="proxy-wxTOP">1</bool>
+            <bool name="proxy-wxBOTTOM">1</bool>
             <bool name="proxy-wxSHAPED">0</bool>
             <bool name="proxy-wxADJUST_MINSIZE">0</bool>
             <bool name="proxy-wxFIXED_MINSIZE">0</bool>
@@ -4658,8 +4666,6 @@
             <string name="proxy-Implementation filename">""</string>
             <string name="proxy-Header filename">""</string>
             <string name="proxy-Member variable name">""</string>
-            <string name="proxy-Tab label">"General"</string>
-            <string name="proxy-Tab icon">""</string>
             <string name="proxy-Help text">""</string>
             <string name="proxy-Tooltip text">""</string>
             <string name="proxy-Background colour">""</string>
@@ -4712,6 +4718,8 @@
             <string name="proxy-Custom ctor arguments">""</string>
             <string name="proxy-Event sources">""</string>
             <bool name="proxy-AUI manager">0</bool>
+            <string name="proxy-Tab label">"General"</string>
+            <string name="proxy-Tab icon">""</string>
             <document>
               <string name="title">"wxBoxSizer V"</string>
               <string name="type">"dialog-control-document"</string>
@@ -5015,8 +5023,6 @@
             <string name="proxy-Implementation filename">""</string>
             <string name="proxy-Header filename">""</string>
             <string name="proxy-Member variable name">""</string>
-            <string name="proxy-Tab label">"MP3"</string>
-            <string name="proxy-Tab icon">""</string>
             <string name="proxy-Help text">""</string>
             <string name="proxy-Tooltip text">""</string>
             <string name="proxy-Background colour">""</string>
@@ -5069,6 +5075,8 @@
             <string name="proxy-Custom ctor arguments">""</string>
             <string name="proxy-Event sources">""</string>
             <bool name="proxy-AUI manager">0</bool>
+            <string name="proxy-Tab label">"MP3"</string>
+            <string name="proxy-Tab icon">""</string>
             <document>
               <string name="title">"wxBoxSizer V"</string>
               <string name="type">"dialog-control-document"</string>
@@ -5969,8 +5977,6 @@
             <string name="proxy-Implementation filename">""</string>
             <string name="proxy-Header filename">""</string>
             <string name="proxy-Member variable name">""</string>
-            <string name="proxy-Tab label">"Server"</string>
-            <string name="proxy-Tab icon">""</string>
             <string name="proxy-Help text">""</string>
             <string name="proxy-Tooltip text">""</string>
             <string name="proxy-Background colour">""</string>
@@ -6023,6 +6029,8 @@
             <string name="proxy-Custom ctor arguments">""</string>
             <string name="proxy-Event sources">""</string>
             <bool name="proxy-AUI manager">0</bool>
+            <string name="proxy-Tab label">"Server"</string>
+            <string name="proxy-Tab icon">""</string>
             <document>
               <string name="title">"wxBoxSizer V"</string>
               <string name="type">"dialog-control-document"</string>
