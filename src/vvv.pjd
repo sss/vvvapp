@@ -1068,6 +1068,28 @@
                 <string name="proxy-Bitmap">""</string>
                 <string name="proxy-Platform">"&lt;Any platform&gt;"</string>
               </document>
+              <document>
+                <string name="title">"&amp;Options...: wxID_PREFERENCES"</string>
+                <string name="type">"dialog-control-document"</string>
+                <string name="filename">""</string>
+                <string name="icon-name">"menuitem"</string>
+                <long name="is-transient">0</long>
+                <long name="owns-file">1</long>
+                <long name="title-mode">0</long>
+                <long name="locked">0</long>
+                <string name="created">"31/12/2007"</string>
+                <string name="proxy-type">"wbMenuItemProxy"</string>
+                <string name="event-handler-0">"wxEVT_COMMAND_MENU_SELECTED|OnPreferencesClick|NONE||CMainFrame"</string>
+                <string name="proxy-Id name">"wxID_PREFERENCES"</string>
+                <long name="proxy-Id value">5022</long>
+                <string name="proxy-Label">"&amp;Options..."</string>
+                <string name="proxy-Kind">"Normal"</string>
+                <bool name="proxy-Checked">0</bool>
+                <bool name="proxy-Enabled">1</bool>
+                <string name="proxy-Help text">""</string>
+                <string name="proxy-Bitmap">""</string>
+                <string name="proxy-Platform">"__WXMAC__"</string>
+              </document>
             </document>
             <document>
               <string name="title">"Volumes"</string>
@@ -1300,9 +1322,9 @@
               <string name="proxy-Label">"&amp;Tools"</string>
               <bool name="proxy-Enabled">1</bool>
               <string name="proxy-Member variable name">""</string>
-              <string name="proxy-Platform">"&lt;Any platform&gt;"</string>
+              <string name="proxy-Platform">"__WXMSW__,__WXGTK__"</string>
               <document>
-                <string name="title">"&amp;Options...: ID_TOOLS_OPTIONS"</string>
+                <string name="title">"&amp;Options...: wxID_PREFERENCES"</string>
                 <string name="type">"dialog-control-document"</string>
                 <string name="filename">""</string>
                 <string name="icon-name">"menuitem"</string>
@@ -1312,9 +1334,9 @@
                 <long name="locked">0</long>
                 <string name="created">"10/11/2007"</string>
                 <string name="proxy-type">"wbMenuItemProxy"</string>
-                <string name="event-handler-0">"wxEVT_COMMAND_MENU_SELECTED|OnToolsOptionsClick|NONE||CMainFrame"</string>
-                <string name="proxy-Id name">"ID_TOOLS_OPTIONS"</string>
-                <long name="proxy-Id value">10014</long>
+                <string name="event-handler-0">"wxEVT_COMMAND_MENU_SELECTED|OnPreferencesClick|NONE||CMainFrame"</string>
+                <string name="proxy-Id name">"wxID_PREFERENCES"</string>
+                <long name="proxy-Id value">5022</long>
                 <string name="proxy-Label">"&amp;Options..."</string>
                 <string name="proxy-Kind">"Normal"</string>
                 <bool name="proxy-Checked">0</bool>
@@ -1370,9 +1392,9 @@
                 <long name="owns-file">1</long>
                 <long name="title-mode">0</long>
                 <long name="locked">0</long>
-                <string name="created">"29/11/2007"</string>
+                <string name="created">"31/12/2007"</string>
                 <string name="proxy-type">"wbMenuSeparatorProxy"</string>
-                <string name="proxy-Platform">"&lt;Any platform&gt;"</string>
+                <string name="proxy-Platform">"__WXMSW__,__WXGTK__"</string>
               </document>
               <document>
                 <string name="title">"&amp;About VVV...: wxID_ABOUT"</string>
@@ -1385,7 +1407,7 @@
                 <long name="locked">0</long>
                 <string name="created">"15/5/2007"</string>
                 <string name="proxy-type">"wbMenuItemProxy"</string>
-                <string name="event-handler-0">"wxEVT_COMMAND_MENU_SELECTED|OnABOUTClick|NONE||"</string>
+                <string name="event-handler-0">"wxEVT_COMMAND_MENU_SELECTED|OnABOUTClick|NONE||CMainFrame"</string>
                 <string name="proxy-Id name">"wxID_ABOUT"</string>
                 <long name="proxy-Id value">5014</long>
                 <string name="proxy-Label">"&amp;About VVV..."</string>
