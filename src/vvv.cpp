@@ -56,6 +56,7 @@
 #include "wx/log.h"
 #include "wx/cmdline.h"
 #include "wx/filename.h"
+#include "wx/sysopt.h"
 
 #include "vvv.h"
 #include "data_interface/base_db.h"
@@ -121,6 +122,8 @@ void CVvvApp::Init()
 
 bool CVvvApp::OnInit()
 {    
+
+	wxSystemOptions::SetOption( wxT("mac.listctrl.always_use_generic"), 1 );
 
 	// sets the config object
 	SetVendorName(wxT("VVV"));
