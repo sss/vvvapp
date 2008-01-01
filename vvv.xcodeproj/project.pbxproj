@@ -1,0 +1,604 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 42;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		BD38B4620D26965E00A422F0 /* base_db.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BD38B4510D26965E00A422F0 /* base_db.cpp */; };
+		BD38B4630D26965E00A422F0 /* base_rec.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BD38B4520D26965E00A422F0 /* base_rec.cpp */; };
+		BD38B4640D26965E00A422F0 /* data_error.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BD38B4530D26965E00A422F0 /* data_error.cpp */; };
+		BD38B4650D26965E00A422F0 /* fb_base_rec.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BD38B4540D26965E00A422F0 /* fb_base_rec.cpp */; };
+		BD38B4660D26965E00A422F0 /* fb_files_audio_metadata.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BD38B4550D26965E00A422F0 /* fb_files_audio_metadata.cpp */; };
+		BD38B4670D26965E00A422F0 /* fb_files.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BD38B4560D26965E00A422F0 /* fb_files.cpp */; };
+		BD38B4680D26965E00A422F0 /* fb_paths.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BD38B4570D26965E00A422F0 /* fb_paths.cpp */; };
+		BD38B4690D26965E00A422F0 /* fb_virtual_files.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BD38B4580D26965E00A422F0 /* fb_virtual_files.cpp */; };
+		BD38B46A0D26965E00A422F0 /* fb_virtual_paths.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BD38B4590D26965E00A422F0 /* fb_virtual_paths.cpp */; };
+		BD38B46B0D26965E00A422F0 /* fb_volumes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BD38B45A0D26965E00A422F0 /* fb_volumes.cpp */; };
+		BD38B46C0D26965E00A422F0 /* files_audio_metadata.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BD38B45B0D26965E00A422F0 /* files_audio_metadata.cpp */; };
+		BD38B46D0D26965E00A422F0 /* files.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BD38B45C0D26965E00A422F0 /* files.cpp */; };
+		BD38B46E0D26965E00A422F0 /* firebird_db.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BD38B45D0D26965E00A422F0 /* firebird_db.cpp */; };
+		BD38B46F0D26965E00A422F0 /* paths.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BD38B45E0D26965E00A422F0 /* paths.cpp */; };
+		BD38B4700D26965E00A422F0 /* virtual_files.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BD38B45F0D26965E00A422F0 /* virtual_files.cpp */; };
+		BD38B4710D26965E00A422F0 /* virtual_paths.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BD38B4600D26965E00A422F0 /* virtual_paths.cpp */; };
+		BD38B4720D26965E00A422F0 /* volumes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BD38B4610D26965E00A422F0 /* volumes.cpp */; };
+		BDB509A50D26C1FE003AB768 /* all_in_one.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BDB509A40D26C1FE003AB768 /* all_in_one.cpp */; };
+		BDB509AF0D26C4EC003AB768 /* libIBPP.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BDB5099D0D26C0AD003AB768 /* libIBPP.a */; };
+		BDB509C60D26CD2E003AB768 /* vvv.htb in CopyFiles */ = {isa = PBXBuildFile; fileRef = BDB509C50D26CD12003AB768 /* vvv.htb */; };
+		BDB509CE0D26CE4F003AB768 /* vvv-struct-update.fdb in CopyFiles */ = {isa = PBXBuildFile; fileRef = BDB509CA0D26CE27003AB768 /* vvv-struct-update.fdb */; };
+		BDB509CF0D26CE59003AB768 /* VVV.fbk in CopyFiles */ = {isa = PBXBuildFile; fileRef = BDB509CB0D26CE27003AB768 /* VVV.fbk */; };
+		BDC65A390D268C4800FE4EAF /* audio_metadata.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BDC65A2D0D268C4800FE4EAF /* audio_metadata.cpp */; };
+		BDC65A3A0D268C4800FE4EAF /* catalog_volume.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BDC65A2E0D268C4800FE4EAF /* catalog_volume.cpp */; };
+		BDC65A3B0D268C4800FE4EAF /* choose_virtual_folder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BDC65A2F0D268C4800FE4EAF /* choose_virtual_folder.cpp */; };
+		BDC65A3C0D268C4800FE4EAF /* long_task_beep.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BDC65A300D268C4800FE4EAF /* long_task_beep.cpp */; };
+		BDC65A3D0D268C4800FE4EAF /* mainframe.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BDC65A310D268C4800FE4EAF /* mainframe.cpp */; };
+		BDC65A3E0D268C4800FE4EAF /* object_description.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BDC65A320D268C4800FE4EAF /* object_description.cpp */; };
+		BDC65A3F0D268C4800FE4EAF /* opencatalog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BDC65A330D268C4800FE4EAF /* opencatalog.cpp */; };
+		BDC65A400D268C4800FE4EAF /* settings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BDC65A340D268C4800FE4EAF /* settings.cpp */; };
+		BDC65A410D268C4800FE4EAF /* utils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BDC65A350D268C4800FE4EAF /* utils.cpp */; };
+		BDC65A420D268C4800FE4EAF /* vvv.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BDC65A360D268C4800FE4EAF /* vvv.cpp */; };
+		BDC65A430D268C4800FE4EAF /* window_position.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BDC65A370D268C4800FE4EAF /* window_position.cpp */; };
+		BDD56C0D0D2AAE2200F874D3 /* vvv.icns in Resources */ = {isa = PBXBuildFile; fileRef = BDD56C0C0D2AAE2100F874D3 /* vvv.icns */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		BDB509AC0D26C3CF003AB768 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BDC85C140D2562F300BE8D80 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BDB5099C0D26C0AD003AB768;
+			remoteInfo = IBPP;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		BDB509C10D26CC7A003AB768 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 6;
+			files = (
+				BDB509C60D26CD2E003AB768 /* vvv.htb in CopyFiles */,
+				BDB509CF0D26CE59003AB768 /* VVV.fbk in CopyFiles */,
+				BDB509CE0D26CE4F003AB768 /* vvv-struct-update.fdb in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		BD38B43E0D2695D700A422F0 /* audio_metadata.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = audio_metadata.h; path = src/audio_metadata.h; sourceTree = "<group>"; };
+		BD38B43F0D2695D700A422F0 /* catalog_volume.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = catalog_volume.h; path = src/catalog_volume.h; sourceTree = "<group>"; };
+		BD38B4400D2695D700A422F0 /* choose_virtual_folder.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = choose_virtual_folder.h; path = src/choose_virtual_folder.h; sourceTree = "<group>"; };
+		BD38B4410D2695D700A422F0 /* long_task_beep.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = long_task_beep.h; path = src/long_task_beep.h; sourceTree = "<group>"; };
+		BD38B4420D2695D700A422F0 /* mainframe.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = mainframe.h; path = src/mainframe.h; sourceTree = "<group>"; };
+		BD38B4430D2695D700A422F0 /* mylistitemdata.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = mylistitemdata.h; path = src/mylistitemdata.h; sourceTree = "<group>"; };
+		BD38B4440D2695D700A422F0 /* mytreeitemdata.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = mytreeitemdata.h; path = src/mytreeitemdata.h; sourceTree = "<group>"; };
+		BD38B4450D2695D700A422F0 /* object_description.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = object_description.h; path = src/object_description.h; sourceTree = "<group>"; };
+		BD38B4460D2695D700A422F0 /* opencatalog.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = opencatalog.h; path = src/opencatalog.h; sourceTree = "<group>"; };
+		BD38B4470D2695D700A422F0 /* resource.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = resource.h; path = src/resource.h; sourceTree = "<group>"; };
+		BD38B4480D2695D700A422F0 /* settings.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = settings.h; path = src/settings.h; sourceTree = "<group>"; };
+		BD38B4490D2695D700A422F0 /* utils.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = utils.h; path = src/utils.h; sourceTree = "<group>"; };
+		BD38B44A0D2695D700A422F0 /* vvv.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = vvv.h; path = src/vvv.h; sourceTree = "<group>"; };
+		BD38B44B0D2695D700A422F0 /* window_position.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = window_position.h; path = src/window_position.h; sourceTree = "<group>"; };
+		BD38B4510D26965E00A422F0 /* base_db.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = base_db.cpp; path = src/data_interface/base_db.cpp; sourceTree = "<group>"; };
+		BD38B4520D26965E00A422F0 /* base_rec.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = base_rec.cpp; path = src/data_interface/base_rec.cpp; sourceTree = "<group>"; };
+		BD38B4530D26965E00A422F0 /* data_error.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = data_error.cpp; path = src/data_interface/data_error.cpp; sourceTree = "<group>"; };
+		BD38B4540D26965E00A422F0 /* fb_base_rec.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = fb_base_rec.cpp; path = src/data_interface/fb_base_rec.cpp; sourceTree = "<group>"; };
+		BD38B4550D26965E00A422F0 /* fb_files_audio_metadata.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = fb_files_audio_metadata.cpp; path = src/data_interface/fb_files_audio_metadata.cpp; sourceTree = "<group>"; };
+		BD38B4560D26965E00A422F0 /* fb_files.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = fb_files.cpp; path = src/data_interface/fb_files.cpp; sourceTree = "<group>"; };
+		BD38B4570D26965E00A422F0 /* fb_paths.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = fb_paths.cpp; path = src/data_interface/fb_paths.cpp; sourceTree = "<group>"; };
+		BD38B4580D26965E00A422F0 /* fb_virtual_files.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = fb_virtual_files.cpp; path = src/data_interface/fb_virtual_files.cpp; sourceTree = "<group>"; };
+		BD38B4590D26965E00A422F0 /* fb_virtual_paths.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = fb_virtual_paths.cpp; path = src/data_interface/fb_virtual_paths.cpp; sourceTree = "<group>"; };
+		BD38B45A0D26965E00A422F0 /* fb_volumes.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = fb_volumes.cpp; path = src/data_interface/fb_volumes.cpp; sourceTree = "<group>"; };
+		BD38B45B0D26965E00A422F0 /* files_audio_metadata.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = files_audio_metadata.cpp; path = src/data_interface/files_audio_metadata.cpp; sourceTree = "<group>"; };
+		BD38B45C0D26965E00A422F0 /* files.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = files.cpp; path = src/data_interface/files.cpp; sourceTree = "<group>"; };
+		BD38B45D0D26965E00A422F0 /* firebird_db.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = firebird_db.cpp; path = src/data_interface/firebird_db.cpp; sourceTree = "<group>"; };
+		BD38B45E0D26965E00A422F0 /* paths.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = paths.cpp; path = src/data_interface/paths.cpp; sourceTree = "<group>"; };
+		BD38B45F0D26965E00A422F0 /* virtual_files.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = virtual_files.cpp; path = src/data_interface/virtual_files.cpp; sourceTree = "<group>"; };
+		BD38B4600D26965E00A422F0 /* virtual_paths.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = virtual_paths.cpp; path = src/data_interface/virtual_paths.cpp; sourceTree = "<group>"; };
+		BD38B4610D26965E00A422F0 /* volumes.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = volumes.cpp; path = src/data_interface/volumes.cpp; sourceTree = "<group>"; };
+		BD38B49B0D2696EB00A422F0 /* base_db.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = base_db.h; path = src/data_interface/base_db.h; sourceTree = "<group>"; };
+		BD38B49C0D2696EB00A422F0 /* base_rec.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = base_rec.h; path = src/data_interface/base_rec.h; sourceTree = "<group>"; };
+		BD38B49D0D2696EB00A422F0 /* data_error.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = data_error.h; path = src/data_interface/data_error.h; sourceTree = "<group>"; };
+		BD38B49E0D2696EB00A422F0 /* db_null.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = db_null.h; path = src/data_interface/db_null.h; sourceTree = "<group>"; };
+		BD38B49F0D2696EB00A422F0 /* files_audio_metadata.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = files_audio_metadata.h; path = src/data_interface/files_audio_metadata.h; sourceTree = "<group>"; };
+		BD38B4A00D2696EB00A422F0 /* files.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = files.h; path = src/data_interface/files.h; sourceTree = "<group>"; };
+		BD38B4A10D2696EB00A422F0 /* firebird_db.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = firebird_db.h; path = src/data_interface/firebird_db.h; sourceTree = "<group>"; };
+		BD38B4A20D2696EB00A422F0 /* paths.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = paths.h; path = src/data_interface/paths.h; sourceTree = "<group>"; };
+		BD38B4A30D2696EB00A422F0 /* virtual_files.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = virtual_files.h; path = src/data_interface/virtual_files.h; sourceTree = "<group>"; };
+		BD38B4A40D2696EB00A422F0 /* virtual_paths.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = virtual_paths.h; path = src/data_interface/virtual_paths.h; sourceTree = "<group>"; };
+		BD38B4A50D2696EB00A422F0 /* volumes.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = volumes.h; path = src/data_interface/volumes.h; sourceTree = "<group>"; };
+		BDB5099D0D26C0AD003AB768 /* libIBPP.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libIBPP.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		BDB509A40D26C1FE003AB768 /* all_in_one.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = all_in_one.cpp; path = src/ibpp/core/all_in_one.cpp; sourceTree = "<group>"; };
+		BDB509C50D26CD12003AB768 /* vvv.htb */ = {isa = PBXFileReference; lastKnownFileType = file; name = vvv.htb; path = help/en/vvv.htb; sourceTree = "<group>"; };
+		BDB509CA0D26CE27003AB768 /* vvv-struct-update.fdb */ = {isa = PBXFileReference; lastKnownFileType = file; path = "vvv-struct-update.fdb"; sourceTree = "<group>"; };
+		BDB509CB0D26CE27003AB768 /* VVV.fbk */ = {isa = PBXFileReference; lastKnownFileType = file; path = VVV.fbk; sourceTree = "<group>"; };
+		BDC65A2D0D268C4800FE4EAF /* audio_metadata.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = audio_metadata.cpp; path = src/audio_metadata.cpp; sourceTree = "<group>"; };
+		BDC65A2E0D268C4800FE4EAF /* catalog_volume.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = catalog_volume.cpp; path = src/catalog_volume.cpp; sourceTree = "<group>"; };
+		BDC65A2F0D268C4800FE4EAF /* choose_virtual_folder.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = choose_virtual_folder.cpp; path = src/choose_virtual_folder.cpp; sourceTree = "<group>"; };
+		BDC65A300D268C4800FE4EAF /* long_task_beep.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = long_task_beep.cpp; path = src/long_task_beep.cpp; sourceTree = "<group>"; };
+		BDC65A310D268C4800FE4EAF /* mainframe.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = mainframe.cpp; path = src/mainframe.cpp; sourceTree = "<group>"; };
+		BDC65A320D268C4800FE4EAF /* object_description.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = object_description.cpp; path = src/object_description.cpp; sourceTree = "<group>"; };
+		BDC65A330D268C4800FE4EAF /* opencatalog.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = opencatalog.cpp; path = src/opencatalog.cpp; sourceTree = "<group>"; };
+		BDC65A340D268C4800FE4EAF /* settings.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = settings.cpp; path = src/settings.cpp; sourceTree = "<group>"; };
+		BDC65A350D268C4800FE4EAF /* utils.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = utils.cpp; path = src/utils.cpp; sourceTree = "<group>"; };
+		BDC65A360D268C4800FE4EAF /* vvv.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = vvv.cpp; path = src/vvv.cpp; sourceTree = "<group>"; };
+		BDC65A370D268C4800FE4EAF /* window_position.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = window_position.cpp; path = src/window_position.cpp; sourceTree = "<group>"; };
+		BDC85C210D25630A00BE8D80 /* vvv.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = vvv.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BDC85C240D25630B00BE8D80 /* vvv-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "vvv-Info.plist"; sourceTree = "<group>"; };
+		BDD56C0C0D2AAE2100F874D3 /* vvv.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = vvv.icns; path = src/graphics/vvv.icns; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		BDB5099B0D26C0AD003AB768 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BDC85C1F0D25630A00BE8D80 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BDB509AF0D26C4EC003AB768 /* libIBPP.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		BD38B43C0D2694D800A422F0 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				BDD9F3510D2933CA007CF3A0 /* IBPP */,
+				BD38B44D0D2695FE00A422F0 /* Data interface */,
+				BDC65A2D0D268C4800FE4EAF /* audio_metadata.cpp */,
+				BDC65A2E0D268C4800FE4EAF /* catalog_volume.cpp */,
+				BDC65A2F0D268C4800FE4EAF /* choose_virtual_folder.cpp */,
+				BDC65A300D268C4800FE4EAF /* long_task_beep.cpp */,
+				BDC65A310D268C4800FE4EAF /* mainframe.cpp */,
+				BDC65A320D268C4800FE4EAF /* object_description.cpp */,
+				BDC65A330D268C4800FE4EAF /* opencatalog.cpp */,
+				BDC65A340D268C4800FE4EAF /* settings.cpp */,
+				BDC65A350D268C4800FE4EAF /* utils.cpp */,
+				BDC65A360D268C4800FE4EAF /* vvv.cpp */,
+				BDC65A370D268C4800FE4EAF /* window_position.cpp */,
+			);
+			name = Sources;
+			sourceTree = "<group>";
+		};
+		BD38B43D0D26959400A422F0 /* Headers */ = {
+			isa = PBXGroup;
+			children = (
+				BD38B4990D2696A900A422F0 /* Data interface */,
+				BD38B43E0D2695D700A422F0 /* audio_metadata.h */,
+				BD38B43F0D2695D700A422F0 /* catalog_volume.h */,
+				BD38B4400D2695D700A422F0 /* choose_virtual_folder.h */,
+				BD38B4410D2695D700A422F0 /* long_task_beep.h */,
+				BD38B4420D2695D700A422F0 /* mainframe.h */,
+				BD38B4430D2695D700A422F0 /* mylistitemdata.h */,
+				BD38B4440D2695D700A422F0 /* mytreeitemdata.h */,
+				BD38B4450D2695D700A422F0 /* object_description.h */,
+				BD38B4460D2695D700A422F0 /* opencatalog.h */,
+				BD38B4470D2695D700A422F0 /* resource.h */,
+				BD38B4480D2695D700A422F0 /* settings.h */,
+				BD38B4490D2695D700A422F0 /* utils.h */,
+				BD38B44A0D2695D700A422F0 /* vvv.h */,
+				BD38B44B0D2695D700A422F0 /* window_position.h */,
+			);
+			name = Headers;
+			sourceTree = "<group>";
+		};
+		BD38B44D0D2695FE00A422F0 /* Data interface */ = {
+			isa = PBXGroup;
+			children = (
+				BD38B4510D26965E00A422F0 /* base_db.cpp */,
+				BD38B4520D26965E00A422F0 /* base_rec.cpp */,
+				BD38B4530D26965E00A422F0 /* data_error.cpp */,
+				BD38B4540D26965E00A422F0 /* fb_base_rec.cpp */,
+				BD38B4550D26965E00A422F0 /* fb_files_audio_metadata.cpp */,
+				BD38B4560D26965E00A422F0 /* fb_files.cpp */,
+				BD38B4570D26965E00A422F0 /* fb_paths.cpp */,
+				BD38B4580D26965E00A422F0 /* fb_virtual_files.cpp */,
+				BD38B4590D26965E00A422F0 /* fb_virtual_paths.cpp */,
+				BD38B45A0D26965E00A422F0 /* fb_volumes.cpp */,
+				BD38B45B0D26965E00A422F0 /* files_audio_metadata.cpp */,
+				BD38B45C0D26965E00A422F0 /* files.cpp */,
+				BD38B45D0D26965E00A422F0 /* firebird_db.cpp */,
+				BD38B45E0D26965E00A422F0 /* paths.cpp */,
+				BD38B45F0D26965E00A422F0 /* virtual_files.cpp */,
+				BD38B4600D26965E00A422F0 /* virtual_paths.cpp */,
+				BD38B4610D26965E00A422F0 /* volumes.cpp */,
+			);
+			name = "Data interface";
+			sourceTree = "<group>";
+		};
+		BD38B4990D2696A900A422F0 /* Data interface */ = {
+			isa = PBXGroup;
+			children = (
+				BD38B49B0D2696EB00A422F0 /* base_db.h */,
+				BD38B49C0D2696EB00A422F0 /* base_rec.h */,
+				BD38B49D0D2696EB00A422F0 /* data_error.h */,
+				BD38B49E0D2696EB00A422F0 /* db_null.h */,
+				BD38B49F0D2696EB00A422F0 /* files_audio_metadata.h */,
+				BD38B4A00D2696EB00A422F0 /* files.h */,
+				BD38B4A10D2696EB00A422F0 /* firebird_db.h */,
+				BD38B4A20D2696EB00A422F0 /* paths.h */,
+				BD38B4A30D2696EB00A422F0 /* virtual_files.h */,
+				BD38B4A40D2696EB00A422F0 /* virtual_paths.h */,
+				BD38B4A50D2696EB00A422F0 /* volumes.h */,
+			);
+			name = "Data interface";
+			sourceTree = "<group>";
+		};
+		BDC85C120D2562F300BE8D80 = {
+			isa = PBXGroup;
+			children = (
+				BDD56C0C0D2AAE2100F874D3 /* vvv.icns */,
+				BDD9F3500D29339E007CF3A0 /* Other files */,
+				BD38B43D0D26959400A422F0 /* Headers */,
+				BD38B43C0D2694D800A422F0 /* Sources */,
+				BDC85C220D25630A00BE8D80 /* Products */,
+				BDC85C240D25630B00BE8D80 /* vvv-Info.plist */,
+			);
+			sourceTree = "<group>";
+		};
+		BDC85C220D25630A00BE8D80 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BDC85C210D25630A00BE8D80 /* vvv.app */,
+				BDB5099D0D26C0AD003AB768 /* libIBPP.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BDD9F3500D29339E007CF3A0 /* Other files */ = {
+			isa = PBXGroup;
+			children = (
+				BDB509CB0D26CE27003AB768 /* VVV.fbk */,
+				BDB509C50D26CD12003AB768 /* vvv.htb */,
+				BDB509CA0D26CE27003AB768 /* vvv-struct-update.fdb */,
+			);
+			name = "Other files";
+			sourceTree = "<group>";
+		};
+		BDD9F3510D2933CA007CF3A0 /* IBPP */ = {
+			isa = PBXGroup;
+			children = (
+				BDB509A40D26C1FE003AB768 /* all_in_one.cpp */,
+			);
+			name = IBPP;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		BDB509990D26C0AD003AB768 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		BDB5099C0D26C0AD003AB768 /* IBPP */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BDB5099E0D26C0CE003AB768 /* Build configuration list for PBXNativeTarget "IBPP" */;
+			buildPhases = (
+				BDB509990D26C0AD003AB768 /* Headers */,
+				BDB5099A0D26C0AD003AB768 /* Sources */,
+				BDB5099B0D26C0AD003AB768 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = IBPP;
+			productName = IBPP;
+			productReference = BDB5099D0D26C0AD003AB768 /* libIBPP.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		BDC85C200D25630A00BE8D80 /* vvv */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BDC85C250D25630D00BE8D80 /* Build configuration list for PBXNativeTarget "vvv" */;
+			buildPhases = (
+				BDC85C1D0D25630A00BE8D80 /* Resources */,
+				BDC85C1E0D25630A00BE8D80 /* Sources */,
+				BDC85C1F0D25630A00BE8D80 /* Frameworks */,
+				BDB509C10D26CC7A003AB768 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BDB509AD0D26C3CF003AB768 /* PBXTargetDependency */,
+			);
+			name = vvv;
+			productName = vvv;
+			productReference = BDC85C210D25630A00BE8D80 /* vvv.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BDC85C140D2562F300BE8D80 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = BDC85C150D2562F300BE8D80 /* Build configuration list for PBXProject "vvv" */;
+			hasScannedForEncodings = 0;
+			mainGroup = BDC85C120D2562F300BE8D80;
+			productRefGroup = BDC85C220D25630A00BE8D80 /* Products */;
+			projectDirPath = "";
+			targets = (
+				BDC85C200D25630A00BE8D80 /* vvv */,
+				BDB5099C0D26C0AD003AB768 /* IBPP */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		BDC85C1D0D25630A00BE8D80 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BDD56C0D0D2AAE2200F874D3 /* vvv.icns in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		BDB5099A0D26C0AD003AB768 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BDB509A50D26C1FE003AB768 /* all_in_one.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BDC85C1E0D25630A00BE8D80 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BDC65A390D268C4800FE4EAF /* audio_metadata.cpp in Sources */,
+				BDC65A3A0D268C4800FE4EAF /* catalog_volume.cpp in Sources */,
+				BDC65A3B0D268C4800FE4EAF /* choose_virtual_folder.cpp in Sources */,
+				BDC65A3C0D268C4800FE4EAF /* long_task_beep.cpp in Sources */,
+				BDC65A3D0D268C4800FE4EAF /* mainframe.cpp in Sources */,
+				BDC65A3E0D268C4800FE4EAF /* object_description.cpp in Sources */,
+				BDC65A3F0D268C4800FE4EAF /* opencatalog.cpp in Sources */,
+				BDC65A400D268C4800FE4EAF /* settings.cpp in Sources */,
+				BDC65A410D268C4800FE4EAF /* utils.cpp in Sources */,
+				BDC65A420D268C4800FE4EAF /* vvv.cpp in Sources */,
+				BDC65A430D268C4800FE4EAF /* window_position.cpp in Sources */,
+				BD38B4620D26965E00A422F0 /* base_db.cpp in Sources */,
+				BD38B4630D26965E00A422F0 /* base_rec.cpp in Sources */,
+				BD38B4640D26965E00A422F0 /* data_error.cpp in Sources */,
+				BD38B4650D26965E00A422F0 /* fb_base_rec.cpp in Sources */,
+				BD38B4660D26965E00A422F0 /* fb_files_audio_metadata.cpp in Sources */,
+				BD38B4670D26965E00A422F0 /* fb_files.cpp in Sources */,
+				BD38B4680D26965E00A422F0 /* fb_paths.cpp in Sources */,
+				BD38B4690D26965E00A422F0 /* fb_virtual_files.cpp in Sources */,
+				BD38B46A0D26965E00A422F0 /* fb_virtual_paths.cpp in Sources */,
+				BD38B46B0D26965E00A422F0 /* fb_volumes.cpp in Sources */,
+				BD38B46C0D26965E00A422F0 /* files_audio_metadata.cpp in Sources */,
+				BD38B46D0D26965E00A422F0 /* files.cpp in Sources */,
+				BD38B46E0D26965E00A422F0 /* firebird_db.cpp in Sources */,
+				BD38B46F0D26965E00A422F0 /* paths.cpp in Sources */,
+				BD38B4700D26965E00A422F0 /* virtual_files.cpp in Sources */,
+				BD38B4710D26965E00A422F0 /* virtual_paths.cpp in Sources */,
+				BD38B4720D26965E00A422F0 /* volumes.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		BDB509AD0D26C3CF003AB768 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BDB5099C0D26C0AD003AB768 /* IBPP */;
+			targetProxy = BDB509AC0D26C3CF003AB768 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		BDB5099F0D26C0CE003AB768 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				INSTALL_PATH = /usr/local/lib;
+				OTHER_LDFLAGS = "";
+				PREBINDING = NO;
+				PRODUCT_NAME = IBPP;
+				ZERO_LINK = YES;
+			};
+			name = Debug;
+		};
+		BDB509A00D26C0CE003AB768 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_MODEL_TUNING = G5;
+				INSTALL_PATH = /usr/local/lib;
+				OTHER_LDFLAGS = "";
+				PREBINDING = NO;
+				PRODUCT_NAME = IBPP;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+		BDC85C160D2562F300BE8D80 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				GCC_USE_GCC3_PFE_SUPPORT = YES;
+				OTHER_CPLUSPLUSFLAGS = (
+					"-I$(WXDIR)/build-debug/lib/wx/include/mac-ansi-debug-static-2.8",
+					"-I$(WXDIR)/include",
+					"-I$(WXDIR)/contrib/include",
+					"-D_FILE_OFFSET_BITS=64",
+					"-D_LARGE_FILES",
+					"-D__WXDEBUG__",
+					"-D__WXMAC__",
+					"-I/Volumes/Disco2/id3lib-3.8.3/include",
+					"-DIBPP_DARWIN",
+				);
+				OTHER_LDFLAGS = (
+					"-L$(WXDIR)/build-debug/lib",
+					"-framework",
+					IOKit,
+					"-framework",
+					Carbon,
+					"-framework",
+					Cocoa,
+					"-framework",
+					System,
+					"-framework",
+					QuickTime,
+					"$(WXDIR)/build-debug/lib/libwx_macd-2.8.a",
+					"-framework",
+					WebKit,
+					"-lwxexpatd-2.8",
+					"-lwxtiffd-2.8",
+					"-lwxjpegd-2.8",
+					"-lwxpngd-2.8",
+					"-lz",
+					"-lpthread",
+					"-liconv",
+					"/Volumes/Disco2/id3lib-3.8.3/lib/libid3.a",
+					"-framework",
+					Firebird,
+				);
+				ZERO_LINK = NO;
+			};
+			name = Debug;
+		};
+		BDC85C170D2562F300BE8D80 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				OTHER_CPLUSPLUSFLAGS = (
+					"-I$(WXDIR)/build-release/lib/wx/include/mac-ansi-release-static-2.8",
+					"-I/$(WXDIR)/include",
+					"-I$(WXDIR)/contrib/include",
+					"-D_FILE_OFFSET_BITS=64",
+					"-D_LARGE_FILES",
+					"-D__WXMAC__",
+					"-I/Volumes/Disco2/id3lib-3.8.3/include",
+					"-DIBPP_DARWIN",
+				);
+				OTHER_LDFLAGS = (
+					"-L$(WXDIR)/build-release/lib",
+					"-framework",
+					IOKit,
+					"-framework",
+					Carbon,
+					"-framework",
+					Cocoa,
+					"-framework",
+					System,
+					"-framework",
+					QuickTime,
+					"$(WXDIR)/build-release/lib/libwx_mac-2.8.a",
+					"-framework",
+					WebKit,
+					"-lwxregex-2.8",
+					"-lwxexpat-2.8",
+					"-lwxtiff-2.8",
+					"-lwxjpeg-2.8",
+					"-lwxpng-2.8",
+					"-lwxzlib-2.8",
+					"-lpthread",
+					"-liconv",
+					"/Volumes/Disco2/id3lib-3.8.3/lib/libid3.a",
+					"-framework",
+					Firebird,
+				);
+			};
+			name = Release;
+		};
+		BDC85C260D25630D00BE8D80 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Carbon.framework/Headers/Carbon.h";
+				INFOPLIST_FILE = "vvv-Info.plist";
+				INSTALL_PATH = "$(HOME)/Applications";
+				OTHER_LDFLAGS = "$(inherited)";
+				PREBINDING = NO;
+				PRODUCT_NAME = vvv;
+				WRAPPER_EXTENSION = app;
+				ZERO_LINK = NO;
+			};
+			name = Debug;
+		};
+		BDC85C270D25630D00BE8D80 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Carbon.framework/Headers/Carbon.h";
+				INFOPLIST_FILE = "vvv-Info.plist";
+				INSTALL_PATH = "$(HOME)/Applications";
+				OTHER_LDFLAGS = "$(inherited)";
+				PREBINDING = NO;
+				PRODUCT_NAME = vvv;
+				WRAPPER_EXTENSION = app;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BDB5099E0D26C0CE003AB768 /* Build configuration list for PBXNativeTarget "IBPP" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BDB5099F0D26C0CE003AB768 /* Debug */,
+				BDB509A00D26C0CE003AB768 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BDC85C150D2562F300BE8D80 /* Build configuration list for PBXProject "vvv" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BDC85C160D2562F300BE8D80 /* Debug */,
+				BDC85C170D2562F300BE8D80 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BDC85C250D25630D00BE8D80 /* Build configuration list for PBXNativeTarget "vvv" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BDC85C260D25630D00BE8D80 /* Debug */,
+				BDC85C270D25630D00BE8D80 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BDC85C140D2562F300BE8D80 /* Project object */;
+}
