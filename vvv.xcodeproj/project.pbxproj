@@ -26,9 +26,9 @@
 		BD38B4720D26965E00A422F0 /* volumes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BD38B4610D26965E00A422F0 /* volumes.cpp */; };
 		BDB509A50D26C1FE003AB768 /* all_in_one.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BDB509A40D26C1FE003AB768 /* all_in_one.cpp */; };
 		BDB509AF0D26C4EC003AB768 /* libIBPP.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BDB5099D0D26C0AD003AB768 /* libIBPP.a */; };
-		BDB509C60D26CD2E003AB768 /* vvv.htb in CopyFiles */ = {isa = PBXBuildFile; fileRef = BDB509C50D26CD12003AB768 /* vvv.htb */; };
-		BDB509CE0D26CE4F003AB768 /* vvv-struct-update.fdb in CopyFiles */ = {isa = PBXBuildFile; fileRef = BDB509CA0D26CE27003AB768 /* vvv-struct-update.fdb */; };
-		BDB509CF0D26CE59003AB768 /* VVV.fbk in CopyFiles */ = {isa = PBXBuildFile; fileRef = BDB509CB0D26CE27003AB768 /* VVV.fbk */; };
+		BDB509C60D26CD2E003AB768 /* vvv.htb in Copy Files - Executables */ = {isa = PBXBuildFile; fileRef = BDB509C50D26CD12003AB768 /* vvv.htb */; };
+		BDB509CE0D26CE4F003AB768 /* vvv-struct-update.fdb in Copy Files - Executables */ = {isa = PBXBuildFile; fileRef = BDB509CA0D26CE27003AB768 /* vvv-struct-update.fdb */; };
+		BDB509CF0D26CE59003AB768 /* VVV.fbk in Copy Files - Executables */ = {isa = PBXBuildFile; fileRef = BDB509CB0D26CE27003AB768 /* VVV.fbk */; };
 		BDC65A390D268C4800FE4EAF /* audio_metadata.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BDC65A2D0D268C4800FE4EAF /* audio_metadata.cpp */; };
 		BDC65A3A0D268C4800FE4EAF /* catalog_volume.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BDC65A2E0D268C4800FE4EAF /* catalog_volume.cpp */; };
 		BDC65A3B0D268C4800FE4EAF /* choose_virtual_folder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BDC65A2F0D268C4800FE4EAF /* choose_virtual_folder.cpp */; };
@@ -40,7 +40,24 @@
 		BDC65A410D268C4800FE4EAF /* utils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BDC65A350D268C4800FE4EAF /* utils.cpp */; };
 		BDC65A420D268C4800FE4EAF /* vvv.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BDC65A360D268C4800FE4EAF /* vvv.cpp */; };
 		BDC65A430D268C4800FE4EAF /* window_position.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BDC65A370D268C4800FE4EAF /* window_position.cpp */; };
+		BDC7ED000D2C0C62005642FE /* libicudata.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BDDE885B0D2BF0CC00756213 /* libicudata.dylib */; };
+		BDC7ED010D2C0C63005642FE /* libicui18n.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BDDE885C0D2BF0CC00756213 /* libicui18n.dylib */; };
 		BDD56C0D0D2AAE2200F874D3 /* vvv.icns in Resources */ = {isa = PBXBuildFile; fileRef = BDD56C0C0D2AAE2100F874D3 /* vvv.icns */; };
+		BDDE88700D2BF2AB00756213 /* firebird.conf in Copy Files - Executables */ = {isa = PBXBuildFile; fileRef = BDDE885F0D2BF0CC00756213 /* firebird.conf */; };
+		BDDE88730D2BF40200756213 /* firebird.msg in Copy Files - Executables-firebird */ = {isa = PBXBuildFile; fileRef = BDDE88550D2BF0CC00756213 /* firebird.msg */; };
+		BDDE88740D2BF40200756213 /* libfbembed.dylib in Copy Files - Executables-firebird */ = {isa = PBXBuildFile; fileRef = BDDE88590D2BF0CC00756213 /* libfbembed.dylib */; };
+		BDDE88750D2BF40200756213 /* libib_util.dylib in Copy Files - Executables-firebird */ = {isa = PBXBuildFile; fileRef = BDDE885A0D2BF0CC00756213 /* libib_util.dylib */; };
+		BDDE88760D2BF40200756213 /* libicudata.dylib in Copy Files - Executables-firebird */ = {isa = PBXBuildFile; fileRef = BDDE885B0D2BF0CC00756213 /* libicudata.dylib */; };
+		BDDE88770D2BF40200756213 /* libicui18n.dylib in Copy Files - Executables-firebird */ = {isa = PBXBuildFile; fileRef = BDDE885C0D2BF0CC00756213 /* libicui18n.dylib */; };
+		BDDE88780D2BF40200756213 /* libicuuc.dylib in Copy Files - Executables-firebird */ = {isa = PBXBuildFile; fileRef = BDDE885D0D2BF0CC00756213 /* libicuuc.dylib */; };
+		BDDE88790D2BF40200756213 /* security2.fdb in Copy Files - Executables-firebird */ = {isa = PBXBuildFile; fileRef = BDDE885E0D2BF0CC00756213 /* security2.fdb */; };
+		BDDE887E0D2BF50700756213 /* fb_lock_mgr in Copy Files - Executables-firebird-bin */ = {isa = PBXBuildFile; fileRef = BDDE88520D2BF0CC00756213 /* fb_lock_mgr */; };
+		BDDE887F0D2BF50700756213 /* gbak in Copy Files - Executables-firebird-bin */ = {isa = PBXBuildFile; fileRef = BDDE88530D2BF0CC00756213 /* gbak */; };
+		BDDE88800D2BF50700756213 /* isql in Copy Files - Executables-firebird-bin */ = {isa = PBXBuildFile; fileRef = BDDE88540D2BF0CC00756213 /* isql */; };
+		BDDE88810D2BF53100756213 /* fbintl.conf in Copy Files - Executables-intl */ = {isa = PBXBuildFile; fileRef = BDDE88570D2BF0CC00756213 /* fbintl.conf */; };
+		BDDE88820D2BF53100756213 /* fbintl.dylib in Copy Files - Executables-intl */ = {isa = PBXBuildFile; fileRef = BDDE88580D2BF0CC00756213 /* fbintl.dylib */; };
+		BDE673290D2CF2580095991E /* libfbembed.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BDDE88590D2BF0CC00756213 /* libfbembed.dylib */; };
+		BDE673480D2CFE5D0095991E /* libicuuc.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BDDE885D0D2BF0CC00756213 /* libicuuc.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,16 +71,60 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		BDB509C10D26CC7A003AB768 /* CopyFiles */ = {
+		BDB509C10D26CC7A003AB768 /* Copy Files - Executables */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 6;
 			files = (
-				BDB509C60D26CD2E003AB768 /* vvv.htb in CopyFiles */,
-				BDB509CF0D26CE59003AB768 /* VVV.fbk in CopyFiles */,
-				BDB509CE0D26CE4F003AB768 /* vvv-struct-update.fdb in CopyFiles */,
+				BDDE88700D2BF2AB00756213 /* firebird.conf in Copy Files - Executables */,
+				BDB509C60D26CD2E003AB768 /* vvv.htb in Copy Files - Executables */,
+				BDB509CF0D26CE59003AB768 /* VVV.fbk in Copy Files - Executables */,
+				BDB509CE0D26CE4F003AB768 /* vvv-struct-update.fdb in Copy Files - Executables */,
 			);
+			name = "Copy Files - Executables";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BDDE88710D2BF3C500756213 /* Copy Files - Executables-firebird */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = firebird;
+			dstSubfolderSpec = 6;
+			files = (
+				BDDE88730D2BF40200756213 /* firebird.msg in Copy Files - Executables-firebird */,
+				BDDE88740D2BF40200756213 /* libfbembed.dylib in Copy Files - Executables-firebird */,
+				BDDE88750D2BF40200756213 /* libib_util.dylib in Copy Files - Executables-firebird */,
+				BDDE88760D2BF40200756213 /* libicudata.dylib in Copy Files - Executables-firebird */,
+				BDDE88770D2BF40200756213 /* libicui18n.dylib in Copy Files - Executables-firebird */,
+				BDDE88780D2BF40200756213 /* libicuuc.dylib in Copy Files - Executables-firebird */,
+				BDDE88790D2BF40200756213 /* security2.fdb in Copy Files - Executables-firebird */,
+			);
+			name = "Copy Files - Executables-firebird";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BDDE887A0D2BF47400756213 /* Copy Files - Executables-firebird-bin */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = firebird/bin;
+			dstSubfolderSpec = 6;
+			files = (
+				BDDE887E0D2BF50700756213 /* fb_lock_mgr in Copy Files - Executables-firebird-bin */,
+				BDDE887F0D2BF50700756213 /* gbak in Copy Files - Executables-firebird-bin */,
+				BDDE88800D2BF50700756213 /* isql in Copy Files - Executables-firebird-bin */,
+			);
+			name = "Copy Files - Executables-firebird-bin";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BDDE887C0D2BF4AD00756213 /* Copy Files - Executables-intl */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = firebird/intl;
+			dstSubfolderSpec = 6;
+			files = (
+				BDDE88810D2BF53100756213 /* fbintl.conf in Copy Files - Executables-intl */,
+				BDDE88820D2BF53100756213 /* fbintl.dylib in Copy Files - Executables-intl */,
+			);
+			name = "Copy Files - Executables-intl";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -130,6 +191,19 @@
 		BDC85C210D25630A00BE8D80 /* vvv.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = vvv.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDC85C240D25630B00BE8D80 /* vvv-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "vvv-Info.plist"; sourceTree = "<group>"; };
 		BDD56C0C0D2AAE2100F874D3 /* vvv.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = vvv.icns; path = src/graphics/vvv.icns; sourceTree = "<group>"; };
+		BDDE88520D2BF0CC00756213 /* fb_lock_mgr */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = fb_lock_mgr; sourceTree = "<group>"; };
+		BDDE88530D2BF0CC00756213 /* gbak */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = gbak; sourceTree = "<group>"; };
+		BDDE88540D2BF0CC00756213 /* isql */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = isql; sourceTree = "<group>"; };
+		BDDE88550D2BF0CC00756213 /* firebird.msg */ = {isa = PBXFileReference; lastKnownFileType = file; path = firebird.msg; sourceTree = "<group>"; };
+		BDDE88570D2BF0CC00756213 /* fbintl.conf */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; path = fbintl.conf; sourceTree = "<group>"; };
+		BDDE88580D2BF0CC00756213 /* fbintl.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.bundle"; path = fbintl.dylib; sourceTree = "<group>"; };
+		BDDE88590D2BF0CC00756213 /* libfbembed.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libfbembed.dylib; sourceTree = "<group>"; };
+		BDDE885A0D2BF0CC00756213 /* libib_util.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libib_util.dylib; sourceTree = "<group>"; };
+		BDDE885B0D2BF0CC00756213 /* libicudata.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libicudata.dylib; sourceTree = "<group>"; };
+		BDDE885C0D2BF0CC00756213 /* libicui18n.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libicui18n.dylib; sourceTree = "<group>"; };
+		BDDE885D0D2BF0CC00756213 /* libicuuc.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libicuuc.dylib; sourceTree = "<group>"; };
+		BDDE885E0D2BF0CC00756213 /* security2.fdb */ = {isa = PBXFileReference; lastKnownFileType = file; path = security2.fdb; sourceTree = "<group>"; };
+		BDDE885F0D2BF0CC00756213 /* firebird.conf */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = firebird.conf; path = firebird_runtime/firebird.conf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,6 +219,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				BDB509AF0D26C4EC003AB768 /* libIBPP.a in Frameworks */,
+				BDE673290D2CF2580095991E /* libfbembed.dylib in Frameworks */,
+				BDC7ED000D2C0C62005642FE /* libicudata.dylib in Frameworks */,
+				BDC7ED010D2C0C63005642FE /* libicui18n.dylib in Frameworks */,
+				BDE673480D2CFE5D0095991E /* libicuuc.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -238,6 +316,7 @@
 		BDC85C120D2562F300BE8D80 = {
 			isa = PBXGroup;
 			children = (
+				BDDE884F0D2BF09200756213 /* Firebird runtime */,
 				BDD56C0C0D2AAE2100F874D3 /* vvv.icns */,
 				BDD9F3500D29339E007CF3A0 /* Other files */,
 				BD38B43D0D26959400A422F0 /* Headers */,
@@ -272,6 +351,51 @@
 				BDB509A40D26C1FE003AB768 /* all_in_one.cpp */,
 			);
 			name = IBPP;
+			sourceTree = "<group>";
+		};
+		BDDE884F0D2BF09200756213 /* Firebird runtime */ = {
+			isa = PBXGroup;
+			children = (
+				BDDE88500D2BF0CC00756213 /* firebird */,
+				BDDE885F0D2BF0CC00756213 /* firebird.conf */,
+			);
+			name = "Firebird runtime";
+			sourceTree = "<group>";
+		};
+		BDDE88500D2BF0CC00756213 /* firebird */ = {
+			isa = PBXGroup;
+			children = (
+				BDDE88510D2BF0CC00756213 /* bin */,
+				BDDE88550D2BF0CC00756213 /* firebird.msg */,
+				BDDE88560D2BF0CC00756213 /* intl */,
+				BDDE88590D2BF0CC00756213 /* libfbembed.dylib */,
+				BDDE885A0D2BF0CC00756213 /* libib_util.dylib */,
+				BDDE885B0D2BF0CC00756213 /* libicudata.dylib */,
+				BDDE885C0D2BF0CC00756213 /* libicui18n.dylib */,
+				BDDE885D0D2BF0CC00756213 /* libicuuc.dylib */,
+				BDDE885E0D2BF0CC00756213 /* security2.fdb */,
+			);
+			name = firebird;
+			path = firebird_runtime/firebird;
+			sourceTree = "<group>";
+		};
+		BDDE88510D2BF0CC00756213 /* bin */ = {
+			isa = PBXGroup;
+			children = (
+				BDDE88520D2BF0CC00756213 /* fb_lock_mgr */,
+				BDDE88530D2BF0CC00756213 /* gbak */,
+				BDDE88540D2BF0CC00756213 /* isql */,
+			);
+			path = bin;
+			sourceTree = "<group>";
+		};
+		BDDE88560D2BF0CC00756213 /* intl */ = {
+			isa = PBXGroup;
+			children = (
+				BDDE88570D2BF0CC00756213 /* fbintl.conf */,
+				BDDE88580D2BF0CC00756213 /* fbintl.dylib */,
+			);
+			path = intl;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -311,7 +435,11 @@
 				BDC85C1D0D25630A00BE8D80 /* Resources */,
 				BDC85C1E0D25630A00BE8D80 /* Sources */,
 				BDC85C1F0D25630A00BE8D80 /* Frameworks */,
-				BDB509C10D26CC7A003AB768 /* CopyFiles */,
+				BDB509C10D26CC7A003AB768 /* Copy Files - Executables */,
+				BDDE88710D2BF3C500756213 /* Copy Files - Executables-firebird */,
+				BDDE887A0D2BF47400756213 /* Copy Files - Executables-firebird-bin */,
+				BDDE887C0D2BF4AD00756213 /* Copy Files - Executables-intl */,
+				BDE6731C0D2CEC2F0095991E /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -350,6 +478,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		BDE6731C0D2CEC2F0095991E /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "#!/bin/bash\nEXECFILE=${BUILT_PRODUCTS_DIR}/${EXECUTABLE_PATH}\nLIBPATH=${BUILT_PRODUCTS_DIR}/${EXECUTABLE_FOLDER_PATH}/firebird\nNEWLIBPATH=\"@executable_path/firebird\"\nOLDLIBPATH=\"/Library/Frameworks/Firebird.framework/Versions/A/Libraries\"\nOLDLIBFBEMBEDFILENAME=\"/Library/Frameworks/Firebird.framework/Versions/A/Firebird\"\n\nfor TARGET in libfbembed.dylib libicudata.dylib libicui18n.dylib libicuuc.dylib ; do\n  LIBFILE=${LIBPATH}/${TARGET}\n  OLDTARGETID=${OLDLIBPATH}/${TARGET}\n  NEWTARGETID=${NEWLIBPATH}/${TARGET}\n  install_name_tool -id ${NEWTARGETID} ${LIBFILE}\n  install_name_tool -change ${OLDTARGETID} ${NEWTARGETID} ${EXECFILE}\n  for POSSIBLECALLERNAME in libfbembed.dylib libicudata.dylib libicui18n.dylib libicuuc.dylib ; do\n    POSSIBLECALLERFILE=${LIBPATH}/${POSSIBLECALLERNAME}\n    install_name_tool -change ${OLDTARGETID} ${NEWTARGETID} ${POSSIBLECALLERFILE}\n  done\ndone\n\n# change the reference to libfbembed into the caller program, that contains a reference to a different name (the framework name)\nNEWTARGETID=${NEWLIBPATH}/libfbembed.dylib\ninstall_name_tool -change ${OLDLIBFBEMBEDFILENAME} ${NEWTARGETID} ${EXECFILE}\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		BDB5099A0D26C0AD003AB768 /* Sources */ = {
@@ -477,8 +621,6 @@
 					"-lpthread",
 					"-liconv",
 					"/Volumes/Disco2/id3lib-3.8.3/lib/libid3.a",
-					"-framework",
-					Firebird,
 				);
 				ZERO_LINK = NO;
 			};
@@ -500,6 +642,7 @@
 				);
 				OTHER_LDFLAGS = (
 					"-L$(WXDIR)/build-release/lib",
+					"-L/Volumes/Disco2/vvv/firebird_runtime",
 					"-framework",
 					IOKit,
 					"-framework",
@@ -522,8 +665,6 @@
 					"-lpthread",
 					"-liconv",
 					"/Volumes/Disco2/id3lib-3.8.3/lib/libid3.a",
-					"-framework",
-					Firebird,
 				);
 			};
 			name = Release;
@@ -541,6 +682,15 @@
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Carbon.framework/Headers/Carbon.h";
 				INFOPLIST_FILE = "vvv-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_1)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_2)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_3)",
+				);
+				LIBRARY_SEARCH_PATHS_QUOTED_1 = "\"$(SRCROOT)/firebird_runtime/firebird\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_2 = "\"$(SRCROOT)/firebird_runtime/firebird\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_3 = "\"$(SRCROOT)/firebird_runtime/firebird\"";
 				OTHER_LDFLAGS = "$(inherited)";
 				PREBINDING = NO;
 				PRODUCT_NAME = vvv;
@@ -560,6 +710,15 @@
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Carbon.framework/Headers/Carbon.h";
 				INFOPLIST_FILE = "vvv-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_1)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_2)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_3)",
+				);
+				LIBRARY_SEARCH_PATHS_QUOTED_1 = "\"$(SRCROOT)/firebird_runtime/firebird\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_2 = "\"$(SRCROOT)/firebird_runtime/firebird\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_3 = "\"$(SRCROOT)/firebird_runtime/firebird\"";
 				OTHER_LDFLAGS = "$(inherited)";
 				PREBINDING = NO;
 				PRODUCT_NAME = vvv;

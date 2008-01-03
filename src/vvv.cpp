@@ -57,6 +57,7 @@
 #include "wx/cmdline.h"
 #include "wx/filename.h"
 #include "wx/sysopt.h"
+#include "wx/stdpaths.h"
 
 #include "vvv.h"
 #include "data_interface/base_db.h"
@@ -123,7 +124,15 @@ void CVvvApp::Init()
 bool CVvvApp::OnInit()
 {    
 
+#ifdef __WXMAC__
+	// in OSX we cannot know which will be the current working directory (depends on how we started the program)
+	// but the firebird embedded database (used the way we use it) needs the current working directory to be same as the executable file so we set it accordingly
 	wxSystemOptions::SetOption( wxT("mac.listctrl.always_use_generic"), 1 );
+	wxString appPath = wxStandardPaths::Get().GetExecutablePath();
+	wxFileName fn( appPath );
+	appPath = fn.GetPath();
+	wxSetWorkingDirectory( appPath );
+#endif	
 
 	// sets the config object
 	SetVendorName(wxT("VVV"));
