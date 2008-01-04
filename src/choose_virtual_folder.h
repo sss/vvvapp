@@ -112,9 +112,16 @@ public:
     /// wxEVT_COMMAND_TREE_ITEM_EXPANDING event handler for ID_TREECTRL_CHOOSE
     void OnTreectrlChooseItemExpanding( wxTreeEvent& event );
 
+#if defined(__WXMSW__)
     /// wxEVT_COMMAND_BUTTON_CLICKED event handler for wxID_OK
     void OnOKClick( wxCommandEvent& event );
 
+#endif
+#if defined(__WXMAC__) || defined(__WXGTK__)
+    /// wxEVT_COMMAND_BUTTON_CLICKED event handler for wxID_OK
+    void OnOKClick( wxCommandEvent& event );
+
+#endif
 ////@end CDialogChooseVirtualFolder event handler declarations
 
 ////@begin CDialogChooseVirtualFolder member function declarations

@@ -126,11 +126,11 @@ public:
     void OnGetVolumeNameClick( wxCommandEvent& event );
 
 #endif
-    /// wxEVT_COMMAND_BUTTON_CLICKED event handler for ID_BUTTON_CATALOG
-    void OnButtonCatalogClick( wxCommandEvent& event );
-
     /// wxEVT_COMMAND_BUTTON_CLICKED event handler for wxID_HELP
     void OnHelpClick( wxCommandEvent& event );
+
+    /// wxEVT_COMMAND_BUTTON_CLICKED event handler for ID_BUTTON_CATALOG
+    void OnButtonCatalogClick( wxCommandEvent& event );
 
 ////@end CDialogCatalogVolume event handler declarations
 

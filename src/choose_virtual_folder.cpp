@@ -80,7 +80,13 @@ BEGIN_EVENT_TABLE( CDialogChooseVirtualFolder, wxDialog )
 ////@begin CDialogChooseVirtualFolder event table entries
     EVT_TREE_ITEM_EXPANDING( ID_TREECTRL_CHOOSE, CDialogChooseVirtualFolder::OnTreectrlChooseItemExpanding )
 
+#if defined(__WXMSW__)
     EVT_BUTTON( wxID_OK, CDialogChooseVirtualFolder::OnOKClick )
+#endif
+
+#if defined(__WXMAC__) || defined(__WXGTK__)
+    EVT_BUTTON( wxID_OK, CDialogChooseVirtualFolder::OnOKClick )
+#endif
 
 ////@end CDialogChooseVirtualFolder event table entries
 
@@ -154,16 +160,35 @@ void CDialogChooseVirtualFolder::CreateControls()
     m_TreeCtrl = new wxTreeCtrl( itemDialog1, ID_TREECTRL_CHOOSE, wxDefaultPosition, wxSize(-1, 300), wxTR_NO_BUTTONS|wxTR_HIDE_ROOT|wxTR_SINGLE|wxTR_DEFAULT_STYLE );
     itemBoxSizer2->Add(m_TreeCtrl, 1, wxGROW|wxALL, 5);
 
+#if defined(__WXMSW__)
     wxBoxSizer* itemBoxSizer5 = new wxBoxSizer(wxHORIZONTAL);
     itemBoxSizer2->Add(itemBoxSizer5, 0, wxGROW|wxLEFT|wxRIGHT|wxBOTTOM, 5);
 
     itemBoxSizer5->Add(5, 5, 1, wxALIGN_CENTER_VERTICAL|wxALL, 5);
 
     wxButton* itemButton7 = new wxButton( itemDialog1, wxID_OK, _("&OK"), wxDefaultPosition, wxDefaultSize, 0 );
+    itemButton7->SetDefault();
     itemBoxSizer5->Add(itemButton7, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5);
 
     wxButton* itemButton8 = new wxButton( itemDialog1, wxID_CANCEL, _("&Cancel"), wxDefaultPosition, wxDefaultSize, 0 );
     itemBoxSizer5->Add(itemButton8, 0, wxALIGN_CENTER_VERTICAL|wxLEFT|wxTOP|wxBOTTOM, 5);
+
+#endif
+
+#if defined(__WXMAC__) || defined(__WXGTK__)
+    wxBoxSizer* itemBoxSizer9 = new wxBoxSizer(wxHORIZONTAL);
+    itemBoxSizer2->Add(itemBoxSizer9, 0, wxGROW|wxLEFT|wxRIGHT|wxBOTTOM, 5);
+
+    itemBoxSizer9->Add(5, 5, 1, wxALIGN_CENTER_VERTICAL|wxALL, 5);
+
+    wxButton* itemButton11 = new wxButton( itemDialog1, wxID_CANCEL, _("&Cancel"), wxDefaultPosition, wxDefaultSize, 0 );
+    itemBoxSizer9->Add(itemButton11, 0, wxALIGN_CENTER_VERTICAL|wxLEFT|wxTOP|wxBOTTOM, 5);
+
+    wxButton* itemButton12 = new wxButton( itemDialog1, wxID_OK, _("&OK"), wxDefaultPosition, wxDefaultSize, 0 );
+    itemButton12->SetDefault();
+    itemBoxSizer9->Add(itemButton12, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5);
+
+#endif
 
 ////@end CDialogChooseVirtualFolder content construction
 

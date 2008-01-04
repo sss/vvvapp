@@ -92,9 +92,9 @@ BEGIN_EVENT_TABLE( CDialogCatalogVolume, wxDialog )
     EVT_BUTTON( ID_GET_VOLUME_NAME, CDialogCatalogVolume::OnGetVolumeNameClick )
 #endif
 
-    EVT_BUTTON( ID_BUTTON_CATALOG, CDialogCatalogVolume::OnButtonCatalogClick )
-
     EVT_BUTTON( wxID_HELP, CDialogCatalogVolume::OnHelpClick )
+
+    EVT_BUTTON( ID_BUTTON_CATALOG, CDialogCatalogVolume::OnButtonCatalogClick )
 
 ////@end CDialogCatalogVolume event table entries
 
@@ -200,13 +200,13 @@ void CDialogCatalogVolume::CreateControls()
     wxBoxSizer* itemBoxSizer11 = new wxBoxSizer(wxHORIZONTAL);
     itemBoxSizer2->Add(itemBoxSizer11, 0, wxGROW|wxTOP|wxBOTTOM, 5);
 
-    wxButton* itemButton12 = new wxButton( itemDialog1, ID_BUTTON_CATALOG, _("Catalog"), wxDefaultPosition, wxDefaultSize, 0 );
+    wxButton* itemButton12 = new wxButton( itemDialog1, wxID_HELP, _("&Help"), wxDefaultPosition, wxDefaultSize, 0 );
     itemBoxSizer11->Add(itemButton12, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5);
 
-    wxButton* itemButton13 = new wxButton( itemDialog1, wxID_HELP, _("&Help"), wxDefaultPosition, wxDefaultSize, 0 );
-    itemBoxSizer11->Add(itemButton13, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5);
-
     itemBoxSizer11->Add(5, 5, 1, wxALIGN_CENTER_VERTICAL|wxALL, 5);
+
+    wxButton* itemButton14 = new wxButton( itemDialog1, ID_BUTTON_CATALOG, _("Catalog"), wxDefaultPosition, wxDefaultSize, 0 );
+    itemBoxSizer11->Add(itemButton14, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5);
 
     wxButton* itemButton15 = new wxButton( itemDialog1, wxID_CANCEL, _("&Close"), wxDefaultPosition, wxDefaultSize, 0 );
     itemBoxSizer11->Add(itemButton15, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5);
