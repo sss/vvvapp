@@ -151,6 +151,7 @@ void CDialogObjectDescription::CreateControls()
     m_TextControl = new wxTextCtrl( itemDialog1, ID_TEXTCTRL1, _T(""), wxDefaultPosition, wxSize(-1, 100), wxTE_MULTILINE );
     itemBoxSizer2->Add(m_TextControl, 1, wxGROW|wxALL, 5);
 
+#if defined(__WXMSW__)
     wxBoxSizer* itemBoxSizer6 = new wxBoxSizer(wxHORIZONTAL);
     itemBoxSizer2->Add(itemBoxSizer6, 0, wxALIGN_RIGHT|wxALL, 5);
 
@@ -160,6 +161,21 @@ void CDialogObjectDescription::CreateControls()
 
     wxButton* itemButton8 = new wxButton( itemDialog1, wxID_CANCEL, _("&Cancel"), wxDefaultPosition, wxDefaultSize, 0 );
     itemBoxSizer6->Add(itemButton8, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5);
+
+#endif
+
+#if defined(__WXMAC__) || defined(__WXGTK__)
+    wxBoxSizer* itemBoxSizer9 = new wxBoxSizer(wxHORIZONTAL);
+    itemBoxSizer2->Add(itemBoxSizer9, 0, wxALIGN_RIGHT|wxALL, 5);
+
+    wxButton* itemButton10 = new wxButton( itemDialog1, wxID_CANCEL, _("&Cancel"), wxDefaultPosition, wxDefaultSize, 0 );
+    itemBoxSizer9->Add(itemButton10, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5);
+
+    wxButton* itemButton11 = new wxButton( itemDialog1, wxID_OK, _("&OK"), wxDefaultPosition, wxDefaultSize, 0 );
+    itemButton11->SetDefault();
+    itemBoxSizer9->Add(itemButton11, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5);
+
+#endif
 
 ////@end CDialogObjectDescription content construction
 }

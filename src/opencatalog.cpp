@@ -174,6 +174,7 @@ void CDialogOpenCatalog::CreateControls()
     m_BrowseCtrl = new wxButton( itemDialog1, ID_OPENDIALOG_BROWSE, _("..."), wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT );
     itemBoxSizer6->Add(m_BrowseCtrl, 0, wxALIGN_CENTER_VERTICAL|wxRIGHT|wxTOP|wxBOTTOM, 5);
 
+#if defined(__WXMSW__)
     wxBoxSizer* itemBoxSizer9 = new wxBoxSizer(wxHORIZONTAL);
     itemBoxSizer3->Add(itemBoxSizer9, 0, wxALIGN_RIGHT|wxALL, 5);
 
@@ -183,6 +184,21 @@ void CDialogOpenCatalog::CreateControls()
 
     wxButton* itemButton11 = new wxButton( itemDialog1, wxID_CANCEL, _("&Cancel"), wxDefaultPosition, wxDefaultSize, 0 );
     itemBoxSizer9->Add(itemButton11, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5);
+
+#endif
+
+#if defined(__WXMAC__) || defined(__WXGTK__)
+    wxBoxSizer* itemBoxSizer12 = new wxBoxSizer(wxHORIZONTAL);
+    itemBoxSizer3->Add(itemBoxSizer12, 0, wxALIGN_RIGHT|wxALL, 5);
+
+    wxButton* itemButton13 = new wxButton( itemDialog1, wxID_CANCEL, _("&Cancel"), wxDefaultPosition, wxDefaultSize, 0 );
+    itemBoxSizer12->Add(itemButton13, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5);
+
+    wxButton* itemButton14 = new wxButton( itemDialog1, wxID_OK, _("&OK"), wxDefaultPosition, wxDefaultSize, 0 );
+    itemButton14->SetDefault();
+    itemBoxSizer12->Add(itemButton14, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5);
+
+#endif
 
     // Set validators
     m_CatalogNameCtrl->SetValidator( wxGenericValidator(& m_CatalogName) );
