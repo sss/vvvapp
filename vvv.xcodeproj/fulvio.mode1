@@ -185,7 +185,48 @@
 	<key>Notifications</key>
 	<array/>
 	<key>OpenEditors</key>
-	<array/>
+	<array>
+		<dict>
+			<key>Content</key>
+			<dict>
+				<key>PBXProjectModuleGUID</key>
+				<string>BDC853900D5AFA36000D2C83</string>
+				<key>PBXProjectModuleLabel</key>
+				<string>catalog_volume.cpp</string>
+				<key>PBXSplitModuleInNavigatorKey</key>
+				<dict>
+					<key>Split0</key>
+					<dict>
+						<key>PBXProjectModuleGUID</key>
+						<string>BDC853910D5AFA36000D2C83</string>
+						<key>PBXProjectModuleLabel</key>
+						<string>catalog_volume.cpp</string>
+						<key>_historyCapacity</key>
+						<integer>0</integer>
+						<key>bookmark</key>
+						<string>BDE5B0050D6188E3008466EE</string>
+						<key>history</key>
+						<array>
+							<string>BDC74F8F0D5F7DA400BAA27E</string>
+						</array>
+					</dict>
+					<key>SplitCount</key>
+					<string>1</string>
+				</dict>
+				<key>StatusBarVisibility</key>
+				<true/>
+			</dict>
+			<key>Geometry</key>
+			<dict>
+				<key>Frame</key>
+				<string>{{0, 20}, {750, 461}}</string>
+				<key>PBXModuleWindowStatusBarHidden2</key>
+				<false/>
+				<key>RubberWindowFrame</key>
+				<string>15 239 750 502 0 0 1024 746 </string>
+			</dict>
+		</dict>
+	</array>
 	<key>PerspectiveWidths</key>
 	<array>
 		<integer>-1</integer>
@@ -219,8 +260,6 @@
 			<key>Layout</key>
 			<array>
 				<dict>
-					<key>BecomeActive</key>
-					<true/>
 					<key>ContentConfiguration</key>
 					<dict>
 						<key>PBXBottomSmartGroupGIDs</key>
@@ -263,20 +302,19 @@
 								<string>BD38B43C0D2694D800A422F0</string>
 								<string>BDC85C220D25630A00BE8D80</string>
 								<string>1C37FBAC04509CD000000102</string>
-								<string>BDD085D50D5A22B0001CFF1C</string>
 								<string>1C37FAAC04509CD000000102</string>
 								<string>1C37FABC05509CD000000102</string>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>5</integer>
-									<integer>4</integer>
+									<integer>20</integer>
+									<integer>17</integer>
 									<integer>0</integer>
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-							<string>{{0, 0}, {325, 580}}</string>
+							<string>{{0, 219}, {325, 580}}</string>
 						</dict>
 						<key>PBXTopSmartGroupGIDs</key>
 						<array/>
@@ -306,12 +344,14 @@
 					<key>Dock</key>
 					<array>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>catalog_volume.cpp</string>
+								<string>audio_metadata.cpp</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -319,11 +359,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>catalog_volume.cpp</string>
+										<string>audio_metadata.cpp</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>BDD085DF0D5A2518001CFF1C</string>
+										<string>BDE5B0020D6188E3008466EE</string>
 										<key>history</key>
 										<array>
 											<string>BDC67B890D26FDAA003515E6</string>
@@ -339,7 +379,8 @@
 											<string>BDC9A6C70D2D8CA10047B4B4</string>
 											<string>BDD5AF740D3E565200FAA269</string>
 											<string>BDD5AF770D3E565200FAA269</string>
-											<string>BDDAE8900D59D6F3004A2C02</string>
+											<string>BDE5AFFF0D6188E3008466EE</string>
+											<string>BDE5B0000D6188E3008466EE</string>
 										</array>
 										<key>prevStack</key>
 										<array>
@@ -355,6 +396,7 @@
 											<string>BDCC911E0D2D4C70001DDEB6</string>
 											<string>BDCC911F0D2D4C70001DDEB6</string>
 											<string>BDC9A6C80D2D8CA10047B4B4</string>
+											<string>BDE5B0010D6188E3008466EE</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -412,9 +454,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>BDD085DB0D5A2337001CFF1C</string>
+				<string>BDE5B0030D6188E3008466EE</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>BDD085DC0D5A2337001CFF1C</string>
+				<string>BDE5B0040D6188E3008466EE</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -549,6 +591,7 @@
 	<key>WindowOrderList</key>
 	<array>
 		<string>BDC85CCA0D25876100BE8D80</string>
+		<string>BDC853900D5AFA36000D2C83</string>
 		<string>/Volumes/Disco2/vvv/vvv.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
@@ -631,7 +674,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>BDC85CCA0D25876100BE8D80</string>
-				<string>BDD085E00D5A2518001CFF1C</string>
+				<string>BDE5B0060D6188E3008466EE</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>

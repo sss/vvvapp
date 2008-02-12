@@ -199,7 +199,7 @@
 		BDC65A350D268C4800FE4EAF /* utils.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = utils.cpp; path = src/utils.cpp; sourceTree = "<group>"; };
 		BDC65A360D268C4800FE4EAF /* vvv.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = vvv.cpp; path = src/vvv.cpp; sourceTree = "<group>"; };
 		BDC65A370D268C4800FE4EAF /* window_position.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = window_position.cpp; path = src/window_position.cpp; sourceTree = "<group>"; };
-		BDC85C210D25630A00BE8D80 /* vvv.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = vvv.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BDC85C210D25630A00BE8D80 /* vvv.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = vvv.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDC85C240D25630B00BE8D80 /* vvv-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "vvv-Info.plist"; sourceTree = "<group>"; };
 		BDD0E7E90D2D585E00761368 /* vvv-document.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = "vvv-document.icns"; path = "src/graphics/vvv-document.icns"; sourceTree = "<group>"; };
 		BDD56C0C0D2AAE2100F874D3 /* vvv.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = vvv.icns; path = src/graphics/vvv.icns; sourceTree = "<group>"; };

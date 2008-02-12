@@ -29,7 +29,7 @@ bool CAudioMetadata::ReadMP3Metadata( wxString fileName, CFilesAudioMetadata& me
 	char *str1 = new char[1024];
 	bool found = false;
 
-	ID3_Tag myTag( fileName.c_str() );
+	ID3_Tag myTag( fileName.fn_str() );
 
 	ID3_Frame* myFrame = myTag.Find(ID3FID_LEADARTIST);
 	if( myFrame != NULL ) {

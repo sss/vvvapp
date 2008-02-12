@@ -55,6 +55,7 @@
 #include <wx/filename.h>
 #include <wx/config.h>
 #include <wx/dirdlg.h>
+#include <wx/filefn.h>
 #include "catalog_volume.h"
 #include "vvv.h"
 #include "utils.h"
@@ -377,7 +378,9 @@ void CDialogCatalogVolume::CatalogSingleFolder( CBaseDB* db, wxString path, long
 		file.FileName = fileName;
 		file.FileExt = fn.GetExt();
 		if( file.FileExt.Len() > 30 ) file.FileExt = "";	// such a long extension is surely a meaningless temporary file
-		file.DateTime = fn.GetModificationTime();
+//		file.DateTime = fn.GetModificationTime();
+		time_t t = wxFileModificationTime( fn.GetFullPath().fn_str() );
+		file.DateTime = t;
 		file.FileSize = fn.GetSize();
 		file.PathID = pth.PathID;
 		file.PathFileID.SetNull(true);
