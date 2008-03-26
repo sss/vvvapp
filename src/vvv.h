@@ -114,6 +114,9 @@ private:
 	// name of the catalog passed in the command line
 	wxString m_CatalogName;
 
+	// name of the file used to store the program's settings. Used only for the portable version.
+	wxString m_SettingsFileName;
+
 	// help controller
 //	wxHtmlHelpController *m_HelpController;
 	wxHelpController *m_HelpController;

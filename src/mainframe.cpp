@@ -2240,7 +2240,7 @@ void CMainFrame::OnABOUTClick( wxCommandEvent& WXUNUSED(event) )
 	info.SetVersion( CUtils::GetApplicationVersion() );
 	info.SetWebSite( "http://vvvapp.sourceforge.net/" );
 	info.SetDescription( _("VVV (Virtual Volumes View): a program to catalog removable devices like CDs and DVDs\n\n\"The mud of Venaus is the blood of this land\"") );
-	info.SetCopyright( _("Copyright (C) 2007 The VVV Team") );
+	info.SetCopyright( _("Copyright (C) 2007-2008 The VVV Team") );
 	info.AddDeveloper( "Fulvio Senore" );
 	info.AddArtist( _("This program uses the Tango icons (http://tango.freedesktop.org/Tango_Desktop_Project )") );
 	info.SetLicence( _("This is open source software, distributed under the GNU GENERAL PUBLIC LICENSE") );

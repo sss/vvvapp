@@ -56,8 +56,11 @@
 #include "wx/log.h"
 #include "wx/cmdline.h"
 #include "wx/filename.h"
+#include "wx/filefn.h"
 #include "wx/sysopt.h"
 #include "wx/stdpaths.h"
+#include "wx/config.h"
+#include "wx/fileconf.h"
 
 #include "vvv.h"
 #include "data_interface/base_db.h"
@@ -148,7 +151,11 @@ bool CVvvApp::OnInit()
 	m_HelpController->Initialize( CUtils::GetHelpFileName() );
 
 	// parse the command line
+	// available command line options:
+	// -s <file name>
+	//    specifies the name of a file used to store the program's settings. Used to make VVV a portable app.
 	wxCmdLineParser cmdParser( g_cmdLineDesc, argc, argv );
+	cmdParser.AddOption( wxT("s"), wxT("SettingsFile") );
 	int res;
 	{
 		wxLogNull log;
@@ -156,6 +163,7 @@ bool CVvvApp::OnInit()
 	}
 	if( res == -1 || res > 0 ) {
 		m_CatalogName = "";
+		m_SettingsFileName = "";
 	}
 	else {
 		if( cmdParser.GetParamCount() > 0 ) {
@@ -164,7 +172,26 @@ bool CVvvApp::OnInit()
 			fName.Normalize( wxPATH_NORM_LONG | wxPATH_NORM_DOTS | wxPATH_NORM_TILDE | wxPATH_NORM_ABSOLUTE );
 			m_CatalogName = fName.GetFullPath();
 		}
-		else m_CatalogName = "";
+		else 
+			m_CatalogName = "";
+		m_SettingsFileName = "";
+		if( cmdParser.Found( wxT("s"), &m_SettingsFileName ) ) {
+			if( !wxIsAbsolutePath(m_SettingsFileName) ) {
+				// the path must be relative to the application's path
+				wxString appPath = wxStandardPaths::Get().GetExecutablePath();
+				wxFileName tmp(appPath );
+				appPath = tmp.GetPath();	// removes the program's name
+				wxFileName fn( m_SettingsFileName );
+				fn.MakeAbsolute( appPath );
+				m_SettingsFileName = fn.GetFullPath();
+			}
+		}
+	}
+
+	// if a settings file name has been passed as an option, create the corresponding config object
+	if( !m_SettingsFileName.empty() ) {
+		wxConfigBase *pConfig = new wxFileConfig( wxEmptyString, wxEmptyString, m_SettingsFileName );
+		wxConfigBase::Set( pConfig );
 	}
 
 ////@begin CVvvApp initialisation
