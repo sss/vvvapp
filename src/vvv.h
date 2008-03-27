@@ -94,6 +94,9 @@ public:
 	// returns the name of the catalog passed in the command line (or "" if none)
 	wxString GetParameterCatalog() { return m_CatalogName; }
 
+	// return the name of the settings file (or "" if none). used for the portable version
+	wxString GetSettingsFileName() { return m_SettingsFileName; }
+
 //	wxHtmlHelpController *GetHelpController() { return m_HelpController; }
 	wxHelpController *GetHelpController() { return m_HelpController; }
 

@@ -670,7 +670,10 @@ bool CMainFrame::Create( wxWindow* parent, wxWindowID id, const wxString& captio
 
 	// reads program settings
 	pConfig->SetPath(wxT("/Settings"));
-	pConfig->Read( wxT("ReopenCatalog"), &m_reopenLastUsedCatalog, true );
+	// if there is a settings file name we are running a portable version of this application, so we do not reopen catalogs at startup by default
+	bool defVal = true;
+	if( !wxGetApp().GetSettingsFileName().empty() ) defVal = false;
+	pConfig->Read( wxT("ReopenCatalog"), &m_reopenLastUsedCatalog, defVal );
 	pConfig->Read( wxT("LongTaskBeepTime"), &m_BeepTime, 5 );
 	pConfig->SetPath(wxT("/Settings/DatabaseServer"));
 	pConfig->Read( "ConnectToServer", &DBConnectionData.connectToServer, false );
