@@ -153,9 +153,12 @@ bool CVvvApp::OnInit()
 	// parse the command line
 	// available command line options:
 	// -s <file name>
-	//    specifies the name of a file used to store the program's settings. Used to make VVV a portable app.
+	//    specifies the name of a file used to store the program's settings. Used to make VVV a portable app. If relative it is relative to the exe location.
+	// -d <folder name>
+	//    specifies the default folder when creating a new catalog. Used to make VVV a portable app. If relative it is relative to the exe location.
 	wxCmdLineParser cmdParser( g_cmdLineDesc, argc, argv );
 	cmdParser.AddOption( wxT("s"), wxT("SettingsFile") );
+	cmdParser.AddOption( wxT("d"), wxT("DefaultDataFolder") );
 	int res;
 	{
 		wxLogNull log;
@@ -175,6 +178,7 @@ bool CVvvApp::OnInit()
 		else 
 			m_CatalogName = "";
 		m_SettingsFileName = "";
+		m_DefaultDataFolder = "";
 		if( cmdParser.Found( wxT("s"), &m_SettingsFileName ) ) {
 			if( !wxIsAbsolutePath(m_SettingsFileName) ) {
 				// the path must be relative to the application's path
@@ -184,6 +188,17 @@ bool CVvvApp::OnInit()
 				wxFileName fn( m_SettingsFileName );
 				fn.MakeAbsolute( appPath );
 				m_SettingsFileName = fn.GetFullPath();
+			}
+		}
+		if( cmdParser.Found( wxT("d"), &m_DefaultDataFolder ) ) {
+			if( !wxIsAbsolutePath(m_DefaultDataFolder) ) {
+				// the path must be relative to the application's path
+				wxString appPath = wxStandardPaths::Get().GetExecutablePath();
+				wxFileName tmp(appPath );
+				appPath = tmp.GetPath();	// removes the program's name
+				wxFileName fn( m_DefaultDataFolder );
+				fn.MakeAbsolute( appPath );
+				m_DefaultDataFolder = fn.GetFullPath();
 			}
 		}
 	}

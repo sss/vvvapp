@@ -2268,7 +2268,7 @@ void CMainFrame::OnNEWClick( wxCommandEvent& WXUNUSED(event) )
 	if( !DBConnectionData.connectToServer ) {
 		// create a local file
 		wxString wildcard = _("VVV  files (*.vvv)|*.vvv|All files (*.*)|*.*");
-		wxFileDialog fd( this, caption, wxEmptyString, wxEmptyString, wildcard, wxSAVE );
+		wxFileDialog fd( this, caption, wxGetApp().GetDefaultDataFolder(), wxEmptyString, wildcard, wxSAVE );
 		if( fd.ShowModal() == wxID_OK )
 			databaseFile = fd.GetPath();
 	} else {

@@ -97,6 +97,9 @@ public:
 	// return the name of the settings file (or "" if none). used for the portable version
 	wxString GetSettingsFileName() { return m_SettingsFileName; }
 
+	// return the name of the default data folder (or "" if none). used for the portable version
+	wxString GetDefaultDataFolder() { return m_DefaultDataFolder; }
+
 //	wxHtmlHelpController *GetHelpController() { return m_HelpController; }
 	wxHelpController *GetHelpController() { return m_HelpController; }
 
@@ -119,6 +122,10 @@ private:
 
 	// name of the file used to store the program's settings. Used only for the portable version.
 	wxString m_SettingsFileName;
+
+	// name of the default folder when creating a new catalog. Used for the portable version.
+	wxString m_DefaultDataFolder;
+
 
 	// help controller
 //	wxHtmlHelpController *m_HelpController;
