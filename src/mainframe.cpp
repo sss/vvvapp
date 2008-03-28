@@ -1384,7 +1384,7 @@ void CMainFrame::OnOPENClick( wxCommandEvent& WXUNUSED(event) )
 	if( !DBConnectionData.connectToServer ) {
 		// open a local file
 		wxString wildcard = _("VVV  files (*.vvv)|*.vvv|All files (*.*)|*.*");
-		wxFileDialog fd( this, caption, wxEmptyString, wxEmptyString, wildcard, wxOPEN );
+		wxFileDialog fd( this, caption, wxGetApp().GetDefaultDataFolder(), wxEmptyString, wildcard, wxOPEN );
 		if( fd.ShowModal() == wxID_OK )
 			databaseName = fd.GetPath();
 	} else {
