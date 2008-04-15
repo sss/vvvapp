@@ -138,11 +138,12 @@ wxString CPaths::FB_GetFullPath( long PathID ) {
 	st->Set( 2, wxString(wxFileName::GetPathSeparator()).c_str() );
 	st->Execute();
 
+	st->Get( 1, stmp );
+
 	if( !inTransaction ) {
 		db->TransactionCommit();
 	}
 
-	st->Get( 1, stmp );
 	return CUtils::std2wx( stmp );
 
 }
