@@ -70,6 +70,7 @@
 #include "settings.h"
 #include "opencatalog.h"
 #include "long_task_beep.h"
+#include "exportdata.h"
 
 ////@begin XPM images
 #include "graphics/vvv32.xpm"
@@ -501,6 +502,9 @@ BEGIN_EVENT_TABLE( CMainFrame, wxFrame )
 
     EVT_MENU( wxID_OPEN, CMainFrame::OnOPENClick )
 
+    EVT_MENU( ID_FILE_EXPORT, CMainFrame::OnFileExportClick )
+    EVT_UPDATE_UI( ID_FILE_EXPORT, CMainFrame::OnFileExportUpdate )
+
     EVT_MENU( wxID_EXIT, CMainFrame::OnEXITClick )
 
     EVT_MENU( ID_ADD_VIRTUAL_FOLDER, CMainFrame::OnAddVirtualFolderClick )
@@ -761,53 +765,54 @@ void CMainFrame::CreateControls()
     m_fileMenu = new wxMenu;
     m_fileMenu->Append(wxID_NEW, _("&New..."), _T(""), wxITEM_NORMAL);
     m_fileMenu->Append(wxID_OPEN, _("&Open..."), _T(""), wxITEM_NORMAL);
+    m_fileMenu->Append(ID_FILE_EXPORT, _("&Export..."), _T(""), wxITEM_NORMAL);
     m_fileMenu->AppendSeparator();
     m_fileMenu->Append(wxID_EXIT, _("E&xit"), _T(""), wxITEM_NORMAL);
     menuBar->Append(m_fileMenu, _("&File"));
-    wxMenu* itemMenu17 = new wxMenu;
-    itemMenu17->Append(ID_ADD_VIRTUAL_FOLDER, _("&Add To Virtual Folder..."), _T(""), wxITEM_NORMAL);
-    itemMenu17->AppendSeparator();
-    itemMenu17->Append(ID_EDIT_RENAME, _("&Rename...\tF2"), _T(""), wxITEM_NORMAL);
-    itemMenu17->Append(ID_EDIT_DELETE, _("&Delete"), _T(""), wxITEM_NORMAL);
-    itemMenu17->AppendSeparator();
-    itemMenu17->Append(ID_EDIT_OBJECT_DESCRIPTION, _("&Object Description..."), _T(""), wxITEM_NORMAL);
-    itemMenu17->AppendSeparator();
-    itemMenu17->Append(ID_NEW_VIRTUAL_ROOT_FOLDER, _("&New Virtual Root Folder..."), _T(""), wxITEM_NORMAL);
-    itemMenu17->Append(ID_NEW_VIRTUAL_SUBFOLDER, _("New Virtual &Subfolder..."), _T(""), wxITEM_NORMAL);
+    wxMenu* itemMenu18 = new wxMenu;
+    itemMenu18->Append(ID_ADD_VIRTUAL_FOLDER, _("&Add To Virtual Folder..."), _T(""), wxITEM_NORMAL);
+    itemMenu18->AppendSeparator();
+    itemMenu18->Append(ID_EDIT_RENAME, _("&Rename...\tF2"), _T(""), wxITEM_NORMAL);
+    itemMenu18->Append(ID_EDIT_DELETE, _("&Delete"), _T(""), wxITEM_NORMAL);
+    itemMenu18->AppendSeparator();
+    itemMenu18->Append(ID_EDIT_OBJECT_DESCRIPTION, _("&Object Description..."), _T(""), wxITEM_NORMAL);
+    itemMenu18->AppendSeparator();
+    itemMenu18->Append(ID_NEW_VIRTUAL_ROOT_FOLDER, _("&New Virtual Root Folder..."), _T(""), wxITEM_NORMAL);
+    itemMenu18->Append(ID_NEW_VIRTUAL_SUBFOLDER, _("New Virtual &Subfolder..."), _T(""), wxITEM_NORMAL);
 #if defined(__WXMAC__)
-    itemMenu17->Append(wxID_PREFERENCES, _("&Options..."), _T(""), wxITEM_NORMAL);
+    itemMenu18->Append(wxID_PREFERENCES, _("&Options..."), _T(""), wxITEM_NORMAL);
 #endif
-    menuBar->Append(itemMenu17, _("&Edit"));
-    wxMenu* itemMenu28 = new wxMenu;
-    itemMenu28->Append(ID_CATALOG_VOLUME, _("&Catalog Volume..."), _T(""), wxITEM_NORMAL);
-    menuBar->Append(itemMenu28, _("&Volumes"));
-    wxMenu* itemMenu30 = new wxMenu;
-    itemMenu30->Append(ID_VIEW_PHYSICAL, _("&Physical View"), _T(""), wxITEM_RADIO);
-    itemMenu30->Check(ID_VIEW_PHYSICAL, true);
-    itemMenu30->Append(ID_VIEW_VIRTUAL, _("&Virtual View"), _T(""), wxITEM_RADIO);
-    itemMenu30->Append(ID_VIEW_SEARCH, _("&Search View"), _T(""), wxITEM_RADIO);
-    itemMenu30->AppendSeparator();
-    itemMenu30->Append(ID_UP_ONE_FOLDER, _("Go &Up One Level"), _T(""), wxITEM_NORMAL);
-    itemMenu30->AppendSeparator();
-    itemMenu30->Append(ID_VIEW_TOOLBAR, _("&Toolbar"), _T(""), wxITEM_CHECK);
-    itemMenu30->Check(ID_VIEW_TOOLBAR, true);
-    itemMenu30->Append(ID_VIEW_STATUS_BAR, _("Status &Bar"), _T(""), wxITEM_CHECK);
-    itemMenu30->Check(ID_VIEW_STATUS_BAR, true);
-    menuBar->Append(itemMenu30, _("Vie&w"));
+    menuBar->Append(itemMenu18, _("&Edit"));
+    wxMenu* itemMenu29 = new wxMenu;
+    itemMenu29->Append(ID_CATALOG_VOLUME, _("&Catalog Volume..."), _T(""), wxITEM_NORMAL);
+    menuBar->Append(itemMenu29, _("&Volumes"));
+    wxMenu* itemMenu31 = new wxMenu;
+    itemMenu31->Append(ID_VIEW_PHYSICAL, _("&Physical View"), _T(""), wxITEM_RADIO);
+    itemMenu31->Check(ID_VIEW_PHYSICAL, true);
+    itemMenu31->Append(ID_VIEW_VIRTUAL, _("&Virtual View"), _T(""), wxITEM_RADIO);
+    itemMenu31->Append(ID_VIEW_SEARCH, _("&Search View"), _T(""), wxITEM_RADIO);
+    itemMenu31->AppendSeparator();
+    itemMenu31->Append(ID_UP_ONE_FOLDER, _("Go &Up One Level"), _T(""), wxITEM_NORMAL);
+    itemMenu31->AppendSeparator();
+    itemMenu31->Append(ID_VIEW_TOOLBAR, _("&Toolbar"), _T(""), wxITEM_CHECK);
+    itemMenu31->Check(ID_VIEW_TOOLBAR, true);
+    itemMenu31->Append(ID_VIEW_STATUS_BAR, _("Status &Bar"), _T(""), wxITEM_CHECK);
+    itemMenu31->Check(ID_VIEW_STATUS_BAR, true);
+    menuBar->Append(itemMenu31, _("Vie&w"));
 #if defined(__WXMSW__) || defined(__WXGTK__)
-    wxMenu* itemMenu39 = new wxMenu;
+    wxMenu* itemMenu40 = new wxMenu;
 #if defined(__WXMSW__) || defined(__WXGTK__)
-    itemMenu39->Append(wxID_PREFERENCES, _("&Options..."), _T(""), wxITEM_NORMAL);
+    itemMenu40->Append(wxID_PREFERENCES, _("&Options..."), _T(""), wxITEM_NORMAL);
 #endif
-    menuBar->Append(itemMenu39, _("&Tools"));
+    menuBar->Append(itemMenu40, _("&Tools"));
 #endif
-    wxMenu* itemMenu41 = new wxMenu;
-    itemMenu41->Append(ID_HELP_CONTENTS, _("Help &Contents"), _T(""), wxITEM_NORMAL);
+    wxMenu* itemMenu42 = new wxMenu;
+    itemMenu42->Append(ID_HELP_CONTENTS, _("Help &Contents"), _T(""), wxITEM_NORMAL);
 #if defined(__WXMSW__) || defined(__WXGTK__)
-    itemMenu41->AppendSeparator();
+    itemMenu42->AppendSeparator();
 #endif
-    itemMenu41->Append(wxID_ABOUT, _("&About VVV..."), _T(""), wxITEM_NORMAL);
-    menuBar->Append(itemMenu41, _("&Help"));
+    itemMenu42->Append(wxID_ABOUT, _("&About VVV..."), _T(""), wxITEM_NORMAL);
+    menuBar->Append(itemMenu42, _("&Help"));
     itemFrame1->SetMenuBar(menuBar);
 
     m_Toolbar = CreateToolBar( wxTB_FLAT|wxTB_HORIZONTAL|wxTB_TEXT, ID_TOOLBAR1 );
@@ -847,13 +852,13 @@ void CMainFrame::CreateControls()
     m_StatusBar->SetStatusWidths(4, m_StatusBarWidths);
     itemFrame1->SetStatusBar(m_StatusBar);
 
-    wxSplitterWindow* itemSplitterWindow46 = new wxSplitterWindow( itemFrame1, ID_SPLITTERWINDOW1, wxDefaultPosition, wxSize(100, 100), wxSP_3DBORDER|wxSP_3DSASH|wxSP_NO_XP_THEME|wxNO_BORDER );
-    itemSplitterWindow46->SetMinimumPaneSize(0);
+    wxSplitterWindow* itemSplitterWindow47 = new wxSplitterWindow( itemFrame1, ID_SPLITTERWINDOW1, wxDefaultPosition, wxSize(100, 100), wxSP_3DBORDER|wxSP_3DSASH|wxSP_NO_XP_THEME|wxNO_BORDER );
+    itemSplitterWindow47->SetMinimumPaneSize(0);
 
-    wxTreeCtrl* itemTreeCtrl47 = new wxTreeCtrl( itemSplitterWindow46, ID_TREE_CONTROL, wxDefaultPosition, wxSize(100, 100), wxTR_HAS_BUTTONS |wxTR_HIDE_ROOT|wxTR_SINGLE|wxNO_BORDER|wxTR_DEFAULT_STYLE );
+    wxTreeCtrl* itemTreeCtrl48 = new wxTreeCtrl( itemSplitterWindow47, ID_TREE_CONTROL, wxDefaultPosition, wxSize(100, 100), wxTR_HAS_BUTTONS |wxTR_HIDE_ROOT|wxTR_SINGLE|wxNO_BORDER|wxTR_DEFAULT_STYLE );
 
-    CRightPaneList* itemListCtrl48 = new CRightPaneList( itemSplitterWindow46, ID_LIST_CONTROL, wxDefaultPosition, wxSize(100, 100), wxLC_REPORT|wxNO_BORDER );
-    itemSplitterWindow46->SplitVertically(itemTreeCtrl47, itemListCtrl48, 50);
+    CRightPaneList* itemListCtrl49 = new CRightPaneList( itemSplitterWindow47, ID_LIST_CONTROL, wxDefaultPosition, wxSize(100, 100), wxLC_REPORT|wxNO_BORDER );
+    itemSplitterWindow47->SplitVertically(itemTreeCtrl48, itemListCtrl49, 50);
 
 ////@end CMainFrame content construction
 
@@ -3450,4 +3455,64 @@ bool CMainFrame::AreOnlyVirtualFilesSelected() {
 }
 
 
+
+
+/*!
+ * wxEVT_COMMAND_MENU_SELECTED event handler for ID_FILE_EXPORT
+ */
+
+void CMainFrame::OnFileExportClick( wxCommandEvent& WXUNUSED(event) )
+{
+	long selectedVolume = -1, selectedPhysicalFolder = -1, selectedVirtualFolder = -1;
+
+	if( m_CurrentView == cvPhysical ) {
+		wxTreeCtrl *tctl = GetTreePhysicalControl();
+		if( tctl->GetCount() > 0 ) {
+			wxTreeItemId item = tctl->GetSelection();
+			if( item.IsOk() ) {
+				MyTreeItemData *itemData = (MyTreeItemData *) tctl->GetItemData(item);
+				if( tctl->GetItemParent(item) == tctl->GetRootItem() ) {
+					// we are on a volume
+					selectedVolume = itemData->GetVolumeID();
+				} 
+				else {
+					// we are on a folder
+					selectedPhysicalFolder = itemData->GetPathID();
+					selectedVolume = itemData->GetVolumeID();
+				}
+			}
+		}
+	}
+	if( m_CurrentView == cvVirtual ) {
+		wxTreeCtrl* tctl = GetTreeVirtualControl();
+		if( tctl->GetCount() > 0 ) {
+			wxTreeItemId item = tctl->GetSelection();
+			if( item.IsOk() ) {
+				MyTreeItemData *itemData = (MyTreeItemData *) tctl->GetItemData(item);
+				selectedVirtualFolder = itemData->GetPathID();
+			}
+		}
+	}
+
+	CDialogExportData dlg( this );
+	dlg.SetSelectedVolumeId( selectedVolume );
+	dlg.SetSelectedPhysicalFolderId( selectedPhysicalFolder );
+	dlg.SetSelectedVirtualFolderId( selectedVirtualFolder );
+	dlg.ShowModal();
+}
+
+
+/*!
+ * wxEVT_UPDATE_UI event handler for ID_FILE_EXPORT
+ */
+
+void CMainFrame::OnFileExportUpdate( wxUpdateUIEvent& event )
+{
+	if( CBaseDB::GetDatabase() == NULL ) {
+		event.Enable(false);
+		return;
+	}
+
+	event.Enable( m_CurrentView != cvSearch );
+}
 

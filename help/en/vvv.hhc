@@ -40,6 +40,10 @@
         <param name="Name" value="Server settings">
         <param name="Local" value="server_settings.htm">
         </OBJECT>
+    <LI><OBJECT type="text/sitemap">
+        <param name="Name" value="Export data">
+        <param name="Local" value="export_data.htm">
+        </OBJECT>
   </UL>
 </UL>
 </BODY></HTML>

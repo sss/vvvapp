@@ -250,7 +250,7 @@ wxIcon CDialogOpenCatalog::GetIconResource( const wxString& name )
 void CDialogOpenCatalog::OnOpendialogBrowseClick( wxCommandEvent& WXUNUSED(event) )
 {
 	wxString caption = this->GetTitle();
-	wxString wildcard = _("VVV  files (*.vvv)|*.vvv|All files (*.*)|*.*");
+	wxString wildcard = _("VVV files (*.vvv)|*.vvv|All files (*.*)|*.*");
 	wxFileDialog fd( this, caption, wxEmptyString, wxEmptyString, wildcard, m_Action == "O" ? wxOPEN : wxSAVE );
 	if( fd.ShowModal() != wxID_OK ) return;
 	wxString databaseFile = fd.GetPath();

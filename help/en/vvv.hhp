@@ -21,6 +21,7 @@ catalog_volume.htm
 general_settings.htm
 mp3_settings.htm
 server_settings.htm
+export_data.htm
 
 [ALIAS]
 #include "vvv_alias.h"
