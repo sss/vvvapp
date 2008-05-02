@@ -35,22 +35,22 @@ void CPaths::FB_DbInsert(void)
 
 	if( PathID.IsNull() )
 		PathID = FB_GenNewValue( wxT("GEN_PATHS_ID") );
-	sql = "INSERT INTO PATHS (";
+	sql = wxT("INSERT INTO PATHS (");
 	if( !PathID.IsNull() )
-		sql += "PATH_ID, ";
-	sql += "VOLUME_ID, PATH_NAME, FATHER_ID, PATH_DESCRIPTION) VALUES (";
+		sql += wxT("PATH_ID, ");
+	sql += wxT("VOLUME_ID, PATH_NAME, FATHER_ID, PATH_DESCRIPTION) VALUES (");
 	if( !PathID.IsNull() )
-		sql += CUtils::long2string(PathID) + ", ";
-	sql += CUtils::long2string(VolumeID) + ", '" + ExpandSingleQuotes(PathName) + "', ";
+		sql += CUtils::long2string(PathID) + wxT(", ");
+	sql += CUtils::long2string(VolumeID) + wxT(", '") + ExpandSingleQuotes(PathName) + wxT("', ");
 	if( FatherID.IsNull() )
-		sql += "NULL";
+		sql += wxT("NULL");
 	else
 		sql += CUtils::long2string(FatherID);
 	if( !PathDescription.empty() )
-		sql += ", '" + ExpandSingleQuotes(PathDescription) + "'";
+		sql += wxT(", '") + ExpandSingleQuotes(PathDescription) + wxT("'");
 	else
-		sql += ", NULL";
-	sql += ")";
+		sql += wxT(", NULL");
+	sql += wxT(")");
 	FB_ExecuteQueryNoReturn( sql );
 }
 
@@ -58,20 +58,20 @@ void CPaths::FB_DbUpdate(void)
 {
 	wxString sql;
 
-	sql = "UPDATE PATHS SET ";
-	sql += "VOLUME_ID = " + CUtils::long2string(VolumeID) + ", ";
-	sql += "PATH_NAME = '" + ExpandSingleQuotes(PathName) + "', ";
-	sql += "FATHER_ID = ";
+	sql = wxT("UPDATE PATHS SET ");
+	sql += wxT("VOLUME_ID = ") + CUtils::long2string(VolumeID) + wxT(", ");
+	sql += wxT("PATH_NAME = '") + ExpandSingleQuotes(PathName) + wxT("', ");
+	sql += wxT("FATHER_ID = ");
 	if( FatherID.IsNull() )
-		sql += "NULL, ";
+		sql += wxT("NULL, ");
 	else
-		sql += CUtils::long2string(FatherID) + ", ";
-	sql += "PATH_DESCRIPTION = ";
+		sql += CUtils::long2string(FatherID) + wxT(", ");
+	sql += wxT("PATH_DESCRIPTION = ");
 	if( !PathDescription.empty() )
-		sql += "'" + ExpandSingleQuotes(PathDescription) + "' ";
+		sql += wxT("'") + ExpandSingleQuotes(PathDescription) + wxT("' ");
 	else
-		sql += "NULL ";
-	sql += "WHERE PATH_ID = "  + CUtils::long2string(PathID);
+		sql += wxT("NULL ");
+	sql += wxT("WHERE PATH_ID = ")  + CUtils::long2string(PathID);
 	FB_ExecuteQueryNoReturn( sql );
 }
 
@@ -79,7 +79,7 @@ void CPaths::FB_DbDelete(void)
 {
 	wxString sql;
 
-	sql = "DELETE FROM PATHS WHERE PATH_ID = " + CUtils::long2string( PathID );
+	sql = wxT("DELETE FROM PATHS WHERE PATH_ID = ") + CUtils::long2string( PathID );
 	FB_ExecuteQueryNoReturn( sql );
 }
 
@@ -104,7 +104,7 @@ void CPaths::FB_FetchRow(void) {
 			FatherID = (long) tmp;
 		}
 		if( FB_st->IsNull("PATH_DESCRIPTION") ) {
-			PathDescription = "";
+			PathDescription = wxEmptyString;
 		}
 		else {
 			FB_st->Get( "PATH_DESCRIPTION", stmp );
@@ -135,7 +135,7 @@ wxString CPaths::FB_GetFullPath( long PathID ) {
 
 	st->Prepare( "EXECUTE PROCEDURE SP_GET_FULL_PATH( ?, ? )" );
 	st->Set( 1, (int32_t) PathID );
-	st->Set( 2, wxString(wxFileName::GetPathSeparator()).c_str() );
+	st->Set( 2, CUtils::wx2std( wxString(wxFileName::GetPathSeparator()) ) );
 	st->Execute();
 
 	st->Get( 1, stmp );
@@ -152,15 +152,15 @@ void CPaths::FB_UpdateDescription( long PathID, const wxString& descr ) {
 	wxString sql;
 
 	// updates the path
-	sql = "UPDATE PATHS SET PATH_DESCRIPTION = ";
-	sql += (descr.empty() ? "NULL" : "'" + ExpandSingleQuotes(descr) + "'");
-	sql += " WHERE PATH_ID = " + CUtils::long2string( PathID );
+	sql = wxT("UPDATE PATHS SET PATH_DESCRIPTION = ");
+	sql += (descr.empty() ? wxT("NULL") : wxT("'") + ExpandSingleQuotes(descr) + wxT("'"));
+	sql += wxT(" WHERE PATH_ID = ") + CUtils::long2string( PathID );
 	FB_ExecuteQueryNoReturn( sql );
 
-	// now upadates the corresponding file enty
-	sql = "UPDATE FILES SET FILE_DESCRIPTION = ";
-	sql += (descr.empty() ? "NULL" : "'" + ExpandSingleQuotes(descr) + "'");
-	sql += " WHERE PATH_FILE_ID = " + CUtils::long2string( PathID );
+	// now updates the corresponding file enty
+	sql = wxT("UPDATE FILES SET FILE_DESCRIPTION = ");
+	sql += (descr.empty() ? wxT("NULL") : wxT("'") + ExpandSingleQuotes(descr) + wxT("'"));
+	sql += wxT(" WHERE PATH_FILE_ID = ") + CUtils::long2string( PathID );
 	FB_ExecuteQueryNoReturn( sql );
 
 }

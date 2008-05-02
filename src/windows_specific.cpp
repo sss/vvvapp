@@ -38,14 +38,14 @@
 // return the name of a volume specified in a way like "C:\"
 // return an empty string in case of error
 wxString GetVolumeName( wxString volume ) {
-	char vn[50];
+	TCHAR vn[50];
 	DWORD mcl, fsf;
 	wxString retVal;
 
 	if( GetVolumeInformation( volume.c_str(), vn, 49, NULL, &mcl, &fsf, NULL, 0 ) )
 		retVal = vn;
 	else
-		retVal = "";
+		retVal = wxEmptyString;
 	
 	return retVal;
 }
@@ -56,9 +56,9 @@ void CDialogCatalogVolume::CatalogSingleFolderWindows( CBaseDB* db, wxString pat
 	wxString winPath;	// path to be used for Windows-specific calls
 
 	winPath = path;
-	if( !winPath.EndsWith("\\") )
-		winPath += "\\";
-	winPath += "*.*";
+	if( !winPath.EndsWith(wxT("\\")) )
+		winPath += wxT("\\");
+	winPath += wxT("*.*");
 
 	// shows the path in the dialog box
 	m_CurrentFolder->SetLabel( path );
@@ -81,8 +81,8 @@ void CDialogCatalogVolume::CatalogSingleFolderWindows( CBaseDB* db, wxString pat
 	}
 
 	// reads all file names
-	struct _finddata_t c_file;
-	intptr_t hFile = _findfirst( winPath.c_str(), &c_file );
+	struct _tfinddata_t c_file;
+	intptr_t hFile = _tfindfirst( winPath.c_str(), &c_file );
 	if( hFile != -1L ) {
 		do {
 			if( !(c_file.attrib & _A_SUBDIR) ) {
@@ -91,14 +91,14 @@ void CDialogCatalogVolume::CatalogSingleFolderWindows( CBaseDB* db, wxString pat
 				file.FileName = c_file.name;
 				wxFileName fn( path, file.FileName );
 				file.FileExt = fn.GetExt();
-				if( file.FileExt.Len() > 30 ) file.FileExt = "";	// such a long extension is surely a meaningless temporary file
+				if( file.FileExt.Len() > 30 ) file.FileExt = wxEmptyString;	// such a long extension is surely a meaningless temporary file
 				file.DateTime = c_file.time_write;
 				file.FileSize = c_file.size;
 				file.PathID = pth.PathID;
 				file.PathFileID.SetNull(true);
 				file.DbInsert();
 
-				if( file.FileExt == "mp3" ) {
+				if( file.FileExt == wxT("mp3") ) {
 					CFilesAudioMetadata metaData;
 					if( CAudioMetadata::ReadMP3Metadata( fn.GetFullPath(), metaData ) ) {
 						metaData.FileID = file.FileID;
@@ -107,28 +107,28 @@ void CDialogCatalogVolume::CatalogSingleFolderWindows( CBaseDB* db, wxString pat
 				}
 			}
 
-		} while( _findnext( hFile, &c_file ) == 0 );
+		} while( _tfindnext( hFile, &c_file ) == 0 );
 	}
 	_findclose( hFile );
 
 	// now reads all the subfolders
-	hFile = _findfirst( winPath.c_str(), &c_file );
+	hFile = _tfindfirst( winPath.c_str(), &c_file );
 	if( hFile != -1L ) {
 		do {
-			if( (c_file.attrib & _A_SUBDIR) && (strcmp(c_file.name, ".") != 0) && (strcmp(c_file.name, "..") != 0) ) {
+			if( (c_file.attrib & _A_SUBDIR) && (_tcscmp(c_file.name, wxT(".")) != 0) && (_tcscmp(c_file.name, wxT("..")) != 0) ) {
 				wxFileName dirName( path, wxEmptyString );
 				dirName.AppendDir( c_file.name );
 
 				CFiles file;
 				file.FileName = c_file.name;
-				file.FileExt = "";
+				file.FileExt = wxEmptyString;
 				file.DateTime = c_file.time_write;
 				file.FileSize = 0;
 				file.PathID = pth.PathID;
 
 				CatalogSingleFolderWindows( db, dirName.GetPath(), VolumeID, pth.PathID, &file );
 			}
-		} while( _findnext( hFile, &c_file ) == 0 );
+		} while( _tfindnext( hFile, &c_file ) == 0 );
 	}
 	_findclose( hFile );
 

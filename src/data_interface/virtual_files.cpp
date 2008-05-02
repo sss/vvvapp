@@ -31,11 +31,11 @@ CVirtualFiles::~CVirtualFiles(void) {
 // NOTE: this function MUST ask files ordered by "FILES.FILE_NAME, VIRTUAL_FILES.VIRTUAL_PATH_FILE_ID DESC" because when loading data in the list control
 // the program will remove some duplicate folders.
 void CVirtualFiles::DBStartQueryListFiles( long PathID ) {
-	wxString sql = "select virtual_files.file_id, virtual_files.virtual_path_id, virtual_files.physical_file_id, virtual_files.virtual_path_file_id, files.file_name, files.file_size, files.file_ext, files.file_datetime, files.path_id, files.path_file_id, files.file_description ";
-    sql += "from virtual_files inner join files ";
-	sql += "on virtual_files.physical_file_id = files.file_id ";
-	sql += "where virtual_files.virtual_path_id = " + CUtils::long2string(PathID) + " ";
-	sql += "order by files.file_name, virtual_files.virtual_path_file_id desc";
+	wxString sql = wxT("select virtual_files.file_id, virtual_files.virtual_path_id, virtual_files.physical_file_id, virtual_files.virtual_path_file_id, files.file_name, files.file_size, files.file_ext, files.file_datetime, files.path_id, files.path_file_id, files.file_description ");
+    sql += wxT("from virtual_files inner join files ");
+	sql += wxT("on virtual_files.physical_file_id = files.file_id ");
+	sql += wxT("where virtual_files.virtual_path_id = ") + CUtils::long2string(PathID) + wxT(" ");
+	sql += wxT("order by files.file_name, virtual_files.virtual_path_file_id desc");
 	DBStartMultiRowQuery( sql, true );
 }
 
@@ -46,30 +46,28 @@ void CVirtualFiles::DBStartSearchFolderFiles( wxString fileName, bool useFileNam
 	ext = ext.MakeUpper();
 	description = description.MakeUpper();
 
-	wh = "";
+	wh = wxEmptyString;
 	if( !fileName.empty() && useFileNameWildcards ) {
-		if( !wh.empty() ) wh += " AND";
-		wh += " UPPER(FILES.FILE_NAME) LIKE '" + fileName + "' ESCAPE '/'";
+		if( !wh.empty() ) wh += wxT(" AND");
+		wh += wxT(" UPPER(FILES.FILE_NAME) LIKE '") + fileName + wxT("' ESCAPE '/'");
 	}
 	if( !fileName.empty() && !useFileNameWildcards ) {
-		if( !wh.empty() ) wh += " AND";
-		wh += " UPPER(FILES.FILE_NAME) = '" + fileName + "'";
+		if( !wh.empty() ) wh += wxT(" AND");
+		wh += wxT(" UPPER(FILES.FILE_NAME) = '") + fileName + wxT("'");
 	}
 	if( !ext.empty() ) {
-		if( !wh.empty() ) wh += " AND";
-		wh += " UPPER(FILES.FILE_EXT) = '" + ExpandSingleQuotes(ext) + "'";
+		if( !wh.empty() ) wh += wxT(" AND");
+		wh += wxT(" UPPER(FILES.FILE_EXT) = '") + ExpandSingleQuotes(ext) + wxT("'");
 	}
 	if( !description.empty() && useDescriptionWildcards ) {
-		if( !wh.empty() ) wh += " AND";
-		wh += " UPPER(FILES.FILE_DESCRIPTION) LIKE '" + description + "' ESCAPE '/'";
+		if( !wh.empty() ) wh += wxT(" AND");
+		wh += wxT(" UPPER(FILES.FILE_DESCRIPTION) LIKE '") + description + wxT("' ESCAPE '/'");
 	}
 	if( !description.empty() && !useDescriptionWildcards ) {
-		if( !wh.empty() ) wh += " AND";
-		wh += " UPPER(FILES.FILE_DESCRIPTION) = '" + description + "'";
+		if( !wh.empty() ) wh += wxT(" AND");
+		wh += wxT(" UPPER(FILES.FILE_DESCRIPTION) = '") + description + wxT("'");
 	}
-	sql = "SELECT * FROM VIRTUAL_FILES INNER JOIN FILES ON VIRTUAL_FILES.PHYSICAL_FILE_ID = FILES.FILE_ID WHERE VIRTUAL_FILES.VIRTUAL_PATH_ID = " + CUtils::long2string(folderID) + " AND " + wh;
-
-//	sql = "SELECT * FROM VIRTUAL_FILES INNER JOIN FILES ON VIRTUAL_FILES.PHYSICAL_FILE_ID = FILES.FILE_ID WHERE VIRTUAL_FILES.VIRTUAL_PATH_FILE_ID IS NULL AND VIRTUAL_FILES.VIRTUAL_PATH_ID = " + CUtils::long2string(folderID);
+	sql = wxT("SELECT * FROM VIRTUAL_FILES INNER JOIN FILES ON VIRTUAL_FILES.PHYSICAL_FILE_ID = FILES.FILE_ID WHERE VIRTUAL_FILES.VIRTUAL_PATH_ID = ") + CUtils::long2string(folderID) + wxT(" AND ") + wh;
 
 	DBStartMultiRowQuery( sql, true );
 

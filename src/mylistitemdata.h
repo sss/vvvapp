@@ -36,16 +36,16 @@ class MyListItemData {
 
 public:
 
-	MyListItemData( long fileID, long pathFileID, const wxString& name, const wxString& ext, wxLongLong size, wxDateTime dateTime, bool isFolder, const wxString& fullPhysicalPath = "", const wxString& objectDescription = "" ) :
+	MyListItemData( long fileID, long pathFileID, const wxString& name, const wxString& ext, wxLongLong size, wxDateTime dateTime, bool isFolder, const wxString& fullPhysicalPath = wxEmptyString, const wxString& objectDescription = wxEmptyString ) :
 	                m_FileID(fileID), m_PathFileID(pathFileID), m_name(name), m_ext(ext), m_size(size), m_dateTime(dateTime), m_isFolder(isFolder), m_fullPhysicalPath(fullPhysicalPath), m_objectDescription(objectDescription) {
 
-		m_artist = "";
-		m_album = "";
-		m_title = "";
+		m_artist = wxEmptyString;
+		m_album = wxEmptyString;
+		m_title = wxEmptyString;
 		m_year = 0;
-		m_comment = "";
+		m_comment = wxEmptyString;
 		m_number = 0;
-		m_genre = "";
+		m_genre = wxEmptyString;
 		m_length = 0;
 		m_bitrate = 0;
 		m_samplerate = 0;

@@ -766,16 +766,17 @@
 				AdditionalOptions="/EHsc "
 				Optimization="2"
 				InlineFunctionExpansion="1"
-				AdditionalIncludeDirectories=".\..\..\lib\vc_lib\mswu,.\..\..\include,.,.\..\..\samples"
-				PreprocessorDefinitions="WIN32;__WXMSW__;_WINDOWS;NOPCH"
+				AdditionalIncludeDirectories="&quot;$(WXDIR)\lib\vc_lib\mswu&quot;;&quot;$(WXDIR)\include&quot;;&quot;.\id3lib-3.8.3\include&quot;;&quot;.\id3lib-3.8.3\include\id3&quot;"
+				PreprocessorDefinitions="WIN32;__WXMSW__;_WINDOWS;NOPCH;IBPP_WINDOWS;ID3LIB_LINKOPTION=1"
 				StringPooling="TRUE"
-				RuntimeLibrary="2"
+				RuntimeLibrary="0"
 				EnableFunctionLevelLinking="TRUE"
 				RuntimeTypeInfo="TRUE"
-				PrecompiledHeaderFile=".\vc_mswu\splitter/splitter.pch"
-				AssemblerListingLocation=".\vc_mswu\splitter/"
-				ObjectFile=".\vc_mswu\splitter/"
-				ProgramDataBaseFileName="vc_mswu\splitter.pdb"
+				UsePrecompiledHeader="2"
+				PrecompiledHeaderFile=".\vc_mswu\vvv/vvv.pch"
+				AssemblerListingLocation=".\vc_mswu\vvv/"
+				ObjectFile=".\vc_mswu\vvv/"
+				ProgramDataBaseFileName="vc_mswu\vvv.pdb"
 				WarningLevel="4"
 				SuppressStartupBanner="TRUE"
 				CompileAs="0"/>
@@ -783,12 +784,12 @@
 				Name="VCCustomBuildTool"/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="wxmsw28u_core.lib wxbase28u.lib wxtiff.lib wxjpeg.lib wxpng.lib wxzlib.lib wxregexu.lib wxexpat.lib winmm.lib comctl32.lib rpcrt4.lib wsock32.lib odbc32.lib"
-				OutputFile="vc_mswu\splitter.exe"
+				AdditionalDependencies="wxmsw28u_core.lib wxbase28u.lib wxtiff.lib wxjpeg.lib wxpng.lib wxzlib.lib wxregexu.lib wxexpat.lib winmm.lib comctl32.lib rpcrt4.lib wsock32.lib odbc32.lib wxmsw28u_adv.lib wxmsw28u_html.lib"
+				OutputFile="vc_mswu\vvv.exe"
 				LinkIncremental="1"
 				SuppressStartupBanner="TRUE"
-				AdditionalLibraryDirectories=".\..\..\lib\vc_lib"
-				ProgramDatabaseFile=".\vc_mswu/splitter.pdb"
+				AdditionalLibraryDirectories="&quot;$(WXDIR)\lib\vc_lib&quot;"
+				ProgramDatabaseFile=".\vc_mswu/vvv.pdb"
 				SubSystem="2"
 				TargetMachine="1"/>
 			<Tool
@@ -809,7 +810,7 @@
 				Name="VCResourceCompilerTool"
 				PreprocessorDefinitions="__WXMSW__,_UNICODE,_WINDOWS,NOPCH"
 				Culture="1033"
-				AdditionalIncludeDirectories=".\..\..\lib\vc_lib\mswu;.\..\..\include;.;.\..\..\samples"/>
+				AdditionalIncludeDirectories="&quot;$(WXDIR)\lib\vc_lib\mswu&quot;;&quot;$(WXDIR)\include&quot;"/>
 			<Tool
 				Name="VCWebServiceProxyGeneratorTool"/>
 			<Tool
@@ -892,7 +893,7 @@
 		<Configuration
 			Name="Unicode Debug|Win32"
 			OutputDirectory=".\vc_mswud"
-			IntermediateDirectory=".\vc_mswud\splitter"
+			IntermediateDirectory=".\vc_mswud\vvv"
 			ConfigurationType="1"
 			UseOfMFC="0"
 			ATLMinimizesCRunTimeLibraryUsage="FALSE"
@@ -901,15 +902,16 @@
 				Name="VCCLCompilerTool"
 				AdditionalOptions="/EHsc "
 				Optimization="0"
-				AdditionalIncludeDirectories=".\..\..\lib\vc_lib\mswud,.\..\..\include,.,.\..\..\samples"
-				PreprocessorDefinitions="WIN32;_DEBUG;__WXMSW__;__WXDEBUG__;_WINDOWS;NOPCH"
+				AdditionalIncludeDirectories="&quot;$(WXDIR)\lib\vc_lib\mswud&quot;;&quot;$(WXDIR)\include&quot;;&quot;.\id3lib-3.8.3\include&quot;;&quot;.\id3lib-3.8.3\include\id3&quot;"
+				PreprocessorDefinitions="WIN32;_DEBUG;__WXMSW__;__WXDEBUG__;_WINDOWS;NOPCHww;IBPP_WINDOWS;ID3LIB_LINKOPTION=1"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
 				RuntimeTypeInfo="TRUE"
-				PrecompiledHeaderFile=".\vc_mswud\splitter/splitter.pch"
-				AssemblerListingLocation=".\vc_mswud\splitter/"
-				ObjectFile=".\vc_mswud\splitter/"
-				ProgramDataBaseFileName="vc_mswud\splitter.pdb"
+				UsePrecompiledHeader="2"
+				PrecompiledHeaderFile=".\vc_mswud\vvv/vvv.pch"
+				AssemblerListingLocation=".\vc_mswud\vvv/"
+				ObjectFile=".\vc_mswud\vvv/"
+				ProgramDataBaseFileName="vc_mswud\vvv.pdb"
 				WarningLevel="4"
 				SuppressStartupBanner="TRUE"
 				DebugInformationFormat="3"
@@ -918,13 +920,13 @@
 				Name="VCCustomBuildTool"/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="wxmsw28ud_core.lib wxbase28ud.lib wxtiffd.lib wxjpegd.lib wxpngd.lib wxzlibd.lib wxregexud.lib wxexpatd.lib winmm.lib comctl32.lib rpcrt4.lib wsock32.lib odbc32.lib"
-				OutputFile="vc_mswud\splitter.exe"
-				LinkIncremental="1"
+				AdditionalDependencies="wxmsw28ud_core.lib wxbase28ud.lib wxtiffd.lib wxjpegd.lib wxpngd.lib wxzlibd.lib wxregexud.lib wxexpatd.lib winmm.lib comctl32.lib rpcrt4.lib wsock32.lib odbc32.lib wxmsw28ud_adv.lib wxmsw28ud_html.lib"
+				OutputFile="vc_mswud\vvv.exe"
+				LinkIncremental="2"
 				SuppressStartupBanner="TRUE"
-				AdditionalLibraryDirectories=".\..\..\lib\vc_lib"
+				AdditionalLibraryDirectories="&quot;$(WXDIR)\lib\vc_lib&quot;"
 				GenerateDebugInformation="TRUE"
-				ProgramDatabaseFile=".\vc_mswud/splitter.pdb"
+				ProgramDatabaseFile=".\vc_mswud/vvv.pdb"
 				SubSystem="2"
 				TargetMachine="1"/>
 			<Tool
@@ -945,7 +947,7 @@
 				Name="VCResourceCompilerTool"
 				PreprocessorDefinitions="_DEBUG,__WXMSW__,__WXDEBUG__,_UNICODE,_WINDOWS,NOPCH"
 				Culture="1033"
-				AdditionalIncludeDirectories=".\..\..\lib\vc_lib\mswud;.\..\..\include;.;.\..\..\samples"/>
+				AdditionalIncludeDirectories="&quot;$(WXDIR)\lib\vc_lib\mswud&quot;;&quot;$(WXDIR)\include&quot;"/>
 			<Tool
 				Name="VCWebServiceProxyGeneratorTool"/>
 			<Tool
@@ -1096,6 +1098,9 @@
 	</Configurations>
 	<References>
 		<ProjectReference
+			ReferencedProjectIdentifier="{5629D4FB-C9E6-404E-8721-AABBCC62B0C4}"
+			Name="ibpp"/>
+		<ProjectReference
 			ReferencedProjectIdentifier="{70E5C897-E6F0-4FA1-B931-EAEA66F4DDE6}"
 			Name="id3lib"/>
 	</References>
@@ -1145,67 +1150,6 @@
 			<File
 				RelativePath=".\src\windows_specific.cpp">
 			</File>
-			<Filter
-				Name="IBPP"
-				Filter="">
-				<File
-					RelativePath=".\src\ibpp\core\_dpb.cpp">
-				</File>
-				<File
-					RelativePath=".\src\ibpp\core\_ibpp.cpp">
-				</File>
-				<File
-					RelativePath=".\src\ibpp\core\_ibs.cpp">
-				</File>
-				<File
-					RelativePath=".\src\ibpp\core\_rb.cpp">
-				</File>
-				<File
-					RelativePath=".\src\ibpp\core\_spb.cpp">
-				</File>
-				<File
-					RelativePath=".\src\ibpp\core\_tpb.cpp">
-				</File>
-				<File
-					RelativePath=".\src\ibpp\core\array.cpp">
-				</File>
-				<File
-					RelativePath=".\src\ibpp\core\blob.cpp">
-				</File>
-				<File
-					RelativePath=".\src\ibpp\core\database.cpp">
-				</File>
-				<File
-					RelativePath=".\src\ibpp\core\date.cpp">
-				</File>
-				<File
-					RelativePath=".\src\ibpp\core\dbkey.cpp">
-				</File>
-				<File
-					RelativePath=".\src\ibpp\core\events.cpp">
-				</File>
-				<File
-					RelativePath=".\src\ibpp\core\exception.cpp">
-				</File>
-				<File
-					RelativePath=".\src\ibpp\core\row.cpp">
-				</File>
-				<File
-					RelativePath=".\src\ibpp\core\service.cpp">
-				</File>
-				<File
-					RelativePath=".\src\ibpp\core\statement.cpp">
-				</File>
-				<File
-					RelativePath=".\src\ibpp\core\time.cpp">
-				</File>
-				<File
-					RelativePath=".\src\ibpp\core\transaction.cpp">
-				</File>
-				<File
-					RelativePath=".\src\ibpp\core\user.cpp">
-				</File>
-			</Filter>
 			<Filter
 				Name="DataInterface"
 				Filter="">
@@ -1310,13 +1254,6 @@
 			<File
 				RelativePath=".\src\windows_specific.h">
 			</File>
-			<Filter
-				Name="IBPP"
-				Filter="">
-				<File
-					RelativePath=".\src\ibpp\core\ibpp.h">
-				</File>
-			</Filter>
 			<Filter
 				Name="DataInterface"
 				Filter="">

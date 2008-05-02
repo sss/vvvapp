@@ -73,7 +73,7 @@ wxString CBaseRec::ExpandSingleQuotes( wxString txt ) {
 	// doubles single-quote characters in a string, used to create SQL statements
 //	wxString retVal;
 
-	txt.Replace( "'", "''", true );
+	txt.Replace( wxT("'"), wxT("''"), true );
 	return txt;
 	//size_t i;
 
@@ -91,8 +91,8 @@ wxString CBaseRec::EscapeWildcards( wxString txt, wxString escape ) {
 	wxString retVal;
 
 	retVal = ExpandSingleQuotes( txt );
-	retVal.Replace( "_", escape + "_", true );
-	retVal.Replace( "%", escape + "%", true );
+	retVal.Replace( wxT("_"), escape + wxT("_"), true );
+	retVal.Replace( wxT("%"), escape + wxT("%"), true );
 
 	return retVal;
 }

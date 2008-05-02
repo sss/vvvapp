@@ -24,12 +24,12 @@
 
 CFilesAudioMetadata::CFilesAudioMetadata(void)
 {
-	Title = Artist = Album = Comment = Genre = "";
+	Title = Artist = Album = Comment = Genre = wxEmptyString;
 	Year = Number = Bitrate = SampleRate = Length = Channels = 0;
 }
 
 bool CFilesAudioMetadata::DBReadMetadata() {
-	wxString sql = "SELECT * FROM FILES_AUDIO_METADATA WHERE FILE_ID = " + CUtils::long2string(FileID);
+	wxString sql = wxT("SELECT * FROM FILES_AUDIO_METADATA WHERE FILE_ID = ") + CUtils::long2string(FileID);
 	DBStartMultiRowQuery( sql, true );
 	return !this->IsEOF();
 }

@@ -32,14 +32,14 @@ void CVirtualFiles::FB_DbInsert(void)
 {
 	wxString sql;
 
-	sql = "INSERT INTO VIRTUAL_FILES (";
+	sql = wxT("INSERT INTO VIRTUAL_FILES (");
 	if( !FileID.IsNull() )
-		sql += "FILE_ID, ";
-	sql += "VIRTUAL_PATH_ID, PHYSICAL_FILE_ID) VALUES (";
+		sql += wxT("FILE_ID, ");
+	sql += wxT("VIRTUAL_PATH_ID, PHYSICAL_FILE_ID) VALUES (");
 	if( !FileID.IsNull() )
-		sql += CUtils::long2string(FileID) + ", ";
-	sql += CUtils::long2string(VirtualPathID) + ", " + 
-		   CUtils::long2string(PhysicalFileID) + ")";
+		sql += CUtils::long2string(FileID) + wxT(", ");
+	sql += CUtils::long2string(VirtualPathID) + wxT(", ") + 
+		   CUtils::long2string(PhysicalFileID) + wxT(")");
 	FB_ExecuteQueryNoReturn( sql );
 }
 
@@ -47,10 +47,10 @@ void CVirtualFiles::FB_DbUpdate(void)
 {
 	wxString sql;
 
-	sql = "UPDATE VIRTUAL_FILES SET ";
-	sql += "VIRTUAL_PATH_ID = " + CUtils::long2string(VirtualPathID) + ", ";
-	sql += "PHYSICAL_FILE_ID = " + CUtils::long2string(PhysicalFileID) + " ";
-	sql += "WHERE FILE_ID = " + CUtils::long2string(FileID);
+	sql = wxT("UPDATE VIRTUAL_FILES SET ");
+	sql += wxT("VIRTUAL_PATH_ID = ") + CUtils::long2string(VirtualPathID) + wxT(", ");
+	sql += wxT("PHYSICAL_FILE_ID = ") + CUtils::long2string(PhysicalFileID) + wxT(" ");
+	sql += wxT("WHERE FILE_ID = ") + CUtils::long2string(FileID);
 	FB_ExecuteQueryNoReturn( sql );
 }
 
@@ -58,7 +58,7 @@ void CVirtualFiles::FB_DbDelete(void)
 {
 	wxString sql;
 
-	sql = "DELETE FROM VIRTUAL_FILES WHERE FILE_ID = " + CUtils::long2string( FileID );
+	sql = wxT("DELETE FROM VIRTUAL_FILES WHERE FILE_ID = ") + CUtils::long2string( FileID );
 	FB_ExecuteQueryNoReturn( sql );
 }
 
@@ -101,7 +101,7 @@ void CVirtualFiles::FB_FetchRow(void) {
 		FB_st->Get("PATH_ID", tmp);
 		PhysicalPathID = (long) tmp;
 		if( FB_st->IsNull("FILE_DESCRIPTION") ) {
-			FileDescription = "";
+			FileDescription = wxEmptyString;
 		}
 		else {
 			FB_st->Get( "FILE_DESCRIPTION", stmp );

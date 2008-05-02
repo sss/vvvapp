@@ -414,7 +414,7 @@ private:
 		wxString serverName;
 		wxString userName;
 		wxString password;
-		bool IsLocalhost() { return (serverName == "localhost") || (serverName == "127.0.0.1"); }
+		bool IsLocalhost() { return (serverName == wxT("localhost")) || (serverName == wxT("127.0.0.1")); }
 	} DBConnectionData;
 
 	// minimum duration of a task (in seconds) before playing a beep at task end

@@ -40,7 +40,7 @@ void CVirtualPaths::FB_DbInsert(void) {
 
 	try {
 		st->Prepare( "EXECUTE PROCEDURE SP_CREATE_UNIQUE_VIRTUALPATH( ?, ?, ? )" );
-		st->Set( 1, PathName );
+		st->Set( 1, CUtils::wx2std(PathName) );
 		if( FatherID.IsNull() )
 			st->SetNull( 2 );
 		else
@@ -80,19 +80,19 @@ void CVirtualPaths::FB_DbUpdate(void)
 {
 	wxString sql;
 
-	sql = "UPDATE PATHS SET ";
-	sql += "PATH = '" + ExpandSingleQuotes(PathName) + "', ";
-	sql += "FATHER_ID = ";
+	sql = wxT("UPDATE PATHS SET ");
+	sql += wxT("PATH = '") + ExpandSingleQuotes(PathName) + wxT("', ");
+	sql += wxT("FATHER_ID = ");
 	if( FatherID.IsNull() )
-		sql += "NULL, ";
+		sql += wxT("NULL, ");
 	else
-		sql += CUtils::long2string(FatherID) + ", ";
-	sql += "PHYS_PATH_ID = ";
+		sql += CUtils::long2string(FatherID) + wxT(", ");
+	sql += wxT("PHYS_PATH_ID = ");
 	if( PhysPathID.IsNull() )
-		sql += "NULL ";
+		sql += wxT("NULL ");
 	else
-		sql += CUtils::long2string(PhysPathID) + " ";
-	sql += " WHERE PATH_ID = "  + CUtils::long2string(PathID);
+		sql += CUtils::long2string(PhysPathID) + wxT(" ");
+	sql += wxT(" WHERE PATH_ID = ")  + CUtils::long2string(PathID);
 	FB_ExecuteQueryNoReturn( sql );
 }
 
@@ -241,7 +241,7 @@ void CVirtualPaths::FB_Rename( long VirtualPathID, wxString newName ) {
 	try {
 		st->Prepare( "EXECUTE PROCEDURE SP_RENAME_VIRTUALPATH( ?, ? )" );
 		st->Set( 1, (int32_t) VirtualPathID );
-		st->Set( 2, newName );
+		st->Set( 2, CUtils::wx2std(newName) );
 		st->Execute();
 	}
 	catch( IBPP::SQLException& e ) {

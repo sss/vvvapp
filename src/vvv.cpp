@@ -165,8 +165,8 @@ bool CVvvApp::OnInit()
 		res = cmdParser.Parse( false );
 	}
 	if( res == -1 || res > 0 ) {
-		m_CatalogName = "";
-		m_SettingsFileName = "";
+		m_CatalogName = wxEmptyString;
+		m_SettingsFileName = wxEmptyString;
 	}
 	else {
 		if( cmdParser.GetParamCount() > 0 ) {
@@ -176,9 +176,9 @@ bool CVvvApp::OnInit()
 			m_CatalogName = fName.GetFullPath();
 		}
 		else 
-			m_CatalogName = "";
-		m_SettingsFileName = "";
-		m_DefaultDataFolder = "";
+			m_CatalogName = wxEmptyString;
+		m_SettingsFileName = wxEmptyString;
+		m_DefaultDataFolder = wxEmptyString;
 		if( cmdParser.Found( wxT("s"), &m_SettingsFileName ) ) {
 			if( !wxIsAbsolutePath(m_SettingsFileName) ) {
 				// the path must be relative to the application's path
@@ -263,19 +263,19 @@ int CVvvApp::OnRun() {
 			s = _("Unable to connect to the server\n\n");
 		else
 			s = _("An unexpected error has occurred. Here is a description of the error:\n\n");
-		s += e.what();
-		wxLogError( "%s", s.c_str() );
+		s += CUtils::std2wx( e.what() );
+		wxLogError( wxT("%s"), s.c_str() );
 		return 3;
 	}
 	catch( IBPP::Exception& e ) {
 		wxString s = _("An unexpected error has occurred. Here is a description of the error:\n\n");
-		s += e.ErrorMessage();
-		wxLogError( "%s", s.c_str() );
+		s += CUtils::std2wx( e.ErrorMessage() );
+		wxLogError( wxT("%s"), s.c_str() );
 		return 3;
 	}
 	catch( ... ) {
 		wxString s = _("An unexpected error has occurred. This application will be terminated");
-		wxLogError( "%s", s.c_str() );
+		wxLogError( wxT("%s"), s.c_str() );
 		return 3;
 	}
 }

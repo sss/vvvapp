@@ -251,7 +251,7 @@ void CDialogOpenCatalog::OnOpendialogBrowseClick( wxCommandEvent& WXUNUSED(event
 {
 	wxString caption = this->GetTitle();
 	wxString wildcard = _("VVV files (*.vvv)|*.vvv|All files (*.*)|*.*");
-	wxFileDialog fd( this, caption, wxEmptyString, wxEmptyString, wildcard, m_Action == "O" ? wxOPEN : wxSAVE );
+	wxFileDialog fd( this, caption, wxEmptyString, wxEmptyString, wildcard, m_Action == wxT("O") ? wxOPEN : wxSAVE );
 	if( fd.ShowModal() != wxID_OK ) return;
 	wxString databaseFile = fd.GetPath();
 	if ( databaseFile.empty() ) return;
@@ -266,9 +266,9 @@ void CDialogOpenCatalog::OnOpendialogBrowseClick( wxCommandEvent& WXUNUSED(event
 
 void CDialogOpenCatalog::OnInitDialog( wxInitDialogEvent& event )
 {
-	wxASSERT( m_Action == "O" || m_Action == "N" );
+	wxASSERT( m_Action == wxT("O") || m_Action == wxT("N") );
 
-	if( m_Action == "O" ) 
+	if( m_Action == wxT("O") ) 
 		// called as an open dialog
 		SetTitle( _("Open Catalog") );
 	else 

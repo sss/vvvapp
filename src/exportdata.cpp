@@ -368,9 +368,9 @@ void CDialogExportData::OnOkClick( wxCommandEvent& WXUNUSED(event) )
 	wxFFileOutputStream output( fileName );
 	wxTextOutputStream fout( output );
 
-	wxString separator = ",";
-	if( m_SeparatorRadioBox->GetSelection() == 1 ) separator = "\t";
-	if( m_SeparatorRadioBox->GetSelection() == 2 ) separator = "|";
+	wxString separator = wxT(",");
+	if( m_SeparatorRadioBox->GetSelection() == 1 ) separator = wxT("\t");
+	if( m_SeparatorRadioBox->GetSelection() == 2 ) separator = wxT("|");
 
 	if( m_IncludeHeadersCtrl->GetValue() )
 		WriteHeaders( fout, separator );
@@ -435,7 +435,7 @@ void CDialogExportData::ExportOnePhysicalFolder( wxTextOutputStream& fout, wxStr
 	while( !files.IsEOF() ) {
 
 		if( !files.IsFolder() ) {
-			fout << FormatStringForCSV(volumeName) << separator << FormatStringForCSV(pathName) << separator << FormatStringForCSV(files.FileName) << separator << files.FileSize << separator << FormatStringForCSV(files.FileExt) << separator << files.DateTime.FormatDate() + " " + files.DateTime.FormatTime() << separator << FormatStringForCSV(files.FileDescription) << endl;
+			fout << FormatStringForCSV(volumeName) << separator << FormatStringForCSV(pathName) << separator << FormatStringForCSV(files.FileName) << separator << files.FileSize << separator << FormatStringForCSV(files.FileExt) << separator << files.DateTime.FormatDate() + wxT(" ") + files.DateTime.FormatTime() << separator << FormatStringForCSV(files.FileDescription) << endl;
 		}
 
 		files.DBNextRow();
@@ -489,7 +489,7 @@ void CDialogExportData::ExportOneVirtualFolder( wxTextOutputStream& fout, wxStri
 	while( !files.IsEOF() ) {
 
 		if( !files.IsFolder() ) {
-			fout << FormatStringForCSV(files.FileName) << separator << files.FileSize << separator << FormatStringForCSV(files.FileExt) << separator << files.DateTime.FormatDate() + " " + files.DateTime.FormatTime() << separator << FormatStringForCSV(files.FullPhysicalPath) << separator << FormatStringForCSV(files.FileDescription) << endl;
+			fout << FormatStringForCSV(files.FileName) << separator << files.FileSize << separator << FormatStringForCSV(files.FileExt) << separator << files.DateTime.FormatDate() + wxT(" ") + files.DateTime.FormatTime() << separator << FormatStringForCSV(files.FullPhysicalPath) << separator << FormatStringForCSV(files.FileDescription) << endl;
 		}
 
 		files.DBNextRow();
@@ -513,8 +513,8 @@ void CDialogExportData::ExportSelectedVirtualFolder( wxTextOutputStream& fout, w
 }
 
 wxString CDialogExportData::FormatStringForCSV( wxString& s ) {
-	s.Replace( "\"", "\"\"" );
-	return "\"" + s + "\"";
+	s.Replace( wxT("\""), wxT("\"\"") );
+	return wxT("\"") + s + wxT("\"");
 }
 
 void CDialogExportData::WriteHeaders( wxTextOutputStream& fout, wxString separator ) {

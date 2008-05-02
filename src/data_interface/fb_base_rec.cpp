@@ -87,7 +87,7 @@ long CBaseRec::FB_GenNewValue( wxString generatorName ) {
 		db->TransactionStart( true );
 	}
 	
-	sql = "SELECT GEN_ID(" + generatorName + ", 1) AS NEW_ID FROM RDB$DATABASE";
+	sql = wxT("SELECT GEN_ID(") + generatorName + wxT(", 1) AS NEW_ID FROM RDB$DATABASE");
 	FB_st = StatementFactory( db->GetIBPPDB(), db->TransactionGetReference() );
 	FB_st->Execute( CUtils::wx2std(sql) );
 	if( FB_st->Fetch() ) {

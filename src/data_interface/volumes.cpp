@@ -23,12 +23,12 @@
 #include "volumes.h"
 
 CVolumes::CVolumes(void) {
-	VolumeName = "";
-	VolumeDescription = "";
+	VolumeName = wxEmptyString;
+	VolumeDescription = wxEmptyString;
 }
 
 CVolumes::CVolumes( long volumeID ) {
-	DBStartMultiRowQuery( "SELECT * FROM VOLUMES WHERE VOLUME_ID = " + CUtils::long2string(volumeID), true );
+	DBStartMultiRowQuery( wxT("SELECT * FROM VOLUMES WHERE VOLUME_ID = ") + CUtils::long2string(volumeID), true );
 	while( !IsEOF() ) {
 		// this query should return only one row
 		DBNextRow();
@@ -53,5 +53,5 @@ bool CVolumes::NameExists(void) {
 }
 
 void CVolumes::DBStartQueryListVolumes(void) {
-	DBStartMultiRowQuery( "SELECT * FROM VOLUMES ORDER BY UPPER(VOLUME_NAME)", true );
+	DBStartMultiRowQuery( wxT("SELECT * FROM VOLUMES ORDER BY UPPER(VOLUME_NAME)"), true );
 }

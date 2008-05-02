@@ -147,7 +147,7 @@ void CFirebirdDB::UpgradeDatabase( int currentVersion ) {
 	upgDb->Connect();
 	Transaction upgTr = TransactionFactory( upgDb );
 	upgTr->Start();
-	wxString sql = "SELECT VERSION_NUMBER, SCRIPT_CODE FROM UPDATE_SCRIPTS WHERE VERSION_NUMBER > " + CUtils::long2string(currentVersion) + " ORDER BY VERSION_NUMBER";
+	wxString sql = wxT("SELECT VERSION_NUMBER, SCRIPT_CODE FROM UPDATE_SCRIPTS WHERE VERSION_NUMBER > ") + CUtils::long2string(currentVersion) + wxT(" ORDER BY VERSION_NUMBER");
 	Statement stUpg = StatementFactory( upgDb, upgTr );
 	stUpg->Execute( CUtils::wx2std(sql) );
 	wxArrayString scripts;
@@ -172,11 +172,11 @@ void CFirebirdDB::UpgradeDatabase( int currentVersion ) {
 	Statement st = StatementFactory( GetIBPPDB(), TransactionGetReference() );
 	for( int k = 0; k < (int) scripts.GetCount(); k ++ ) {
 		st->ExecuteImmediate( CUtils::wx2std(scripts[k]) );
-		sql = "UPDATE SERVICE SET DB_VERSION = " + versions[k] + " WHERE SERVICE_ID = 1";
+		sql = wxT("UPDATE SERVICE SET DB_VERSION = ") + versions[k] + wxT(" WHERE SERVICE_ID = 1");
 		st->ExecuteImmediate( CUtils::wx2std(sql) );
 		TransactionCommitRetain();
 	}
-	sql = "UPDATE SERVICE SET DB_VERSION = " + CUtils::long2string(finalVersion) + " WHERE SERVICE_ID = 1";
+	sql = wxT("UPDATE SERVICE SET DB_VERSION = ") + CUtils::long2string(finalVersion) + wxT(" WHERE SERVICE_ID = 1");
 	st->ExecuteImmediate( CUtils::wx2std(sql) );
 	TransactionCommit();
 

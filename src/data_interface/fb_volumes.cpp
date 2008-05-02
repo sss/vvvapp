@@ -35,9 +35,9 @@ void CVolumes::FB_DbInsert(void)
 	if( VolumeID.IsNull() )
 		VolumeID = FB_GenNewValue( wxT("GEN_VOLUMES_ID") );
 	if( VolumeDescription.empty() )
-		sql = "INSERT INTO VOLUMES (VOLUME_ID, VOLUME_NAME) VALUES (" +  CUtils::long2string(VolumeID) + ", '" + ExpandSingleQuotes(VolumeName) + "')";
+		sql = wxT("INSERT INTO VOLUMES (VOLUME_ID, VOLUME_NAME) VALUES (") +  CUtils::long2string(VolumeID) + wxT(", '") + ExpandSingleQuotes(VolumeName) + wxT("')");
 	else
-		sql = "INSERT INTO VOLUMES (VOLUME_ID, VOLUME_NAME, VOLUME_DESCRIPTION) VALUES (" +  CUtils::long2string(VolumeID) + ", '" + ExpandSingleQuotes(VolumeName) + "', '" + ExpandSingleQuotes(VolumeDescription) + "')";
+		sql = wxT("INSERT INTO VOLUMES (VOLUME_ID, VOLUME_NAME, VOLUME_DESCRIPTION) VALUES (") +  CUtils::long2string(VolumeID) + wxT(", '") + ExpandSingleQuotes(VolumeName) + wxT("', '") + ExpandSingleQuotes(VolumeDescription) + wxT("')");
 
 	FB_ExecuteQueryNoReturn( sql );
 }
@@ -49,9 +49,9 @@ void CVolumes::FB_DbUpdate(void)
 
 //	sql = "UPDATE VOLUMES SET VOLUME_NAME = '" + ExpandSingleQuotes(VolumeName) + "' WHERE VOLUME_ID = " + long2string( VolumeID );
 	if( VolumeDescription.empty() )
-		sql = "UPDATE VOLUMES SET VOLUME_NAME = '" + ExpandSingleQuotes(VolumeName) + "', VOLUME_DESCRIPTION = NULL WHERE VOLUME_ID = " + CUtils::long2string( VolumeID );
+		sql = wxT("UPDATE VOLUMES SET VOLUME_NAME = '") + ExpandSingleQuotes(VolumeName) + wxT("', VOLUME_DESCRIPTION = NULL WHERE VOLUME_ID = ") + CUtils::long2string( VolumeID );
 	else
-		sql = "UPDATE VOLUMES SET VOLUME_NAME = '" + ExpandSingleQuotes(VolumeName) + "', VOLUME_DESCRIPTION = '" + ExpandSingleQuotes(VolumeDescription) + "' WHERE VOLUME_ID = " + CUtils::long2string( VolumeID );
+		sql = wxT("UPDATE VOLUMES SET VOLUME_NAME = '") + ExpandSingleQuotes(VolumeName) + wxT("', VOLUME_DESCRIPTION = '") + ExpandSingleQuotes(VolumeDescription) + wxT("' WHERE VOLUME_ID = ") + CUtils::long2string( VolumeID );
 	
 	FB_ExecuteQueryNoReturn( sql );
 }
@@ -106,7 +106,7 @@ void CVolumes::FB_FetchRow(void) {
 			VolumeID = (long) tmp;
 		}
 		if( FB_st->IsNull("VOLUME_DESCRIPTION") ) {
-			VolumeDescription = "";
+			VolumeDescription = wxEmptyString;
 		}
 		else {
 			// reads the blob
@@ -132,7 +132,7 @@ void CVolumes::FB_FetchRow(void) {
 bool CVolumes::FB_NameExists(void) {
 	wxString sql;
 
-	sql = "SELECT VOLUME_ID FROM VOLUMES WHERE VOLUME_NAME = '" + ExpandSingleQuotes(VolumeName) + "'";
+	sql = wxT("SELECT VOLUME_ID FROM VOLUMES WHERE VOLUME_NAME = '") + ExpandSingleQuotes(VolumeName) + wxT("'");
 	return !FB_QueryReturnsNoRows( sql );
 }
 

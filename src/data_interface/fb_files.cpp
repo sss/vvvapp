@@ -34,20 +34,20 @@ void CFiles::FB_DbInsert(void)
 	if( FileID.IsNull() )
 		FileID = FB_GenNewValue( wxT("GEN_FILES_ID") );
 
-	sql = "INSERT INTO FILES (";
+	sql = wxT("INSERT INTO FILES (");
 	if( !FileID.IsNull() )
-		sql += "FILE_ID, ";
-	sql += "FILE_NAME, FILE_EXT, FILE_SIZE, FILE_DATETIME, PATH_FILE_ID, PATH_ID, FILE_DESCRIPTION) VALUES (";
+		sql += wxT("FILE_ID, ");
+	sql += wxT("FILE_NAME, FILE_EXT, FILE_SIZE, FILE_DATETIME, PATH_FILE_ID, PATH_ID, FILE_DESCRIPTION) VALUES (");
 	if( !FileID.IsNull() )
-		sql += CUtils::long2string(FileID) + ", ";
-	sql += "'" + ExpandSingleQuotes(FileName) + "', '" + 
-		         ExpandSingleQuotes(FileExt) + "', " + 
-                 FileSize.ToString() + ", " +
-				 DateTime.Format( "'%Y-%m-%d %H:%M:%S'" ) + ", " +
-				 (PathFileID.IsNull() ? "NULL" : CUtils::long2string(PathFileID) ) + ", " +
-				 CUtils::long2string(PathID) + ", " +
-				 (FileDescription.empty() ? "NULL" : "'" + ExpandSingleQuotes(FileDescription) + "'") +
-				 ")";
+		sql += CUtils::long2string(FileID) + wxT(", ");
+	sql += wxT("'") + ExpandSingleQuotes(FileName) + wxT("', '") + 
+		         ExpandSingleQuotes(FileExt) + wxT("', ") + 
+                 FileSize.ToString() + wxT(", ") +
+				 DateTime.Format( wxT("'%Y-%m-%d %H:%M:%S'") ) + wxT(", ") +
+				 (PathFileID.IsNull() ? wxT("NULL") : CUtils::long2string(PathFileID) ) + wxT(", ") +
+				 CUtils::long2string(PathID) + wxT(", ") +
+				 (FileDescription.empty() ? wxT("NULL") : wxT("'") + ExpandSingleQuotes(FileDescription) + wxT("'")) +
+				 wxT(")");
 	FB_ExecuteQueryNoReturn( sql );
 }
 
@@ -56,15 +56,15 @@ void CFiles::FB_DbUpdate(void)
 
 	wxString sql;
 
-	sql = "UPDATE FILES SET ";
-	sql += "FILE_NAME = '" + ExpandSingleQuotes(FileName) + "', ";
-	sql += "FILE_EXT = '" + ExpandSingleQuotes(FileExt) + "', ";
-	sql += "FILE_SIZE = " + FileSize.ToString() + ", ";
-	sql += "FILE_DATETIME = " + DateTime.Format( "'%Y-%m-%d %H:%M:%S'" ) + ", " +
-	       "PATH_FILE_ID = " + (PathFileID.IsNull() ? "NULL" : CUtils::long2string(PathFileID) ) + ", ";
-	sql += "PATH_ID = " + CUtils::long2string(PathID) + ", " +
-	       "FILE_DESCRIPTION = " + (FileDescription.empty() ? "NULL" : "'" + ExpandSingleQuotes(FileDescription) + "'") + " ";
-	sql += "WHERE FILE_ID = "  + CUtils::long2string(FileID);
+	sql = wxT("UPDATE FILES SET ");
+	sql += wxT("FILE_NAME = '") + ExpandSingleQuotes(FileName) + wxT("', ");
+	sql += wxT("FILE_EXT = '") + ExpandSingleQuotes(FileExt) + wxT("', ");
+	sql += wxT("FILE_SIZE = ") + FileSize.ToString() + wxT(", ");
+	sql += wxT("FILE_DATETIME = ") + DateTime.Format( wxT("'%Y-%m-%d %H:%M:%S'") ) + wxT(", ") +
+	       wxT("PATH_FILE_ID = ") + (PathFileID.IsNull() ? wxT("NULL") : CUtils::long2string(PathFileID) ) + wxT(", ");
+	sql += wxT("PATH_ID = ") + CUtils::long2string(PathID) + wxT(", ") +
+	       wxT("FILE_DESCRIPTION = ") + (FileDescription.empty() ? wxT("NULL") : wxT("'") + ExpandSingleQuotes(FileDescription) + wxT("'")) + wxT(" ");
+	sql += wxT("WHERE FILE_ID = ")  + CUtils::long2string(FileID);
 	FB_ExecuteQueryNoReturn( sql );
 }
 
@@ -72,7 +72,7 @@ void CFiles::FB_DbDelete(void)
 {
 	wxString sql;
 
-	sql = "DELETE FROM FILES WHERE FILE_ID = " + CUtils::long2string( FileID );
+	sql = wxT("DELETE FROM FILES WHERE FILE_ID = ") + CUtils::long2string( FileID );
 	FB_ExecuteQueryNoReturn( sql );
 }
 
@@ -104,7 +104,7 @@ void CFiles::FB_FetchRow(void) {
 		FB_st->Get("PATH_ID", tmp);
 		PathID = (long) tmp;
 		if( FB_st->IsNull("FILE_DESCRIPTION") ) {
-			FileDescription = "";
+			FileDescription = wxEmptyString;
 		}
 		else {
 			FB_st->Get( "FILE_DESCRIPTION", stmp );
@@ -126,9 +126,9 @@ void CFiles::FB_FetchRow(void) {
 void CFiles::FB_UpdateDescription( long FileID, const wxString& descr ) {
 	wxString sql;
 
-	sql = "UPDATE FILES SET FILE_DESCRIPTION = ";
-	sql += (descr.empty() ? "NULL" : "'" + ExpandSingleQuotes(descr) + "'");
-	sql += " WHERE FILE_ID = " + CUtils::long2string( FileID );
+	sql = wxT("UPDATE FILES SET FILE_DESCRIPTION = ");
+	sql += (descr.empty() ? wxT("NULL") : wxT("'") + ExpandSingleQuotes(descr) + wxT("'"));
+	sql += wxT(" WHERE FILE_ID = ") + CUtils::long2string( FileID );
 	FB_ExecuteQueryNoReturn( sql );
 }
 

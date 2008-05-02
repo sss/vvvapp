@@ -29,13 +29,20 @@ wxString CUtils::applicationVersion = wxT("0.8.1");
 int CUtils::expectedDatabaseVersion = 13;
 wxString CUtils::strucUpdateDbName = wxT("vvv-struct-update.fdb");
 
+//-----------------------------------------------------------------------------
+//! converts wxString to std::string
 std::string CUtils::wx2std(const wxString& input, wxMBConv* conv)
 {
     if (input.empty())
         return "";
     if (!conv)
         conv = wxConvCurrent;
-    return std::string(input.mb_str(*conv));
+    const wxWX2MBbuf buf(input.mb_str(*conv));
+    // conversion may fail and return 0, which isn't a safe value to pass 
+    // to std:string constructor
+    if (!buf)
+        return "";
+    return std::string(buf);
 }
 //-----------------------------------------------------------------------------
 //! converts std:string to wxString
@@ -47,6 +54,8 @@ wxString CUtils::std2wx(const std::string& input, wxMBConv* conv)
         conv = wxConvCurrent;
     return wxString(input.c_str(), *conv);
 }
+//-----------------------------------------------------------------------------
+//! converts chars that have special meaning in HTML, so they get displayed
 
 void CUtils::MsgErr( wxString errMsg ){
 	wxMessageDialog dialog( NULL, errMsg, applicationName, wxOK|wxICON_ERROR );
@@ -69,12 +78,12 @@ wxString CUtils::HumanReadableFileSize( wxLongLong size ) {
 
 	if( size > 1024*1024 ) {
 		size = size / (1024*1024);
-		retVal = size.ToString() + " MB";
+		retVal = size.ToString() + wxT(" MB");
 	}
 	else {
 		if( size > 1024 ) {
 			size = size / 1024;
-			retVal = size.ToString() + " KB";
+			retVal = size.ToString() + wxT(" KB");
 		}
 		else {
 			retVal = size.ToString();
@@ -109,15 +118,15 @@ wxString CUtils::GetStructUpdateDbName(void) {
 // converts a long to a string
 wxString CUtils::long2string( long val ) {
 	wxString retVal;
-	retVal.Printf( "%d", val );
+	retVal.Printf( wxT("%d"), val );
 	return retVal;
 }
 
 
 
 wxString CUtils::Encrypt( wxString s ) {
-	wxString key = "w2m5t7i0g4ndnra5s4lfdpvlyrepfjemwksdjfrpwuanrtogbjentruglk60947235128";
-	wxString sout( " ", s.Len() );
+	wxString key = wxT("w2m5t7i0g4ndnra5s4lfdpvlyrepfjemwksdjfrpwuanrtogbjentruglk60947235128");
+	wxString sout( wxT(" "), s.Len() );
 	size_t k;
 
 	for( k = 0; k < s.Len(); k++ ) {
@@ -131,7 +140,7 @@ wxString CUtils::Encrypt( wxString s ) {
 wxString CUtils::GetHelpFileName(void) {
 	wxString appPath = wxStandardPaths::Get().GetExecutablePath();
 	wxFileName fn( appPath );
-	fn.SetFullName( "vvv" );
+	fn.SetFullName( wxT("vvv") );
 	wxString fullName = fn.GetFullPath();
 	return fullName;
 }

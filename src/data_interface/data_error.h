@@ -39,6 +39,8 @@ public:
 
 	CDataErrorException( wxString errMsg, ErrorCause ec );
 
+	CDataErrorException( const char *errMsg, ErrorCause ec );
+
 	// return the cause of this error
 	ErrorCause GetErrorCause();
 

@@ -680,14 +680,14 @@ bool CMainFrame::Create( wxWindow* parent, wxWindowID id, const wxString& captio
 	pConfig->Read( wxT("ReopenCatalog"), &m_reopenLastUsedCatalog, defVal );
 	pConfig->Read( wxT("LongTaskBeepTime"), &m_BeepTime, 5 );
 	pConfig->SetPath(wxT("/Settings/DatabaseServer"));
-	pConfig->Read( "ConnectToServer", &DBConnectionData.connectToServer, false );
-	DBConnectionData.serverName = pConfig->Read( "ServerName", "" );
-	DBConnectionData.userName = pConfig->Read( "UserName", "SYSDBA" );
-	wxString pwd = pConfig->Read( "Password", "m1a1s1t1e1r1k1e1y1i1m1p1o1s1s1i1b1l1e1d1e1f1a1u1l1t1p1a1s1s1w1o1r1d" );
-	if( pwd == "m1a1s1t1e1r1k1e1y1i1m1p1o1s1s1i1b1l1e1d1e1f1a1u1l1t1p1a1s1s1w1o1r1d" ) 
-		pwd = "masterkey";	// default password for Firebird servers
+	pConfig->Read( wxT("ConnectToServer"), &DBConnectionData.connectToServer, false );
+	DBConnectionData.serverName = pConfig->Read( wxT("ServerName"), wxEmptyString );
+	DBConnectionData.userName = pConfig->Read( wxT("UserName"), wxT("SYSDBA") );
+	wxString pwd = pConfig->Read( wxT("Password"), wxT("m1a1s1t1e1r1k1e1y1i1m1p1o1s1s1i1b1l1e1d1e1f1a1u1l1t1p1a1s1s1w1o1r1d") );
+	if( pwd == wxT("m1a1s1t1e1r1k1e1y1i1m1p1o1s1s1i1b1l1e1d1e1f1a1u1l1t1p1a1s1s1w1o1r1d") ) 
+		pwd = wxT("masterkey");	// default password for Firebird servers
 	else {
-		if( pwd != "" )	pwd = CUtils::Encrypt( pwd );
+		if( pwd != wxEmptyString )	pwd = CUtils::Encrypt( pwd );
 	}
 	DBConnectionData.password = pwd;
 
@@ -702,8 +702,8 @@ bool CMainFrame::Create( wxWindow* parent, wxWindowID id, const wxString& captio
 	}
 	if( !catalogName.empty() ) {
 		if( !DBConnectionData.connectToServer && !wxFileName::FileExists(catalogName) ) {
-			CUtils::MsgErr( "This catalog file does not exist:\n\n" + catalogName );
-			catalogName = "";
+			CUtils::MsgErr( _("This catalog file does not exist:\n\n") + catalogName );
+			catalogName = wxEmptyString;
 		}
 	}
 	if( !catalogName.empty() )
@@ -1279,12 +1279,12 @@ void CMainFrame::CreateListControlHeaders(void) {
 	wxListItem item;
 	item.SetMask( wxLIST_MASK_STATE|wxLIST_MASK_TEXT|wxLIST_MASK_IMAGE|wxLIST_MASK_DATA );
 	int i = lctl->InsertItem( item );
-	lctl->SetItem( i, 0, "a" );
-	lctl->SetItem( i, 1, "a" );
-	lctl->SetItem( i, 2, "a" );
-	lctl->SetItem( i, 3, "a" );
+	lctl->SetItem( i, 0, wxT("a") );
+	lctl->SetItem( i, 1, wxT("a") );
+	lctl->SetItem( i, 2, wxT("a") );
+	lctl->SetItem( i, 3, wxT("a") );
 	if( m_CurrentView == cvVirtual )
-		lctl->SetItem( i, 4, "a" );
+		lctl->SetItem( i, 4, wxT("a") );
 
 	if( m_CurrentView == cvPhysical ) {
 		for( k = 0; k < N_BASE_COLS_PHYSICAL; k++ )
@@ -1385,7 +1385,7 @@ void CMainFrame::DeleteAudioMetadataListControlHeaders( void ) {
 void CMainFrame::OnOPENClick( wxCommandEvent& WXUNUSED(event) )
 {
 	wxString caption = _("Open catalog");
-	wxString databaseName = "";
+	wxString databaseName = wxEmptyString;
 	if( !DBConnectionData.connectToServer ) {
 		// open a local file
 		wxString wildcard = _("VVV  files (*.vvv)|*.vvv|All files (*.*)|*.*");
@@ -1394,7 +1394,7 @@ void CMainFrame::OnOPENClick( wxCommandEvent& WXUNUSED(event) )
 			databaseName = fd.GetPath();
 	} else {
 		CDialogOpenCatalog dlg( this );
-		dlg.SetAction( "O" );
+		dlg.SetAction( wxT("O") );
 		dlg.SetShowBrowseButton( DBConnectionData.IsLocalhost() );
 		if( dlg.ShowModal() == wxID_OK )
 			databaseName = dlg.GetCatalogName();
@@ -1489,12 +1489,12 @@ CMainFrame::~CMainFrame() {
 	pConfig->Write( wxT("ReopenCatalog"), m_reopenLastUsedCatalog );
 	pConfig->Write( wxT("LongTaskBeepTime"), m_BeepTime );
 	pConfig->SetPath(wxT("/Settings/DatabaseServer"));
-	pConfig->Write( "ConnectToServer", DBConnectionData.connectToServer );
-	pConfig->Write( "ServerName",  DBConnectionData.serverName );
-	pConfig->Write( "UserName",  DBConnectionData.userName );
+	pConfig->Write( wxT("ConnectToServer"), DBConnectionData.connectToServer );
+	pConfig->Write( wxT("ServerName"),  DBConnectionData.serverName );
+	pConfig->Write( wxT("UserName"),  DBConnectionData.userName );
 	wxString pwd = DBConnectionData.password;
-	if( pwd != "" )	pwd = CUtils::Encrypt( pwd );
-	pConfig->Write( "Password",  pwd );
+	if( pwd != wxEmptyString )	pwd = CUtils::Encrypt( pwd );
+	pConfig->Write( wxT("Password"),  pwd );
 
 	delete []m_amdColumnsToShow;
 
@@ -1602,9 +1602,9 @@ void CMainFrame::AddAudioMetatataToListControl( CFilesAudioMetadata fam, wxListC
 	if( m_amdColumnsToShow[amdArtist] ) lctl->SetItem( itemIndex, k++, fam.Artist );
 	if( m_amdColumnsToShow[amdAlbum] ) lctl->SetItem( itemIndex, k++, fam.Album );
 	if( m_amdColumnsToShow[amdTitle] ) lctl->SetItem( itemIndex, k++, fam.Title );
-	if( m_amdColumnsToShow[amdYear] ) lctl->SetItem( itemIndex, k++, fam.Year == 0 ? "" : CUtils::long2string(fam.Year) );
+	if( m_amdColumnsToShow[amdYear] ) lctl->SetItem( itemIndex, k++, fam.Year == 0 ? wxEmptyString : CUtils::long2string(fam.Year) );
 	if( m_amdColumnsToShow[amdComment] ) lctl->SetItem( itemIndex, k++, fam.Comment );
-	if( m_amdColumnsToShow[amdNumber] ) lctl->SetItem( itemIndex, k++, fam.Number == 0 ? "" : CUtils::long2string(fam.Number) );
+	if( m_amdColumnsToShow[amdNumber] ) lctl->SetItem( itemIndex, k++, fam.Number == 0 ? wxEmptyString : CUtils::long2string(fam.Number) );
 	if( m_amdColumnsToShow[amdGenre] ) lctl->SetItem( itemIndex, k++, fam.Genre );
 
 	if( m_amdColumnsToShow[amdLength] ) {
@@ -1623,18 +1623,18 @@ void CMainFrame::AddAudioMetatataToListControl( CFilesAudioMetadata fam, wxListC
 		wxDateTime dt( h, m, s );
 		wxString sl = dt.FormatTime();
 		wxString stmp;
-		if( sl.StartsWith("0.0", &stmp) )
+		if( sl.StartsWith(wxT("0.0"), &stmp) )
 			sl = stmp;
 		else {
-			if( sl.StartsWith("0.", &stmp) )
+			if( sl.StartsWith(wxT("0."), &stmp) )
 				sl = stmp;
 		}
 		lctl->SetItem( itemIndex, k++, sl );
 	}
 
-	if( m_amdColumnsToShow[amdBitrate] ) lctl->SetItem( itemIndex, k++, fam.Bitrate == 0 ? "" : CUtils::long2string(fam.Bitrate) );
-	if( m_amdColumnsToShow[amdSampleRate] ) lctl->SetItem( itemIndex, k++, fam.SampleRate == 0 ? "" : CUtils::long2string(fam.SampleRate) );
-	if( m_amdColumnsToShow[amdChannels] ) lctl->SetItem( itemIndex, k++, fam.Channels == 0 ? "" : CUtils::long2string(fam.Channels) );
+	if( m_amdColumnsToShow[amdBitrate] ) lctl->SetItem( itemIndex, k++, fam.Bitrate == 0 ? wxEmptyString : CUtils::long2string(fam.Bitrate) );
+	if( m_amdColumnsToShow[amdSampleRate] ) lctl->SetItem( itemIndex, k++, fam.SampleRate == 0 ? wxEmptyString : CUtils::long2string(fam.SampleRate) );
+	if( m_amdColumnsToShow[amdChannels] ) lctl->SetItem( itemIndex, k++, fam.Channels == 0 ? wxEmptyString : CUtils::long2string(fam.Channels) );
 
 	// sets the width of the metadata columns
 	k = firstColumnIndex;
@@ -1678,7 +1678,7 @@ void CMainFrame::ShowFolderFiles( wxTreeItemId itemID ) {
 	while( !files.IsEOF() ) {
 
 		bool audioMetadataAvailable = false;
-		if( files.FileExt.Upper() == "MP3" ) {
+		if( files.FileExt.Upper() == wxT("MP3") ) {
 			fam.FileID = files.FileID;
 			audioMetadataAvailable = fam.DBReadMetadata();
 			foundAudioFiles = true;
@@ -1691,11 +1691,11 @@ void CMainFrame::ShowFolderFiles( wxTreeItemId itemID ) {
 		item.SetMask( wxLIST_MASK_STATE|wxLIST_MASK_TEXT|wxLIST_MASK_IMAGE|wxLIST_MASK_DATA );
 		int i = lctl->InsertItem( item );
 		lctl->SetItem( i, 0, files.FileName, imageIndex );
-		lctl->SetItem( i, 1, files.IsFolder() ? "" : CUtils::HumanReadableFileSize(files.FileSize) );
+		lctl->SetItem( i, 1, files.IsFolder() ? wxEmptyString : CUtils::HumanReadableFileSize(files.FileSize) );
 		lctl->SetItem( i, 2, files.FileExt );
-		lctl->SetItem( i, 3, files.DateTime.FormatDate() + " " + files.DateTime.FormatTime() );
+		lctl->SetItem( i, 3, files.DateTime.FormatDate() + wxT(" ") + files.DateTime.FormatTime() );
 		lctl->SetItem( i, 4, FormatObjectDescriptionForListView(files.FileDescription) );
-		MyListItemData *itemData = new MyListItemData( files.FileID, files.PathFileID.IsNull() ? 0 : (long) files.PathFileID, files.FileName, files.FileExt, files.FileSize, files.DateTime, files.IsFolder(), "", files.FileDescription );
+		MyListItemData *itemData = new MyListItemData( files.FileID, files.PathFileID.IsNull() ? 0 : (long) files.PathFileID, files.FileName, files.FileExt, files.FileSize, files.DateTime, files.IsFolder(), wxEmptyString, files.FileDescription );
 		lctl->SetItemData( i, (long) itemData );
 
 		if( audioMetadataAvailable ) {
@@ -1765,7 +1765,7 @@ void CMainFrame::ShowVirtualFolderFiles( wxTreeItemId itemID ) {
 		wxString prevFileName = files.FileName;
 		bool wasFolder = files.IsFolder();
 
-		if( files.FileExt.Upper() == "MP3" ) {
+		if( files.FileExt.Upper() == wxT("MP3") ) {
 			foundAudioFiles = true;
 		}
 
@@ -1785,7 +1785,7 @@ void CMainFrame::ShowVirtualFolderFiles( wxTreeItemId itemID ) {
 				if( !files.IsFolder() ) break;
 
 				// here if the current row is a folder with the same name as the one already in the listview
-				lctl->SetItem( i, 4, "" );	// remove physical path since it has no meaning (there are more than one)
+				lctl->SetItem( i, 4, wxEmptyString );	// remove physical path since it has no meaning (there are more than one)
 
 				files.DBNextRow();	// sjip this row
 			}
@@ -1939,7 +1939,7 @@ void CMainFrame::OnNewVirtualSubfolderClick( wxCommandEvent& WXUNUSED(event) )
 void CMainFrame::CreateNewVirtualFolder( CNullableLong FatherID, wxString windowTitle ) {
 	wxTreeCtrl *tctl = GetTreeVirtualControl();
 	wxTreeItemId fatherItem;
-	wxString folderName = "";
+	wxString folderName = wxEmptyString;
 
 	if( FatherID.IsNull() ) {
 		// this is a root folder
@@ -1954,7 +1954,7 @@ void CMainFrame::CreateNewVirtualFolder( CNullableLong FatherID, wxString window
 	wxTextEntryDialog ted( this, _("Enter the new folder name"), windowTitle, folderName, wxOK | wxCANCEL );
 	if( ted.ShowModal() != wxID_OK ) return;
 	folderName = ted.GetValue();
-	if( folderName == "" ) return;
+	if( folderName == wxEmptyString ) return;
 
 	// adds the new folder to the database
 	CVirtualPaths pth;
@@ -2019,7 +2019,7 @@ void CMainFrame::OnMRUFile( wxCommandEvent& event ) {
 	wxString fileName = m_fileHistory->GetHistoryFile( i );
 	if( fileName.empty() ) return;
 	if( !DBConnectionData.connectToServer && !wxFileName::FileExists(fileName) ) {
-		CUtils::MsgErr( "This catalog file does not exist any more" );
+		CUtils::MsgErr( _("This catalog file does not exist any more") );
 		m_fileHistory->RemoveFileFromHistory( i );
 		return;
 	}
@@ -2047,9 +2047,9 @@ void CMainFrame::OpenDatabase( wxString fileName, int expectedVersion ) {
 	}
 	else {
 		// parameters for embedded server
-		serverName = "";
-		userName = "SYSDBA";
-		password = "masterkey";
+		serverName = wxEmptyString;
+		userName = wxT("SYSDBA");
+		password = wxT("masterkey");
 	}
 	CBaseDB::CreateFirebirdDatabase( serverName, fileName, userName, password );
 	errorOpeningDB = false;
@@ -2109,7 +2109,7 @@ void CMainFrame::OpenDatabase( wxString fileName, int expectedVersion ) {
 	m_fileHistory->AddFileToHistory( fileName );
 
 	// sets the main window caption
-	SetTitle( fileName + " - " + CUtils::GetApplicationName() );
+	SetTitle( fileName + wxT(" - ") + CUtils::GetApplicationName() );
 
 }
 /*!
@@ -2244,13 +2244,13 @@ void CMainFrame::OnEXITClick( wxCommandEvent& WXUNUSED(event) )
 void CMainFrame::OnABOUTClick( wxCommandEvent& WXUNUSED(event) )
 {
 	wxAboutDialogInfo info;
-	info.SetName( "VVV" );
+	info.SetName( wxT("VVV") );
 	info.SetVersion( CUtils::GetApplicationVersion() );
-	info.SetWebSite( "http://vvvapp.sourceforge.net/" );
+	info.SetWebSite( wxT("http://vvvapp.sourceforge.net/") );
 	info.SetDescription( _("VVV (Virtual Volumes View): a program to catalog removable devices like CDs and DVDs\n\n\"The mud of Venaus is the blood of this land\"") );
 	info.SetCopyright( _("Copyright (C) 2007-2008 The VVV Team") );
-	info.AddDeveloper( "Fulvio Senore: main developer" );
-	info.AddDeveloper( "Jan Albartus: worked at the portable version" );
+	info.AddDeveloper( _("Fulvio Senore: main developer") );
+	info.AddDeveloper( _("Jan Albartus: worked at the portable version") );
 	info.AddArtist( _("This program uses the Tango icons (http://tango.freedesktop.org/Tango_Desktop_Project )") );
 	info.SetLicence( _("This is open source software, distributed under the GNU GENERAL PUBLIC LICENSE") );
 
@@ -2264,13 +2264,13 @@ void CMainFrame::OnABOUTClick( wxCommandEvent& WXUNUSED(event) )
 void CMainFrame::OnNEWClick( wxCommandEvent& WXUNUSED(event) )
 {
 	if( DBConnectionData.connectToServer && !DBConnectionData.IsLocalhost() ) {
-		CUtils::MsgErr( "Unable to create a new catalog.\n\nYou are connecting to a database server on another computer. You must execute this program on the server to be able to create a new catalog." );
+		CUtils::MsgErr( _("Unable to create a new catalog.\n\nYou are connecting to a database server on another computer. You must execute this program on the server to be able to create a new catalog.") );
 		return;
 	}
 
 	wxString caption = _("New catalog");
 	wxString wildcard = _("VVV  files (*.vvv)|*.vvv|All files (*.*)|*.*");
-	wxString databaseFile = "";
+	wxString databaseFile = wxEmptyString;
 	if( !DBConnectionData.connectToServer ) {
 		// create a local file
 		wxString wildcard = _("VVV  files (*.vvv)|*.vvv|All files (*.*)|*.*");
@@ -2279,7 +2279,7 @@ void CMainFrame::OnNEWClick( wxCommandEvent& WXUNUSED(event) )
 			databaseFile = fd.GetPath();
 	} else {
 		CDialogOpenCatalog dlg( this );
-		dlg.SetAction( "N" );
+		dlg.SetAction( wxT("N") );
 		dlg.SetShowBrowseButton( DBConnectionData.IsLocalhost() );
 		if( dlg.ShowModal() == wxID_OK )
 			databaseFile = dlg.GetCatalogName();
@@ -2291,12 +2291,12 @@ void CMainFrame::OnNEWClick( wxCommandEvent& WXUNUSED(event) )
 	{
 		wxFileName fn(databaseFile);
 		if( fn.GetExt().empty() )
-			databaseFile += ".vvv";
+			databaseFile += wxT(".vvv");
 	}
 
 	// check if the database already exists
 	if( wxFileExists(databaseFile) ) {
-		CUtils::MsgErr( _("Unable to create the new catalog. You have choosen an existing file:\n\n" + databaseFile + "\n\nYou must type the name of a non-existing file.") );
+		CUtils::MsgErr( _("Unable to create the new catalog. You have choosen an existing file:\n\n") + databaseFile + _("\n\nYou must type the name of a non-existing file.") );
 		return;
 	}
 
@@ -2325,7 +2325,7 @@ void CMainFrame::OnNEWClick( wxCommandEvent& WXUNUSED(event) )
 	wxBusyCursor wait;
 	
 	// restore the database
-	CBaseDB::CreateFirebirdDatabaseOnDisk( "", "SYSDBA", "masterkey", backupName, databaseFile );
+	CBaseDB::CreateFirebirdDatabaseOnDisk( wxEmptyString, wxT("SYSDBA"), wxT("masterkey"), backupName, databaseFile );
 	
 	// since under Windows the restore process creates an all-uppercase file name, rename it to the original name
 #ifdef __WXMSW__
@@ -2334,7 +2334,7 @@ void CMainFrame::OnNEWClick( wxCommandEvent& WXUNUSED(event) )
 		wxString name = fn.GetFullName();
 		wxString path = fn.GetPath( wxPATH_GET_VOLUME | wxPATH_GET_SEPARATOR );
 		wxString ucDatabaseFile = path + name.Upper();
-		wxString tmpDatabaseFile = ucDatabaseFile + "$$tmp$$";
+		wxString tmpDatabaseFile = ucDatabaseFile + wxT("$$tmp$$");
 		if( wxFileExists(tmpDatabaseFile) )
 			wxRemoveFile( tmpDatabaseFile );
 		wxRenameFile( ucDatabaseFile, tmpDatabaseFile, false );
@@ -2358,9 +2358,9 @@ void CMainFrame::OnEditObjectDescriptionClick( wxCommandEvent& WXUNUSED(event) )
 		int nSelectedObjects = lctl->GetSelectedItemCount();
 		wxASSERT( nSelectedObjects > 0 );
 		wxString objectName;
-		wxString orgDescr = "";
+		wxString orgDescr = wxEmptyString;
 		if( nSelectedObjects > 1 )
-			objectName = _("Multiple items") + wxString::Format( " (%d)", nSelectedObjects );
+			objectName = _("Multiple items") + wxString::Format( wxT(" (%d)"), nSelectedObjects );
 		else {
 			long item = -1;
 			item = lctl->GetNextItem( item, wxLIST_NEXT_ALL, wxLIST_STATE_SELECTED );
@@ -2466,8 +2466,8 @@ wxString CMainFrame::CreateVolumeLabel( const wxString& VolumeName, const wxStri
 	retVal = VolumeName;
 	if( !VolumeDescription.empty() ) {
 		wxString s = VolumeDescription.Left(20);
-		s.Replace( "\n", " " );
-		retVal += " - " + s;
+		s.Replace( wxT("\n"), wxT(" ") );
+		retVal += wxT(" - ") + s;
 	}
 	return retVal;
 }
@@ -2477,7 +2477,7 @@ wxString CMainFrame::FormatObjectDescriptionForListView( const wxString& ObjectD
 
 	retVal = ObjectDescription.Left(50);
 	if( !retVal.empty() ) {
-		retVal.Replace( "\n", " " );
+		retVal.Replace( wxT("\n"), wxT(" ") );
 	}
 	return retVal;
 }
@@ -2693,13 +2693,13 @@ void CMainFrame::OnButtonSearchClick( wxCommandEvent& WXUNUSED(event) ) {
 		switch( searchKind ) {
 			case fskStartsWith:
 				useWildcardsFilename = true;
-				fileName = CBaseRec::EscapeWildcards( fileName, "/" );
-				fileName = fileName + "%";
+				fileName = CBaseRec::EscapeWildcards( fileName, wxT("/") );
+				fileName = fileName + wxT("%");
 				break;
 			case fskContains:
 				useWildcardsFilename = true;
-				fileName = CBaseRec::EscapeWildcards( fileName, "/" );
-				fileName = "%" + fileName + "%";
+				fileName = CBaseRec::EscapeWildcards( fileName, wxT("/") );
+				fileName = wxT("%") + fileName + wxT("%");
 				break;
 		}
 	}
@@ -2710,13 +2710,13 @@ void CMainFrame::OnButtonSearchClick( wxCommandEvent& WXUNUSED(event) ) {
 		switch( searchKind ) {
 			case fskStartsWith:
 				useWildcardsDescription = true;
-				description = CBaseRec::EscapeWildcards( description, "/" );
-				description = description + "%";
+				description = CBaseRec::EscapeWildcards( description, wxT("/") );
+				description = description + wxT("%");
 				break;
 			case fskContains:
 				useWildcardsDescription = true;
-				description = CBaseRec::EscapeWildcards( description, "/" );
-				description = "%" + description + "%";
+				description = CBaseRec::EscapeWildcards( description, wxT("/") );
+				description = wxT("%") + description + wxT("%");
 				break;
 		}
 	}
@@ -2745,7 +2745,7 @@ void CMainFrame::OnButtonSearchClick( wxCommandEvent& WXUNUSED(event) ) {
 			nl.SetNull(true);
 			files.DBStartSearchVolumeFiles( fileName, useWildcardsFilename, ext, description, useWildcardsDescription, nl );
 			while( !files.IsEOF() ) {
-				if( files.FileExt.Upper() == "MP3" ) {
+				if( files.FileExt.Upper() == wxT("MP3") ) {
 					foundAudioFiles = true;
 				}
 				AddRowToVirtualListControl( lctl, files.IsFolder(), files.FileName, files.FileSize, files.FileExt, files.DateTime, CPaths::GetFullPath(files.PathID), files.FileID, files.PathFileID.IsNull() ? 0 : (long) files.PathFileID, files.FileDescription, files.FileID );
@@ -2769,7 +2769,7 @@ void CMainFrame::OnButtonSearchClick( wxCommandEvent& WXUNUSED(event) ) {
 				CFiles files;
 				files.DBStartSearchVolumeFiles( fileName, useWildcardsFilename, ext, description, useWildcardsDescription, itemData->GetVolumeID() );
 				while( !files.IsEOF() ) {
-					if( files.FileExt.Upper() == "MP3" ) {
+					if( files.FileExt.Upper() == wxT("MP3") ) {
 						foundAudioFiles = true;
 					}
 					AddRowToVirtualListControl( lctl, files.IsFolder(), files.FileName, files.FileSize, files.FileExt, files.DateTime, CPaths::GetFullPath(files.PathID), files.FileID, files.PathFileID.IsNull() ? 0 : (long) files.PathFileID, files.FileDescription, files.FileID );
@@ -2820,7 +2820,7 @@ int CMainFrame::AddRowToVirtualListControl( wxListCtrl* lctl, bool isFolder, wxS
 
 	CFilesAudioMetadata fam;
 	bool audioMetadataAvailable = false;
-	if( ext.Upper() == "MP3" ) {
+	if( ext.Upper() == wxT("MP3") ) {
 		fam.FileID = physicalFileID;
 		audioMetadataAvailable = fam.DBReadMetadata();
 	}
@@ -2830,9 +2830,9 @@ int CMainFrame::AddRowToVirtualListControl( wxListCtrl* lctl, bool isFolder, wxS
 	item.SetMask( wxLIST_MASK_STATE|wxLIST_MASK_TEXT|wxLIST_MASK_IMAGE|wxLIST_MASK_DATA );
 	int i = lctl->InsertItem( item );
 	lctl->SetItem( i, 0, fileName, imageIndex );
-	lctl->SetItem( i, 1, isFolder ? "" : CUtils::HumanReadableFileSize(fileSize) );
+	lctl->SetItem( i, 1, isFolder ? wxEmptyString : CUtils::HumanReadableFileSize(fileSize) );
 	lctl->SetItem( i, 2, ext );
-	lctl->SetItem( i, 3, dateTime.FormatDate() + " " + dateTime.FormatTime() );
+	lctl->SetItem( i, 3, dateTime.FormatDate() + wxT(" ") + dateTime.FormatTime() );
 	lctl->SetItem( i, 4, physicalPath );
 	lctl->SetItem( i, 5, FormatObjectDescriptionForListView(fileDescription) );
 	MyListItemData *itemData = new MyListItemData( fileID, virtualPathFileID, fileName, ext, fileSize, dateTime, isFolder, physicalPath, fileDescription );
@@ -2856,7 +2856,7 @@ void CMainFrame::SearchVirtualFolder( wxString fileName, bool useFileNameWildcar
 	bool foundAudioFiles = false;
 	files.DBStartSearchFolderFiles( fileName, useFileNameWildcards, ext, description, useDescriptionWildcards, folderID );
 	while( !files.IsEOF() ) {
-		if( files.FileExt.Upper() == "MP3" ) {
+		if( files.FileExt.Upper() == wxT("MP3") ) {
 			foundAudioFiles = true;
 		}
 		AddRowToVirtualListControl( lctl, files.IsFolder(), files.FileName, files.FileSize, files.FileExt, files.DateTime, files.FullPhysicalPath, files.FileID, files.VirtualPathFileID.IsNull() ? 0 : (long) files.VirtualPathFileID, files.FileDescription, files.PhysicalFileID );
@@ -2885,7 +2885,7 @@ void CMainFrame::SearchPhysicalFolder( wxString fileName, bool useFileNameWildca
 	bool foundAudioFiles = false;
 	files.DBStartSearchFolderFiles( fileName, useFileNameWildcards, ext, description, useDescriptionWildcards, folderID );
 	while( !files.IsEOF() ) {
-		if( files.FileExt.Upper() == "MP3" ) {
+		if( files.FileExt.Upper() == wxT("MP3") ) {
 			foundAudioFiles = true;
 		}
 		AddRowToVirtualListControl( lctl, files.IsFolder(), files.FileName, files.FileSize, files.FileExt, files.DateTime, CPaths::GetFullPath(files.PathID), files.FileID, files.PathFileID.IsNull() ? 0 : (long) files.PathFileID, files.FileDescription, files.FileID );
@@ -2954,14 +2954,14 @@ void CMainFrame::OnListControlItemActivated( wxListEvent& event )
 void CMainFrame::UpdateStatusBar( long nObjects, wxLongLong sizeObjects ) {
 
 	if( nObjects == 0 )
-		m_StatusBar->SetStatusText( "", sbeObjectsNumber );
+		m_StatusBar->SetStatusText( wxEmptyString, sbeObjectsNumber );
 	else {
 		wxString s = _("Objects: ") + CUtils::long2string( nObjects );
 		m_StatusBar->SetStatusText( s, sbeObjectsNumber );
 	}
 
 	if( sizeObjects == 0 )
-		m_StatusBar->SetStatusText( "", sbeObjectsSize );
+		m_StatusBar->SetStatusText( wxEmptyString, sbeObjectsSize );
 	else {
 		wxString s = _("Total size: ") + CUtils::HumanReadableFileSize( sizeObjects );
 		m_StatusBar->SetStatusText( s, sbeObjectsSize );

@@ -28,17 +28,17 @@ using namespace IBPP;
 
 wxString CFilesAudioMetadata::String2SQL( wxString s ) {
 	wxString retVal;
-	if( s == "" ) 
-		retVal = "NULL";
+	if( s == wxEmptyString ) 
+		retVal = wxT("NULL");
 	else
-		retVal = "'" + ExpandSingleQuotes(s) + "'";
+		retVal = wxT("'") + ExpandSingleQuotes(s) + wxT("'");
 	return retVal;
 }
 
 wxString CFilesAudioMetadata::Long2SQL( long num ) {
 	wxString retVal;
 	if( num == 0 ) 
-		retVal = "NULL";
+		retVal = wxT("NULL");
 	else
 		retVal = CUtils::long2string(num);
 	return retVal;
@@ -53,19 +53,19 @@ void CFilesAudioMetadata::FB_DbInsert(void) {
 
 	wxASSERT( !FileID.IsNull() );
 	
-	sql = "INSERT INTO FILES_AUDIO_METADATA (FILE_ID, TRACK_TITLE, TRACK_ARTIST, TRACK_ALBUM, TRACK_YEAR, TRACK_COMMENT, TRACK_NUMBER, TRACK_GENRE, TRACK_BITRATE, TRACK_SAMPLE_RATE, TRACK_CHANNELS, TRACK_LENGTH) VALUES (";
-	sql += CUtils::long2string(FileID) + ", " +
-	       String2SQL(Title.Left(100)) + ", " + 
-	       String2SQL(Artist.Left(100)) + ", " + 
-	       String2SQL(Album.Left(100)) + ", " + 
-		   Long2SQL( Year ) + ", " + 
-	       String2SQL(Comment.Left(500)) + ", " + 
-		   Long2SQL( Number ) + ", " + 
-	       String2SQL(Genre.Left(100)) + ", " + 
-		   Long2SQL( Bitrate ) + ", " + 
-		   Long2SQL( SampleRate ) + ", " + 
-		   Long2SQL( Channels ) + ", " + 
-		   Long2SQL( Length ) + ")";
+	sql = wxT("INSERT INTO FILES_AUDIO_METADATA (FILE_ID, TRACK_TITLE, TRACK_ARTIST, TRACK_ALBUM, TRACK_YEAR, TRACK_COMMENT, TRACK_NUMBER, TRACK_GENRE, TRACK_BITRATE, TRACK_SAMPLE_RATE, TRACK_CHANNELS, TRACK_LENGTH) VALUES (");
+	sql += CUtils::long2string(FileID) + wxT(", ") +
+	       String2SQL(Title.Left(100)) + wxT(", ") + 
+	       String2SQL(Artist.Left(100)) + wxT(", ") + 
+	       String2SQL(Album.Left(100)) + wxT(", ") + 
+		   Long2SQL( Year ) + wxT(", ") + 
+	       String2SQL(Comment.Left(500)) + wxT(", ") + 
+		   Long2SQL( Number ) + wxT(", ") + 
+	       String2SQL(Genre.Left(100)) + wxT(", ") + 
+		   Long2SQL( Bitrate ) + wxT(", ") + 
+		   Long2SQL( SampleRate ) + wxT(", ") + 
+		   Long2SQL( Channels ) + wxT(", ") + 
+		   Long2SQL( Length ) + wxT(")");
 	FB_ExecuteQueryNoReturn( sql );
 }
 
@@ -78,7 +78,7 @@ void CFilesAudioMetadata::FB_DbDelete(void)
 {
 	wxString sql;
 
-	sql = "DELETE FROM FILES_AUDIO_METADATA WHERE FILE_ID = " + CUtils::long2string( FileID );
+	sql = wxT("DELETE FROM FILES_AUDIO_METADATA WHERE FILE_ID = ") + CUtils::long2string( FileID );
 	FB_ExecuteQueryNoReturn( sql );
 }
 
@@ -92,14 +92,14 @@ void CFilesAudioMetadata::FB_FetchRow(void) {
 		eof = false;
 		FB_st->Get("FILE_ID", tmp);
 		FileID = (long) tmp;
-		Title = FB_st->Get( "TRACK_TITLE", stmp ) ? "" : CUtils::std2wx( stmp );
-		Artist = FB_st->Get( "TRACK_ARTIST", stmp ) ? "" : CUtils::std2wx( stmp );
-		Album = FB_st->Get( "TRACK_ALBUM", stmp ) ? "" : CUtils::std2wx( stmp );
-		Title = FB_st->Get( "TRACK_TITLE", stmp ) ? "" : CUtils::std2wx( stmp );
+		Title = FB_st->Get( "TRACK_TITLE", stmp ) ? wxEmptyString : CUtils::std2wx( stmp );
+		Artist = FB_st->Get( "TRACK_ARTIST", stmp ) ? wxEmptyString : CUtils::std2wx( stmp );
+		Album = FB_st->Get( "TRACK_ALBUM", stmp ) ? wxEmptyString : CUtils::std2wx( stmp );
+		Title = FB_st->Get( "TRACK_TITLE", stmp ) ? wxEmptyString : CUtils::std2wx( stmp );
 		Year = FB_st->Get( "TRACK_YEAR", tmp ) ? 0 : (int) tmp;
-		Comment = FB_st->Get( "TRACK_COMMENT", stmp ) ? "" : CUtils::std2wx( stmp );
+		Comment = FB_st->Get( "TRACK_COMMENT", stmp ) ? wxEmptyString : CUtils::std2wx( stmp );
 		Number = FB_st->Get( "TRACK_NUMBER", tmp ) ? 0 : (int) tmp;
-		Genre = FB_st->Get( "TRACK_GENRE", stmp ) ? "" : CUtils::std2wx( stmp );
+		Genre = FB_st->Get( "TRACK_GENRE", stmp ) ? wxEmptyString : CUtils::std2wx( stmp );
 		Bitrate = FB_st->Get( "TRACK_BITRATE", tmp ) ? 0 : (int) tmp;
 		SampleRate = FB_st->Get( "TRACK_SAMPLE_RATE", tmp ) ? 0 : (int) tmp;
 		Channels = FB_st->Get( "TRACK_CHANNELS", tmp ) ? 0 : (int) tmp;

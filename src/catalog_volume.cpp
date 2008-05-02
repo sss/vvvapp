@@ -157,7 +157,7 @@ void CDialogCatalogVolume::Init()
     m_CurrentFolder = NULL;
     m_HistoryListBox = NULL;
 ////@end CDialogCatalogVolume member initialisation
-	m_realVolumeName = "";
+	m_realVolumeName = wxEmptyString;
 }
 /*!
  * Control creation for Dialog
@@ -224,7 +224,7 @@ void CDialogCatalogVolume::CreateControls()
 
 ////@end CDialogCatalogVolume content construction
 
-	m_CurrentFolder->SetLabel( "" );
+	m_CurrentFolder->SetLabel( wxEmptyString );
 }
 
 /*!
@@ -284,12 +284,12 @@ void CDialogCatalogVolume::OnGetVolumeNameClick( wxCommandEvent& WXUNUSED(event)
 void CDialogCatalogVolume::OnButtonCatalogClick( wxCommandEvent& WXUNUSED(event) )
 {
 	wxString path = m_VolumePath->GetValue();
-	if( path == "" ) {
+	if( path == wxEmptyString ) {
 		CUtils::MsgErr( _("The volume path is missing") );
 		return;
 	}
 	wxString vn = m_VolumeName->GetValue();
-	if( vn == "" ) {
+	if( vn == wxEmptyString ) {
 		CUtils::MsgErr( _("The volume name is missing") );
 		return;
 	}
@@ -335,12 +335,12 @@ void CDialogCatalogVolume::OnButtonCatalogClick( wxCommandEvent& WXUNUSED(event)
 	// adds this volume to the history listbox
 	wxString s = m_VolumeName->GetValue();
 	if( !m_realVolumeName.empty() )
-		s += " - " + m_realVolumeName;
+		s += wxT(" - ") + m_realVolumeName;
 	m_HistoryListBox->InsertItems( 1, &s, 0 );
 
-	m_VolumeName->SetValue( wxT("") );
-	m_CurrentFolder->SetLabel( "" );
-	m_realVolumeName = "";
+	m_VolumeName->SetValue( wxEmptyString );
+	m_CurrentFolder->SetLabel( wxEmptyString );
+	m_realVolumeName = wxEmptyString;
 	SetCursor(curCursor);
 }
 
@@ -377,7 +377,7 @@ void CDialogCatalogVolume::CatalogSingleFolder( CBaseDB* db, wxString path, long
 		CFiles file;
 		file.FileName = fileName;
 		file.FileExt = fn.GetExt();
-		if( file.FileExt.Len() > 30 ) file.FileExt = "";	// such a long extension is surely a meaningless temporary file
+		if( file.FileExt.Len() > 30 ) file.FileExt = wxEmptyString;	// such a long extension is surely a meaningless temporary file
 //		file.DateTime = fn.GetModificationTime();
 		time_t t = wxFileModificationTime( fn.GetFullPath().fn_str() );
 		file.DateTime = t;
@@ -386,7 +386,7 @@ void CDialogCatalogVolume::CatalogSingleFolder( CBaseDB* db, wxString path, long
 		file.PathFileID.SetNull(true);
 		file.DbInsert();
 
-		if( file.FileExt == "mp3" ) {
+		if( file.FileExt == wxT("mp3") ) {
 			CFilesAudioMetadata metaData;
 			if( CAudioMetadata::ReadMP3Metadata( fn.GetFullPath(), metaData ) ) {
 				metaData.FileID = file.FileID;
@@ -406,7 +406,7 @@ void CDialogCatalogVolume::CatalogSingleFolder( CBaseDB* db, wxString path, long
 		// stores the folder as a file to simplify data retrieval
 		CFiles file;
 		file.FileName = fileName;
-		file.FileExt = "";
+		file.FileExt = wxEmptyString;
 		file.DateTime = dirName.GetModificationTime();
 		file.FileSize = 0;
 		file.PathID = pth.PathID;
@@ -447,7 +447,7 @@ void CDialogCatalogVolume::OnHelpClick( wxCommandEvent& WXUNUSED(event) )
 
 void CDialogCatalogVolume::OnVolumeBrowseClick( wxCommandEvent& WXUNUSED(event) )
 {
-	wxDirDialog dlg( this, _("Select the volume to catalog"), "", wxDD_DEFAULT_STYLE|wxDD_DIR_MUST_EXIST );
+	wxDirDialog dlg( this, _("Select the volume to catalog"), wxEmptyString, wxDD_DEFAULT_STYLE|wxDD_DIR_MUST_EXIST );
 	if( dlg.ShowModal() == wxID_OK )
 		m_VolumePath->SetValue( dlg.GetPath() );
 }

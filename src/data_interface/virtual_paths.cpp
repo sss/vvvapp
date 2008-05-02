@@ -23,7 +23,7 @@
 #include "virtual_paths.h"
 
 CVirtualPaths::CVirtualPaths(void) {
-	PathName = "";
+	PathName = wxEmptyString;
 }
 
 CVirtualPaths::~CVirtualPaths(void) {
@@ -34,9 +34,9 @@ void CVirtualPaths::DBStartQueryListPaths( CNullableLong FathID ) {
 	wxString sql;
 
 	if( FathID.IsNull() )
-		sql = "SELECT * FROM VIRTUAL_PATHS WHERE FATHER_ID IS NULL ORDER BY UPPER(PATH)";
+		sql = wxT("SELECT * FROM VIRTUAL_PATHS WHERE FATHER_ID IS NULL ORDER BY UPPER(PATH)");
 	else
-		sql = "SELECT * FROM VIRTUAL_PATHS WHERE FATHER_ID = " + CUtils::long2string(FathID) + " ORDER BY UPPER(PATH)";
+		sql = wxT("SELECT * FROM VIRTUAL_PATHS WHERE FATHER_ID = ") + CUtils::long2string(FathID) + wxT(" ORDER BY UPPER(PATH)");
 
 	DBStartMultiRowQuery( sql, true );
 }

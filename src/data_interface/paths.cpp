@@ -23,8 +23,8 @@
 #include "paths.h"
 
 CPaths::CPaths(void) {
-	PathName = "";
-	PathDescription = "";
+	PathName = wxEmptyString;
+	PathDescription = wxEmptyString;
 }
 
 CPaths::~CPaths(void) {
@@ -35,16 +35,16 @@ void CPaths::DBStartQueryListPaths( long VolID, CNullableLong FathID ) {
 	wxString sql;
 
 	if( FathID.IsNull() )
-		sql = "SELECT * FROM PATHS WHERE VOLUME_ID = " + CUtils::long2string(VolID) + " AND FATHER_ID IS NULL ORDER BY UPPER(PATH_NAME)";
+		sql = wxT("SELECT * FROM PATHS WHERE VOLUME_ID = ") + CUtils::long2string(VolID) + wxT(" AND FATHER_ID IS NULL ORDER BY UPPER(PATH_NAME)");
 	else
-		sql = "SELECT * FROM PATHS WHERE VOLUME_ID = " + CUtils::long2string(VolID) + " AND FATHER_ID = " + CUtils::long2string(FathID) + " ORDER BY UPPER(PATH_NAME)";
+		sql = wxT("SELECT * FROM PATHS WHERE VOLUME_ID = ") + CUtils::long2string(VolID) + wxT(" AND FATHER_ID = ") + CUtils::long2string(FathID) + wxT(" ORDER BY UPPER(PATH_NAME)");
 
 	DBStartMultiRowQuery( sql, true );
 }
 
 
 wxString CPaths::GetFullPath( long PathID ) {
-	wxString retVal = "";
+	wxString retVal = wxEmptyString;
 
 	switch( DatabaseType ) {
 		case dbtFirebird:

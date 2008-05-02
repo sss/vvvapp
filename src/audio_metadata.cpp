@@ -26,10 +26,11 @@
 
 
 bool CAudioMetadata::ReadMP3Metadata( wxString fileName, CFilesAudioMetadata& metaData ) {
-	char *str1 = new char[1024];
+	TCHAR *str1 = new TCHAR[1024];
 	bool found = false;
 
-	ID3_Tag myTag( fileName.fn_str() );
+//	ID3_Tag myTag( fileName.fn_str() );
+	ID3_Tag myTag( fileName.char_str() );
 
 	ID3_Frame* myFrame = myTag.Find(ID3FID_LEADARTIST);
 	if( myFrame != NULL ) {
@@ -117,7 +118,8 @@ bool CAudioMetadata::ReadMP3Metadata( wxString fileName, CFilesAudioMetadata& me
 				if( s.ToLong(&i) ) {
 					const char *cp = ID3_V1GENRE2DESCRIPTION(i);
 					if( cp != NULL )
-						metaData.Genre = cp;
+						metaData.Genre = wxString::From8BitData( cp );
+//						metaData.Genre = cp;
 				}
 			}
 			else

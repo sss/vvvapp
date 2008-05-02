@@ -21,8 +21,14 @@
 */
 
 #include "data_error.h"
+#include "../utils.h"
 
-CDataErrorException::CDataErrorException( wxString errMsg, ErrorCause ec ) : runtime_error( errMsg.c_str() ) {
+CDataErrorException::CDataErrorException( wxString errMsg, ErrorCause ec ) : runtime_error( CUtils::wx2std(errMsg) ) {
+
+	m_ErrorCode = ec;
+}
+
+CDataErrorException::CDataErrorException( const char *errMsg, ErrorCause ec ) : runtime_error( errMsg ) {
 
 	m_ErrorCode = ec;
 }
