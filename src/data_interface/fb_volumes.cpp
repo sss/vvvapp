@@ -109,13 +109,15 @@ void CVolumes::FB_FetchRow(void) {
 			VolumeDescription = wxEmptyString;
 		}
 		else {
-			// reads the blob
-			CFirebirdDB* db = (CFirebirdDB*) CBaseDB::GetDatabase();
-			Blob bl = BlobFactory( db->GetIBPPDB(), db->TransactionGetReference() );
-			string s;
-			FB_st->Get( "VOLUME_DESCRIPTION", bl );
-			bl->Load( s );
-			VolumeDescription = CUtils::std2wx( s );
+			FB_st->Get( "VOLUME_DESCRIPTION", stmp );
+			VolumeDescription = CUtils::std2wx( stmp );
+			//// reads the blob
+			//CFirebirdDB* db = (CFirebirdDB*) CBaseDB::GetDatabase();
+			//Blob bl = BlobFactory( db->GetIBPPDB(), db->TransactionGetReference() );
+			//string s;
+			//FB_st->Get( "VOLUME_DESCRIPTION", bl );
+			//bl->Load( s );
+			//VolumeDescription = CUtils::std2wx( s );
 		}
 	}
 	else {
