@@ -59,6 +59,7 @@ wxString CUtils::std2wx(const std::string& input, wxMBConv* conv)
 // string conversion for database access
 // the database uses UTF8 encoding
 std::string CUtils::DBwx2std( const wxString& input ) {
+	std::string s = wx2std( input, &wxConvUTF8 );
 	return wx2std( input, &wxConvUTF8 );
 }
 wxString CUtils::DBstd2wx( const std::string& input ) {

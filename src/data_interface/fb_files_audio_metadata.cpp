@@ -92,12 +92,11 @@ void CFilesAudioMetadata::FB_FetchRow(void) {
 		eof = false;
 		FB_st->Get("FILE_ID", tmp);
 		FileID = (long) tmp;
-		Title = FB_st->Get( "TRACK_TITLE", stmp ) ? wxEmptyString : CUtils::std2wx( stmp );
-		Artist = FB_st->Get( "TRACK_ARTIST", stmp ) ? wxEmptyString : CUtils::std2wx( stmp );
-		Album = FB_st->Get( "TRACK_ALBUM", stmp ) ? wxEmptyString : CUtils::std2wx( stmp );
-		Title = FB_st->Get( "TRACK_TITLE", stmp ) ? wxEmptyString : CUtils::std2wx( stmp );
+		Artist = FB_st->Get( "TRACK_ARTIST", stmp ) ? wxEmptyString : CUtils::DBstd2wx( stmp );
+		Album = FB_st->Get( "TRACK_ALBUM", stmp ) ? wxEmptyString : CUtils::DBstd2wx( stmp );
+		Title = FB_st->Get( "TRACK_TITLE", stmp ) ? wxEmptyString : CUtils::DBstd2wx( stmp );
 		Year = FB_st->Get( "TRACK_YEAR", tmp ) ? 0 : (int) tmp;
-		Comment = FB_st->Get( "TRACK_COMMENT", stmp ) ? wxEmptyString : CUtils::std2wx( stmp );
+		Comment = FB_st->Get( "TRACK_COMMENT", stmp ) ? wxEmptyString : CUtils::DBstd2wx( stmp );
 		Number = FB_st->Get( "TRACK_NUMBER", tmp ) ? 0 : (int) tmp;
 		Genre = FB_st->Get( "TRACK_GENRE", stmp ) ? wxEmptyString : CUtils::std2wx( stmp );
 		Bitrate = FB_st->Get( "TRACK_BITRATE", tmp ) ? 0 : (int) tmp;

@@ -21,12 +21,26 @@
 */
 
 #include "audio_metadata.h"
-#include <id3/tag.h>
 
 
+wxString CAudioMetadata::field2wx( ID3_Field* myField ) {
+	char *str1 = new char[1024];
+	wxString retVal;
+	myField->Get(str1, 1024);
+	ID3_TextEnc enc = myField->GetEncoding();
+	switch( enc ) {
+		case ID3TE_UTF8:
+			retVal = CUtils::std2wx( str1, &wxConvUTF8 );
+			break;
+		default:
+			retVal = CUtils::std2wx( str1 );
+			break;
+	}
+	delete str1;
+	return retVal;
+}
 
 bool CAudioMetadata::ReadMP3Metadata( wxString fileName, CFilesAudioMetadata& metaData ) {
-//	TCHAR *str1 = new TCHAR[1024];
 	char *str1 = new char[1024];
 	bool found = false;
 
@@ -37,8 +51,7 @@ bool CAudioMetadata::ReadMP3Metadata( wxString fileName, CFilesAudioMetadata& me
 	if( myFrame != NULL ) {
 		ID3_Field* myField = myFrame->GetField(ID3FN_TEXT);
 		if( myField != NULL ) {
-			myField->Get(str1, 1024);
-			metaData.Artist = CUtils::std2wx( str1 );
+			metaData.Artist = field2wx( myField );
 			found = true;
 		}
 	}
@@ -47,8 +60,7 @@ bool CAudioMetadata::ReadMP3Metadata( wxString fileName, CFilesAudioMetadata& me
 	if( myFrame != NULL ) {
 		ID3_Field* myField = myFrame->GetField(ID3FN_TEXT);
 		if( myField != NULL ) {
-			myField->Get(str1, 1024);
-			metaData.Title = CUtils::std2wx( str1 );
+			metaData.Title = field2wx( myField );
 			found = true;
 		}
 	}
@@ -57,8 +69,7 @@ bool CAudioMetadata::ReadMP3Metadata( wxString fileName, CFilesAudioMetadata& me
 	if( myFrame != NULL ) {
 		ID3_Field* myField = myFrame->GetField(ID3FN_TEXT);
 		if( myField != NULL ) {
-			myField->Get(str1, 1024);
-			metaData.Album = CUtils::std2wx( str1 );
+			metaData.Album = field2wx( myField );
 			found = true;
 		}
 	}
@@ -67,8 +78,7 @@ bool CAudioMetadata::ReadMP3Metadata( wxString fileName, CFilesAudioMetadata& me
 	if( myFrame != NULL ) {
 		ID3_Field* myField = myFrame->GetField(ID3FN_TEXT);
 		if( myField != NULL ) {
-			myField->Get(str1, 1024);
-			metaData.Comment = CUtils::std2wx( str1 );
+			metaData.Comment = field2wx( myField );
 			found = true;
 		}
 	}
