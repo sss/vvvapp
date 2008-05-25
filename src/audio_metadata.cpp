@@ -26,7 +26,8 @@
 
 
 bool CAudioMetadata::ReadMP3Metadata( wxString fileName, CFilesAudioMetadata& metaData ) {
-	TCHAR *str1 = new TCHAR[1024];
+//	TCHAR *str1 = new TCHAR[1024];
+	char *str1 = new char[1024];
 	bool found = false;
 
 //	ID3_Tag myTag( fileName.fn_str() );
@@ -37,7 +38,7 @@ bool CAudioMetadata::ReadMP3Metadata( wxString fileName, CFilesAudioMetadata& me
 		ID3_Field* myField = myFrame->GetField(ID3FN_TEXT);
 		if( myField != NULL ) {
 			myField->Get(str1, 1024);
-			metaData.Artist = str1;
+			metaData.Artist = CUtils::std2wx( str1 );
 			found = true;
 		}
 	}
@@ -47,7 +48,7 @@ bool CAudioMetadata::ReadMP3Metadata( wxString fileName, CFilesAudioMetadata& me
 		ID3_Field* myField = myFrame->GetField(ID3FN_TEXT);
 		if( myField != NULL ) {
 			myField->Get(str1, 1024);
-			metaData.Title = str1;
+			metaData.Title = CUtils::std2wx( str1 );
 			found = true;
 		}
 	}
@@ -57,7 +58,7 @@ bool CAudioMetadata::ReadMP3Metadata( wxString fileName, CFilesAudioMetadata& me
 		ID3_Field* myField = myFrame->GetField(ID3FN_TEXT);
 		if( myField != NULL ) {
 			myField->Get(str1, 1024);
-			metaData.Album = str1;
+			metaData.Album = CUtils::std2wx( str1 );
 			found = true;
 		}
 	}
@@ -67,7 +68,7 @@ bool CAudioMetadata::ReadMP3Metadata( wxString fileName, CFilesAudioMetadata& me
 		ID3_Field* myField = myFrame->GetField(ID3FN_TEXT);
 		if( myField != NULL ) {
 			myField->Get(str1, 1024);
-			metaData.Comment = str1;
+			metaData.Comment = CUtils::std2wx( str1 );
 			found = true;
 		}
 	}
@@ -78,7 +79,7 @@ bool CAudioMetadata::ReadMP3Metadata( wxString fileName, CFilesAudioMetadata& me
 		if( myField != NULL ) {
 			myField->Get(str1, 1024);
 			// handles the "5/9" case
-			wxString s = str1;
+			wxString s = CUtils::std2wx( str1 );
 			s = s.BeforeFirst( '/' );
 			long tmp;
 			if( s.ToLong( &tmp ) )
@@ -95,7 +96,7 @@ bool CAudioMetadata::ReadMP3Metadata( wxString fileName, CFilesAudioMetadata& me
 		if( myField != NULL ) {
 			myField->Get(str1, 1024);
 			long tmp;
-			wxString s = str1;
+			wxString s = CUtils::std2wx( str1 );
 			if( s.ToLong( &tmp ) )
 				metaData.Year = tmp;
 			else
@@ -109,7 +110,7 @@ bool CAudioMetadata::ReadMP3Metadata( wxString fileName, CFilesAudioMetadata& me
 		ID3_Field* myField = myFrame->GetField(ID3FN_TEXT);
 		if( myField != NULL ) {
 			myField->Get(str1, 1024);
-			wxString s = str1;
+			wxString s = CUtils::std2wx( str1 );
 			if( s[0] == '(' ) {
 				// decodes genre
 				s = s.AfterFirst( '(' );
