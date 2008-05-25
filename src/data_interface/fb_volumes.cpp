@@ -98,7 +98,7 @@ void CVolumes::FB_FetchRow(void) {
 		// fetches a record
 		eof = false;
 		FB_st->Get( "VOLUME_NAME", stmp );
-		VolumeName = CUtils::std2wx( stmp );
+		VolumeName = CUtils::DBstd2wx( stmp );
 		if( FB_st->IsNull("VOLUME_ID") )
 			VolumeID.SetNull(true);
 		else {
@@ -110,7 +110,7 @@ void CVolumes::FB_FetchRow(void) {
 		}
 		else {
 			FB_st->Get( "VOLUME_DESCRIPTION", stmp );
-			VolumeDescription = CUtils::std2wx( stmp );
+			VolumeDescription = CUtils::DBstd2wx( stmp );
 			//// reads the blob
 			//CFirebirdDB* db = (CFirebirdDB*) CBaseDB::GetDatabase();
 			//Blob bl = BlobFactory( db->GetIBPPDB(), db->TransactionGetReference() );

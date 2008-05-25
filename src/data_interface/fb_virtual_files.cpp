@@ -79,9 +79,9 @@ void CVirtualFiles::FB_FetchRow(void) {
 		PhysicalFileID = (long) tmp;
 
 		FB_st->Get( "FILE_NAME", stmp );
-		FileName = CUtils::std2wx( stmp );
+		FileName = CUtils::DBstd2wx( stmp );
 		FB_st->Get( "FILE_EXT", stmp );
-		FileExt = CUtils::std2wx( stmp );
+		FileExt = CUtils::DBstd2wx( stmp );
 		FB_st->Get("FILE_SIZE", tmp);
 		FileSize = (wxLongLong) tmp;
 		FB_st->Get("FILE_DATETIME", ts);
@@ -105,7 +105,7 @@ void CVirtualFiles::FB_FetchRow(void) {
 		}
 		else {
 			FB_st->Get( "FILE_DESCRIPTION", stmp );
-			FileDescription = CUtils::std2wx( stmp );
+			FileDescription = CUtils::DBstd2wx( stmp );
 		}
 		FullPhysicalPath = CPaths::GetFullPath( PhysicalPathID );
 	}

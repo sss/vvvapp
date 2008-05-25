@@ -40,7 +40,7 @@ void CVirtualPaths::FB_DbInsert(void) {
 
 	try {
 		st->Prepare( "EXECUTE PROCEDURE SP_CREATE_UNIQUE_VIRTUALPATH( ?, ?, ? )" );
-		st->Set( 1, CUtils::wx2std(PathName) );
+		st->Set( 1, CUtils::DBwx2std(PathName) );
 		if( FatherID.IsNull() )
 			st->SetNull( 2 );
 		else
@@ -135,7 +135,7 @@ void CVirtualPaths::FB_FetchRow(void) {
 		// fetches a record
 		eof = false;
 		FB_st->Get( "PATH", stmp );
-		PathName = CUtils::std2wx( stmp );
+		PathName = CUtils::DBstd2wx( stmp );
 		FB_st->Get("PATH_ID", tmp);
 		PathID = (long) tmp;
 		if( FB_st->IsNull("FATHER_ID") )
@@ -241,7 +241,7 @@ void CVirtualPaths::FB_Rename( long VirtualPathID, wxString newName ) {
 	try {
 		st->Prepare( "EXECUTE PROCEDURE SP_RENAME_VIRTUALPATH( ?, ? )" );
 		st->Set( 1, (int32_t) VirtualPathID );
-		st->Set( 2, CUtils::wx2std(newName) );
+		st->Set( 2, CUtils::DBwx2std(newName) );
 		st->Execute();
 	}
 	catch( IBPP::SQLException& e ) {

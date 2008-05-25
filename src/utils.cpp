@@ -54,8 +54,18 @@ wxString CUtils::std2wx(const std::string& input, wxMBConv* conv)
         conv = wxConvCurrent;
     return wxString(input.c_str(), *conv);
 }
-//-----------------------------------------------------------------------------
-//! converts chars that have special meaning in HTML, so they get displayed
+
+
+// string conversion for database access
+// the database uses UTF8 encoding
+std::string CUtils::DBwx2std( const wxString& input ) {
+	return wx2std( input, &wxConvUTF8 );
+}
+wxString CUtils::DBstd2wx( const std::string& input ) {
+	return std2wx( input, &wxConvUTF8 );
+}
+
+
 
 void CUtils::MsgErr( wxString errMsg ){
 	wxMessageDialog dialog( NULL, errMsg, applicationName, wxOK|wxICON_ERROR );

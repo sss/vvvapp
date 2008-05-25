@@ -34,9 +34,14 @@ class CUtils
 public:
 
 	// functions used to convert between std::string e wxString.
-	// idea "borrowed" from the FlameRobin source code
+	// code "borrowed" from the FlameRobin source code
 	static std::string wx2std(const wxString& input, wxMBConv* conv = wxConvCurrent);
 	static wxString std2wx(const std::string& input, wxMBConv* conv = wxConvCurrent);
+
+	// functions used to convert between wxString and std::string,
+	// used to interface with the database which requires a particular, fixed encodiding
+	static std::string DBwx2std(const wxString& input);
+	static wxString DBstd2wx(const std::string& input);
 
 	// returns the size of a file in human readable format (KB, MB and so on...)
 	static wxString HumanReadableFileSize( wxLongLong size );

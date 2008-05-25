@@ -92,7 +92,7 @@ void CPaths::FB_FetchRow(void) {
 		// fetches a record
 		eof = false;
 		FB_st->Get( "PATH_NAME", stmp );
-		PathName = CUtils::std2wx( stmp );
+		PathName = CUtils::DBstd2wx( stmp );
 		FB_st->Get("PATH_ID", tmp);
 		PathID = (long) tmp;
 		FB_st->Get("VOLUME_ID", tmp);
@@ -108,7 +108,7 @@ void CPaths::FB_FetchRow(void) {
 		}
 		else {
 			FB_st->Get( "PATH_DESCRIPTION", stmp );
-			PathDescription = CUtils::std2wx( stmp );
+			PathDescription = CUtils::DBstd2wx( stmp );
 		}
 	}
 	else {
@@ -144,7 +144,7 @@ wxString CPaths::FB_GetFullPath( long PathID ) {
 		db->TransactionCommit();
 	}
 
-	return CUtils::std2wx( stmp );
+	return CUtils::DBstd2wx( stmp );
 
 }
 

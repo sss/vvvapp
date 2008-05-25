@@ -39,7 +39,7 @@ void CBaseRec::FB_ExecuteQueryNoReturn( wxString sql ) {
 	Statement st = StatementFactory( db->GetIBPPDB(), db->TransactionGetReference() );
 
 	try {
-		st->Execute( CUtils::wx2std(sql) );
+		st->Execute( CUtils::DBwx2std(sql) );
 	}
 	catch( IBPP::SQLException& e ) {
 		// catches exceptions in order to convert interesting ones
@@ -65,7 +65,7 @@ void CBaseRec::FB_DBStartMultiRowQuery( wxString sql, bool readOnly ) {
 	if( !TransactionAlreadyStarted )
 		db->TransactionStart( readOnly );
 	FB_st = StatementFactory( db->GetIBPPDB(), db->TransactionGetReference() );
-	FB_st->Execute( CUtils::wx2std(sql) );
+	FB_st->Execute( CUtils::DBwx2std(sql) );
 	FB_FetchRow();
 }
 
@@ -89,7 +89,7 @@ long CBaseRec::FB_GenNewValue( wxString generatorName ) {
 	
 	sql = wxT("SELECT GEN_ID(") + generatorName + wxT(", 1) AS NEW_ID FROM RDB$DATABASE");
 	FB_st = StatementFactory( db->GetIBPPDB(), db->TransactionGetReference() );
-	FB_st->Execute( CUtils::wx2std(sql) );
+	FB_st->Execute( CUtils::DBwx2std(sql) );
 	if( FB_st->Fetch() ) {
 		FB_st->Get("NEW_ID", tmp);
 		retVal = (long) tmp;
@@ -114,7 +114,7 @@ bool CBaseRec::FB_QueryReturnsNoRows( wxString sql ) {
 	}
 
 	Statement st = StatementFactory( db->GetIBPPDB(), db->TransactionGetReference() );
-	st->Execute( CUtils::wx2std(sql) );
+	st->Execute( CUtils::DBwx2std(sql) );
 	retVal = !st->Fetch();
 
 	if( !inTransaction ) {
