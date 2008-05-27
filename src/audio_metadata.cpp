@@ -32,6 +32,9 @@ wxString CAudioMetadata::field2wx( ID3_Field* myField ) {
 		case ID3TE_UTF8:
 			retVal = CUtils::std2wx( str1, &wxConvUTF8 );
 			break;
+		case ID3TE_ISO8859_1:
+			retVal = CUtils::std2wx( str1, &wxConvISO8859_1 );
+			break;
 		default:
 			retVal = CUtils::std2wx( str1 );
 			break;

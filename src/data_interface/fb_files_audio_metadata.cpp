@@ -19,7 +19,6 @@
     along with VVV; if not, write to the Free Software
     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
-
 #include "files_audio_metadata.h"
 #include "firebird_db.h"
 #include "../ibpp/core/ibpp.h"
@@ -92,13 +91,33 @@ void CFilesAudioMetadata::FB_FetchRow(void) {
 		eof = false;
 		FB_st->Get("FILE_ID", tmp);
 		FileID = (long) tmp;
-		Artist = FB_st->Get( "TRACK_ARTIST", stmp ) ? wxEmptyString : CUtils::DBstd2wx( stmp );
-		Album = FB_st->Get( "TRACK_ALBUM", stmp ) ? wxEmptyString : CUtils::DBstd2wx( stmp );
-		Title = FB_st->Get( "TRACK_TITLE", stmp ) ? wxEmptyString : CUtils::DBstd2wx( stmp );
+		Artist = wxEmptyString;
+		Album = wxEmptyString;
+		Title = wxEmptyString;
+		Comment = wxEmptyString;
+		Genre = wxEmptyString;
+		if( !FB_st->IsNull("TRACK_ARTIST") ) {
+			FB_st->Get( "TRACK_ARTIST", stmp );
+			Artist = CUtils::DBstd2wx( stmp );
+		}
+		if( !FB_st->IsNull("TRACK_ALBUM") ) {
+			FB_st->Get( "TRACK_ALBUM", stmp );
+			Album = CUtils::DBstd2wx( stmp );
+		}
+		if( !FB_st->IsNull("TRACK_TITLE") ) {
+			FB_st->Get( "TRACK_TITLE", stmp );
+			Title = CUtils::DBstd2wx( stmp );
+		}
 		Year = FB_st->Get( "TRACK_YEAR", tmp ) ? 0 : (int) tmp;
-		Comment = FB_st->Get( "TRACK_COMMENT", stmp ) ? wxEmptyString : CUtils::DBstd2wx( stmp );
+		if( !FB_st->IsNull("TRACK_COMMENT") ) {
+			FB_st->Get( "TRACK_COMMENT", stmp );
+			Comment = CUtils::DBstd2wx( stmp );
+		}
 		Number = FB_st->Get( "TRACK_NUMBER", tmp ) ? 0 : (int) tmp;
-		Genre = FB_st->Get( "TRACK_GENRE", stmp ) ? wxEmptyString : CUtils::std2wx( stmp );
+		if( !FB_st->IsNull("TRACK_GENRE") ) {
+			FB_st->Get( "TRACK_GENRE", stmp );
+			Genre = CUtils::DBstd2wx( stmp );
+		}
 		Bitrate = FB_st->Get( "TRACK_BITRATE", tmp ) ? 0 : (int) tmp;
 		SampleRate = FB_st->Get( "TRACK_SAMPLE_RATE", tmp ) ? 0 : (int) tmp;
 		Channels = FB_st->Get( "TRACK_CHANNELS", tmp ) ? 0 : (int) tmp;

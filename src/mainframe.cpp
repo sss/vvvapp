@@ -1599,12 +1599,15 @@ void CMainFrame::DeleteAllListControlItems(void) {
 
 void CMainFrame::AddAudioMetatataToListControl( CFilesAudioMetadata fam, wxListCtrl *lctl, int itemIndex, int firstColumnIndex ) {
 	int k = firstColumnIndex;
+	wxString s;
 	if( m_amdColumnsToShow[amdArtist] ) lctl->SetItem( itemIndex, k++, fam.Artist );
 	if( m_amdColumnsToShow[amdAlbum] ) lctl->SetItem( itemIndex, k++, fam.Album );
 	if( m_amdColumnsToShow[amdTitle] ) lctl->SetItem( itemIndex, k++, fam.Title );
-	if( m_amdColumnsToShow[amdYear] ) lctl->SetItem( itemIndex, k++, fam.Year == 0 ? wxEmptyString : CUtils::long2string(fam.Year) );
+	if( fam.Year == 0 ) s = wxEmptyString; else s = CUtils::long2string(fam.Year);
+	if( m_amdColumnsToShow[amdYear] ) lctl->SetItem( itemIndex, k++, s );
 	if( m_amdColumnsToShow[amdComment] ) lctl->SetItem( itemIndex, k++, fam.Comment );
-	if( m_amdColumnsToShow[amdNumber] ) lctl->SetItem( itemIndex, k++, fam.Number == 0 ? wxEmptyString : CUtils::long2string(fam.Number) );
+	if( fam.Number == 0 ) s = wxEmptyString; else s = CUtils::long2string(fam.Number);
+	if( m_amdColumnsToShow[amdNumber] ) lctl->SetItem( itemIndex, k++, s );
 	if( m_amdColumnsToShow[amdGenre] ) lctl->SetItem( itemIndex, k++, fam.Genre );
 
 	if( m_amdColumnsToShow[amdLength] ) {
@@ -1632,9 +1635,12 @@ void CMainFrame::AddAudioMetatataToListControl( CFilesAudioMetadata fam, wxListC
 		lctl->SetItem( itemIndex, k++, sl );
 	}
 
-	if( m_amdColumnsToShow[amdBitrate] ) lctl->SetItem( itemIndex, k++, fam.Bitrate == 0 ? wxEmptyString : CUtils::long2string(fam.Bitrate) );
-	if( m_amdColumnsToShow[amdSampleRate] ) lctl->SetItem( itemIndex, k++, fam.SampleRate == 0 ? wxEmptyString : CUtils::long2string(fam.SampleRate) );
-	if( m_amdColumnsToShow[amdChannels] ) lctl->SetItem( itemIndex, k++, fam.Channels == 0 ? wxEmptyString : CUtils::long2string(fam.Channels) );
+	if( fam.Bitrate == 0 ) s = wxEmptyString; else s = CUtils::long2string(fam.Bitrate);
+	if( m_amdColumnsToShow[amdBitrate] ) lctl->SetItem( itemIndex, k++, s );
+	if( fam.SampleRate == 0 ) s = wxEmptyString; else s = CUtils::long2string(fam.SampleRate);
+	if( m_amdColumnsToShow[amdSampleRate] ) lctl->SetItem( itemIndex, k++, s );
+	if( fam.Channels == 0 ) s = wxEmptyString; else s = CUtils::long2string(fam.Channels);
+	if( m_amdColumnsToShow[amdChannels] ) lctl->SetItem( itemIndex, k++, s );
 
 	// sets the width of the metadata columns
 	k = firstColumnIndex;
@@ -1649,6 +1655,7 @@ void CMainFrame::AddAudioMetatataToListControl( CFilesAudioMetadata fam, wxListC
 
 // shows in the listview the files contained in the passed folder
 void CMainFrame::ShowFolderFiles( wxTreeItemId itemID ) {
+	wxString s;
 
 	wxBusyCursor wait;
 
@@ -1691,7 +1698,8 @@ void CMainFrame::ShowFolderFiles( wxTreeItemId itemID ) {
 		item.SetMask( wxLIST_MASK_STATE|wxLIST_MASK_TEXT|wxLIST_MASK_IMAGE|wxLIST_MASK_DATA );
 		int i = lctl->InsertItem( item );
 		lctl->SetItem( i, 0, files.FileName, imageIndex );
-		lctl->SetItem( i, 1, files.IsFolder() ? wxEmptyString : CUtils::HumanReadableFileSize(files.FileSize) );
+		if( files.IsFolder() ) s = wxEmptyString; else s = CUtils::HumanReadableFileSize(files.FileSize);
+		lctl->SetItem( i, 1, s );
 		lctl->SetItem( i, 2, files.FileExt );
 		lctl->SetItem( i, 3, files.DateTime.FormatDate() + wxT(" ") + files.DateTime.FormatTime() );
 		lctl->SetItem( i, 4, FormatObjectDescriptionForListView(files.FileDescription) );
@@ -2817,6 +2825,7 @@ void CMainFrame::OnButtonSearchClick( wxCommandEvent& WXUNUSED(event) ) {
 }
 
 int CMainFrame::AddRowToVirtualListControl( wxListCtrl* lctl, bool isFolder, wxString fileName, wxLongLong fileSize, wxString ext, wxDateTime dateTime, wxString physicalPath, long fileID, long virtualPathFileID, wxString fileDescription, long physicalFileID ) {
+	wxString s;
 
 	CFilesAudioMetadata fam;
 	bool audioMetadataAvailable = false;
@@ -2830,7 +2839,8 @@ int CMainFrame::AddRowToVirtualListControl( wxListCtrl* lctl, bool isFolder, wxS
 	item.SetMask( wxLIST_MASK_STATE|wxLIST_MASK_TEXT|wxLIST_MASK_IMAGE|wxLIST_MASK_DATA );
 	int i = lctl->InsertItem( item );
 	lctl->SetItem( i, 0, fileName, imageIndex );
-	lctl->SetItem( i, 1, isFolder ? wxEmptyString : CUtils::HumanReadableFileSize(fileSize) );
+	if( isFolder ) s = wxEmptyString; else s = CUtils::HumanReadableFileSize(fileSize);
+	lctl->SetItem( i, 1, s );
 	lctl->SetItem( i, 2, ext );
 	lctl->SetItem( i, 3, dateTime.FormatDate() + wxT(" ") + dateTime.FormatTime() );
 	lctl->SetItem( i, 4, physicalPath );
