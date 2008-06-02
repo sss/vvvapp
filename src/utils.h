@@ -65,6 +65,9 @@ public:
 	// returns the expected database version
 	static int GetExpectedDatabaseVersion(void);
 
+	// returns the first database version that used unicode
+	static int GetFirstUnicodeDatabaseVersion(void);
+
 	// converts a long to a string
 	static wxString long2string( long val );
 
@@ -77,6 +80,10 @@ public:
 	// returns the name of the help file
 	static wxString GetHelpFileName();
 
+	// copies that data contained in oldDB into the empy database newDB, converting to UTF8 unicode
+	// used to convert old databases to the new UTF8 format
+	static void ConvertDbToUnicode( wxString oldDB, wxString newDB );
+
 private:
 	// name of the current application
 	static wxString applicationName;
@@ -86,6 +93,9 @@ private:
 
 	// the current version of the application expects this database version
 	static int expectedDatabaseVersion;
+
+	// the the first version of the database that supported unicode UTF8 data: passage to this version requires copying old data to a new database
+	static int firstUnicodeDatabaseVersion;
 
 	// name of the database that contains the database changes from version to version
 	static wxString strucUpdateDbName;

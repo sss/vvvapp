@@ -102,7 +102,7 @@ void CFirebirdDB::CreateDatabaseOnDisk( wxString serverName, wxString userName, 
 
 	Service svc = ServiceFactory( CUtils::wx2std(serverName), CUtils::wx2std(userName), CUtils::wx2std(password) );
 	svc->Connect();
-	svc->StartRestore( CUtils::wx2std(backupName), CUtils::wx2std(databaseName), 4096 );
+	svc->StartRestore( CUtils::wx2std(backupName), CUtils::wx2std(databaseName), 8192 );
 	svc->Wait();
 	svc->Disconnect();
 }
@@ -140,14 +140,14 @@ int CFirebirdDB::GetDatabaseVersion(void) {
 }
 
 
-void CFirebirdDB::UpgradeDatabase( int currentVersion ) {
+void CFirebirdDB::UpgradeDatabase( int currentVersion, int finalDBVersion ) {
 
-	// opens the database containing the metadata changes and reads them
+	// open the database containing the metadata changes and reads them
 	Database upgDb = DatabaseFactory( CUtils::wx2std(serverName), CUtils::wx2std(CUtils::GetStructUpdateDbName()), CUtils::wx2std(userName), CUtils::wx2std(password) );
 	upgDb->Connect();
 	Transaction upgTr = TransactionFactory( upgDb );
 	upgTr->Start();
-	wxString sql = wxT("SELECT VERSION_NUMBER, SCRIPT_CODE FROM UPDATE_SCRIPTS WHERE VERSION_NUMBER > ") + CUtils::long2string(currentVersion) + wxT(" ORDER BY VERSION_NUMBER");
+	wxString sql = wxT("SELECT VERSION_NUMBER, SCRIPT_CODE FROM UPDATE_SCRIPTS WHERE VERSION_NUMBER > ") + CUtils::long2string(currentVersion) + wxT(" AND VERSION_NUMBER <= ") + CUtils::long2string(finalDBVersion) + wxT(" ORDER BY VERSION_NUMBER");
 	Statement stUpg = StatementFactory( upgDb, upgTr );
 	stUpg->Execute( CUtils::DBwx2std(sql) );
 	wxArrayString scripts;

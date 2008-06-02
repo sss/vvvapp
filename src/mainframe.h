@@ -537,6 +537,10 @@ private:
 	// returns true if only virtual files are selected in the listview (no virtual folders)
 	bool AreOnlyVirtualFilesSelected();
 
+	// restore a database from the given backup file. Shows the given caption in the save dialog box
+	// returns an empty string if the database has not been restored
+	wxString RestoreDatabase( wxString caption, wxString backupName );
+
 protected:
 	// shows in the listview the files contained in the passed folder
 	void ShowFolderFiles( wxTreeItemId itemID );

@@ -1118,6 +1118,9 @@
 				RelativePath=".\src\choose_virtual_folder.cpp">
 			</File>
 			<File
+				RelativePath=".\src\convert_db_unicode.cpp">
+			</File>
+			<File
 				RelativePath=".\src\exportdata.cpp">
 			</File>
 			<File

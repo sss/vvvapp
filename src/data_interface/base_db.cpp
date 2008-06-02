@@ -67,11 +67,11 @@ int CBaseDB::GetDatabaseVersion(void) {
 	return retVal;
 }
 
-void CBaseDB::UpgradeDatabase( int currentVersion ) {
+void CBaseDB::UpgradeDatabase( int currentVersion, int finalVersion ) {
 
 	switch( CBaseRec::GetDatabaseType() ) {
 		case CBaseRec::dbtFirebird:
-			((CFirebirdDB*) _instance)->UpgradeDatabase( currentVersion );
+			((CFirebirdDB*) _instance)->UpgradeDatabase( currentVersion, finalVersion );
 			break;
 	}
 }
