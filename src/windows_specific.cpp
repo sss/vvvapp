@@ -81,19 +81,25 @@ void CDialogCatalogVolume::CatalogSingleFolderWindows( CBaseDB* db, wxString pat
 	}
 
 	// reads all file names
-	struct _tfinddata_t c_file;
-	intptr_t hFile = _tfindfirst( winPath.c_str(), &c_file );
-	if( hFile != -1L ) {
+	WIN32_FIND_DATA ffd;
+	HANDLE sh = FindFirstFile( winPath.c_str(), &ffd );
+	if( sh != INVALID_HANDLE_VALUE ) {
 		do {
-			if( !(c_file.attrib & _A_SUBDIR) ) {
+			if( !(ffd.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY) ) {
 				// exclude folders
 				CFiles file;
-				file.FileName = c_file.name;
+				file.FileName = ffd.cFileName;
 				wxFileName fn( path, file.FileName );
 				file.FileExt = fn.GetExt();
 				if( file.FileExt.Len() > 30 ) file.FileExt = wxEmptyString;	// such a long extension is surely a meaningless temporary file
-				file.DateTime = c_file.time_write;
-				file.FileSize = c_file.size;
+				
+				SYSTEMTIME stLocal;
+				FILETIME ft;
+				FileTimeToLocalFileTime( &ffd.ftLastWriteTime, &ft );
+				FileTimeToSystemTime(&ft, &stLocal);
+				file.DateTime.Set( stLocal.wDay, (wxDateTime::Month) (stLocal.wMonth - 1), stLocal.wYear, stLocal.wHour, stLocal.wMinute, stLocal.wSecond, stLocal.wMilliseconds );
+
+				file.FileSize = ( ((__int64)ffd.nFileSizeHigh) << 32 ) + ffd.nFileSizeLow;
 				file.PathID = pth.PathID;
 				file.PathFileID.SetNull(true);
 				file.DbInsert();
@@ -106,13 +112,13 @@ void CDialogCatalogVolume::CatalogSingleFolderWindows( CBaseDB* db, wxString pat
 					}
 				}
 			}
-
-		} while( _tfindnext( hFile, &c_file ) == 0 );
+		} while( FindNextFile(sh, &ffd) );
 	}
-	_findclose( hFile );
+	FindClose( sh );
 
 	// now reads all the subfolders
-	hFile = _tfindfirst( winPath.c_str(), &c_file );
+	struct _tfinddata_t c_file;
+	intptr_t hFile = _tfindfirst( winPath.c_str(), &c_file );
 	if( hFile != -1L ) {
 		do {
 			if( (c_file.attrib & _A_SUBDIR) && (_tcscmp(c_file.name, wxT(".")) != 0) && (_tcscmp(c_file.name, wxT("..")) != 0) ) {
