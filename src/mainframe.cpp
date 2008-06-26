@@ -505,6 +505,12 @@ BEGIN_EVENT_TABLE( CMainFrame, wxFrame )
     EVT_MENU( ID_FILE_EXPORT, CMainFrame::OnFileExportClick )
     EVT_UPDATE_UI( ID_FILE_EXPORT, CMainFrame::OnFileExportUpdate )
 
+    EVT_MENU( ID_FILE_BACKUP, CMainFrame::OnFileBackupClick )
+    EVT_UPDATE_UI( ID_FILE_BACKUP, CMainFrame::OnFileBackupUpdate )
+
+    EVT_MENU( ID_FILE_RESTORE, CMainFrame::OnFileRestoreClick )
+    EVT_UPDATE_UI( ID_FILE_RESTORE, CMainFrame::OnFileRestoreUpdate )
+
     EVT_MENU( wxID_EXIT, CMainFrame::OnEXITClick )
 
     EVT_MENU( ID_ADD_VIRTUAL_FOLDER, CMainFrame::OnAddVirtualFolderClick )
@@ -767,52 +773,55 @@ void CMainFrame::CreateControls()
     m_fileMenu->Append(wxID_OPEN, _("&Open..."), _T(""), wxITEM_NORMAL);
     m_fileMenu->Append(ID_FILE_EXPORT, _("&Export..."), _T(""), wxITEM_NORMAL);
     m_fileMenu->AppendSeparator();
+    m_fileMenu->Append(ID_FILE_BACKUP, _("&Backup..."), _T(""), wxITEM_NORMAL);
+    m_fileMenu->Append(ID_FILE_RESTORE, _("&Restore..."), _T(""), wxITEM_NORMAL);
+    m_fileMenu->AppendSeparator();
     m_fileMenu->Append(wxID_EXIT, _("E&xit"), _T(""), wxITEM_NORMAL);
     menuBar->Append(m_fileMenu, _("&File"));
-    wxMenu* itemMenu18 = new wxMenu;
-    itemMenu18->Append(ID_ADD_VIRTUAL_FOLDER, _("&Add To Virtual Folder..."), _T(""), wxITEM_NORMAL);
-    itemMenu18->AppendSeparator();
-    itemMenu18->Append(ID_EDIT_RENAME, _("&Rename...\tF2"), _T(""), wxITEM_NORMAL);
-    itemMenu18->Append(ID_EDIT_DELETE, _("&Delete"), _T(""), wxITEM_NORMAL);
-    itemMenu18->AppendSeparator();
-    itemMenu18->Append(ID_EDIT_OBJECT_DESCRIPTION, _("&Object Description..."), _T(""), wxITEM_NORMAL);
-    itemMenu18->AppendSeparator();
-    itemMenu18->Append(ID_NEW_VIRTUAL_ROOT_FOLDER, _("&New Virtual Root Folder..."), _T(""), wxITEM_NORMAL);
-    itemMenu18->Append(ID_NEW_VIRTUAL_SUBFOLDER, _("New Virtual &Subfolder..."), _T(""), wxITEM_NORMAL);
+    wxMenu* itemMenu21 = new wxMenu;
+    itemMenu21->Append(ID_ADD_VIRTUAL_FOLDER, _("&Add To Virtual Folder..."), _T(""), wxITEM_NORMAL);
+    itemMenu21->AppendSeparator();
+    itemMenu21->Append(ID_EDIT_RENAME, _("&Rename...\tF2"), _T(""), wxITEM_NORMAL);
+    itemMenu21->Append(ID_EDIT_DELETE, _("&Delete"), _T(""), wxITEM_NORMAL);
+    itemMenu21->AppendSeparator();
+    itemMenu21->Append(ID_EDIT_OBJECT_DESCRIPTION, _("&Object Description..."), _T(""), wxITEM_NORMAL);
+    itemMenu21->AppendSeparator();
+    itemMenu21->Append(ID_NEW_VIRTUAL_ROOT_FOLDER, _("&New Virtual Root Folder..."), _T(""), wxITEM_NORMAL);
+    itemMenu21->Append(ID_NEW_VIRTUAL_SUBFOLDER, _("New Virtual &Subfolder..."), _T(""), wxITEM_NORMAL);
 #if defined(__WXMAC__)
-    itemMenu18->Append(wxID_PREFERENCES, _("&Options..."), _T(""), wxITEM_NORMAL);
+    itemMenu21->Append(wxID_PREFERENCES, _("&Options..."), _T(""), wxITEM_NORMAL);
 #endif
-    menuBar->Append(itemMenu18, _("&Edit"));
-    wxMenu* itemMenu29 = new wxMenu;
-    itemMenu29->Append(ID_CATALOG_VOLUME, _("&Catalog Volume..."), _T(""), wxITEM_NORMAL);
-    menuBar->Append(itemMenu29, _("&Volumes"));
-    wxMenu* itemMenu31 = new wxMenu;
-    itemMenu31->Append(ID_VIEW_PHYSICAL, _("&Physical View"), _T(""), wxITEM_RADIO);
-    itemMenu31->Check(ID_VIEW_PHYSICAL, true);
-    itemMenu31->Append(ID_VIEW_VIRTUAL, _("&Virtual View"), _T(""), wxITEM_RADIO);
-    itemMenu31->Append(ID_VIEW_SEARCH, _("&Search View"), _T(""), wxITEM_RADIO);
-    itemMenu31->AppendSeparator();
-    itemMenu31->Append(ID_UP_ONE_FOLDER, _("Go &Up One Level"), _T(""), wxITEM_NORMAL);
-    itemMenu31->AppendSeparator();
-    itemMenu31->Append(ID_VIEW_TOOLBAR, _("&Toolbar"), _T(""), wxITEM_CHECK);
-    itemMenu31->Check(ID_VIEW_TOOLBAR, true);
-    itemMenu31->Append(ID_VIEW_STATUS_BAR, _("Status &Bar"), _T(""), wxITEM_CHECK);
-    itemMenu31->Check(ID_VIEW_STATUS_BAR, true);
-    menuBar->Append(itemMenu31, _("Vie&w"));
+    menuBar->Append(itemMenu21, _("&Edit"));
+    wxMenu* itemMenu32 = new wxMenu;
+    itemMenu32->Append(ID_CATALOG_VOLUME, _("&Catalog Volume..."), _T(""), wxITEM_NORMAL);
+    menuBar->Append(itemMenu32, _("&Volumes"));
+    wxMenu* itemMenu34 = new wxMenu;
+    itemMenu34->Append(ID_VIEW_PHYSICAL, _("&Physical View"), _T(""), wxITEM_RADIO);
+    itemMenu34->Check(ID_VIEW_PHYSICAL, true);
+    itemMenu34->Append(ID_VIEW_VIRTUAL, _("&Virtual View"), _T(""), wxITEM_RADIO);
+    itemMenu34->Append(ID_VIEW_SEARCH, _("&Search View"), _T(""), wxITEM_RADIO);
+    itemMenu34->AppendSeparator();
+    itemMenu34->Append(ID_UP_ONE_FOLDER, _("Go &Up One Level"), _T(""), wxITEM_NORMAL);
+    itemMenu34->AppendSeparator();
+    itemMenu34->Append(ID_VIEW_TOOLBAR, _("&Toolbar"), _T(""), wxITEM_CHECK);
+    itemMenu34->Check(ID_VIEW_TOOLBAR, true);
+    itemMenu34->Append(ID_VIEW_STATUS_BAR, _("Status &Bar"), _T(""), wxITEM_CHECK);
+    itemMenu34->Check(ID_VIEW_STATUS_BAR, true);
+    menuBar->Append(itemMenu34, _("Vie&w"));
 #if defined(__WXMSW__) || defined(__WXGTK__)
-    wxMenu* itemMenu40 = new wxMenu;
+    wxMenu* itemMenu43 = new wxMenu;
 #if defined(__WXMSW__) || defined(__WXGTK__)
-    itemMenu40->Append(wxID_PREFERENCES, _("&Options..."), _T(""), wxITEM_NORMAL);
+    itemMenu43->Append(wxID_PREFERENCES, _("&Options..."), _T(""), wxITEM_NORMAL);
 #endif
-    menuBar->Append(itemMenu40, _("&Tools"));
+    menuBar->Append(itemMenu43, _("&Tools"));
 #endif
-    wxMenu* itemMenu42 = new wxMenu;
-    itemMenu42->Append(ID_HELP_CONTENTS, _("Help &Contents"), _T(""), wxITEM_NORMAL);
+    wxMenu* itemMenu45 = new wxMenu;
+    itemMenu45->Append(ID_HELP_CONTENTS, _("Help &Contents"), _T(""), wxITEM_NORMAL);
 #if defined(__WXMSW__) || defined(__WXGTK__)
-    itemMenu42->AppendSeparator();
+    itemMenu45->AppendSeparator();
 #endif
-    itemMenu42->Append(wxID_ABOUT, _("&About VVV..."), _T(""), wxITEM_NORMAL);
-    menuBar->Append(itemMenu42, _("&Help"));
+    itemMenu45->Append(wxID_ABOUT, _("&About VVV..."), _T(""), wxITEM_NORMAL);
+    menuBar->Append(itemMenu45, _("&Help"));
     itemFrame1->SetMenuBar(menuBar);
 
     m_Toolbar = CreateToolBar( wxTB_FLAT|wxTB_HORIZONTAL|wxTB_TEXT, ID_TOOLBAR1 );
@@ -852,13 +861,13 @@ void CMainFrame::CreateControls()
     m_StatusBar->SetStatusWidths(4, m_StatusBarWidths);
     itemFrame1->SetStatusBar(m_StatusBar);
 
-    wxSplitterWindow* itemSplitterWindow47 = new wxSplitterWindow( itemFrame1, ID_SPLITTERWINDOW1, wxDefaultPosition, wxSize(100, 100), wxSP_3DBORDER|wxSP_3DSASH|wxSP_NO_XP_THEME|wxNO_BORDER );
-    itemSplitterWindow47->SetMinimumPaneSize(0);
+    wxSplitterWindow* itemSplitterWindow50 = new wxSplitterWindow( itemFrame1, ID_SPLITTERWINDOW1, wxDefaultPosition, wxSize(100, 100), wxSP_3DBORDER|wxSP_3DSASH|wxSP_NO_XP_THEME|wxNO_BORDER );
+    itemSplitterWindow50->SetMinimumPaneSize(0);
 
-    wxTreeCtrl* itemTreeCtrl48 = new wxTreeCtrl( itemSplitterWindow47, ID_TREE_CONTROL, wxDefaultPosition, wxSize(100, 100), wxTR_HAS_BUTTONS |wxTR_HIDE_ROOT|wxTR_SINGLE|wxNO_BORDER|wxTR_DEFAULT_STYLE );
+    wxTreeCtrl* itemTreeCtrl51 = new wxTreeCtrl( itemSplitterWindow50, ID_TREE_CONTROL, wxDefaultPosition, wxSize(100, 100), wxTR_HAS_BUTTONS |wxTR_HIDE_ROOT|wxTR_SINGLE|wxNO_BORDER|wxTR_DEFAULT_STYLE );
 
-    CRightPaneList* itemListCtrl49 = new CRightPaneList( itemSplitterWindow47, ID_LIST_CONTROL, wxDefaultPosition, wxSize(100, 100), wxLC_REPORT|wxNO_BORDER );
-    itemSplitterWindow47->SplitVertically(itemTreeCtrl48, itemListCtrl49, 50);
+    CRightPaneList* itemListCtrl52 = new CRightPaneList( itemSplitterWindow50, ID_LIST_CONTROL, wxDefaultPosition, wxSize(100, 100), wxLC_REPORT|wxNO_BORDER );
+    itemSplitterWindow50->SplitVertically(itemTreeCtrl51, itemListCtrl52, 50);
 
 ////@end CMainFrame content construction
 
@@ -3512,7 +3521,6 @@ void CMainFrame::OnFileExportUpdate( wxUpdateUIEvent& event )
 
 wxString CMainFrame::RestoreDatabase( wxString caption, wxString backupName ) {
 
-	wxString wildcard = _("VVV  files (*.vvv)|*.vvv|All files (*.*)|*.*");
 	wxString databaseFile = wxEmptyString;
 	if( !DBConnectionData.connectToServer ) {
 		// create a local file
@@ -3579,4 +3587,99 @@ wxString CMainFrame::RestoreDatabase( wxString caption, wxString backupName ) {
 
 }
 
+
+
+/*!
+ * wxEVT_COMMAND_MENU_SELECTED event handler for ID_FILE_BACKUP
+ */
+
+void CMainFrame::OnFileBackupClick( wxCommandEvent& WXUNUSED(event) )
+{
+	wxString backupFile = wxEmptyString;
+	if( !DBConnectionData.connectToServer ) {
+		// create a local file
+		wxString wildcard = _("VVV backup files (*.vvvbk)|*.vvvbk|All files (*.*)|*.*");
+		wxFileDialog fd( this, _("Backup catalog"), wxGetApp().GetDefaultDataFolder(), wxEmptyString, wildcard, wxSAVE );
+		if( fd.ShowModal() == wxID_OK )
+			backupFile = fd.GetPath();
+	} else {
+		CDialogOpenCatalog dlg( this );
+		dlg.SetAction( wxT("B") );
+		dlg.SetShowBrowseButton( DBConnectionData.IsLocalhost() );
+		if( dlg.ShowModal() == wxID_OK )
+			backupFile = dlg.GetCatalogName();
+	}
+
+	if ( backupFile.empty() ) return;
+
+	// add an extension if needed
+	{
+		wxFileName fn(backupFile);
+		if( fn.GetExt().empty() )
+			backupFile += wxT(".vvvbk");
+	}
+
+	// check if the file already exists
+	if( wxFileExists(backupFile) ) {
+		CUtils::MsgErr( _("Unable to continue. You have choosen an existing file:\n\n") + backupFile + _("\n\nYou must type the name of a non-existing file.") );
+		return;
+	}
+
+	// check if we can create the file
+	wxFile f;
+	{
+		wxLogNull ln;
+		if( !f.Create(backupFile) ) {
+			CUtils::MsgErr( _("Unable to continue: you have choosen a folder where you do not have the right to create a file.") );
+			return;
+		}
+	}
+	f.Close();
+	wxRemoveFile(backupFile);
+
+	wxBusyCursor wait;
+	wxYield();
+	
+	// backup the database
+	CBaseDB::BackupFirebirdDatabase( wxEmptyString, wxT("SYSDBA"), wxT("masterkey"), backupFile, CBaseDB::GetDatabase()->GetDatabaseName() );
+
+	CUtils::MsgInfo( _("Backup completed") );
+
+}
+
+
+/*!
+ * wxEVT_UPDATE_UI event handler for ID_FILE_BACKUP
+ */
+
+void CMainFrame::OnFileBackupUpdate( wxUpdateUIEvent& event )
+{
+	event.Enable(CBaseDB::GetDatabase() != NULL);
+}
+
+
+/*!
+ * wxEVT_COMMAND_MENU_SELECTED event handler for ID_FILE_RESTORE
+ */
+
+void CMainFrame::OnFileRestoreClick( wxCommandEvent& event )
+{
+////@begin wxEVT_COMMAND_MENU_SELECTED event handler for ID_FILE_RESTORE in CMainFrame.
+    // Before editing this code, remove the block markers.
+    event.Skip();
+////@end wxEVT_COMMAND_MENU_SELECTED event handler for ID_FILE_RESTORE in CMainFrame. 
+}
+
+
+/*!
+ * wxEVT_UPDATE_UI event handler for ID_FILE_RESTORE
+ */
+
+void CMainFrame::OnFileRestoreUpdate( wxUpdateUIEvent& event )
+{
+////@begin wxEVT_UPDATE_UI event handler for ID_FILE_RESTORE in CMainFrame.
+    // Before editing this code, remove the block markers.
+    event.Skip();
+////@end wxEVT_UPDATE_UI event handler for ID_FILE_RESTORE in CMainFrame. 
+}
 

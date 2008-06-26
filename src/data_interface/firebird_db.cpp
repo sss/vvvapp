@@ -107,6 +107,15 @@ void CFirebirdDB::CreateDatabaseOnDisk( wxString serverName, wxString userName, 
 	svc->Disconnect();
 }
 
+void CFirebirdDB::BackupDatabase( wxString serverName, wxString userName, wxString password, wxString backupName, wxString databaseName ) {
+	Service svc = ServiceFactory( CUtils::wx2std(serverName), CUtils::wx2std(userName), CUtils::wx2std(password) );
+	svc->Connect();
+	svc->StartBackup( CUtils::wx2std(databaseName), CUtils::wx2std(backupName) );
+	svc->Wait();
+	svc->Disconnect();
+}
+
+
 int CFirebirdDB::GetDatabaseVersion(void) {
 	int64_t tmp;
 	int currentVersion;

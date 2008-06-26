@@ -132,7 +132,7 @@ public:
     wxButton* m_BrowseCtrl;
 private:
     wxString m_CatalogName;
-    wxString m_Action; // "O" for OPEN, "N" for NEW
+    wxString m_Action; // "O" for OPEN, "N" for NEW, "B" for backup
     bool m_ShowBrowseButton; // if true the dialog will show a "Browse" button near the catalog name
 ////@end CDialogOpenCatalog member variables
 

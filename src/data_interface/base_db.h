@@ -63,6 +63,9 @@ public:
 	// returns the database version
 	int GetDatabaseVersion(void);
 
+	// return the database name
+	wxString GetDatabaseName(void);
+
 	// upgrades the database to a newer version
 	// current version is the current version of the database
 	// finalVersion is the version number to be achieved at the end of the upgrade (default = maximum available)
@@ -70,6 +73,10 @@ public:
 
 	// called to create an empty Firebird physical database on disk
 	static void CreateFirebirdDatabaseOnDisk( wxString serverName, wxString userName, wxString password, wxString backupName, wxString databaseName );
+
+	// backup of a database
+	static void BackupFirebirdDatabase( wxString serverName, wxString userName, wxString password, wxString backupName, wxString databaseName );
+
 
 protected:
 

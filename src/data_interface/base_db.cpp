@@ -55,12 +55,29 @@ void CBaseDB::CreateFirebirdDatabaseOnDisk( wxString serverName, wxString userNa
 	CFirebirdDB::CreateDatabaseOnDisk( serverName, userName, password, backupName, databaseName );
 }
 
+void CBaseDB::BackupFirebirdDatabase( wxString serverName, wxString userName, wxString password, wxString backupName, wxString databaseName ) {
+	CFirebirdDB::BackupDatabase( serverName, userName, password, backupName, databaseName );
+}
+
+
 int CBaseDB::GetDatabaseVersion(void) {
 	int retVal = 0;
 
 	switch( CBaseRec::GetDatabaseType() ) {
 		case CBaseRec::dbtFirebird:
 			retVal = ((CFirebirdDB*) _instance)->GetDatabaseVersion();
+			break;
+	}
+
+	return retVal;
+}
+
+wxString CBaseDB::GetDatabaseName(void) {
+	wxString retVal = wxEmptyString;
+
+	switch( CBaseRec::GetDatabaseType() ) {
+		case CBaseRec::dbtFirebird:
+			retVal = ((CFirebirdDB*) _instance)->GetDatabaseName();
 			break;
 	}
 

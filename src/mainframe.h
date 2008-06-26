@@ -88,6 +88,8 @@ class CRightPaneList;
 #define ID_VIEW_VIRTUAL 10012
 #define ID_VIEW_SEARCH 10013
 #define ID_FILE_EXPORT 10075
+#define ID_FILE_BACKUP 10077
+#define ID_FILE_RESTORE 10078
 #define ID_ADD_VIRTUAL_FOLDER 10015
 #define ID_EDIT_RENAME 10073
 #define ID_EDIT_DELETE 10074
@@ -178,6 +180,18 @@ public:
 
     /// wxEVT_UPDATE_UI event handler for ID_FILE_EXPORT
     void OnFileExportUpdate( wxUpdateUIEvent& event );
+
+    /// wxEVT_COMMAND_MENU_SELECTED event handler for ID_FILE_BACKUP
+    void OnFileBackupClick( wxCommandEvent& event );
+
+    /// wxEVT_UPDATE_UI event handler for ID_FILE_BACKUP
+    void OnFileBackupUpdate( wxUpdateUIEvent& event );
+
+    /// wxEVT_COMMAND_MENU_SELECTED event handler for ID_FILE_RESTORE
+    void OnFileRestoreClick( wxCommandEvent& event );
+
+    /// wxEVT_UPDATE_UI event handler for ID_FILE_RESTORE
+    void OnFileRestoreUpdate( wxUpdateUIEvent& event );
 
     /// wxEVT_COMMAND_MENU_SELECTED event handler for wxID_EXIT
     void OnEXITClick( wxCommandEvent& event );

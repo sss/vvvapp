@@ -249,8 +249,12 @@ wxIcon CDialogOpenCatalog::GetIconResource( const wxString& name )
 
 void CDialogOpenCatalog::OnOpendialogBrowseClick( wxCommandEvent& WXUNUSED(event) )
 {
+	wxString wildcard;
 	wxString caption = this->GetTitle();
-	wxString wildcard = _("VVV files (*.vvv)|*.vvv|All files (*.*)|*.*");
+	if( m_Action == wxT("B") )
+		wildcard = _("VVV backup files (*.vvvbk)|*.vvvbk|All files (*.*)|*.*");
+	else
+		wildcard = _("VVV files (*.vvv)|*.vvv|All files (*.*)|*.*");
 	wxFileDialog fd( this, caption, wxEmptyString, wxEmptyString, wildcard, m_Action == wxT("O") ? wxOPEN : wxSAVE );
 	if( fd.ShowModal() != wxID_OK ) return;
 	wxString databaseFile = fd.GetPath();
@@ -266,14 +270,20 @@ void CDialogOpenCatalog::OnOpendialogBrowseClick( wxCommandEvent& WXUNUSED(event
 
 void CDialogOpenCatalog::OnInitDialog( wxInitDialogEvent& event )
 {
-	wxASSERT( m_Action == wxT("O") || m_Action == wxT("N") );
+	wxASSERT( m_Action == wxT("O") || m_Action == wxT("N") || m_Action == wxT("B") );
 
-	if( m_Action == wxT("O") ) 
+	if( m_Action == wxT("O") ) {
 		// called as an open dialog
 		SetTitle( _("Open Catalog") );
-	else 
+	}
+	if( m_Action == wxT("N") ) {
 		// called as a NEW dialog
 		SetTitle( _("New Catalog") );
+	}
+	if( m_Action == wxT("B") ) {
+		// called as a BACKUP dialog
+		SetTitle( _("Backup") );
+	}
 	if( !m_ShowBrowseButton )
 		m_BrowseCtrl->Show( false );
 

@@ -20,6 +20,7 @@
     <string name="resource_prefix">""</string>
     <bool name="use_two_step_construction">0</bool>
     <bool name="use_enums">0</bool>
+    <bool name="generate_for_xrced">0</bool>
     <string name="current_platform">"__WXMSW__"</string>
     <string name="target_wx_version">"2.8.0"</string>
     <string name="cpp_header_comment">"/////////////////////////////////////////////////////////////////////////////
@@ -114,6 +115,7 @@
     <bool name="archive_all_image_files">0</bool>
     <bool name="xrc_retain_relative_paths">1</bool>
     <bool name="xrc_generate_id_tags">0</bool>
+    <bool name="xrc_use_name_property">0</bool>
   </header>
   <data>
     <document>
@@ -888,6 +890,65 @@
                 <long name="title-mode">0</long>
                 <long name="locked">0</long>
                 <string name="created">"16/12/2006"</string>
+                <string name="proxy-type">"wbMenuSeparatorProxy"</string>
+                <string name="proxy-Platform">"&lt;Any platform&gt;"</string>
+              </document>
+              <document>
+                <string name="title">"&amp;Backup...: ID_FILE_BACKUP"</string>
+                <string name="type">"dialog-control-document"</string>
+                <string name="filename">""</string>
+                <string name="icon-name">"menuitem"</string>
+                <long name="is-transient">0</long>
+                <long name="owns-file">1</long>
+                <long name="title-mode">0</long>
+                <long name="locked">0</long>
+                <string name="created">"25/6/2008"</string>
+                <string name="proxy-type">"wbMenuItemProxy"</string>
+                <string name="event-handler-0">"wxEVT_COMMAND_MENU_SELECTED|OnFileBackupClick|NONE||CMainFrame"</string>
+                <string name="event-handler-1">"wxEVT_UPDATE_UI|OnFileBackupUpdate|NONE||CMainFrame"</string>
+                <string name="proxy-Id name">"ID_FILE_BACKUP"</string>
+                <long name="proxy-Id value">10077</long>
+                <string name="proxy-Label">"&amp;Backup..."</string>
+                <string name="proxy-Kind">"Normal"</string>
+                <bool name="proxy-Checked">0</bool>
+                <bool name="proxy-Enabled">1</bool>
+                <string name="proxy-Help text">""</string>
+                <string name="proxy-Bitmap">""</string>
+                <string name="proxy-Platform">"&lt;Any platform&gt;"</string>
+              </document>
+              <document>
+                <string name="title">"&amp;Restore...: ID_FILE_RESTORE"</string>
+                <string name="type">"dialog-control-document"</string>
+                <string name="filename">""</string>
+                <string name="icon-name">"menuitem"</string>
+                <long name="is-transient">0</long>
+                <long name="owns-file">1</long>
+                <long name="title-mode">0</long>
+                <long name="locked">0</long>
+                <string name="created">"25/6/2008"</string>
+                <string name="proxy-type">"wbMenuItemProxy"</string>
+                <string name="event-handler-0">"wxEVT_COMMAND_MENU_SELECTED|OnFileRestoreClick|NONE||CMainFrame"</string>
+                <string name="event-handler-1">"wxEVT_UPDATE_UI|OnFileRestoreUpdate|NONE||"</string>
+                <string name="proxy-Id name">"ID_FILE_RESTORE"</string>
+                <long name="proxy-Id value">10078</long>
+                <string name="proxy-Label">"&amp;Restore..."</string>
+                <string name="proxy-Kind">"Normal"</string>
+                <bool name="proxy-Checked">0</bool>
+                <bool name="proxy-Enabled">1</bool>
+                <string name="proxy-Help text">""</string>
+                <string name="proxy-Bitmap">""</string>
+                <string name="proxy-Platform">"&lt;Any platform&gt;"</string>
+              </document>
+              <document>
+                <string name="title">"------------"</string>
+                <string name="type">"dialog-control-document"</string>
+                <string name="filename">""</string>
+                <string name="icon-name">"menuitem"</string>
+                <long name="is-transient">0</long>
+                <long name="owns-file">1</long>
+                <long name="title-mode">0</long>
+                <long name="locked">0</long>
+                <string name="created">"25/6/2008"</string>
                 <string name="proxy-type">"wbMenuSeparatorProxy"</string>
                 <string name="proxy-Platform">"&lt;Any platform&gt;"</string>
               </document>
@@ -7251,7 +7312,7 @@ with other computers."</string>
           <long name="use-xrc">0</long>
           <long name="working-mode">0</long>
           <string name="variable-0">"m_CatalogName|wxString|CatalogName||2|0|"</string>
-          <string name="variable-1">"m_Action|wxString|Action||2|0|&quot;O&quot; for OPEN, &quot;N&quot; for NEW"</string>
+          <string name="variable-1">"m_Action|wxString|Action||2|0|&quot;O&quot; for OPEN, &quot;N&quot; for NEW, &quot;B&quot; for backup"</string>
           <string name="variable-2">"m_ShowBrowseButton|bool|ShowBrowseButton||2|0|if true the dialog will show a &quot;Browse&quot; button near the catalog name"</string>
           <string name="event-handler-0">"wxEVT_INIT_DIALOG|OnInitDialog|NONE||CDialogOpenCatalog"</string>
           <string name="proxy-Id name">"ID_CDIALOG_OPEN_CATALOG"</string>
@@ -7326,14 +7387,6 @@ with other computers."</string>
             <string name="proxy-type">"wbBoxSizerProxy"</string>
             <string name="proxy-Orientation">"Vertical"</string>
             <string name="proxy-Member variable name">""</string>
-            <string name="proxy-AlignH">"Centre"</string>
-            <string name="proxy-AlignV">"Centre"</string>
-            <long name="proxy-Stretch factor">0</long>
-            <long name="proxy-Border">5</long>
-            <bool name="proxy-wxLEFT">1</bool>
-            <bool name="proxy-wxRIGHT">1</bool>
-            <bool name="proxy-wxTOP">1</bool>
-            <bool name="proxy-wxBOTTOM">1</bool>
             <bool name="proxy-wxSHAPED">0</bool>
             <bool name="proxy-wxADJUST_MINSIZE">0</bool>
             <bool name="proxy-wxFIXED_MINSIZE">0</bool>
@@ -8049,6 +8102,14 @@ Remember that the path must be relative to the server, not to the client."</stri
             <string name="proxy-type">"wbBoxSizerProxy"</string>
             <string name="proxy-Orientation">"Vertical"</string>
             <string name="proxy-Member variable name">""</string>
+            <string name="proxy-AlignH">"Centre"</string>
+            <string name="proxy-AlignV">"Centre"</string>
+            <long name="proxy-Stretch factor">0</long>
+            <long name="proxy-Border">5</long>
+            <bool name="proxy-wxLEFT">1</bool>
+            <bool name="proxy-wxRIGHT">1</bool>
+            <bool name="proxy-wxTOP">1</bool>
+            <bool name="proxy-wxBOTTOM">1</bool>
             <bool name="proxy-wxSHAPED">0</bool>
             <bool name="proxy-wxADJUST_MINSIZE">0</bool>
             <bool name="proxy-wxFIXED_MINSIZE">0</bool>

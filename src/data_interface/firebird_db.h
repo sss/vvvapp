@@ -46,6 +46,8 @@ public:
 	// returns the database version
 	int GetDatabaseVersion(void);
 
+	wxString GetDatabaseName(void) { return databaseName; };
+
 	// upgrades the database to a newer version
 	// current version is the current version of the database
 	// finalVersion is the version number to be achieved at the end of the upgrade (default = maximum available)
@@ -70,6 +72,11 @@ public:
 	// backupName is the name of the backup file that will be restored
 	// databaseName is name of the disk file that will contain the database
 	static void CreateDatabaseOnDisk( wxString serverName, wxString userName, wxString password, wxString backupName, wxString databaseName );
+
+	// backup of a database
+	// backupName is the name of the backup file that will be created
+	// databaseName is name of the db that will be copied to the backup file
+	static void BackupDatabase( wxString serverName, wxString userName, wxString password, wxString backupName, wxString databaseName );
 
 
 protected:
