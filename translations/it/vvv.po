@@ -1,0 +1,2443 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: VVV 0.9\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2008-06-27 21:11+0100\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Fulvio Senore <mailing@fsoft.it>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: Italian\n"
+"X-Poedit-Country: ITALY\n"
+"X-Poedit-Basepath: E:\\C_Prg\\vvv (virtual volumes view)\\src\n"
+"X-Poedit-SearchPath-0: E:\\C_Prg\\vvv (virtual volumes view)\\src\n"
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/catalog_volume.cpp:174
+msgid "Enter or select the volume to catalog"
+msgstr "Introdurre o selezionare il volume da catalogare"
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/catalog_volume.cpp:183
+#: view)\src/exportdata.cpp:223
+#: view)\src/opencatalog.cpp:174
+#: view)\src/restore.cpp:168
+#: view)\src/restore.cpp:180
+msgid "..."
+msgstr "..."
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/catalog_volume.cpp:186
+msgid "Volume name"
+msgstr "Nome del volume"
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/catalog_volume.cpp:196
+msgid "Get volume name"
+msgstr "Recupera il nome del volume"
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/catalog_volume.cpp:204
+#: view)\src/exportdata.cpp:230
+#: view)\src/exportdata.cpp:248
+#: view)\src/mainframe.cpp:824
+#: view)\src/restore.cpp:187
+#: view)\src/restore.cpp:205
+msgid "&Help"
+msgstr "&?"
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/catalog_volume.cpp:209
+#: view)\src/mainframe.cpp:837
+msgid "Catalog"
+msgstr "Cataloga"
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/catalog_volume.cpp:212
+msgid "&Close"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/catalog_volume.cpp:215
+msgid "Current folder"
+msgstr "Cartella corrente"
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/catalog_volume.cpp:218
+msgid "Previously cataloged volumes"
+msgstr "Volumi già catalogati"
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/catalog_volume.cpp:288
+msgid "The volume path is missing"
+msgstr "Percorso del volume mancante"
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/catalog_volume.cpp:293
+msgid "The volume name is missing"
+msgstr "Nome del volume mancante"
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/catalog_volume.cpp:316
+msgid "This volume name is already present in the database"
+msgstr "Questo nome di volume è già presente nel catalogo"
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/catalog_volume.cpp:448
+msgid "Select the volume to catalog"
+msgstr "Selezionare il volume da catalogare"
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/choose_virtual_folder.cpp:157
+msgid "Please select the virtual folder that will receive the selected files and/or folders:"
+msgstr "Selezionare la cartella virtuale che riceverà i files e/o le cartelle selezionate:"
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/choose_virtual_folder.cpp:169
+#: view)\src/choose_virtual_folder.cpp:187
+#: view)\src/exportdata.cpp:235
+#: view)\src/exportdata.cpp:256
+#: view)\src/object_description.cpp:158
+#: view)\src/object_description.cpp:174
+#: view)\src/opencatalog.cpp:181
+#: view)\src/opencatalog.cpp:197
+#: view)\src/restore.cpp:192
+#: view)\src/restore.cpp:213
+msgid "&OK"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/choose_virtual_folder.cpp:173
+#: view)\src/choose_virtual_folder.cpp:184
+#: view)\src/exportdata.cpp:239
+#: view)\src/exportdata.cpp:253
+#: view)\src/object_description.cpp:162
+#: view)\src/object_description.cpp:171
+#: view)\src/opencatalog.cpp:185
+#: view)\src/opencatalog.cpp:194
+#: view)\src/restore.cpp:196
+#: view)\src/restore.cpp:210
+msgid "&Cancel"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/convert_db_unicode.cpp:520
+msgid "Conversion is about to start: a message will tell you when it will be completed."
+msgstr "La conversione sta per iniziare: un messaggio vi informerà quando sarà completata."
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/convert_db_unicode.cpp:546
+msgid "Conversion completed"
+msgstr "Conversione terminata"
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/Copia di
+#: search_panel_dialog.cpp:127
+#: view)\src/mainframe.cpp:895
+#: view)\src/search_panel_dialog.cpp:128
+#: view)\src/search_panel_dialog.cpp:149
+msgid "Is &equal to:"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/Copia di
+#: search_panel_dialog.cpp:128
+#: view)\src/mainframe.cpp:896
+#: view)\src/search_panel_dialog.cpp:129
+#: view)\src/search_panel_dialog.cpp:150
+msgid "S&tarts with:"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/Copia di
+#: search_panel_dialog.cpp:129
+#: view)\src/mainframe.cpp:897
+#: view)\src/search_panel_dialog.cpp:130
+#: view)\src/search_panel_dialog.cpp:151
+msgid "&Contains:"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/Copia di
+#: search_panel_dialog.cpp:130
+#: view)\src/mainframe.cpp:898
+#: view)\src/search_panel_dialog.cpp:131
+msgid "File name"
+msgstr "Nome del file"
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/Copia di
+#: search_panel_dialog.cpp:139
+#: view)\src/mainframe.cpp:907
+#: view)\src/search_panel_dialog.cpp:140
+msgid "E&xtension:"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/Copia di
+#: search_panel_dialog.cpp:148
+#: view)\src/exportdata.cpp:207
+#: view)\src/mainframe.cpp:929
+#: view)\src/search_panel_dialog.cpp:162
+msgid "&All physical volumes"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/Copia di
+#: search_panel_dialog.cpp:149
+#: view)\src/mainframe.cpp:930
+#: view)\src/search_panel_dialog.cpp:163
+msgid "Selected &physical folder"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/Copia di
+#: search_panel_dialog.cpp:150
+#: view)\src/exportdata.cpp:209
+#: view)\src/mainframe.cpp:931
+#: view)\src/search_panel_dialog.cpp:164
+msgid "Selected &virtual folder"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/Copia di
+#: search_panel_dialog.cpp:151
+#: view)\src/mainframe.cpp:850
+#: view)\src/mainframe.cpp:932
+#: view)\src/search_panel_dialog.cpp:165
+msgid "Search"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/Copia di
+#: search_panel_dialog.cpp:157
+#: view)\src/mainframe.cpp:938
+#: view)\src/search_panel_dialog.cpp:171
+msgid "&Search"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/exportdata.cpp:191
+msgid "Use this window to export data to a CSV file"
+msgstr "Utilizzate questa finestra per esportare dati in un file CSV"
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/exportdata.cpp:195
+msgid "Co&mma"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/exportdata.cpp:196
+msgid "&TAB"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/exportdata.cpp:197
+msgid "&Pipe"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/exportdata.cpp:198
+msgid "Separator"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/exportdata.cpp:202
+msgid "&Include headers"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/exportdata.cpp:208
+msgid "&Selected physical volume/folder"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/exportdata.cpp:210
+msgid "Export"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/exportdata.cpp:214
+msgid "File name:"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/exportdata.cpp:309
+msgid "CSV files (*.csv;*.txt)|*.csv;*.txt|All files (*.*)|*.*"
+msgstr "File CSV (*.csv;*.txt)|*.csv;*.txt|Tutti i file (*.*)|*.*"
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/exportdata.cpp:336
+msgid "Please enter a file name"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/exportdata.cpp:341
+msgid "The output file already exists: do you want to overwrite it?"
+msgstr "Il file da creare esiste già: vuoi sovrascriverlo?"
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/exportdata.cpp:344
+#: view)\src/exportdata.cpp:358
+msgid "Unable to create the file."
+msgstr "Impossibile creare il file."
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/exportdata.cpp:524
+#: view)\src/exportdata.cpp:526
+#: view)\src/mainframe.cpp:1249
+msgid "Name"
+msgstr "Nome"
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/exportdata.cpp:524
+#: view)\src/exportdata.cpp:526
+#: view)\src/mainframe.cpp:1254
+msgid "Size"
+msgstr "Dimensioni"
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/exportdata.cpp:524
+#: view)\src/exportdata.cpp:526
+#: view)\src/mainframe.cpp:1258
+msgid "Ext"
+msgstr "Estensione"
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/exportdata.cpp:524
+#: view)\src/exportdata.cpp:526
+#: view)\src/mainframe.cpp:1262
+msgid "Last modified"
+msgstr "Ultima modifica"
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/exportdata.cpp:524
+msgid "PhysicalPath"
+msgstr "Percorso fisico"
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/exportdata.cpp:524
+#: view)\src/exportdata.cpp:526
+#: view)\src/mainframe.cpp:919
+#: view)\src/mainframe.cpp:1270
+#: view)\src/mainframe.cpp:1275
+#: view)\src/search_panel_dialog.cpp:152
+msgid "Description"
+msgstr "Descrizione"
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/exportdata.cpp:526
+msgid "Volume"
+msgstr "Volume"
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/exportdata.cpp:526
+msgid "Path"
+msgstr "Percorso"
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/mainframe.cpp:711
+msgid ""
+"This catalog file does not exist:\n"
+"\n"
+msgstr ""
+"Questo catalogo non esiste:\n"
+"\n"
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/mainframe.cpp:772
+msgid "&New..."
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/mainframe.cpp:773
+msgid "&Open..."
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/mainframe.cpp:774
+msgid "&Export..."
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/mainframe.cpp:776
+msgid "&Backup..."
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/mainframe.cpp:777
+msgid "&Restore..."
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/mainframe.cpp:779
+msgid "E&xit"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/mainframe.cpp:780
+msgid "&File"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/mainframe.cpp:782
+msgid "&Add To Virtual Folder..."
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/mainframe.cpp:784
+msgid "&Rename...\tF2"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/mainframe.cpp:785
+msgid "&Delete"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/mainframe.cpp:787
+msgid "&Object Description..."
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/mainframe.cpp:789
+msgid "&New Virtual Root Folder..."
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/mainframe.cpp:790
+msgid "New Virtual &Subfolder..."
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/mainframe.cpp:792
+#: view)\src/mainframe.cpp:814
+msgid "&Options..."
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/mainframe.cpp:794
+msgid "&Edit"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/mainframe.cpp:796
+msgid "&Catalog Volume..."
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/mainframe.cpp:797
+msgid "&Volumes"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/mainframe.cpp:799
+msgid "&Physical View"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/mainframe.cpp:801
+msgid "&Virtual View"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/mainframe.cpp:802
+msgid "&Search View"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/mainframe.cpp:804
+msgid "Go &Up One Level"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/mainframe.cpp:806
+msgid "&Toolbar"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/mainframe.cpp:808
+msgid "Status &Bar"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/mainframe.cpp:810
+msgid "Vie&w"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/mainframe.cpp:816
+msgid "&Tools"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/mainframe.cpp:819
+msgid "Help &Contents"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/mainframe.cpp:823
+msgid "&About VVV..."
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/mainframe.cpp:831
+msgid "New"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/mainframe.cpp:831
+msgid "Create a new catalog"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/mainframe.cpp:834
+msgid "Open"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/mainframe.cpp:834
+msgid "Open an existing catalog"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/mainframe.cpp:837
+msgid "Catalog a new volume"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/mainframe.cpp:840
+msgid "Up"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/mainframe.cpp:840
+msgid "Move up one level"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/mainframe.cpp:844
+msgid "Physical"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/mainframe.cpp:844
+msgid "Show the physical view"
+msgstr "Mostra la vista fisica"
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/mainframe.cpp:847
+msgid "Virtual"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/mainframe.cpp:847
+msgid "Show the virtual view"
+msgstr "Mostra la vista virtuale"
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/mainframe.cpp:850
+msgid "Show the search view"
+msgstr "Mostra la vista di ricerca"
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/mainframe.cpp:916
+msgid "Is equal to:"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/mainframe.cpp:917
+msgid "Starts with:"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/mainframe.cpp:918
+msgid "Contains:"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/mainframe.cpp:1031
+msgid "Catalog volume"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/mainframe.cpp:1267
+msgid "Physical path"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/mainframe.cpp:1317
+#: view)\src/settings.cpp:200
+msgid "Artist"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/mainframe.cpp:1322
+#: view)\src/settings.cpp:204
+msgid "Album"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/mainframe.cpp:1327
+#: view)\src/settings.cpp:208
+msgid "Title"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/mainframe.cpp:1332
+#: view)\src/settings.cpp:212
+msgid "Year"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/mainframe.cpp:1337
+#: view)\src/settings.cpp:216
+msgid "Comment"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/mainframe.cpp:1342
+msgid "Number"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/mainframe.cpp:1347
+#: view)\src/settings.cpp:224
+msgid "Genre"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/mainframe.cpp:1352
+#: view)\src/settings.cpp:228
+msgid "Length"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/mainframe.cpp:1357
+#: view)\src/settings.cpp:232
+msgid "Bitrate"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/mainframe.cpp:1362
+#: view)\src/settings.cpp:236
+msgid "Sample rate"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/mainframe.cpp:1367
+#: view)\src/settings.cpp:240
+msgid "Channels"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/mainframe.cpp:1396
+msgid "Open catalog"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/mainframe.cpp:1400
+#: view)\src/mainframe.cpp:3527
+msgid "VVV  files (*.vvv)|*.vvv|All files (*.*)|*.*"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/mainframe.cpp:1844
+msgid "Choose virtual folder"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/mainframe.cpp:1925
+msgid "New virtual root folder"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/mainframe.cpp:1953
+msgid "New virtual subfolder"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/mainframe.cpp:1971
+msgid "Enter the new folder name"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/mainframe.cpp:1986
+#: view)\src/mainframe.cpp:3309
+msgid "The new folder name is already present in the database"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/mainframe.cpp:2039
+msgid "This catalog file does not exist any more"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/mainframe.cpp:2079
+msgid ""
+"Catalog not found:\n"
+"\n"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/mainframe.cpp:2083
+msgid ""
+"Incorrect username or password for the following database:\n"
+"\n"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/mainframe.cpp:2088
+msgid ""
+"Unable to connect to the following server:\n"
+"\n"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/mainframe.cpp:2090
+msgid ""
+"Unable to open the catalog.\n"
+"Please note that you are not connected to a database server so you cannot open a catalog located on another computer in the network.\n"
+"If you want to open a catalog on another computer you must connect to the database server (Tools/Options menu)."
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/mainframe.cpp:2112
+msgid ""
+"This catalog has been created with a previous version of the program and it needs to be upgraded, but the file containing the upgrades list is missing.\n"
+"\n"
+"You can try reinstalling the program to solve this problem."
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/mainframe.cpp:2116
+msgid "Upgrading the catalog, please wait..."
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/mainframe.cpp:2128
+msgid ""
+"This catalog has been created with an older version of VVV so you need to convert it to a newer format.\n"
+"\n"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/mainframe.cpp:2129
+msgid ""
+"The conversion will create a new catalog with the same data as the older one, then you will use this new catalog with VVV. You will not use the older catalog any more.\n"
+"\n"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/mainframe.cpp:2130
+msgid "Do you want to convert the catatalog creating a new one?"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/mainframe.cpp:2134
+#: view)\src/mainframe.cpp:2326
+msgid ""
+"Unable to create a new catalog.\n"
+"\n"
+"You are connecting to a database server on another computer. You must execute this program on the server to be able to create a new catalog."
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/mainframe.cpp:2138
+msgid "Convert to a new catalog"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/mainframe.cpp:2146
+#: view)\src/mainframe.cpp:2338
+msgid ""
+"Unable to find the database backup to restore.\n"
+"\n"
+"You can try reinstalling the program to solve this problem."
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/mainframe.cpp:2309
+msgid ""
+"VVV (Virtual Volumes View): a program to catalog removable devices like CDs and DVDs\n"
+"\n"
+"\"The mud of Venaus is the blood of this land\""
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/mainframe.cpp:2310
+msgid "Copyright (C) 2007-2008 The VVV Team"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/mainframe.cpp:2311
+msgid "Fulvio Senore: main developer"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/mainframe.cpp:2312
+msgid "Jan Albartus: worked at the portable version"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/mainframe.cpp:2313
+msgid "This program uses the Tango icons (http://tango.freedesktop.org/Tango_Desktop_Project )"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/mainframe.cpp:2314
+msgid "This is open source software, distributed under the GNU GENERAL PUBLIC LICENSE"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/mainframe.cpp:2330
+msgid "New catalog"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/mainframe.cpp:2363
+msgid "Multiple items"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/mainframe.cpp:2372
+#: view)\src/mainframe.cpp:2404
+msgid "Object description"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/mainframe.cpp:2503
+#: view)\src/mainframe.cpp:3075
+msgid "Add To Virtual Folder"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/mainframe.cpp:2505
+#: view)\src/mainframe.cpp:3077
+msgid "Edit Description..."
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/mainframe.cpp:2508
+msgid "Rename..."
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/mainframe.cpp:2509
+#: view)\src/mainframe.cpp:2539
+#: view)\src/mainframe.cpp:3072
+msgid "Delete"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/mainframe.cpp:2533
+msgid "New Root Folder"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/mainframe.cpp:2536
+msgid "New Subfolder"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/mainframe.cpp:2538
+msgid "Rename"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/mainframe.cpp:2682
+msgid "Please enter some search data"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/mainframe.cpp:2812
+msgid "The search did not find anything"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/mainframe.cpp:2961
+msgid "Objects: "
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/mainframe.cpp:2968
+msgid "Total size: "
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/mainframe.cpp:3122
+msgid "Settings"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/mainframe.cpp:3212
+msgid ""
+"This command will delete the selected virtual folder, but it will not change the folders in the physical view.\n"
+"\n"
+"Do you really want to delete the selected virtual folder?"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/mainframe.cpp:3235
+msgid ""
+"This command will delete this volume:\n"
+"\n"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/mainframe.cpp:3235
+msgid ""
+"\n"
+"\n"
+"from the VVV catalog. It will not delete any file from your disk.\n"
+"\n"
+"Do you really want to delete this volume?"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/mainframe.cpp:3245
+msgid "Unable to delete this volume: at least one of its files is used in the virtual view"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/mainframe.cpp:3264
+msgid "Enter the new volume name"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/mainframe.cpp:3264
+msgid "Rename volume"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/mainframe.cpp:3277
+msgid "The new volume name is already present in the database"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/mainframe.cpp:3298
+msgid "Enter the new forder name"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/mainframe.cpp:3298
+msgid "Rename virtual folder"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/mainframe.cpp:3416
+msgid ""
+"This command will delete the selected virtual files, but it will not change the files in the physical view.\n"
+"\n"
+"Do you really want to delete the selected virtual files?"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/mainframe.cpp:3550
+#: view)\src/mainframe.cpp:3624
+msgid ""
+"Unable to continue. You have choosen an existing file:\n"
+"\n"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/mainframe.cpp:3550
+#: view)\src/mainframe.cpp:3624
+#: view)\src/mainframe.cpp:3703
+msgid ""
+"\n"
+"\n"
+"You must type the name of a non-existing file."
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/mainframe.cpp:3559
+#: view)\src/mainframe.cpp:3633
+#: view)\src/mainframe.cpp:3712
+msgid "Unable to continue: you have choosen a folder where you do not have the right to create a file."
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/mainframe.cpp:3601
+#: view)\src/opencatalog.cpp:255
+#: view)\src/restore.cpp:287
+msgid "VVV backup files (*.vvvbk)|*.vvvbk|All files (*.*)|*.*"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/mainframe.cpp:3602
+msgid "Backup catalog"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/mainframe.cpp:3646
+msgid "Backup completed"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/mainframe.cpp:3669
+msgid ""
+"Unable to restore.\n"
+"\n"
+"You are connecting to a database server on another computer. You must execute this command on the server to be able to restore a catalog."
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/mainframe.cpp:3681
+msgid "The catalog name is missing"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/mainframe.cpp:3685
+msgid "The backup name is missing"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/mainframe.cpp:3703
+msgid ""
+"Unable to continue. You have choosen an existing catalog:\n"
+"\n"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/mainframe.cpp:3739
+msgid "Restore completed"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/object_description.cpp:145
+msgid "Please enter the description for the following object:"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/object_description.cpp:148
+msgid "OBJECT NAME"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/opencatalog.cpp:163
+msgid ""
+"You are about to open a catalog located on the server.\n"
+"\n"
+"Enter the alias or the complete path to the catalog file.\n"
+"Remember that the path must be relative to the server, not to the client."
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/opencatalog.cpp:257
+#: view)\src/restore.cpp:305
+msgid "VVV files (*.vvv)|*.vvv|All files (*.*)|*.*"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/opencatalog.cpp:277
+msgid "Open Catalog"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/opencatalog.cpp:281
+msgid "New Catalog"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/opencatalog.cpp:285
+msgid "Backup"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/restore.cpp:154
+msgid ""
+"You are about to create a new catalog from a backup file.\n"
+"\n"
+"Enter the complete path to the backup file and to the catalog file that will be created.\n"
+"You cannot enter the name of an existing catalog."
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/restore.cpp:159
+msgid "Backup file:"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/restore.cpp:171
+msgid "New catalog:"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/restore.cpp:286
+msgid "Select backup file"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/restore.cpp:304
+msgid "Catalog file"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/settings.cpp:175
+msgid "Reopen the last used catalog at startup"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/settings.cpp:181
+msgid "Beep for tasks longer than (seconds):"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/settings.cpp:187
+msgid "General"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/settings.cpp:195
+msgid "Show the following data for MP3 files:"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/settings.cpp:220
+msgid "Track number"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/settings.cpp:246
+msgid "MP3"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/settings.cpp:254
+msgid ""
+"Check the checkbox below if you want to access catalogs stored\n"
+"in a network server. Each computer in the network will be able to\n"
+"access the same catalogs stored in the server.\n"
+"DO NOT check the checkbox if you only want to access catalogs\n"
+"stored in this computer and you do not want to share them\n"
+"with other computers."
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/settings.cpp:259
+msgid "Connect to a network server"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/settings.cpp:266
+#: view)\src/settings.cpp:289
+msgid "Server"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/settings.cpp:272
+msgid "Username"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/settings.cpp:278
+msgid "Password"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/settings.cpp:286
+msgid "Test server connection"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/settings.cpp:376
+msgid "You must enter a server name or address"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/settings.cpp:380
+msgid "You must enter a username"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/settings.cpp:384
+msgid "You must enter a password"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/settings.cpp:447
+msgid "You must enter the server name or address"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/settings.cpp:452
+msgid "Unable to connect to the server"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/settings.cpp:454
+msgid "Server connection successful"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/vvv.cpp:263
+msgid ""
+"Unable to connect to the server\n"
+"\n"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/vvv.cpp:265
+#: view)\src/vvv.cpp:271
+msgid ""
+"An unexpected error has occurred. Here is a description of the error:\n"
+"\n"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/vvv.cpp:277
+msgid "An unexpected error has occurred. This application will be terminated"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/array.cpp:51
+#: view)\src/ibpp/core/array.cpp:75
+#: view)\src/ibpp/core/array.cpp:200
+#: view)\src/ibpp/core/array.cpp:548
+#: view)\src/ibpp/core/array.cpp:904
+#: view)\src/ibpp/core/blob.cpp:49
+#: view)\src/ibpp/core/blob.cpp:68
+#: view)\src/ibpp/core/blob.cpp:169
+#: view)\src/ibpp/core/blob.cpp:209
+#: view)\src/ibpp/core/blob.cpp:254
+#: view)\src/ibpp/core/events.cpp:186
+#: view)\src/ibpp/core/transaction.cpp:120
+msgid "No Database is attached."
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/array.cpp:53
+#: view)\src/ibpp/core/array.cpp:77
+#: view)\src/ibpp/core/array.cpp:202
+#: view)\src/ibpp/core/array.cpp:550
+#: view)\src/ibpp/core/array.cpp:911
+#: view)\src/ibpp/core/blob.cpp:51
+#: view)\src/ibpp/core/blob.cpp:70
+#: view)\src/ibpp/core/blob.cpp:171
+#: view)\src/ibpp/core/blob.cpp:211
+#: view)\src/ibpp/core/blob.cpp:261
+msgid "No Transaction is attached."
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/array.cpp:63
+msgid "isc_array_lookup_bounds failed."
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/array.cpp:73
+#: view)\src/ibpp/core/array.cpp:98
+#: view)\src/ibpp/core/array.cpp:125
+#: view)\src/ibpp/core/array.cpp:134
+#: view)\src/ibpp/core/array.cpp:143
+#: view)\src/ibpp/core/array.cpp:151
+#: view)\src/ibpp/core/array.cpp:198
+#: view)\src/ibpp/core/array.cpp:546
+msgid "Array description not set."
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/array.cpp:79
+#: view)\src/ibpp/core/array.cpp:153
+msgid "Invalid dimension."
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/array.cpp:86
+msgid "Invalid bounds. You can only narrow the bounds."
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/array.cpp:115
+#: view)\src/ibpp/core/row.cpp:711
+#: view)\src/ibpp/core/row.cpp:1357
+#: view)\src/ibpp/core/row.cpp:1387
+#: view)\src/ibpp/core/row.cpp:1478
+#: view)\src/ibpp/core/row.cpp:1534
+msgid "Found an unknown sqltype !"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/array.cpp:155
+msgid "Null reference detected."
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/array.cpp:196
+msgid "Array Id not read from column."
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/array.cpp:204
+#: view)\src/ibpp/core/array.cpp:552
+msgid "Wrong count of array elements"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/array.cpp:211
+msgid "isc_array_get_slice failed."
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/array.cpp:213
+#: view)\src/ibpp/core/array.cpp:898
+msgid "Internal buffer size discrepancy."
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/array.cpp:244
+#: view)\src/ibpp/core/array.cpp:271
+#: view)\src/ibpp/core/array.cpp:333
+#: view)\src/ibpp/core/array.cpp:398
+#: view)\src/ibpp/core/array.cpp:466
+#: view)\src/ibpp/core/array.cpp:471
+#: view)\src/ibpp/core/array.cpp:482
+#: view)\src/ibpp/core/array.cpp:507
+#: view)\src/ibpp/core/array.cpp:518
+#: view)\src/ibpp/core/array.cpp:529
+#: view)\src/ibpp/core/array.cpp:585
+#: view)\src/ibpp/core/array.cpp:611
+#: view)\src/ibpp/core/array.cpp:681
+#: view)\src/ibpp/core/array.cpp:748
+#: view)\src/ibpp/core/array.cpp:819
+#: view)\src/ibpp/core/array.cpp:830
+#: view)\src/ibpp/core/array.cpp:856
+#: view)\src/ibpp/core/array.cpp:867
+#: view)\src/ibpp/core/array.cpp:878
+#: view)\src/ibpp/core/row.cpp:844
+#: view)\src/ibpp/core/row.cpp:868
+#: view)\src/ibpp/core/row.cpp:909
+#: view)\src/ibpp/core/row.cpp:947
+#: view)\src/ibpp/core/row.cpp:982
+#: view)\src/ibpp/core/row.cpp:988
+#: view)\src/ibpp/core/row.cpp:995
+#: view)\src/ibpp/core/row.cpp:1009
+#: view)\src/ibpp/core/row.cpp:1016
+#: view)\src/ibpp/core/row.cpp:1023
+#: view)\src/ibpp/core/row.cpp:1040
+#: view)\src/ibpp/core/row.cpp:1046
+#: view)\src/ibpp/core/row.cpp:1114
+#: view)\src/ibpp/core/row.cpp:1147
+#: view)\src/ibpp/core/row.cpp:1187
+#: view)\src/ibpp/core/row.cpp:1230
+#: view)\src/ibpp/core/row.cpp:1277
+#: view)\src/ibpp/core/row.cpp:1283
+#: view)\src/ibpp/core/row.cpp:1290
+#: view)\src/ibpp/core/row.cpp:1305
+#: view)\src/ibpp/core/row.cpp:1313
+#: view)\src/ibpp/core/row.cpp:1321
+#: view)\src/ibpp/core/row.cpp:1342
+#: view)\src/ibpp/core/row.cpp:1348
+msgid "Incompatible types."
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/array.cpp:352
+#: view)\src/ibpp/core/array.cpp:417
+#: view)\src/ibpp/core/array.cpp:429
+#: view)\src/ibpp/core/array.cpp:639
+#: view)\src/ibpp/core/array.cpp:651
+#: view)\src/ibpp/core/array.cpp:718
+#: view)\src/ibpp/core/row.cpp:884
+#: view)\src/ibpp/core/row.cpp:891
+#: view)\src/ibpp/core/row.cpp:929
+#: view)\src/ibpp/core/row.cpp:1206
+#: view)\src/ibpp/core/row.cpp:1249
+#: view)\src/ibpp/core/row.cpp:1258
+msgid "Out of range numeric conversion !"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/array.cpp:539
+#: view)\src/ibpp/core/array.cpp:888
+msgid "Unknown sql type."
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/array.cpp:814
+#, c-format
+msgid "Incompatible types (blr_int64 and ADT %d)."
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/array.cpp:896
+msgid "isc_array_put_slice failed."
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/array.cpp:946
+#: view)\src/ibpp/core/array.cpp:955
+#: view)\src/ibpp/core/blob.cpp:297
+#: view)\src/ibpp/core/blob.cpp:310
+msgid "Null Id reference detected."
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/array.cpp:992
+msgid "Can't attach a 0 Database object."
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/array.cpp:1002
+msgid "Can't attach a 0 Transaction object."
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/blob.cpp:47
+#: view)\src/ibpp/core/blob.cpp:66
+#: view)\src/ibpp/core/blob.cpp:167
+#: view)\src/ibpp/core/blob.cpp:207
+msgid "Blob already opened."
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/blob.cpp:53
+#: view)\src/ibpp/core/blob.cpp:213
+msgid "Blob Id is not assigned."
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/blob.cpp:59
+#: view)\src/ibpp/core/blob.cpp:219
+msgid "isc_open_blob2 failed."
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/blob.cpp:77
+#: view)\src/ibpp/core/blob.cpp:178
+msgid "isc_create_blob failed."
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/blob.cpp:89
+#: view)\src/ibpp/core/blob.cpp:200
+#: view)\src/ibpp/core/blob.cpp:247
+msgid "isc_close_blob failed."
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/blob.cpp:98
+msgid "Can't cancel a Blob opened for read"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/blob.cpp:103
+msgid "isc_cancel_blob failed."
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/blob.cpp:111
+#: view)\src/ibpp/core/blob.cpp:130
+#: view)\src/ibpp/core/blob.cpp:150
+msgid "The Blob is not opened"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/blob.cpp:113
+msgid "Can't read from Blob opened for write"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/blob.cpp:115
+#: view)\src/ibpp/core/blob.cpp:134
+msgid "Invalid segment size (max 64Kb-1)"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/blob.cpp:123
+#: view)\src/ibpp/core/blob.cpp:236
+msgid "isc_get_segment failed."
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/blob.cpp:132
+msgid "Can't write to Blob opened for read"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/blob.cpp:140
+#: view)\src/ibpp/core/blob.cpp:192
+msgid "isc_put_segment failed."
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/blob.cpp:157
+msgid "isc_blob_info failed."
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/blob.cpp:295
+msgid "Can't set Id on an opened BlobImpl."
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/blob.cpp:306
+msgid "Can't get Id on an opened BlobImpl."
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/blob.cpp:308
+msgid "Can only get Id of a newly created Blob."
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/blob.cpp:318
+msgid "Can't attach a NULL Database object."
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/blob.cpp:328
+msgid "Can't attach a NULL Transaction object."
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/database.cpp:49
+msgid "Database is already connected."
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/database.cpp:51
+#: view)\src/ibpp/core/database.cpp:85
+msgid "Unspecified database name."
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/database.cpp:53
+#: view)\src/ibpp/core/database.cpp:87
+#: view)\src/ibpp/core/service.cpp:56
+msgid "Unspecified user name."
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/database.cpp:55
+msgid "Only dialects 1 and 3 are supported."
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/database.cpp:75
+#: view)\src/ibpp/core/statement.cpp:380
+msgid "isc_dsql_execute_immediate failed"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/database.cpp:107
+msgid "isc_attach_database failed"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/database.cpp:128
+#: view)\src/ibpp/core/database.cpp:255
+#: view)\src/ibpp/core/database.cpp:286
+#: view)\src/ibpp/core/database.cpp:313
+#: view)\src/ibpp/core/database.cpp:338
+msgid "isc_database_info failed"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/database.cpp:138
+#, c-format
+msgid "Unsupported Server : wrong ODS version (%d), at least '10' required."
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/database.cpp:147
+msgid "Dialect 1 or 3 required"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/database.cpp:156
+msgid "GDS32.DLL version 5 against IBSERVER 6"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/database.cpp:213
+msgid "isc_detach_database failed"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/database.cpp:219
+#: view)\src/ibpp/core/statement.cpp:244
+#: view)\src/ibpp/core/statement.cpp:391
+msgid "Database must be connected."
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/database.cpp:227
+msgid "isc_drop_database failed"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/database.cpp:237
+#: view)\src/ibpp/core/database.cpp:272
+#: view)\src/ibpp/core/database.cpp:298
+#: view)\src/ibpp/core/database.cpp:325
+msgid "Database is not connected."
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/database.cpp:376
+msgid "Transaction object is null."
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/database.cpp:385
+msgid "ITransaction object is null."
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/database.cpp:394
+msgid "Can't attach a null Statement object."
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/database.cpp:403
+msgid "Can't detach a null Statement object."
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/database.cpp:412
+msgid "Can't attach a null Blob object."
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/database.cpp:421
+msgid "Can't detach a null Blob object."
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/database.cpp:430
+msgid "Can't attach a null Array object."
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/database.cpp:439
+msgid "Can't detach a null Array object."
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/database.cpp:448
+msgid "Can't attach a null Events object."
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/database.cpp:457
+msgid "Can't detach a null Events object."
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/date.cpp:51
+#: view)\src/ibpp/core/date.cpp:57
+#: view)\src/ibpp/core/date.cpp:64
+#: view)\src/ibpp/core/date.cpp:70
+#: view)\src/ibpp/core/date.cpp:77
+#: view)\src/ibpp/core/date.cpp:85
+#: view)\src/ibpp/core/date.cpp:93
+#: view)\src/ibpp/core/date.cpp:101
+#: view)\src/ibpp/core/date.cpp:109
+#: view)\src/ibpp/core/date.cpp:111
+#: view)\src/ibpp/core/date.cpp:118
+#: view)\src/ibpp/core/date.cpp:121
+msgid "Out of range"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/dbkey.cpp:59
+#: view)\src/ibpp/core/dbkey.cpp:72
+msgid "Null DBKey reference detected."
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/dbkey.cpp:61
+msgid "Invalid DBKey size."
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/dbkey.cpp:70
+#: view)\src/ibpp/core/dbkey.cpp:82
+msgid "DBKey not assigned."
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/dbkey.cpp:74
+msgid "Incompatible DBKey size detected."
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/events.cpp:73
+#: view)\src/ibpp/core/events.cpp:118
+msgid "Zero length event names not permitted"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/events.cpp:75
+#: view)\src/ibpp/core/events.cpp:120
+msgid "Event name is too long"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/events.cpp:78
+msgid "Can't add this event, the events list would overflow IB/FB limitation"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/events.cpp:214
+#: view)\src/ibpp/core/events.cpp:238
+msgid "Database is not connected"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/events.cpp:228
+msgid "isc_que_events failed"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/events.cpp:254
+msgid "isc_cancel_events failed"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/events.cpp:275
+msgid "Internal buffer size error"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/events.cpp:337
+msgid "Can't attach a null Database object."
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/exception.cpp:74
+msgid "Context: "
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/exception.cpp:77
+msgid "Message: "
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/exception.cpp:309
+msgid " and "
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/row.cpp:50
+#: view)\src/ibpp/core/row.cpp:65
+#: view)\src/ibpp/core/row.cpp:74
+#: view)\src/ibpp/core/row.cpp:85
+#: view)\src/ibpp/core/row.cpp:98
+#: view)\src/ibpp/core/row.cpp:107
+#: view)\src/ibpp/core/row.cpp:116
+#: view)\src/ibpp/core/row.cpp:125
+#: view)\src/ibpp/core/row.cpp:134
+#: view)\src/ibpp/core/row.cpp:143
+#: view)\src/ibpp/core/row.cpp:152
+#: view)\src/ibpp/core/row.cpp:161
+#: view)\src/ibpp/core/row.cpp:182
+#: view)\src/ibpp/core/row.cpp:193
+#: view)\src/ibpp/core/row.cpp:208
+#: view)\src/ibpp/core/row.cpp:223
+#: view)\src/ibpp/core/row.cpp:243
+#: view)\src/ibpp/core/row.cpp:254
+#: view)\src/ibpp/core/row.cpp:265
+#: view)\src/ibpp/core/row.cpp:282
+#: view)\src/ibpp/core/row.cpp:303
+#: view)\src/ibpp/core/row.cpp:312
+#: view)\src/ibpp/core/row.cpp:323
+#: view)\src/ibpp/core/row.cpp:334
+#: view)\src/ibpp/core/row.cpp:345
+#: view)\src/ibpp/core/row.cpp:356
+#: view)\src/ibpp/core/row.cpp:367
+#: view)\src/ibpp/core/row.cpp:376
+#: view)\src/ibpp/core/row.cpp:397
+#: view)\src/ibpp/core/row.cpp:406
+#: view)\src/ibpp/core/row.cpp:415
+#: view)\src/ibpp/core/row.cpp:424
+#: view)\src/ibpp/core/row.cpp:445
+#: view)\src/ibpp/core/row.cpp:453
+#: view)\src/ibpp/core/row.cpp:461
+#: view)\src/ibpp/core/row.cpp:469
+#: view)\src/ibpp/core/row.cpp:477
+#: view)\src/ibpp/core/row.cpp:485
+#: view)\src/ibpp/core/row.cpp:493
+#: view)\src/ibpp/core/row.cpp:501
+#: view)\src/ibpp/core/row.cpp:509
+#: view)\src/ibpp/core/row.cpp:517
+#: view)\src/ibpp/core/row.cpp:525
+#: view)\src/ibpp/core/row.cpp:533
+#: view)\src/ibpp/core/row.cpp:541
+#: view)\src/ibpp/core/row.cpp:549
+#: view)\src/ibpp/core/row.cpp:557
+#: view)\src/ibpp/core/row.cpp:565
+#: view)\src/ibpp/core/row.cpp:583
+#: view)\src/ibpp/core/row.cpp:591
+#: view)\src/ibpp/core/row.cpp:650
+#: view)\src/ibpp/core/row.cpp:663
+#: view)\src/ibpp/core/row.cpp:676
+#: view)\src/ibpp/core/row.cpp:689
+#: view)\src/ibpp/core/row.cpp:720
+#: view)\src/ibpp/core/row.cpp:731
+#: view)\src/ibpp/core/row.cpp:742
+#: view)\src/ibpp/core/row.cpp:753
+#: view)\src/ibpp/core/row.cpp:763
+#: view)\src/ibpp/core/statement.cpp:674
+#: view)\src/ibpp/core/statement.cpp:682
+#: view)\src/ibpp/core/statement.cpp:692
+#: view)\src/ibpp/core/statement.cpp:700
+#: view)\src/ibpp/core/statement.cpp:708
+#: view)\src/ibpp/core/statement.cpp:716
+#: view)\src/ibpp/core/statement.cpp:724
+#: view)\src/ibpp/core/statement.cpp:734
+#: view)\src/ibpp/core/statement.cpp:742
+#: view)\src/ibpp/core/statement.cpp:752
+#: view)\src/ibpp/core/statement.cpp:760
+#: view)\src/ibpp/core/statement.cpp:770
+#: view)\src/ibpp/core/statement.cpp:778
+#: view)\src/ibpp/core/statement.cpp:788
+#: view)\src/ibpp/core/statement.cpp:796
+#: view)\src/ibpp/core/statement.cpp:806
+#: view)\src/ibpp/core/statement.cpp:814
+#: view)\src/ibpp/core/statement.cpp:822
+#: view)\src/ibpp/core/statement.cpp:830
+#: view)\src/ibpp/core/statement.cpp:838
+#: view)\src/ibpp/core/statement.cpp:846
+#: view)\src/ibpp/core/statement.cpp:854
+#: view)\src/ibpp/core/statement.cpp:872
+#: view)\src/ibpp/core/statement.cpp:880
+#: view)\src/ibpp/core/statement.cpp:890
+#: view)\src/ibpp/core/statement.cpp:898
+#: view)\src/ibpp/core/statement.cpp:906
+#: view)\src/ibpp/core/statement.cpp:914
+#: view)\src/ibpp/core/statement.cpp:922
+#: view)\src/ibpp/core/statement.cpp:932
+#: view)\src/ibpp/core/statement.cpp:940
+#: view)\src/ibpp/core/statement.cpp:950
+#: view)\src/ibpp/core/statement.cpp:958
+#: view)\src/ibpp/core/statement.cpp:968
+#: view)\src/ibpp/core/statement.cpp:976
+#: view)\src/ibpp/core/statement.cpp:986
+#: view)\src/ibpp/core/statement.cpp:994
+#: view)\src/ibpp/core/statement.cpp:1004
+#: view)\src/ibpp/core/statement.cpp:1012
+#: view)\src/ibpp/core/statement.cpp:1020
+#: view)\src/ibpp/core/statement.cpp:1028
+#: view)\src/ibpp/core/statement.cpp:1036
+#: view)\src/ibpp/core/statement.cpp:1044
+#: view)\src/ibpp/core/statement.cpp:1052
+#: view)\src/ibpp/core/statement.cpp:1070
+#: view)\src/ibpp/core/statement.cpp:1078
+#: view)\src/ibpp/core/statement.cpp:1086
+#: view)\src/ibpp/core/statement.cpp:1094
+#: view)\src/ibpp/core/statement.cpp:1102
+#: view)\src/ibpp/core/statement.cpp:1132
+#: view)\src/ibpp/core/statement.cpp:1142
+msgid "The row is not initialized."
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/row.cpp:52
+#: view)\src/ibpp/core/row.cpp:245
+#: view)\src/ibpp/core/row.cpp:652
+#: view)\src/ibpp/core/row.cpp:665
+#: view)\src/ibpp/core/row.cpp:678
+#: view)\src/ibpp/core/row.cpp:691
+#: view)\src/ibpp/core/row.cpp:722
+#: view)\src/ibpp/core/row.cpp:733
+#: view)\src/ibpp/core/row.cpp:744
+#: view)\src/ibpp/core/row.cpp:755
+#: view)\src/ibpp/core/row.cpp:809
+#: view)\src/ibpp/core/row.cpp:1068
+msgid "Variable index out of range."
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/row.cpp:56
+msgid "This column can't be null."
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/row.cpp:76
+#: view)\src/ibpp/core/row.cpp:87
+msgid "null char* pointer detected."
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/row.cpp:89
+#: view)\src/ibpp/core/row.cpp:286
+msgid "Length must be >= 0"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/row.cpp:184
+msgid "Requires use of a dialect 3 database."
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/row.cpp:196
+msgid "IBlob and Row attached to different databases"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/row.cpp:199
+msgid "IBlob and Row attached to different transactions"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/row.cpp:211
+msgid "IArray and Row attached to different databases"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/row.cpp:214
+msgid "IArray and Row attached to different transactions"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/row.cpp:267
+#: view)\src/ibpp/core/row.cpp:284
+#: view)\src/ibpp/core/statement.cpp:684
+#: view)\src/ibpp/core/statement.cpp:726
+#: view)\src/ibpp/core/statement.cpp:744
+#: view)\src/ibpp/core/statement.cpp:762
+#: view)\src/ibpp/core/statement.cpp:780
+#: view)\src/ibpp/core/statement.cpp:798
+#: view)\src/ibpp/core/statement.cpp:882
+#: view)\src/ibpp/core/statement.cpp:924
+#: view)\src/ibpp/core/statement.cpp:942
+#: view)\src/ibpp/core/statement.cpp:960
+#: view)\src/ibpp/core/statement.cpp:978
+#: view)\src/ibpp/core/statement.cpp:996
+msgid "Null pointer detected"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/row.cpp:593
+msgid "Column name <empty> not found."
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/row.cpp:633
+msgid "Could not find matching column."
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/row.cpp:811
+msgid "Unexpected null pointer detected."
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/row.cpp:1059
+msgid "The field uses an unsupported SQL type !"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/service.cpp:54
+#: view)\src/ibpp/core/service.cpp:93
+#: view)\src/ibpp/core/service.cpp:112
+#: view)\src/ibpp/core/service.cpp:218
+#: view)\src/ibpp/core/service.cpp:289
+#: view)\src/ibpp/core/service.cpp:361
+#: view)\src/ibpp/core/service.cpp:384
+#: view)\src/ibpp/core/service.cpp:407
+#: view)\src/ibpp/core/service.cpp:431
+#: view)\src/ibpp/core/service.cpp:455
+#: view)\src/ibpp/core/service.cpp:479
+#: view)\src/ibpp/core/service.cpp:513
+#: view)\src/ibpp/core/service.cpp:536
+#: view)\src/ibpp/core/service.cpp:559
+#: view)\src/ibpp/core/service.cpp:595
+#: view)\src/ibpp/core/service.cpp:629
+#: view)\src/ibpp/core/service.cpp:669
+#: view)\src/ibpp/core/service.cpp:695
+msgid "Requires the version 6 of GDS32.DLL"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/service.cpp:58
+msgid "Unspecified user password."
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/service.cpp:84
+msgid "isc_service_attach failed"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/service.cpp:104
+msgid "isc_service_detach failed"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/service.cpp:114
+#: view)\src/ibpp/core/service.cpp:133
+#: view)\src/ibpp/core/service.cpp:165
+#: view)\src/ibpp/core/service.cpp:198
+#: view)\src/ibpp/core/service.cpp:220
+#: view)\src/ibpp/core/service.cpp:291
+#: view)\src/ibpp/core/service.cpp:363
+#: view)\src/ibpp/core/service.cpp:386
+#: view)\src/ibpp/core/service.cpp:409
+#: view)\src/ibpp/core/service.cpp:433
+#: view)\src/ibpp/core/service.cpp:457
+#: view)\src/ibpp/core/service.cpp:481
+#: view)\src/ibpp/core/service.cpp:515
+#: view)\src/ibpp/core/service.cpp:538
+#: view)\src/ibpp/core/service.cpp:561
+#: view)\src/ibpp/core/service.cpp:597
+#: view)\src/ibpp/core/service.cpp:631
+msgid "Service is not connected."
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/service.cpp:125
+#: view)\src/ibpp/core/service.cpp:239
+#: view)\src/ibpp/core/service.cpp:307
+#: view)\src/ibpp/core/service.cpp:678
+#: view)\src/ibpp/core/service.cpp:713
+msgid "isc_service_query failed"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/service.cpp:135
+#: view)\src/ibpp/core/service.cpp:167
+#: view)\src/ibpp/core/service.cpp:200
+#: view)\src/ibpp/core/service.cpp:222
+msgid "Username required."
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/service.cpp:137
+msgid "Password required."
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/service.cpp:157
+#: view)\src/ibpp/core/service.cpp:189
+#: view)\src/ibpp/core/service.cpp:210
+#: view)\src/ibpp/core/service.cpp:231
+#: view)\src/ibpp/core/service.cpp:299
+#: view)\src/ibpp/core/service.cpp:376
+#: view)\src/ibpp/core/service.cpp:399
+#: view)\src/ibpp/core/service.cpp:423
+#: view)\src/ibpp/core/service.cpp:447
+#: view)\src/ibpp/core/service.cpp:471
+#: view)\src/ibpp/core/service.cpp:505
+#: view)\src/ibpp/core/service.cpp:528
+#: view)\src/ibpp/core/service.cpp:551
+#: view)\src/ibpp/core/service.cpp:586
+#: view)\src/ibpp/core/service.cpp:622
+#: view)\src/ibpp/core/service.cpp:659
+msgid "isc_service_start failed"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/service.cpp:243
+#: view)\src/ibpp/core/service.cpp:312
+msgid "isc_service_query returned unexpected answer"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/service.cpp:365
+#: view)\src/ibpp/core/service.cpp:388
+#: view)\src/ibpp/core/service.cpp:411
+#: view)\src/ibpp/core/service.cpp:435
+#: view)\src/ibpp/core/service.cpp:459
+#: view)\src/ibpp/core/service.cpp:483
+#: view)\src/ibpp/core/service.cpp:517
+#: view)\src/ibpp/core/service.cpp:540
+#: view)\src/ibpp/core/service.cpp:563
+#: view)\src/ibpp/core/service.cpp:599
+#: view)\src/ibpp/core/service.cpp:635
+msgid "Main database file must be specified."
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/service.cpp:576
+msgid "One of rpMendRecords, rpValidatePages, rpValidateFull is required."
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/service.cpp:601
+#: view)\src/ibpp/core/service.cpp:633
+msgid "Backup file must be specified."
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/statement.cpp:47
+#: view)\src/ibpp/core/statement.cpp:360
+msgid "An IDatabase must be attached."
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/statement.cpp:49
+#: view)\src/ibpp/core/statement.cpp:362
+msgid "IDatabase must be connected."
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/statement.cpp:51
+#: view)\src/ibpp/core/statement.cpp:364
+msgid "An ITransaction must be attached."
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/statement.cpp:53
+#: view)\src/ibpp/core/statement.cpp:366
+msgid "ITransaction must be started."
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/statement.cpp:55
+#: view)\src/ibpp/core/statement.cpp:368
+msgid "SQL statement can't be 0."
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/statement.cpp:68
+msgid "isc_dsql_allocate_statement failed"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/statement.cpp:104
+msgid "isc_dsql_prepare failed"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/statement.cpp:117
+msgid "isc_dsql_sql_info failed"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/statement.cpp:139
+msgid "Unknown or unsupported statement type"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/statement.cpp:169
+msgid "isc_dsql_describe failed"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/statement.cpp:185
+#: view)\src/ibpp/core/statement.cpp:216
+msgid "isc_dsql_describe_bind failed"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/statement.cpp:240
+#: view)\src/ibpp/core/statement.cpp:265
+#: view)\src/ibpp/core/statement.cpp:319
+#: view)\src/ibpp/core/statement.cpp:387
+#: view)\src/ibpp/core/statement.cpp:502
+#: view)\src/ibpp/core/statement.cpp:512
+#: view)\src/ibpp/core/statement.cpp:522
+#: view)\src/ibpp/core/statement.cpp:532
+#: view)\src/ibpp/core/statement.cpp:542
+#: view)\src/ibpp/core/statement.cpp:552
+#: view)\src/ibpp/core/statement.cpp:562
+#: view)\src/ibpp/core/statement.cpp:572
+#: view)\src/ibpp/core/statement.cpp:582
+#: view)\src/ibpp/core/statement.cpp:592
+#: view)\src/ibpp/core/statement.cpp:602
+#: view)\src/ibpp/core/statement.cpp:612
+#: view)\src/ibpp/core/statement.cpp:622
+#: view)\src/ibpp/core/statement.cpp:632
+#: view)\src/ibpp/core/statement.cpp:642
+#: view)\src/ibpp/core/statement.cpp:652
+#: view)\src/ibpp/core/statement.cpp:1110
+#: view)\src/ibpp/core/statement.cpp:1120
+#: view)\src/ibpp/core/statement.cpp:1130
+#: view)\src/ibpp/core/statement.cpp:1140
+#: view)\src/ibpp/core/statement.cpp:1150
+#: view)\src/ibpp/core/statement.cpp:1160
+#: view)\src/ibpp/core/statement.cpp:1170
+#: view)\src/ibpp/core/statement.cpp:1180
+#: view)\src/ibpp/core/statement.cpp:1190
+msgid "No statement has been prepared."
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/statement.cpp:242
+#: view)\src/ibpp/core/statement.cpp:389
+msgid "A Database must be attached."
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/statement.cpp:253
+#: view)\src/ibpp/core/statement.cpp:401
+msgid "isc_dsql_sql_info failed."
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/statement.cpp:270
+#: view)\src/ibpp/core/statement.cpp:328
+msgid "All parameters must be specified."
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/statement.cpp:286
+#: view)\src/ibpp/core/statement.cpp:341
+msgid "isc_dsql_execute failed"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/statement.cpp:306
+msgid "isc_dsql_execute2 failed"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/statement.cpp:314
+msgid "Cursor name can't be 0."
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/statement.cpp:321
+msgid "Statement must be a SELECT FOR UPDATE."
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/statement.cpp:323
+msgid "Statement would return no rows."
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/statement.cpp:350
+msgid "isc_dsql_set_cursor_name failed"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/statement.cpp:420
+#: view)\src/ibpp/core/statement.cpp:447
+msgid "No statement has been executed or no result set available."
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/statement.cpp:437
+#: view)\src/ibpp/core/statement.cpp:470
+msgid "isc_dsql_fetch failed."
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/statement.cpp:495
+#: view)\src/ibpp/core/statement.cpp:1277
+msgid "isc_dsql_free_statement failed."
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/statement.cpp:504
+#: view)\src/ibpp/core/statement.cpp:514
+#: view)\src/ibpp/core/statement.cpp:524
+#: view)\src/ibpp/core/statement.cpp:534
+#: view)\src/ibpp/core/statement.cpp:544
+#: view)\src/ibpp/core/statement.cpp:554
+#: view)\src/ibpp/core/statement.cpp:564
+#: view)\src/ibpp/core/statement.cpp:574
+#: view)\src/ibpp/core/statement.cpp:584
+#: view)\src/ibpp/core/statement.cpp:594
+#: view)\src/ibpp/core/statement.cpp:604
+#: view)\src/ibpp/core/statement.cpp:614
+#: view)\src/ibpp/core/statement.cpp:624
+#: view)\src/ibpp/core/statement.cpp:634
+#: view)\src/ibpp/core/statement.cpp:644
+#: view)\src/ibpp/core/statement.cpp:654
+msgid "The statement does not take parameters."
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/statement.cpp:1112
+#: view)\src/ibpp/core/statement.cpp:1122
+msgid "The statement does not return results."
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/statement.cpp:1152
+#: view)\src/ibpp/core/statement.cpp:1162
+#: view)\src/ibpp/core/statement.cpp:1172
+#: view)\src/ibpp/core/statement.cpp:1182
+#: view)\src/ibpp/core/statement.cpp:1192
+msgid "The statement uses no parameters."
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/statement.cpp:1230
+msgid "Can't attach a 0 IDatabase object."
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/statement.cpp:1250
+msgid "Can't attach a 0 ITransaction object."
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/time.cpp:54
+msgid "Invalid time value"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/time.cpp:65
+msgid "Invalid hour, minute, second values"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/transaction.cpp:51
+msgid "Can't attach an unbound Database."
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/transaction.cpp:60
+msgid "Can't detach an unbound Database."
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/transaction.cpp:70
+msgid "Can't add table reservation if Transaction started."
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/transaction.cpp:73
+msgid "Can't add table reservation on an unbound Database."
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/transaction.cpp:108
+msgid "Illegal TTR value detected."
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/transaction.cpp:112
+msgid "The database connection you specified is not attached to this transaction."
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/transaction.cpp:137
+msgid "All attached Database should have been connected."
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/transaction.cpp:157
+#: view)\src/ibpp/core/transaction.cpp:170
+#: view)\src/ibpp/core/transaction.cpp:194
+msgid "Transaction is not started."
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/transaction.cpp:235
+msgid "Can't attach a 0 Statement object."
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/transaction.cpp:244
+msgid "Can't detach a 0 Statement object."
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/transaction.cpp:253
+msgid "Can't attach a 0 BlobImpl object."
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/transaction.cpp:262
+msgid "Can't detach a 0 BlobImpl object."
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/transaction.cpp:271
+msgid "Can't attach a 0 ArrayImpl object."
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/transaction.cpp:280
+msgid "Can't detach a 0 ArrayImpl object."
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/transaction.cpp:290
+msgid "Can't attach a Database if Transaction started."
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/transaction.cpp:293
+msgid "Can't attach a null Database."
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/transaction.cpp:329
+msgid "Can't detach a Database if Transaction started."
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/transaction.cpp:332
+msgid "Can't detach a null Database."
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/_ibpp.cpp:212
+msgid "Can't find or load FBCLIENT.DLL or GDS32.DLL"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/_ibpp.cpp:224
+msgid "Entry-point isc_"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/_ibs.cpp:60
+msgid "SQL Message : "
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/_ibs.cpp:63
+msgid "Engine Code    : "
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/_ibs.cpp:69
+msgid "Engine Message :"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/_rb.cpp:95
+#: view)\src/ibpp/core/_rb.cpp:113
+#: view)\src/ibpp/core/_rb.cpp:154
+#: view)\src/ibpp/core/_rb.cpp:167
+msgid "Token not found."
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/_rb.cpp:139
+msgid "Token/Subtoken not found."
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/ibpp/core/_spb.cpp:80
+msgid "Invalid length parameter"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/Copia di search_panel_dialog.h:46
+msgid "Dialog"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/exportdata.h:71
+msgid "Export data"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/mainframe.h:107
+msgid "VVV"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/object_description.h:54
+msgid "Object Description"
+msgstr ""
+
+#: E:\C_Prg\vvv
+#: (virtual volumes view)\src/restore.h:46
+msgid "Restore"
+msgstr ""
+

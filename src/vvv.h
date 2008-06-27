@@ -117,6 +117,8 @@ public:
 
 private:
 
+    wxLocale m_locale;
+
 	// name of the catalog passed in the command line
 	wxString m_CatalogName;
 

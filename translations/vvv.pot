@@ -1,0 +1,2060 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: VVV 0.9\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2008-06-27 19:44+0100\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Fulvio Senore <mailing@fsoft.it>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Basepath: ..\\src\n"
+"X-Poedit-SearchPath-0: ..\\src\n"
+
+#: ..\src/catalog_volume.cpp:174
+msgid "Enter or select the volume to catalog"
+msgstr ""
+
+#: ..\src/catalog_volume.cpp:183
+#: ..\src/exportdata.cpp:223
+#: ..\src/opencatalog.cpp:174
+#: ..\src/restore.cpp:168
+#: ..\src/restore.cpp:180
+msgid "..."
+msgstr ""
+
+#: ..\src/catalog_volume.cpp:186
+msgid "Volume name"
+msgstr ""
+
+#: ..\src/catalog_volume.cpp:196
+msgid "Get volume name"
+msgstr ""
+
+#: ..\src/catalog_volume.cpp:204
+#: ..\src/exportdata.cpp:230
+#: ..\src/exportdata.cpp:248
+#: ..\src/mainframe.cpp:824
+#: ..\src/restore.cpp:187
+#: ..\src/restore.cpp:205
+msgid "&Help"
+msgstr ""
+
+#: ..\src/catalog_volume.cpp:209
+#: ..\src/mainframe.cpp:837
+msgid "Catalog"
+msgstr ""
+
+#: ..\src/catalog_volume.cpp:212
+msgid "&Close"
+msgstr ""
+
+#: ..\src/catalog_volume.cpp:215
+msgid "Current folder"
+msgstr ""
+
+#: ..\src/catalog_volume.cpp:218
+msgid "Previously cataloged volumes"
+msgstr ""
+
+#: ..\src/catalog_volume.cpp:288
+msgid "The volume path is missing"
+msgstr ""
+
+#: ..\src/catalog_volume.cpp:293
+msgid "The volume name is missing"
+msgstr ""
+
+#: ..\src/catalog_volume.cpp:316
+msgid "This volume name is already present in the database"
+msgstr ""
+
+#: ..\src/catalog_volume.cpp:448
+msgid "Select the volume to catalog"
+msgstr ""
+
+#: ..\src/choose_virtual_folder.cpp:157
+msgid "Please select the virtual folder that will receive the selected files and/or folders:"
+msgstr ""
+
+#: ..\src/choose_virtual_folder.cpp:169
+#: ..\src/choose_virtual_folder.cpp:187
+#: ..\src/exportdata.cpp:235
+#: ..\src/exportdata.cpp:256
+#: ..\src/object_description.cpp:158
+#: ..\src/object_description.cpp:174
+#: ..\src/opencatalog.cpp:181
+#: ..\src/opencatalog.cpp:197
+#: ..\src/restore.cpp:192
+#: ..\src/restore.cpp:213
+msgid "&OK"
+msgstr ""
+
+#: ..\src/choose_virtual_folder.cpp:173
+#: ..\src/choose_virtual_folder.cpp:184
+#: ..\src/exportdata.cpp:239
+#: ..\src/exportdata.cpp:253
+#: ..\src/object_description.cpp:162
+#: ..\src/object_description.cpp:171
+#: ..\src/opencatalog.cpp:185
+#: ..\src/opencatalog.cpp:194
+#: ..\src/restore.cpp:196
+#: ..\src/restore.cpp:210
+msgid "&Cancel"
+msgstr ""
+
+#: ..\src/convert_db_unicode.cpp:520
+msgid "Conversion is about to start: a message will tell you when it will be completed."
+msgstr ""
+
+#: ..\src/convert_db_unicode.cpp:546
+msgid "Conversion completed"
+msgstr ""
+
+#: ..\src/Copia di search_panel_dialog.cpp:127
+#: ..\src/mainframe.cpp:895
+#: ..\src/search_panel_dialog.cpp:128
+#: ..\src/search_panel_dialog.cpp:149
+msgid "Is &equal to:"
+msgstr ""
+
+#: ..\src/Copia di search_panel_dialog.cpp:128
+#: ..\src/mainframe.cpp:896
+#: ..\src/search_panel_dialog.cpp:129
+#: ..\src/search_panel_dialog.cpp:150
+msgid "S&tarts with:"
+msgstr ""
+
+#: ..\src/Copia di search_panel_dialog.cpp:129
+#: ..\src/mainframe.cpp:897
+#: ..\src/search_panel_dialog.cpp:130
+#: ..\src/search_panel_dialog.cpp:151
+msgid "&Contains:"
+msgstr ""
+
+#: ..\src/Copia di search_panel_dialog.cpp:130
+#: ..\src/mainframe.cpp:898
+#: ..\src/search_panel_dialog.cpp:131
+msgid "File name"
+msgstr ""
+
+#: ..\src/Copia di search_panel_dialog.cpp:139
+#: ..\src/mainframe.cpp:907
+#: ..\src/search_panel_dialog.cpp:140
+msgid "E&xtension:"
+msgstr ""
+
+#: ..\src/Copia di search_panel_dialog.cpp:148
+#: ..\src/exportdata.cpp:207
+#: ..\src/mainframe.cpp:929
+#: ..\src/search_panel_dialog.cpp:162
+msgid "&All physical volumes"
+msgstr ""
+
+#: ..\src/Copia di search_panel_dialog.cpp:149
+#: ..\src/mainframe.cpp:930
+#: ..\src/search_panel_dialog.cpp:163
+msgid "Selected &physical folder"
+msgstr ""
+
+#: ..\src/Copia di search_panel_dialog.cpp:150
+#: ..\src/exportdata.cpp:209
+#: ..\src/mainframe.cpp:931
+#: ..\src/search_panel_dialog.cpp:164
+msgid "Selected &virtual folder"
+msgstr ""
+
+#: ..\src/Copia di search_panel_dialog.cpp:151
+#: ..\src/mainframe.cpp:850
+#: ..\src/mainframe.cpp:932
+#: ..\src/search_panel_dialog.cpp:165
+msgid "Search"
+msgstr ""
+
+#: ..\src/Copia di search_panel_dialog.cpp:157
+#: ..\src/mainframe.cpp:938
+#: ..\src/search_panel_dialog.cpp:171
+msgid "&Search"
+msgstr ""
+
+#: ..\src/exportdata.cpp:191
+msgid "Use this window to export data to a CSV file"
+msgstr ""
+
+#: ..\src/exportdata.cpp:195
+msgid "Co&mma"
+msgstr ""
+
+#: ..\src/exportdata.cpp:196
+msgid "&TAB"
+msgstr ""
+
+#: ..\src/exportdata.cpp:197
+msgid "&Pipe"
+msgstr ""
+
+#: ..\src/exportdata.cpp:198
+msgid "Separator"
+msgstr ""
+
+#: ..\src/exportdata.cpp:202
+msgid "&Include headers"
+msgstr ""
+
+#: ..\src/exportdata.cpp:208
+msgid "&Selected physical volume/folder"
+msgstr ""
+
+#: ..\src/exportdata.cpp:210
+msgid "Export"
+msgstr ""
+
+#: ..\src/exportdata.cpp:214
+msgid "File name:"
+msgstr ""
+
+#: ..\src/exportdata.cpp:309
+msgid "CSV files (*.csv;*.txt)|*.csv;}.txt|All files (*.*)|*.*"
+msgstr ""
+
+#: ..\src/exportdata.cpp:336
+msgid "Please enter a file name"
+msgstr ""
+
+#: ..\src/exportdata.cpp:341
+msgid "The output file already exists: do you want to overwrite it?"
+msgstr ""
+
+#: ..\src/exportdata.cpp:344
+#: ..\src/exportdata.cpp:358
+msgid "Unable to create the file."
+msgstr ""
+
+#: ..\src/exportdata.cpp:524
+#: ..\src/exportdata.cpp:526
+#: ..\src/mainframe.cpp:1249
+msgid "Name"
+msgstr ""
+
+#: ..\src/exportdata.cpp:524
+#: ..\src/exportdata.cpp:526
+#: ..\src/mainframe.cpp:1254
+msgid "Size"
+msgstr ""
+
+#: ..\src/exportdata.cpp:524
+#: ..\src/exportdata.cpp:526
+#: ..\src/mainframe.cpp:1258
+msgid "Ext"
+msgstr ""
+
+#: ..\src/exportdata.cpp:524
+#: ..\src/exportdata.cpp:526
+#: ..\src/mainframe.cpp:1262
+msgid "Last modified"
+msgstr ""
+
+#: ..\src/exportdata.cpp:524
+msgid "PhysicalPath"
+msgstr ""
+
+#: ..\src/exportdata.cpp:524
+#: ..\src/exportdata.cpp:526
+#: ..\src/mainframe.cpp:919
+#: ..\src/mainframe.cpp:1270
+#: ..\src/mainframe.cpp:1275
+#: ..\src/search_panel_dialog.cpp:152
+msgid "Description"
+msgstr ""
+
+#: ..\src/exportdata.cpp:526
+msgid "Volume"
+msgstr ""
+
+#: ..\src/exportdata.cpp:526
+msgid "Path"
+msgstr ""
+
+#: ..\src/mainframe.cpp:711
+msgid ""
+"This catalog file does not exist:\n"
+"\n"
+msgstr ""
+
+#: ..\src/mainframe.cpp:772
+msgid "&New..."
+msgstr ""
+
+#: ..\src/mainframe.cpp:773
+msgid "&Open..."
+msgstr ""
+
+#: ..\src/mainframe.cpp:774
+msgid "&Export..."
+msgstr ""
+
+#: ..\src/mainframe.cpp:776
+msgid "&Backup..."
+msgstr ""
+
+#: ..\src/mainframe.cpp:777
+msgid "&Restore..."
+msgstr ""
+
+#: ..\src/mainframe.cpp:779
+msgid "E&xit"
+msgstr ""
+
+#: ..\src/mainframe.cpp:780
+msgid "&File"
+msgstr ""
+
+#: ..\src/mainframe.cpp:782
+msgid "&Add To Virtual Folder..."
+msgstr ""
+
+#: ..\src/mainframe.cpp:784
+msgid "&Rename...\tF2"
+msgstr ""
+
+#: ..\src/mainframe.cpp:785
+msgid "&Delete"
+msgstr ""
+
+#: ..\src/mainframe.cpp:787
+msgid "&Object Description..."
+msgstr ""
+
+#: ..\src/mainframe.cpp:789
+msgid "&New Virtual Root Folder..."
+msgstr ""
+
+#: ..\src/mainframe.cpp:790
+msgid "New Virtual &Subfolder..."
+msgstr ""
+
+#: ..\src/mainframe.cpp:792
+#: ..\src/mainframe.cpp:814
+msgid "&Options..."
+msgstr ""
+
+#: ..\src/mainframe.cpp:794
+msgid "&Edit"
+msgstr ""
+
+#: ..\src/mainframe.cpp:796
+msgid "&Catalog Volume..."
+msgstr ""
+
+#: ..\src/mainframe.cpp:797
+msgid "&Volumes"
+msgstr ""
+
+#: ..\src/mainframe.cpp:799
+msgid "&Physical View"
+msgstr ""
+
+#: ..\src/mainframe.cpp:801
+msgid "&Virtual View"
+msgstr ""
+
+#: ..\src/mainframe.cpp:802
+msgid "&Search View"
+msgstr ""
+
+#: ..\src/mainframe.cpp:804
+msgid "Go &Up One Level"
+msgstr ""
+
+#: ..\src/mainframe.cpp:806
+msgid "&Toolbar"
+msgstr ""
+
+#: ..\src/mainframe.cpp:808
+msgid "Status &Bar"
+msgstr ""
+
+#: ..\src/mainframe.cpp:810
+msgid "Vie&w"
+msgstr ""
+
+#: ..\src/mainframe.cpp:816
+msgid "&Tools"
+msgstr ""
+
+#: ..\src/mainframe.cpp:819
+msgid "Help &Contents"
+msgstr ""
+
+#: ..\src/mainframe.cpp:823
+msgid "&About VVV..."
+msgstr ""
+
+#: ..\src/mainframe.cpp:831
+msgid "New"
+msgstr ""
+
+#: ..\src/mainframe.cpp:831
+msgid "Create a new catalog"
+msgstr ""
+
+#: ..\src/mainframe.cpp:834
+msgid "Open"
+msgstr ""
+
+#: ..\src/mainframe.cpp:834
+msgid "Open an existing catalog"
+msgstr ""
+
+#: ..\src/mainframe.cpp:837
+msgid "Catalog a new volume"
+msgstr ""
+
+#: ..\src/mainframe.cpp:840
+msgid "Up"
+msgstr ""
+
+#: ..\src/mainframe.cpp:840
+msgid "Move up one level"
+msgstr ""
+
+#: ..\src/mainframe.cpp:844
+msgid "Physical"
+msgstr ""
+
+#: ..\src/mainframe.cpp:844
+msgid "Show the physical view"
+msgstr ""
+
+#: ..\src/mainframe.cpp:847
+msgid "Virtual"
+msgstr ""
+
+#: ..\src/mainframe.cpp:847
+msgid "Show the virtual view"
+msgstr ""
+
+#: ..\src/mainframe.cpp:850
+msgid "Show the search view"
+msgstr ""
+
+#: ..\src/mainframe.cpp:916
+msgid "Is equal to:"
+msgstr ""
+
+#: ..\src/mainframe.cpp:917
+msgid "Starts with:"
+msgstr ""
+
+#: ..\src/mainframe.cpp:918
+msgid "Contains:"
+msgstr ""
+
+#: ..\src/mainframe.cpp:1031
+msgid "Catalog volume"
+msgstr ""
+
+#: ..\src/mainframe.cpp:1267
+msgid "Physical path"
+msgstr ""
+
+#: ..\src/mainframe.cpp:1317
+#: ..\src/settings.cpp:200
+msgid "Artist"
+msgstr ""
+
+#: ..\src/mainframe.cpp:1322
+#: ..\src/settings.cpp:204
+msgid "Album"
+msgstr ""
+
+#: ..\src/mainframe.cpp:1327
+#: ..\src/settings.cpp:208
+msgid "Title"
+msgstr ""
+
+#: ..\src/mainframe.cpp:1332
+#: ..\src/settings.cpp:212
+msgid "Year"
+msgstr ""
+
+#: ..\src/mainframe.cpp:1337
+#: ..\src/settings.cpp:216
+msgid "Comment"
+msgstr ""
+
+#: ..\src/mainframe.cpp:1342
+msgid "Number"
+msgstr ""
+
+#: ..\src/mainframe.cpp:1347
+#: ..\src/settings.cpp:224
+msgid "Genre"
+msgstr ""
+
+#: ..\src/mainframe.cpp:1352
+#: ..\src/settings.cpp:228
+msgid "Length"
+msgstr ""
+
+#: ..\src/mainframe.cpp:1357
+#: ..\src/settings.cpp:232
+msgid "Bitrate"
+msgstr ""
+
+#: ..\src/mainframe.cpp:1362
+#: ..\src/settings.cpp:236
+msgid "Sample rate"
+msgstr ""
+
+#: ..\src/mainframe.cpp:1367
+#: ..\src/settings.cpp:240
+msgid "Channels"
+msgstr ""
+
+#: ..\src/mainframe.cpp:1396
+msgid "Open catalog"
+msgstr ""
+
+#: ..\src/mainframe.cpp:1400
+#: ..\src/mainframe.cpp:3527
+msgid "VVV  files (*.vvv)|*.vvv|All files (*.*)|*.*"
+msgstr ""
+
+#: ..\src/mainframe.cpp:1844
+msgid "Choose virtual folder"
+msgstr ""
+
+#: ..\src/mainframe.cpp:1925
+msgid "New virtual root folder"
+msgstr ""
+
+#: ..\src/mainframe.cpp:1953
+msgid "New virtual subfolder"
+msgstr ""
+
+#: ..\src/mainframe.cpp:1971
+msgid "Enter the new folder name"
+msgstr ""
+
+#: ..\src/mainframe.cpp:1986
+#: ..\src/mainframe.cpp:3309
+msgid "The new folder name is already present in the database"
+msgstr ""
+
+#: ..\src/mainframe.cpp:2039
+msgid "This catalog file does not exist any more"
+msgstr ""
+
+#: ..\src/mainframe.cpp:2079
+msgid ""
+"Catalog not found:\n"
+"\n"
+msgstr ""
+
+#: ..\src/mainframe.cpp:2083
+msgid ""
+"Incorrect username or password for the following database:\n"
+"\n"
+msgstr ""
+
+#: ..\src/mainframe.cpp:2088
+msgid ""
+"Unable to connect to the following server:\n"
+"\n"
+msgstr ""
+
+#: ..\src/mainframe.cpp:2090
+msgid ""
+"Unable to open the catalog.\n"
+"Please note that you are not connected to a database server so you cannot open a catalog located on another computer in the network.\n"
+"If you want to open a catalog on another computer you must connect to the database server (Tools/Options menu)."
+msgstr ""
+
+#: ..\src/mainframe.cpp:2112
+msgid ""
+"This catalog has been created with a previous version of the program and it needs to be upgraded, but the file containing the upgrades list is missing.\n"
+"\n"
+"You can try reinstalling the program to solve this problem."
+msgstr ""
+
+#: ..\src/mainframe.cpp:2116
+msgid "Upgrading the catalog, please wait..."
+msgstr ""
+
+#: ..\src/mainframe.cpp:2128
+msgid ""
+"This catalog has been created with an older version of VVV so you need to convert it to a newer format.\n"
+"\n"
+msgstr ""
+
+#: ..\src/mainframe.cpp:2129
+msgid ""
+"The conversion will create a new catalog with the same data as the older one, then you will use this new catalog with VVV. You will not use the older catalog any more.\n"
+"\n"
+msgstr ""
+
+#: ..\src/mainframe.cpp:2130
+msgid "Do you want to convert the catatalog creating a new one?"
+msgstr ""
+
+#: ..\src/mainframe.cpp:2134
+#: ..\src/mainframe.cpp:2326
+msgid ""
+"Unable to create a new catalog.\n"
+"\n"
+"You are connecting to a database server on another computer. You must execute this program on the server to be able to create a new catalog."
+msgstr ""
+
+#: ..\src/mainframe.cpp:2138
+msgid "Convert to a new catalog"
+msgstr ""
+
+#: ..\src/mainframe.cpp:2146
+#: ..\src/mainframe.cpp:2338
+msgid ""
+"Unable to find the database backup to restore.\n"
+"\n"
+"You can try reinstalling the program to solve this problem."
+msgstr ""
+
+#: ..\src/mainframe.cpp:2309
+msgid ""
+"VVV (Virtual Volumes View): a program to catalog removable devices like CDs and DVDs\n"
+"\n"
+"\"The mud of Venaus is the blood of this land\""
+msgstr ""
+
+#: ..\src/mainframe.cpp:2310
+msgid "Copyright (C) 2007-2008 The VVV Team"
+msgstr ""
+
+#: ..\src/mainframe.cpp:2311
+msgid "Fulvio Senore: main developer"
+msgstr ""
+
+#: ..\src/mainframe.cpp:2312
+msgid "Jan Albartus: worked at the portable version"
+msgstr ""
+
+#: ..\src/mainframe.cpp:2313
+msgid "This program uses the Tango icons (http://tango.freedesktop.org/Tango_Desktop_Project )"
+msgstr ""
+
+#: ..\src/mainframe.cpp:2314
+msgid "This is open source software, distributed under the GNU GENERAL PUBLIC LICENSE"
+msgstr ""
+
+#: ..\src/mainframe.cpp:2330
+msgid "New catalog"
+msgstr ""
+
+#: ..\src/mainframe.cpp:2363
+msgid "Multiple items"
+msgstr ""
+
+#: ..\src/mainframe.cpp:2372
+#: ..\src/mainframe.cpp:2404
+msgid "Object description"
+msgstr ""
+
+#: ..\src/mainframe.cpp:2503
+#: ..\src/mainframe.cpp:3075
+msgid "Add To Virtual Folder"
+msgstr ""
+
+#: ..\src/mainframe.cpp:2505
+#: ..\src/mainframe.cpp:3077
+msgid "Edit Description..."
+msgstr ""
+
+#: ..\src/mainframe.cpp:2508
+msgid "Rename..."
+msgstr ""
+
+#: ..\src/mainframe.cpp:2509
+#: ..\src/mainframe.cpp:2539
+#: ..\src/mainframe.cpp:3072
+msgid "Delete"
+msgstr ""
+
+#: ..\src/mainframe.cpp:2533
+msgid "New Root Folder"
+msgstr ""
+
+#: ..\src/mainframe.cpp:2536
+msgid "New Subfolder"
+msgstr ""
+
+#: ..\src/mainframe.cpp:2538
+msgid "Rename"
+msgstr ""
+
+#: ..\src/mainframe.cpp:2682
+msgid "Please enter some search data"
+msgstr ""
+
+#: ..\src/mainframe.cpp:2812
+msgid "The search did not find anything"
+msgstr ""
+
+#: ..\src/mainframe.cpp:2961
+msgid "Objects: "
+msgstr ""
+
+#: ..\src/mainframe.cpp:2968
+msgid "Total size: "
+msgstr ""
+
+#: ..\src/mainframe.cpp:3122
+msgid "Settings"
+msgstr ""
+
+#: ..\src/mainframe.cpp:3212
+msgid ""
+"This command will delete the selected virtual folder, but it will not change the folders in the physical view.\n"
+"\n"
+"Do you really want to delete the selected virtual folder?"
+msgstr ""
+
+#: ..\src/mainframe.cpp:3235
+msgid ""
+"This command will delete this volume:\n"
+"\n"
+msgstr ""
+
+#: ..\src/mainframe.cpp:3235
+msgid ""
+"\n"
+"\n"
+"from the VVV catalog. It will not delete any file from your disk.\n"
+"\n"
+"Do you really want to delete this volume?"
+msgstr ""
+
+#: ..\src/mainframe.cpp:3245
+msgid "Unable to delete this volume: at least one of its files is used in the virtual view"
+msgstr ""
+
+#: ..\src/mainframe.cpp:3264
+msgid "Enter the new volume name"
+msgstr ""
+
+#: ..\src/mainframe.cpp:3264
+msgid "Rename volume"
+msgstr ""
+
+#: ..\src/mainframe.cpp:3277
+msgid "The new volume name is already present in the database"
+msgstr ""
+
+#: ..\src/mainframe.cpp:3298
+msgid "Enter the new forder name"
+msgstr ""
+
+#: ..\src/mainframe.cpp:3298
+msgid "Rename virtual folder"
+msgstr ""
+
+#: ..\src/mainframe.cpp:3416
+msgid ""
+"This command will delete the selected virtual files, but it will not change the files in the physical view.\n"
+"\n"
+"Do you really want to delete the selected virtual files?"
+msgstr ""
+
+#: ..\src/mainframe.cpp:3550
+#: ..\src/mainframe.cpp:3624
+msgid ""
+"Unable to continue. You have choosen an existing file:\n"
+"\n"
+msgstr ""
+
+#: ..\src/mainframe.cpp:3550
+#: ..\src/mainframe.cpp:3624
+#: ..\src/mainframe.cpp:3703
+msgid ""
+"\n"
+"\n"
+"You must type the name of a non-existing file."
+msgstr ""
+
+#: ..\src/mainframe.cpp:3559
+#: ..\src/mainframe.cpp:3633
+#: ..\src/mainframe.cpp:3712
+msgid "Unable to continue: you have choosen a folder where you do not have the right to create a file."
+msgstr ""
+
+#: ..\src/mainframe.cpp:3601
+#: ..\src/opencatalog.cpp:255
+#: ..\src/restore.cpp:287
+msgid "VVV backup files (*.vvvbk)|*.vvvbk|All files (*.*)|*.*"
+msgstr ""
+
+#: ..\src/mainframe.cpp:3602
+msgid "Backup catalog"
+msgstr ""
+
+#: ..\src/mainframe.cpp:3646
+msgid "Backup completed"
+msgstr ""
+
+#: ..\src/mainframe.cpp:3669
+msgid ""
+"Unable to restore.\n"
+"\n"
+"You are connecting to a database server on another computer. You must execute this command on the server to be able to restore a catalog."
+msgstr ""
+
+#: ..\src/mainframe.cpp:3681
+msgid "The catalog name is missing"
+msgstr ""
+
+#: ..\src/mainframe.cpp:3685
+msgid "The backup name is missing"
+msgstr ""
+
+#: ..\src/mainframe.cpp:3703
+msgid ""
+"Unable to continue. You have choosen an existing catalog:\n"
+"\n"
+msgstr ""
+
+#: ..\src/mainframe.cpp:3739
+msgid "Restore completed"
+msgstr ""
+
+#: ..\src/object_description.cpp:145
+msgid "Please enter the description for the following object:"
+msgstr ""
+
+#: ..\src/object_description.cpp:148
+msgid "OBJECT NAME"
+msgstr ""
+
+#: ..\src/opencatalog.cpp:163
+msgid ""
+"You are about to open a catalog located on the server.\n"
+"\n"
+"Enter the alias or the complete path to the catalog file.\n"
+"Remember that the path must be relative to the server, not to the client."
+msgstr ""
+
+#: ..\src/opencatalog.cpp:257
+#: ..\src/restore.cpp:305
+msgid "VVV files (*.vvv)|*.vvv|All files (*.*)|*.*"
+msgstr ""
+
+#: ..\src/opencatalog.cpp:277
+msgid "Open Catalog"
+msgstr ""
+
+#: ..\src/opencatalog.cpp:281
+msgid "New Catalog"
+msgstr ""
+
+#: ..\src/opencatalog.cpp:285
+msgid "Backup"
+msgstr ""
+
+#: ..\src/restore.cpp:154
+msgid ""
+"You are about to create a new catalog from a backup file.\n"
+"\n"
+"Enter the complete path to the backup file and to the catalog file that will be created.\n"
+"You cannot enter the name of an existing catalog."
+msgstr ""
+
+#: ..\src/restore.cpp:159
+msgid "Backup file:"
+msgstr ""
+
+#: ..\src/restore.cpp:171
+msgid "New catalog:"
+msgstr ""
+
+#: ..\src/restore.cpp:286
+msgid "Select backup file"
+msgstr ""
+
+#: ..\src/restore.cpp:304
+msgid "Catalog file"
+msgstr ""
+
+#: ..\src/settings.cpp:175
+msgid "Reopen the last used catalog at startup"
+msgstr ""
+
+#: ..\src/settings.cpp:181
+msgid "Beep for tasks longer than (seconds):"
+msgstr ""
+
+#: ..\src/settings.cpp:187
+msgid "General"
+msgstr ""
+
+#: ..\src/settings.cpp:195
+msgid "Show the following data for MP3 files:"
+msgstr ""
+
+#: ..\src/settings.cpp:220
+msgid "Track number"
+msgstr ""
+
+#: ..\src/settings.cpp:246
+msgid "MP3"
+msgstr ""
+
+#: ..\src/settings.cpp:254
+msgid ""
+"Check the checkbox below if you want to access catalogs stored\n"
+"in a network server. Each computer in the network will be able to\n"
+"access the same catalogs stored in the server.\n"
+"DO NOT check the checkbox if you only want to access catalogs\n"
+"stored in this computer and you do not want to share them\n"
+"with other computers."
+msgstr ""
+
+#: ..\src/settings.cpp:259
+msgid "Connect to a network server"
+msgstr ""
+
+#: ..\src/settings.cpp:266
+#: ..\src/settings.cpp:289
+msgid "Server"
+msgstr ""
+
+#: ..\src/settings.cpp:272
+msgid "Username"
+msgstr ""
+
+#: ..\src/settings.cpp:278
+msgid "Password"
+msgstr ""
+
+#: ..\src/settings.cpp:286
+msgid "Test server connection"
+msgstr ""
+
+#: ..\src/settings.cpp:376
+msgid "You must enter a server name or address"
+msgstr ""
+
+#: ..\src/settings.cpp:380
+msgid "You must enter a username"
+msgstr ""
+
+#: ..\src/settings.cpp:384
+msgid "You must enter a password"
+msgstr ""
+
+#: ..\src/settings.cpp:447
+msgid "You must enter the server name or address"
+msgstr ""
+
+#: ..\src/settings.cpp:452
+msgid "Unable to connect to the server"
+msgstr ""
+
+#: ..\src/settings.cpp:454
+msgid "Server connection successful"
+msgstr ""
+
+#: ..\src/vvv.cpp:263
+msgid ""
+"Unable to connect to the server\n"
+"\n"
+msgstr ""
+
+#: ..\src/vvv.cpp:265
+#: ..\src/vvv.cpp:271
+msgid ""
+"An unexpected error has occurred. Here is a description of the error:\n"
+"\n"
+msgstr ""
+
+#: ..\src/vvv.cpp:277
+msgid "An unexpected error has occurred. This application will be terminated"
+msgstr ""
+
+#: ..\src/ibpp/core/array.cpp:51
+#: ..\src/ibpp/core/array.cpp:75
+#: ..\src/ibpp/core/array.cpp:200
+#: ..\src/ibpp/core/array.cpp:548
+#: ..\src/ibpp/core/array.cpp:904
+#: ..\src/ibpp/core/blob.cpp:49
+#: ..\src/ibpp/core/blob.cpp:68
+#: ..\src/ibpp/core/blob.cpp:169
+#: ..\src/ibpp/core/blob.cpp:209
+#: ..\src/ibpp/core/blob.cpp:254
+#: ..\src/ibpp/core/events.cpp:186
+#: ..\src/ibpp/core/transaction.cpp:120
+msgid "No Database is attached."
+msgstr ""
+
+#: ..\src/ibpp/core/array.cpp:53
+#: ..\src/ibpp/core/array.cpp:77
+#: ..\src/ibpp/core/array.cpp:202
+#: ..\src/ibpp/core/array.cpp:550
+#: ..\src/ibpp/core/array.cpp:911
+#: ..\src/ibpp/core/blob.cpp:51
+#: ..\src/ibpp/core/blob.cpp:70
+#: ..\src/ibpp/core/blob.cpp:171
+#: ..\src/ibpp/core/blob.cpp:211
+#: ..\src/ibpp/core/blob.cpp:261
+msgid "No Transaction is attached."
+msgstr ""
+
+#: ..\src/ibpp/core/array.cpp:63
+msgid "isc_array_lookup_bounds failed."
+msgstr ""
+
+#: ..\src/ibpp/core/array.cpp:73
+#: ..\src/ibpp/core/array.cpp:98
+#: ..\src/ibpp/core/array.cpp:125
+#: ..\src/ibpp/core/array.cpp:134
+#: ..\src/ibpp/core/array.cpp:143
+#: ..\src/ibpp/core/array.cpp:151
+#: ..\src/ibpp/core/array.cpp:198
+#: ..\src/ibpp/core/array.cpp:546
+msgid "Array description not set."
+msgstr ""
+
+#: ..\src/ibpp/core/array.cpp:79
+#: ..\src/ibpp/core/array.cpp:153
+msgid "Invalid dimension."
+msgstr ""
+
+#: ..\src/ibpp/core/array.cpp:86
+msgid "Invalid bounds. You can only narrow the bounds."
+msgstr ""
+
+#: ..\src/ibpp/core/array.cpp:115
+#: ..\src/ibpp/core/row.cpp:711
+#: ..\src/ibpp/core/row.cpp:1357
+#: ..\src/ibpp/core/row.cpp:1387
+#: ..\src/ibpp/core/row.cpp:1478
+#: ..\src/ibpp/core/row.cpp:1534
+msgid "Found an unknown sqltype !"
+msgstr ""
+
+#: ..\src/ibpp/core/array.cpp:155
+msgid "Null reference detected."
+msgstr ""
+
+#: ..\src/ibpp/core/array.cpp:196
+msgid "Array Id not read from column."
+msgstr ""
+
+#: ..\src/ibpp/core/array.cpp:204
+#: ..\src/ibpp/core/array.cpp:552
+msgid "Wrong count of array elements"
+msgstr ""
+
+#: ..\src/ibpp/core/array.cpp:211
+msgid "isc_array_get_slice failed."
+msgstr ""
+
+#: ..\src/ibpp/core/array.cpp:213
+#: ..\src/ibpp/core/array.cpp:898
+msgid "Internal buffer size discrepancy."
+msgstr ""
+
+#: ..\src/ibpp/core/array.cpp:244
+#: ..\src/ibpp/core/array.cpp:271
+#: ..\src/ibpp/core/array.cpp:333
+#: ..\src/ibpp/core/array.cpp:398
+#: ..\src/ibpp/core/array.cpp:466
+#: ..\src/ibpp/core/array.cpp:471
+#: ..\src/ibpp/core/array.cpp:482
+#: ..\src/ibpp/core/array.cpp:507
+#: ..\src/ibpp/core/array.cpp:518
+#: ..\src/ibpp/core/array.cpp:529
+#: ..\src/ibpp/core/array.cpp:585
+#: ..\src/ibpp/core/array.cpp:611
+#: ..\src/ibpp/core/array.cpp:681
+#: ..\src/ibpp/core/array.cpp:748
+#: ..\src/ibpp/core/array.cpp:819
+#: ..\src/ibpp/core/array.cpp:830
+#: ..\src/ibpp/core/array.cpp:856
+#: ..\src/ibpp/core/array.cpp:867
+#: ..\src/ibpp/core/array.cpp:878
+#: ..\src/ibpp/core/row.cpp:844
+#: ..\src/ibpp/core/row.cpp:868
+#: ..\src/ibpp/core/row.cpp:909
+#: ..\src/ibpp/core/row.cpp:947
+#: ..\src/ibpp/core/row.cpp:982
+#: ..\src/ibpp/core/row.cpp:988
+#: ..\src/ibpp/core/row.cpp:995
+#: ..\src/ibpp/core/row.cpp:1009
+#: ..\src/ibpp/core/row.cpp:1016
+#: ..\src/ibpp/core/row.cpp:1023
+#: ..\src/ibpp/core/row.cpp:1040
+#: ..\src/ibpp/core/row.cpp:1046
+#: ..\src/ibpp/core/row.cpp:1114
+#: ..\src/ibpp/core/row.cpp:1147
+#: ..\src/ibpp/core/row.cpp:1187
+#: ..\src/ibpp/core/row.cpp:1230
+#: ..\src/ibpp/core/row.cpp:1277
+#: ..\src/ibpp/core/row.cpp:1283
+#: ..\src/ibpp/core/row.cpp:1290
+#: ..\src/ibpp/core/row.cpp:1305
+#: ..\src/ibpp/core/row.cpp:1313
+#: ..\src/ibpp/core/row.cpp:1321
+#: ..\src/ibpp/core/row.cpp:1342
+#: ..\src/ibpp/core/row.cpp:1348
+msgid "Incompatible types."
+msgstr ""
+
+#: ..\src/ibpp/core/array.cpp:352
+#: ..\src/ibpp/core/array.cpp:417
+#: ..\src/ibpp/core/array.cpp:429
+#: ..\src/ibpp/core/array.cpp:639
+#: ..\src/ibpp/core/array.cpp:651
+#: ..\src/ibpp/core/array.cpp:718
+#: ..\src/ibpp/core/row.cpp:884
+#: ..\src/ibpp/core/row.cpp:891
+#: ..\src/ibpp/core/row.cpp:929
+#: ..\src/ibpp/core/row.cpp:1206
+#: ..\src/ibpp/core/row.cpp:1249
+#: ..\src/ibpp/core/row.cpp:1258
+msgid "Out of range numeric conversion !"
+msgstr ""
+
+#: ..\src/ibpp/core/array.cpp:539
+#: ..\src/ibpp/core/array.cpp:888
+msgid "Unknown sql type."
+msgstr ""
+
+#: ..\src/ibpp/core/array.cpp:814
+#, c-format
+msgid "Incompatible types (blr_int64 and ADT %d)."
+msgstr ""
+
+#: ..\src/ibpp/core/array.cpp:896
+msgid "isc_array_put_slice failed."
+msgstr ""
+
+#: ..\src/ibpp/core/array.cpp:946
+#: ..\src/ibpp/core/array.cpp:955
+#: ..\src/ibpp/core/blob.cpp:297
+#: ..\src/ibpp/core/blob.cpp:310
+msgid "Null Id reference detected."
+msgstr ""
+
+#: ..\src/ibpp/core/array.cpp:992
+msgid "Can't attach a 0 Database object."
+msgstr ""
+
+#: ..\src/ibpp/core/array.cpp:1002
+msgid "Can't attach a 0 Transaction object."
+msgstr ""
+
+#: ..\src/ibpp/core/blob.cpp:47
+#: ..\src/ibpp/core/blob.cpp:66
+#: ..\src/ibpp/core/blob.cpp:167
+#: ..\src/ibpp/core/blob.cpp:207
+msgid "Blob already opened."
+msgstr ""
+
+#: ..\src/ibpp/core/blob.cpp:53
+#: ..\src/ibpp/core/blob.cpp:213
+msgid "Blob Id is not assigned."
+msgstr ""
+
+#: ..\src/ibpp/core/blob.cpp:59
+#: ..\src/ibpp/core/blob.cpp:219
+msgid "isc_open_blob2 failed."
+msgstr ""
+
+#: ..\src/ibpp/core/blob.cpp:77
+#: ..\src/ibpp/core/blob.cpp:178
+msgid "isc_create_blob failed."
+msgstr ""
+
+#: ..\src/ibpp/core/blob.cpp:89
+#: ..\src/ibpp/core/blob.cpp:200
+#: ..\src/ibpp/core/blob.cpp:247
+msgid "isc_close_blob failed."
+msgstr ""
+
+#: ..\src/ibpp/core/blob.cpp:98
+msgid "Can't cancel a Blob opened for read"
+msgstr ""
+
+#: ..\src/ibpp/core/blob.cpp:103
+msgid "isc_cancel_blob failed."
+msgstr ""
+
+#: ..\src/ibpp/core/blob.cpp:111
+#: ..\src/ibpp/core/blob.cpp:130
+#: ..\src/ibpp/core/blob.cpp:150
+msgid "The Blob is not opened"
+msgstr ""
+
+#: ..\src/ibpp/core/blob.cpp:113
+msgid "Can't read from Blob opened for write"
+msgstr ""
+
+#: ..\src/ibpp/core/blob.cpp:115
+#: ..\src/ibpp/core/blob.cpp:134
+msgid "Invalid segment size (max 64Kb-1)"
+msgstr ""
+
+#: ..\src/ibpp/core/blob.cpp:123
+#: ..\src/ibpp/core/blob.cpp:236
+msgid "isc_get_segment failed."
+msgstr ""
+
+#: ..\src/ibpp/core/blob.cpp:132
+msgid "Can't write to Blob opened for read"
+msgstr ""
+
+#: ..\src/ibpp/core/blob.cpp:140
+#: ..\src/ibpp/core/blob.cpp:192
+msgid "isc_put_segment failed."
+msgstr ""
+
+#: ..\src/ibpp/core/blob.cpp:157
+msgid "isc_blob_info failed."
+msgstr ""
+
+#: ..\src/ibpp/core/blob.cpp:295
+msgid "Can't set Id on an opened BlobImpl."
+msgstr ""
+
+#: ..\src/ibpp/core/blob.cpp:306
+msgid "Can't get Id on an opened BlobImpl."
+msgstr ""
+
+#: ..\src/ibpp/core/blob.cpp:308
+msgid "Can only get Id of a newly created Blob."
+msgstr ""
+
+#: ..\src/ibpp/core/blob.cpp:318
+msgid "Can't attach a NULL Database object."
+msgstr ""
+
+#: ..\src/ibpp/core/blob.cpp:328
+msgid "Can't attach a NULL Transaction object."
+msgstr ""
+
+#: ..\src/ibpp/core/database.cpp:49
+msgid "Database is already connected."
+msgstr ""
+
+#: ..\src/ibpp/core/database.cpp:51
+#: ..\src/ibpp/core/database.cpp:85
+msgid "Unspecified database name."
+msgstr ""
+
+#: ..\src/ibpp/core/database.cpp:53
+#: ..\src/ibpp/core/database.cpp:87
+#: ..\src/ibpp/core/service.cpp:56
+msgid "Unspecified user name."
+msgstr ""
+
+#: ..\src/ibpp/core/database.cpp:55
+msgid "Only dialects 1 and 3 are supported."
+msgstr ""
+
+#: ..\src/ibpp/core/database.cpp:75
+#: ..\src/ibpp/core/statement.cpp:380
+msgid "isc_dsql_execute_immediate failed"
+msgstr ""
+
+#: ..\src/ibpp/core/database.cpp:107
+msgid "isc_attach_database failed"
+msgstr ""
+
+#: ..\src/ibpp/core/database.cpp:128
+#: ..\src/ibpp/core/database.cpp:255
+#: ..\src/ibpp/core/database.cpp:286
+#: ..\src/ibpp/core/database.cpp:313
+#: ..\src/ibpp/core/database.cpp:338
+msgid "isc_database_info failed"
+msgstr ""
+
+#: ..\src/ibpp/core/database.cpp:138
+#, c-format
+msgid "Unsupported Server : wrong ODS version (%d), at least '10' required."
+msgstr ""
+
+#: ..\src/ibpp/core/database.cpp:147
+msgid "Dialect 1 or 3 required"
+msgstr ""
+
+#: ..\src/ibpp/core/database.cpp:156
+msgid "GDS32.DLL version 5 against IBSERVER 6"
+msgstr ""
+
+#: ..\src/ibpp/core/database.cpp:213
+msgid "isc_detach_database failed"
+msgstr ""
+
+#: ..\src/ibpp/core/database.cpp:219
+#: ..\src/ibpp/core/statement.cpp:244
+#: ..\src/ibpp/core/statement.cpp:391
+msgid "Database must be connected."
+msgstr ""
+
+#: ..\src/ibpp/core/database.cpp:227
+msgid "isc_drop_database failed"
+msgstr ""
+
+#: ..\src/ibpp/core/database.cpp:237
+#: ..\src/ibpp/core/database.cpp:272
+#: ..\src/ibpp/core/database.cpp:298
+#: ..\src/ibpp/core/database.cpp:325
+msgid "Database is not connected."
+msgstr ""
+
+#: ..\src/ibpp/core/database.cpp:376
+msgid "Transaction object is null."
+msgstr ""
+
+#: ..\src/ibpp/core/database.cpp:385
+msgid "ITransaction object is null."
+msgstr ""
+
+#: ..\src/ibpp/core/database.cpp:394
+msgid "Can't attach a null Statement object."
+msgstr ""
+
+#: ..\src/ibpp/core/database.cpp:403
+msgid "Can't detach a null Statement object."
+msgstr ""
+
+#: ..\src/ibpp/core/database.cpp:412
+msgid "Can't attach a null Blob object."
+msgstr ""
+
+#: ..\src/ibpp/core/database.cpp:421
+msgid "Can't detach a null Blob object."
+msgstr ""
+
+#: ..\src/ibpp/core/database.cpp:430
+msgid "Can't attach a null Array object."
+msgstr ""
+
+#: ..\src/ibpp/core/database.cpp:439
+msgid "Can't detach a null Array object."
+msgstr ""
+
+#: ..\src/ibpp/core/database.cpp:448
+msgid "Can't attach a null Events object."
+msgstr ""
+
+#: ..\src/ibpp/core/database.cpp:457
+msgid "Can't detach a null Events object."
+msgstr ""
+
+#: ..\src/ibpp/core/date.cpp:51
+#: ..\src/ibpp/core/date.cpp:57
+#: ..\src/ibpp/core/date.cpp:64
+#: ..\src/ibpp/core/date.cpp:70
+#: ..\src/ibpp/core/date.cpp:77
+#: ..\src/ibpp/core/date.cpp:85
+#: ..\src/ibpp/core/date.cpp:93
+#: ..\src/ibpp/core/date.cpp:101
+#: ..\src/ibpp/core/date.cpp:109
+#: ..\src/ibpp/core/date.cpp:111
+#: ..\src/ibpp/core/date.cpp:118
+#: ..\src/ibpp/core/date.cpp:121
+msgid "Out of range"
+msgstr ""
+
+#: ..\src/ibpp/core/dbkey.cpp:59
+#: ..\src/ibpp/core/dbkey.cpp:72
+msgid "Null DBKey reference detected."
+msgstr ""
+
+#: ..\src/ibpp/core/dbkey.cpp:61
+msgid "Invalid DBKey size."
+msgstr ""
+
+#: ..\src/ibpp/core/dbkey.cpp:70
+#: ..\src/ibpp/core/dbkey.cpp:82
+msgid "DBKey not assigned."
+msgstr ""
+
+#: ..\src/ibpp/core/dbkey.cpp:74
+msgid "Incompatible DBKey size detected."
+msgstr ""
+
+#: ..\src/ibpp/core/events.cpp:73
+#: ..\src/ibpp/core/events.cpp:118
+msgid "Zero length event names not permitted"
+msgstr ""
+
+#: ..\src/ibpp/core/events.cpp:75
+#: ..\src/ibpp/core/events.cpp:120
+msgid "Event name is too long"
+msgstr ""
+
+#: ..\src/ibpp/core/events.cpp:78
+msgid "Can't add this event, the events list would overflow IB/FB limitation"
+msgstr ""
+
+#: ..\src/ibpp/core/events.cpp:214
+#: ..\src/ibpp/core/events.cpp:238
+msgid "Database is not connected"
+msgstr ""
+
+#: ..\src/ibpp/core/events.cpp:228
+msgid "isc_que_events failed"
+msgstr ""
+
+#: ..\src/ibpp/core/events.cpp:254
+msgid "isc_cancel_events failed"
+msgstr ""
+
+#: ..\src/ibpp/core/events.cpp:275
+msgid "Internal buffer size error"
+msgstr ""
+
+#: ..\src/ibpp/core/events.cpp:337
+msgid "Can't attach a null Database object."
+msgstr ""
+
+#: ..\src/ibpp/core/exception.cpp:74
+msgid "Context: "
+msgstr ""
+
+#: ..\src/ibpp/core/exception.cpp:77
+msgid "Message: "
+msgstr ""
+
+#: ..\src/ibpp/core/exception.cpp:309
+msgid " and "
+msgstr ""
+
+#: ..\src/ibpp/core/row.cpp:50
+#: ..\src/ibpp/core/row.cpp:65
+#: ..\src/ibpp/core/row.cpp:74
+#: ..\src/ibpp/core/row.cpp:85
+#: ..\src/ibpp/core/row.cpp:98
+#: ..\src/ibpp/core/row.cpp:107
+#: ..\src/ibpp/core/row.cpp:116
+#: ..\src/ibpp/core/row.cpp:125
+#: ..\src/ibpp/core/row.cpp:134
+#: ..\src/ibpp/core/row.cpp:143
+#: ..\src/ibpp/core/row.cpp:152
+#: ..\src/ibpp/core/row.cpp:161
+#: ..\src/ibpp/core/row.cpp:182
+#: ..\src/ibpp/core/row.cpp:193
+#: ..\src/ibpp/core/row.cpp:208
+#: ..\src/ibpp/core/row.cpp:223
+#: ..\src/ibpp/core/row.cpp:243
+#: ..\src/ibpp/core/row.cpp:254
+#: ..\src/ibpp/core/row.cpp:265
+#: ..\src/ibpp/core/row.cpp:282
+#: ..\src/ibpp/core/row.cpp:303
+#: ..\src/ibpp/core/row.cpp:312
+#: ..\src/ibpp/core/row.cpp:323
+#: ..\src/ibpp/core/row.cpp:334
+#: ..\src/ibpp/core/row.cpp:345
+#: ..\src/ibpp/core/row.cpp:356
+#: ..\src/ibpp/core/row.cpp:367
+#: ..\src/ibpp/core/row.cpp:376
+#: ..\src/ibpp/core/row.cpp:397
+#: ..\src/ibpp/core/row.cpp:406
+#: ..\src/ibpp/core/row.cpp:415
+#: ..\src/ibpp/core/row.cpp:424
+#: ..\src/ibpp/core/row.cpp:445
+#: ..\src/ibpp/core/row.cpp:453
+#: ..\src/ibpp/core/row.cpp:461
+#: ..\src/ibpp/core/row.cpp:469
+#: ..\src/ibpp/core/row.cpp:477
+#: ..\src/ibpp/core/row.cpp:485
+#: ..\src/ibpp/core/row.cpp:493
+#: ..\src/ibpp/core/row.cpp:501
+#: ..\src/ibpp/core/row.cpp:509
+#: ..\src/ibpp/core/row.cpp:517
+#: ..\src/ibpp/core/row.cpp:525
+#: ..\src/ibpp/core/row.cpp:533
+#: ..\src/ibpp/core/row.cpp:541
+#: ..\src/ibpp/core/row.cpp:549
+#: ..\src/ibpp/core/row.cpp:557
+#: ..\src/ibpp/core/row.cpp:565
+#: ..\src/ibpp/core/row.cpp:583
+#: ..\src/ibpp/core/row.cpp:591
+#: ..\src/ibpp/core/row.cpp:650
+#: ..\src/ibpp/core/row.cpp:663
+#: ..\src/ibpp/core/row.cpp:676
+#: ..\src/ibpp/core/row.cpp:689
+#: ..\src/ibpp/core/row.cpp:720
+#: ..\src/ibpp/core/row.cpp:731
+#: ..\src/ibpp/core/row.cpp:742
+#: ..\src/ibpp/core/row.cpp:753
+#: ..\src/ibpp/core/row.cpp:763
+#: ..\src/ibpp/core/statement.cpp:674
+#: ..\src/ibpp/core/statement.cpp:682
+#: ..\src/ibpp/core/statement.cpp:692
+#: ..\src/ibpp/core/statement.cpp:700
+#: ..\src/ibpp/core/statement.cpp:708
+#: ..\src/ibpp/core/statement.cpp:716
+#: ..\src/ibpp/core/statement.cpp:724
+#: ..\src/ibpp/core/statement.cpp:734
+#: ..\src/ibpp/core/statement.cpp:742
+#: ..\src/ibpp/core/statement.cpp:752
+#: ..\src/ibpp/core/statement.cpp:760
+#: ..\src/ibpp/core/statement.cpp:770
+#: ..\src/ibpp/core/statement.cpp:778
+#: ..\src/ibpp/core/statement.cpp:788
+#: ..\src/ibpp/core/statement.cpp:796
+#: ..\src/ibpp/core/statement.cpp:806
+#: ..\src/ibpp/core/statement.cpp:814
+#: ..\src/ibpp/core/statement.cpp:822
+#: ..\src/ibpp/core/statement.cpp:830
+#: ..\src/ibpp/core/statement.cpp:838
+#: ..\src/ibpp/core/statement.cpp:846
+#: ..\src/ibpp/core/statement.cpp:854
+#: ..\src/ibpp/core/statement.cpp:872
+#: ..\src/ibpp/core/statement.cpp:880
+#: ..\src/ibpp/core/statement.cpp:890
+#: ..\src/ibpp/core/statement.cpp:898
+#: ..\src/ibpp/core/statement.cpp:906
+#: ..\src/ibpp/core/statement.cpp:914
+#: ..\src/ibpp/core/statement.cpp:922
+#: ..\src/ibpp/core/statement.cpp:932
+#: ..\src/ibpp/core/statement.cpp:940
+#: ..\src/ibpp/core/statement.cpp:950
+#: ..\src/ibpp/core/statement.cpp:958
+#: ..\src/ibpp/core/statement.cpp:968
+#: ..\src/ibpp/core/statement.cpp:976
+#: ..\src/ibpp/core/statement.cpp:986
+#: ..\src/ibpp/core/statement.cpp:994
+#: ..\src/ibpp/core/statement.cpp:1004
+#: ..\src/ibpp/core/statement.cpp:1012
+#: ..\src/ibpp/core/statement.cpp:1020
+#: ..\src/ibpp/core/statement.cpp:1028
+#: ..\src/ibpp/core/statement.cpp:1036
+#: ..\src/ibpp/core/statement.cpp:1044
+#: ..\src/ibpp/core/statement.cpp:1052
+#: ..\src/ibpp/core/statement.cpp:1070
+#: ..\src/ibpp/core/statement.cpp:1078
+#: ..\src/ibpp/core/statement.cpp:1086
+#: ..\src/ibpp/core/statement.cpp:1094
+#: ..\src/ibpp/core/statement.cpp:1102
+#: ..\src/ibpp/core/statement.cpp:1132
+#: ..\src/ibpp/core/statement.cpp:1142
+msgid "The row is not initialized."
+msgstr ""
+
+#: ..\src/ibpp/core/row.cpp:52
+#: ..\src/ibpp/core/row.cpp:245
+#: ..\src/ibpp/core/row.cpp:652
+#: ..\src/ibpp/core/row.cpp:665
+#: ..\src/ibpp/core/row.cpp:678
+#: ..\src/ibpp/core/row.cpp:691
+#: ..\src/ibpp/core/row.cpp:722
+#: ..\src/ibpp/core/row.cpp:733
+#: ..\src/ibpp/core/row.cpp:744
+#: ..\src/ibpp/core/row.cpp:755
+#: ..\src/ibpp/core/row.cpp:809
+#: ..\src/ibpp/core/row.cpp:1068
+msgid "Variable index out of range."
+msgstr ""
+
+#: ..\src/ibpp/core/row.cpp:56
+msgid "This column can't be null."
+msgstr ""
+
+#: ..\src/ibpp/core/row.cpp:76
+#: ..\src/ibpp/core/row.cpp:87
+msgid "null char* pointer detected."
+msgstr ""
+
+#: ..\src/ibpp/core/row.cpp:89
+#: ..\src/ibpp/core/row.cpp:286
+msgid "Length must be >= 0"
+msgstr ""
+
+#: ..\src/ibpp/core/row.cpp:184
+msgid "Requires use of a dialect 3 database."
+msgstr ""
+
+#: ..\src/ibpp/core/row.cpp:196
+msgid "IBlob and Row attached to different databases"
+msgstr ""
+
+#: ..\src/ibpp/core/row.cpp:199
+msgid "IBlob and Row attached to different transactions"
+msgstr ""
+
+#: ..\src/ibpp/core/row.cpp:211
+msgid "IArray and Row attached to different databases"
+msgstr ""
+
+#: ..\src/ibpp/core/row.cpp:214
+msgid "IArray and Row attached to different transactions"
+msgstr ""
+
+#: ..\src/ibpp/core/row.cpp:267
+#: ..\src/ibpp/core/row.cpp:284
+#: ..\src/ibpp/core/statement.cpp:684
+#: ..\src/ibpp/core/statement.cpp:726
+#: ..\src/ibpp/core/statement.cpp:744
+#: ..\src/ibpp/core/statement.cpp:762
+#: ..\src/ibpp/core/statement.cpp:780
+#: ..\src/ibpp/core/statement.cpp:798
+#: ..\src/ibpp/core/statement.cpp:882
+#: ..\src/ibpp/core/statement.cpp:924
+#: ..\src/ibpp/core/statement.cpp:942
+#: ..\src/ibpp/core/statement.cpp:960
+#: ..\src/ibpp/core/statement.cpp:978
+#: ..\src/ibpp/core/statement.cpp:996
+msgid "Null pointer detected"
+msgstr ""
+
+#: ..\src/ibpp/core/row.cpp:593
+msgid "Column name <empty> not found."
+msgstr ""
+
+#: ..\src/ibpp/core/row.cpp:633
+msgid "Could not find matching column."
+msgstr ""
+
+#: ..\src/ibpp/core/row.cpp:811
+msgid "Unexpected null pointer detected."
+msgstr ""
+
+#: ..\src/ibpp/core/row.cpp:1059
+msgid "The field uses an unsupported SQL type !"
+msgstr ""
+
+#: ..\src/ibpp/core/service.cpp:54
+#: ..\src/ibpp/core/service.cpp:93
+#: ..\src/ibpp/core/service.cpp:112
+#: ..\src/ibpp/core/service.cpp:218
+#: ..\src/ibpp/core/service.cpp:289
+#: ..\src/ibpp/core/service.cpp:361
+#: ..\src/ibpp/core/service.cpp:384
+#: ..\src/ibpp/core/service.cpp:407
+#: ..\src/ibpp/core/service.cpp:431
+#: ..\src/ibpp/core/service.cpp:455
+#: ..\src/ibpp/core/service.cpp:479
+#: ..\src/ibpp/core/service.cpp:513
+#: ..\src/ibpp/core/service.cpp:536
+#: ..\src/ibpp/core/service.cpp:559
+#: ..\src/ibpp/core/service.cpp:595
+#: ..\src/ibpp/core/service.cpp:629
+#: ..\src/ibpp/core/service.cpp:669
+#: ..\src/ibpp/core/service.cpp:695
+msgid "Requires the version 6 of GDS32.DLL"
+msgstr ""
+
+#: ..\src/ibpp/core/service.cpp:58
+msgid "Unspecified user password."
+msgstr ""
+
+#: ..\src/ibpp/core/service.cpp:84
+msgid "isc_service_attach failed"
+msgstr ""
+
+#: ..\src/ibpp/core/service.cpp:104
+msgid "isc_service_detach failed"
+msgstr ""
+
+#: ..\src/ibpp/core/service.cpp:114
+#: ..\src/ibpp/core/service.cpp:133
+#: ..\src/ibpp/core/service.cpp:165
+#: ..\src/ibpp/core/service.cpp:198
+#: ..\src/ibpp/core/service.cpp:220
+#: ..\src/ibpp/core/service.cpp:291
+#: ..\src/ibpp/core/service.cpp:363
+#: ..\src/ibpp/core/service.cpp:386
+#: ..\src/ibpp/core/service.cpp:409
+#: ..\src/ibpp/core/service.cpp:433
+#: ..\src/ibpp/core/service.cpp:457
+#: ..\src/ibpp/core/service.cpp:481
+#: ..\src/ibpp/core/service.cpp:515
+#: ..\src/ibpp/core/service.cpp:538
+#: ..\src/ibpp/core/service.cpp:561
+#: ..\src/ibpp/core/service.cpp:597
+#: ..\src/ibpp/core/service.cpp:631
+msgid "Service is not connected."
+msgstr ""
+
+#: ..\src/ibpp/core/service.cpp:125
+#: ..\src/ibpp/core/service.cpp:239
+#: ..\src/ibpp/core/service.cpp:307
+#: ..\src/ibpp/core/service.cpp:678
+#: ..\src/ibpp/core/service.cpp:713
+msgid "isc_service_query failed"
+msgstr ""
+
+#: ..\src/ibpp/core/service.cpp:135
+#: ..\src/ibpp/core/service.cpp:167
+#: ..\src/ibpp/core/service.cpp:200
+#: ..\src/ibpp/core/service.cpp:222
+msgid "Username required."
+msgstr ""
+
+#: ..\src/ibpp/core/service.cpp:137
+msgid "Password required."
+msgstr ""
+
+#: ..\src/ibpp/core/service.cpp:157
+#: ..\src/ibpp/core/service.cpp:189
+#: ..\src/ibpp/core/service.cpp:210
+#: ..\src/ibpp/core/service.cpp:231
+#: ..\src/ibpp/core/service.cpp:299
+#: ..\src/ibpp/core/service.cpp:376
+#: ..\src/ibpp/core/service.cpp:399
+#: ..\src/ibpp/core/service.cpp:423
+#: ..\src/ibpp/core/service.cpp:447
+#: ..\src/ibpp/core/service.cpp:471
+#: ..\src/ibpp/core/service.cpp:505
+#: ..\src/ibpp/core/service.cpp:528
+#: ..\src/ibpp/core/service.cpp:551
+#: ..\src/ibpp/core/service.cpp:586
+#: ..\src/ibpp/core/service.cpp:622
+#: ..\src/ibpp/core/service.cpp:659
+msgid "isc_service_start failed"
+msgstr ""
+
+#: ..\src/ibpp/core/service.cpp:243
+#: ..\src/ibpp/core/service.cpp:312
+msgid "isc_service_query returned unexpected answer"
+msgstr ""
+
+#: ..\src/ibpp/core/service.cpp:365
+#: ..\src/ibpp/core/service.cpp:388
+#: ..\src/ibpp/core/service.cpp:411
+#: ..\src/ibpp/core/service.cpp:435
+#: ..\src/ibpp/core/service.cpp:459
+#: ..\src/ibpp/core/service.cpp:483
+#: ..\src/ibpp/core/service.cpp:517
+#: ..\src/ibpp/core/service.cpp:540
+#: ..\src/ibpp/core/service.cpp:563
+#: ..\src/ibpp/core/service.cpp:599
+#: ..\src/ibpp/core/service.cpp:635
+msgid "Main database file must be specified."
+msgstr ""
+
+#: ..\src/ibpp/core/service.cpp:576
+msgid "One of rpMendRecords, rpValidatePages, rpValidateFull is required."
+msgstr ""
+
+#: ..\src/ibpp/core/service.cpp:601
+#: ..\src/ibpp/core/service.cpp:633
+msgid "Backup file must be specified."
+msgstr ""
+
+#: ..\src/ibpp/core/statement.cpp:47
+#: ..\src/ibpp/core/statement.cpp:360
+msgid "An IDatabase must be attached."
+msgstr ""
+
+#: ..\src/ibpp/core/statement.cpp:49
+#: ..\src/ibpp/core/statement.cpp:362
+msgid "IDatabase must be connected."
+msgstr ""
+
+#: ..\src/ibpp/core/statement.cpp:51
+#: ..\src/ibpp/core/statement.cpp:364
+msgid "An ITransaction must be attached."
+msgstr ""
+
+#: ..\src/ibpp/core/statement.cpp:53
+#: ..\src/ibpp/core/statement.cpp:366
+msgid "ITransaction must be started."
+msgstr ""
+
+#: ..\src/ibpp/core/statement.cpp:55
+#: ..\src/ibpp/core/statement.cpp:368
+msgid "SQL statement can't be 0."
+msgstr ""
+
+#: ..\src/ibpp/core/statement.cpp:68
+msgid "isc_dsql_allocate_statement failed"
+msgstr ""
+
+#: ..\src/ibpp/core/statement.cpp:104
+msgid "isc_dsql_prepare failed"
+msgstr ""
+
+#: ..\src/ibpp/core/statement.cpp:117
+msgid "isc_dsql_sql_info failed"
+msgstr ""
+
+#: ..\src/ibpp/core/statement.cpp:139
+msgid "Unknown or unsupported statement type"
+msgstr ""
+
+#: ..\src/ibpp/core/statement.cpp:169
+msgid "isc_dsql_describe failed"
+msgstr ""
+
+#: ..\src/ibpp/core/statement.cpp:185
+#: ..\src/ibpp/core/statement.cpp:216
+msgid "isc_dsql_describe_bind failed"
+msgstr ""
+
+#: ..\src/ibpp/core/statement.cpp:240
+#: ..\src/ibpp/core/statement.cpp:265
+#: ..\src/ibpp/core/statement.cpp:319
+#: ..\src/ibpp/core/statement.cpp:387
+#: ..\src/ibpp/core/statement.cpp:502
+#: ..\src/ibpp/core/statement.cpp:512
+#: ..\src/ibpp/core/statement.cpp:522
+#: ..\src/ibpp/core/statement.cpp:532
+#: ..\src/ibpp/core/statement.cpp:542
+#: ..\src/ibpp/core/statement.cpp:552
+#: ..\src/ibpp/core/statement.cpp:562
+#: ..\src/ibpp/core/statement.cpp:572
+#: ..\src/ibpp/core/statement.cpp:582
+#: ..\src/ibpp/core/statement.cpp:592
+#: ..\src/ibpp/core/statement.cpp:602
+#: ..\src/ibpp/core/statement.cpp:612
+#: ..\src/ibpp/core/statement.cpp:622
+#: ..\src/ibpp/core/statement.cpp:632
+#: ..\src/ibpp/core/statement.cpp:642
+#: ..\src/ibpp/core/statement.cpp:652
+#: ..\src/ibpp/core/statement.cpp:1110
+#: ..\src/ibpp/core/statement.cpp:1120
+#: ..\src/ibpp/core/statement.cpp:1130
+#: ..\src/ibpp/core/statement.cpp:1140
+#: ..\src/ibpp/core/statement.cpp:1150
+#: ..\src/ibpp/core/statement.cpp:1160
+#: ..\src/ibpp/core/statement.cpp:1170
+#: ..\src/ibpp/core/statement.cpp:1180
+#: ..\src/ibpp/core/statement.cpp:1190
+msgid "No statement has been prepared."
+msgstr ""
+
+#: ..\src/ibpp/core/statement.cpp:242
+#: ..\src/ibpp/core/statement.cpp:389
+msgid "A Database must be attached."
+msgstr ""
+
+#: ..\src/ibpp/core/statement.cpp:253
+#: ..\src/ibpp/core/statement.cpp:401
+msgid "isc_dsql_sql_info failed."
+msgstr ""
+
+#: ..\src/ibpp/core/statement.cpp:270
+#: ..\src/ibpp/core/statement.cpp:328
+msgid "All parameters must be specified."
+msgstr ""
+
+#: ..\src/ibpp/core/statement.cpp:286
+#: ..\src/ibpp/core/statement.cpp:341
+msgid "isc_dsql_execute failed"
+msgstr ""
+
+#: ..\src/ibpp/core/statement.cpp:306
+msgid "isc_dsql_execute2 failed"
+msgstr ""
+
+#: ..\src/ibpp/core/statement.cpp:314
+msgid "Cursor name can't be 0."
+msgstr ""
+
+#: ..\src/ibpp/core/statement.cpp:321
+msgid "Statement must be a SELECT FOR UPDATE."
+msgstr ""
+
+#: ..\src/ibpp/core/statement.cpp:323
+msgid "Statement would return no rows."
+msgstr ""
+
+#: ..\src/ibpp/core/statement.cpp:350
+msgid "isc_dsql_set_cursor_name failed"
+msgstr ""
+
+#: ..\src/ibpp/core/statement.cpp:420
+#: ..\src/ibpp/core/statement.cpp:447
+msgid "No statement has been executed or no result set available."
+msgstr ""
+
+#: ..\src/ibpp/core/statement.cpp:437
+#: ..\src/ibpp/core/statement.cpp:470
+msgid "isc_dsql_fetch failed."
+msgstr ""
+
+#: ..\src/ibpp/core/statement.cpp:495
+#: ..\src/ibpp/core/statement.cpp:1277
+msgid "isc_dsql_free_statement failed."
+msgstr ""
+
+#: ..\src/ibpp/core/statement.cpp:504
+#: ..\src/ibpp/core/statement.cpp:514
+#: ..\src/ibpp/core/statement.cpp:524
+#: ..\src/ibpp/core/statement.cpp:534
+#: ..\src/ibpp/core/statement.cpp:544
+#: ..\src/ibpp/core/statement.cpp:554
+#: ..\src/ibpp/core/statement.cpp:564
+#: ..\src/ibpp/core/statement.cpp:574
+#: ..\src/ibpp/core/statement.cpp:584
+#: ..\src/ibpp/core/statement.cpp:594
+#: ..\src/ibpp/core/statement.cpp:604
+#: ..\src/ibpp/core/statement.cpp:614
+#: ..\src/ibpp/core/statement.cpp:624
+#: ..\src/ibpp/core/statement.cpp:634
+#: ..\src/ibpp/core/statement.cpp:644
+#: ..\src/ibpp/core/statement.cpp:654
+msgid "The statement does not take parameters."
+msgstr ""
+
+#: ..\src/ibpp/core/statement.cpp:1112
+#: ..\src/ibpp/core/statement.cpp:1122
+msgid "The statement does not return results."
+msgstr ""
+
+#: ..\src/ibpp/core/statement.cpp:1152
+#: ..\src/ibpp/core/statement.cpp:1162
+#: ..\src/ibpp/core/statement.cpp:1172
+#: ..\src/ibpp/core/statement.cpp:1182
+#: ..\src/ibpp/core/statement.cpp:1192
+msgid "The statement uses no parameters."
+msgstr ""
+
+#: ..\src/ibpp/core/statement.cpp:1230
+msgid "Can't attach a 0 IDatabase object."
+msgstr ""
+
+#: ..\src/ibpp/core/statement.cpp:1250
+msgid "Can't attach a 0 ITransaction object."
+msgstr ""
+
+#: ..\src/ibpp/core/time.cpp:54
+msgid "Invalid time value"
+msgstr ""
+
+#: ..\src/ibpp/core/time.cpp:65
+msgid "Invalid hour, minute, second values"
+msgstr ""
+
+#: ..\src/ibpp/core/transaction.cpp:51
+msgid "Can't attach an unbound Database."
+msgstr ""
+
+#: ..\src/ibpp/core/transaction.cpp:60
+msgid "Can't detach an unbound Database."
+msgstr ""
+
+#: ..\src/ibpp/core/transaction.cpp:70
+msgid "Can't add table reservation if Transaction started."
+msgstr ""
+
+#: ..\src/ibpp/core/transaction.cpp:73
+msgid "Can't add table reservation on an unbound Database."
+msgstr ""
+
+#: ..\src/ibpp/core/transaction.cpp:108
+msgid "Illegal TTR value detected."
+msgstr ""
+
+#: ..\src/ibpp/core/transaction.cpp:112
+msgid "The database connection you specified is not attached to this transaction."
+msgstr ""
+
+#: ..\src/ibpp/core/transaction.cpp:137
+msgid "All attached Database should have been connected."
+msgstr ""
+
+#: ..\src/ibpp/core/transaction.cpp:157
+#: ..\src/ibpp/core/transaction.cpp:170
+#: ..\src/ibpp/core/transaction.cpp:194
+msgid "Transaction is not started."
+msgstr ""
+
+#: ..\src/ibpp/core/transaction.cpp:235
+msgid "Can't attach a 0 Statement object."
+msgstr ""
+
+#: ..\src/ibpp/core/transaction.cpp:244
+msgid "Can't detach a 0 Statement object."
+msgstr ""
+
+#: ..\src/ibpp/core/transaction.cpp:253
+msgid "Can't attach a 0 BlobImpl object."
+msgstr ""
+
+#: ..\src/ibpp/core/transaction.cpp:262
+msgid "Can't detach a 0 BlobImpl object."
+msgstr ""
+
+#: ..\src/ibpp/core/transaction.cpp:271
+msgid "Can't attach a 0 ArrayImpl object."
+msgstr ""
+
+#: ..\src/ibpp/core/transaction.cpp:280
+msgid "Can't detach a 0 ArrayImpl object."
+msgstr ""
+
+#: ..\src/ibpp/core/transaction.cpp:290
+msgid "Can't attach a Database if Transaction started."
+msgstr ""
+
+#: ..\src/ibpp/core/transaction.cpp:293
+msgid "Can't attach a null Database."
+msgstr ""
+
+#: ..\src/ibpp/core/transaction.cpp:329
+msgid "Can't detach a Database if Transaction started."
+msgstr ""
+
+#: ..\src/ibpp/core/transaction.cpp:332
+msgid "Can't detach a null Database."
+msgstr ""
+
+#: ..\src/ibpp/core/_ibpp.cpp:212
+msgid "Can't find or load FBCLIENT.DLL or GDS32.DLL"
+msgstr ""
+
+#: ..\src/ibpp/core/_ibpp.cpp:224
+msgid "Entry-point isc_"
+msgstr ""
+
+#: ..\src/ibpp/core/_ibs.cpp:60
+msgid "SQL Message : "
+msgstr ""
+
+#: ..\src/ibpp/core/_ibs.cpp:63
+msgid "Engine Code    : "
+msgstr ""
+
+#: ..\src/ibpp/core/_ibs.cpp:69
+msgid "Engine Message :"
+msgstr ""
+
+#: ..\src/ibpp/core/_rb.cpp:95
+#: ..\src/ibpp/core/_rb.cpp:113
+#: ..\src/ibpp/core/_rb.cpp:154
+#: ..\src/ibpp/core/_rb.cpp:167
+msgid "Token not found."
+msgstr ""
+
+#: ..\src/ibpp/core/_rb.cpp:139
+msgid "Token/Subtoken not found."
+msgstr ""
+
+#: ..\src/ibpp/core/_spb.cpp:80
+msgid "Invalid length parameter"
+msgstr ""
+
+#: ..\src/Copia di search_panel_dialog.h:46
+msgid "Dialog"
+msgstr ""
+
+#: ..\src/exportdata.h:71
+msgid "Export data"
+msgstr ""
+
+#: ..\src/mainframe.h:107
+msgid "VVV"
+msgstr ""
+
+#: ..\src/object_description.h:54
+msgid "Object Description"
+msgstr ""
+
+#: ..\src/restore.h:46
+msgid "Restore"
+msgstr ""
+

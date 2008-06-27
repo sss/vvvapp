@@ -141,8 +141,18 @@ bool CVvvApp::OnInit()
 	SetVendorName(wxT("VVV"));
 	SetAppName(wxT("VVV"));
 
-    wxLocale m_locale;
-    m_locale.Init();
+	// setup the locale
+	{
+		wxString languagePath = wxStandardPaths::Get().GetExecutablePath();
+		wxFileName fn(languagePath);
+		wxString path = fn.GetPath( wxPATH_GET_VOLUME | wxPATH_GET_SEPARATOR );
+		languagePath = path + wxT("languages");
+		m_locale.AddCatalogLookupPathPrefix( languagePath );
+	}
+	//	if( m_locale.Init(wxLANGUAGE_DEFAULT, wxLOCALE_LOAD_DEFAULT | wxLOCALE_CONV_ENCODING) ) {
+	if( m_locale.Init(wxLANGUAGE_DEFAULT, wxLOCALE_CONV_ENCODING) ) {
+		m_locale.AddCatalog( wxT("vvv") );
+	}
 
 	// initialize help
 	wxFileSystem::AddHandler( new wxZipFSHandler );
