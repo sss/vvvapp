@@ -190,9 +190,6 @@ public:
     /// wxEVT_COMMAND_MENU_SELECTED event handler for ID_FILE_RESTORE
     void OnFileRestoreClick( wxCommandEvent& event );
 
-    /// wxEVT_UPDATE_UI event handler for ID_FILE_RESTORE
-    void OnFileRestoreUpdate( wxUpdateUIEvent& event );
-
     /// wxEVT_COMMAND_MENU_SELECTED event handler for wxID_EXIT
     void OnEXITClick( wxCommandEvent& event );
 

@@ -71,6 +71,7 @@
 #include "opencatalog.h"
 #include "long_task_beep.h"
 #include "exportdata.h"
+#include "restore.h"
 
 ////@begin XPM images
 #include "graphics/vvv32.xpm"
@@ -509,7 +510,6 @@ BEGIN_EVENT_TABLE( CMainFrame, wxFrame )
     EVT_UPDATE_UI( ID_FILE_BACKUP, CMainFrame::OnFileBackupUpdate )
 
     EVT_MENU( ID_FILE_RESTORE, CMainFrame::OnFileRestoreClick )
-    EVT_UPDATE_UI( ID_FILE_RESTORE, CMainFrame::OnFileRestoreUpdate )
 
     EVT_MENU( wxID_EXIT, CMainFrame::OnEXITClick )
 
@@ -3662,24 +3662,83 @@ void CMainFrame::OnFileBackupUpdate( wxUpdateUIEvent& event )
  * wxEVT_COMMAND_MENU_SELECTED event handler for ID_FILE_RESTORE
  */
 
-void CMainFrame::OnFileRestoreClick( wxCommandEvent& event )
+void CMainFrame::OnFileRestoreClick( wxCommandEvent& WXUNUSED(event) )
 {
-////@begin wxEVT_COMMAND_MENU_SELECTED event handler for ID_FILE_RESTORE in CMainFrame.
-    // Before editing this code, remove the block markers.
-    event.Skip();
-////@end wxEVT_COMMAND_MENU_SELECTED event handler for ID_FILE_RESTORE in CMainFrame. 
+
+	if( DBConnectionData.connectToServer && !DBConnectionData.IsLocalhost() ) {
+		CUtils::MsgErr( _("Unable to restore.\n\nYou are connecting to a database server on another computer. You must execute this command on the server to be able to restore a catalog.") );
+		return;
+	}
+
+	wxString backupFile, databaseFile;
+	CDialogRestore dlg( this );
+	if( dlg.ShowModal() != wxID_OK ) return;
+
+	backupFile = dlg.GetBackupName();
+	databaseFile = dlg.GetCatalogName();
+
+	if( databaseFile.empty() ) {
+		CUtils::MsgErr( _("The catalog name is missing") );
+		return;
+	}
+	if( backupFile.empty() ) {
+		CUtils::MsgErr( _("The backup name is missing") );
+		return;
+	}
+
+	// add extensions as needed
+	{
+		wxFileName fn(backupFile);
+		if( fn.GetExt().empty() )
+			backupFile += wxT(".vvvbk");
+	}
+	{
+		wxFileName fn(databaseFile);
+		if( fn.GetExt().empty() )
+			databaseFile += wxT(".vvv");
+	}
+
+	// check if the database already exists
+	if( wxFileExists(databaseFile) ) {
+		CUtils::MsgErr( _("Unable to continue. You have choosen an existing catalog:\n\n") + databaseFile + _("\n\nYou must type the name of a non-existing file.") );
+		return;
+	}
+
+	// check if we can create the database
+	wxFile f;
+	{
+		wxLogNull ln;
+		if( !f.Create(databaseFile) ) {
+			CUtils::MsgErr( _("Unable to continue: you have choosen a folder where you do not have the right to create a file.") );
+			return;
+		}
+	}
+	f.Close();
+	wxRemoveFile(databaseFile);
+
+	wxBusyCursor wait;
+	wxYield();
+
+	CBaseDB::CreateFirebirdDatabaseOnDisk( wxEmptyString, wxT("SYSDBA"), wxT("masterkey"), backupFile, databaseFile );
+
+	// since under Windows the restore process creates an all-uppercase file name, rename it to the original name
+#ifdef __WXMSW__
+	{
+		wxFileName fn(databaseFile);
+		wxString name = fn.GetFullName();
+		wxString path = fn.GetPath( wxPATH_GET_VOLUME | wxPATH_GET_SEPARATOR );
+		wxString ucDatabaseFile = path + name.Upper();
+		wxString tmpDatabaseFile = ucDatabaseFile + wxT("$$tmp$$");
+		if( wxFileExists(tmpDatabaseFile) )
+			wxRemoveFile( tmpDatabaseFile );
+		wxRenameFile( ucDatabaseFile, tmpDatabaseFile, false );
+		wxRenameFile( tmpDatabaseFile, databaseFile, false );
+	}
+#endif
+
+	CUtils::MsgInfo( _("Restore completed") );
+
 }
 
 
-/*!
- * wxEVT_UPDATE_UI event handler for ID_FILE_RESTORE
- */
-
-void CMainFrame::OnFileRestoreUpdate( wxUpdateUIEvent& event )
-{
-////@begin wxEVT_UPDATE_UI event handler for ID_FILE_RESTORE in CMainFrame.
-    // Before editing this code, remove the block markers.
-    event.Skip();
-////@end wxEVT_UPDATE_UI event handler for ID_FILE_RESTORE in CMainFrame. 
-}
 

@@ -1136,6 +1136,9 @@
 				RelativePath=".\src\opencatalog.cpp">
 			</File>
 			<File
+				RelativePath=".\src\restore.cpp">
+			</File>
+			<File
 				RelativePath=".\src\settings.cpp">
 			</File>
 			<File
@@ -1241,6 +1244,9 @@
 			</File>
 			<File
 				RelativePath=".\src\opencatalog.h">
+			</File>
+			<File
+				RelativePath=".\src\restore.h">
 			</File>
 			<File
 				RelativePath=".\src\settings.h">

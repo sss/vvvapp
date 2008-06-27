@@ -20,6 +20,10 @@
       <param name="Local" value="network_usage.htm">
       </OBJECT>
   <LI><OBJECT type="text/sitemap">
+      <param name="Name" value="Backup and restore">
+      <param name="Local" value="backup_and_restore.htm">
+      </OBJECT>
+  <LI><OBJECT type="text/sitemap">
       <param name="Name" value="VVV Dialogs">
       <param name="Local" value="doc-0005.htm">
       </OBJECT>
@@ -43,6 +47,10 @@
     <LI><OBJECT type="text/sitemap">
         <param name="Name" value="Export data">
         <param name="Local" value="export_data.htm">
+        </OBJECT>
+    <LI><OBJECT type="text/sitemap">
+        <param name="Name" value="Restore catalog">
+        <param name="Local" value="restore_catalog.htm">
         </OBJECT>
   </UL>
 </UL>

@@ -16,12 +16,14 @@ Help=,"vvv.hhc","vvv.hhk","welcome.htm",,,,,,0x2420,,0x380e,,,,,0,,,
 welcome.htm
 getting_started.htm
 network_usage.htm
+backup_and_restore.htm
 doc-0005.htm
 catalog_volume.htm
 general_settings.htm
 mp3_settings.htm
 server_settings.htm
 export_data.htm
+restore_catalog.htm
 
 [ALIAS]
 #include "vvv_alias.h"
