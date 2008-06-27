@@ -306,7 +306,7 @@ wxIcon CDialogExportData::GetIconResource( const wxString& name )
 void CDialogExportData::OnExportBrowseClick( wxCommandEvent& WXUNUSED(event) )
 {
 	wxString caption = this->GetTitle();
-	wxString wildcard = _("CSV files (*.csv;*.txt)|*.csv;}.txt|All files (*.*)|*.*");
+	wxString wildcard = _("CSV files (*.csv;*.txt)|*.csv;*.txt|All files (*.*)|*.*");
 	wxFileDialog fd( this, caption, wxEmptyString, wxEmptyString, wildcard, wxSAVE );
 	if( fd.ShowModal() != wxID_OK ) return;
 	wxString fileName = fd.GetPath();
