@@ -426,6 +426,8 @@ private:
 		wxString userName;
 		wxString password;
 		bool IsLocalhost() { return (serverName == wxT("localhost")) || (serverName == wxT("127.0.0.1")); }
+		// set the correct value in the database access strings
+		void GetConnectionData( wxString& serverName, wxString& userName, wxString& password );
 	} DBConnectionData;
 
 	// minimum duration of a task (in seconds) before playing a beep at task end

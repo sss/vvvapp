@@ -2057,17 +2057,7 @@ void CMainFrame::OpenDatabase( wxString fileName, int expectedVersion ) {
 		CBaseDB::DeleteFirebirdDatabase();
 	}
 	
-	if( DBConnectionData.connectToServer ) {
-		serverName = DBConnectionData.serverName;
-		userName = DBConnectionData.userName;
-		password = DBConnectionData.password;
-	}
-	else {
-		// parameters for embedded server
-		serverName = wxEmptyString;
-		userName = wxT("SYSDBA");
-		password = wxT("masterkey");
-	}
+	DBConnectionData.GetConnectionData( serverName, userName, password );
 	CBaseDB::CreateFirebirdDatabase( serverName, fileName, userName, password );
 	errorOpeningDB = false;
 	try {
@@ -3522,6 +3512,7 @@ void CMainFrame::OnFileExportUpdate( wxUpdateUIEvent& event )
 wxString CMainFrame::RestoreDatabase( wxString caption, wxString backupName ) {
 
 	wxString databaseFile = wxEmptyString;
+	wxString serverName, userName, password;
 	if( !DBConnectionData.connectToServer ) {
 		// create a local file
 		wxString wildcard = _("VVV  files (*.vvv)|*.vvv|All files (*.*)|*.*");
@@ -3566,7 +3557,8 @@ wxString CMainFrame::RestoreDatabase( wxString caption, wxString backupName ) {
 	wxBusyCursor wait;
 	
 	// restore the database
-	CBaseDB::CreateFirebirdDatabaseOnDisk( wxEmptyString, wxT("SYSDBA"), wxT("masterkey"), backupName, databaseFile );
+	DBConnectionData.GetConnectionData( serverName, userName, password );
+	CBaseDB::CreateFirebirdDatabaseOnDisk( serverName, userName, password, backupName, databaseFile );
 	
 	// since under Windows the restore process creates an all-uppercase file name, rename it to the original name
 #ifdef __WXMSW__
@@ -3596,6 +3588,8 @@ wxString CMainFrame::RestoreDatabase( wxString caption, wxString backupName ) {
 void CMainFrame::OnFileBackupClick( wxCommandEvent& WXUNUSED(event) )
 {
 	wxString backupFile = wxEmptyString;
+	wxString serverName, userName, password;
+
 	if( !DBConnectionData.connectToServer ) {
 		// create a local file
 		wxString wildcard = _("VVV backup files (*.vvvbk)|*.vvvbk|All files (*.*)|*.*");
@@ -3641,7 +3635,8 @@ void CMainFrame::OnFileBackupClick( wxCommandEvent& WXUNUSED(event) )
 	wxYield();
 	
 	// backup the database
-	CBaseDB::BackupFirebirdDatabase( wxEmptyString, wxT("SYSDBA"), wxT("masterkey"), backupFile, CBaseDB::GetDatabase()->GetDatabaseName() );
+	DBConnectionData.GetConnectionData( serverName, userName, password );
+	CBaseDB::BackupFirebirdDatabase( serverName, userName, password, backupFile, CBaseDB::GetDatabase()->GetDatabaseName() );
 
 	CUtils::MsgInfo( _("Backup completed") );
 
@@ -3671,6 +3666,8 @@ void CMainFrame::OnFileRestoreClick( wxCommandEvent& WXUNUSED(event) )
 	}
 
 	wxString backupFile, databaseFile;
+	wxString serverName, userName, password;
+
 	CDialogRestore dlg( this );
 	if( dlg.ShowModal() != wxID_OK ) return;
 
@@ -3719,7 +3716,8 @@ void CMainFrame::OnFileRestoreClick( wxCommandEvent& WXUNUSED(event) )
 	wxBusyCursor wait;
 	wxYield();
 
-	CBaseDB::CreateFirebirdDatabaseOnDisk( wxEmptyString, wxT("SYSDBA"), wxT("masterkey"), backupFile, databaseFile );
+	DBConnectionData.GetConnectionData( serverName, userName, password );
+	CBaseDB::CreateFirebirdDatabaseOnDisk( serverName, userName, password, backupFile, databaseFile );
 
 	// since under Windows the restore process creates an all-uppercase file name, rename it to the original name
 #ifdef __WXMSW__
@@ -3741,4 +3739,18 @@ void CMainFrame::OnFileRestoreClick( wxCommandEvent& WXUNUSED(event) )
 }
 
 
+void CMainFrame::CDBConnectionData::GetConnectionData( wxString& serverName, wxString& userName, wxString& password ) {
+
+	if( this->connectToServer ) {
+		serverName = this->serverName;
+		userName = this->userName;
+		password = this->password;
+	}
+	else {
+		// parameters for embedded server
+		serverName = wxEmptyString;
+		userName = wxT("SYSDBA");
+		password = wxT("masterkey");
+	}
+}
 
