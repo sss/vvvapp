@@ -311,8 +311,6 @@ void CDialogRestore::OnRestoredialogBrowseCatalogClick( wxCommandEvent& WXUNUSED
 	m_CatalogNameCtrl->SetValue( databaseFile );
 }
 
-#if defined(__WXMSW__)
-
 /*!
  * wxEVT_COMMAND_BUTTON_CLICKED event handler for wxID_HELP
  */
@@ -321,5 +319,3 @@ void CDialogRestore::OnHelpClick( wxCommandEvent& WXUNUSED(event) )
 {
 	wxGetApp().GetHelpController()->DisplaySection( wxT("restore_catalog.htm") );
 }
-#endif
-
