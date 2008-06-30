@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: VVV 0.9\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-06-27 19:44+0100\n"
+"POT-Creation-Date: 2008-06-30 19:01+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Fulvio Senore <mailing@fsoft.it>\n"
 "Language-Team: \n"
@@ -215,7 +215,7 @@ msgid "File name:"
 msgstr ""
 
 #: ..\src/exportdata.cpp:309
-msgid "CSV files (*.csv;*.txt)|*.csv;}.txt|All files (*.*)|*.*"
+msgid "CSV files (*.csv;*.txt)|*.csv;*.txt|All files (*.*)|*.*"
 msgstr ""
 
 #: ..\src/exportdata.cpp:336
@@ -282,26 +282,32 @@ msgid ""
 "\n"
 msgstr ""
 
+# Part of the File menu
 #: ..\src/mainframe.cpp:772
 msgid "&New..."
 msgstr ""
 
+# Part of the File menu
 #: ..\src/mainframe.cpp:773
 msgid "&Open..."
 msgstr ""
 
+# Part of the File menu
 #: ..\src/mainframe.cpp:774
 msgid "&Export..."
 msgstr ""
 
+# Part of the File menu
 #: ..\src/mainframe.cpp:776
 msgid "&Backup..."
 msgstr ""
 
+# Part of the File menu
 #: ..\src/mainframe.cpp:777
 msgid "&Restore..."
 msgstr ""
 
+# Part of the File menu
 #: ..\src/mainframe.cpp:779
 msgid "E&xit"
 msgstr ""
@@ -310,26 +316,32 @@ msgstr ""
 msgid "&File"
 msgstr ""
 
+# Part of the Edit menu
 #: ..\src/mainframe.cpp:782
 msgid "&Add To Virtual Folder..."
 msgstr ""
 
+# Part of the Edit menu
 #: ..\src/mainframe.cpp:784
 msgid "&Rename...\tF2"
 msgstr ""
 
+# Part of the Edit menu
 #: ..\src/mainframe.cpp:785
 msgid "&Delete"
 msgstr ""
 
+# Part of the Edit menu
 #: ..\src/mainframe.cpp:787
 msgid "&Object Description..."
 msgstr ""
 
+# Part of the Edit menu
 #: ..\src/mainframe.cpp:789
 msgid "&New Virtual Root Folder..."
 msgstr ""
 
+# Part of the Edit menu
 #: ..\src/mainframe.cpp:790
 msgid "New Virtual &Subfolder..."
 msgstr ""
@@ -343,6 +355,7 @@ msgstr ""
 msgid "&Edit"
 msgstr ""
 
+# Part of the Volumes menu
 #: ..\src/mainframe.cpp:796
 msgid "&Catalog Volume..."
 msgstr ""
@@ -351,26 +364,32 @@ msgstr ""
 msgid "&Volumes"
 msgstr ""
 
+# Part of the View menu
 #: ..\src/mainframe.cpp:799
 msgid "&Physical View"
 msgstr ""
 
+# Part of the View menu
 #: ..\src/mainframe.cpp:801
 msgid "&Virtual View"
 msgstr ""
 
+# Part of the View menu
 #: ..\src/mainframe.cpp:802
 msgid "&Search View"
 msgstr ""
 
+# Part of the View menu
 #: ..\src/mainframe.cpp:804
 msgid "Go &Up One Level"
 msgstr ""
 
+# Part of the View menu
 #: ..\src/mainframe.cpp:806
 msgid "&Toolbar"
 msgstr ""
 
+# Part of the View menu
 #: ..\src/mainframe.cpp:808
 msgid "Status &Bar"
 msgstr ""
@@ -518,7 +537,7 @@ msgid "Open catalog"
 msgstr ""
 
 #: ..\src/mainframe.cpp:1400
-#: ..\src/mainframe.cpp:3527
+#: ..\src/mainframe.cpp:3518
 msgid "VVV  files (*.vvv)|*.vvv|All files (*.*)|*.*"
 msgstr ""
 
@@ -539,7 +558,7 @@ msgid "Enter the new folder name"
 msgstr ""
 
 #: ..\src/mainframe.cpp:1986
-#: ..\src/mainframe.cpp:3309
+#: ..\src/mainframe.cpp:3299
 msgid "The new folder name is already present in the database"
 msgstr ""
 
@@ -547,184 +566,184 @@ msgstr ""
 msgid "This catalog file does not exist any more"
 msgstr ""
 
-#: ..\src/mainframe.cpp:2079
+#: ..\src/mainframe.cpp:2069
 msgid ""
 "Catalog not found:\n"
 "\n"
 msgstr ""
 
-#: ..\src/mainframe.cpp:2083
+#: ..\src/mainframe.cpp:2073
 msgid ""
 "Incorrect username or password for the following database:\n"
 "\n"
 msgstr ""
 
-#: ..\src/mainframe.cpp:2088
+#: ..\src/mainframe.cpp:2078
 msgid ""
 "Unable to connect to the following server:\n"
 "\n"
 msgstr ""
 
-#: ..\src/mainframe.cpp:2090
+#: ..\src/mainframe.cpp:2080
 msgid ""
 "Unable to open the catalog.\n"
 "Please note that you are not connected to a database server so you cannot open a catalog located on another computer in the network.\n"
 "If you want to open a catalog on another computer you must connect to the database server (Tools/Options menu)."
 msgstr ""
 
-#: ..\src/mainframe.cpp:2112
+#: ..\src/mainframe.cpp:2102
 msgid ""
 "This catalog has been created with a previous version of the program and it needs to be upgraded, but the file containing the upgrades list is missing.\n"
 "\n"
 "You can try reinstalling the program to solve this problem."
 msgstr ""
 
-#: ..\src/mainframe.cpp:2116
+#: ..\src/mainframe.cpp:2106
 msgid "Upgrading the catalog, please wait..."
 msgstr ""
 
-#: ..\src/mainframe.cpp:2128
+#: ..\src/mainframe.cpp:2118
 msgid ""
 "This catalog has been created with an older version of VVV so you need to convert it to a newer format.\n"
 "\n"
 msgstr ""
 
-#: ..\src/mainframe.cpp:2129
+#: ..\src/mainframe.cpp:2119
 msgid ""
 "The conversion will create a new catalog with the same data as the older one, then you will use this new catalog with VVV. You will not use the older catalog any more.\n"
 "\n"
 msgstr ""
 
-#: ..\src/mainframe.cpp:2130
+#: ..\src/mainframe.cpp:2120
 msgid "Do you want to convert the catatalog creating a new one?"
 msgstr ""
 
-#: ..\src/mainframe.cpp:2134
-#: ..\src/mainframe.cpp:2326
+#: ..\src/mainframe.cpp:2124
+#: ..\src/mainframe.cpp:2316
 msgid ""
 "Unable to create a new catalog.\n"
 "\n"
 "You are connecting to a database server on another computer. You must execute this program on the server to be able to create a new catalog."
 msgstr ""
 
-#: ..\src/mainframe.cpp:2138
+#: ..\src/mainframe.cpp:2128
 msgid "Convert to a new catalog"
 msgstr ""
 
-#: ..\src/mainframe.cpp:2146
-#: ..\src/mainframe.cpp:2338
+#: ..\src/mainframe.cpp:2136
+#: ..\src/mainframe.cpp:2328
 msgid ""
 "Unable to find the database backup to restore.\n"
 "\n"
 "You can try reinstalling the program to solve this problem."
 msgstr ""
 
-#: ..\src/mainframe.cpp:2309
+#: ..\src/mainframe.cpp:2299
 msgid ""
 "VVV (Virtual Volumes View): a program to catalog removable devices like CDs and DVDs\n"
 "\n"
 "\"The mud of Venaus is the blood of this land\""
 msgstr ""
 
-#: ..\src/mainframe.cpp:2310
+#: ..\src/mainframe.cpp:2300
 msgid "Copyright (C) 2007-2008 The VVV Team"
 msgstr ""
 
-#: ..\src/mainframe.cpp:2311
+#: ..\src/mainframe.cpp:2301
 msgid "Fulvio Senore: main developer"
 msgstr ""
 
-#: ..\src/mainframe.cpp:2312
+#: ..\src/mainframe.cpp:2302
 msgid "Jan Albartus: worked at the portable version"
 msgstr ""
 
-#: ..\src/mainframe.cpp:2313
+#: ..\src/mainframe.cpp:2303
 msgid "This program uses the Tango icons (http://tango.freedesktop.org/Tango_Desktop_Project )"
 msgstr ""
 
-#: ..\src/mainframe.cpp:2314
+#: ..\src/mainframe.cpp:2304
 msgid "This is open source software, distributed under the GNU GENERAL PUBLIC LICENSE"
 msgstr ""
 
-#: ..\src/mainframe.cpp:2330
+#: ..\src/mainframe.cpp:2320
 msgid "New catalog"
 msgstr ""
 
-#: ..\src/mainframe.cpp:2363
+#: ..\src/mainframe.cpp:2353
 msgid "Multiple items"
 msgstr ""
 
-#: ..\src/mainframe.cpp:2372
-#: ..\src/mainframe.cpp:2404
+#: ..\src/mainframe.cpp:2362
+#: ..\src/mainframe.cpp:2394
 msgid "Object description"
 msgstr ""
 
-#: ..\src/mainframe.cpp:2503
-#: ..\src/mainframe.cpp:3075
+#: ..\src/mainframe.cpp:2493
+#: ..\src/mainframe.cpp:3065
 msgid "Add To Virtual Folder"
 msgstr ""
 
-#: ..\src/mainframe.cpp:2505
-#: ..\src/mainframe.cpp:3077
+#: ..\src/mainframe.cpp:2495
+#: ..\src/mainframe.cpp:3067
 msgid "Edit Description..."
 msgstr ""
 
-#: ..\src/mainframe.cpp:2508
+#: ..\src/mainframe.cpp:2498
 msgid "Rename..."
 msgstr ""
 
-#: ..\src/mainframe.cpp:2509
-#: ..\src/mainframe.cpp:2539
-#: ..\src/mainframe.cpp:3072
+#: ..\src/mainframe.cpp:2499
+#: ..\src/mainframe.cpp:2529
+#: ..\src/mainframe.cpp:3062
 msgid "Delete"
 msgstr ""
 
-#: ..\src/mainframe.cpp:2533
+#: ..\src/mainframe.cpp:2523
 msgid "New Root Folder"
 msgstr ""
 
-#: ..\src/mainframe.cpp:2536
+#: ..\src/mainframe.cpp:2526
 msgid "New Subfolder"
 msgstr ""
 
-#: ..\src/mainframe.cpp:2538
+#: ..\src/mainframe.cpp:2528
 msgid "Rename"
 msgstr ""
 
-#: ..\src/mainframe.cpp:2682
+#: ..\src/mainframe.cpp:2672
 msgid "Please enter some search data"
 msgstr ""
 
-#: ..\src/mainframe.cpp:2812
+#: ..\src/mainframe.cpp:2802
 msgid "The search did not find anything"
 msgstr ""
 
-#: ..\src/mainframe.cpp:2961
+#: ..\src/mainframe.cpp:2951
 msgid "Objects: "
 msgstr ""
 
-#: ..\src/mainframe.cpp:2968
+#: ..\src/mainframe.cpp:2958
 msgid "Total size: "
 msgstr ""
 
-#: ..\src/mainframe.cpp:3122
+#: ..\src/mainframe.cpp:3112
 msgid "Settings"
 msgstr ""
 
-#: ..\src/mainframe.cpp:3212
+#: ..\src/mainframe.cpp:3202
 msgid ""
 "This command will delete the selected virtual folder, but it will not change the folders in the physical view.\n"
 "\n"
 "Do you really want to delete the selected virtual folder?"
 msgstr ""
 
-#: ..\src/mainframe.cpp:3235
+#: ..\src/mainframe.cpp:3225
 msgid ""
 "This command will delete this volume:\n"
 "\n"
 msgstr ""
 
-#: ..\src/mainframe.cpp:3235
+#: ..\src/mainframe.cpp:3225
 msgid ""
 "\n"
 "\n"
@@ -733,95 +752,95 @@ msgid ""
 "Do you really want to delete this volume?"
 msgstr ""
 
-#: ..\src/mainframe.cpp:3245
+#: ..\src/mainframe.cpp:3235
 msgid "Unable to delete this volume: at least one of its files is used in the virtual view"
 msgstr ""
 
-#: ..\src/mainframe.cpp:3264
+#: ..\src/mainframe.cpp:3254
 msgid "Enter the new volume name"
 msgstr ""
 
-#: ..\src/mainframe.cpp:3264
+#: ..\src/mainframe.cpp:3254
 msgid "Rename volume"
 msgstr ""
 
-#: ..\src/mainframe.cpp:3277
+#: ..\src/mainframe.cpp:3267
 msgid "The new volume name is already present in the database"
 msgstr ""
 
-#: ..\src/mainframe.cpp:3298
+#: ..\src/mainframe.cpp:3288
 msgid "Enter the new forder name"
 msgstr ""
 
-#: ..\src/mainframe.cpp:3298
+#: ..\src/mainframe.cpp:3288
 msgid "Rename virtual folder"
 msgstr ""
 
-#: ..\src/mainframe.cpp:3416
+#: ..\src/mainframe.cpp:3406
 msgid ""
 "This command will delete the selected virtual files, but it will not change the files in the physical view.\n"
 "\n"
 "Do you really want to delete the selected virtual files?"
 msgstr ""
 
-#: ..\src/mainframe.cpp:3550
-#: ..\src/mainframe.cpp:3624
+#: ..\src/mainframe.cpp:3541
+#: ..\src/mainframe.cpp:3618
 msgid ""
 "Unable to continue. You have choosen an existing file:\n"
 "\n"
 msgstr ""
 
-#: ..\src/mainframe.cpp:3550
-#: ..\src/mainframe.cpp:3624
-#: ..\src/mainframe.cpp:3703
+#: ..\src/mainframe.cpp:3541
+#: ..\src/mainframe.cpp:3618
+#: ..\src/mainframe.cpp:3700
 msgid ""
 "\n"
 "\n"
 "You must type the name of a non-existing file."
 msgstr ""
 
-#: ..\src/mainframe.cpp:3559
-#: ..\src/mainframe.cpp:3633
-#: ..\src/mainframe.cpp:3712
+#: ..\src/mainframe.cpp:3550
+#: ..\src/mainframe.cpp:3627
+#: ..\src/mainframe.cpp:3709
 msgid "Unable to continue: you have choosen a folder where you do not have the right to create a file."
 msgstr ""
 
-#: ..\src/mainframe.cpp:3601
+#: ..\src/mainframe.cpp:3595
 #: ..\src/opencatalog.cpp:255
 #: ..\src/restore.cpp:287
 msgid "VVV backup files (*.vvvbk)|*.vvvbk|All files (*.*)|*.*"
 msgstr ""
 
-#: ..\src/mainframe.cpp:3602
+#: ..\src/mainframe.cpp:3596
 msgid "Backup catalog"
 msgstr ""
 
-#: ..\src/mainframe.cpp:3646
+#: ..\src/mainframe.cpp:3641
 msgid "Backup completed"
 msgstr ""
 
-#: ..\src/mainframe.cpp:3669
+#: ..\src/mainframe.cpp:3664
 msgid ""
 "Unable to restore.\n"
 "\n"
 "You are connecting to a database server on another computer. You must execute this command on the server to be able to restore a catalog."
 msgstr ""
 
-#: ..\src/mainframe.cpp:3681
+#: ..\src/mainframe.cpp:3678
 msgid "The catalog name is missing"
 msgstr ""
 
-#: ..\src/mainframe.cpp:3685
+#: ..\src/mainframe.cpp:3682
 msgid "The backup name is missing"
 msgstr ""
 
-#: ..\src/mainframe.cpp:3703
+#: ..\src/mainframe.cpp:3700
 msgid ""
 "Unable to continue. You have choosen an existing catalog:\n"
 "\n"
 msgstr ""
 
-#: ..\src/mainframe.cpp:3739
+#: ..\src/mainframe.cpp:3737
 msgid "Restore completed"
 msgstr ""
 
@@ -961,20 +980,20 @@ msgstr ""
 msgid "Server connection successful"
 msgstr ""
 
-#: ..\src/vvv.cpp:263
+#: ..\src/vvv.cpp:273
 msgid ""
 "Unable to connect to the server\n"
 "\n"
 msgstr ""
 
-#: ..\src/vvv.cpp:265
-#: ..\src/vvv.cpp:271
+#: ..\src/vvv.cpp:275
+#: ..\src/vvv.cpp:281
 msgid ""
 "An unexpected error has occurred. Here is a description of the error:\n"
 "\n"
 msgstr ""
 
-#: ..\src/vvv.cpp:277
+#: ..\src/vvv.cpp:287
 msgid "An unexpected error has occurred. This application will be terminated"
 msgstr ""
 

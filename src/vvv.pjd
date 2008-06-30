@@ -3536,8 +3536,8 @@
           <string name="proxy-Class">"CDialogSearchPanel"</string>
           <string name="proxy-Base class">"wxDialog"</string>
           <string name="proxy-Window kind">"wxDialog"</string>
-          <string name="proxy-Implementation filename">"search_panel_dialog.cpp"</string>
-          <string name="proxy-Header filename">"search_panel_dialog.h"</string>
+          <string name="proxy-Implementation filename">"../no_use/search_panel_dialog.cpp"</string>
+          <string name="proxy-Header filename">"../no_use/search_panel_dialog.h"</string>
           <string name="proxy-XRC filename">""</string>
           <string name="proxy-Title">"Dialog"</string>
           <bool name="proxy-Centre">1</bool>
@@ -8109,6 +8109,14 @@ Remember that the path must be relative to the server, not to the client."</stri
             <string name="proxy-type">"wbBoxSizerProxy"</string>
             <string name="proxy-Orientation">"Vertical"</string>
             <string name="proxy-Member variable name">""</string>
+            <string name="proxy-AlignH">"Centre"</string>
+            <string name="proxy-AlignV">"Centre"</string>
+            <long name="proxy-Stretch factor">0</long>
+            <long name="proxy-Border">5</long>
+            <bool name="proxy-wxLEFT">1</bool>
+            <bool name="proxy-wxRIGHT">1</bool>
+            <bool name="proxy-wxTOP">1</bool>
+            <bool name="proxy-wxBOTTOM">1</bool>
             <bool name="proxy-wxSHAPED">0</bool>
             <bool name="proxy-wxADJUST_MINSIZE">0</bool>
             <bool name="proxy-wxFIXED_MINSIZE">0</bool>
@@ -8231,7 +8239,7 @@ Remember that the path must be relative to the server, not to the client."</stri
                 <string name="proxy-Member variable name">"m_SeparatorRadioBox"</string>
                 <string name="proxy-Label">"Separator"</string>
                 <long name="proxy-Major dimension count">1</long>
-                <string name="proxy-Items">"Co&amp;mma|&amp;TAB|&amp;Pipe"</string>
+                <string name="proxy-Items">"Comma|TAB|Pipe"</string>
                 <long name="proxy-Initial value">0</long>
                 <string name="proxy-Help text">""</string>
                 <string name="proxy-Tooltip text">""</string>
@@ -8293,7 +8301,7 @@ Remember that the path must be relative to the server, not to the client."</stri
                 <string name="proxy-Implementation filename">""</string>
                 <string name="proxy-Header filename">""</string>
                 <string name="proxy-Member variable name">"m_IncludeHeadersCtrl"</string>
-                <string name="proxy-Label">"&amp;Include headers"</string>
+                <string name="proxy-Label">"Include headers"</string>
                 <bool name="proxy-Initial value">1</bool>
                 <string name="proxy-Help text">""</string>
                 <string name="proxy-Tooltip text">""</string>
@@ -8360,7 +8368,7 @@ Remember that the path must be relative to the server, not to the client."</stri
                 <string name="proxy-Member variable name">"m_ExportRadioBox"</string>
                 <string name="proxy-Label">"Export"</string>
                 <long name="proxy-Major dimension count">1</long>
-                <string name="proxy-Items">"&amp;All physical volumes|&amp;Selected physical volume/folder|Selected &amp;virtual folder"</string>
+                <string name="proxy-Items">"All physical volumes|Selected physical volume/folder|Selected virtual folder"</string>
                 <long name="proxy-Initial value">0</long>
                 <string name="proxy-Help text">""</string>
                 <string name="proxy-Tooltip text">""</string>
@@ -9247,6 +9255,14 @@ Remember that the path must be relative to the server, not to the client."</stri
             <string name="proxy-type">"wbBoxSizerProxy"</string>
             <string name="proxy-Orientation">"Vertical"</string>
             <string name="proxy-Member variable name">""</string>
+            <string name="proxy-AlignH">"Centre"</string>
+            <string name="proxy-AlignV">"Centre"</string>
+            <long name="proxy-Stretch factor">0</long>
+            <long name="proxy-Border">5</long>
+            <bool name="proxy-wxLEFT">1</bool>
+            <bool name="proxy-wxRIGHT">1</bool>
+            <bool name="proxy-wxTOP">1</bool>
+            <bool name="proxy-wxBOTTOM">1</bool>
             <bool name="proxy-wxSHAPED">0</bool>
             <bool name="proxy-wxADJUST_MINSIZE">0</bool>
             <bool name="proxy-wxFIXED_MINSIZE">0</bool>

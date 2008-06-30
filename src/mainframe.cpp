@@ -820,7 +820,7 @@ void CMainFrame::CreateControls()
 #if defined(__WXMSW__) || defined(__WXGTK__)
     itemMenu45->AppendSeparator();
 #endif
-    itemMenu45->Append(wxID_ABOUT, _("&About VVV..."), _T(""), wxITEM_NORMAL);
+    itemMenu45->Append(wxID_ABOUT, _("&About VVV"), _T(""), wxITEM_NORMAL);
     menuBar->Append(itemMenu45, _("&Help"));
     itemFrame1->SetMenuBar(menuBar);
 
@@ -892,9 +892,9 @@ void CMainFrame::CreateControls()
 		m_SearchPanel->SetSizer(itemBoxSizer3);
 
 		wxArrayString m_FilenameRadioBoxStrings;
-		m_FilenameRadioBoxStrings.Add(_("Is &equal to:"));
-		m_FilenameRadioBoxStrings.Add(_("S&tarts with:"));
-		m_FilenameRadioBoxStrings.Add(_("&Contains:"));
+		m_FilenameRadioBoxStrings.Add(_("Is equal to:"));
+		m_FilenameRadioBoxStrings.Add(_("Starts with:"));
+		m_FilenameRadioBoxStrings.Add(_("Contains:"));
 		m_FilenameRadioBox = new wxRadioBox( m_SearchPanel, ID_RADIOBOX_FILENAME, _("File name"), wxDefaultPosition, wxDefaultSize, m_FilenameRadioBoxStrings, 1, wxRA_SPECIFY_COLS );
 		m_FilenameRadioBox->SetSelection(0);
 		itemBoxSizer3->Add(m_FilenameRadioBox, 0, wxALIGN_LEFT|wxALL, 5);
@@ -904,7 +904,7 @@ void CMainFrame::CreateControls()
 
 		itemBoxSizer3->Add(5, 3, 0, wxALIGN_CENTER_HORIZONTAL|wxALL, 5);
 
-		wxStaticText* itemStaticText7 = new wxStaticText( m_SearchPanel, wxID_STATIC, _("E&xtension:"), wxDefaultPosition, wxDefaultSize, 0 );
+		wxStaticText* itemStaticText7 = new wxStaticText( m_SearchPanel, wxID_STATIC, _("Extension:"), wxDefaultPosition, wxDefaultSize, 0 );
 		itemBoxSizer3->Add(itemStaticText7, 0, wxALIGN_LEFT|wxALL, 5);
 
 		m_SearchExtension = new wxTextCtrl( m_SearchPanel, ID_SEARCH_EXTENSION, _T(""), wxDefaultPosition, wxSize(60, -1), 0 );
@@ -926,16 +926,16 @@ void CMainFrame::CreateControls()
 		itemBoxSizer3->Add(5, 5, 0, wxALIGN_CENTER_HORIZONTAL|wxALL, 5);
 
 		wxArrayString m_SearchRadioBoxStrings;
-		m_SearchRadioBoxStrings.Add(_("&All physical volumes"));
-		m_SearchRadioBoxStrings.Add(_("Selected &physical folder"));
-		m_SearchRadioBoxStrings.Add(_("Selected &virtual folder"));
+		m_SearchRadioBoxStrings.Add(_("All physical volumes"));
+		m_SearchRadioBoxStrings.Add(_("Selected physical folder"));
+		m_SearchRadioBoxStrings.Add(_("Selected virtual folder"));
 		m_SearchRadioBox = new wxRadioBox( m_SearchPanel, ID_RADIOBOX_SEARCH, _("Search"), wxDefaultPosition, wxDefaultSize, m_SearchRadioBoxStrings, 1, wxRA_SPECIFY_COLS );
 		m_SearchRadioBox->SetSelection(0);
 		itemBoxSizer3->Add(m_SearchRadioBox, 0, wxALIGN_LEFT|wxALL, 5);
 
 		itemBoxSizer3->Add(5, 3, 0, wxALIGN_CENTER_HORIZONTAL|wxALL, 5);
 
-		m_SearchButton = new wxButton( m_SearchPanel, ID_BUTTON_SEARCH, _("&Search"), wxDefaultPosition, wxDefaultSize, 0 );
+		m_SearchButton = new wxButton( m_SearchPanel, ID_BUTTON_SEARCH, _("Search"), wxDefaultPosition, wxDefaultSize, 0 );
 		m_SearchButton->SetDefault();
 		itemBoxSizer3->Add(m_SearchButton, 0, wxALIGN_LEFT|wxALL, 5);
 

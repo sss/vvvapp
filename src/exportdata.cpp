@@ -192,21 +192,21 @@ void CDialogExportData::CreateControls()
     itemBoxSizer3->Add(itemStaticText4, 0, wxALIGN_LEFT|wxALL, 5);
 
     wxArrayString m_SeparatorRadioBoxStrings;
-    m_SeparatorRadioBoxStrings.Add(_("Co&mma"));
-    m_SeparatorRadioBoxStrings.Add(_("&TAB"));
-    m_SeparatorRadioBoxStrings.Add(_("&Pipe"));
+    m_SeparatorRadioBoxStrings.Add(_("Comma"));
+    m_SeparatorRadioBoxStrings.Add(_("TAB"));
+    m_SeparatorRadioBoxStrings.Add(_("Pipe"));
     m_SeparatorRadioBox = new wxRadioBox( itemDialog1, ID_EXPORT_RADIOBOX_SEPARATOR, _("Separator"), wxDefaultPosition, wxDefaultSize, m_SeparatorRadioBoxStrings, 1, wxRA_SPECIFY_ROWS );
     m_SeparatorRadioBox->SetSelection(0);
     itemBoxSizer3->Add(m_SeparatorRadioBox, 0, wxALIGN_LEFT|wxALL, 5);
 
-    m_IncludeHeadersCtrl = new wxCheckBox( itemDialog1, ID_EXPORT_INCLUDE_HEADERS, _("&Include headers"), wxDefaultPosition, wxDefaultSize, 0 );
+    m_IncludeHeadersCtrl = new wxCheckBox( itemDialog1, ID_EXPORT_INCLUDE_HEADERS, _("Include headers"), wxDefaultPosition, wxDefaultSize, 0 );
     m_IncludeHeadersCtrl->SetValue(true);
     itemBoxSizer3->Add(m_IncludeHeadersCtrl, 0, wxALIGN_LEFT|wxALL, 5);
 
     wxArrayString m_ExportRadioBoxStrings;
-    m_ExportRadioBoxStrings.Add(_("&All physical volumes"));
-    m_ExportRadioBoxStrings.Add(_("&Selected physical volume/folder"));
-    m_ExportRadioBoxStrings.Add(_("Selected &virtual folder"));
+    m_ExportRadioBoxStrings.Add(_("All physical volumes"));
+    m_ExportRadioBoxStrings.Add(_("Selected physical volume/folder"));
+    m_ExportRadioBoxStrings.Add(_("Selected virtual folder"));
     m_ExportRadioBox = new wxRadioBox( itemDialog1, ID_EXPORT_RADIOBOX_EXPORT, _("Export"), wxDefaultPosition, wxDefaultSize, m_ExportRadioBoxStrings, 1, wxRA_SPECIFY_COLS );
     m_ExportRadioBox->SetSelection(0);
     itemBoxSizer3->Add(m_ExportRadioBox, 0, wxALIGN_LEFT|wxALL, 5);
