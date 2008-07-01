@@ -24,6 +24,9 @@
 		BD38B4700D26965E00A422F0 /* virtual_files.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BD38B45F0D26965E00A422F0 /* virtual_files.cpp */; };
 		BD38B4710D26965E00A422F0 /* virtual_paths.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BD38B4600D26965E00A422F0 /* virtual_paths.cpp */; };
 		BD38B4720D26965E00A422F0 /* volumes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BD38B4610D26965E00A422F0 /* volumes.cpp */; };
+		BD57AF830E1AC83C00B2B2EF /* restore.h in Copy Files - Executables */ = {isa = PBXBuildFile; fileRef = BD57AF820E1AC83C00B2B2EF /* restore.h */; };
+		BD57AF860E1AC86E00B2B2EF /* convert_db_unicode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BD57AF840E1AC86E00B2B2EF /* convert_db_unicode.cpp */; };
+		BD57AF870E1AC86E00B2B2EF /* restore.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BD57AF850E1AC86E00B2B2EF /* restore.cpp */; };
 		BDB509A50D26C1FE003AB768 /* all_in_one.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BDB509A40D26C1FE003AB768 /* all_in_one.cpp */; };
 		BDB509AF0D26C4EC003AB768 /* libIBPP.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BDB5099D0D26C0AD003AB768 /* libIBPP.a */; };
 		BDB509C60D26CD2E003AB768 /* vvv.htb in Copy Files - Executables */ = {isa = PBXBuildFile; fileRef = BDB509C50D26CD12003AB768 /* vvv.htb */; };
@@ -85,6 +88,7 @@
 				BDB509CF0D26CE59003AB768 /* VVV.fbk in Copy Files - Executables */,
 				BDB509CE0D26CE4F003AB768 /* vvv-struct-update.fdb in Copy Files - Executables */,
 				BDF7CAA50DF1A30A005B0634 /* exportdata.h in Copy Files - Executables */,
+				BD57AF830E1AC83C00B2B2EF /* restore.h in Copy Files - Executables */,
 			);
 			name = "Copy Files - Executables";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -186,6 +190,9 @@
 		BD38B4A30D2696EB00A422F0 /* virtual_files.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = virtual_files.h; path = src/data_interface/virtual_files.h; sourceTree = "<group>"; };
 		BD38B4A40D2696EB00A422F0 /* virtual_paths.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = virtual_paths.h; path = src/data_interface/virtual_paths.h; sourceTree = "<group>"; };
 		BD38B4A50D2696EB00A422F0 /* volumes.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = volumes.h; path = src/data_interface/volumes.h; sourceTree = "<group>"; };
+		BD57AF820E1AC83C00B2B2EF /* restore.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = restore.h; path = src/restore.h; sourceTree = "<group>"; };
+		BD57AF840E1AC86E00B2B2EF /* convert_db_unicode.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = convert_db_unicode.cpp; path = src/convert_db_unicode.cpp; sourceTree = "<group>"; };
+		BD57AF850E1AC86E00B2B2EF /* restore.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = restore.cpp; path = src/restore.cpp; sourceTree = "<group>"; };
 		BDB5099D0D26C0AD003AB768 /* libIBPP.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libIBPP.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDB509A40D26C1FE003AB768 /* all_in_one.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = all_in_one.cpp; path = src/ibpp/core/all_in_one.cpp; sourceTree = "<group>"; };
 		BDB509C50D26CD12003AB768 /* vvv.htb */ = {isa = PBXFileReference; lastKnownFileType = file; name = vvv.htb; path = help/en/vvv.htb; sourceTree = "<group>"; };
@@ -253,11 +260,13 @@
 				BDC65A2D0D268C4800FE4EAF /* audio_metadata.cpp */,
 				BDC65A2E0D268C4800FE4EAF /* catalog_volume.cpp */,
 				BDC65A2F0D268C4800FE4EAF /* choose_virtual_folder.cpp */,
+				BD57AF840E1AC86E00B2B2EF /* convert_db_unicode.cpp */,
 				BDF7CAA20DF1A2E5005B0634 /* exportdata.cpp */,
 				BDC65A300D268C4800FE4EAF /* long_task_beep.cpp */,
 				BDC65A310D268C4800FE4EAF /* mainframe.cpp */,
 				BDC65A320D268C4800FE4EAF /* object_description.cpp */,
 				BDC65A330D268C4800FE4EAF /* opencatalog.cpp */,
+				BD57AF850E1AC86E00B2B2EF /* restore.cpp */,
 				BDC65A340D268C4800FE4EAF /* settings.cpp */,
 				BDC65A350D268C4800FE4EAF /* utils.cpp */,
 				BDC65A360D268C4800FE4EAF /* vvv.cpp */,
@@ -281,6 +290,7 @@
 				BD38B4450D2695D700A422F0 /* object_description.h */,
 				BD38B4460D2695D700A422F0 /* opencatalog.h */,
 				BD38B4470D2695D700A422F0 /* resource.h */,
+				BD57AF820E1AC83C00B2B2EF /* restore.h */,
 				BD38B4480D2695D700A422F0 /* settings.h */,
 				BD38B4490D2695D700A422F0 /* utils.h */,
 				BD38B44A0D2695D700A422F0 /* vvv.h */,
@@ -565,6 +575,8 @@
 				BD38B4710D26965E00A422F0 /* virtual_paths.cpp in Sources */,
 				BD38B4720D26965E00A422F0 /* volumes.cpp in Sources */,
 				BDF7CAA30DF1A2E5005B0634 /* exportdata.cpp in Sources */,
+				BD57AF860E1AC86E00B2B2EF /* convert_db_unicode.cpp in Sources */,
+				BD57AF870E1AC86E00B2B2EF /* restore.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
