@@ -10,3 +10,4 @@ You can export:
 <LI>Only the currently selected virtual folder.
 </UL><P>
 
+Data will be exported as Unicode, using the UTF8 encoding.

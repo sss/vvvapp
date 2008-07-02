@@ -448,6 +448,9 @@ private:
 	// true if we want to reopen the last used catalog at startup
 	bool m_reopenLastUsedCatalog;
 
+	// true to force usage of the English version instead of the localized one
+	bool m_forceEnglishLanguage;
+
 	// fills the physical tree control
 	void LoadTreeControl(void);
 	// loads a volume and its folders in the tree control

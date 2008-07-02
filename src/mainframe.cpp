@@ -684,6 +684,7 @@ bool CMainFrame::Create( wxWindow* parent, wxWindowID id, const wxString& captio
 	bool defVal = true;
 	if( !wxGetApp().GetSettingsFileName().empty() ) defVal = false;
 	pConfig->Read( wxT("ReopenCatalog"), &m_reopenLastUsedCatalog, defVal );
+	pConfig->Read( wxT("ForceEnglish"), &m_forceEnglishLanguage, false );
 	pConfig->Read( wxT("LongTaskBeepTime"), &m_BeepTime, 5 );
 	pConfig->SetPath(wxT("/Settings/DatabaseServer"));
 	pConfig->Read( wxT("ConnectToServer"), &DBConnectionData.connectToServer, false );
@@ -1496,6 +1497,7 @@ CMainFrame::~CMainFrame() {
 	// saves program settings
 	pConfig->SetPath(wxT("/Settings"));
 	pConfig->Write( wxT("ReopenCatalog"), m_reopenLastUsedCatalog );
+	pConfig->Write( wxT("ForceEnglish"), m_forceEnglishLanguage );
 	pConfig->Write( wxT("LongTaskBeepTime"), m_BeepTime );
 	pConfig->SetPath(wxT("/Settings/DatabaseServer"));
 	pConfig->Write( wxT("ConnectToServer"), DBConnectionData.connectToServer );
@@ -3112,6 +3114,7 @@ void CMainFrame::OnPreferencesClick( wxCommandEvent& WXUNUSED(event) )
 	CDialogSettings dlg( this, ID_DIALOG_SETTINGS, _("Settings") );
 	dlg.SetAmdColumnsToShow( m_amdColumnsToShow );
 	dlg.SetReopenCatalog( m_reopenLastUsedCatalog );
+	dlg.SetForceEnglish( m_forceEnglishLanguage );
 	dlg.SetConnectServer( DBConnectionData.connectToServer );
 	dlg.SetServerName( DBConnectionData.serverName );
 	dlg.SetUsername( DBConnectionData.userName );
@@ -3119,6 +3122,7 @@ void CMainFrame::OnPreferencesClick( wxCommandEvent& WXUNUSED(event) )
 	dlg.SetBeepTime( m_BeepTime );
 	if( dlg.ShowModal() ) {
 		m_reopenLastUsedCatalog = dlg.GetReopenCatalog();
+		m_forceEnglishLanguage = dlg.GetForceEnglish();
 		m_amdColumnsToShow = dlg.GetAmdColumnsToShow();
 		DBConnectionData.connectToServer = dlg.GetConnectServer();
 		DBConnectionData.serverName = dlg.GetServerName();

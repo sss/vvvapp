@@ -141,19 +141,6 @@ bool CVvvApp::OnInit()
 	SetVendorName(wxT("VVV"));
 	SetAppName(wxT("VVV"));
 
-	// setup the locale
-	{
-		wxString languagePath = wxStandardPaths::Get().GetExecutablePath();
-		wxFileName fn(languagePath);
-		wxString path = fn.GetPath( wxPATH_GET_VOLUME | wxPATH_GET_SEPARATOR );
-		languagePath = path + wxT("languages");
-		m_locale.AddCatalogLookupPathPrefix( languagePath );
-	}
-	//	if( m_locale.Init(wxLANGUAGE_DEFAULT, wxLOCALE_LOAD_DEFAULT | wxLOCALE_CONV_ENCODING) ) {
-	if( m_locale.Init(wxLANGUAGE_DEFAULT, wxLOCALE_CONV_ENCODING) ) {
-		m_locale.AddCatalog( wxT("vvv") );
-	}
-
 	// initialize help
 	wxFileSystem::AddHandler( new wxZipFSHandler );
 //	m_HelpController = new wxHtmlHelpController;
@@ -217,6 +204,26 @@ bool CVvvApp::OnInit()
 	if( !m_SettingsFileName.empty() ) {
 		wxConfigBase *pConfig = new wxFileConfig( wxEmptyString, wxEmptyString, m_SettingsFileName );
 		wxConfigBase::Set( pConfig );
+	}
+
+	// setup the locale
+	{
+		wxString languagePath = wxStandardPaths::Get().GetExecutablePath();
+		wxFileName fn(languagePath);
+		wxString path = fn.GetPath( wxPATH_GET_VOLUME | wxPATH_GET_SEPARATOR );
+		languagePath = path + wxT("languages");
+		m_locale.AddCatalogLookupPathPrefix( languagePath );
+	}
+	//	if( m_locale.Init(wxLANGUAGE_DEFAULT, wxLOCALE_LOAD_DEFAULT | wxLOCALE_CONV_ENCODING) ) {
+	if( m_locale.Init(wxLANGUAGE_DEFAULT, wxLOCALE_CONV_ENCODING) ) {
+		// read from the settings if we must use the localized translation
+		// the same code is used when all settigns are read: we need this info now so I duplicated some code
+		wxConfigBase *pConfig = wxConfigBase::Get();
+		pConfig->SetPath(wxT("/Settings"));
+		bool forceEnglish;
+		pConfig->Read( wxT("ForceEnglish"), &forceEnglish, false );
+		if( !forceEnglish )
+			m_locale.AddCatalog( wxT("vvv") );
 	}
 
 ////@begin CVvvApp initialisation
