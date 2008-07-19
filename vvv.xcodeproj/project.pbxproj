@@ -24,7 +24,6 @@
 		BD38B4700D26965E00A422F0 /* virtual_files.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BD38B45F0D26965E00A422F0 /* virtual_files.cpp */; };
 		BD38B4710D26965E00A422F0 /* virtual_paths.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BD38B4600D26965E00A422F0 /* virtual_paths.cpp */; };
 		BD38B4720D26965E00A422F0 /* volumes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BD38B4610D26965E00A422F0 /* volumes.cpp */; };
-		BD57AF830E1AC83C00B2B2EF /* restore.h in Copy Files - Executables */ = {isa = PBXBuildFile; fileRef = BD57AF820E1AC83C00B2B2EF /* restore.h */; };
 		BD57AF860E1AC86E00B2B2EF /* convert_db_unicode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BD57AF840E1AC86E00B2B2EF /* convert_db_unicode.cpp */; };
 		BD57AF870E1AC86E00B2B2EF /* restore.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BD57AF850E1AC86E00B2B2EF /* restore.cpp */; };
 		BDB509A50D26C1FE003AB768 /* all_in_one.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BDB509A40D26C1FE003AB768 /* all_in_one.cpp */; };
@@ -46,6 +45,7 @@
 		BDC7ED000D2C0C62005642FE /* libicudata.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BDDE885B0D2BF0CC00756213 /* libicudata.dylib */; };
 		BDC7ED010D2C0C63005642FE /* libicui18n.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BDDE885C0D2BF0CC00756213 /* libicui18n.dylib */; };
 		BDD085DD0D5A239A001CFF1C /* firebird.msg in Copy Files - Executables-firebird-bin-firebird */ = {isa = PBXBuildFile; fileRef = BDDE88550D2BF0CC00756213 /* firebird.msg */; };
+		BDD09F440E3242E700667327 /* vvv.mo in Copy Files - Languages - it */ = {isa = PBXBuildFile; fileRef = BDD09F420E3242D800667327 /* vvv.mo */; };
 		BDD0E7EA0D2D585E00761368 /* vvv-document.icns in Resources */ = {isa = PBXBuildFile; fileRef = BDD0E7E90D2D585E00761368 /* vvv-document.icns */; };
 		BDD56C0D0D2AAE2200F874D3 /* vvv.icns in Resources */ = {isa = PBXBuildFile; fileRef = BDD56C0C0D2AAE2100F874D3 /* vvv.icns */; };
 		BDDE88700D2BF2AB00756213 /* firebird.conf in Copy Files - Executables */ = {isa = PBXBuildFile; fileRef = BDDE885F0D2BF0CC00756213 /* firebird.conf */; };
@@ -63,7 +63,6 @@
 		BDE673290D2CF2580095991E /* libfbembed.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BDDE88590D2BF0CC00756213 /* libfbembed.dylib */; };
 		BDE673480D2CFE5D0095991E /* libicuuc.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BDDE885D0D2BF0CC00756213 /* libicuuc.dylib */; };
 		BDF7CAA30DF1A2E5005B0634 /* exportdata.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BDF7CAA20DF1A2E5005B0634 /* exportdata.cpp */; };
-		BDF7CAA50DF1A30A005B0634 /* exportdata.h in Copy Files - Executables */ = {isa = PBXBuildFile; fileRef = BDF7CAA40DF1A30A005B0634 /* exportdata.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,8 +86,6 @@
 				BDB509C60D26CD2E003AB768 /* vvv.htb in Copy Files - Executables */,
 				BDB509CF0D26CE59003AB768 /* VVV.fbk in Copy Files - Executables */,
 				BDB509CE0D26CE4F003AB768 /* vvv-struct-update.fdb in Copy Files - Executables */,
-				BDF7CAA50DF1A30A005B0634 /* exportdata.h in Copy Files - Executables */,
-				BD57AF830E1AC83C00B2B2EF /* restore.h in Copy Files - Executables */,
 			);
 			name = "Copy Files - Executables";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -102,6 +99,17 @@
 				BDD085DD0D5A239A001CFF1C /* firebird.msg in Copy Files - Executables-firebird-bin-firebird */,
 			);
 			name = "Copy Files - Executables-firebird-bin-firebird";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BDD09F220E32423700667327 /* Copy Files - Languages - it */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = languages/it;
+			dstSubfolderSpec = 6;
+			files = (
+				BDD09F440E3242E700667327 /* vvv.mo in Copy Files - Languages - it */,
+			);
+			name = "Copy Files - Languages - it";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		BDDE88710D2BF3C500756213 /* Copy Files - Executables-firebird */ = {
@@ -211,6 +219,7 @@
 		BDC65A370D268C4800FE4EAF /* window_position.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = window_position.cpp; path = src/window_position.cpp; sourceTree = "<group>"; };
 		BDC85C210D25630A00BE8D80 /* vvv.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = vvv.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDC85C240D25630B00BE8D80 /* vvv-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "vvv-Info.plist"; sourceTree = "<group>"; };
+		BDD09F420E3242D800667327 /* vvv.mo */ = {isa = PBXFileReference; lastKnownFileType = file; name = vvv.mo; path = translations/it/vvv.mo; sourceTree = "<group>"; };
 		BDD0E7E90D2D585E00761368 /* vvv-document.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = "vvv-document.icns"; path = "src/graphics/vvv-document.icns"; sourceTree = "<group>"; };
 		BDD56C0C0D2AAE2100F874D3 /* vvv.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = vvv.icns; path = src/graphics/vvv.icns; sourceTree = "<group>"; };
 		BDDE88520D2BF0CC00756213 /* fb_lock_mgr */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = fb_lock_mgr; sourceTree = "<group>"; };
@@ -344,6 +353,7 @@
 		BDC85C120D2562F300BE8D80 = {
 			isa = PBXGroup;
 			children = (
+				BDD09F450E32435700667327 /* Translations */,
 				BDD0E7EB0D2D586C00761368 /* Icons */,
 				BDDE884F0D2BF09200756213 /* Firebird runtime */,
 				BDD9F3500D29339E007CF3A0 /* Other files */,
@@ -361,6 +371,14 @@
 				BDB5099D0D26C0AD003AB768 /* libIBPP.a */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		BDD09F450E32435700667327 /* Translations */ = {
+			isa = PBXGroup;
+			children = (
+				BDD09F420E3242D800667327 /* vvv.mo */,
+			);
+			name = Translations;
 			sourceTree = "<group>";
 		};
 		BDD0E7EB0D2D586C00761368 /* Icons */ = {
@@ -471,6 +489,7 @@
 				BDC85C1D0D25630A00BE8D80 /* Resources */,
 				BDC85C1E0D25630A00BE8D80 /* Sources */,
 				BDC85C1F0D25630A00BE8D80 /* Frameworks */,
+				BDD09F220E32423700667327 /* Copy Files - Languages - it */,
 				BDB509C10D26CC7A003AB768 /* Copy Files - Executables */,
 				BDDE88710D2BF3C500756213 /* Copy Files - Executables-firebird */,
 				BDDE887A0D2BF47400756213 /* Copy Files - Executables-firebird-bin */,
