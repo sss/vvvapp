@@ -135,6 +135,8 @@ bool CVvvApp::OnInit()
 	wxFileName fn( appPath );
 	appPath = fn.GetPath();
 	wxSetWorkingDirectory( appPath );
+	
+	s_macHelpMenuTitleName = _("&Help");
 #endif	
 
 	// sets the config object
@@ -207,6 +209,7 @@ bool CVvvApp::OnInit()
 	}
 
 	// setup the locale
+#ifndef __WXMAC__		
 	{
 		wxString languagePath = wxStandardPaths::Get().GetExecutablePath();
 		wxFileName fn(languagePath);
@@ -214,6 +217,7 @@ bool CVvvApp::OnInit()
 		languagePath = path + wxT("languages");
 		m_locale.AddCatalogLookupPathPrefix( languagePath );
 	}
+#endif
 	//	if( m_locale.Init(wxLANGUAGE_DEFAULT, wxLOCALE_LOAD_DEFAULT | wxLOCALE_CONV_ENCODING) ) {
 	if( m_locale.Init(wxLANGUAGE_DEFAULT, wxLOCALE_CONV_ENCODING) ) {
 		// read from the settings if we must use the localized translation
@@ -222,8 +226,9 @@ bool CVvvApp::OnInit()
 		pConfig->SetPath(wxT("/Settings"));
 		bool forceEnglish;
 		pConfig->Read( wxT("ForceEnglish"), &forceEnglish, false );
-		if( !forceEnglish )
+		if( !forceEnglish ) {
 			m_locale.AddCatalog( wxT("vvv") );
+		}
 	}
 
 ////@begin CVvvApp initialisation

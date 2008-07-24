@@ -104,8 +104,8 @@
 		BDD09F220E32423700667327 /* Copy Files - Languages - it */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
-			dstPath = languages/it;
-			dstSubfolderSpec = 6;
+			dstPath = it.lproj;
+			dstSubfolderSpec = 7;
 			files = (
 				BDD09F440E3242E700667327 /* vvv.mo in Copy Files - Languages - it */,
 			);
