@@ -2301,8 +2301,8 @@ void CMainFrame::OnABOUTClick( wxCommandEvent& WXUNUSED(event) )
 	info.SetDescription( _("VVV (Virtual Volumes View): a program to catalog removable devices like CDs and DVDs\n\n\"The mud of Venaus is the blood of this land\"") );
 	info.SetCopyright( _("Copyright (C) 2007-2008 The VVV Team") );
 	info.AddDeveloper( _("Fulvio Senore: main developer") );
-	info.AddDeveloper( _("Jan Albartus: worked at the portable version") );
-	info.AddArtist( _("This program uses the Tango icons (http://tango.freedesktop.org/Tango_Desktop_Project )") );
+	info.AddDeveloper( _("Jan Albartus: worked at the portable version and designed the application's icon") );
+	info.AddArtist( _("This program uses icons from the Gnome, Ubuntu and Crystal icons projects") );
 	info.SetLicence( _("This is open source software, distributed under the GNU GENERAL PUBLIC LICENSE") );
 
 	wxAboutBox( info );
