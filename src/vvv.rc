@@ -79,8 +79,8 @@ END
 //
 
 VS_VERSION_INFO VERSIONINFO
- FILEVERSION 0,8,5,0
- PRODUCTVERSION 0,8,5,0
+ FILEVERSION 0,9,0,0
+ PRODUCTVERSION 0,9,0,0
  FILEFLAGSMASK 0x17L
 #ifdef _DEBUG
  FILEFLAGS 0x1L
@@ -97,12 +97,12 @@ BEGIN
         BEGIN
             VALUE "CompanyName", "The VVV Team"
             VALUE "FileDescription", "VVV (Virtual Volumes View): an application to catalog removable disks"
-            VALUE "FileVersion", "0, 8, 5, 0"
+            VALUE "FileVersion", "0, 9, 0, 0"
             VALUE "InternalName", "VVV"
             VALUE "LegalCopyright", "Copyright (C) 2007-2008 The VVV Team"
             VALUE "OriginalFilename", "vvv.rc"
             VALUE "ProductName", "VVV"
-            VALUE "ProductVersion", "0, 8, 5, 0"
+            VALUE "ProductVersion", "0, 9, 0, 0"
         END
     END
     BLOCK "VarFileInfo"
