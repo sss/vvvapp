@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: VVV 0.9\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-07-02 17:41+0100\n"
+"POT-Creation-Date: 2008-07-26 09:08+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Fulvio Senore <mailing@fsoft.it>\n"
 "Language-Team: \n"
@@ -45,6 +45,7 @@ msgstr "Recupera il nome del volume"
 #: view)\src/mainframe.cpp:825
 #: view)\src/restore.cpp:187
 #: view)\src/restore.cpp:205
+#: view)\src/vvv.cpp:139
 msgid "&Help"
 msgstr "&?"
 
@@ -753,13 +754,13 @@ msgstr "Fulvio Senore: sviluppatore principale"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:2304
-msgid "Jan Albartus: worked at the portable version"
-msgstr "Jan Albartus: ha lavorato alla versione portabile"
+msgid "Jan Albartus: worked at the portable version and designed the application's icon"
+msgstr "Jan Albartus: ha lavorato alla versione portabile e ha realizzato l'icona del programma."
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:2305
-msgid "This program uses the Tango icons (http://tango.freedesktop.org/Tango_Desktop_Project )"
-msgstr "This program uses the Tango icons (http://tango.freedesktop.org/Tango_Desktop_Project )"
+msgid "This program uses icons from the Gnome, Ubuntu and Crystal icons projects"
+msgstr "Questo programma usa icone dei progetti Gnome, Ubuntu e Crystal icons"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:2306
@@ -1190,7 +1191,7 @@ msgid "Server connection successful"
 msgstr "La connessione al server ha avuto successo"
 
 #: E:\C_Prg\vvv
-#: (virtual volumes view)\src/vvv.cpp:280
+#: (virtual volumes view)\src/vvv.cpp:285
 msgid ""
 "Unable to connect to the server\n"
 "\n"
@@ -1199,8 +1200,8 @@ msgstr ""
 "\n"
 
 #: E:\C_Prg\vvv
-#: (virtual volumes view)\src/vvv.cpp:282
-#: view)\src/vvv.cpp:288
+#: (virtual volumes view)\src/vvv.cpp:287
+#: view)\src/vvv.cpp:293
 msgid ""
 "An unexpected error has occurred. Here is a description of the error:\n"
 "\n"
@@ -1209,7 +1210,7 @@ msgstr ""
 "\n"
 
 #: E:\C_Prg\vvv
-#: (virtual volumes view)\src/vvv.cpp:294
+#: (virtual volumes view)\src/vvv.cpp:299
 msgid "An unexpected error has occurred. This application will be terminated"
 msgstr "Si è verificato un errore inaspettato. Questo programma verrà terminato."
 
@@ -2457,6 +2458,12 @@ msgstr "Descrizione del'oggetto"
 msgid "Restore"
 msgstr "Ripristino copie"
 
+#~ msgid ""
+#~ "This program uses the Tango icons (http://tango.freedesktop.org/"
+#~ "Tango_Desktop_Project )"
+#~ msgstr ""
+#~ "This program uses the Tango icons (http://tango.freedesktop.org/"
+#~ "Tango_Desktop_Project )"
 #~ msgid "Is &equal to:"
 #~ msgstr "E' uguale a:"
 #~ msgid "S&tarts with:"
