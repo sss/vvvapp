@@ -63,12 +63,9 @@ void CWindowPosition::RestorePosition( void ) {
 	if( x == -1 || y == -1 || w == -1 || h == -1 ) return;
 
 	// check to see if the window is visible in the screen
-	int dw, dh;
-	wxDisplaySize( &dw, &dh );
-	if( x > (dw - 200) ) return;
-	if( y > (dh - 200) ) return;
-	if( x < 0 ) return;
-	if( y < 50 ) return;
+	if( !CheckCoordinates(x, y, w, h) ) {
+		return;
+	}
 
 	// move and resize the window
 	window->Move(x, y);
@@ -77,4 +74,19 @@ void CWindowPosition::RestorePosition( void ) {
 
 }
 
+bool CWindowPosition::CheckCoordinates( int x, int y, int w, int h ) {
+	
+	bool retVal = true;
+	int dw, dh;
+
+	wxDisplaySize( &dw, &dh );
+	if( x > (dw - 200) ) retVal = false;
+	if( y > (dh - 200) ) retVal = false;
+	if( x < 0 ) retVal = false;
+	if( y < 50 ) retVal = false;
+	if( w < 100 ) retVal = false;
+	if( h < 100 ) retVal = false;
+
+	return retVal;
+}
 

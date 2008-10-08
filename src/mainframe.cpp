@@ -615,8 +615,12 @@ bool CMainFrame::Create( wxWindow* parent, wxWindowID id, const wxString& captio
 		y = pConfig->Read(wxT("y"), 50),
 		w = pConfig->Read(wxT("w"), 600),
 		h = pConfig->Read(wxT("h"), 400);
-	Move(x, y);
-	SetClientSize(w, h);
+
+	// test that the coordinates
+	if( CWindowPosition::CheckCoordinates(x, y, w, h) ) {
+		Move(x, y);
+		SetClientSize(w, h);
+	}
 	bool FrameMaximized;
 	pConfig->Read( wxT("Maximized"), &FrameMaximized, false );
 	if( FrameMaximized ) Maximize(true);
@@ -1432,7 +1436,7 @@ CMainFrame::~CMainFrame() {
 	GetClientSize(&w, &h);
 	GetPosition(&x, &y);
 	pConfig->SetPath(wxT("/Mainframe/Layout"));
-	if( !IsMaximized() ) {
+	if( !IsMaximized() && CWindowPosition::CheckCoordinates(x, y, w, h) ) {
 		pConfig->Write(wxT("x"), (long) x);
 		pConfig->Write(wxT("y"), (long) y);
 		pConfig->Write(wxT("w"), (long) w);

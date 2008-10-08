@@ -74,6 +74,9 @@ public:
 	// restores size and position of the window
 	void RestorePosition( void );
 
+	// return true if the given window position and size will fit in the screen
+	static bool CheckCoordinates( int x, int y, int w, int h );
+
 private:
 
 	// a pointer to the window that will be managed by this instance
