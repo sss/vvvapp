@@ -1,0 +1,20 @@
+﻿de:
+Steve Köhler
+nethunter@gmx.de
+
+es:
+David de Castro
+david.decastro@gmail.com
+
+fr:
+Frédéric Gacquer
+Frederic.Gacquer@univ-orleans.fr
+
+hr:
+Hasan Osmanagić
+hasan.osmanagic@zg.t-com.hr
+
+pt:
+Pedro Cunha
+pmferreirac@gmail.com
+
