@@ -1302,6 +1302,12 @@
 			</Filter>
 		</Filter>
 		<File
+			RelativePath=".\src\catalog_volume_functions.cpp">
+		</File>
+		<File
+			RelativePath=".\src\catalog_volume_functions.h">
+		</File>
+		<File
 			RelativePath=".\src\resource.h">
 		</File>
 		<File

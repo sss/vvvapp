@@ -61,6 +61,7 @@
 #include "utils.h"
 #include "audio_metadata.h"
 #include "long_task_beep.h"
+#include "catalog_volume_functions.h"
 #include "data_interface/volumes.h"
 #include "data_interface/paths.h"
 #include "data_interface/files.h"
@@ -298,17 +299,10 @@ void CDialogCatalogVolume::OnButtonCatalogClick( wxCommandEvent& WXUNUSED(event)
 	SetCursor(wxCursor(wxCURSOR_WAIT));
 	CLongTaskBeep ltb;
 
-	// starts a transaction
-	CBaseDB* db = CBaseDB::GetDatabase();
-	db->TransactionStart();
-
-	wxFileName dirName( path, wxEmptyString );
-
-	// writes the volume row
-	CVolumes vol;
-	vol.VolumeName = vn;
+	// creates an object that will be used to catalog data
+	CCatalogVolumeFunctions cvf( m_CurrentFolder );
 	try {
-		vol.DbInsert();
+		cvf.CatalogVolume( path, vn );
 	}
 	catch( CDataErrorException& e ) {
 		if( e.GetErrorCause() == CDataErrorException::ecUnique ) {
@@ -319,18 +313,6 @@ void CDialogCatalogVolume::OnButtonCatalogClick( wxCommandEvent& WXUNUSED(event)
 		else
 			throw;
 	}
-
-	// catalogs the folders
-	CNullableLong FatherID;
-	FatherID.SetNull(true);
-#ifdef __WXMSW__
-	CatalogSingleFolderWindows( db, path, vol.VolumeID, FatherID, NULL );
-#else
-	CatalogSingleFolder( db, path, vol.VolumeID, FatherID, NULL );
-#endif
-
-	// commits the transaction
-	db->TransactionCommit();
 
 	// adds this volume to the history listbox
 	wxString s = m_VolumeName->GetValue();
@@ -343,80 +325,6 @@ void CDialogCatalogVolume::OnButtonCatalogClick( wxCommandEvent& WXUNUSED(event)
 	m_realVolumeName = wxEmptyString;
 	SetCursor(curCursor);
 }
-
-
-void CDialogCatalogVolume::CatalogSingleFolder( CBaseDB* db, wxString path, long VolumeID, CNullableLong& FatherID, CFiles* PathFile  ) {
-	wxString fileName;
-
-	// shows the path in the dialog box
-	m_CurrentFolder->SetLabel( path );
-	wxSafeYield();
-	SetCursor(wxCursor(wxCURSOR_WAIT));
-
-	// writes the path row
-	wxFileName dirName( path, wxEmptyString );
-	CPaths pth;
-	pth.VolumeID = VolumeID;
-	pth.PathName = dirName.GetPath(0);
-	pth.PathName = pth.PathName.AfterLast( wxFileName::GetPathSeparator() );	// only takes the last part of the full path
-	pth.FatherID = FatherID;
-	pth.DbInsert();
-
-	// adds the path id and stores the FILES info about this folder
-	if( PathFile != NULL ) {
-		PathFile->PathFileID = pth.PathID;
-		PathFile->DbInsert();
-	}
-
-	// reads all file names
-	wxDir dir(path);
-	bool cont = dir.GetFirst(&fileName, wxT(""), wxDIR_FILES );
-	while( cont ) {
-		// stores the file row
-		wxFileName fn( path, fileName );
-		CFiles file;
-		file.FileName = fileName;
-		file.FileExt = fn.GetExt();
-		if( file.FileExt.Len() > 30 ) file.FileExt = wxEmptyString;	// such a long extension is surely a meaningless temporary file
-		file.DateTime = fn.GetModificationTime();
-		file.FileSize = fn.GetSize();
-		file.PathID = pth.PathID;
-		file.PathFileID.SetNull(true);
-		file.DbInsert();
-
-		if( file.FileExt == wxT("mp3") ) {
-			CFilesAudioMetadata metaData;
-			if( CAudioMetadata::ReadMP3Metadata( fn.GetFullPath(), metaData ) ) {
-				metaData.FileID = file.FileID;
-				metaData.DbInsert();
-			}
-		}
-
-		cont = dir.GetNext(&fileName);
-	}
-
-	// now reads all the subfolders
-	cont = dir.GetFirst(&fileName, wxT(""), wxDIR_DIRS );
-	while( cont ) {
-		wxFileName dirName( path, wxEmptyString );
-		dirName.AppendDir( fileName );
-
-		// stores the folder as a file to simplify data retrieval
-		CFiles file;
-		file.FileName = fileName;
-		file.FileExt = wxEmptyString;
-		file.DateTime = dirName.GetModificationTime();
-		file.FileSize = 0;
-		file.PathID = pth.PathID;
-//		file.DbInsert();
-
-		CatalogSingleFolder( db, dirName.GetPath(), VolumeID, pth.PathID, &file );
-		cont = dir.GetNext(&fileName);
-	}
-
-}
-
-
 
 CDialogCatalogVolume::~CDialogCatalogVolume() {
 

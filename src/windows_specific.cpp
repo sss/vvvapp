@@ -27,6 +27,7 @@
 #include <io.h>
 #include <wx/dir.h>
 #include <wx/filename.h>
+#include "catalog_volume_functions.h"
 #include "catalog_volume.h"
 #include "windows_specific.h"
 #include "audio_metadata.h"
@@ -51,7 +52,7 @@ wxString GetVolumeName( wxString volume ) {
 }
 
 // Windows specific version of CatalogSingleFolder to gain speed
-void CDialogCatalogVolume::CatalogSingleFolderWindows( CBaseDB* db, wxString path, long VolumeID, CNullableLong& FatherID, CFiles* PathFile  ) {
+void CCatalogVolumeFunctions::CatalogSingleFolderWindows( CBaseDB* db, wxString path, long VolumeID, CNullableLong& FatherID, CFiles* PathFile  ) {
 	wxString fileName;
 	wxString winPath;	// path to be used for Windows-specific calls
 
@@ -61,9 +62,10 @@ void CDialogCatalogVolume::CatalogSingleFolderWindows( CBaseDB* db, wxString pat
 	winPath += wxT("*.*");
 
 	// shows the path in the dialog box
-	m_CurrentFolder->SetLabel( path );
-	wxSafeYield();
-	SetCursor(wxCursor(wxCURSOR_WAIT));
+	if( statText != NULL ) {
+		statText->SetLabel( path );
+		wxSafeYield();
+	}
 
 	// writes the path row
 	wxFileName dirName( path, wxEmptyString );
