@@ -1115,6 +1115,9 @@
 				RelativePath=".\src\catalog_volume.cpp">
 			</File>
 			<File
+				RelativePath=".\src\catalog_volume_functions.cpp">
+			</File>
+			<File
 				RelativePath=".\src\choose_virtual_folder.cpp">
 			</File>
 			<File
@@ -1222,6 +1225,9 @@
 				RelativePath=".\src\catalog_volume.h">
 			</File>
 			<File
+				RelativePath=".\src\catalog_volume_functions.h">
+			</File>
+			<File
 				RelativePath=".\src\choose_virtual_folder.h">
 			</File>
 			<File
@@ -1301,12 +1307,6 @@
 				</File>
 			</Filter>
 		</Filter>
-		<File
-			RelativePath=".\src\catalog_volume_functions.cpp">
-		</File>
-		<File
-			RelativePath=".\src\catalog_volume_functions.h">
-		</File>
 		<File
 			RelativePath=".\src\resource.h">
 		</File>

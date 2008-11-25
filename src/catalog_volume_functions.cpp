@@ -22,6 +22,7 @@
 
 #include "catalog_volume_functions.h"
 
+#include <wx/app.h>
 #include <wx/dir.h>
 #include <wx/filename.h>
 #include <wx/config.h>
@@ -89,7 +90,7 @@ void CCatalogVolumeFunctions::CatalogSingleFolder( CBaseDB* db, wxString path, l
 	// shows the path in the dialog box
 	if( statText != NULL ) {
 		statText->SetLabel( path );
-		wxSafeYield();
+		wxTheApp->Yield();
 	}
 
 	// writes the path row

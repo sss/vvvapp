@@ -50,6 +50,7 @@
 #include <wx/stattext.h>
 #include <wx/textctrl.h>
 #include <wx/listbox.h>
+#include <wx/button.h>
 #include "data_interface/base_db.h"
 #include "data_interface/db_null.h"
 #include "data_interface/files.h"
@@ -148,12 +149,22 @@ public:
 
 ////@begin CDialogCatalogVolume member variables
     wxTextCtrl* m_VolumePath;
+    wxButton* m_VolumeBrowse;
     wxTextCtrl* m_VolumeName;
+#if defined(__WXMSW__)
+    wxButton* m_GetVolumeNameButton;
+#endif
+    wxButton* m_HelpButton;
+    wxButton* m_CatalogButton;
+    wxButton* m_CloseButton;
     wxStaticText* m_CurrentFolder;
     wxListBox* m_HistoryListBox;
 ////@end CDialogCatalogVolume member variables
 
 private:
+
+	// enable or disable all controls, used while cataloging to avoid recursion
+	void EnableDisableControls( bool enabled );
 
 	CWindowPosition m_WindowPosition;
 

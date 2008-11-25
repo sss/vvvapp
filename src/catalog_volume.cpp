@@ -51,22 +51,14 @@
 ////@begin includes
 ////@end includes
 
-#include <wx/dir.h>
-#include <wx/filename.h>
+#include <wx/utils.h>
 #include <wx/config.h>
-#include <wx/dirdlg.h>
-#include <wx/filefn.h>
 #include "catalog_volume.h"
 #include "vvv.h"
 #include "utils.h"
-#include "audio_metadata.h"
 #include "long_task_beep.h"
 #include "catalog_volume_functions.h"
-#include "data_interface/volumes.h"
-#include "data_interface/paths.h"
-#include "data_interface/files.h"
 #include "data_interface/data_error.h"
-#include "data_interface/files_audio_metadata.h"
 
 #ifdef __WXMSW__
 #include "windows_specific.h"
@@ -154,7 +146,14 @@ void CDialogCatalogVolume::Init()
 {
 ////@begin CDialogCatalogVolume member initialisation
     m_VolumePath = NULL;
+    m_VolumeBrowse = NULL;
     m_VolumeName = NULL;
+#if defined(__WXMSW__)
+    m_GetVolumeNameButton = NULL;
+#endif
+    m_HelpButton = NULL;
+    m_CatalogButton = NULL;
+    m_CloseButton = NULL;
     m_CurrentFolder = NULL;
     m_HistoryListBox = NULL;
 ////@end CDialogCatalogVolume member initialisation
@@ -181,8 +180,8 @@ void CDialogCatalogVolume::CreateControls()
     m_VolumePath = new wxTextCtrl( itemDialog1, ID_VOLUME_PATH, _T(""), wxDefaultPosition, wxDefaultSize, 0 );
     itemBoxSizer4->Add(m_VolumePath, 1, wxALIGN_CENTER_VERTICAL|wxALL, 5);
 
-    wxButton* itemButton6 = new wxButton( itemDialog1, ID_VOLUME_BROWSE, _("..."), wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT );
-    itemBoxSizer4->Add(itemButton6, 0, wxALIGN_CENTER_VERTICAL|wxRIGHT|wxTOP|wxBOTTOM, 5);
+    m_VolumeBrowse = new wxButton( itemDialog1, ID_VOLUME_BROWSE, _("..."), wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT );
+    itemBoxSizer4->Add(m_VolumeBrowse, 0, wxALIGN_CENTER_VERTICAL|wxRIGHT|wxTOP|wxBOTTOM, 5);
 
     wxStaticText* itemStaticText7 = new wxStaticText( itemDialog1, wxID_STATIC, _("Volume name"), wxDefaultPosition, wxDefaultSize, 0 );
     itemBoxSizer2->Add(itemStaticText7, 0, wxALIGN_LEFT|wxLEFT|wxRIGHT|wxTOP, 5);
@@ -194,24 +193,24 @@ void CDialogCatalogVolume::CreateControls()
     itemBoxSizer8->Add(m_VolumeName, 1, wxALIGN_CENTER_VERTICAL|wxALL, 5);
 
 #if defined(__WXMSW__)
-    wxButton* itemButton10 = new wxButton( itemDialog1, ID_GET_VOLUME_NAME, _("Get volume name"), wxDefaultPosition, wxDefaultSize, 0 );
-    itemBoxSizer8->Add(itemButton10, 0, wxALIGN_CENTER_VERTICAL|wxRIGHT|wxTOP|wxBOTTOM, 5);
+    m_GetVolumeNameButton = new wxButton( itemDialog1, ID_GET_VOLUME_NAME, _("Get volume name"), wxDefaultPosition, wxDefaultSize, 0 );
+    itemBoxSizer8->Add(m_GetVolumeNameButton, 0, wxALIGN_CENTER_VERTICAL|wxRIGHT|wxTOP|wxBOTTOM, 5);
 
 #endif
 
     wxBoxSizer* itemBoxSizer11 = new wxBoxSizer(wxHORIZONTAL);
     itemBoxSizer2->Add(itemBoxSizer11, 0, wxGROW|wxTOP|wxBOTTOM, 5);
 
-    wxButton* itemButton12 = new wxButton( itemDialog1, wxID_HELP, _("&Help"), wxDefaultPosition, wxDefaultSize, 0 );
-    itemBoxSizer11->Add(itemButton12, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5);
+    m_HelpButton = new wxButton( itemDialog1, wxID_HELP, _("&Help"), wxDefaultPosition, wxDefaultSize, 0 );
+    itemBoxSizer11->Add(m_HelpButton, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5);
 
     itemBoxSizer11->Add(5, 5, 1, wxALIGN_CENTER_VERTICAL|wxALL, 5);
 
-    wxButton* itemButton14 = new wxButton( itemDialog1, ID_BUTTON_CATALOG, _("Catalog"), wxDefaultPosition, wxDefaultSize, 0 );
-    itemBoxSizer11->Add(itemButton14, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5);
+    m_CatalogButton = new wxButton( itemDialog1, ID_BUTTON_CATALOG, _("Catalog"), wxDefaultPosition, wxDefaultSize, 0 );
+    itemBoxSizer11->Add(m_CatalogButton, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5);
 
-    wxButton* itemButton15 = new wxButton( itemDialog1, wxID_CANCEL, _("&Close"), wxDefaultPosition, wxDefaultSize, 0 );
-    itemBoxSizer11->Add(itemButton15, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5);
+    m_CloseButton = new wxButton( itemDialog1, wxID_CANCEL, _("&Close"), wxDefaultPosition, wxDefaultSize, 0 );
+    itemBoxSizer11->Add(m_CloseButton, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5);
 
     m_CurrentFolder = new wxStaticText( itemDialog1, ID_CURRENT_FOLDER, _("Current folder"), wxDefaultPosition, wxDefaultSize, 0 );
     itemBoxSizer2->Add(m_CurrentFolder, 0, wxGROW|wxALL, 5);
@@ -295,9 +294,10 @@ void CDialogCatalogVolume::OnButtonCatalogClick( wxCommandEvent& WXUNUSED(event)
 		return;
 	}
 
-	wxCursor curCursor = GetCursor();
-	SetCursor(wxCursor(wxCURSOR_WAIT));
+	wxBusyCursor bc;
 	CLongTaskBeep ltb;
+
+	EnableDisableControls( false );
 
 	// creates an object that will be used to catalog data
 	CCatalogVolumeFunctions cvf( m_CurrentFolder );
@@ -306,13 +306,15 @@ void CDialogCatalogVolume::OnButtonCatalogClick( wxCommandEvent& WXUNUSED(event)
 	}
 	catch( CDataErrorException& e ) {
 		if( e.GetErrorCause() == CDataErrorException::ecUnique ) {
-			SetCursor(curCursor);
+			EnableDisableControls( true );
 			CUtils::MsgErr( _("This volume name is already present in the database") );
 			return;
 		}
 		else
 			throw;
 	}
+
+	EnableDisableControls( true );
 
 	// adds this volume to the history listbox
 	wxString s = m_VolumeName->GetValue();
@@ -323,7 +325,6 @@ void CDialogCatalogVolume::OnButtonCatalogClick( wxCommandEvent& WXUNUSED(event)
 	m_VolumeName->SetValue( wxEmptyString );
 	m_CurrentFolder->SetLabel( wxEmptyString );
 	m_realVolumeName = wxEmptyString;
-	SetCursor(curCursor);
 }
 
 CDialogCatalogVolume::~CDialogCatalogVolume() {
@@ -356,5 +357,16 @@ void CDialogCatalogVolume::OnVolumeBrowseClick( wxCommandEvent& WXUNUSED(event) 
 	wxDirDialog dlg( this, _("Select the volume to catalog"), wxEmptyString, wxDD_DEFAULT_STYLE|wxDD_DIR_MUST_EXIST );
 	if( dlg.ShowModal() == wxID_OK )
 		m_VolumePath->SetValue( dlg.GetPath() );
+}
+
+void CDialogCatalogVolume::EnableDisableControls( bool enabled ) {
+
+	m_VolumeBrowse->Enable( enabled );
+	m_HelpButton->Enable( enabled );
+	m_CatalogButton->Enable( enabled );
+	m_CloseButton->Enable( enabled );
+#ifdef __WXMSW__
+	m_GetVolumeNameButton->Enable( enabled );
+#endif
 }
 
