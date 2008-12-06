@@ -94,17 +94,11 @@ void CCatalogVolumeFunctions::CatalogSingleFolder( CBaseDB* db, wxString path, l
 	}
 
 	// writes the path row
-	wxFileName dirName( path, wxEmptyString );
-	CPaths pth;
-	pth.VolumeID = VolumeID;
-	pth.PathName = dirName.GetPath(0);
-	pth.PathName = pth.PathName.AfterLast( wxFileName::GetPathSeparator() );	// only takes the last part of the full path
-	pth.FatherID = FatherID;
-	pth.DbInsert();
+	CNullableLong PathID = WritePathRow( path, VolumeID, FatherID );
 
 	// adds the path id and stores the FILES info about this folder
 	if( PathFile != NULL ) {
-		PathFile->PathFileID = pth.PathID;
+		PathFile->PathFileID = PathID;
 		PathFile->DbInsert();
 	}
 
@@ -113,24 +107,7 @@ void CCatalogVolumeFunctions::CatalogSingleFolder( CBaseDB* db, wxString path, l
 	bool cont = dir.GetFirst(&fileName, wxT(""), wxDIR_FILES );
 	while( cont ) {
 		// stores the file row
-		wxFileName fn( path, fileName );
-		CFiles file;
-		file.FileName = fileName;
-		file.FileExt = fn.GetExt();
-		if( file.FileExt.Len() > 30 ) file.FileExt = wxEmptyString;	// such a long extension is surely a meaningless temporary file
-		file.DateTime = fn.GetModificationTime();
-		file.FileSize = fn.GetSize();
-		file.PathID = pth.PathID;
-		file.PathFileID.SetNull(true);
-		file.DbInsert();
-
-		if( file.FileExt == wxT("mp3") ) {
-			CFilesAudioMetadata metaData;
-			if( CAudioMetadata::ReadMP3Metadata( fn.GetFullPath(), metaData ) ) {
-				metaData.FileID = file.FileID;
-				metaData.DbInsert();
-			}
-		}
+		AddFileToDB( path, fileName, PathID );
 
 		cont = dir.GetNext(&fileName);
 	}
@@ -138,6 +115,64 @@ void CCatalogVolumeFunctions::CatalogSingleFolder( CBaseDB* db, wxString path, l
 	// now reads all the subfolders
 	cont = dir.GetFirst(&fileName, wxT(""), wxDIR_DIRS );
 	while( cont ) {
+		AddFolderToDB( path, fileName, PathID, db, VolumeID );
+		cont = dir.GetNext(&fileName);
+	}
+
+}
+
+long CCatalogVolumeFunctions::WritePathRow( wxString path, long VolumeID, CNullableLong& FatherID ) {
+	wxFileName dirName( path, wxEmptyString );
+	CPaths pth;
+	pth.VolumeID = VolumeID;
+	pth.PathName = dirName.GetPath(0);
+	pth.PathName = pth.PathName.AfterLast( wxFileName::GetPathSeparator() );	// only takes the last part of the full path
+	pth.FatherID = FatherID;
+	pth.DbInsert();
+
+	return pth.PathID;
+}
+
+void CCatalogVolumeFunctions::ReadFolderFilesFromDB( map<wxString, CFileData> &m, long pathID ) {
+
+	CFiles files;
+	files.DBStartQueryListFiles( pathID );
+	while( !files.IsEOF() ) {
+		CFileData *fd = new CFileData();
+		fd->IsFolder = files.IsFolder();
+		fd->FileID = files.FileID;
+		fd->DateTime = files.DateTime;
+		fd->FileSize = files.FileSize;
+
+		m.insert( FDPair(files.FileName, *fd) );
+
+		files.DBNextRow();
+	}
+}
+
+// add a file to the database
+void CCatalogVolumeFunctions::AddFileToDB( wxString &path, wxString &fileName, CNullableLong &PathID ) {
+	wxFileName fn( path, fileName );
+	CFiles file;
+	file.FileName = fileName;
+	file.FileExt = fn.GetExt();
+	if( file.FileExt.Len() > 30 ) file.FileExt = wxEmptyString;	// such a long extension is surely a meaningless temporary file
+	file.DateTime = fn.GetModificationTime();
+	file.FileSize = fn.GetSize();
+	file.PathID = PathID;
+	file.PathFileID.SetNull(true);
+	file.DbInsert();
+
+	if( file.FileExt == wxT("mp3") ) {
+		CFilesAudioMetadata metaData;
+		if( CAudioMetadata::ReadMP3Metadata( fn.GetFullPath(), metaData ) ) {
+			metaData.FileID = file.FileID;
+			metaData.DbInsert();
+		}
+	}
+}
+
+void CCatalogVolumeFunctions::AddFolderToDB( wxString &path, wxString &fileName, CNullableLong &PathID, CBaseDB* db, long VolumeID ) {
 		wxFileName dirName( path, wxEmptyString );
 		dirName.AppendDir( fileName );
 
@@ -147,14 +182,8 @@ void CCatalogVolumeFunctions::CatalogSingleFolder( CBaseDB* db, wxString path, l
 		file.FileExt = wxEmptyString;
 		file.DateTime = dirName.GetModificationTime();
 		file.FileSize = 0;
-		file.PathID = pth.PathID;
-//		file.DbInsert();
+		file.PathID = PathID;
 
-		CatalogSingleFolder( db, dirName.GetPath(), VolumeID, pth.PathID, &file );
-		cont = dir.GetNext(&fileName);
-	}
-
+		CatalogSingleFolder( db, dirName.GetPath(), VolumeID, PathID, &file );
 }
-
-
 
