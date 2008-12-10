@@ -74,18 +74,27 @@ void CCatalogVolumeFunctions::CatalogVolume( wxString volumePath, wxString volum
 	// catalogs the folders
 	CNullableLong FatherID;
 	FatherID.SetNull(true);
+	CNullableLong nl;
+	nl.SetNull(true);
 #ifdef __WXMSW__
-	CatalogSingleFolderWindows( db, volumePath, vol.VolumeID, FatherID, NULL );
+	CatalogUpdateSingleFolderWindows( db, volumePath, vol.VolumeID, nl, FatherID, NULL );
 #else
-	CatalogSingleFolder( db, volumePath, vol.VolumeID, FatherID, NULL );
+	CatalogUpdateSingleFolder( db, volumePath, vol.VolumeID, nl, FatherID, NULL );
 #endif
 
 	// commits the transaction
 	db->TransactionCommit();
 }
 
-void CCatalogVolumeFunctions::CatalogSingleFolder( CBaseDB* db, wxString path, long VolumeID, CNullableLong& FatherID, CFiles* PathFile  ) {
+
+void CCatalogVolumeFunctions::CatalogUpdateSingleFolder( CBaseDB* db, wxString path, long VolumeID, CNullableLong PathID, CNullableLong& FatherID, CFiles* PathFile  ) {
+	bool doUpdate = (!PathID.IsNull());	// true if we must update the folder, false if we must catalog it
+
 	wxString fileName;
+
+	// used when updating: it will contain the list of files or folders already stored in the database
+	map<wxString, CFileData> folderFiles;
+	map<wxString, CFileData>::iterator ffi;
 
 	// shows the path in the dialog box
 	if( statText != NULL ) {
@@ -93,8 +102,14 @@ void CCatalogVolumeFunctions::CatalogSingleFolder( CBaseDB* db, wxString path, l
 		wxTheApp->Yield();
 	}
 
-	// writes the path row
-	CNullableLong PathID = WritePathRow( path, VolumeID, FatherID );
+	if( doUpdate ) {
+		// fill the map object with the content of the current folder
+		ReadFolderFilesFromDB( folderFiles, PathID );
+	}
+	else {
+		// writes the path row
+		PathID = WritePathRow( path, VolumeID, FatherID );
+	}
 
 	// adds the path id and stores the FILES info about this folder
 	if( PathFile != NULL ) {
@@ -106,17 +121,57 @@ void CCatalogVolumeFunctions::CatalogSingleFolder( CBaseDB* db, wxString path, l
 	wxDir dir(path);
 	bool cont = dir.GetFirst(&fileName, wxT(""), wxDIR_FILES );
 	while( cont ) {
-		// stores the file row
-		AddFileToDB( path, fileName, PathID );
+
+		// see if the file is already present
+		// if we are cataloging the folder the map object is empty so we always add
+		ffi = folderFiles.find( fileName );
+		if( ffi == folderFiles.end() ) {
+			// not found, add the file to the database
+			AddFileToDB( path, fileName, PathID );
+		}
+		else {
+			ffi->second.IsStillThere = true;
+		}
 
 		cont = dir.GetNext(&fileName);
+	}
+
+	// scan the map looking for files to be deleted
+	ffi = folderFiles.begin();
+	while( ffi != folderFiles.end() ) {
+		if( !ffi->second.IsStillThere && !ffi->second.IsFolder ) {
+			// we need to delete this file
+		}
+		ffi++;
 	}
 
 	// now reads all the subfolders
 	cont = dir.GetFirst(&fileName, wxT(""), wxDIR_DIRS );
 	while( cont ) {
-		AddFolderToDB( path, fileName, PathID, db, VolumeID );
+		// see if the folder is already present
+		ffi = folderFiles.find( fileName );
+		if( ffi == folderFiles.end() ) {
+			// new folder, we add it to the DB
+			AddFolderToDB( path, fileName, PathID, db, VolumeID );
+		}		
+		else {
+			// the folder is already in the DB, scan it
+			ffi->second.IsStillThere = true;
+			wxFileName dirName( path, wxEmptyString );
+			dirName.AppendDir( fileName );
+			CatalogUpdateSingleFolder( db, dirName.GetPath(), VolumeID, ffi->second.PathFileID, PathID, NULL );
+		}
+
 		cont = dir.GetNext(&fileName);
+	}
+
+	// scan the map looking for folders to be deleted
+	ffi = folderFiles.begin();
+	while( ffi != folderFiles.end() ) {
+		if( !ffi->second.IsStillThere && ffi->second.IsFolder ) {
+			// we need to delete this folder
+		}
+		ffi++;
 	}
 
 }
@@ -143,8 +198,10 @@ void CCatalogVolumeFunctions::ReadFolderFilesFromDB( map<wxString, CFileData> &m
 		fd->FileID = files.FileID;
 		fd->DateTime = files.DateTime;
 		fd->FileSize = files.FileSize;
+		fd->PathFileID = files.PathFileID;
 
 		m.insert( FDPair(files.FileName, *fd) );
+		delete fd;
 
 		files.DBNextRow();
 	}
@@ -173,17 +230,54 @@ void CCatalogVolumeFunctions::AddFileToDB( wxString &path, wxString &fileName, C
 }
 
 void CCatalogVolumeFunctions::AddFolderToDB( wxString &path, wxString &fileName, CNullableLong &PathID, CBaseDB* db, long VolumeID ) {
-		wxFileName dirName( path, wxEmptyString );
-		dirName.AppendDir( fileName );
+	wxFileName dirName( path, wxEmptyString );
+	dirName.AppendDir( fileName );
 
-		// stores the folder as a file to simplify data retrieval
-		CFiles file;
-		file.FileName = fileName;
-		file.FileExt = wxEmptyString;
-		file.DateTime = dirName.GetModificationTime();
-		file.FileSize = 0;
-		file.PathID = PathID;
+	// stores the folder as a file to simplify data retrieval
+	CFiles file;
+	file.FileName = fileName;
+	file.FileExt = wxEmptyString;
+	file.DateTime = dirName.GetModificationTime();
+	file.FileSize = 0;
+	file.PathID = PathID;
 
-		CatalogSingleFolder( db, dirName.GetPath(), VolumeID, PathID, &file );
+	CNullableLong nl;
+	nl.SetNull( true );
+	CatalogUpdateSingleFolder( db, dirName.GetPath(), VolumeID, nl, PathID, &file );
+}
+
+void CCatalogVolumeFunctions::UpdateVolume( wxString volumePath, long volumeID ) {
+
+	// starts a transaction
+	CBaseDB* db = CBaseDB::GetDatabase();
+	db->TransactionStart();
+
+	wxFileName dirName( volumePath, wxEmptyString );
+
+	// retrieves the id of the root folder
+	long rootPathID = -1;
+	CPaths pth;
+	CNullableLong nl;
+	nl.SetNull(true);
+	pth.DBStartQueryListPaths( volumeID, nl );
+	while( !pth.IsEOF() ) {
+		// this query should return only one row
+		rootPathID = pth.PathID;
+		pth.DBNextRow();
+	}
+
+	// catalogs the folders
+	CNullableLong FatherID;
+	FatherID.SetNull(true);
+	CNullableLong nlPathID( rootPathID );
+#ifdef __WXMSW__
+	CatalogUpdateSingleFolderWindows( db, volumePath, volumeID, nlPathID, FatherID, NULL );
+#else
+	CatalogUpdateSingleFolder( db, volumePath, volumeID, nlPathID, FatherID, NULL );
+#endif
+
+	// commits the transaction
+	db->TransactionCommit();
+
 }
 

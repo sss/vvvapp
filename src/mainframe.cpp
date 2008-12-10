@@ -72,6 +72,7 @@
 #include "long_task_beep.h"
 #include "exportdata.h"
 #include "restore.h"
+#include "update_volume.h"
 
 ////@begin XPM images
 #include "graphics/vvv32.xpm"
@@ -538,6 +539,9 @@ BEGIN_EVENT_TABLE( CMainFrame, wxFrame )
     EVT_MENU( ID_CATALOG_VOLUME, CMainFrame::OnCatalogVolumeClick )
     EVT_UPDATE_UI( ID_CATALOG_VOLUME, CMainFrame::OnCatalogVolumeUpdate )
 
+    EVT_MENU( ID_UPDATE_VOLUME, CMainFrame::OnUpdateVolumeClick )
+    EVT_UPDATE_UI( ID_UPDATE_VOLUME, CMainFrame::OnUpdateVolumeUpdate )
+
     EVT_MENU( ID_VIEW_PHYSICAL, CMainFrame::OnViewPhysicalClick )
     EVT_UPDATE_UI( ID_VIEW_PHYSICAL, CMainFrame::OnViewPhysicalUpdate )
 
@@ -799,34 +803,35 @@ void CMainFrame::CreateControls()
     menuBar->Append(itemMenu21, _("&Edit"));
     wxMenu* itemMenu32 = new wxMenu;
     itemMenu32->Append(ID_CATALOG_VOLUME, _("&Catalog Volume..."), _T(""), wxITEM_NORMAL);
+    itemMenu32->Append(ID_UPDATE_VOLUME, _("&Update Volume..."), _T(""), wxITEM_NORMAL);
     menuBar->Append(itemMenu32, _("&Volumes"));
-    wxMenu* itemMenu34 = new wxMenu;
-    itemMenu34->Append(ID_VIEW_PHYSICAL, _("&Physical View"), _T(""), wxITEM_RADIO);
-    itemMenu34->Check(ID_VIEW_PHYSICAL, true);
-    itemMenu34->Append(ID_VIEW_VIRTUAL, _("&Virtual View"), _T(""), wxITEM_RADIO);
-    itemMenu34->Append(ID_VIEW_SEARCH, _("&Search View"), _T(""), wxITEM_RADIO);
-    itemMenu34->AppendSeparator();
-    itemMenu34->Append(ID_UP_ONE_FOLDER, _("Go &Up One Level"), _T(""), wxITEM_NORMAL);
-    itemMenu34->AppendSeparator();
-    itemMenu34->Append(ID_VIEW_TOOLBAR, _("&Toolbar"), _T(""), wxITEM_CHECK);
-    itemMenu34->Check(ID_VIEW_TOOLBAR, true);
-    itemMenu34->Append(ID_VIEW_STATUS_BAR, _("Status &Bar"), _T(""), wxITEM_CHECK);
-    itemMenu34->Check(ID_VIEW_STATUS_BAR, true);
-    menuBar->Append(itemMenu34, _("Vie&w"));
+    wxMenu* itemMenu35 = new wxMenu;
+    itemMenu35->Append(ID_VIEW_PHYSICAL, _("&Physical View"), _T(""), wxITEM_RADIO);
+    itemMenu35->Check(ID_VIEW_PHYSICAL, true);
+    itemMenu35->Append(ID_VIEW_VIRTUAL, _("&Virtual View"), _T(""), wxITEM_RADIO);
+    itemMenu35->Append(ID_VIEW_SEARCH, _("&Search View"), _T(""), wxITEM_RADIO);
+    itemMenu35->AppendSeparator();
+    itemMenu35->Append(ID_UP_ONE_FOLDER, _("Go &Up One Level"), _T(""), wxITEM_NORMAL);
+    itemMenu35->AppendSeparator();
+    itemMenu35->Append(ID_VIEW_TOOLBAR, _("&Toolbar"), _T(""), wxITEM_CHECK);
+    itemMenu35->Check(ID_VIEW_TOOLBAR, true);
+    itemMenu35->Append(ID_VIEW_STATUS_BAR, _("Status &Bar"), _T(""), wxITEM_CHECK);
+    itemMenu35->Check(ID_VIEW_STATUS_BAR, true);
+    menuBar->Append(itemMenu35, _("Vie&w"));
 #if defined(__WXMSW__) || defined(__WXGTK__)
-    wxMenu* itemMenu43 = new wxMenu;
+    wxMenu* itemMenu44 = new wxMenu;
 #if defined(__WXMSW__) || defined(__WXGTK__)
-    itemMenu43->Append(wxID_PREFERENCES, _("&Options..."), _T(""), wxITEM_NORMAL);
+    itemMenu44->Append(wxID_PREFERENCES, _("&Options..."), _T(""), wxITEM_NORMAL);
 #endif
-    menuBar->Append(itemMenu43, _("&Tools"));
+    menuBar->Append(itemMenu44, _("&Tools"));
 #endif
-    wxMenu* itemMenu45 = new wxMenu;
-    itemMenu45->Append(ID_HELP_CONTENTS, _("Help &Contents"), _T(""), wxITEM_NORMAL);
+    wxMenu* itemMenu46 = new wxMenu;
+    itemMenu46->Append(ID_HELP_CONTENTS, _("Help &Contents"), _T(""), wxITEM_NORMAL);
 #if defined(__WXMSW__) || defined(__WXGTK__)
-    itemMenu45->AppendSeparator();
+    itemMenu46->AppendSeparator();
 #endif
-    itemMenu45->Append(wxID_ABOUT, _("&About VVV"), _T(""), wxITEM_NORMAL);
-    menuBar->Append(itemMenu45, _("&Help"));
+    itemMenu46->Append(wxID_ABOUT, _("&About VVV..."), _T(""), wxITEM_NORMAL);
+    menuBar->Append(itemMenu46, _("&Help"));
     itemFrame1->SetMenuBar(menuBar);
 
     m_Toolbar = CreateToolBar( wxTB_FLAT|wxTB_HORIZONTAL|wxTB_TEXT, ID_TOOLBAR1 );
@@ -866,13 +871,13 @@ void CMainFrame::CreateControls()
     m_StatusBar->SetStatusWidths(4, m_StatusBarWidths);
     itemFrame1->SetStatusBar(m_StatusBar);
 
-    wxSplitterWindow* itemSplitterWindow50 = new wxSplitterWindow( itemFrame1, ID_SPLITTERWINDOW1, wxDefaultPosition, wxSize(100, 100), wxSP_3DBORDER|wxSP_3DSASH|wxSP_NO_XP_THEME|wxNO_BORDER );
-    itemSplitterWindow50->SetMinimumPaneSize(0);
+    wxSplitterWindow* itemSplitterWindow51 = new wxSplitterWindow( itemFrame1, ID_SPLITTERWINDOW1, wxDefaultPosition, wxSize(100, 100), wxSP_3DBORDER|wxSP_3DSASH|wxSP_NO_XP_THEME|wxNO_BORDER );
+    itemSplitterWindow51->SetMinimumPaneSize(0);
 
-    wxTreeCtrl* itemTreeCtrl51 = new wxTreeCtrl( itemSplitterWindow50, ID_TREE_CONTROL, wxDefaultPosition, wxSize(100, 100), wxTR_HAS_BUTTONS |wxTR_HIDE_ROOT|wxTR_SINGLE|wxNO_BORDER|wxTR_DEFAULT_STYLE );
+    wxTreeCtrl* itemTreeCtrl52 = new wxTreeCtrl( itemSplitterWindow51, ID_TREE_CONTROL, wxDefaultPosition, wxSize(100, 100), wxTR_HAS_BUTTONS |wxTR_HIDE_ROOT|wxTR_SINGLE|wxNO_BORDER|wxTR_DEFAULT_STYLE );
 
-    CRightPaneList* itemListCtrl52 = new CRightPaneList( itemSplitterWindow50, ID_LIST_CONTROL, wxDefaultPosition, wxSize(100, 100), wxLC_REPORT|wxNO_BORDER );
-    itemSplitterWindow50->SplitVertically(itemTreeCtrl51, itemListCtrl52, 50);
+    CRightPaneList* itemListCtrl53 = new CRightPaneList( itemSplitterWindow51, ID_LIST_CONTROL, wxDefaultPosition, wxSize(100, 100), wxLC_REPORT|wxNO_BORDER );
+    itemSplitterWindow51->SplitVertically(itemTreeCtrl52, itemListCtrl53, 50);
 
 ////@end CMainFrame content construction
 
@@ -2503,6 +2508,7 @@ void CMainFrame::OnTreeControlItemMenu( wxTreeEvent& event )
 		// only for voume nodes, not for folders
 		menu.Append( ID_EDIT_RENAME, _("Rename...") );
 		menu.Append( ID_EDIT_DELETE, _("Delete") );
+		menu.Append( ID_UPDATE_VOLUME, _("Update Volume...") );
 	}
 
 	PopupMenu( &menu, pt );
@@ -3746,6 +3752,59 @@ void CMainFrame::OnFileRestoreClick( wxCommandEvent& WXUNUSED(event) )
 
 }
 
+/*!
+ * wxEVT_COMMAND_MENU_SELECTED event handler for ID_UPDATE_VOLUME
+ */
+
+void CMainFrame::OnUpdateVolumeClick( wxCommandEvent& WXUNUSED(event) )
+{
+	wxTreeCtrl *tctl = GetTreePhysicalControl();
+	wxTreeItemId item = tctl->GetSelection();
+	MyTreeItemData *itemData = (MyTreeItemData *) tctl->GetItemData(item);
+	if( !itemData->IsVolume() ) return;
+	wxString volumeName = itemData->GetDesc();
+	long volumeID = itemData->GetVolumeID();
+
+	CDialogUpdateVolume dialog( this, ID_DIALOG_UPDATE_VOLUME, _("Update Volume") );
+	dialog.SetVolumeData( volumeName, volumeID );
+    if( dialog.ShowModal() == wxID_OK )
+		LoadTreeControl();
+}
+
+
+/*!
+ * wxEVT_UPDATE_UI event handler for ID_UPDATE_VOLUME
+ */
+
+void CMainFrame::OnUpdateVolumeUpdate( wxUpdateUIEvent& event )
+{
+	if( CBaseDB::GetDatabase() == NULL ) {
+		event.Enable( false );
+		return;
+	}
+
+	bool enableItem = false;
+
+	if( !m_ListViewHasFocus && m_CurrentView == cvPhysical ) {
+		bool hideElement = false;
+		wxTreeCtrl *tctl = GetTreePhysicalControl();
+		if( tctl->GetCount() > 0 ) {
+			wxTreeItemId item = tctl->GetSelection();
+			if( item.IsOk() ) {
+				if( tctl->GetItemParent(item) != tctl->GetRootItem() ) hideElement = true;
+			}
+			else {
+				hideElement = true;
+			}
+		}
+		else
+			hideElement = true;
+		enableItem = !hideElement;
+	}
+
+	event.Enable( enableItem );
+
+}
 
 void CMainFrame::CDBConnectionData::GetConnectionData( wxString& serverName, wxString& userName, wxString& password ) {
 
@@ -3761,4 +3820,5 @@ void CMainFrame::CDBConnectionData::GetConnectionData( wxString& serverName, wxS
 		password = wxT("masterkey");
 	}
 }
+
 

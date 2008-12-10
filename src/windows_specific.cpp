@@ -54,7 +54,7 @@ wxString GetVolumeName( wxString volume ) {
 
 // add a file to the database
 // this function is not a member of CCatalogVolumeFunction to avoid problems with the definition of WIN32_FIND_DATA
-void AddFileToDBWindows( WIN32_FIND_DATA &ffd, wxString &path, CNullableLong &PathID ) {
+void AddFileToDBWindows( WIN32_FIND_DATA &ffd, wxString &path, CNullableLong& PathID ) {
 	CFiles file;
 	file.FileName = ffd.cFileName;
 	wxFileName fn( path, file.FileName );
@@ -93,16 +93,20 @@ void CCatalogVolumeFunctions::AddFolderToDBWindows( _tfinddata_t &c_file, wxStri
 	file.FileSize = 0;
 	file.PathID = PathID;
 
-	CatalogSingleFolderWindows( db, dirName.GetPath(), VolumeID, PathID, &file );
+	CNullableLong nl;
+	nl.SetNull( true );
+	CatalogUpdateSingleFolderWindows( db, dirName.GetPath(), VolumeID, nl, PathID, &file );
 }
 
-// Windows specific version of CatalogSingleFolder to gain speed
-void CCatalogVolumeFunctions::CatalogSingleFolderWindows( CBaseDB* db, wxString path, long VolumeID, CNullableLong& FatherID, CFiles* PathFile  ) {
+void CCatalogVolumeFunctions::CatalogUpdateSingleFolderWindows( CBaseDB* db, wxString path, long VolumeID, CNullableLong PathID, CNullableLong& FatherID, CFiles* PathFile  ) {
+	bool doUpdate = (!PathID.IsNull());	// true if we must update the folder, false if we must catalog it
+
 	wxString fileName;
 	wxString winPath;	// path to be used for Windows-specific calls
-	
-	// if we are updating a volume it will contain the list of files or folders already stored in the database
+
+	// used when updating: it will contain the list of files or folders already stored in the database
 	map<wxString, CFileData> folderFiles;
+	map<wxString, CFileData>::iterator ffi;
 
 	winPath = path;
 	if( !winPath.EndsWith(wxT("\\")) )
@@ -115,8 +119,14 @@ void CCatalogVolumeFunctions::CatalogSingleFolderWindows( CBaseDB* db, wxString 
 		wxTheApp->Yield();
 	}
 
-	// writes the path row
-	CNullableLong PathID = WritePathRow( path, VolumeID, FatherID );
+	if( doUpdate ) {
+		// fill the map object with the content of the current folder
+		ReadFolderFilesFromDB( folderFiles, PathID );
+	}
+	else {
+		// writes the path row
+		PathID = WritePathRow( path, VolumeID, FatherID );
+	}
 
 	// adds the path id and stores the FILES info about this folder
 	if( PathFile != NULL ) {
@@ -131,11 +141,30 @@ void CCatalogVolumeFunctions::CatalogSingleFolderWindows( CBaseDB* db, wxString 
 		do {
 			if( !(ffd.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY) ) {
 				// exclude folders
-				AddFileToDBWindows( ffd, path, PathID );
+
+				// see if the file is already present
+				// if we are cataloging the folder the map object is empty so we always add
+				ffi = folderFiles.find( ffd.cFileName );
+				if( ffi == folderFiles.end() ) {
+					// not found, add the file to the database
+					AddFileToDBWindows( ffd, path, PathID );
+				}
+				else {
+					ffi->second.IsStillThere = true;
+				}
 			}
 		} while( FindNextFile(sh, &ffd) );
 	}
 	FindClose( sh );
+
+	// scan the map looking for files to be deleted
+	ffi = folderFiles.begin();
+	while( ffi != folderFiles.end() ) {
+		if( !ffi->second.IsStillThere && !ffi->second.IsFolder ) {
+			// we need to delete this file
+		}
+		ffi++;
+	}
 
 	// now reads all the subfolders
 	_tfinddata_t c_file;
@@ -143,23 +172,32 @@ void CCatalogVolumeFunctions::CatalogSingleFolderWindows( CBaseDB* db, wxString 
 	if( hFile != -1L ) {
 		do {
 			if( (c_file.attrib & _A_SUBDIR) && (_tcscmp(c_file.name, wxT(".")) != 0) && (_tcscmp(c_file.name, wxT("..")) != 0) ) {
-				AddFolderToDBWindows( c_file, path, PathID, db, VolumeID );
-				
-				//wxFileName dirName( path, wxEmptyString );
-				//dirName.AppendDir( c_file.name );
-
-				//CFiles file;
-				//file.FileName = c_file.name;
-				//file.FileExt = wxEmptyString;
-				//file.DateTime = c_file.time_write;
-				//file.FileSize = 0;
-				//file.PathID = PathID;
-
-				//CatalogSingleFolderWindows( db, subPath, VolumeID, PathID, &file );
+				// see if the folder is already present
+				ffi = folderFiles.find( c_file.name );
+				if( ffi == folderFiles.end() ) {
+					// new folder, we add it to the DB
+					AddFolderToDBWindows( c_file, path, PathID, db, VolumeID );
+				}		
+				else {
+					// the folder is already in the DB, scan it
+					ffi->second.IsStillThere = true;
+					wxFileName dirName( path, wxEmptyString );
+					dirName.AppendDir( c_file.name );
+					CatalogUpdateSingleFolderWindows( db, dirName.GetPath(), VolumeID, ffi->second.PathFileID, PathID, NULL );
+				}
 			}
 		} while( _tfindnext( hFile, &c_file ) == 0 );
 	}
 	_findclose( hFile );
+
+	// scan the map looking for folders to be deleted
+	ffi = folderFiles.begin();
+	while( ffi != folderFiles.end() ) {
+		if( !ffi->second.IsStillThere && ffi->second.IsFolder ) {
+			// we need to delete this folder
+		}
+		ffi++;
+	}
 }
 
 

@@ -1145,6 +1145,9 @@
 				RelativePath=".\src\settings.cpp">
 			</File>
 			<File
+				RelativePath=".\src\update_volume.cpp">
+			</File>
+			<File
 				RelativePath=".\src\utils.cpp">
 			</File>
 			<File
@@ -1256,6 +1259,9 @@
 			</File>
 			<File
 				RelativePath=".\src\settings.h">
+			</File>
+			<File
+				RelativePath=".\src\update_volume.h">
 			</File>
 			<File
 				RelativePath=".\src\utils.h">

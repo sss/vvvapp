@@ -41,7 +41,11 @@ public:
 	CCatalogVolumeFunctions( wxStaticText *statText );
 	~CCatalogVolumeFunctions(void);
 
+	// catalog a volume that is not already stored in the database
 	void CatalogVolume( wxString volumePath, wxString volumeName );
+
+	// update a volume already in the database, adding new files and so on...
+	void UpdateVolume( wxString volumePath, long volumeID );
 
 private:
 
@@ -53,6 +57,7 @@ private:
 		
 //		wxString FileName;
 		long FileID;
+		CNullableLong PathFileID;
 		wxDateTime DateTime;
 		wxLongLong FileSize;
 		bool IsStillThere;	// true if after a volume directory scan the file has been found
@@ -65,7 +70,9 @@ private:
 	// calls itself for each subfolder
 	// PathFile contains the data of the file that will store data about the current folder (if not NULL)
 	//   each instance of this method will add the ID of the path and it will save it in the database
-	void CatalogSingleFolder( CBaseDB* db, wxString path, long VolumeID, CNullableLong& FatherID, CFiles* PathFile  );
+//	void CatalogSingleFolder( CBaseDB* db, wxString path, long VolumeID, CNullableLong& FatherID, CFiles* PathFile  );
+
+	void CatalogUpdateSingleFolder( CBaseDB* db, wxString path, long VolumeID, CNullableLong PathID, CNullableLong& FatherID, CFiles* PathFile  );
 
 	// add a file to the database
 	void AddFileToDB( wxString &path, wxString &fileName, CNullableLong &PathID );
@@ -76,7 +83,12 @@ private:
 
 #ifdef __WXMSW__
 	// Windows-specific version because the standard one was rather slow
-	void CatalogSingleFolderWindows( CBaseDB* db, wxString path, long VolumeID, CNullableLong& FatherID, CFiles* PathFile  );
+	// path: the path to the current folder (the one to be analyzed by the function)
+	// VolumeID: the ID of the volume the contains the folder
+	// if PathID is null catalog the folder, otherwise update it
+	// PathID: the ID of the current folder if we must update it
+	// FatherID: the ID of the folder that contains the current folder
+	void CatalogUpdateSingleFolderWindows( CBaseDB* db, wxString path, long VolumeID, CNullableLong PathID, CNullableLong& FatherID, CFiles* PathFile  );
 	// add a folder to the database
 	// called by CatalogSingleFolderWindows(), calls again CatalogSingleFolderWindows() recursively
 	void AddFolderToDBWindows( _tfinddata_t &c_file, wxString &path, CNullableLong &PathID, CBaseDB* db, long VolumeID );
