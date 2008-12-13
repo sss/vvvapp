@@ -71,6 +71,8 @@ void CCatalogVolumeFunctions::CatalogVolume( wxString volumePath, wxString volum
 			throw;
 	}
 
+	nUpdatedFiles = nAddedFiles = nDeletedFiles = nUnchangedFiles = 0;
+
 	// catalogs the folders
 	CNullableLong FatherID;
 	FatherID.SetNull(true);
@@ -219,6 +221,7 @@ void CCatalogVolumeFunctions::AddFileToDB( wxString &path, wxString &fileName, C
 	file.PathID = PathID;
 	file.PathFileID.SetNull(true);
 	file.DbInsert();
+	nAddedFiles++;
 
 	if( file.FileExt == wxT("mp3") ) {
 		CFilesAudioMetadata metaData;
@@ -266,6 +269,8 @@ void CCatalogVolumeFunctions::UpdateVolume( wxString volumePath, long volumeID )
 		pth.DBNextRow();
 	}
 
+	nUpdatedFiles = nAddedFiles = nDeletedFiles = nUnchangedFiles = 0;
+
 	// catalogs the folders
 	CNullableLong FatherID;
 	FatherID.SetNull(true);
@@ -275,6 +280,15 @@ void CCatalogVolumeFunctions::UpdateVolume( wxString volumePath, long volumeID )
 #else
 	CatalogUpdateSingleFolder( db, volumePath, volumeID, nlPathID, FatherID, NULL );
 #endif
+
+	if( statText != NULL ) {
+		// we are called from a GUI window so we show a report
+		wxString msg = _("Number of added files: ") + CUtils::long2string(nAddedFiles) + wxT("\n");
+		msg += _("Number of updated files: ") + CUtils::long2string(nUpdatedFiles) + wxT("\n");
+		msg += _("Number of deleted files: ") + CUtils::long2string(nDeletedFiles) + wxT("\n");
+		msg += _("Number of unchanged files: ") + CUtils::long2string(nUnchangedFiles);
+		CUtils::MsgInfo( msg );
+	}
 
 	// commits the transaction
 	db->TransactionCommit();

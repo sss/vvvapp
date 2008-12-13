@@ -148,6 +148,7 @@ void CCatalogVolumeFunctions::CatalogUpdateSingleFolderWindows( CBaseDB* db, wxS
 				if( ffi == folderFiles.end() ) {
 					// not found, add the file to the database
 					AddFileToDBWindows( ffd, path, PathID );
+					nAddedFiles++;
 				}
 				else {
 					ffi->second.IsStillThere = true;
