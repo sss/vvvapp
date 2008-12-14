@@ -159,6 +159,7 @@
         <string name="Compiler location">"%AUTO%"</string>
         <string name="wxWidgets location">"%AUTO%"</string>
         <string name="C++ command">"%AUTO%"</string>
+        <string name="C command">"%AUTO%"</string>
         <string name="Resource compiler">"%AUTO%"</string>
         <string name="Make command">"%AUTO%"</string>
         <string name="Project makefile">"%AUTO%"</string>
@@ -214,6 +215,7 @@
           <string name="Compiler location">"%AUTO%"</string>
           <string name="wxWidgets location">"%AUTO%"</string>
           <string name="C++ command">"%AUTO%"</string>
+          <string name="C command">"%AUTO%"</string>
           <string name="Resource compiler">"%AUTO%"</string>
           <string name="Make command">"%AUTO%"</string>
           <string name="Project makefile">"%AUTO%"</string>
@@ -238,6 +240,7 @@
           <bool name="Suppress source rules">0</bool>
           <bool name="Enable makefile generation">1</bool>
           <string name="CFG">""</string>
+          <string name="Ignore libraries">"%AUTO%"</string>
         </document>
         <document>
           <string name="title">"VC++ Release"</string>
@@ -271,6 +274,7 @@
           <string name="Compiler location">"%AUTO%"</string>
           <string name="wxWidgets location">"%AUTO%"</string>
           <string name="C++ command">"%AUTO%"</string>
+          <string name="C command">"%AUTO%"</string>
           <string name="Resource compiler">"%AUTO%"</string>
           <string name="Make command">"%AUTO%"</string>
           <string name="Project makefile">"%AUTO%"</string>
@@ -295,6 +299,7 @@
           <bool name="Suppress source rules">0</bool>
           <bool name="Enable makefile generation">1</bool>
           <string name="CFG">""</string>
+          <string name="Ignore libraries">"%AUTO%"</string>
         </document>
         <document>
           <string name="title">"VC++ Unicode Debug"</string>
@@ -328,6 +333,7 @@
           <string name="Compiler location">"%AUTO%"</string>
           <string name="wxWidgets location">"%AUTO%"</string>
           <string name="C++ command">"%AUTO%"</string>
+          <string name="C command">"%AUTO%"</string>
           <string name="Resource compiler">"%AUTO%"</string>
           <string name="Make command">"%AUTO%"</string>
           <string name="Project makefile">"%AUTO%"</string>
@@ -352,6 +358,7 @@
           <bool name="Suppress source rules">0</bool>
           <bool name="Enable makefile generation">1</bool>
           <string name="CFG">""</string>
+          <string name="Ignore libraries">"%AUTO%"</string>
         </document>
         <document>
           <string name="title">"VC++ Unicode Release"</string>
@@ -385,6 +392,7 @@
           <string name="Compiler location">"%AUTO%"</string>
           <string name="wxWidgets location">"%AUTO%"</string>
           <string name="C++ command">"%AUTO%"</string>
+          <string name="C command">"%AUTO%"</string>
           <string name="Resource compiler">"%AUTO%"</string>
           <string name="Make command">"%AUTO%"</string>
           <string name="Project makefile">"%AUTO%"</string>
@@ -409,6 +417,7 @@
           <bool name="Suppress source rules">0</bool>
           <bool name="Enable makefile generation">1</bool>
           <string name="CFG">""</string>
+          <string name="Ignore libraries">"%AUTO%"</string>
         </document>
       </document>
     </document>
@@ -1942,6 +1951,14 @@
             <string name="proxy-type">"wbBoxSizerProxy"</string>
             <string name="proxy-Orientation">"Vertical"</string>
             <string name="proxy-Member variable name">""</string>
+            <string name="proxy-AlignH">"Centre"</string>
+            <string name="proxy-AlignV">"Centre"</string>
+            <long name="proxy-Stretch factor">0</long>
+            <long name="proxy-Border">5</long>
+            <bool name="proxy-wxLEFT">1</bool>
+            <bool name="proxy-wxRIGHT">1</bool>
+            <bool name="proxy-wxTOP">1</bool>
+            <bool name="proxy-wxBOTTOM">1</bool>
             <bool name="proxy-wxSHAPED">0</bool>
             <bool name="proxy-wxADJUST_MINSIZE">0</bool>
             <bool name="proxy-wxFIXED_MINSIZE">0</bool>
@@ -11294,6 +11311,32 @@ You cannot enter the name of an existing catalog."</string>
               <bool name="proxy-wxFIXED_MINSIZE">0</bool>
               <string name="proxy-Custom arguments">""</string>
               <string name="proxy-Custom ctor arguments">""</string>
+            </document>
+            <document>
+              <string name="title">"Spacer"</string>
+              <string name="type">"dialog-control-document"</string>
+              <string name="filename">""</string>
+              <string name="icon-name">"spacer"</string>
+              <long name="is-transient">0</long>
+              <long name="owns-file">1</long>
+              <long name="title-mode">0</long>
+              <long name="locked">0</long>
+              <string name="created">"14/12/2008"</string>
+              <string name="proxy-type">"wbSpacerProxy"</string>
+              <long name="proxy-Width">5</long>
+              <long name="proxy-Height">5</long>
+              <string name="proxy-AlignH">"Centre"</string>
+              <string name="proxy-AlignV">"Centre"</string>
+              <long name="proxy-Stretch factor">0</long>
+              <long name="proxy-Border">5</long>
+              <bool name="proxy-wxLEFT">1</bool>
+              <bool name="proxy-wxRIGHT">1</bool>
+              <bool name="proxy-wxTOP">1</bool>
+              <bool name="proxy-wxBOTTOM">1</bool>
+              <bool name="proxy-wxSHAPED">0</bool>
+              <bool name="proxy-wxADJUST_MINSIZE">0</bool>
+              <bool name="proxy-wxFIXED_MINSIZE">0</bool>
+              <string name="proxy-Platform">"&lt;Any platform&gt;"</string>
             </document>
           </document>
         </document>

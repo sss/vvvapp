@@ -211,6 +211,8 @@ void CDialogUpdateVolume::CreateControls()
     m_CurrentFolder = new wxStaticText( itemDialog1, ID_CURRENT_FOLDER, _("Current folder"), wxDefaultPosition, wxDefaultSize, 0 );
     itemBoxSizer2->Add(m_CurrentFolder, 0, wxGROW|wxALL, 5);
 
+    itemBoxSizer2->Add(5, 5, 0, wxALIGN_CENTER_HORIZONTAL|wxALL, 5);
+
 ////@end CDialogUpdateVolume content construction
 
 	m_CurrentFolder->SetLabel( wxEmptyString );
