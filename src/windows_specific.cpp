@@ -52,6 +52,16 @@ wxString GetVolumeName( wxString volume ) {
 	return retVal;
 }
 
+// return the datetime and size of the current file
+void GetFileDateSizeWindows( WIN32_FIND_DATA &ffd, wxDateTime &FileDateTime, wxLongLong &FileSize ) {
+	SYSTEMTIME stLocal;
+	FILETIME ft;
+	FileTimeToLocalFileTime( &ffd.ftLastWriteTime, &ft );
+	FileTimeToSystemTime(&ft, &stLocal);
+	FileDateTime.Set( stLocal.wDay, (wxDateTime::Month) (stLocal.wMonth - 1), stLocal.wYear, stLocal.wHour, stLocal.wMinute, stLocal.wSecond, stLocal.wMilliseconds );
+	FileSize = ( ((__int64)ffd.nFileSizeHigh) << 32 ) + ffd.nFileSizeLow;
+}
+
 // add a file to the database
 // this function is not a member of CCatalogVolumeFunction to avoid problems with the definition of WIN32_FIND_DATA
 void AddFileToDBWindows( WIN32_FIND_DATA &ffd, wxString &path, CNullableLong& PathID ) {
@@ -61,13 +71,12 @@ void AddFileToDBWindows( WIN32_FIND_DATA &ffd, wxString &path, CNullableLong& Pa
 	file.FileExt = fn.GetExt();
 	if( file.FileExt.Len() > 30 ) file.FileExt = wxEmptyString;	// such a long extension is surely a meaningless temporary file
 	
-	SYSTEMTIME stLocal;
-	FILETIME ft;
-	FileTimeToLocalFileTime( &ffd.ftLastWriteTime, &ft );
-	FileTimeToSystemTime(&ft, &stLocal);
-	file.DateTime.Set( stLocal.wDay, (wxDateTime::Month) (stLocal.wMonth - 1), stLocal.wYear, stLocal.wHour, stLocal.wMinute, stLocal.wSecond, stLocal.wMilliseconds );
+	wxDateTime fTime;
+	wxLongLong fSize;
+	GetFileDateSizeWindows( ffd, fTime, fSize );
+	file.DateTime = fTime;
+	file.FileSize = fSize;
 
-	file.FileSize = ( ((__int64)ffd.nFileSizeHigh) << 32 ) + ffd.nFileSizeLow;
 	file.PathID = PathID;
 	file.PathFileID.SetNull(true);
 	file.DbInsert();
@@ -152,6 +161,8 @@ void CCatalogVolumeFunctions::CatalogUpdateSingleFolderWindows( CBaseDB* db, wxS
 				}
 				else {
 					ffi->second.IsStillThere = true;
+					// check if file date or size have changed
+
 				}
 			}
 		} while( FindNextFile(sh, &ffd) );
