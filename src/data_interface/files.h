@@ -64,6 +64,10 @@ public:
 	// updates the decription
 	static void UpdateDescription( long FileID, const wxString& descr );
 
+	// updates file date and size
+	static void UpdateDateSize( long FileID, const wxDateTime& fdt, const wxLongLong& fs );
+
+
 protected:
 
 	// Firebird implementation of the database methods
@@ -73,6 +77,7 @@ protected:
 	void FB_FetchRow(void);
 
 	static void FB_UpdateDescription( long FileID, const wxString& descr );
+	static void FB_UpdateDateSize( long FileID, const wxDateTime& fdt, const wxLongLong& fs );
 };
 
 

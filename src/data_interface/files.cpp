@@ -120,4 +120,13 @@ void CFiles::UpdateDescription( long FileID, const wxString& descr ) {
 	}
 }
 
+void CFiles::UpdateDateSize( long FileID, const wxDateTime& fdt, const wxLongLong& fs ) {
+
+	switch( DatabaseType ) {
+		case dbtFirebird:
+			FB_UpdateDateSize( FileID, fdt, fs );
+			break;
+	}
+}
+
 

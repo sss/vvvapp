@@ -132,3 +132,12 @@ void CFiles::FB_UpdateDescription( long FileID, const wxString& descr ) {
 	FB_ExecuteQueryNoReturn( sql );
 }
 
+void CFiles::FB_UpdateDateSize( long FileID, const wxDateTime& fdt, const wxLongLong& fs ) {
+	wxString sql;
+
+	sql = wxT("UPDATE FILES SET FILE_DATETIME = ") + fdt.Format( wxT("'%Y-%m-%d %H:%M:%S'") ) + wxT(", ");
+	sql += wxT("FILE_SIZE = ") + fs.ToString();
+	sql += wxT(" WHERE FILE_ID = ") + CUtils::long2string( FileID );
+	FB_ExecuteQueryNoReturn( sql );
+}
+

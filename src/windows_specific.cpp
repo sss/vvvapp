@@ -162,7 +162,16 @@ void CCatalogVolumeFunctions::CatalogUpdateSingleFolderWindows( CBaseDB* db, wxS
 				else {
 					ffi->second.IsStillThere = true;
 					// check if file date or size have changed
-
+					wxDateTime fTime;
+					wxLongLong fSize;
+					GetFileDateSizeWindows( ffd, fTime, fSize );
+					if( !fTime.IsEqualUpTo(ffi->second.DateTime, wxTimeSpan::Seconds(10)) || fSize != ffi->second.FileSize ) {
+						CFiles::UpdateDateSize( ffi->second.FileID, fTime, fSize );
+						nUpdatedFiles++;
+					}
+					else {
+						nUnchangedFiles++;
+					}
 				}
 			}
 		} while( FindNextFile(sh, &ffd) );

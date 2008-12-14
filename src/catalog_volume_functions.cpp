@@ -133,6 +133,18 @@ void CCatalogVolumeFunctions::CatalogUpdateSingleFolder( CBaseDB* db, wxString p
 		}
 		else {
 			ffi->second.IsStillThere = true;
+			// check if file date or size have changed
+			wxFileName fn( path, fileName );
+			wxDateTime fTime = fn.GetModificationTime();
+			wxLongLong fSize;
+			fSize = fn.GetSize();
+			if( !fTime.IsEqualUpTo(ffi->second.DateTime, wxTimeSpan::Seconds(10)) || fSize != ffi->second.FileSize ) {
+				CFiles::UpdateDateSize( ffi->second.FileID, fTime, fSize );
+				nUpdatedFiles++;
+			}
+			else {
+				nUnchangedFiles++;
+			}
 		}
 
 		cont = dir.GetNext(&fileName);
