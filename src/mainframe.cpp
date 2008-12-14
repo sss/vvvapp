@@ -3769,6 +3769,7 @@ void CMainFrame::OnUpdateVolumeClick( wxCommandEvent& WXUNUSED(event) )
 	dialog.SetVolumeData( volumeName, volumeID );
     if( dialog.ShowModal() == wxID_OK )
 		LoadTreeControl();
+		DeleteAllListControlItems();
 }
 
 
