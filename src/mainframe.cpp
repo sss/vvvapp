@@ -1898,6 +1898,8 @@ void CMainFrame::OnAddVirtualFolderClick( wxCommandEvent& WXUNUSED(event) )
 			CVirtualPaths::AppendPhysicalPath( physicalFolderId, virtualFolderId );
 	}
 
+	CBaseDB::GetDatabase()->UpdateStatistics( CBaseDB::usVirtual );
+
 	// updates the tree controls
 	LoadVirtualTreeControl();
 }
@@ -3228,6 +3230,8 @@ void CMainFrame::DeleteSelectedVirtualFolder() {
 	// deletes from the tree control
 	tctl->DeleteChildren(item);
 	tctl->Delete(item);
+
+	CBaseDB::GetDatabase()->UpdateStatistics( CBaseDB::usVirtual );
 }
 
 
@@ -3252,6 +3256,8 @@ void CMainFrame::DeleteSelectedVolume() {
 		else
 			throw;
 	}
+
+	CBaseDB::GetDatabase()->UpdateStatistics( CBaseDB::usAll );
 
 	// removes the item from the tree control
 	tctl->Delete(item);
@@ -3436,6 +3442,8 @@ void CMainFrame::DeleteSelectedVirtualFiles() {
 		delete itemData;
 		lctl->DeleteItem( item );
 	}
+
+	CBaseDB::GetDatabase()->UpdateStatistics( CBaseDB::usVirtual );
 
 	m_ListViewHasFocus = true;	// make sure that the value is correct (it might have been lost showing the dialog)
 }

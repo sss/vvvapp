@@ -191,3 +191,35 @@ void CFirebirdDB::UpgradeDatabase( int currentVersion, int finalDBVersion ) {
 
 }
 
+void CFirebirdDB::UpdateStatistics( UpdateStatisticsTables ust ) {
+
+	bool inTransaction = TransactionIsOpened();
+	if( !inTransaction ) {
+		TransactionStart();
+	}
+	Statement st = StatementFactory( GetIBPPDB(), TransactionGetReference() );
+	st->Prepare( "EXECUTE PROCEDURE SP_SET_STATISTICS_TABLE( ? )" );
+
+	if( ust == usAll || ust == usPhysical ) {
+		st->Set( 1, "VOLUMES" );
+		st->Execute();
+		st->Set( 1, "PATHS" );
+		st->Execute();
+		st->Set( 1, "FILES" );
+		st->Execute();
+		st->Set( 1, "FILES_AUDIO_METADATA" );
+		st->Execute();
+	}
+	if( ust == usAll || ust == usVirtual ) {
+		st->Set( 1, "VIRTUAL_PATHS" );
+		st->Execute();
+		st->Set( 1, "VIRTUAL_FILES" );
+		st->Execute();
+	}
+
+	if( !inTransaction ) {
+		TransactionCommit();
+	}
+}
+
+

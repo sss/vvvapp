@@ -37,6 +37,12 @@ class CBaseDB
 {
 public:
 
+	// tables to be affected by UpdateStatistics()
+	// usPhysical: only tables used for the physical view
+	// usVirtual: only tables used for the virtual view
+	// usAll: all tables
+	enum UpdateStatisticsTables { usPhysical, usVirtual, usAll };
+
 	// called to create a Firebird database object. Add other functions to create other type of databases
 	static void CreateFirebirdDatabase( wxString serverName, wxString databaseName, wxString userName, wxString password );
 	
@@ -59,6 +65,9 @@ public:
 	virtual void TransactionCommit(void) = 0;
 	// rolls back the transaction
 	virtual void TransactionRollback(void) = 0;
+
+	// udpate the database statistics. It can be needed for some databases after massive inserts or deletes
+	virtual void UpdateStatistics( UpdateStatisticsTables ust ) = 0;
 
 	// returns the database version
 	int GetDatabaseVersion(void);

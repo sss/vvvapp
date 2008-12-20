@@ -68,6 +68,9 @@ public:
 	// returns a reference to the transaction
 	IBPP::Transaction& TransactionGetReference(void) {return tr;}
 
+	// udpate the database statistics. It can be needed for some databases after massive inserts or deletes
+	void UpdateStatistics( UpdateStatisticsTables ust );
+
 	// creates a new firebird database on disk by restoring a backup
 	// backupName is the name of the backup file that will be restored
 	// databaseName is name of the disk file that will contain the database

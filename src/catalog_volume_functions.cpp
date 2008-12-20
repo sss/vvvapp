@@ -84,6 +84,9 @@ void CCatalogVolumeFunctions::CatalogVolume( wxString volumePath, wxString volum
 	CatalogUpdateSingleFolder( db, volumePath, vol.VolumeID, nl, FatherID, NULL );
 #endif
 
+	// update the database statistics, useful after a massive change
+	db->UpdateStatistics( CBaseDB::usPhysical );
+
 	// commits the transaction
 	db->TransactionCommit();
 }
@@ -300,6 +303,9 @@ void CCatalogVolumeFunctions::UpdateVolume( wxString volumePath, long volumeID )
 #else
 	CatalogUpdateSingleFolder( db, volumePath, volumeID, nlPathID, FatherID, NULL );
 #endif
+
+	// update the database statistics, useful after a massive change
+	db->UpdateStatistics( CBaseDB::usAll );
 
 	if( statText != NULL ) {
 		// we are called from a GUI window so we show a report
