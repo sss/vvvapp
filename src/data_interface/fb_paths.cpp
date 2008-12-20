@@ -22,6 +22,7 @@
 
 #include <wx/filename.h>
 
+#include "data_error.h"
 #include "paths.h"
 #include "firebird_db.h"
 #include "../ibpp/core/ibpp.h"
@@ -77,10 +78,32 @@ void CPaths::FB_DbUpdate(void)
 
 void CPaths::FB_DbDelete(void)
 {
-	wxString sql;
+	bool inTransaction;
+	CFirebirdDB* db = (CFirebirdDB*) CBaseDB::GetDatabase();
+	inTransaction = db->TransactionIsOpened();
+	if( !inTransaction ) {
+		db->TransactionStart();
+	}
+	Statement st = StatementFactory( db->GetIBPPDB(), db->TransactionGetReference() );
 
-	sql = wxT("DELETE FROM PATHS WHERE PATH_ID = ") + CUtils::long2string( PathID );
-	FB_ExecuteQueryNoReturn( sql );
+	try {
+		st->Prepare( "EXECUTE PROCEDURE SP_DELETE_PHYSICAL_FOLDER( ? )" );
+		st->Set( 1, (int32_t) PathID );
+		st->Execute();
+	}
+	catch( IBPP::SQLException& e ) {
+		// catches exceptions in order to convert interesting ones
+		db->TransactionRollback();
+		CDataErrorException::ErrorCause ec;
+		if( CDataErrorException::ConvertFirebirdError( e.EngineCode(), ec )  )
+			throw CDataErrorException( e.ErrorMessage(), ec );
+		else
+			throw;
+	}
+
+	if( !inTransaction ) {
+		db->TransactionCommit();
+	}
 }
 
 

@@ -108,7 +108,8 @@ private:
 	// data used when updating a volume
 	long nUpdatedFiles;		// number of files that have been updated
 	long nAddedFiles;		// number of files that have been added
-	long nDeletedFiles;		// number of files that have been deleted
+	long nDeletedFiles;		// number of files that have been deleted (not counting files in deleted folders)
+	long nDeletedFolders;	// number of folders that that have been deleted
 	long nUnchangedFiles;	// number of files that have not been changed
 
 };

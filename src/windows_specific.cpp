@@ -183,6 +183,10 @@ void CCatalogVolumeFunctions::CatalogUpdateSingleFolderWindows( CBaseDB* db, wxS
 	while( ffi != folderFiles.end() ) {
 		if( !ffi->second.IsStillThere && !ffi->second.IsFolder ) {
 			// we need to delete this file
+			CFiles file;
+			file.FileID = ffi->second.FileID;
+			file.DbDelete();
+			nDeletedFiles++;
 		}
 		ffi++;
 	}
@@ -216,6 +220,10 @@ void CCatalogVolumeFunctions::CatalogUpdateSingleFolderWindows( CBaseDB* db, wxS
 	while( ffi != folderFiles.end() ) {
 		if( !ffi->second.IsStillThere && ffi->second.IsFolder ) {
 			// we need to delete this folder
+			CPaths path;
+			path.PathID = ffi->second.PathFileID;
+			path.DbDelete();
+			nDeletedFolders++;
 		}
 		ffi++;
 	}
