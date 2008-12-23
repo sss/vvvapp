@@ -20,6 +20,8 @@
     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
+#include <iostream>
+
 #include <wx/stdpaths.h>
 #include <wx/filename.h>
 #include "utils.h"
@@ -78,7 +80,7 @@ void CUtils::MsgStderr( wxString errMsg ){
 #ifdef __WXMSW__
 	MsgErr( errMsg );
 #else
-	cerr << wx2std( errMsg );
+	std::cerr << wx2std( errMsg ) << "\n";
 #endif
 }
 
