@@ -39,6 +39,9 @@ public:
 	// returns true if this->VolumeName is already present in the database
 	bool NameExists(void);
 	
+	// return the ID of the volume with this->VolumeName, or -1 if the volume name is not found
+	long GetIDFromName();
+
 	// data members ----------------------------
 	wxString VolumeName;
 	CNullableLong VolumeID;

@@ -63,6 +63,7 @@
 #include "wx/fileconf.h"
 
 #include "vvv.h"
+#include "catalog_volume_functions.h"
 #include "data_interface/base_db.h"
 #include "data_interface/data_error.h"
 
@@ -155,9 +156,23 @@ bool CVvvApp::OnInit()
 	//    specifies the name of a file used to store the program's settings. Used to make VVV a portable app. If relative it is relative to the exe location.
 	// -d <folder name>
 	//    specifies the default folder when creating a new catalog. Used to make VVV a portable app. If relative it is relative to the exe location.
+	// -u
+	//    update a volume in command line mode, no GUI
+	// -v <volume name>
+	//    name of the volume to be updated
+	// -vp <volume path>
+	//    specifies the path of the volume in the file system. If relative it is relative to the exe location.
+	m_CatalogName = wxEmptyString;
+	m_SettingsFileName = wxEmptyString;
+	m_CLIUpdate = false;
+	m_VolumeName = wxEmptyString;
+	m_VolumePath = wxEmptyString;
 	wxCmdLineParser cmdParser( g_cmdLineDesc, argc, argv );
 	cmdParser.AddOption( wxT("s"), wxT("SettingsFile") );
 	cmdParser.AddOption( wxT("d"), wxT("DefaultDataFolder") );
+	cmdParser.AddSwitch( wxT("u"), wxT("UpdateFromCommandLine") );
+	cmdParser.AddOption( wxT("v"), wxT("VolumeName") );
+	cmdParser.AddOption( wxT("vp"), wxT("VolumePath") );
 	int res;
 	{
 		wxLogNull log;
@@ -200,6 +215,23 @@ bool CVvvApp::OnInit()
 				m_DefaultDataFolder = fn.GetFullPath();
 			}
 		}
+		if( cmdParser.Found( wxT("u") ) ) {
+			m_CLIUpdate = true;
+		}
+		if( cmdParser.Found( wxT("v"), &m_VolumeName ) ) {
+			// nothing to do
+		}
+		if( cmdParser.Found( wxT("vp"), &m_VolumePath ) ) {
+			if( !wxIsAbsolutePath(m_VolumePath) ) {
+				// the path must be relative to the application's path
+				wxString appPath = wxStandardPaths::Get().GetExecutablePath();
+				wxFileName tmp(appPath );
+				appPath = tmp.GetPath();	// removes the program's name
+				wxFileName fn( m_VolumePath );
+				fn.MakeAbsolute( appPath );
+				m_VolumePath = fn.GetFullPath();
+			}
+		}
 	}
 
 	// if a settings file name has been passed as an option, create the corresponding config object
@@ -231,10 +263,6 @@ bool CVvvApp::OnInit()
 		}
 	}
 
-////@begin CVvvApp initialisation
-	// Remove the comment markers above and below this block
-	// to make permanent changes to the code.
-
 #if wxUSE_XPM
 	wxImage::AddHandler(new wxXPMHandler);
 #endif
@@ -247,10 +275,7 @@ bool CVvvApp::OnInit()
 #if wxUSE_GIF
 	wxImage::AddHandler(new wxGIFHandler);
 #endif
-	CMainFrame* mainWindow = new CMainFrame( NULL, ID_MAIN_FRAME );
-	mainWindow->Show(true);
-////@end CVvvApp initialisation
-
+	mainWindow = new CMainFrame( NULL, ID_MAIN_FRAME );
 
 	return true;
 }
@@ -276,6 +301,12 @@ int CVvvApp::OnExit()
 // derived to add exception handling
 int CVvvApp::OnRun() {
 
+	if( m_CLIUpdate ) {
+		// update a volume without showing a GUI and return
+		return UpdateVolume( m_CatalogName, m_VolumeName, m_VolumePath );
+	}
+	
+	mainWindow->Show(true);
 	try {
 		return wxApp::OnRun();
 	}
@@ -307,3 +338,75 @@ bool CVvvApp::OnExceptionInMainLoop() {
 //	return true;
 	throw;
 }
+
+
+int CVvvApp::UpdateVolume( wxString catalogName, wxString volumeName, wxString volumePath ) {
+
+	wxString serverName, userName, password;
+	wxMessageOutputStderr err;
+
+	if( catalogName.empty() ) {
+		CUtils::MsgStderr( _("Missing catalog name") );
+		return -1;
+	}
+	if( volumeName.empty() ) {
+		CUtils::MsgStderr( _("Missing volume name") );
+		return -1;
+	}
+	if( volumePath.empty() ) {
+		CUtils::MsgStderr( _("Missing volume path") );
+		return -1;
+	}
+	if( !wxDirExists(volumePath) ) {
+		CUtils::MsgStderr( _("The volume path does not exists") );
+		return -1;
+	}
+
+	//// open the database
+	//mainWindow->DBConnectionData.GetConnectionData( serverName, userName, password );
+	//CBaseDB::CreateFirebirdDatabase( serverName, catalogName, userName, password );
+	//try {
+	//	CBaseDB::GetDatabase()->Connect();
+	//}
+	//catch( CDataErrorException e ) {
+	//	switch( e.GetErrorCause()  ) {
+	//		case CDataErrorException::ecDatabaseNotFound:
+	//			err.Printf( _("Catalog not found:\n\n") + catalogName );
+	//			return -1;
+	//		case CDataErrorException::ecWrongUsernameOrPassword:
+	//			err.Printf( _("Incorrect username or password for the following database:\n\n") + catalogName );
+	//			return -1;
+	//		case CDataErrorException::ecServerNotFound:
+	//			if( mainWindow->DBConnectionData.connectToServer )
+	//				err.Printf( _("Unable to connect to the following server:\n\n") + serverName );
+	//			else
+	//				err.Printf( _("Unable to open the catalog.\nPlease note that you are not connected to a database server so you cannot open a catalog located on another computer in the network.\nIf you want to open a catalog on another computer you must connect to the database server (Tools/Options menu).") );
+	//			return -1;
+	//		default:
+	//			throw;
+	//	}
+	//}
+
+	//// check catalog version
+	//int dbVersion = CBaseDB::GetDatabase()->GetDatabaseVersion();
+	//if( dbVersion != CUtils::GetExpectedDatabaseVersion() ) {
+	//	err.Printf( _("The catalog structure needs to be upgraded but this is not possible in command line mode.\nYou need to open the catalog in standard GUI mode to automatically upgrade it.") );
+	//	return -1;
+	//}
+
+	// retrieve the volume ID
+	CVolumes vol;
+	vol.VolumeName = volumeName;
+	long volumeID = vol.GetIDFromName();
+	if( volumeID < 0 ) {
+		CUtils::MsgStderr( _("Volume name not found") );
+		return -1;
+	}
+
+	// update the volume
+	CCatalogVolumeFunctions cvf( NULL );
+	cvf.UpdateVolume( volumePath, volumeID );
+
+	return 0;
+}
+

@@ -375,6 +375,17 @@ public:
 		amdChannels
 	};
 
+	// struct to hold data for database server connection
+	struct CDBConnectionData {
+		bool connectToServer;	// true of we want to connect to a server
+		wxString serverName;
+		wxString userName;
+		wxString password;
+		bool IsLocalhost() { return (serverName == wxT("localhost")) || (serverName == wxT("127.0.0.1")); }
+		// set the correct value in the database access strings
+		void GetConnectionData( wxString& serverName, wxString& userName, wxString& password );
+	} DBConnectionData;
+
 private:
 
 	// the possible views available in the program
@@ -425,17 +436,6 @@ private:
 	// number and total size of the files shown in each view
 	long nPhysicalFiles, nVirtualFiles, nSearchFiles;
 	wxLongLong sizePhysicalFiles, sizeVirtualFiles, sizeSearchFiles;
-
-	// struct to hold data for database server connection
-	struct CDBConnectionData {
-		bool connectToServer;	// true of we want to connect to a server
-		wxString serverName;
-		wxString userName;
-		wxString password;
-		bool IsLocalhost() { return (serverName == wxT("localhost")) || (serverName == wxT("127.0.0.1")); }
-		// set the correct value in the database access strings
-		void GetConnectionData( wxString& serverName, wxString& userName, wxString& password );
-	} DBConnectionData;
 
 	// minimum duration of a task (in seconds) before playing a beep at task end
 	int m_BeepTime;

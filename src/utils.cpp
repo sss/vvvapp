@@ -74,6 +74,14 @@ void CUtils::MsgErr( wxString errMsg ){
 	dialog.ShowModal();
 }
 
+void CUtils::MsgStderr( wxString errMsg ){
+#ifdef __WXMSW__
+	MsgErr( errMsg );
+#else
+	cerr << wx2std( errMsg );
+#endif
+}
+
 void CUtils::MsgInfo( wxString infoMsg ){
 	wxMessageDialog dialog( NULL, infoMsg, applicationName, wxOK|wxICON_INFORMATION );
 	dialog.ShowModal();

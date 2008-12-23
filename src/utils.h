@@ -49,6 +49,9 @@ public:
 	// displays an error message
 	static void MsgErr( wxString errMsg );
 
+	// displays an error message to stderr if available, otherwise uses a message box
+	static void MsgStderr( wxString errMsg );
+
 	// displays an information message
 	static void MsgInfo( wxString infoMsg );
 

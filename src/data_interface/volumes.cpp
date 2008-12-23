@@ -52,6 +52,20 @@ bool CVolumes::NameExists(void) {
 	return retVal;
 }
 
+long CVolumes::GetIDFromName() {
+	long retVal = -1;
+
+	DBStartMultiRowQuery( wxT("SELECT * FROM VOLUMES WHERE VOLUME_NAME = '") + ExpandSingleQuotes(VolumeName) + wxT("'"), true );
+	while( !IsEOF() ) {
+		// this query should return only one row
+		DBNextRow();
+		retVal = VolumeID;
+	}
+	// at this point "this" should contain the volume's data
+
+	return retVal;
+}
+
 void CVolumes::DBStartQueryListVolumes(void) {
 	DBStartMultiRowQuery( wxT("SELECT * FROM VOLUMES ORDER BY UPPER(VOLUME_NAME)"), true );
 }

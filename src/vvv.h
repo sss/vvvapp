@@ -117,7 +117,14 @@ public:
 
 private:
 
-    wxLocale m_locale;
+	// update a volume without user interface, return 0 if OK
+	// open the catalog, update the volume and return
+	int UpdateVolume( wxString catalogName, wxString volumeName, wxString volumePath );
+
+	// pointer to the main frame of the program
+	CMainFrame* mainWindow;
+
+	wxLocale m_locale;
 
 	// name of the catalog passed in the command line
 	wxString m_CatalogName;
@@ -127,6 +134,11 @@ private:
 
 	// name of the default folder when creating a new catalog. Used for the portable version.
 	wxString m_DefaultDataFolder;
+
+	// used for running the program in command line mode (no GUI)
+	bool m_CLIUpdate;	// true if we must update a catalog in command line mode
+	wxString m_VolumeName;	// volume name for the command line action. Currently the only one is "Update"
+	wxString m_VolumePath;	// path of the physical volume in the file system
 
 
 	// help controller

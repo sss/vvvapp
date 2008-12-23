@@ -1,0 +1,42 @@
+It is possible to pass the name of a catalog file to the command line.
+
+It is also possible to use some command line options. The available command line options are the following:
+
+options to use the program as a portable app
+--------------------------------------------
+
+-s <file name>
+   specifies the name of a file used to store the program's settings. Used to make VVV a portable app.
+   Note that it is a full file name, not a path to a folder. The file name can be relative to the exe's folder or absolute.
+
+   So for example you can use the following command lines:
+
+   vvv -s "..\Data\Settings\VVV Settings File.txt"
+   vvv -s:"..\Data\Settings\VVV Settings File.txt"
+   vvv -s"..\Data\Settings\VVV Settings File.txt"
+
+-d <folder name>
+   specifies the default folder when creating a new catalog. Used to make VVV a portable app. If relative it is relative to the exe location.
+
+   
+options to use the program from the command line
+------------------------------------------------
+
+These options are used to run the program from the command line instead of running it as a GUI application.
+They can be used to update volumes from command lines.
+
+-v <volume name>
+   specifies a volume name to be processed. <volume name> is a string.
+   
+-vp <volume path>
+   specifies the path of the volume to be processed in the file system. If relative it is relative to the exe location.
+   
+-u
+   update the volume. This switch causes VVV tu run in command line mode instead of showing a GUI.
+   When using this switch you always need to pass a catalog name and a volume path in the command line.
+   The program will not reopen the last used catalog, since it might change.
+   
+So to update a volume in batch mode you must use both the three switches above and supply a catalog name. For example:
+
+vvv -u -v:"Ever changing volume" -vp:"D:\" "C:\Catalogs\MyCatalog.vvv"
+
