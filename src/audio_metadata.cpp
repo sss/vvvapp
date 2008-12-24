@@ -25,30 +25,59 @@
 
 wxString CAudioMetadata::field2wx( ID3_Field* myField ) {
 	char *str1 = new char[1024];
+	unicode_t *wstr1 = new unicode_t[1024];
 	wxString retVal;
-	myField->Get(str1, 1024);
+
 	ID3_TextEnc enc = myField->GetEncoding();
 	switch( enc ) {
 		case ID3TE_UTF8:
+			myField->Get(str1, 1024);
 			retVal = CUtils::std2wx( str1, &wxConvUTF8 );
 			break;
+		case ID3TE_UTF16:
+			myField->Get(wstr1, 1024);
+			wstr1[myField->Size()/sizeof(unicode_t)] = L'\0';
+			for (unsigned int i = 0; i < myField->Size()/sizeof(unicode_t); i++)
+				wstr1[i] = wxUINT16_SWAP_ALWAYS(wstr1[i]);
+			{
+				wxString s( wstr1 );
+				retVal = s;
+			}
+			break;
 		case ID3TE_ISO8859_1:
+			myField->Get(str1, 1024);
 			retVal = CUtils::std2wx( str1, &wxConvISO8859_1 );
 			break;
 		default:
+			myField->Get(str1, 1024);
 			retVal = CUtils::std2wx( str1 );
 			break;
 	}
 	delete str1;
+	delete wstr1;
 	return retVal;
 }
 
 bool CAudioMetadata::ReadMP3Metadata( wxString fileName, CFilesAudioMetadata& metaData ) {
 	char *str1 = new char[1024];
+	unicode_t *wstr1 = new unicode_t[1024];
 	bool found = false;
 
 //	ID3_Tag myTag( fileName.fn_str() );
-	ID3_Tag myTag( fileName.char_str() );
+//	ID3_Tag myTag( fileName.char_str() );
+
+	// code taken from the eMule source files: thank you!
+	// ID3LIB BUG: If there are ID3v2 _and_ ID3v1 tags available, id3lib
+	// destroys (actually corrupts) the Unicode strings from ID3v2 tags due to
+	// converting Unicode to ASCII and then convertion back from ASCII to Unicode.
+	// To prevent this, we force the reading of ID3v2 tags only, in case there are 
+	// also ID3v1 tags available.
+	ID3_Tag myTag;
+	size_t id3Size = myTag.Link(fileName.char_str(), ID3TT_ID3V2);
+	if (id3Size == 0) {
+		myTag.Clear();
+		myTag.Link(fileName.char_str(), ID3TT_ID3V1);
+	}
 
 	ID3_Frame* myFrame = myTag.Find(ID3FID_LEADARTIST);
 	if( myFrame != NULL ) {
@@ -122,8 +151,22 @@ bool CAudioMetadata::ReadMP3Metadata( wxString fileName, CFilesAudioMetadata& me
 	if( myFrame != NULL ) {
 		ID3_Field* myField = myFrame->GetField(ID3FN_TEXT);
 		if( myField != NULL ) {
-			myField->Get(str1, 1024);
-			wxString s = CUtils::std2wx( str1 );
+			ID3_TextEnc enc = myField->GetEncoding();
+			wxString s;
+			if( enc == ID3TE_UTF16 ) {
+				myField->Get(wstr1, 1024);
+				wstr1[myField->Size()/sizeof(unicode_t)] = L'\0';
+				for (unsigned int i = 0; i < myField->Size()/sizeof(unicode_t); i++)
+					wstr1[i] = wxUINT16_SWAP_ALWAYS(wstr1[i]);
+				{
+					wxString stmp( wstr1 );
+					s = stmp;
+				}
+			}
+			else {
+				myField->Get(str1, 1024);
+				s = CUtils::std2wx( str1 );
+			}
 			if( s[0] == '(' ) {
 				// decodes genre
 				s = s.AfterFirst( '(' );
@@ -163,6 +206,7 @@ bool CAudioMetadata::ReadMP3Metadata( wxString fileName, CFilesAudioMetadata& me
 	}
 
 	delete str1;
+	delete wstr1;
 
 	return found;
 }
