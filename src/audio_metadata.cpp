@@ -40,7 +40,7 @@ wxString CAudioMetadata::field2wx( ID3_Field* myField ) {
 			for (unsigned int i = 0; i < myField->Size()/sizeof(unicode_t); i++)
 				wstr1[i] = wxUINT16_SWAP_ALWAYS(wstr1[i]);
 			{
-				wxString s( wstr1 );
+				wxString s( (wxChar*) wstr1 );
 				retVal = s;
 			}
 			break;
@@ -159,7 +159,7 @@ bool CAudioMetadata::ReadMP3Metadata( wxString fileName, CFilesAudioMetadata& me
 				for (unsigned int i = 0; i < myField->Size()/sizeof(unicode_t); i++)
 					wstr1[i] = wxUINT16_SWAP_ALWAYS(wstr1[i]);
 				{
-					wxString stmp( wstr1 );
+					wxString stmp( (wxChar*) wstr1 );
 					s = stmp;
 				}
 			}
