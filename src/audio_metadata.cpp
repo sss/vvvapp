@@ -39,10 +39,7 @@ wxString CAudioMetadata::field2wx( ID3_Field* myField ) {
 			wstr1[myField->Size()/sizeof(unicode_t)] = L'\0';
 			for (unsigned int i = 0; i < myField->Size()/sizeof(unicode_t); i++)
 				wstr1[i] = wxUINT16_SWAP_ALWAYS(wstr1[i]);
-			{
-				wxString s( (wxChar*) wstr1 );
-				retVal = s;
-			}
+			retVal = CUtils::UTF162wx( (const char *) wstr1 );
 			break;
 		case ID3TE_ISO8859_1:
 			myField->Get(str1, 1024);
@@ -158,10 +155,7 @@ bool CAudioMetadata::ReadMP3Metadata( wxString fileName, CFilesAudioMetadata& me
 				wstr1[myField->Size()/sizeof(unicode_t)] = L'\0';
 				for (unsigned int i = 0; i < myField->Size()/sizeof(unicode_t); i++)
 					wstr1[i] = wxUINT16_SWAP_ALWAYS(wstr1[i]);
-				{
-					wxString stmp( (wxChar*) wstr1 );
-					s = stmp;
-				}
+				s = CUtils::UTF162wx( (const char *) wstr1 );
 			}
 			else {
 				myField->Get(str1, 1024);

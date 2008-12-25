@@ -43,6 +43,9 @@ public:
 	static std::string DBwx2std(const wxString& input);
 	static wxString DBstd2wx(const std::string& input);
 
+	// convert an UTF16 string to a wxString
+	static wxString UTF162wx( const char *strUTF16 ); 
+
 	// returns the size of a file in human readable format (KB, MB and so on...)
 	static wxString HumanReadableFileSize( wxLongLong size );
 

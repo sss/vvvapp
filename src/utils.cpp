@@ -70,6 +70,22 @@ wxString CUtils::DBstd2wx( const std::string& input ) {
 }
 
 
+wxString CUtils::UTF162wx( const char *strUTF16 ) {
+	wxString retVal;
+#if SIZEOF_WCHAR_T == 2
+	wxString s( (wxChar*) strUTF16 );
+	retVal = s;
+#else
+	wxMBConvUTF16 converter ;
+	wchar_t *uniChars = new wchar_t[1024];
+	int n = converter.MB2WC( uniChars, (const char *) strUTF16, 1000 );
+	wxString s( (wxChar*) uniChars );
+	retVal = s;
+	delete uniChars;
+#endif
+	return retVal;
+}
+
 
 void CUtils::MsgErr( wxString errMsg ){
 	wxMessageDialog dialog( NULL, errMsg, applicationName, wxOK|wxICON_ERROR );
