@@ -32,7 +32,7 @@ They can be used to update volumes from command lines.
    specifies the path of the volume to be processed in the file system. If relative it is relative to the exe location.
    
 -u
-   update the volume. This switch causes VVV tu run in command line mode instead of showing a GUI.
+   update the volume. This switch causes VVV to run in command line mode instead of showing a GUI.
    When using this switch you always need to pass a catalog name and a volume path in the command line.
    The program will not reopen the last used catalog, since it might change.
    

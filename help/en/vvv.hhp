@@ -5,7 +5,8 @@ Contents file=vvv.hhc
 Compiled file=vvv.chm
 Default Window=Help
 Default topic=welcome.htm
-Charset=utf-8
+Language=0x809 English (United Kingdom)
+Default Font=MS Sans Serif,8,0
 Index file=vvv.hhk
 Title=VVV Help
 
@@ -17,6 +18,7 @@ welcome.htm
 getting_started.htm
 network_usage.htm
 backup_and_restore.htm
+command_line_switches.htm
 doc-0005.htm
 catalog_volume.htm
 general_settings.htm
@@ -24,6 +26,7 @@ mp3_settings.htm
 server_settings.htm
 export_data.htm
 restore_catalog.htm
+update_volume.htm
 
 [ALIAS]
 #include "vvv_alias.h"

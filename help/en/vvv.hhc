@@ -1,10 +1,12 @@
 <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
 <HTML>
 <HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta name="GENERATOR" content="HelpBlocks">
 <!-- Sitemap 1.0 -->
 </HEAD><BODY>
 <OBJECT type="text/site properties">
+<param name="Font" value="MS Sans Serif,8,0">
 </OBJECT>
 <UL>
   <LI><OBJECT type="text/sitemap">
@@ -22,6 +24,10 @@
   <LI><OBJECT type="text/sitemap">
       <param name="Name" value="Backup and restore">
       <param name="Local" value="backup_and_restore.htm">
+      </OBJECT>
+  <LI><OBJECT type="text/sitemap">
+      <param name="Name" value="Command line switches">
+      <param name="Local" value="command_line_switches.htm">
       </OBJECT>
   <LI><OBJECT type="text/sitemap">
       <param name="Name" value="VVV Dialogs">
@@ -51,6 +57,10 @@
     <LI><OBJECT type="text/sitemap">
         <param name="Name" value="Restore catalog">
         <param name="Local" value="restore_catalog.htm">
+        </OBJECT>
+    <LI><OBJECT type="text/sitemap">
+        <param name="Name" value="Update volume">
+        <param name="Local" value="update_volume.htm">
         </OBJECT>
   </UL>
 </UL>

@@ -44,3 +44,11 @@ When you have typed some text you can choose the scope of your search. You can s
 Now press the <B>Search</B> button to start the search.<P>
 
 These are the main VVV commands. After you have experimented with them you can look at the <B>Edit</B> menu that contains commands to rename and delete volumes and folders. It is also possible to add a description to files and folders.
+
+<H3>Updating volumes</H3>
+
+The physical volumes cataloged by VVV may change after some time. It is possible to add more sessions to a CD/DVD disk, and many people are using VVV to catalog the contents of removable hard disks.<P>
+
+It is possible to update an already cataloged volume: VVV will compare the volume and the information already stored in the catalog. Any new file in the volume will be added to the catalog, files deleted from the volume will be removed from the catalog. Files in the volume with a changed size or date/time will be updated in the catalog.<P>
+
+To update a volume select it in the left pane and select the <B>Volumes/Update Volume</B> menu. You can also right-click the volume and select <B>Update</B> from the context menu.

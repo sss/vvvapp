@@ -48,6 +48,7 @@
 ////@begin includes
 ////@end includes
 
+#include "vvv.h"
 #include "update_volume.h"
 #include "utils.h"
 #include "long_task_beep.h"
@@ -72,6 +73,8 @@ BEGIN_EVENT_TABLE( CDialogUpdateVolume, wxDialog )
 
 ////@begin CDialogUpdateVolume event table entries
     EVT_BUTTON( ID_VOLUME_BROWSE, CDialogUpdateVolume::OnVolumeBrowseClick )
+
+    EVT_BUTTON( wxID_HELP, CDialogUpdateVolume::OnHelpClick )
 
     EVT_BUTTON( ID_BUTTON_UPDATE, CDialogUpdateVolume::OnButtonUpdateClick )
 
@@ -309,4 +312,15 @@ void CDialogUpdateVolume::SetVolumeData(wxString volumeName, long volumeID) {
 }
 
 
+
+
+/*!
+ * wxEVT_COMMAND_BUTTON_CLICKED event handler for wxID_HELP
+ */
+
+void CDialogUpdateVolume::OnHelpClick( wxCommandEvent& WXUNUSED(event) )
+{
+	wxGetApp().GetHelpController()->DisplaySection( wxT("update_volume.htm") );
+
+}
 

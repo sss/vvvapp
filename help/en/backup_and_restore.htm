@@ -1,0 +1,31 @@
+
+<HTML>
+<head>
+ <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+ <title>Backup and restore</title></head>
+
+<BODY TOPMARGIN=4 BGCOLOR=#FFFFFF TEXT=#000000 VLINK=#000000 LINK=#000000 ALINK=#000000>
+<FONT FACE="Verdana, Arial, Lucida, Helvetica">
+
+<H2>Backup and restore</H2>
+You should do backup copies of your catalogs to avoid data loss in case of hardware failure or theft, for example.<P>
+
+The simplest way to do this is to directly copy the catalog files (*.vvv), but there is also another solution.<P>
+
+VVV stores data using a relational database (Firebird) so there is a way to create dedicated backup files.<BR>
+You cannot use directly those backup files, but you must restore them before using them. Those backups are usually much smaller than catalog files, and a backup-and-restore cycle will usually produce a smaller catalog file.<P>
+
+Anyway, you can safely copy a catalog file if VVV is configured in single-user mode (the default), as long as VVV is not running.<P>
+
+On the other hand, if VVV is configured for network usage many users can connect to the same catalog at the same time, and you cannot be sure that nobody is using it. You should stop the database server before copying a catalog file or you could cause corruption in the catalog.<BR>
+For this reason, if you are using VVV in multi-user configuration, it is recommended to make a backup instead of directly copying the catalog file. Backup is designed in such a way that other users connected to the catalog will not cause problems.<BR>
+You must be working at the server computer in order to backup or restore a catalog.<P>
+
+Moreover, the database producers recommend using a backup to move a catalog from a computer platform to another, for example from Windows to Linux.<P>
+
+Use the <B>File/Backup</B> menu command to create a backup of the current catalog.<BR>
+Use the <B>File/Restore</B> menu command to restore a backup to a new catalog.
+
+
+
+</FONT></BODY></HTML>

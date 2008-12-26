@@ -102,6 +102,9 @@ public:
     /// wxEVT_COMMAND_BUTTON_CLICKED event handler for ID_VOLUME_BROWSE
     void OnVolumeBrowseClick( wxCommandEvent& event );
 
+    /// wxEVT_COMMAND_BUTTON_CLICKED event handler for wxID_HELP
+    void OnHelpClick( wxCommandEvent& event );
+
     /// wxEVT_COMMAND_BUTTON_CLICKED event handler for ID_BUTTON_UPDATE
     void OnButtonUpdateClick( wxCommandEvent& event );
 

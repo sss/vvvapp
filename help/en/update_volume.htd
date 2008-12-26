@@ -1,0 +1,9 @@
+This window is used to update the content of a volume that has been already cataloged.<P>
+
+The program will compare the volume and the information already stored in the catalog. Any new file in the volume will be added to the catalog, files deleted from the volume will be removed from the catalog. Files in the volume with a changed size or date/time will be updated in the catalog.<P>
+
+Insert a disk, select or type the path of the CD/DVD drive and press the <B>Update</B> button to update the catalog data with the disk content.<P>
+
+At the end of the volume scan VVV will show you a report of the update activity: number of files added, removed and so on. Press the <b>Yes</b> button to accept the changes, press the <b>No</b> button to discard them without modifying the catalog.<P>
+
+<b><FONT COLOR="#FF0000">CAUTION:</FONT></b> be careful to choose the right volume in the catalog. Selecting a volume in VVV and updating it with another physical volume will make you lose the cataloged data of the original volume. The report showed at the end of the update is useful to catch this kind of problem: if you see a very high number of new and deleted files you can answer <B>No</B> and check that you have selected the right volume in the catalog.
