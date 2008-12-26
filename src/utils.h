@@ -62,6 +62,10 @@ public:
 	// returns true if the user has chosen yes
 	static bool MsgAskNo( wxString msg );
 
+	// ask a question to the user. possible answers: yes (default) or no
+	// returns true if the user has chosen yes
+	static bool MsgAskYes( wxString msg );
+
 	// returns the application name
 	static wxString GetApplicationName(void);
 

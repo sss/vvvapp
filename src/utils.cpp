@@ -110,6 +110,10 @@ bool CUtils::MsgAskNo( wxString msg ){
 	return dialog.ShowModal() == wxID_YES;
 }
 
+bool CUtils::MsgAskYes( wxString msg ){
+	wxMessageDialog dialog( NULL, msg, applicationName, wxYES_NO|wxYES_DEFAULT|wxICON_EXCLAMATION );
+	return dialog.ShowModal() == wxID_YES;
+}
 
 wxString CUtils::HumanReadableFileSize( wxLongLong size ) {
 	wxString retVal;

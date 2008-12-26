@@ -307,18 +307,23 @@ void CCatalogVolumeFunctions::UpdateVolume( wxString volumePath, long volumeID )
 	// update the database statistics, useful after a massive change
 	db->UpdateStatistics( CBaseDB::usAll );
 
+	bool doCommit = true;
 	if( statText != NULL ) {
 		// we are called from a GUI window so we show a report
 		wxString msg = _("Number of added files: ") + CUtils::long2string(nAddedFiles) + wxT("\n");
 		msg += _("Number of updated files: ") + CUtils::long2string(nUpdatedFiles) + wxT("\n");
 		msg += _("Number of deleted files (not counting those in deleted folders): ") + CUtils::long2string(nDeletedFiles) + wxT("\n");
 		msg += _("Number of deleted folders: ") + CUtils::long2string(nDeletedFolders) + wxT("\n");
-		msg += _("Number of unchanged files: ") + CUtils::long2string(nUnchangedFiles);
-		CUtils::MsgInfo( msg );
+		msg += _("Number of unchanged files: ") + CUtils::long2string(nUnchangedFiles) + wxT("\n") + wxT("\n");
+		msg += _("Do you really want to update the volume?");
+		doCommit = CUtils::MsgAskYes( msg );
 	}
 
 	// commits the transaction
-	db->TransactionCommit();
+	if( doCommit )
+		db->TransactionCommit();
+	else
+		db->TransactionRollback();
 
 }
 
