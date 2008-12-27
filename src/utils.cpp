@@ -24,6 +24,7 @@
 
 #include <wx/stdpaths.h>
 #include <wx/filename.h>
+#include <wx/filefn.h>
 #include "utils.h"
 
 wxString CUtils::applicationName = wxT("VVV");
@@ -190,5 +191,20 @@ wxString CUtils::GetHelpFileName(void) {
 	wxString fullName = fn.GetFullPath();
 	return fullName;
 }
+
+bool CUtils::FileIsLink( wxString fileName ) {
+#ifdef __WXMSW__
+	// Windows does not have symlinks
+	return false;
+#else
+	wxStructStat buf;
+	if (!wxLstat(fileName, &buf))
+		return (S_ISLNK(buf.st_mode) != 0);
+	else
+		return false;
+#endif
+}
+
+
 
 

@@ -140,7 +140,10 @@ void CCatalogVolumeFunctions::CatalogUpdateSingleFolder( CBaseDB* db, wxString p
 			wxFileName fn( path, fileName );
 			wxDateTime fTime = fn.GetModificationTime();
 			wxLongLong fSize;
-			fSize = fn.GetSize();
+			if( !CUtils::FileIsLink(fn.GetFullPath()) )
+				fSize = fn.GetSize();
+			else
+				fSize = 0;
 			if( !fTime.IsEqualUpTo(ffi->second.DateTime, wxTimeSpan::Seconds(10)) || fSize != ffi->second.FileSize ) {
 				CFiles::UpdateDateSize( ffi->second.FileID, fTime, fSize );
 				nUpdatedFiles++;
@@ -180,7 +183,9 @@ void CCatalogVolumeFunctions::CatalogUpdateSingleFolder( CBaseDB* db, wxString p
 			ffi->second.IsStillThere = true;
 			wxFileName dirName( path, wxEmptyString );
 			dirName.AppendDir( fileName );
-			CatalogUpdateSingleFolder( db, dirName.GetPath(), VolumeID, ffi->second.PathFileID, PathID, NULL );
+			if( !CUtils::FileIsLink(dirName.GetFullPath()) ) {
+				CatalogUpdateSingleFolder( db, dirName.GetPath(), VolumeID, ffi->second.PathFileID, PathID, NULL );
+			}
 		}
 
 		cont = dir.GetNext(&fileName);
@@ -240,7 +245,10 @@ void CCatalogVolumeFunctions::AddFileToDB( wxString &path, wxString &fileName, C
 	file.FileExt = fn.GetExt();
 	if( file.FileExt.Len() > 30 ) file.FileExt = wxEmptyString;	// such a long extension is surely a meaningless temporary file
 	file.DateTime = fn.GetModificationTime();
-	file.FileSize = fn.GetSize();
+	if( !CUtils::FileIsLink(fn.GetFullPath()) )
+		file.FileSize = fn.GetSize();
+	else
+		file.FileSize = 0;	// store symlinks as files with zero lenght
 	file.PathID = PathID;
 	file.PathFileID.SetNull(true);
 	file.DbInsert();
@@ -267,9 +275,16 @@ void CCatalogVolumeFunctions::AddFolderToDB( wxString &path, wxString &fileName,
 	file.FileSize = 0;
 	file.PathID = PathID;
 
-	CNullableLong nl;
-	nl.SetNull( true );
-	CatalogUpdateSingleFolder( db, dirName.GetPath(), VolumeID, nl, PathID, &file );
+	if( !CUtils::FileIsLink(dirName.GetFullPath()) ) {
+		CNullableLong nl;
+		nl.SetNull( true );
+		CatalogUpdateSingleFolder( db, dirName.GetPath(), VolumeID, nl, PathID, &file );
+	}
+	else {
+		// store a symlink to a path as a zero length file
+		file.PathFileID.SetNull(true);
+		file.DbInsert();
+	}
 }
 
 void CCatalogVolumeFunctions::UpdateVolume( wxString volumePath, long volumeID ) {

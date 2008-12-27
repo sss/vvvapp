@@ -94,6 +94,9 @@ public:
 	// used to convert old databases to the new UTF8 format
 	static void ConvertDbToUnicode( wxString oldDB, wxString newDB );
 
+	// return true if the specified file or folder is a symlink
+	static bool FileIsLink( wxString fileName );
+
 private:
 	// name of the current application
 	static wxString applicationName;
