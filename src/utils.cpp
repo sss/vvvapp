@@ -20,6 +20,10 @@
     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
+#ifndef __WXMSW__
+#include<errno.h>
+#endif
+
 #include <iostream>
 
 #include <wx/stdpaths.h>
@@ -198,13 +202,19 @@ bool CUtils::FileIsLink( wxString fileName ) {
 	return false;
 #else
 	wxStructStat buf;
-	if (!wxLstat(fileName, &buf))
-		return (S_ISLNK(buf.st_mode) != 0);
+
+	// remove trailing path separator if any
+	wxString sep( wxFileName::GetPathSeparator() );
+	if( fileName.EndsWith(sep) ) {
+		fileName = fileName.Left( fileName.Len() - 1 );
+	}
+
+	if( wxLstat(fileName, &buf) == 0 ) {
+		bool r = S_ISLNK(buf.st_mode);
+		return r;
+	}
 	else
 		return false;
 #endif
 }
-
-
-
 
