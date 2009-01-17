@@ -458,6 +458,11 @@ private:
 	// true to force usage of the English version instead of the localized one
 	bool m_forceEnglishLanguage;
 
+	// if true ignore events that would slow down the program
+	// used because calling DeleteAllItems() causes a selection changed event for all the elements of the tree control
+	// and each one would fill the right pane with data that would not be seen slowing things a lot
+	bool m_IgnoreTreeCtrlEvents;
+
 	// fills the physical tree control
 	void LoadTreeControl(void);
 	// loads a volume and its folders in the tree control

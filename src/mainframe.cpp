@@ -765,6 +765,7 @@ void CMainFrame::Init()
 	sizePhysicalFiles = sizeVirtualFiles =  sizeSearchFiles = 0;
 
 	m_CurrentlyShowingAudioMetadata = false;
+	m_IgnoreTreeCtrlEvents = false;
 }
 
 /*!
@@ -1046,6 +1047,9 @@ void CMainFrame::OnCatalogVolumeClick( wxCommandEvent& WXUNUSED(event) )
 
 void CMainFrame::LoadTreeControl(void) {
 
+	DeleteAllListControlItems();
+	wxYield();
+
 	wxTreeCtrl* tctl = GetTreePhysicalControl();
 	wxImageList* iml = new wxImageList( 16, 16 );
 	wxIcon ico(removable_xpm);
@@ -1054,7 +1058,9 @@ void CMainFrame::LoadTreeControl(void) {
 	iml->Add(wxIcon(folder_opened_xpm));
 	tctl->AssignImageList( iml );
 
+	m_IgnoreTreeCtrlEvents = true;
 	tctl->DeleteAllItems();
+	m_IgnoreTreeCtrlEvents= false;
 
 	// adds a root item that will not be visible
 	wxTreeItemId rootID = tctl->AddRoot( wxT("Root") );
@@ -1223,6 +1229,7 @@ void CMainFrame::OnTreeControlItemExpanding( wxTreeEvent& event )
 
 void CMainFrame::OnTreeControlSelChanged( wxTreeEvent& event )
 {
+	if( m_IgnoreTreeCtrlEvents ) return;
 	if( m_CurrentView != cvPhysical ) return;
 
 	wxTreeItemId itemID = event.GetItem();
