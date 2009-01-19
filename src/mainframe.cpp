@@ -2316,12 +2316,20 @@ void CMainFrame::OnABOUTClick( wxCommandEvent& WXUNUSED(event) )
 	info.SetName( wxT("VVV") );
 	info.SetVersion( CUtils::GetApplicationVersion() );
 	info.SetWebSite( wxT("http://vvvapp.sourceforge.net/") );
-	info.SetDescription( _("VVV (Virtual Volumes View): a program to catalog removable devices like CDs and DVDs\n\n\"The mud of Venaus is the blood of this land\"") );
-	info.SetCopyright( _("Copyright (C) 2007-2008 The VVV Team") );
+	info.SetDescription( _("VVV (Virtual Volumes View): a program to catalog removable devices like CDs and DVDs") );
+	info.SetCopyright( _("Copyright (C) 2007-2009 The VVV Team") );
 	info.AddDeveloper( _("Fulvio Senore: main developer") );
-	info.AddDeveloper( _("Jan Albartus: worked at the portable version and designed the application's icon") );
+	info.AddDeveloper( _("\nJan Albartus: worked at the portable version and designed the application's icon") );
 	info.AddArtist( _("This program uses icons from the Gnome, Ubuntu and Crystal icons projects") );
 	info.SetLicence( _("This is open source software, distributed under the GNU GENERAL PUBLIC LICENSE") );
+	info.AddTranslator( wxString(wxT("Karel Kozlík: ")) + _("Czech") );
+	info.AddTranslator( wxString(wxT("Steve Köhler: ")) + _("German") );
+	info.AddTranslator( wxString(wxT("David de Castro: ")) + _("Spanish") );
+	info.AddTranslator( wxString(wxT("Frédéric Gacquer: ")) + _("French") );
+	info.AddTranslator( wxString(wxT("Hasan Osmanagic: ")) + _("Croatian") );
+	info.AddTranslator( wxString(wxT("Fulvio Senore: ")) + _("Italian") );
+	info.AddTranslator( wxString(wxT("Grzegorz Skoczylas: ")) + _("Polish") );
+	info.AddTranslator( wxString(wxT("Pedro Cunha: ")) + _("Portuguese") );
 
 	wxAboutBox( info );
 }
