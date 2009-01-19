@@ -4,20 +4,19 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2008-07-26 10:06+0100\n"
 "PO-Revision-Date: \n"
-"Last-Translator: \n"
+"Last-Translator: Grzegorz Skoczylas <gskoczylas@rekrod.pl>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-Basepath: ..\\src\n"
 "X-Poedit-Language: Polish\n"
 "X-Poedit-Country: POLAND\n"
-"X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-SearchPath-0: ..\\src\n"
 
 #: ..\src/catalog_volume.cpp:174
 msgid "Enter or select the volume to catalog"
-msgstr "Wpisz lub wybierz nośnik do skanowania."
+msgstr "Wpisz lub wskaż wolumen do skatalogowania"
 
 #: ..\src/catalog_volume.cpp:183
 #: ..\src/exportdata.cpp:223
@@ -29,11 +28,11 @@ msgstr "..."
 
 #: ..\src/catalog_volume.cpp:186
 msgid "Volume name"
-msgstr "Nazwa nośnika"
+msgstr "Nazwa wolumenu"
 
 #: ..\src/catalog_volume.cpp:196
 msgid "Get volume name"
-msgstr "Wpisz lub pobierz nazwę nośnika"
+msgstr "Pobierz nazwę wolumenu"
 
 #: ..\src/catalog_volume.cpp:204
 #: ..\src/exportdata.cpp:230
@@ -43,44 +42,44 @@ msgstr "Wpisz lub pobierz nazwę nośnika"
 #: ..\src/restore.cpp:205
 #: ..\src/vvv.cpp:139
 msgid "&Help"
-msgstr "Pomoc"
+msgstr "Pomo&c"
 
 #: ..\src/catalog_volume.cpp:209
 #: ..\src/mainframe.cpp:838
 msgid "Catalog"
-msgstr "Dodaj"
+msgstr "Katalog"
 
 #: ..\src/catalog_volume.cpp:212
 msgid "&Close"
-msgstr "Zamknij"
+msgstr "&Zamknij"
 
 #: ..\src/catalog_volume.cpp:215
 msgid "Current folder"
-msgstr "Aktualny folder"
+msgstr "Bieżący folder"
 
 #: ..\src/catalog_volume.cpp:218
 msgid "Previously cataloged volumes"
-msgstr "Poprzednio skatalogowany nośnik"
+msgstr "Wolumeny skatalogowane uprzednio"
 
 #: ..\src/catalog_volume.cpp:288
 msgid "The volume path is missing"
-msgstr "Nośnik nie odnaleziony"
+msgstr "Brak ścieżki wolumenu"
 
 #: ..\src/catalog_volume.cpp:293
 msgid "The volume name is missing"
-msgstr "Nazwa nośnika nie znaleziona"
+msgstr "Brak nazwy wolumenu"
 
 #: ..\src/catalog_volume.cpp:316
 msgid "This volume name is already present in the database"
-msgstr "Ta nazwa nośnika jest już w bazie danych"
+msgstr "Taka nazwa wolumenu już wystaępuje w bazie danych"
 
 #: ..\src/catalog_volume.cpp:448
 msgid "Select the volume to catalog"
-msgstr "Wybierz nośnik do skatalogowania"
+msgstr "Wskaż wolumen do skatalogowania"
 
 #: ..\src/choose_virtual_folder.cpp:157
 msgid "Please select the virtual folder that will receive the selected files and/or folders:"
-msgstr "Wybierz folder wirtualny dla wybranych plików lub folderów:"
+msgstr "Proszę wskazać wirtualny folder, do którego zostaną przesłane wybrane pliki i/lub foldery"
 
 #: ..\src/choose_virtual_folder.cpp:169
 #: ..\src/choose_virtual_folder.cpp:187
@@ -106,19 +105,19 @@ msgstr "&OK"
 #: ..\src/restore.cpp:196
 #: ..\src/restore.cpp:210
 msgid "&Cancel"
-msgstr "Anuluj"
+msgstr "&Anuluj"
 
 #: ..\src/convert_db_unicode.cpp:520
 msgid "Conversion is about to start: a message will tell you when it will be completed."
-msgstr "Konwersja zaczyna się: o jej zakończeniu poinformuje komunikat."
+msgstr "Zaraz rozpocznie się konwersja; po jej zakończeniu otrzymasz wiadomość."
 
 #: ..\src/convert_db_unicode.cpp:546
 msgid "Conversion completed"
-msgstr "Konwersja ukończona"
+msgstr "Konwersja została zakończona"
 
 #: ..\src/exportdata.cpp:191
 msgid "Use this window to export data to a CSV file"
-msgstr "Użyj tego okna do eksportu danych do pliku CSV"
+msgstr "Użyj to okno do eksportu danych do pliku w formacie CSV"
 
 #: ..\src/exportdata.cpp:195
 msgid "Comma"
@@ -130,7 +129,7 @@ msgstr "TAB"
 
 #: ..\src/exportdata.cpp:197
 msgid "Pipe"
-msgstr "Kreska pionowa"
+msgstr "Pionowa kreska"
 
 #: ..\src/exportdata.cpp:198
 msgid "Separator"
@@ -143,24 +142,24 @@ msgstr "Dołącz nagłówki"
 #: ..\src/exportdata.cpp:207
 #: ..\src/mainframe.cpp:930
 msgid "All physical volumes"
-msgstr "Wszystkie nośniki fizyczne"
+msgstr "Wszystkie fizyczne wolumeny"
 
 #: ..\src/exportdata.cpp:208
 msgid "Selected physical volume/folder"
-msgstr "Wybrany fizyczny nośnik/folder"
+msgstr "Wskaż fizyczny wolumen/folder"
 
 #: ..\src/exportdata.cpp:209
 #: ..\src/mainframe.cpp:932
 msgid "Selected virtual folder"
-msgstr "Wybrany folder wirtualny"
+msgstr "Wskaż wirtualny folder"
 
 #: ..\src/exportdata.cpp:210
 msgid "Export"
-msgstr "Eksport"
+msgstr "Eksportuj"
 
 #: ..\src/exportdata.cpp:214
 msgid "File name:"
-msgstr "Nazwa pliku:"
+msgstr "Plik:"
 
 #: ..\src/exportdata.cpp:309
 msgid "CSV files (*.csv;*.txt)|*.csv;*.txt|All files (*.*)|*.*"
@@ -168,11 +167,11 @@ msgstr "Pliki CSV (*.csv;*.txt)|*.csv;*.txt|Wszystkie pliki (*.*)|*.*"
 
 #: ..\src/exportdata.cpp:336
 msgid "Please enter a file name"
-msgstr "Wprowadź nazwę pliku"
+msgstr "Proszę wpisać nazwę pliku"
 
 #: ..\src/exportdata.cpp:341
 msgid "The output file already exists: do you want to overwrite it?"
-msgstr "Plik już istnieje: czy chcesz go nadpisać?"
+msgstr "Plik wynikowy już istnieje; czy chcesz zapisać do niego nową zawartość?"
 
 #: ..\src/exportdata.cpp:344
 #: ..\src/exportdata.cpp:358
@@ -189,23 +188,23 @@ msgstr "Nazwa"
 #: ..\src/exportdata.cpp:526
 #: ..\src/mainframe.cpp:1255
 msgid "Size"
-msgstr "Wielkość"
+msgstr "Rozmiar"
 
 #: ..\src/exportdata.cpp:524
 #: ..\src/exportdata.cpp:526
 #: ..\src/mainframe.cpp:1259
 msgid "Ext"
-msgstr "Rozszerzenie"
+msgstr "Typ"
 
 #: ..\src/exportdata.cpp:524
 #: ..\src/exportdata.cpp:526
 #: ..\src/mainframe.cpp:1263
 msgid "Last modified"
-msgstr "Czas"
+msgstr "Ostatnia zmiana"
 
 #: ..\src/exportdata.cpp:524
 msgid "PhysicalPath"
-msgstr "Ścieżka fizyczna"
+msgstr "Fizyczna ścieżka"
 
 #: ..\src/exportdata.cpp:524
 #: ..\src/exportdata.cpp:526
@@ -217,7 +216,7 @@ msgstr "Opis"
 
 #: ..\src/exportdata.cpp:526
 msgid "Volume"
-msgstr "Nośnik"
+msgstr "Wolumen"
 
 #: ..\src/exportdata.cpp:526
 msgid "Path"
@@ -228,7 +227,7 @@ msgid ""
 "This catalog file does not exist:\n"
 "\n"
 msgstr ""
-"Plik katalogu nie istnieje:\n"
+"Plik tego katalogu nie istnieje:\n"
 "\n"
 
 # Part of the File menu
@@ -244,31 +243,31 @@ msgstr "&Otwórz..."
 # Part of the File menu
 #: ..\src/mainframe.cpp:775
 msgid "&Export..."
-msgstr "&Eksport..."
+msgstr "&Eksportuj..."
 
 # Part of the File menu
 #: ..\src/mainframe.cpp:777
 msgid "&Backup..."
-msgstr "&Kopia zapasowa..."
+msgstr "&Kopiuj..."
 
 # Part of the File menu
 #: ..\src/mainframe.cpp:778
 msgid "&Restore..."
-msgstr "&Przywróć..."
+msgstr "O&dtwórz"
 
 # Part of the File menu
 #: ..\src/mainframe.cpp:780
 msgid "E&xit"
-msgstr "&Wyjście"
+msgstr "Konie&c"
 
 #: ..\src/mainframe.cpp:781
 msgid "&File"
-msgstr "Plik"
+msgstr "&Plik"
 
 # Part of the Edit menu
 #: ..\src/mainframe.cpp:783
 msgid "&Add To Virtual Folder..."
-msgstr "&Dodaj do folderu wirtualnego..."
+msgstr "&Dodaj do wirtualnego foldera..."
 
 # Part of the Edit menu
 #: ..\src/mainframe.cpp:785
@@ -278,7 +277,7 @@ msgstr "&Zmień nazwę...\tF2"
 # Part of the Edit menu
 #: ..\src/mainframe.cpp:786
 msgid "&Delete"
-msgstr "Skasuj"
+msgstr "&Usuń"
 
 # Part of the Edit menu
 #: ..\src/mainframe.cpp:788
@@ -288,64 +287,64 @@ msgstr "&Opis obiektu..."
 # Part of the Edit menu
 #: ..\src/mainframe.cpp:790
 msgid "&New Virtual Root Folder..."
-msgstr "&Utwórz folder wirtualny..."
+msgstr "&Nowy wirtualny folder bazowy..."
 
 # Part of the Edit menu
 #: ..\src/mainframe.cpp:791
 msgid "New Virtual &Subfolder..."
-msgstr "Utwórz wirtualny &podfolder..."
+msgstr "Nowy wirtualny &folder podrzędny..."
 
 #: ..\src/mainframe.cpp:793
 #: ..\src/mainframe.cpp:815
 msgid "&Options..."
-msgstr "Opcje"
+msgstr "&Opcje..."
 
 #: ..\src/mainframe.cpp:795
 msgid "&Edit"
-msgstr "&Edytuj"
+msgstr "&Edycja"
 
 # Part of the Volumes menu
 #: ..\src/mainframe.cpp:797
 msgid "&Catalog Volume..."
-msgstr "&Dodaj nośnik..."
+msgstr "Wolumen &Katalogu"
 
 #: ..\src/mainframe.cpp:798
 msgid "&Volumes"
-msgstr "&Dodaj"
+msgstr "&Wolumeny"
 
 # Part of the View menu
 #: ..\src/mainframe.cpp:800
 msgid "&Physical View"
-msgstr "&Widok fizyczny"
+msgstr "Widok &fizyczny"
 
 # Part of the View menu
 #: ..\src/mainframe.cpp:802
 msgid "&Virtual View"
-msgstr "&Widok wirtualny"
+msgstr "Widok &wirtualny"
 
 # Part of the View menu
 #: ..\src/mainframe.cpp:803
 msgid "&Search View"
-msgstr "&Widok wyszukiwania"
+msgstr "Widok &szukania"
 
 # Part of the View menu
 #: ..\src/mainframe.cpp:805
 msgid "Go &Up One Level"
-msgstr "Idź &Poziom wyżej"
+msgstr "Przejdź &wyżej o jeden poziom"
 
 # Part of the View menu
 #: ..\src/mainframe.cpp:807
 msgid "&Toolbar"
-msgstr "Pasek narzędzi"
+msgstr "Pasek &przycisków"
 
 # Part of the View menu
 #: ..\src/mainframe.cpp:809
 msgid "Status &Bar"
-msgstr "Pasek stanu"
+msgstr "Pasek &statusu"
 
 #: ..\src/mainframe.cpp:811
 msgid "Vie&w"
-msgstr "Widok"
+msgstr "&Widok"
 
 #: ..\src/mainframe.cpp:817
 msgid "&Tools"
@@ -353,11 +352,11 @@ msgstr "&Narzędzia"
 
 #: ..\src/mainframe.cpp:820
 msgid "Help &Contents"
-msgstr "Zawartość pomocy"
+msgstr "&Zawartość pomocy"
 
 #: ..\src/mainframe.cpp:824
 msgid "&About VVV"
-msgstr "O VVV"
+msgstr "&O programie VVV"
 
 #: ..\src/mainframe.cpp:832
 msgid "New"
@@ -377,7 +376,7 @@ msgstr "Otwórz istniejący katalog"
 
 #: ..\src/mainframe.cpp:838
 msgid "Catalog a new volume"
-msgstr "Dodaj nowy nośnik do katalogu"
+msgstr "Utwórz nowy wolumen"
 
 #: ..\src/mainframe.cpp:841
 msgid "Up"
@@ -385,43 +384,43 @@ msgstr "W górę"
 
 #: ..\src/mainframe.cpp:841
 msgid "Move up one level"
-msgstr "Do góry o jeden poziom"
+msgstr "Przejdź jeden poziom wyżej"
 
 #: ..\src/mainframe.cpp:845
 msgid "Physical"
-msgstr "Fizyczne"
+msgstr "Fizyczny"
 
 #: ..\src/mainframe.cpp:845
 msgid "Show the physical view"
-msgstr "Pokaż fizyczne nośniki"
+msgstr "Pokaż widok fizyczny"
 
 #: ..\src/mainframe.cpp:848
 msgid "Virtual"
-msgstr "Wirtualne"
+msgstr "Wirtualny"
 
 #: ..\src/mainframe.cpp:848
 msgid "Show the virtual view"
-msgstr "Pokaż wirtualne foldery"
+msgstr "Polaż widok wirtualny"
 
 #: ..\src/mainframe.cpp:851
 #: ..\src/mainframe.cpp:933
 #: ..\src/mainframe.cpp:939
 msgid "Search"
-msgstr "Wyszukaj"
+msgstr "Szukanie"
 
 #: ..\src/mainframe.cpp:851
 msgid "Show the search view"
-msgstr "Pokaż wyszukane:"
+msgstr "Pokaż widok szukania"
 
 #: ..\src/mainframe.cpp:896
 #: ..\src/mainframe.cpp:917
 msgid "Is equal to:"
-msgstr "Pasuje do:"
+msgstr "Jest taki:"
 
 #: ..\src/mainframe.cpp:897
 #: ..\src/mainframe.cpp:918
 msgid "Starts with:"
-msgstr "Zaczyna się na:"
+msgstr "Zaczyna się od:"
 
 #: ..\src/mainframe.cpp:898
 #: ..\src/mainframe.cpp:919
@@ -438,11 +437,11 @@ msgstr "Rozszerzenie:"
 
 #: ..\src/mainframe.cpp:931
 msgid "Selected physical folder"
-msgstr "Wybrane foldery fizyczne"
+msgstr "Wskaż fizyczny folder"
 
 #: ..\src/mainframe.cpp:1032
 msgid "Catalog volume"
-msgstr "Dodawanie nośnika do katalogu"
+msgstr "Wolumen katalogu"
 
 #: ..\src/mainframe.cpp:1268
 msgid "Physical path"
@@ -480,7 +479,7 @@ msgstr "Numer"
 #: ..\src/mainframe.cpp:1348
 #: ..\src/settings.cpp:228
 msgid "Genre"
-msgstr "Gatunek"
+msgstr "Rodzaj"
 
 #: ..\src/mainframe.cpp:1353
 #: ..\src/settings.cpp:232
@@ -509,39 +508,39 @@ msgstr "Otwórz katalog"
 #: ..\src/mainframe.cpp:1401
 #: ..\src/mainframe.cpp:3522
 msgid "VVV  files (*.vvv)|*.vvv|All files (*.*)|*.*"
-msgstr "pliki VVV  (*.vvv)|*.vvv|Wszystkie pliki (*.*)|*.*"
+msgstr "Pliki VVV (*.vvv)|*.vvv|Wszystkie pliki (*.*)|*.*"
 
 #: ..\src/mainframe.cpp:1846
 msgid "Choose virtual folder"
-msgstr "Wybierz wirtualny folder"
+msgstr "Wybierz folder wirtualny"
 
 #: ..\src/mainframe.cpp:1927
 msgid "New virtual root folder"
-msgstr "Nowy główny folder wirtualny"
+msgstr "Nowy główny wirtualny folder"
 
 #: ..\src/mainframe.cpp:1955
 msgid "New virtual subfolder"
-msgstr "Nowy wirtualny podfolder"
+msgstr "Nowy wirtualny folder podrzędny"
 
 #: ..\src/mainframe.cpp:1973
 msgid "Enter the new folder name"
-msgstr "Wprowadź nową nazwę folderu"
+msgstr "Wpisz nazwę nowego folderu"
 
 #: ..\src/mainframe.cpp:1988
 #: ..\src/mainframe.cpp:3303
 msgid "The new folder name is already present in the database"
-msgstr "Wybrana nazwa folderu jest już w bazie danych"
+msgstr "Nowa nazwa folderu już istnieje w bazie danych"
 
 #: ..\src/mainframe.cpp:2041
 msgid "This catalog file does not exist any more"
-msgstr "Ten plik katalogu nigdy nie istniał"
+msgstr "Ten katalog już nie istnieje"
 
 #: ..\src/mainframe.cpp:2071
 msgid ""
 "Catalog not found:\n"
 "\n"
 msgstr ""
-"Nie odnaleziono katalogu:\n"
+"Katalog nie został znaleziony:\n"
 "\n"
 
 #: ..\src/mainframe.cpp:2075
@@ -549,7 +548,7 @@ msgid ""
 "Incorrect username or password for the following database:\n"
 "\n"
 msgstr ""
-"Nieprawidłowa nazwa użytkowanika lub hasło dla następującej bazy danych:\n"
+"Niepoprawna nazwa użytkownika lub hasło dostępu do bazy danych:\n"
 "\n"
 
 #: ..\src/mainframe.cpp:2080
@@ -557,7 +556,7 @@ msgid ""
 "Unable to connect to the following server:\n"
 "\n"
 msgstr ""
-"Nie można połączyć się z następującym serwerem:\n"
+"Nie można połączyć się z serwerem:\n"
 "\n"
 
 #: ..\src/mainframe.cpp:2082
@@ -566,9 +565,9 @@ msgid ""
 "Please note that you are not connected to a database server so you cannot open a catalog located on another computer in the network.\n"
 "If you want to open a catalog on another computer you must connect to the database server (Tools/Options menu)."
 msgstr ""
-"Nie można otworzyć katalogu. \n"
-"Zauważ, że nie jesteś połączony z bazą danych na serwerze, dlatego nie możesz otworzyć katalogu na innym komputerze w sieci. \n"
-"Jeśli chcesz otworzyć katalog na innym komputerze musisz połączyć się z serwerem bazy danych (Narzędzia/Opcje)."
+"Nie można otworzyć katalogu.\n"
+"Zwróć uwagę, że nie ma połączenia z serwerem baz danych. Nie możesz więc otworzyć katalogu innego komputera w sieci.\n"
+"Jeżeli chcesz otworzyć katalog na innym komputerze to musisz połączyć się z serwerem baz danych (menu Narzędzia/Opcje)."
 
 #: ..\src/mainframe.cpp:2104
 msgid ""
@@ -576,20 +575,20 @@ msgid ""
 "\n"
 "You can try reinstalling the program to solve this problem."
 msgstr ""
-"Ten katalog został utworzony w poprzedniej wersji VVV i musi zostać zaktualizowany, ale brakuje pliku z listą aktualizacjacji. \n"
+"Ten katalog został utworzony przy pomocy poprzedniej wersji programu i musi zostać zaktualizowany, ale brak pliku zawierającego listę aktualizacji.\n"
 "\n"
-"Spróbuj przeinstalować program aby rozwiązać ten problem."
+"Możesz spróbować zainstalować program ponownie, aby rozwiązać tenproblem."
 
 #: ..\src/mainframe.cpp:2108
 msgid "Upgrading the catalog, please wait..."
-msgstr "Aktualizacja katalogu, proszę czekać..."
+msgstr "Aktualizowanie katalogu - proszę czekać..."
 
 #: ..\src/mainframe.cpp:2120
 msgid ""
 "This catalog has been created with an older version of VVV so you need to convert it to a newer format.\n"
 "\n"
 msgstr ""
-"Ten katalog został utworzony w starszej wersji VVV, musisz przekonwertować go na nowy format. \n"
+"Ten katalog został utworzony przy pomocy starszej wersji programu VVV. Musisz go skonwertować do nowszego formatu.\n"
 "\n"
 
 #: ..\src/mainframe.cpp:2121
@@ -597,12 +596,12 @@ msgid ""
 "The conversion will create a new catalog with the same data as the older one, then you will use this new catalog with VVV. You will not use the older catalog any more.\n"
 "\n"
 msgstr ""
-"Konwersja utworzy nowy katalog z takimi samymi danymi jak ten stary, potem będziesz go używał w VVV. Nie będziesz używał więcej starego katalogu.\n"
+"Konwersja utworzy nowy katalog z takimi samymi danym, jak w starszym katalogu. W programie VVV będzie używany nowy katalog. Starszy katalog nie będzie wykorzystywany nigdy więcej.\n"
 "\n"
 
 #: ..\src/mainframe.cpp:2122
 msgid "Do you want to convert the catatalog creating a new one?"
-msgstr "Czy chcesz przekonwertować ten katalog tworząc nowy?"
+msgstr "Czy chcesz skonwertować ten katalog tworząc nowy katalog?"
 
 #: ..\src/mainframe.cpp:2126
 #: ..\src/mainframe.cpp:2318
@@ -613,11 +612,11 @@ msgid ""
 msgstr ""
 "Nie można utworzyć nowego katalogu.\n"
 "\n"
-"Jesteś połączony z z serwerem bazy danych na innym komputerze. Musisz uruchomić ten program na serwerze aby móc utworzyć nowy katalog."
+"Łączysz się z serwerem baz danych w innym komputerze. Musisz wykonać ten program na serwerze aby móc utworzyć nowy katalog."
 
 #: ..\src/mainframe.cpp:2130
 msgid "Convert to a new catalog"
-msgstr "Przekonwertuj do nowego katalogu"
+msgstr "Konwertuj do nowego katalogu"
 
 #: ..\src/mainframe.cpp:2138
 #: ..\src/mainframe.cpp:2330
@@ -626,9 +625,9 @@ msgid ""
 "\n"
 "You can try reinstalling the program to solve this problem."
 msgstr ""
-"Nie można znaleźć kopii zapasowej bazy danych do odtworzenia.\n"
+"Nie mogę znaleźć kopii bezpieczeństwa bazy danych do odtworzenia.\n"
 "\n"
-"Spróbuj przeinstalować program aby rozwiązać ten problem."
+"Aby rozwiązać ten problem, możesz spróbować zainstalować program ponownie."
 
 #: ..\src/mainframe.cpp:2301
 msgid ""
@@ -636,9 +635,9 @@ msgid ""
 "\n"
 "\"The mud of Venaus is the blood of this land\""
 msgstr ""
-"VVV (Virtual Volumes View): program do katalogowania nośników wyjmowalnych takich jak CD i DVD\n"
+"VVV (Virtual Volumes View - Widok Wirtaulnych Wolumenów): program do katalogowania zawartości urządzeń takich jak CD  i DVD\n"
 "\n"
-"\"Błoto z Venaus jest krwią tej ziemi\""
+"\"The mud of Venaus is the blood of this land\""
 
 #: ..\src/mainframe.cpp:2302
 msgid "Copyright (C) 2007-2008 The VVV Team"
@@ -646,19 +645,19 @@ msgstr "Copyright (C) 2007-2008 The VVV Team"
 
 #: ..\src/mainframe.cpp:2303
 msgid "Fulvio Senore: main developer"
-msgstr "Fulvio Senore: szef projektu"
+msgstr "Fulvio Senore: główny programista"
 
 #: ..\src/mainframe.cpp:2304
 msgid "Jan Albartus: worked at the portable version and designed the application's icon"
-msgstr "Jan Albartus: opracował wersję portable i zaprojektował ikony aplikacji"
+msgstr "Jan Albartus: pracował nad wersją przenośną oraz zaprojektował ikonę aplikacji"
 
 #: ..\src/mainframe.cpp:2305
 msgid "This program uses icons from the Gnome, Ubuntu and Crystal icons projects"
-msgstr "Program korzysta z ikon pochodzących z Gnome, Ubuntu and Crystal icons projects"
+msgstr "Ten program używa ikony pobrane z projektów ikon systemów Gnome, Ubuntu i Crystal"
 
 #: ..\src/mainframe.cpp:2306
 msgid "This is open source software, distributed under the GNU GENERAL PUBLIC LICENSE"
-msgstr "To otwarte oprogramowanie, rozprowadzane na licencji GNU GENERAL PUBLIC LICENSE"
+msgstr "To jest program open source, dystrybuowany na zasadach licencji GNU GENERAL PUBLIC LICENSE (OGÓLNA PUBLICZNA LICENCJA GNU)"
 
 #: ..\src/mainframe.cpp:2322
 msgid "New catalog"
@@ -666,7 +665,7 @@ msgstr "Nowy katalog"
 
 #: ..\src/mainframe.cpp:2355
 msgid "Multiple items"
-msgstr "Wiele przedmiotów"
+msgstr "Wiele elementów"
 
 #: ..\src/mainframe.cpp:2364
 #: ..\src/mainframe.cpp:2396
@@ -676,12 +675,12 @@ msgstr "Opis obiektu"
 #: ..\src/mainframe.cpp:2495
 #: ..\src/mainframe.cpp:3067
 msgid "Add To Virtual Folder"
-msgstr "Dodaj do wirtualnego folderu"
+msgstr "Dodaj do folderu wirtualnego"
 
 #: ..\src/mainframe.cpp:2497
 #: ..\src/mainframe.cpp:3069
 msgid "Edit Description..."
-msgstr "Edytuj opis..."
+msgstr "Zmień opis..."
 
 #: ..\src/mainframe.cpp:2500
 msgid "Rename..."
@@ -691,15 +690,15 @@ msgstr "Zmień nazwę..."
 #: ..\src/mainframe.cpp:2531
 #: ..\src/mainframe.cpp:3064
 msgid "Delete"
-msgstr "Skasuj"
+msgstr "Usuń"
 
 #: ..\src/mainframe.cpp:2525
 msgid "New Root Folder"
-msgstr "Nowy katalog główny"
+msgstr "Nowy folder główny"
 
 #: ..\src/mainframe.cpp:2528
 msgid "New Subfolder"
-msgstr "Nowy podfolder"
+msgstr "Nowy folder podrzędny"
 
 #: ..\src/mainframe.cpp:2530
 msgid "Rename"
@@ -707,11 +706,11 @@ msgstr "Zmień nazwę"
 
 #: ..\src/mainframe.cpp:2674
 msgid "Please enter some search data"
-msgstr "Wprowadź dane do wyszukania"
+msgstr "Wpisz szukane dane"
 
 #: ..\src/mainframe.cpp:2804
 msgid "The search did not find anything"
-msgstr "Wyszuliwanie niczego nie znalazło"
+msgstr "Żadne dane nie zostały znalezione"
 
 #: ..\src/mainframe.cpp:2953
 msgid "Objects: "
@@ -719,7 +718,7 @@ msgstr "Obiekty:"
 
 #: ..\src/mainframe.cpp:2960
 msgid "Total size: "
-msgstr "Wielkość całkowita:"
+msgstr "Rozmiar ogółem:"
 
 #: ..\src/mainframe.cpp:3114
 msgid "Settings"
@@ -731,16 +730,16 @@ msgid ""
 "\n"
 "Do you really want to delete the selected virtual folder?"
 msgstr ""
-"To polecenie skasuje wybrany folder wirtualny, ale nie zmieni folderów w widoku fizycznym.\n"
+"To polecenie usunie wskazany folder wirtaulnu, ale nie zmieni filderów na dysku fizycznym.\n"
 "\n"
-"Naprawdę chcesz skasować wybrany folder wirtualny?"
+"Czy na pewno chcesz usunąć wskazany folder wirtualny?"
 
 #: ..\src/mainframe.cpp:3229
 msgid ""
 "This command will delete this volume:\n"
 "\n"
 msgstr ""
-"To polecenie skasuje ten nośnik:\n"
+"To polecenie usunie następujący wolumen:\n"
 "\n"
 
 #: ..\src/mainframe.cpp:3229
@@ -753,33 +752,33 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"za katalogu VVV. To nie skasuje żadnego pliku z twojego dysku.\n"
+"z katalogu VVV. Nie spowodue to usunięcia żadnych plików z dysku.\n"
 "\n"
-"Naprawdę chcesz skasować ten nośnik?"
+"Czy na pewno chcesz usunąć ten wolumen?"
 
 #: ..\src/mainframe.cpp:3239
 msgid "Unable to delete this volume: at least one of its files is used in the virtual view"
-msgstr "Nie można skasować tego nośnika: co najmniej jeden z plików jest używany w widoku wirtualnym."
+msgstr "Nie można usunąć tego wolumenu: co najmniej jeden z plików z tego folderu jest używany w widoku wirtualnym"
 
 #: ..\src/mainframe.cpp:3258
 msgid "Enter the new volume name"
-msgstr "Wpisz nazwę dla nowego nośnika"
+msgstr "Wpisz nową nazwę wolumenu"
 
 #: ..\src/mainframe.cpp:3258
 msgid "Rename volume"
-msgstr "Zmień nazwę folderu"
+msgstr "Zmień nazwę wolumenu"
 
 #: ..\src/mainframe.cpp:3271
 msgid "The new volume name is already present in the database"
-msgstr "Nazwa dla nowego nośnika jest już w bazie danych."
+msgstr "Nowa nazwa wolumenu już istnieje w bazie danych"
 
 #: ..\src/mainframe.cpp:3292
 msgid "Enter the new forder name"
-msgstr "Nowa nazwa folderu"
+msgstr "Wpisz nową nazwę folderu"
 
 #: ..\src/mainframe.cpp:3292
 msgid "Rename virtual folder"
-msgstr "Zmień nazwę wirtualnego folderu"
+msgstr "Zmień nazwę wirtualnego folderu "
 
 #: ..\src/mainframe.cpp:3410
 msgid ""
@@ -787,9 +786,9 @@ msgid ""
 "\n"
 "Do you really want to delete the selected virtual files?"
 msgstr ""
-"To polecenia skasuje wybrany plik wirtualny, ale nie zmieni plików w widoku fizycznym.\n"
+"To polecenie usunie wskazane wirtualne pliki, ale nie zmieni plików w fizycznym widoku.\n"
 "\n"
-"Do you really want to delete the selected virtual files?"
+"Czy na pewno chcesz usunąć wskazane pliki wirtualne?"
 
 #: ..\src/mainframe.cpp:3545
 #: ..\src/mainframe.cpp:3622
@@ -797,7 +796,7 @@ msgid ""
 "Unable to continue. You have choosen an existing file:\n"
 "\n"
 msgstr ""
-"Nie można kontynuowac. Wybrałeś istniejący plik:\n"
+"Nie można kontynuować - wskazany plik już istnieje:\n"
 "\n"
 
 #: ..\src/mainframe.cpp:3545
@@ -810,27 +809,27 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Musisz wpisać nazwę nie istniejącego pliku."
+"Musisz wpisać nazwę nieistniejącego pliku.."
 
 #: ..\src/mainframe.cpp:3554
 #: ..\src/mainframe.cpp:3631
 #: ..\src/mainframe.cpp:3713
 msgid "Unable to continue: you have choosen a folder where you do not have the right to create a file."
-msgstr "Nie można kontynuować: wybrałeś folder, w którym nie masz uprawnień do tworzenia pliku."
+msgstr "Nie można kontynuować: nie masz uprawnień do tworzenia plików we wskazanym folderze"
 
 #: ..\src/mainframe.cpp:3599
 #: ..\src/opencatalog.cpp:255
 #: ..\src/restore.cpp:287
 msgid "VVV backup files (*.vvvbk)|*.vvvbk|All files (*.*)|*.*"
-msgstr "VVV pliki kopii zapasowych (*.vvvbk)|*.vvvbk|Wszystkie pliki (*.*)|*.*"
+msgstr "Pliki kopii VVV (*.vvvbk)|*.vvvbk|Wszystkie pliki (*.*)|*.*"
 
 #: ..\src/mainframe.cpp:3600
 msgid "Backup catalog"
-msgstr "Kopia zapsowa katalogu"
+msgstr "Katalog kopii bezpieczeństwa"
 
 #: ..\src/mainframe.cpp:3645
 msgid "Backup completed"
-msgstr "Kopia zrobiona"
+msgstr "Kopiowanie zakończone"
 
 #: ..\src/mainframe.cpp:3668
 msgid ""
@@ -840,35 +839,35 @@ msgid ""
 msgstr ""
 "Nie można odtworzyć.\n"
 "\n"
-"Jesteś połączony z z serwerem bazy danych na innym komputerze. Musisz wykonać to polecenie na serwerze aby móc odtworzyć katalog."
+"Łączysz się z serwerem baz danych na innym komputerze. Musisz wykonać to polecenie na serwerze aby móc odtworzyć katalog."
 
 #: ..\src/mainframe.cpp:3682
 msgid "The catalog name is missing"
-msgstr "Brakuje nazwy katalogu"
+msgstr "Brak nazwy katalogu"
 
 #: ..\src/mainframe.cpp:3686
 msgid "The backup name is missing"
-msgstr "Brakuje nazwy kopii zapasowej"
+msgstr "Brak nazwy kopii bezpieczeństwa"
 
 #: ..\src/mainframe.cpp:3704
 msgid ""
 "Unable to continue. You have choosen an existing catalog:\n"
 "\n"
 msgstr ""
-"Nie można kontynuować. Musisz wybrać istniejący katalog:\n"
+"Nie można kontynuować. Został wybarny istniejący katalog:\n"
 "\n"
 
 #: ..\src/mainframe.cpp:3741
 msgid "Restore completed"
-msgstr "Odtworzenie ukończone"
+msgstr "Odtwarzanie zakończone"
 
 #: ..\src/object_description.cpp:145
 msgid "Please enter the description for the following object:"
-msgstr "Wpisz opis dla:"
+msgstr "Wpisz opis następującego obiektu:"
 
 #: ..\src/object_description.cpp:148
 msgid "OBJECT NAME"
-msgstr "Nazwa"
+msgstr "Nazwa obiektu"
 
 #: ..\src/opencatalog.cpp:163
 msgid ""
@@ -877,15 +876,15 @@ msgid ""
 "Enter the alias or the complete path to the catalog file.\n"
 "Remember that the path must be relative to the server, not to the client."
 msgstr ""
-"Zamierzasz utworzyć nowy katalog umieszczony na serwerze. \n"
+"Masz zamiar otworzyć katalog znajdujący się na serwerze.\n"
 "\n"
-"Wpisz alias lub całą ścieżkę dostępu do pliku katalogu. \n"
-"Pamiętaj, że ścieżka musi być w relacji do serwera, nie klienta."
+"Wpisz alias lub pełną ścieżkę do pliku katalogu.\n"
+"Pamiętaj, że ścieżka musi być zapisana „z punktu widzenia” serweram, a nie klienta."
 
 #: ..\src/opencatalog.cpp:257
 #: ..\src/restore.cpp:305
 msgid "VVV files (*.vvv)|*.vvv|All files (*.*)|*.*"
-msgstr "VVV pliki (*.vvv)|*.vvv| Wszystkie pliki (*.*)|*.*"
+msgstr "Pliki VVV (*.vvv)|*.vvv|Wszystkie pliki (*.*)|*.*"
 
 #: ..\src/opencatalog.cpp:277
 msgid "Open Catalog"
@@ -897,7 +896,7 @@ msgstr "Nowy katalog"
 
 #: ..\src/opencatalog.cpp:285
 msgid "Backup"
-msgstr "Kopia zapasowa"
+msgstr "Kopia bazy danych"
 
 #: ..\src/restore.cpp:154
 msgid ""
@@ -906,14 +905,14 @@ msgid ""
 "Enter the complete path to the backup file and to the catalog file that will be created.\n"
 "You cannot enter the name of an existing catalog."
 msgstr ""
-"Zamierzasz odtworzyć katalog z kopii zapasowej.\n"
+"Masz zamiar utworzyć nowy katalgo na podstawie pliku kopii bezpieczeństwa.\n"
 "\n"
-"Wybierz (wpisz) plik kopii zapasowej i katalog, który będzie utworzony.\n"
-"Nie możesz użyć nazwy istniejącego katalogu."
+"Wpisz pełną ścieżkę do pliku kopii bezpieczeństwa oraz do pliku odtwarzanego katalogu.\n"
+"Nie możesz wpisać nazwy istniejącego katalogu."
 
 #: ..\src/restore.cpp:159
 msgid "Backup file:"
-msgstr "Plik kopii zapasowej:"
+msgstr "Plik kopii:"
 
 #: ..\src/restore.cpp:171
 msgid "New catalog:"
@@ -921,7 +920,7 @@ msgstr "Nowy katalog:"
 
 #: ..\src/restore.cpp:286
 msgid "Select backup file"
-msgstr "Wybierz plik kopii zapasowej"
+msgstr "Wskaż plik kopii"
 
 #: ..\src/restore.cpp:304
 msgid "Catalog file"
@@ -929,16 +928,15 @@ msgstr "Plik katalogu"
 
 #: ..\src/settings.cpp:175
 msgid "Reopen the last used catalog at startup"
-msgstr "Otwórz na starcie ostatnio używany katalog"
+msgstr "Po uruchomieniu automatycznie otwórz ostanio używany katalog"
 
 #: ..\src/settings.cpp:181
 msgid "Beep for tasks longer than (seconds):"
-msgstr "Dźwięk dla operacji dłuższych niż (sekund):"
+msgstr "Sygnalizuj dziękiem zakończenie działań dłuższych niż [sek]:"
 
-# Please do not translate this sentence
 #: ..\src/settings.cpp:187
 msgid "Use VVV in English (restart required)"
-msgstr "VVV po angielsku (wymaga restartu)"
+msgstr "Przełącz do angielskiej wersji VVV (wymaga restartu)"
 
 #: ..\src/settings.cpp:191
 msgid "General"
@@ -946,7 +944,7 @@ msgstr "Ogólne"
 
 #: ..\src/settings.cpp:199
 msgid "Show the following data for MP3 files:"
-msgstr "Pokaż dane dla plików MP3"
+msgstr "Pokaż następujące dane dla plików MP3:"
 
 #: ..\src/settings.cpp:224
 msgid "Track number"
@@ -965,12 +963,12 @@ msgid ""
 "stored in this computer and you do not want to share them\n"
 "with other computers."
 msgstr ""
-"Zaznacz pole wyboru poniżej jeśli chcesz mieć dostęp do katalogu\n"
-"na serwerze sieciowym. Każdy komputer w sieci będzie miał \n"
-"dostęp do katalogów na serwerze.\n"
-"NIE zaznaczaj pola wyboru, jeśli chcesz dostępu tylko do katalogów\n"
-"na tym komputerze i nie chcesz ich udostępniać\n"
-"innym."
+"Zaznacz poniższe pole jeżeli chcesz otwierać katalogi umieszczone\n"
+"na serwerze sieciowym. Każdy komputer w sieci będzie mogł otwierać\n"
+"te same katalogi umieszczone na serwerze.\n"
+"NIE zaznaczaj poniższego pola jeżeli chcesz otwierać tylko katalogi\n"
+"umieszczone na tym komputerze i nie chcesz ich współdzielić z innymi\n"
+"komputerami."
 
 #: ..\src/settings.cpp:263
 msgid "Connect to a network server"
@@ -983,7 +981,7 @@ msgstr "Serwer"
 
 #: ..\src/settings.cpp:276
 msgid "Username"
-msgstr "Nazwa użytkownika"
+msgstr "Użytkownik"
 
 #: ..\src/settings.cpp:282
 msgid "Password"
@@ -991,23 +989,23 @@ msgstr "Hasło"
 
 #: ..\src/settings.cpp:290
 msgid "Test server connection"
-msgstr "Test połączenia z serwerem"
+msgstr "Sprawdź połączenie z serwerem"
 
 #: ..\src/settings.cpp:381
 msgid "You must enter a server name or address"
-msgstr "Wprowadź nazwę i adres serwera"
+msgstr "Wpisz nazwę lub adres serwera"
 
 #: ..\src/settings.cpp:385
 msgid "You must enter a username"
-msgstr "Wprowadź nazwę użytkownika"
+msgstr "Wpisz nazwę użytkownika"
 
 #: ..\src/settings.cpp:389
 msgid "You must enter a password"
-msgstr "Wprowadź hasło"
+msgstr "Wpisz hasło"
 
 #: ..\src/settings.cpp:452
 msgid "You must enter the server name or address"
-msgstr "Wprowadź nazwę i adres serwera"
+msgstr "Wpisz nazwę i adres serwera"
 
 #: ..\src/settings.cpp:457
 msgid "Unable to connect to the server"
@@ -1015,7 +1013,7 @@ msgstr "Nie można połączyć się z serwerem"
 
 #: ..\src/settings.cpp:459
 msgid "Server connection successful"
-msgstr "Połączenie z serwerem udało się"
+msgstr "Połączenie z serwerem zostało nawiązane"
 
 #: ..\src/vvv.cpp:285
 msgid ""
@@ -1031,16 +1029,16 @@ msgid ""
 "An unexpected error has occurred. Here is a description of the error:\n"
 "\n"
 msgstr ""
-"Wystąpił niespodziewany błąd. Tu jest opis błędu:\n"
+"Wystąpił błąd. Opis błędu:\n"
 "\n"
 
 #: ..\src/vvv.cpp:299
 msgid "An unexpected error has occurred. This application will be terminated"
-msgstr "Wystąpił niespodziewany błąd. Program zostanie zamknięty."
+msgstr "Wystąpił błąd - aplikacja zakończy działanie"
 
 #: ..\src/exportdata.h:71
 msgid "Export data"
-msgstr "Eksportuj dane"
+msgstr "Eksport danych"
 
 #: ..\src/mainframe.h:107
 msgid "VVV"

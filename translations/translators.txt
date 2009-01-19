@@ -1,4 +1,8 @@
-﻿de:
+﻿cz:
+Karel Kozlík
+kozlik@kufr.cz
+
+de:
 Steve Köhler
 nethunter@gmx.de
 
@@ -14,7 +18,15 @@ hr:
 Hasan Osmanagić
 hasan.osmanagic@zg.t-com.hr
 
+pl:
+Grzegorz Skoczylas
+gskoczylas@gmail.com
+
 pt:
 Pedro Cunha
 pmferreirac@gmail.com
+
+pt-br:
+Cláudio Mantovani Vieira
+claudio.mantovani@itelefonica.com.br
 

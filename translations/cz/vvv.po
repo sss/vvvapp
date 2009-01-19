@@ -1,0 +1,1055 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: VVV 0.9\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2008-07-26 10:06+0100\n"
+"PO-Revision-Date: 2009-01-19 19:36+0100\n"
+"Last-Translator: Fulvio Senore <mailing@fsoft.it>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Basepath: ..\\src\n"
+"X-Poedit-Language: Czech\n"
+"X-Poedit-SearchPath-0: ..\\src\n"
+
+#: ..\src/catalog_volume.cpp:174
+msgid "Enter or select the volume to catalog"
+msgstr "Vložte nebo vyberte svazek ke katalogizaci"
+
+#: ..\src/catalog_volume.cpp:183
+#: ..\src/exportdata.cpp:223
+#: ..\src/opencatalog.cpp:174
+#: ..\src/restore.cpp:168
+#: ..\src/restore.cpp:180
+msgid "..."
+msgstr "..."
+
+#: ..\src/catalog_volume.cpp:186
+msgid "Volume name"
+msgstr "Jméno svazku"
+
+#: ..\src/catalog_volume.cpp:196
+msgid "Get volume name"
+msgstr "Získej jméno svazku"
+
+#: ..\src/catalog_volume.cpp:204
+#: ..\src/exportdata.cpp:230
+#: ..\src/exportdata.cpp:248
+#: ..\src/mainframe.cpp:825
+#: ..\src/restore.cpp:187
+#: ..\src/restore.cpp:205
+#: ..\src/vvv.cpp:139
+msgid "&Help"
+msgstr "&Nápověda"
+
+#: ..\src/catalog_volume.cpp:209
+#: ..\src/mainframe.cpp:838
+msgid "Catalog"
+msgstr "Katalogizace"
+
+#: ..\src/catalog_volume.cpp:212
+msgid "&Close"
+msgstr "&Zavřít"
+
+#: ..\src/catalog_volume.cpp:215
+msgid "Current folder"
+msgstr "Aktuální adresář"
+
+#: ..\src/catalog_volume.cpp:218
+msgid "Previously cataloged volumes"
+msgstr "Dříve katalogizované svazky"
+
+#: ..\src/catalog_volume.cpp:288
+msgid "The volume path is missing"
+msgstr "Chybí cesta ke svazku"
+
+#: ..\src/catalog_volume.cpp:293
+msgid "The volume name is missing"
+msgstr "Chybí jméno svazku"
+
+#: ..\src/catalog_volume.cpp:316
+msgid "This volume name is already present in the database"
+msgstr "Toto jméno svazku již v databázi existuje"
+
+#: ..\src/catalog_volume.cpp:448
+msgid "Select the volume to catalog"
+msgstr "Vyberte svazek ke katalogizaci"
+
+#: ..\src/choose_virtual_folder.cpp:157
+msgid "Please select the virtual folder that will receive the selected files and/or folders:"
+msgstr "Prosím vyberte virtuální adresář do kterého chcete vložit vybrané soubory a/nebo adresáře:"
+
+#: ..\src/choose_virtual_folder.cpp:169
+#: ..\src/choose_virtual_folder.cpp:187
+#: ..\src/exportdata.cpp:235
+#: ..\src/exportdata.cpp:256
+#: ..\src/object_description.cpp:158
+#: ..\src/object_description.cpp:174
+#: ..\src/opencatalog.cpp:181
+#: ..\src/opencatalog.cpp:197
+#: ..\src/restore.cpp:192
+#: ..\src/restore.cpp:213
+msgid "&OK"
+msgstr "&OK"
+
+#: ..\src/choose_virtual_folder.cpp:173
+#: ..\src/choose_virtual_folder.cpp:184
+#: ..\src/exportdata.cpp:239
+#: ..\src/exportdata.cpp:253
+#: ..\src/object_description.cpp:162
+#: ..\src/object_description.cpp:171
+#: ..\src/opencatalog.cpp:185
+#: ..\src/opencatalog.cpp:194
+#: ..\src/restore.cpp:196
+#: ..\src/restore.cpp:210
+msgid "&Cancel"
+msgstr "&Zrušit"
+
+#: ..\src/convert_db_unicode.cpp:520
+msgid "Conversion is about to start: a message will tell you when it will be completed."
+msgstr "Začínám konvertovat. Po dokončení bude zobrazena zpráva."
+
+#: ..\src/convert_db_unicode.cpp:546
+msgid "Conversion completed"
+msgstr "Konverze hotová"
+
+#: ..\src/exportdata.cpp:191
+msgid "Use this window to export data to a CSV file"
+msgstr "Export dat do CSV souboru"
+
+#: ..\src/exportdata.cpp:195
+msgid "Comma"
+msgstr "Čárka"
+
+#: ..\src/exportdata.cpp:196
+msgid "TAB"
+msgstr "Tabulátor"
+
+#: ..\src/exportdata.cpp:197
+msgid "Pipe"
+msgstr "Svislítko"
+
+#: ..\src/exportdata.cpp:198
+msgid "Separator"
+msgstr "Oddělovač"
+
+#: ..\src/exportdata.cpp:202
+msgid "Include headers"
+msgstr "Začlenit hlavičky"
+
+#: ..\src/exportdata.cpp:207
+#: ..\src/mainframe.cpp:930
+msgid "All physical volumes"
+msgstr "Všechny fyzické svazky"
+
+#: ..\src/exportdata.cpp:208
+msgid "Selected physical volume/folder"
+msgstr "Vybraný fyzický svazek/adresář"
+
+#: ..\src/exportdata.cpp:209
+#: ..\src/mainframe.cpp:932
+msgid "Selected virtual folder"
+msgstr "Vybraný virtuální adresář"
+
+#: ..\src/exportdata.cpp:210
+msgid "Export"
+msgstr "Export"
+
+#: ..\src/exportdata.cpp:214
+msgid "File name:"
+msgstr "Jméno souboru:"
+
+#: ..\src/exportdata.cpp:309
+msgid "CSV files (*.csv;*.txt)|*.csv;*.txt|All files (*.*)|*.*"
+msgstr "CSV soubory (*.csv;*.txt)|*.csv;*.txt|Všechny soubory (*.*)|*.*"
+
+#: ..\src/exportdata.cpp:336
+msgid "Please enter a file name"
+msgstr "Prosím vložte jméno souboru"
+
+#: ..\src/exportdata.cpp:341
+msgid "The output file already exists: do you want to overwrite it?"
+msgstr "Výstupní soubor již existuje. Chcete jej přepsat?"
+
+#: ..\src/exportdata.cpp:344
+#: ..\src/exportdata.cpp:358
+msgid "Unable to create the file."
+msgstr "Nemohu vytvořit soubor."
+
+#: ..\src/exportdata.cpp:524
+#: ..\src/exportdata.cpp:526
+#: ..\src/mainframe.cpp:1250
+msgid "Name"
+msgstr "Jméno"
+
+#: ..\src/exportdata.cpp:524
+#: ..\src/exportdata.cpp:526
+#: ..\src/mainframe.cpp:1255
+msgid "Size"
+msgstr "Velikost"
+
+#: ..\src/exportdata.cpp:524
+#: ..\src/exportdata.cpp:526
+#: ..\src/mainframe.cpp:1259
+msgid "Ext"
+msgstr "Přípona"
+
+#: ..\src/exportdata.cpp:524
+#: ..\src/exportdata.cpp:526
+#: ..\src/mainframe.cpp:1263
+msgid "Last modified"
+msgstr "Poslední změna"
+
+#: ..\src/exportdata.cpp:524
+msgid "PhysicalPath"
+msgstr "Fyzická cesta"
+
+#: ..\src/exportdata.cpp:524
+#: ..\src/exportdata.cpp:526
+#: ..\src/mainframe.cpp:920
+#: ..\src/mainframe.cpp:1271
+#: ..\src/mainframe.cpp:1276
+msgid "Description"
+msgstr "Popis"
+
+#: ..\src/exportdata.cpp:526
+msgid "Volume"
+msgstr "Svazek"
+
+#: ..\src/exportdata.cpp:526
+msgid "Path"
+msgstr "Cesta"
+
+#: ..\src/mainframe.cpp:712
+msgid ""
+"This catalog file does not exist:\n"
+"\n"
+msgstr ""
+"Tento soubor katalogu neexistuje:\n"
+"\n"
+
+# Part of the File menu
+#: ..\src/mainframe.cpp:773
+msgid "&New..."
+msgstr "&Nový..."
+
+# Part of the File menu
+#: ..\src/mainframe.cpp:774
+msgid "&Open..."
+msgstr "&Otevřít..."
+
+# Part of the File menu
+#: ..\src/mainframe.cpp:775
+msgid "&Export..."
+msgstr "&Exportovat..."
+
+# Part of the File menu
+#: ..\src/mainframe.cpp:777
+msgid "&Backup..."
+msgstr "&Zálohovat..."
+
+# Part of the File menu
+#: ..\src/mainframe.cpp:778
+msgid "&Restore..."
+msgstr "O&bnovit..."
+
+# Part of the File menu
+#: ..\src/mainframe.cpp:780
+msgid "E&xit"
+msgstr "&Konec"
+
+#: ..\src/mainframe.cpp:781
+msgid "&File"
+msgstr "&Soubor"
+
+# Part of the Edit menu
+#: ..\src/mainframe.cpp:783
+msgid "&Add To Virtual Folder..."
+msgstr "&Přidat do virtuálního adresáře..."
+
+# Part of the Edit menu
+#: ..\src/mainframe.cpp:785
+msgid "&Rename...\tF2"
+msgstr "Př&ejmenovat...\tF2"
+
+# Part of the Edit menu
+#: ..\src/mainframe.cpp:786
+msgid "&Delete"
+msgstr "&Smazat"
+
+# Part of the Edit menu
+#: ..\src/mainframe.cpp:788
+msgid "&Object Description..."
+msgstr "Popis &Objektů..."
+
+# Part of the Edit menu
+#: ..\src/mainframe.cpp:790
+msgid "&New Virtual Root Folder..."
+msgstr "Nový Virtuální &Kořenový Adresář"
+
+# Part of the Edit menu
+#: ..\src/mainframe.cpp:791
+msgid "New Virtual &Subfolder..."
+msgstr "&Nový Virtuální Podadresář"
+
+#: ..\src/mainframe.cpp:793
+#: ..\src/mainframe.cpp:815
+msgid "&Options..."
+msgstr "&Nastavení..."
+
+#: ..\src/mainframe.cpp:795
+msgid "&Edit"
+msgstr "&Editace"
+
+# Part of the Volumes menu
+#: ..\src/mainframe.cpp:797
+msgid "&Catalog Volume..."
+msgstr "&Katalogizuj svazek..."
+
+#: ..\src/mainframe.cpp:798
+msgid "&Volumes"
+msgstr "&Svazky"
+
+# Part of the View menu
+#: ..\src/mainframe.cpp:800
+msgid "&Physical View"
+msgstr "&Fyzické zobrazení"
+
+# Part of the View menu
+#: ..\src/mainframe.cpp:802
+msgid "&Virtual View"
+msgstr "&Virtuální zobrazení"
+
+# Part of the View menu
+#: ..\src/mainframe.cpp:803
+msgid "&Search View"
+msgstr "V&yhledávání"
+
+# Part of the View menu
+#: ..\src/mainframe.cpp:805
+msgid "Go &Up One Level"
+msgstr "&Jdi o úroveň výše"
+
+# Part of the View menu
+#: ..\src/mainframe.cpp:807
+msgid "&Toolbar"
+msgstr "&Nástrojová lišta"
+
+# Part of the View menu
+#: ..\src/mainframe.cpp:809
+msgid "Status &Bar"
+msgstr "&Stavová lišta"
+
+#: ..\src/mainframe.cpp:811
+msgid "Vie&w"
+msgstr "&Zobrazení"
+
+#: ..\src/mainframe.cpp:817
+msgid "&Tools"
+msgstr "&Nástroje"
+
+#: ..\src/mainframe.cpp:820
+msgid "Help &Contents"
+msgstr "Obsah &nápovědy"
+
+#: ..\src/mainframe.cpp:824
+msgid "&About VVV"
+msgstr "&O aplikaci VVV"
+
+#: ..\src/mainframe.cpp:832
+msgid "New"
+msgstr "Nový"
+
+#: ..\src/mainframe.cpp:832
+msgid "Create a new catalog"
+msgstr "Vytvoř nový katalog"
+
+#: ..\src/mainframe.cpp:835
+msgid "Open"
+msgstr "Otevři"
+
+#: ..\src/mainframe.cpp:835
+msgid "Open an existing catalog"
+msgstr "Otevři existující katalog"
+
+#: ..\src/mainframe.cpp:838
+msgid "Catalog a new volume"
+msgstr "Katalogizovat nový svazek"
+
+#: ..\src/mainframe.cpp:841
+msgid "Up"
+msgstr "Nahoru"
+
+#: ..\src/mainframe.cpp:841
+msgid "Move up one level"
+msgstr "Přesuň se o úroveň výše"
+
+#: ..\src/mainframe.cpp:845
+msgid "Physical"
+msgstr "Fyzický"
+
+#: ..\src/mainframe.cpp:845
+msgid "Show the physical view"
+msgstr "Přepni na fyzické zobrazení"
+
+#: ..\src/mainframe.cpp:848
+msgid "Virtual"
+msgstr "Virtuální"
+
+#: ..\src/mainframe.cpp:848
+msgid "Show the virtual view"
+msgstr "Přepni na virtuální zobrazení"
+
+#: ..\src/mainframe.cpp:851
+#: ..\src/mainframe.cpp:933
+#: ..\src/mainframe.cpp:939
+msgid "Search"
+msgstr "Vyhledávání"
+
+#: ..\src/mainframe.cpp:851
+msgid "Show the search view"
+msgstr "Přepni na vyhledávání"
+
+#: ..\src/mainframe.cpp:896
+#: ..\src/mainframe.cpp:917
+msgid "Is equal to:"
+msgstr "Je stejný jako:"
+
+#: ..\src/mainframe.cpp:897
+#: ..\src/mainframe.cpp:918
+msgid "Starts with:"
+msgstr "Začíná na:"
+
+#: ..\src/mainframe.cpp:898
+#: ..\src/mainframe.cpp:919
+msgid "Contains:"
+msgstr "Obsahuje:"
+
+#: ..\src/mainframe.cpp:899
+msgid "File name"
+msgstr "Jméno souboru"
+
+#: ..\src/mainframe.cpp:908
+msgid "Extension:"
+msgstr "Přípona:"
+
+#: ..\src/mainframe.cpp:931
+msgid "Selected physical folder"
+msgstr "Vybraný fyzický adresář"
+
+#: ..\src/mainframe.cpp:1032
+msgid "Catalog volume"
+msgstr "Katalogizuj svazek"
+
+#: ..\src/mainframe.cpp:1268
+msgid "Physical path"
+msgstr "Fyzická cesta"
+
+#: ..\src/mainframe.cpp:1318
+#: ..\src/settings.cpp:204
+msgid "Artist"
+msgstr "Umělec"
+
+#: ..\src/mainframe.cpp:1323
+#: ..\src/settings.cpp:208
+msgid "Album"
+msgstr "Album"
+
+#: ..\src/mainframe.cpp:1328
+#: ..\src/settings.cpp:212
+msgid "Title"
+msgstr "Název"
+
+#: ..\src/mainframe.cpp:1333
+#: ..\src/settings.cpp:216
+msgid "Year"
+msgstr "Rok"
+
+#: ..\src/mainframe.cpp:1338
+#: ..\src/settings.cpp:220
+msgid "Comment"
+msgstr "Komentář"
+
+#: ..\src/mainframe.cpp:1343
+msgid "Number"
+msgstr "Stopa"
+
+#: ..\src/mainframe.cpp:1348
+#: ..\src/settings.cpp:228
+msgid "Genre"
+msgstr "Žánr"
+
+#: ..\src/mainframe.cpp:1353
+#: ..\src/settings.cpp:232
+msgid "Length"
+msgstr "Délka"
+
+#: ..\src/mainframe.cpp:1358
+#: ..\src/settings.cpp:236
+msgid "Bitrate"
+msgstr ""
+
+#: ..\src/mainframe.cpp:1363
+#: ..\src/settings.cpp:240
+msgid "Sample rate"
+msgstr ""
+
+#: ..\src/mainframe.cpp:1368
+#: ..\src/settings.cpp:244
+msgid "Channels"
+msgstr "Kanály"
+
+#: ..\src/mainframe.cpp:1397
+msgid "Open catalog"
+msgstr "Otevři katalog"
+
+#: ..\src/mainframe.cpp:1401
+#: ..\src/mainframe.cpp:3522
+msgid "VVV  files (*.vvv)|*.vvv|All files (*.*)|*.*"
+msgstr "VVV  soubory (*.vvv)|*.vvv|Všechny soubory (*.*)|*.*"
+
+#: ..\src/mainframe.cpp:1846
+msgid "Choose virtual folder"
+msgstr "Vyber virtuální adresář"
+
+#: ..\src/mainframe.cpp:1927
+msgid "New virtual root folder"
+msgstr "Nový virtuální kořenový adresář"
+
+#: ..\src/mainframe.cpp:1955
+msgid "New virtual subfolder"
+msgstr "Nový virtuální podadresář"
+
+#: ..\src/mainframe.cpp:1973
+msgid "Enter the new folder name"
+msgstr "Vložte jméno nového adresáře"
+
+#: ..\src/mainframe.cpp:1988
+#: ..\src/mainframe.cpp:3303
+msgid "The new folder name is already present in the database"
+msgstr "Adresář s tímto jménem již v databázi existuje"
+
+#: ..\src/mainframe.cpp:2041
+msgid "This catalog file does not exist any more"
+msgstr "Soubor katalogu s tímto jménem neexistuje"
+
+#: ..\src/mainframe.cpp:2071
+msgid ""
+"Catalog not found:\n"
+"\n"
+msgstr ""
+"Katalog nenalezen:\n"
+"\n"
+
+#: ..\src/mainframe.cpp:2075
+msgid ""
+"Incorrect username or password for the following database:\n"
+"\n"
+msgstr ""
+"Špatné uživatelské jméno nebo heslo pro následující databázi:\n"
+"\n"
+
+#: ..\src/mainframe.cpp:2080
+msgid ""
+"Unable to connect to the following server:\n"
+"\n"
+msgstr ""
+"Nelze se připojit k následujícímu serveru:\n"
+"\n"
+
+#: ..\src/mainframe.cpp:2082
+msgid ""
+"Unable to open the catalog.\n"
+"Please note that you are not connected to a database server so you cannot open a catalog located on another computer in the network.\n"
+"If you want to open a catalog on another computer you must connect to the database server (Tools/Options menu)."
+msgstr ""
+"Nelze otevřít katalog.\n"
+"Prosím vezměte v úvahu že nejste připojen k databázovému serveru takže nemůžete otevírat katalogy umístěné na jiném počítači v síti.\n"
+"Pokud chcete otevřít katalog na jiném počítači, musíte se připojit k databázovému serveru (menu: Nástroje/Nastavení)."
+
+#: ..\src/mainframe.cpp:2104
+msgid ""
+"This catalog has been created with a previous version of the program and it needs to be upgraded, but the file containing the upgrades list is missing.\n"
+"\n"
+"You can try reinstalling the program to solve this problem."
+msgstr ""
+"Tento katalog byl vytvořen předchozí verzí tohoto programu a potřebuje být aktualízován. Ale soubor obsahující seznam aktualizací chybí.\n"
+"\n"
+"Můžete zkusit přeinstalovat tento program k vyřešení problému."
+
+#: ..\src/mainframe.cpp:2108
+msgid "Upgrading the catalog, please wait..."
+msgstr "Aktualizuji katalog, prosim počkejte..."
+
+#: ..\src/mainframe.cpp:2120
+msgid ""
+"This catalog has been created with an older version of VVV so you need to convert it to a newer format.\n"
+"\n"
+msgstr ""
+"Tento katalog byl vytvořen starší verzí VVV a potřebuje být zkonvertován na novější formát.\n"
+"\n"
+
+#: ..\src/mainframe.cpp:2121
+msgid ""
+"The conversion will create a new catalog with the same data as the older one, then you will use this new catalog with VVV. You will not use the older catalog any more.\n"
+"\n"
+msgstr ""
+"Konverze vytvoří nový katalog se stejným jménem jako starý. Potom můžete používat nový katalog s VVV a nebudete již více používat starý katalog.\n"
+"\n"
+
+#: ..\src/mainframe.cpp:2122
+msgid "Do you want to convert the catatalog creating a new one?"
+msgstr "Chcete zkonvertovat katalog do nového?"
+
+#: ..\src/mainframe.cpp:2126
+#: ..\src/mainframe.cpp:2318
+msgid ""
+"Unable to create a new catalog.\n"
+"\n"
+"You are connecting to a database server on another computer. You must execute this program on the server to be able to create a new catalog."
+msgstr ""
+"Nelze vytvořit nový katalog.\n"
+"\n"
+"Připojujete se k databázovému serveru na jiném počítači. Musíte spustit tento program na serveru abyste mohl vytvořit nový katalog."
+
+#: ..\src/mainframe.cpp:2130
+msgid "Convert to a new catalog"
+msgstr "Zkonvertuj do nového katalogu"
+
+#: ..\src/mainframe.cpp:2138
+#: ..\src/mainframe.cpp:2330
+msgid ""
+"Unable to find the database backup to restore.\n"
+"\n"
+"You can try reinstalling the program to solve this problem."
+msgstr ""
+"Nelze najít zálohu databáze k obnovení.\n"
+"\n"
+"Můžete zkusit přeinstalovat tento program k vyřešení problému"
+
+# I do not know how to translate: The mud of Venaus is the blood of this land
+#: ..\src/mainframe.cpp:2301
+msgid ""
+"VVV (Virtual Volumes View): a program to catalog removable devices like CDs and DVDs\n"
+"\n"
+"\"The mud of Venaus is the blood of this land\""
+msgstr ""
+"VVV (Virtual Volumes View): program ke katalogizaci výměnných médií jako jsou disky CD a DVD\n"
+"\n"
+"\"The mud of Venaus is the blood of this land\""
+
+#: ..\src/mainframe.cpp:2302
+msgid "Copyright (C) 2007-2008 The VVV Team"
+msgstr "Copyright (C) 2007-2008 VVV tým"
+
+#: ..\src/mainframe.cpp:2303
+msgid "Fulvio Senore: main developer"
+msgstr "Fulvio Senore: hlavní vývojář"
+
+#: ..\src/mainframe.cpp:2304
+msgid "Jan Albartus: worked at the portable version and designed the application's icon"
+msgstr "Jan Albartus: pracuje na přenositelné verzi a navrhuje ikony aplikace"
+
+#: ..\src/mainframe.cpp:2305
+msgid "This program uses icons from the Gnome, Ubuntu and Crystal icons projects"
+msgstr "Tento program používá ikony z Gnome, Ubuntu a Crystal icons projektů"
+
+#: ..\src/mainframe.cpp:2306
+msgid "This is open source software, distributed under the GNU GENERAL PUBLIC LICENSE"
+msgstr "Toto je open source software, distribuovaný pod GNU GENERAL PUBLIC LICENCÍ"
+
+#: ..\src/mainframe.cpp:2322
+msgid "New catalog"
+msgstr "Nový katalog"
+
+#: ..\src/mainframe.cpp:2355
+msgid "Multiple items"
+msgstr "Více položek"
+
+#: ..\src/mainframe.cpp:2364
+#: ..\src/mainframe.cpp:2396
+msgid "Object description"
+msgstr "Popis objektu"
+
+#: ..\src/mainframe.cpp:2495
+#: ..\src/mainframe.cpp:3067
+msgid "Add To Virtual Folder"
+msgstr "Přidej do Virtuálního adresáře"
+
+#: ..\src/mainframe.cpp:2497
+#: ..\src/mainframe.cpp:3069
+msgid "Edit Description..."
+msgstr "Změnit popis..."
+
+#: ..\src/mainframe.cpp:2500
+msgid "Rename..."
+msgstr "Přejmenovat..."
+
+#: ..\src/mainframe.cpp:2501
+#: ..\src/mainframe.cpp:2531
+#: ..\src/mainframe.cpp:3064
+msgid "Delete"
+msgstr "Smazat"
+
+#: ..\src/mainframe.cpp:2525
+msgid "New Root Folder"
+msgstr "Nový Kořenový Adresář"
+
+#: ..\src/mainframe.cpp:2528
+msgid "New Subfolder"
+msgstr "Nový Podadresář"
+
+#: ..\src/mainframe.cpp:2530
+msgid "Rename"
+msgstr "Přejmenovat"
+
+#: ..\src/mainframe.cpp:2674
+msgid "Please enter some search data"
+msgstr "Prosím vložte nějaká vyhledávací kriteria"
+
+#: ..\src/mainframe.cpp:2804
+msgid "The search did not find anything"
+msgstr "Nic nebylo nalezeno"
+
+#: ..\src/mainframe.cpp:2953
+msgid "Objects: "
+msgstr "Objekty:"
+
+#: ..\src/mainframe.cpp:2960
+msgid "Total size: "
+msgstr "Celková velikost:"
+
+#: ..\src/mainframe.cpp:3114
+msgid "Settings"
+msgstr "Nastavení"
+
+#: ..\src/mainframe.cpp:3206
+msgid ""
+"This command will delete the selected virtual folder, but it will not change the folders in the physical view.\n"
+"\n"
+"Do you really want to delete the selected virtual folder?"
+msgstr ""
+"Příkaz smaže vybraný virtuální adresář, ale nezmění adresáře ve fyzickém zobrazení.\n"
+"\n"
+"Opravdu chcete smazat vybraný virtuální adresář?"
+
+#: ..\src/mainframe.cpp:3229
+msgid ""
+"This command will delete this volume:\n"
+"\n"
+msgstr ""
+"Tento příkaz smaže svazek:\n"
+"\n"
+
+#: ..\src/mainframe.cpp:3229
+msgid ""
+"\n"
+"\n"
+"from the VVV catalog. It will not delete any file from your disk.\n"
+"\n"
+"Do you really want to delete this volume?"
+msgstr ""
+"\n"
+"\n"
+"z VVV katalogu. Nesmaže žádný soubor z vašeho disku.\n"
+"\n"
+"Opravdu chcete smazat tento svazek?"
+
+#: ..\src/mainframe.cpp:3239
+msgid "Unable to delete this volume: at least one of its files is used in the virtual view"
+msgstr "Nelze smazat tento svazek: nejméně jeden z jeho souborů je použitý ve vituálním zobrazení"
+
+#: ..\src/mainframe.cpp:3258
+msgid "Enter the new volume name"
+msgstr "Vložte jméno nového svazku"
+
+#: ..\src/mainframe.cpp:3258
+msgid "Rename volume"
+msgstr "Přejmenovat svazek"
+
+#: ..\src/mainframe.cpp:3271
+msgid "The new volume name is already present in the database"
+msgstr "Toto jméno nového svazku již v databázi existuje"
+
+#: ..\src/mainframe.cpp:3292
+msgid "Enter the new forder name"
+msgstr "Vložte jméno nového adresáře"
+
+#: ..\src/mainframe.cpp:3292
+msgid "Rename virtual folder"
+msgstr "Přejmenovat virtuální adresář"
+
+#: ..\src/mainframe.cpp:3410
+msgid ""
+"This command will delete the selected virtual files, but it will not change the files in the physical view.\n"
+"\n"
+"Do you really want to delete the selected virtual files?"
+msgstr ""
+"Tento příkaz smaže vybrané virtuální soubory, ale nezmění soubory ve fyzickém zobrazení.\n"
+"\n"
+"Opravdu chcete smazat vybrané virtuální soubory?"
+
+#: ..\src/mainframe.cpp:3545
+#: ..\src/mainframe.cpp:3622
+msgid ""
+"Unable to continue. You have choosen an existing file:\n"
+"\n"
+msgstr ""
+"Nemohu pokračovat. Zvolil jste existující soubor:\n"
+"\n"
+
+#: ..\src/mainframe.cpp:3545
+#: ..\src/mainframe.cpp:3622
+#: ..\src/mainframe.cpp:3704
+msgid ""
+"\n"
+"\n"
+"You must type the name of a non-existing file."
+msgstr ""
+"\n"
+"\n"
+"Musíte napsat jméno neexistujícího souboru."
+
+#: ..\src/mainframe.cpp:3554
+#: ..\src/mainframe.cpp:3631
+#: ..\src/mainframe.cpp:3713
+msgid "Unable to continue: you have choosen a folder where you do not have the right to create a file."
+msgstr "Nelze pokračovat: zvolil jste adresář ve kterém nemáte oprávnění vytvářet soubory."
+
+#: ..\src/mainframe.cpp:3599
+#: ..\src/opencatalog.cpp:255
+#: ..\src/restore.cpp:287
+msgid "VVV backup files (*.vvvbk)|*.vvvbk|All files (*.*)|*.*"
+msgstr "VVV soubory zálohy (*.vvvbk)|*.vvvbk|Všechny soubory (*.*)|*.*"
+
+#: ..\src/mainframe.cpp:3600
+msgid "Backup catalog"
+msgstr "Zálohovat katalog"
+
+#: ..\src/mainframe.cpp:3645
+msgid "Backup completed"
+msgstr "Záloha dokončena"
+
+#: ..\src/mainframe.cpp:3668
+msgid ""
+"Unable to restore.\n"
+"\n"
+"You are connecting to a database server on another computer. You must execute this command on the server to be able to restore a catalog."
+msgstr ""
+"Nelze obnovit.\n"
+"\n"
+"Připojujete se k databázovému serveru na jiném počítači. Musíte spustit tento program na serveru abyste byl schopen obnovit katalog."
+
+#: ..\src/mainframe.cpp:3682
+msgid "The catalog name is missing"
+msgstr "Chybí jméno katalogu"
+
+#: ..\src/mainframe.cpp:3686
+msgid "The backup name is missing"
+msgstr "Chybí jméno zálohy"
+
+#: ..\src/mainframe.cpp:3704
+msgid ""
+"Unable to continue. You have choosen an existing catalog:\n"
+"\n"
+msgstr ""
+"Nelze pokračovat. Vybral jste existující katalog:\n"
+"\n"
+
+#: ..\src/mainframe.cpp:3741
+msgid "Restore completed"
+msgstr "Obnova dokončena"
+
+#: ..\src/object_description.cpp:145
+msgid "Please enter the description for the following object:"
+msgstr "Prosím vložte popis následujících objektů:"
+
+#: ..\src/object_description.cpp:148
+msgid "OBJECT NAME"
+msgstr "JMÉNO OBJEKTU"
+
+#: ..\src/opencatalog.cpp:163
+msgid ""
+"You are about to open a catalog located on the server.\n"
+"\n"
+"Enter the alias or the complete path to the catalog file.\n"
+"Remember that the path must be relative to the server, not to the client."
+msgstr ""
+"Chystáte se otevřít katalog uložený na serveru.\n"
+"\n"
+"Vložte alias nebo kompletní cestu k souboru katalogu.\n"
+"Pamatujte že cesta musí být relativní vzhledem k serveru, ne ke klientovi."
+
+#: ..\src/opencatalog.cpp:257
+#: ..\src/restore.cpp:305
+msgid "VVV files (*.vvv)|*.vvv|All files (*.*)|*.*"
+msgstr "VVV soubory (*.vvv)|*.vvv|Všechny soubory (*.*)|*.*"
+
+#: ..\src/opencatalog.cpp:277
+msgid "Open Catalog"
+msgstr "Otevřít katalog"
+
+#: ..\src/opencatalog.cpp:281
+msgid "New Catalog"
+msgstr "Nový katalog"
+
+#: ..\src/opencatalog.cpp:285
+msgid "Backup"
+msgstr "Zálohovat"
+
+#: ..\src/restore.cpp:154
+msgid ""
+"You are about to create a new catalog from a backup file.\n"
+"\n"
+"Enter the complete path to the backup file and to the catalog file that will be created.\n"
+"You cannot enter the name of an existing catalog."
+msgstr ""
+"Chystáte se vytvořit nový katalog ze souboru zálohy.\n"
+"\n"
+"Vložte kompletní cestu k souboru zálohy a souboru katalogu který bude vytvořen.\n"
+"Nelze vložit jméno existujícího katalogu."
+
+#: ..\src/restore.cpp:159
+msgid "Backup file:"
+msgstr "Soubor zálohy:"
+
+#: ..\src/restore.cpp:171
+msgid "New catalog:"
+msgstr "Nový katalog:"
+
+#: ..\src/restore.cpp:286
+msgid "Select backup file"
+msgstr "Vyberte soubor zálohy"
+
+#: ..\src/restore.cpp:304
+msgid "Catalog file"
+msgstr "Soubor katalogu"
+
+#: ..\src/settings.cpp:175
+msgid "Reopen the last used catalog at startup"
+msgstr "Při spuštění otevřít naposledy použitý katalog."
+
+#: ..\src/settings.cpp:181
+msgid "Beep for tasks longer than (seconds):"
+msgstr "Pípnout při úlohách delších než (vteřiny):"
+
+# Please do not translate this sentence
+#: ..\src/settings.cpp:187
+msgid "Use VVV in English (restart required)"
+msgstr "Use VVV in English (restart required)"
+
+#: ..\src/settings.cpp:191
+msgid "General"
+msgstr "Obecné"
+
+#: ..\src/settings.cpp:199
+msgid "Show the following data for MP3 files:"
+msgstr "Zobraz následující data pro MP3 soubory:"
+
+#: ..\src/settings.cpp:224
+msgid "Track number"
+msgstr "Číslo stopy"
+
+#: ..\src/settings.cpp:250
+msgid "MP3"
+msgstr "MP3"
+
+#: ..\src/settings.cpp:258
+msgid ""
+"Check the checkbox below if you want to access catalogs stored\n"
+"in a network server. Each computer in the network will be able to\n"
+"access the same catalogs stored in the server.\n"
+"DO NOT check the checkbox if you only want to access catalogs\n"
+"stored in this computer and you do not want to share them\n"
+"with other computers."
+msgstr ""
+"Zaškrtněte pokud chcete mít přístup ke katalogům uložených\n"
+"na síťovém serveru. Každý počítač v síti pak bude moci přistupovat\n"
+"ke stejným katalogům uloženým na serveru.\n"
+"NEZAŠKRTÁVEJTE pokud chcete přistupovat jenom ke katalogům\n"
+"uloženým v tomto počítači a nechcete je sdílet s ostatními \n"
+"počítači."
+
+#: ..\src/settings.cpp:263
+msgid "Connect to a network server"
+msgstr "Připojit k síťovému serveru"
+
+#: ..\src/settings.cpp:270
+#: ..\src/settings.cpp:293
+msgid "Server"
+msgstr "Server"
+
+#: ..\src/settings.cpp:276
+msgid "Username"
+msgstr "Uživatelské jméno"
+
+#: ..\src/settings.cpp:282
+msgid "Password"
+msgstr "Heslo"
+
+#: ..\src/settings.cpp:290
+msgid "Test server connection"
+msgstr "Zkusit připojení k serveru"
+
+#: ..\src/settings.cpp:381
+msgid "You must enter a server name or address"
+msgstr "Musíte vložit jméno serveru nebo jeho adresu"
+
+#: ..\src/settings.cpp:385
+msgid "You must enter a username"
+msgstr "Musíte vložit uživatelské jméno"
+
+#: ..\src/settings.cpp:389
+msgid "You must enter a password"
+msgstr "Musíte vložit heslo"
+
+#: ..\src/settings.cpp:452
+msgid "You must enter the server name or address"
+msgstr "Musíte vložit jméno serveru nebo jeho adresu"
+
+#: ..\src/settings.cpp:457
+msgid "Unable to connect to the server"
+msgstr "Nelze se připojit k serveru"
+
+#: ..\src/settings.cpp:459
+msgid "Server connection successful"
+msgstr "Připojení k serveru bylo úspěšné"
+
+#: ..\src/vvv.cpp:285
+msgid ""
+"Unable to connect to the server\n"
+"\n"
+msgstr ""
+"Nelze se připojit k serveru\n"
+"\n"
+
+#: ..\src/vvv.cpp:287
+#: ..\src/vvv.cpp:293
+msgid ""
+"An unexpected error has occurred. Here is a description of the error:\n"
+"\n"
+msgstr ""
+"Nastala neočekévaná chyba. Zde je její popis:\n"
+"\n"
+
+#: ..\src/vvv.cpp:299
+msgid "An unexpected error has occurred. This application will be terminated"
+msgstr "Nastala neočekávaná chyba. Tato aplikace bude ukončena."
+
+#: ..\src/exportdata.h:71
+msgid "Export data"
+msgstr "Exportovat data"
+
+#: ..\src/mainframe.h:107
+msgid "VVV"
+msgstr "VVV"
+
+#: ..\src/object_description.h:54
+msgid "Object Description"
+msgstr "Popis Objektu"
+
+#: ..\src/restore.h:46
+msgid "Restore"
+msgstr "Obnovit"
+
