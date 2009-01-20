@@ -2328,6 +2328,7 @@ void CMainFrame::OnABOUTClick( wxCommandEvent& WXUNUSED(event) )
 	info.AddTranslator( wxString(wxT("Fr\u00E9d\u00E9ric Gacquer: ")) + _("French") );
 	info.AddTranslator( wxString(wxT("Hasan Osmanagi\u0107: ")) + _("Croatian") );
 	info.AddTranslator( wxString(wxT("Fulvio Senore: ")) + _("Italian") );
+	info.AddTranslator( wxString(wxT("Gideon van Melle: ")) + _("Dutch") );
 	info.AddTranslator( wxString(wxT("Grzegorz Skoczylas: ")) + _("Polish") );
 	info.AddTranslator( wxString(wxT("Pedro Cunha: ")) + _("Portuguese") );
 
@@ -3320,7 +3321,7 @@ void CMainFrame::RenameSelectedVirtualFolder() {
 	wxString oldName = tctl->GetItemText(item);
 
 	// asks for the new volume name
-	wxTextEntryDialog ted( this, _("Enter the new forder name"), _("Rename virtual folder"), oldName, wxOK | wxCANCEL );
+	wxTextEntryDialog ted( this, _("Enter the new folder name"), _("Rename virtual folder"), oldName, wxOK | wxCANCEL );
 	if( ted.ShowModal() != wxID_OK ) return;
 	wxString newName = ted.GetValue();
 	if( newName == oldName || newName.empty() ) return;

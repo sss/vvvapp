@@ -1,0 +1,1059 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: VVV 0.9\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2008-07-26 10:06+0100\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Fulvio Senore <mailing@fsoft.it>\n"
+"Language-Team: The VVV Team <mailing@fsoft.it>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Basepath: ..\\src\n"
+"X-Poedit-Language: Dutch\n"
+"X-Poedit-Country: NETHERLANDS\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-SearchPath-0: ..\\src\n"
+
+#: ..\src/catalog_volume.cpp:174
+msgid "Enter or select the volume to catalog"
+msgstr "Vul de naam in of selecteer het volume om te catalogiseren"
+
+#: ..\src/catalog_volume.cpp:183
+#: ..\src/exportdata.cpp:223
+#: ..\src/opencatalog.cpp:174
+#: ..\src/restore.cpp:168
+#: ..\src/restore.cpp:180
+msgid "..."
+msgstr "..."
+
+#: ..\src/catalog_volume.cpp:186
+msgid "Volume name"
+msgstr "Volume naam"
+
+#: ..\src/catalog_volume.cpp:196
+msgid "Get volume name"
+msgstr "Verkrijg volumenaam"
+
+#: ..\src/catalog_volume.cpp:204
+#: ..\src/exportdata.cpp:230
+#: ..\src/exportdata.cpp:248
+#: ..\src/mainframe.cpp:825
+#: ..\src/restore.cpp:187
+#: ..\src/restore.cpp:205
+#: ..\src/vvv.cpp:139
+msgid "&Help"
+msgstr "&Help"
+
+#: ..\src/catalog_volume.cpp:209
+#: ..\src/mainframe.cpp:838
+msgid "Catalog"
+msgstr "Catalogiseren"
+
+#: ..\src/catalog_volume.cpp:212
+msgid "&Close"
+msgstr "&Sluit"
+
+#: ..\src/catalog_volume.cpp:215
+msgid "Current folder"
+msgstr "Huidige map"
+
+#: ..\src/catalog_volume.cpp:218
+msgid "Previously cataloged volumes"
+msgstr "Vorige gecatalogiseerde volumes"
+
+#: ..\src/catalog_volume.cpp:288
+msgid "The volume path is missing"
+msgstr "Het volumepad ontbreekt"
+
+#: ..\src/catalog_volume.cpp:293
+msgid "The volume name is missing"
+msgstr "De volumenaam ontbreekt"
+
+#: ..\src/catalog_volume.cpp:316
+msgid "This volume name is already present in the database"
+msgstr "Deze volumenaam is reeds aanwezig in de database"
+
+#: ..\src/catalog_volume.cpp:448
+msgid "Select the volume to catalog"
+msgstr "Selecteer het volume om te catalogiseren"
+
+#: ..\src/choose_virtual_folder.cpp:157
+msgid "Please select the virtual folder that will receive the selected files and/or folders:"
+msgstr "Selecteer de virtuele map waar de geselecteerde bestanden en/of mappen neergezet zullen worden:"
+
+#: ..\src/choose_virtual_folder.cpp:169
+#: ..\src/choose_virtual_folder.cpp:187
+#: ..\src/exportdata.cpp:235
+#: ..\src/exportdata.cpp:256
+#: ..\src/object_description.cpp:158
+#: ..\src/object_description.cpp:174
+#: ..\src/opencatalog.cpp:181
+#: ..\src/opencatalog.cpp:197
+#: ..\src/restore.cpp:192
+#: ..\src/restore.cpp:213
+msgid "&OK"
+msgstr "&OK"
+
+#: ..\src/choose_virtual_folder.cpp:173
+#: ..\src/choose_virtual_folder.cpp:184
+#: ..\src/exportdata.cpp:239
+#: ..\src/exportdata.cpp:253
+#: ..\src/object_description.cpp:162
+#: ..\src/object_description.cpp:171
+#: ..\src/opencatalog.cpp:185
+#: ..\src/opencatalog.cpp:194
+#: ..\src/restore.cpp:196
+#: ..\src/restore.cpp:210
+msgid "&Cancel"
+msgstr "&Annuleren"
+
+#: ..\src/convert_db_unicode.cpp:520
+msgid "Conversion is about to start: a message will tell you when it will be completed."
+msgstr "Het converteren begint zo: u krijgt een bericht  wanneer het gereed is."
+
+#: ..\src/convert_db_unicode.cpp:546
+msgid "Conversion completed"
+msgstr "Converteren is gereed"
+
+#: ..\src/exportdata.cpp:191
+msgid "Use this window to export data to a CSV file"
+msgstr "Gebruik dit venster om gegevens naar een CSV bestand te exporteren"
+
+#: ..\src/exportdata.cpp:195
+msgid "Comma"
+msgstr "Komma"
+
+#: ..\src/exportdata.cpp:196
+msgid "TAB"
+msgstr "TAB"
+
+#: ..\src/exportdata.cpp:197
+msgid "Pipe"
+msgstr "Pipe ( | )"
+
+#: ..\src/exportdata.cpp:198
+msgid "Separator"
+msgstr "Scheidingsteken"
+
+#: ..\src/exportdata.cpp:202
+msgid "Include headers"
+msgstr "Inclusief kopteksten"
+
+#: ..\src/exportdata.cpp:207
+#: ..\src/mainframe.cpp:930
+msgid "All physical volumes"
+msgstr "Alle fysieke volumes"
+
+#: ..\src/exportdata.cpp:208
+msgid "Selected physical volume/folder"
+msgstr "Geselecteerd fysiek volume/map"
+
+#: ..\src/exportdata.cpp:209
+#: ..\src/mainframe.cpp:932
+msgid "Selected virtual folder"
+msgstr "Geselecteerde virtuele map"
+
+#: ..\src/exportdata.cpp:210
+msgid "Export"
+msgstr "Exporteren"
+
+#: ..\src/exportdata.cpp:214
+msgid "File name:"
+msgstr "Bestandsnaam:"
+
+#: ..\src/exportdata.cpp:309
+msgid "CSV files (*.csv;*.txt)|*.csv;*.txt|All files (*.*)|*.*"
+msgstr "CSV bestanden (*.csv;*.txt)|*.csv;*.txt|Alle bestanden (*.*)|*.*"
+
+#: ..\src/exportdata.cpp:336
+msgid "Please enter a file name"
+msgstr "Vul een bestandsnaam in"
+
+#: ..\src/exportdata.cpp:341
+msgid "The output file already exists: do you want to overwrite it?"
+msgstr "Het outputbestand bestaat reeds: wilt u het overschrijven?"
+
+#: ..\src/exportdata.cpp:344
+#: ..\src/exportdata.cpp:358
+msgid "Unable to create the file."
+msgstr "Kan bestand niet aanmaken."
+
+#: ..\src/exportdata.cpp:524
+#: ..\src/exportdata.cpp:526
+#: ..\src/mainframe.cpp:1250
+msgid "Name"
+msgstr "Naam"
+
+#: ..\src/exportdata.cpp:524
+#: ..\src/exportdata.cpp:526
+#: ..\src/mainframe.cpp:1255
+msgid "Size"
+msgstr "Grootte"
+
+#: ..\src/exportdata.cpp:524
+#: ..\src/exportdata.cpp:526
+#: ..\src/mainframe.cpp:1259
+msgid "Ext"
+msgstr "Ext"
+
+#: ..\src/exportdata.cpp:524
+#: ..\src/exportdata.cpp:526
+#: ..\src/mainframe.cpp:1263
+msgid "Last modified"
+msgstr "Gewijzigd"
+
+#: ..\src/exportdata.cpp:524
+msgid "PhysicalPath"
+msgstr "Fysiek pad"
+
+#: ..\src/exportdata.cpp:524
+#: ..\src/exportdata.cpp:526
+#: ..\src/mainframe.cpp:920
+#: ..\src/mainframe.cpp:1271
+#: ..\src/mainframe.cpp:1276
+msgid "Description"
+msgstr "Beschrijving"
+
+#: ..\src/exportdata.cpp:526
+msgid "Volume"
+msgstr "Volume"
+
+#: ..\src/exportdata.cpp:526
+msgid "Path"
+msgstr "Pad"
+
+#: ..\src/mainframe.cpp:712
+msgid ""
+"This catalog file does not exist:\n"
+"\n"
+msgstr ""
+"Dit catalogusbestand bestaat niet:\n"
+"\n"
+
+# Part of the File menu
+#: ..\src/mainframe.cpp:773
+msgid "&New..."
+msgstr "&Nieuw..."
+
+# Part of the File menu
+#: ..\src/mainframe.cpp:774
+msgid "&Open..."
+msgstr "&Openen..."
+
+# Part of the File menu
+#: ..\src/mainframe.cpp:775
+msgid "&Export..."
+msgstr "&Exporteren..."
+
+# Part of the File menu
+#: ..\src/mainframe.cpp:777
+msgid "&Backup..."
+msgstr "&Back-up maken..."
+
+# Part of the File menu
+#: ..\src/mainframe.cpp:778
+msgid "&Restore..."
+msgstr "Back-up &Terugzetten..."
+
+# Part of the File menu
+#: ..\src/mainframe.cpp:780
+msgid "E&xit"
+msgstr "&Afsluiten"
+
+#: ..\src/mainframe.cpp:781
+msgid "&File"
+msgstr "&Bestand"
+
+# Part of the Edit menu
+#: ..\src/mainframe.cpp:783
+msgid "&Add To Virtual Folder..."
+msgstr "&Toevoegen aan virtuele map..."
+
+# Part of the Edit menu
+#: ..\src/mainframe.cpp:785
+msgid "&Rename...\tF2"
+msgstr "&Naam wijzigen...\tF2"
+
+# Part of the Edit menu
+#: ..\src/mainframe.cpp:786
+msgid "&Delete"
+msgstr "&Verwijderen"
+
+# Part of the Edit menu
+#: ..\src/mainframe.cpp:788
+msgid "&Object Description..."
+msgstr "&Object beschrijving..."
+
+# Part of the Edit menu
+#: ..\src/mainframe.cpp:790
+msgid "&New Virtual Root Folder..."
+msgstr "&Nieuwe Virtuele hoofdmap..."
+
+# Part of the Edit menu
+#: ..\src/mainframe.cpp:791
+msgid "New Virtual &Subfolder..."
+msgstr "Nieuwe Virtuele submap..."
+
+#: ..\src/mainframe.cpp:793
+#: ..\src/mainframe.cpp:815
+msgid "&Options..."
+msgstr "&Opties..."
+
+#: ..\src/mainframe.cpp:795
+msgid "&Edit"
+msgstr "Bew&erken"
+
+# Part of the Volumes menu
+#: ..\src/mainframe.cpp:797
+msgid "&Catalog Volume..."
+msgstr "&Catalogiseer Volume..."
+
+#: ..\src/mainframe.cpp:798
+msgid "&Volumes"
+msgstr "&Volumes"
+
+# Part of the View menu
+#: ..\src/mainframe.cpp:800
+msgid "&Physical View"
+msgstr "&Overzicht Fysieke volumes"
+
+# Part of the View menu
+#: ..\src/mainframe.cpp:802
+msgid "&Virtual View"
+msgstr "&Overzicht Virtuele Mappen"
+
+# Part of the View menu
+#: ..\src/mainframe.cpp:803
+msgid "&Search View"
+msgstr "&Zoekvenster"
+
+# Part of the View menu
+#: ..\src/mainframe.cpp:805
+msgid "Go &Up One Level"
+msgstr "Ga één niveau &Omhoog"
+
+# Part of the View menu
+#: ..\src/mainframe.cpp:807
+msgid "&Toolbar"
+msgstr "&Werkbalk"
+
+# Part of the View menu
+#: ..\src/mainframe.cpp:809
+msgid "Status &Bar"
+msgstr "&Statusbalk"
+
+#: ..\src/mainframe.cpp:811
+msgid "Vie&w"
+msgstr "Bee&ld"
+
+#: ..\src/mainframe.cpp:817
+msgid "&Tools"
+msgstr "E&xtra"
+
+#: ..\src/mainframe.cpp:820
+msgid "Help &Contents"
+msgstr "In&houdsopgave"
+
+#: ..\src/mainframe.cpp:824
+msgid "&About VVV"
+msgstr "&Over"
+
+#: ..\src/mainframe.cpp:832
+msgid "New"
+msgstr "Nieuw"
+
+#: ..\src/mainframe.cpp:832
+msgid "Create a new catalog"
+msgstr "Aanmaken nieuwe catalogus"
+
+#: ..\src/mainframe.cpp:835
+msgid "Open"
+msgstr "Openen"
+
+#: ..\src/mainframe.cpp:835
+msgid "Open an existing catalog"
+msgstr "Open een bestaande catalogus"
+
+#: ..\src/mainframe.cpp:838
+msgid "Catalog a new volume"
+msgstr "Catalogiseer een nieuw volume"
+
+#: ..\src/mainframe.cpp:841
+msgid "Up"
+msgstr "Omhoog"
+
+#: ..\src/mainframe.cpp:841
+msgid "Move up one level"
+msgstr "Ga één niveau hoger"
+
+#: ..\src/mainframe.cpp:845
+msgid "Physical"
+msgstr "Fysiek"
+
+#: ..\src/mainframe.cpp:845
+msgid "Show the physical view"
+msgstr "Toon overzicht fysiek mappen"
+
+#: ..\src/mainframe.cpp:848
+msgid "Virtual"
+msgstr "Virtueel"
+
+#: ..\src/mainframe.cpp:848
+msgid "Show the virtual view"
+msgstr "Toon overzicht viruele mappen"
+
+#: ..\src/mainframe.cpp:851
+#: ..\src/mainframe.cpp:933
+#: ..\src/mainframe.cpp:939
+msgid "Search"
+msgstr "Zoeken"
+
+#: ..\src/mainframe.cpp:851
+msgid "Show the search view"
+msgstr "Toon het Zoekvenster"
+
+#: ..\src/mainframe.cpp:896
+#: ..\src/mainframe.cpp:917
+msgid "Is equal to:"
+msgstr "Is gelijk aan:"
+
+#: ..\src/mainframe.cpp:897
+#: ..\src/mainframe.cpp:918
+msgid "Starts with:"
+msgstr "Begint met:"
+
+#: ..\src/mainframe.cpp:898
+#: ..\src/mainframe.cpp:919
+msgid "Contains:"
+msgstr "Bevat:"
+
+#: ..\src/mainframe.cpp:899
+msgid "File name"
+msgstr "Bestandsnaam"
+
+#: ..\src/mainframe.cpp:908
+msgid "Extension:"
+msgstr "Extensie:"
+
+#: ..\src/mainframe.cpp:931
+msgid "Selected physical folder"
+msgstr "Geselecteerde fysieke map"
+
+#: ..\src/mainframe.cpp:1032
+msgid "Catalog volume"
+msgstr "Catalogusnaam"
+
+#: ..\src/mainframe.cpp:1268
+msgid "Physical path"
+msgstr "Fysiek pad"
+
+#: ..\src/mainframe.cpp:1318
+#: ..\src/settings.cpp:204
+msgid "Artist"
+msgstr "Artiest"
+
+#: ..\src/mainframe.cpp:1323
+#: ..\src/settings.cpp:208
+msgid "Album"
+msgstr "Album"
+
+#: ..\src/mainframe.cpp:1328
+#: ..\src/settings.cpp:212
+msgid "Title"
+msgstr "Titel"
+
+#: ..\src/mainframe.cpp:1333
+#: ..\src/settings.cpp:216
+msgid "Year"
+msgstr "Jaar"
+
+#: ..\src/mainframe.cpp:1338
+#: ..\src/settings.cpp:220
+msgid "Comment"
+msgstr "Commentaar"
+
+#: ..\src/mainframe.cpp:1343
+msgid "Number"
+msgstr "Nummer"
+
+#: ..\src/mainframe.cpp:1348
+#: ..\src/settings.cpp:228
+msgid "Genre"
+msgstr "Genre"
+
+#: ..\src/mainframe.cpp:1353
+#: ..\src/settings.cpp:232
+msgid "Length"
+msgstr "Lengte"
+
+#: ..\src/mainframe.cpp:1358
+#: ..\src/settings.cpp:236
+msgid "Bitrate"
+msgstr "Bitsnelheid"
+
+#: ..\src/mainframe.cpp:1363
+#: ..\src/settings.cpp:240
+msgid "Sample rate"
+msgstr "samplefrequentie"
+
+#: ..\src/mainframe.cpp:1368
+#: ..\src/settings.cpp:244
+msgid "Channels"
+msgstr "Kanalen"
+
+#: ..\src/mainframe.cpp:1397
+msgid "Open catalog"
+msgstr "Openen catalogus"
+
+#: ..\src/mainframe.cpp:1401
+#: ..\src/mainframe.cpp:3522
+msgid "VVV  files (*.vvv)|*.vvv|All files (*.*)|*.*"
+msgstr "VVV bestanden (*.vvv)|*.vvv|Alle bestanden (*.*)|*.*"
+
+#: ..\src/mainframe.cpp:1846
+msgid "Choose virtual folder"
+msgstr "Kies virtuele map"
+
+#: ..\src/mainframe.cpp:1927
+msgid "New virtual root folder"
+msgstr "Nieuwe virtuele hoofdmap"
+
+#: ..\src/mainframe.cpp:1955
+msgid "New virtual subfolder"
+msgstr "Nieuwe virtuele submap"
+
+#: ..\src/mainframe.cpp:1973
+msgid "Enter the new folder name"
+msgstr "Vul een nieuwe mapnaam in"
+
+#: ..\src/mainframe.cpp:1988
+#: ..\src/mainframe.cpp:3303
+msgid "The new folder name is already present in the database"
+msgstr "De nieuwe mapnaam is al aanwezig in de database"
+
+#: ..\src/mainframe.cpp:2041
+msgid "This catalog file does not exist any more"
+msgstr "Dit catalogusbestand bestaat niet meer"
+
+#: ..\src/mainframe.cpp:2071
+msgid ""
+"Catalog not found:\n"
+"\n"
+msgstr ""
+"Kan Catalogus niet vinden:\n"
+"\n"
+
+#: ..\src/mainframe.cpp:2075
+msgid ""
+"Incorrect username or password for the following database:\n"
+"\n"
+msgstr ""
+"Onjuiste gebruikersnaam of wachtwoord voor de volgende database:\n"
+"\n"
+
+#: ..\src/mainframe.cpp:2080
+msgid ""
+"Unable to connect to the following server:\n"
+"\n"
+msgstr ""
+"Niet in staat met de volgende server verbinding te maken:\n"
+"\n"
+
+#: ..\src/mainframe.cpp:2082
+msgid ""
+"Unable to open the catalog.\n"
+"Please note that you are not connected to a database server so you cannot open a catalog located on another computer in the network.\n"
+"If you want to open a catalog on another computer you must connect to the database server (Tools/Options menu)."
+msgstr ""
+"Niet in staat de catalogus te openen.\n"
+"U heeft geen verbinding met een database server. U kunt dus geen catalogus openen die op een andere computer in het netwerk staat.\n"
+"Als u een catalogus op een ander computer wilt openen, moet u verbonden zijn met de database server (Extra/Opties menu)."
+
+#: ..\src/mainframe.cpp:2104
+msgid ""
+"This catalog has been created with a previous version of the program and it needs to be upgraded, but the file containing the upgrades list is missing.\n"
+"\n"
+"You can try reinstalling the program to solve this problem."
+msgstr ""
+"Deze catalogus is aangemaakt met een vorige versie van het programma en moet geüpdate worden, maar het bestand dat de update bevat ontbreekt.\n"
+"\n"
+"U kunt proberen het programma opnieuw te installeren om dit probleem op te lossen."
+
+#: ..\src/mainframe.cpp:2108
+msgid "Upgrading the catalog, please wait..."
+msgstr "De catologus wordt bijgewerkt, even wachten graag..."
+
+#: ..\src/mainframe.cpp:2120
+msgid ""
+"This catalog has been created with an older version of VVV so you need to convert it to a newer format.\n"
+"\n"
+msgstr ""
+"Deze catalogus is aangemaakt met een oudere versie van VVV. U dient het om te zetten naar een nieuwer formaat.\n"
+"\n"
+
+#: ..\src/mainframe.cpp:2121
+msgid ""
+"The conversion will create a new catalog with the same data as the older one, then you will use this new catalog with VVV. You will not use the older catalog any more.\n"
+"\n"
+msgstr ""
+"De conversie zal een nieuwe catalogus aanmaken met dezelfde gegevens as de oudere. U zult deze nieuwe catalogus gaan gebruiken met VVV. De oude catalogus zal niet meer gebruikt worden.\n"
+"\n"
+
+#: ..\src/mainframe.cpp:2122
+msgid "Do you want to convert the catatalog creating a new one?"
+msgstr "Wilt u de catalogus converteren naar een nieuwe versie?"
+
+#: ..\src/mainframe.cpp:2126
+#: ..\src/mainframe.cpp:2318
+msgid ""
+"Unable to create a new catalog.\n"
+"\n"
+"You are connecting to a database server on another computer. You must execute this program on the server to be able to create a new catalog."
+msgstr ""
+"Kan geen nieuwe catalogus aanmaken.\n"
+"\n"
+"U bent verbonden met een database op een andere computer. U moet dit programma uitvoeren op de server om een nieuwe catalogus te kunnen aanmaken."
+
+#: ..\src/mainframe.cpp:2130
+msgid "Convert to a new catalog"
+msgstr "Converteer naar een nieuwe catalogus"
+
+#: ..\src/mainframe.cpp:2138
+#: ..\src/mainframe.cpp:2330
+msgid ""
+"Unable to find the database backup to restore.\n"
+"\n"
+"You can try reinstalling the program to solve this problem."
+msgstr ""
+"Kan het Back-up bestand niet vinden.\n"
+"\n"
+"U kunt proberen het programma opnieuw te installeren om dit probleem op te lossen."
+
+# Don't know if the citation should be translated....
+#: ..\src/mainframe.cpp:2301
+msgid ""
+"VVV (Virtual Volumes View): a program to catalog removable devices like CDs and DVDs\n"
+"\n"
+"\"The mud of Venaus is the blood of this land\""
+msgstr ""
+"VVV (Virtual Volumes View): een programma om verwisselbare media zoals CD's and DVD's te catalogiseren\n"
+"\n"
+"\"De modder van Venaus is het bloed van dit land\""
+
+#: ..\src/mainframe.cpp:2302
+msgid "Copyright (C) 2007-2008 The VVV Team"
+msgstr "Auterusrechten (C) 2007-2009 Het VVV Team"
+
+#: ..\src/mainframe.cpp:2303
+msgid "Fulvio Senore: main developer"
+msgstr "Fulvio Senore: hoofdontwikkelaar"
+
+#: ..\src/mainframe.cpp:2304
+msgid "Jan Albartus: worked at the portable version and designed the application's icon"
+msgstr "Jan Albartus: werkte aan de portable versie en ontwierp het logo van de applicatie"
+
+#: ..\src/mainframe.cpp:2305
+msgid "This program uses icons from the Gnome, Ubuntu and Crystal icons projects"
+msgstr "Dit programma gebruikt pictogrammen van de Gnome, Ubuntu en Crystal pictogrammen projecten"
+
+#: ..\src/mainframe.cpp:2306
+msgid "This is open source software, distributed under the GNU GENERAL PUBLIC LICENSE"
+msgstr "Dit is open-bron-software, verspreid onder de GNU ALGEMENE PUBLIEKE LICENTIE"
+
+#: ..\src/mainframe.cpp:2322
+msgid "New catalog"
+msgstr "Nieuwe catolgus"
+
+#: ..\src/mainframe.cpp:2355
+msgid "Multiple items"
+msgstr "Meerdere items"
+
+#: ..\src/mainframe.cpp:2364
+#: ..\src/mainframe.cpp:2396
+msgid "Object description"
+msgstr "Object beschrijving"
+
+#: ..\src/mainframe.cpp:2495
+#: ..\src/mainframe.cpp:3067
+msgid "Add To Virtual Folder"
+msgstr "Toevoegen aan Virtuele Map"
+
+#: ..\src/mainframe.cpp:2497
+#: ..\src/mainframe.cpp:3069
+msgid "Edit Description..."
+msgstr "Bewerken beschrijving..."
+
+#: ..\src/mainframe.cpp:2500
+msgid "Rename..."
+msgstr "Naam wijzigen..."
+
+#: ..\src/mainframe.cpp:2501
+#: ..\src/mainframe.cpp:2531
+#: ..\src/mainframe.cpp:3064
+msgid "Delete"
+msgstr "Verwijderen..."
+
+#: ..\src/mainframe.cpp:2525
+msgid "New Root Folder"
+msgstr "Nieuwe hoofdmap"
+
+#: ..\src/mainframe.cpp:2528
+msgid "New Subfolder"
+msgstr "Nieuwe submap"
+
+#: ..\src/mainframe.cpp:2530
+msgid "Rename"
+msgstr "Naam wijzigen"
+
+#: ..\src/mainframe.cpp:2674
+msgid "Please enter some search data"
+msgstr "Vul wat zoekgegevens in"
+
+#: ..\src/mainframe.cpp:2804
+msgid "The search did not find anything"
+msgstr "Het zoeken leverde niet op"
+
+#: ..\src/mainframe.cpp:2953
+msgid "Objects: "
+msgstr "Objecten:"
+
+#: ..\src/mainframe.cpp:2960
+msgid "Total size: "
+msgstr "Totale grootte:"
+
+#: ..\src/mainframe.cpp:3114
+msgid "Settings"
+msgstr "Instellingen"
+
+#: ..\src/mainframe.cpp:3206
+msgid ""
+"This command will delete the selected virtual folder, but it will not change the folders in the physical view.\n"
+"\n"
+"Do you really want to delete the selected virtual folder?"
+msgstr ""
+"dit commando zal de geselecteerde virtuele map verwijderen. Het zal de mappen in het fysieke overzicht nier veranderen.\n"
+"\n"
+"Wilt u werkelijk de geselecteerde virtuele map verwijderen?"
+
+#: ..\src/mainframe.cpp:3229
+msgid ""
+"This command will delete this volume:\n"
+"\n"
+msgstr ""
+"Dit commando verwijdert dit volume:\n"
+"\n"
+
+#: ..\src/mainframe.cpp:3229
+msgid ""
+"\n"
+"\n"
+"from the VVV catalog. It will not delete any file from your disk.\n"
+"\n"
+"Do you really want to delete this volume?"
+msgstr ""
+"\n"
+"\n"
+"uit de  VVV catalogus. Het zal geen bestanden van uw schijf verwijderen.\n"
+"\n"
+"Wilt u werkelijk dit volume verwijderen?"
+
+#: ..\src/mainframe.cpp:3239
+msgid "Unable to delete this volume: at least one of its files is used in the virtual view"
+msgstr "Kan het volume niet verwijderen: er is tenminste één bestand in gebruik bij het virutele overzicht "
+
+#: ..\src/mainframe.cpp:3258
+msgid "Enter the new volume name"
+msgstr "Geef een nieuwe volumenaam"
+
+#: ..\src/mainframe.cpp:3258
+msgid "Rename volume"
+msgstr "Wijzig volumenaam"
+
+#: ..\src/mainframe.cpp:3271
+msgid "The new volume name is already present in the database"
+msgstr "Het nieuwe volume is reeds aanwezig in deze database"
+
+# Attention: forder >> folder
+#: ..\src/mainframe.cpp:3292
+msgid "Enter the new forder name"
+msgstr "Geef een nieuwe mapnaam"
+
+#: ..\src/mainframe.cpp:3292
+msgid "Rename virtual folder"
+msgstr "wijzig virtuele mapnaam"
+
+#: ..\src/mainframe.cpp:3410
+msgid ""
+"This command will delete the selected virtual files, but it will not change the files in the physical view.\n"
+"\n"
+"Do you really want to delete the selected virtual files?"
+msgstr ""
+"Dit commando zal de geselecteerde virtuele bestanden verwijderen, maar zal de bestanden in het fysieke overzicht niet veranderen.\n"
+"\n"
+"Wilt u werkelijk de geselecteerde virtuele bestanden verwijderen?"
+
+#: ..\src/mainframe.cpp:3545
+#: ..\src/mainframe.cpp:3622
+msgid ""
+"Unable to continue. You have choosen an existing file:\n"
+"\n"
+msgstr ""
+"Kan niet verder gaan. U heeft een bestaand bestand gekozen:\n"
+"\n"
+
+#: ..\src/mainframe.cpp:3545
+#: ..\src/mainframe.cpp:3622
+#: ..\src/mainframe.cpp:3704
+msgid ""
+"\n"
+"\n"
+"You must type the name of a non-existing file."
+msgstr ""
+"\n"
+"\n"
+"U moet de naam van een niet bestaand bestand intikken."
+
+#: ..\src/mainframe.cpp:3554
+#: ..\src/mainframe.cpp:3631
+#: ..\src/mainframe.cpp:3713
+msgid "Unable to continue: you have choosen a folder where you do not have the right to create a file."
+msgstr "Kan niet verder: u heeft een map gekozen waar u geen rechten heeft om een bestand in aan te maken."
+
+#: ..\src/mainframe.cpp:3599
+#: ..\src/opencatalog.cpp:255
+#: ..\src/restore.cpp:287
+msgid "VVV backup files (*.vvvbk)|*.vvvbk|All files (*.*)|*.*"
+msgstr "VVV back-up bestanden (*.vvvbk)|*.vvvbk|Alle bestanden (*.*)|*.*"
+
+#: ..\src/mainframe.cpp:3600
+msgid "Backup catalog"
+msgstr "Back-up catalogus"
+
+#: ..\src/mainframe.cpp:3645
+msgid "Backup completed"
+msgstr "Back-up maken voltooid"
+
+#: ..\src/mainframe.cpp:3668
+msgid ""
+"Unable to restore.\n"
+"\n"
+"You are connecting to a database server on another computer. You must execute this command on the server to be able to restore a catalog."
+msgstr ""
+"Kan back-up niet terugzetten.\n"
+"\n"
+"U bent met een database server op een andere computer verbonden. U moet deze opdracht uitvoeren op de server om een back-up van een catalogus terug te zetten."
+
+#: ..\src/mainframe.cpp:3682
+msgid "The catalog name is missing"
+msgstr "De catalogus ontbreekt"
+
+#: ..\src/mainframe.cpp:3686
+msgid "The backup name is missing"
+msgstr "De Back-up ontbreekt"
+
+#: ..\src/mainframe.cpp:3704
+msgid ""
+"Unable to continue. You have choosen an existing catalog:\n"
+"\n"
+msgstr ""
+"Kan nier verder. U heeft een bestaande catalogus gekozen:\n"
+"\n"
+
+#: ..\src/mainframe.cpp:3741
+msgid "Restore completed"
+msgstr "Terugzetten back-up voltooid"
+
+#: ..\src/object_description.cpp:145
+msgid "Please enter the description for the following object:"
+msgstr "Vul de beschrijving voor het volgende object in:"
+
+#: ..\src/object_description.cpp:148
+msgid "OBJECT NAME"
+msgstr "OBJECT NAAM"
+
+#: ..\src/opencatalog.cpp:163
+msgid ""
+"You are about to open a catalog located on the server.\n"
+"\n"
+"Enter the alias or the complete path to the catalog file.\n"
+"Remember that the path must be relative to the server, not to the client."
+msgstr ""
+"U staat op het punt een catalogus op de server te openen.\n"
+"\n"
+"Geef de Alias of  de volledige padnaam van het catalogusbestand.\n"
+"Vergeet niet dat het pad relatief moet zijn tot de server, en niet tot de cliënt."
+
+#: ..\src/opencatalog.cpp:257
+#: ..\src/restore.cpp:305
+msgid "VVV files (*.vvv)|*.vvv|All files (*.*)|*.*"
+msgstr "VVV bestanden (*.vvv)|*.vvv|Alle bestanden (*.*)|*.*"
+
+#: ..\src/opencatalog.cpp:277
+msgid "Open Catalog"
+msgstr "Openen Catalogus"
+
+#: ..\src/opencatalog.cpp:281
+msgid "New Catalog"
+msgstr "Nieuwe Catalogus"
+
+#: ..\src/opencatalog.cpp:285
+msgid "Backup"
+msgstr "Back-up"
+
+#: ..\src/restore.cpp:154
+msgid ""
+"You are about to create a new catalog from a backup file.\n"
+"\n"
+"Enter the complete path to the backup file and to the catalog file that will be created.\n"
+"You cannot enter the name of an existing catalog."
+msgstr ""
+"U staat op het punt een nieuwe catalogus aan te maken vanuit een back-up bestand.\n"
+"\n"
+"Geef het volledig pad naar het backup bestand en naar het catalogusbestand dat aangemaakt moet worden.\n"
+"U kunt geen naam van een bestaande catalogus gebruiken."
+
+#: ..\src/restore.cpp:159
+msgid "Backup file:"
+msgstr "Back-up bestand:"
+
+#: ..\src/restore.cpp:171
+msgid "New catalog:"
+msgstr "Nieuwe catalogus:"
+
+#: ..\src/restore.cpp:286
+msgid "Select backup file"
+msgstr "Selecteer back-up bestand"
+
+#: ..\src/restore.cpp:304
+msgid "Catalog file"
+msgstr "catalogus bestand"
+
+#: ..\src/settings.cpp:175
+msgid "Reopen the last used catalog at startup"
+msgstr "Heropen de laatst gebruikte catalogus bij opstarten"
+
+#: ..\src/settings.cpp:181
+msgid "Beep for tasks longer than (seconds):"
+msgstr "Pieptoon voor taken langer dan (sec):"
+
+# Please do not translate this sentence
+#: ..\src/settings.cpp:187
+msgid "Use VVV in English (restart required)"
+msgstr "Use VVV in English (restart required)"
+
+#: ..\src/settings.cpp:191
+msgid "General"
+msgstr "Algemeen"
+
+#: ..\src/settings.cpp:199
+msgid "Show the following data for MP3 files:"
+msgstr "Toon de volgende gegevens voor MP3 bestanden:"
+
+#: ..\src/settings.cpp:224
+msgid "Track number"
+msgstr "track nummer"
+
+#: ..\src/settings.cpp:250
+msgid "MP3"
+msgstr "MP3"
+
+#: ..\src/settings.cpp:258
+msgid ""
+"Check the checkbox below if you want to access catalogs stored\n"
+"in a network server. Each computer in the network will be able to\n"
+"access the same catalogs stored in the server.\n"
+"DO NOT check the checkbox if you only want to access catalogs\n"
+"stored in this computer and you do not want to share them\n"
+"with other computers."
+msgstr ""
+"Vink het selectievakje hieronder aan indien u toegang wilt hebben\n"
+"tot catalogusbestanden op een netwerk server. Alle computers\n"
+"in het netwerk zullen toegang krijgen tot dezelfde catalogusbestanden\n"
+"op de server.\n"
+"Vink het selectievakje NIET aan indien u slechts toegang wilt hebben\n"
+"tot catalogusbestanden op deze computer en u die niet wilt delen\n"
+"met andere computers."
+
+#: ..\src/settings.cpp:263
+msgid "Connect to a network server"
+msgstr "Verbinden met netwerk server"
+
+#: ..\src/settings.cpp:270
+#: ..\src/settings.cpp:293
+msgid "Server"
+msgstr "Server"
+
+#: ..\src/settings.cpp:276
+msgid "Username"
+msgstr "Gebruikersnaam"
+
+#: ..\src/settings.cpp:282
+msgid "Password"
+msgstr "Wachtwoord"
+
+#: ..\src/settings.cpp:290
+msgid "Test server connection"
+msgstr "Testen server verbinding"
+
+#: ..\src/settings.cpp:381
+msgid "You must enter a server name or address"
+msgstr "U moet een servernaam of -adres invullen"
+
+#: ..\src/settings.cpp:385
+msgid "You must enter a username"
+msgstr "U moet een gebruikersnaam invullen"
+
+#: ..\src/settings.cpp:389
+msgid "You must enter a password"
+msgstr "U moet een wachtwoord invullen"
+
+#: ..\src/settings.cpp:452
+msgid "You must enter the server name or address"
+msgstr "U moet de naam of het adres van de server invullen"
+
+#: ..\src/settings.cpp:457
+msgid "Unable to connect to the server"
+msgstr "Kan geen verbinden krijgen met server"
+
+#: ..\src/settings.cpp:459
+msgid "Server connection successful"
+msgstr "Verbinding met server geslaagd"
+
+#: ..\src/vvv.cpp:285
+msgid ""
+"Unable to connect to the server\n"
+"\n"
+msgstr ""
+"Kan geen verbinden krijgen met server\n"
+"\n"
+
+#: ..\src/vvv.cpp:287
+#: ..\src/vvv.cpp:293
+msgid ""
+"An unexpected error has occurred. Here is a description of the error:\n"
+"\n"
+msgstr ""
+"Er is een onverwachte fout opgetreden.Hier is een beschrijving van de fout:\n"
+"\n"
+
+#: ..\src/vvv.cpp:299
+msgid "An unexpected error has occurred. This application will be terminated"
+msgstr "Er is een onverwachte fout opgetreden. Deze applicatie zal worden afgesloten"
+
+#: ..\src/exportdata.h:71
+msgid "Export data"
+msgstr "Exporteren gegevens"
+
+#: ..\src/mainframe.h:107
+msgid "VVV"
+msgstr "VVV"
+
+#: ..\src/object_description.h:54
+msgid "Object Description"
+msgstr "Object Beschrijving"
+
+#: ..\src/restore.h:46
+msgid "Restore"
+msgstr "Back-up Terugzetten"
+

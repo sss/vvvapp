@@ -18,6 +18,10 @@ hr:
 Hasan Osmanagić
 hasan.osmanagic@zg.t-com.hr
 
+nl:
+Gideon van Melle
+gvmelle@gmail.com
+
 pl:
 Grzegorz Skoczylas
 gskoczylas@gmail.com
