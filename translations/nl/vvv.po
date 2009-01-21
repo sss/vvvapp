@@ -29,11 +29,11 @@ msgstr "..."
 
 #: ..\src/catalog_volume.cpp:186
 msgid "Volume name"
-msgstr "Volume naam"
+msgstr "Volumenaam"
 
 #: ..\src/catalog_volume.cpp:196
 msgid "Get volume name"
-msgstr "Verkrijg volumenaam"
+msgstr "Volumenaam Ophalen"
 
 #: ..\src/catalog_volume.cpp:204
 #: ..\src/exportdata.cpp:230
@@ -52,7 +52,7 @@ msgstr "Catalogiseren"
 
 #: ..\src/catalog_volume.cpp:212
 msgid "&Close"
-msgstr "&Sluit"
+msgstr "&Sluiten"
 
 #: ..\src/catalog_volume.cpp:215
 msgid "Current folder"
@@ -442,7 +442,7 @@ msgstr "Geselecteerde fysieke map"
 
 #: ..\src/mainframe.cpp:1032
 msgid "Catalog volume"
-msgstr "Catalogusnaam"
+msgstr "Catalogiseer Volume"
 
 #: ..\src/mainframe.cpp:1268
 msgid "Physical path"
@@ -524,6 +524,7 @@ msgid "New virtual subfolder"
 msgstr "Nieuwe virtuele submap"
 
 #: ..\src/mainframe.cpp:1973
+#: ..\src/mainframe.cpp:3292
 msgid "Enter the new folder name"
 msgstr "Vul een nieuwe mapnaam in"
 
@@ -682,7 +683,7 @@ msgstr "Toevoegen aan Virtuele Map"
 #: ..\src/mainframe.cpp:2497
 #: ..\src/mainframe.cpp:3069
 msgid "Edit Description..."
-msgstr "Bewerken beschrijving..."
+msgstr "Bewerk Beschrijving..."
 
 #: ..\src/mainframe.cpp:2500
 msgid "Rename..."
@@ -773,11 +774,6 @@ msgstr "Wijzig volumenaam"
 #: ..\src/mainframe.cpp:3271
 msgid "The new volume name is already present in the database"
 msgstr "Het nieuwe volume is reeds aanwezig in deze database"
-
-# Attention: forder >> folder
-#: ..\src/mainframe.cpp:3292
-msgid "Enter the new forder name"
-msgstr "Geef een nieuwe mapnaam"
 
 #: ..\src/mainframe.cpp:3292
 msgid "Rename virtual folder"
