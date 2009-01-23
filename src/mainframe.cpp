@@ -3501,14 +3501,17 @@ void CMainFrame::OnFileExportClick( wxCommandEvent& WXUNUSED(event) )
 			wxTreeItemId item = tctl->GetSelection();
 			if( item.IsOk() ) {
 				MyTreeItemData *itemData = (MyTreeItemData *) tctl->GetItemData(item);
-				if( tctl->GetItemParent(item) == tctl->GetRootItem() ) {
-					// we are on a volume
-					selectedVolume = itemData->GetVolumeID();
-				} 
-				else {
-					// we are on a folder
-					selectedPhysicalFolder = itemData->GetPathID();
-					selectedVolume = itemData->GetVolumeID();
+				// generic treecontrol bug: if nothing is selected the item look ok but itemData is NULL
+				if( itemData != NULL ) {
+					if( tctl->GetItemParent(item) == tctl->GetRootItem() ) {
+						// we are on a volume
+						selectedVolume = itemData->GetVolumeID();
+					} 
+					else {
+						// we are on a folder
+						selectedPhysicalFolder = itemData->GetPathID();
+						selectedVolume = itemData->GetVolumeID();
+					}
 				}
 			}
 		}
@@ -3519,7 +3522,9 @@ void CMainFrame::OnFileExportClick( wxCommandEvent& WXUNUSED(event) )
 			wxTreeItemId item = tctl->GetSelection();
 			if( item.IsOk() ) {
 				MyTreeItemData *itemData = (MyTreeItemData *) tctl->GetItemData(item);
-				selectedVirtualFolder = itemData->GetPathID();
+				if( itemData != NULL ) {
+					selectedVirtualFolder = itemData->GetPathID();
+				}
 			}
 		}
 	}
