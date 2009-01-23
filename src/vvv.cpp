@@ -346,15 +346,15 @@ int CVvvApp::UpdateVolume( wxString catalogName, wxString volumeName, wxString v
 	wxMessageOutputStderr err;
 
 	if( catalogName.empty() ) {
-		CUtils::MsgStderr( _("Missing catalog name") );
+		CUtils::MsgStderr( _("The catalog name is missing") );
 		return -1;
 	}
 	if( volumeName.empty() ) {
-		CUtils::MsgStderr( _("Missing volume name") );
+		CUtils::MsgStderr( _("The volume name is missing") );
 		return -1;
 	}
 	if( volumePath.empty() ) {
-		CUtils::MsgStderr( _("Missing volume path") );
+		CUtils::MsgStderr( _("The volume path is missing") );
 		return -1;
 	}
 	if( !wxDirExists(volumePath) ) {
