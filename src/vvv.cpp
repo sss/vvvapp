@@ -241,16 +241,24 @@ bool CVvvApp::OnInit()
 	}
 
 	// setup the locale
-#ifndef __WXMAC__		
 	{
+#ifdef __WXMAC__
+		wxString languagePath = wxStandardPaths::Get().GetResourcesDir();
+		wxString sep(wxFileName::GetPathSeparator());
+		if( !languagePath.EndsWith(sep) ) {
+			languagePath = languagePath + sep;
+		}
+		languagePath = languagePath + wxT("languages");
+#else
 		wxString languagePath = wxStandardPaths::Get().GetExecutablePath();
 		wxFileName fn(languagePath);
 		wxString path = fn.GetPath( wxPATH_GET_VOLUME | wxPATH_GET_SEPARATOR );
 		languagePath = path + wxT("languages");
+#endif
 		m_locale.AddCatalogLookupPathPrefix( languagePath );
 	}
-#endif
-	//	if( m_locale.Init(wxLANGUAGE_DEFAULT, wxLOCALE_LOAD_DEFAULT | wxLOCALE_CONV_ENCODING) ) {
+	
+ 	//	if( m_locale.Init(wxLANGUAGE_DEFAULT, wxLOCALE_LOAD_DEFAULT | wxLOCALE_CONV_ENCODING) ) {
 	if( m_locale.Init(wxLANGUAGE_DEFAULT, wxLOCALE_CONV_ENCODING) ) {
 		// read from the settings if we must use the localized translation
 		// the same code is used when all settigns are read: we need this info now so I duplicated some code
