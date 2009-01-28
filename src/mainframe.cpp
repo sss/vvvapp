@@ -2417,7 +2417,9 @@ void CMainFrame::OnEditObjectDescriptionClick( wxCommandEvent& WXUNUSED(event) )
 	else {
 		wxTreeCtrl *tctl = GetTreePhysicalControl();
 		wxTreeItemId item = tctl->GetSelection();
+		if( !item.IsOk() ) return;
 		MyTreeItemData *itemData = (MyTreeItemData *) tctl->GetItemData(item);
+		if( itemData == NULL ) return;	// generic treectrl bug
 		wxString objectName = itemData->GetDesc();
 
 		CDialogObjectDescription dialog( this, ID_DIALOG_OBJECT_DESCRIPTION, _("Object description") );
@@ -3501,7 +3503,7 @@ void CMainFrame::OnFileExportClick( wxCommandEvent& WXUNUSED(event) )
 			wxTreeItemId item = tctl->GetSelection();
 			if( item.IsOk() ) {
 				MyTreeItemData *itemData = (MyTreeItemData *) tctl->GetItemData(item);
-				// generic treecontrol bug: if nothing is selected the item look ok but itemData is NULL
+				// generic treecontrol bug: if nothing is selected the item looks ok but itemData is NULL
 				if( itemData != NULL ) {
 					if( tctl->GetItemParent(item) == tctl->GetRootItem() ) {
 						// we are on a volume
