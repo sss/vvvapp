@@ -8,7 +8,7 @@
 
 #define AppName "VVV (Virtual Volumes View)"
 #define ExeName "vvv.exe"
-#define AppVersion "0.9"
+#define AppVersion "0.95"
 
 [Setup]
 AppId=VVV-fu-ku-jitsu
@@ -22,7 +22,7 @@ VersionInfoVersion={#AppVersion}
 ChangesAssociations=yes
 OutputDir=.
 ;OutputBaseFilename=VVV- + {#AppVersion} + -Setup
-OutputBaseFilename=VVV-0.9-Setup
+OutputBaseFilename=VVV-0.95-Setup
 
 [Tasks]
 Name: desktopicon; Description: {cm:CreateDesktopIcon}
@@ -42,7 +42,15 @@ Source: intl\fbintl.conf; DestDir: {app}\intl; Flags: replacesameversion
 Source: ..\vvv-struct-update.fdb; DestDir: {app}; Attribs: readonly; Flags: overwritereadonly uninsremovereadonly
 Source: ..\VVV.fbk; DestDir: {app}
 Source: ..\help\en\vvv.chm; DestDir: {app}
+Source: ..\translations\cz\vvv.mo; DestDir: {app}\languages\cz
+Source: ..\translations\de\vvv.mo; DestDir: {app}\languages\de
+Source: ..\translations\es\vvv.mo; DestDir: {app}\languages\es
+Source: ..\translations\fr\vvv.mo; DestDir: {app}\languages\fr
+Source: ..\translations\hr\vvv.mo; DestDir: {app}\languages\hr
 Source: ..\translations\it\vvv.mo; DestDir: {app}\languages\it
+Source: ..\translations\nl\vvv.mo; DestDir: {app}\languages\nl
+Source: ..\translations\pl\vvv.mo; DestDir: {app}\languages\pl
+Source: ..\translations\pt\vvv.mo; DestDir: {app}\languages\pt
 
 
 [Icons]
@@ -59,8 +67,14 @@ Root: HKCU; Subkey: Software\VVV; Flags: uninsdeletekey
 [Languages]
 Name: en; MessagesFile: compiler:Default.isl
 Name: it; MessagesFile: compiler:Languages\Italian.isl
+Name: cz; MessagesFile: compiler:Languages\Czech.isl
+Name: de; MessagesFile: compiler:Languages\German.isl
+Name: es; MessagesFile: compiler:Languages\Spanish.isl
+Name: fr; MessagesFile: compiler:Languages\French.isl
+Name: nl; MessagesFile: compiler:Languages\Dutch.isl
+Name: pl; MessagesFile: compiler:Languages\Polish.isl
+Name: pt; MessagesFile: compiler:Languages\Portuguese.isl
 
 #ifdef Debug
   #expr SaveToFile(AddBackslash(SourcePath) + "Preprocessed.iss")
 #endif
-
