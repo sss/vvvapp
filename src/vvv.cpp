@@ -341,10 +341,17 @@ int CVvvApp::OnRun() {
 	}
 }
 
-// it does nothing to avoid an unuseful error message
 bool CVvvApp::OnExceptionInMainLoop() {
-//	return true;
-	throw;
+
+	try {
+		throw;
+	}
+    catch (const std::exception& e) {
+		wxString msg = _("An unexpected error has happened. Here is a description of the error:\n\n");
+		msg += CUtils::std2wx(e.what());
+		wxLogError( wxT("%s"), msg.c_str() );
+    }
+	return false;
 }
 
 
@@ -417,4 +424,17 @@ int CVvvApp::UpdateVolume( wxString catalogName, wxString volumeName, wxString v
 
 	return 0;
 }
+
+void CVvvApp::HandleEvent(wxEvtHandler* handler, wxEventFunction func, wxEvent& event) const
+{
+    try {
+        wxApp::HandleEvent(handler, func, event);
+    }
+    catch (const std::exception& e) {
+		wxString msg = _("An unexpected error has happened. Here is a description of the error:\n\n");
+		msg += CUtils::std2wx(e.what());
+		wxLogError( wxT("%s"), msg.c_str() );
+    }
+}
+
 

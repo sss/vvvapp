@@ -87,6 +87,7 @@ public:
 	// derived to add exception handling
 	virtual int OnRun();
 	virtual bool OnExceptionInMainLoop();
+	virtual void HandleEvent(wxEvtHandler* handler, wxEventFunction func, wxEvent& event) const;
 
     /// Called on exit
     virtual int OnExit();
