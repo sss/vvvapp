@@ -1023,15 +1023,17 @@ wxBitmap CMainFrame::GetBitmapResource( const wxString& name )
 wxIcon CMainFrame::GetIconResource( const wxString& name )
 {
     // Icon retrieval
-////@begin CMainFrame icon retrieval
     wxUnusedVar(name);
     if (name == _T("graphics/vvv32.xpm"))
     {
+#ifdef __WXMSW__
+		wxIcon icon( wxT("VVV_ICON") );
+#else
         wxIcon icon(vvv32_xpm);
+#endif
         return icon;
     }
     return wxNullIcon;
-////@end CMainFrame icon retrieval
 }
 /*!
  * wxEVT_COMMAND_MENU_SELECTED event handler for ID_CATALOG_VOLUME
