@@ -44,13 +44,20 @@ Source: ..\VVV.fbk; DestDir: {app}
 Source: ..\help\en\vvv.chm; DestDir: {app}
 Source: ..\translations\cz\vvv.mo; DestDir: {app}\languages\cz
 Source: ..\translations\de\vvv.mo; DestDir: {app}\languages\de
+Source: ..\translations\de\wxstd.mo; DestDir: {app}\languages\de
 Source: ..\translations\es\vvv.mo; DestDir: {app}\languages\es
+Source: ..\translations\es\wxstd.mo; DestDir: {app}\languages\es
 Source: ..\translations\fr\vvv.mo; DestDir: {app}\languages\fr
+Source: ..\translations\fr\wxstd.mo; DestDir: {app}\languages\fr
 Source: ..\translations\hr\vvv.mo; DestDir: {app}\languages\hr
 Source: ..\translations\it\vvv.mo; DestDir: {app}\languages\it
+Source: ..\translations\it\wxstd.mo; DestDir: {app}\languages\it
 Source: ..\translations\nl\vvv.mo; DestDir: {app}\languages\nl
+Source: ..\translations\nl\wxstd.mo; DestDir: {app}\languages\nl
 Source: ..\translations\pl\vvv.mo; DestDir: {app}\languages\pl
+Source: ..\translations\pl\wxstd.mo; DestDir: {app}\languages\pl
 Source: ..\translations\pt\vvv.mo; DestDir: {app}\languages\pt
+Source: ..\translations\pt\wxstd.mo; DestDir: {app}\languages\pt
 
 
 [Icons]
