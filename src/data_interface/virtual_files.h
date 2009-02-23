@@ -46,7 +46,7 @@ public:
 	wxString FileExt;
 	wxDateTime DateTime;
 	wxLongLong FileSize;
-	long PhysicalPathID;
+	CNullableLong PhysicalPathID;
 	CNullableLong PathFileID;
 	wxString FullPhysicalPath;	// the full physical path to this file
 	wxString FileDescription;

@@ -98,8 +98,12 @@ void CVirtualFiles::FB_FetchRow(void) {
 			FB_st->Get("PATH_FILE_ID", tmp);
 			PathFileID = (long) tmp;
 		}
-		FB_st->Get("PATH_ID", tmp);
-		PhysicalPathID = (long) tmp;
+		if( FB_st->IsNull("PATH_ID") )
+			PhysicalPathID.SetNull(true);
+		else {
+			FB_st->Get("PATH_ID", tmp);
+			PhysicalPathID = (long) tmp;
+		}
 		if( FB_st->IsNull("FILE_DESCRIPTION") ) {
 			FileDescription = wxEmptyString;
 		}
@@ -107,7 +111,12 @@ void CVirtualFiles::FB_FetchRow(void) {
 			FB_st->Get( "FILE_DESCRIPTION", stmp );
 			FileDescription = CUtils::DBstd2wx( stmp );
 		}
-		FullPhysicalPath = CPaths::GetFullPath( PhysicalPathID );
+		if( PhysicalPathID.IsNull() ) {
+			FullPhysicalPath = wxEmptyString;
+		}
+		else {
+			FullPhysicalPath = CPaths::GetFullPath( PhysicalPathID );
+		}
 	}
 	else {
 		// end of the rowset
