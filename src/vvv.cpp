@@ -267,8 +267,8 @@ bool CVvvApp::OnInit()
 		bool forceEnglish;
 		pConfig->Read( wxT("ForceEnglish"), &forceEnglish, false );
 		if( !forceEnglish ) {
-			m_locale.AddCatalog( wxT("vvv") );
 			m_locale.AddCatalog( wxT("wxstd") );
+			m_locale.AddCatalog( wxT("vvv") );
 		}
 	}
 

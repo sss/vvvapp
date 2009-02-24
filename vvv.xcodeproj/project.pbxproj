@@ -44,6 +44,13 @@
 		BDC65A430D268C4800FE4EAF /* window_position.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BDC65A370D268C4800FE4EAF /* window_position.cpp */; };
 		BDC7ED000D2C0C62005642FE /* libicudata.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BDDE885B0D2BF0CC00756213 /* libicudata.dylib */; };
 		BDC7ED010D2C0C63005642FE /* libicui18n.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BDDE885C0D2BF0CC00756213 /* libicui18n.dylib */; };
+		BDCCA1560F5409C50012CEC7 /* wxstd.mo in Copy Files - Languages - de */ = {isa = PBXBuildFile; fileRef = BDCCA1480F5408FD0012CEC7 /* wxstd.mo */; };
+		BDCCA1590F5409DD0012CEC7 /* wxstd.mo in Copy Files - Languages - es */ = {isa = PBXBuildFile; fileRef = BDCCA14A0F5409100012CEC7 /* wxstd.mo */; };
+		BDCCA15A0F5409EA0012CEC7 /* wxstd.mo in Copy Files - Languages - fr */ = {isa = PBXBuildFile; fileRef = BDCCA14C0F5409240012CEC7 /* wxstd.mo */; };
+		BDCCA15B0F5409F70012CEC7 /* wxstd.mo in Copy Files - Languages - it */ = {isa = PBXBuildFile; fileRef = BDCCA14E0F5409430012CEC7 /* wxstd.mo */; };
+		BDCCA15C0F540A050012CEC7 /* wxstd.mo in Copy Files - Languages - nl */ = {isa = PBXBuildFile; fileRef = BDCCA1500F5409590012CEC7 /* wxstd.mo */; };
+		BDCCA15D0F540A110012CEC7 /* wxstd.mo in Copy Files - Languages - pl */ = {isa = PBXBuildFile; fileRef = BDCCA1520F54096A0012CEC7 /* wxstd.mo */; };
+		BDCCA15E0F540A1D0012CEC7 /* wxstd.mo in Copy Files - Languages - pt */ = {isa = PBXBuildFile; fileRef = BDCCA1540F54097C0012CEC7 /* wxstd.mo */; };
 		BDD085DD0D5A239A001CFF1C /* firebird.msg in Copy Files - Executables-firebird-bin-firebird */ = {isa = PBXBuildFile; fileRef = BDDE88550D2BF0CC00756213 /* firebird.msg */; };
 		BDD0E7EA0D2D585E00761368 /* vvv-document.icns in Resources */ = {isa = PBXBuildFile; fileRef = BDD0E7E90D2D585E00761368 /* vvv-document.icns */; };
 		BDD329F80F2B010100428344 /* catalog_volume_functions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BDD329F60F2B010100428344 /* catalog_volume_functions.cpp */; };
@@ -117,6 +124,7 @@
 			dstPath = languages/it;
 			dstSubfolderSpec = 7;
 			files = (
+				BDCCA15B0F5409F70012CEC7 /* wxstd.mo in Copy Files - Languages - it */,
 				BDD32A2E0F2B253000428344 /* vvv.mo in Copy Files - Languages - it */,
 			);
 			name = "Copy Files - Languages - it";
@@ -139,6 +147,7 @@
 			dstPath = languages/de;
 			dstSubfolderSpec = 7;
 			files = (
+				BDCCA1560F5409C50012CEC7 /* wxstd.mo in Copy Files - Languages - de */,
 				BDD32A380F2B267A00428344 /* vvv.mo in Copy Files - Languages - de */,
 			);
 			name = "Copy Files - Languages - de";
@@ -150,6 +159,7 @@
 			dstPath = languages/es;
 			dstSubfolderSpec = 7;
 			files = (
+				BDCCA1590F5409DD0012CEC7 /* wxstd.mo in Copy Files - Languages - es */,
 				BDD32A470F2B26C100428344 /* vvv.mo in Copy Files - Languages - es */,
 			);
 			name = "Copy Files - Languages - es";
@@ -161,6 +171,7 @@
 			dstPath = languages/fr;
 			dstSubfolderSpec = 7;
 			files = (
+				BDCCA15A0F5409EA0012CEC7 /* wxstd.mo in Copy Files - Languages - fr */,
 				BDD32A4F0F2B274500428344 /* vvv.mo in Copy Files - Languages - fr */,
 			);
 			name = "Copy Files - Languages - fr";
@@ -183,6 +194,7 @@
 			dstPath = languages/nl;
 			dstSubfolderSpec = 7;
 			files = (
+				BDCCA15C0F540A050012CEC7 /* wxstd.mo in Copy Files - Languages - nl */,
 				BDD32A580F2B27F100428344 /* vvv.mo in Copy Files - Languages - nl */,
 			);
 			name = "Copy Files - Languages - nl";
@@ -194,6 +206,7 @@
 			dstPath = languages/pl;
 			dstSubfolderSpec = 7;
 			files = (
+				BDCCA15D0F540A110012CEC7 /* wxstd.mo in Copy Files - Languages - pl */,
 				BDD32A5D0F2B282A00428344 /* vvv.mo in Copy Files - Languages - pl */,
 			);
 			name = "Copy Files - Languages - pl";
@@ -205,6 +218,7 @@
 			dstPath = languages/pt;
 			dstSubfolderSpec = 7;
 			files = (
+				BDCCA15E0F540A1D0012CEC7 /* wxstd.mo in Copy Files - Languages - pt */,
 				BDD32A610F2B287600428344 /* vvv.mo in Copy Files - Languages - pt */,
 			);
 			name = "Copy Files - Languages - pt";
@@ -317,6 +331,13 @@
 		BDC65A370D268C4800FE4EAF /* window_position.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = window_position.cpp; path = src/window_position.cpp; sourceTree = "<group>"; };
 		BDC85C210D25630A00BE8D80 /* vvv.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = vvv.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDC85C240D25630B00BE8D80 /* vvv-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "vvv-Info.plist"; sourceTree = "<group>"; };
+		BDCCA1480F5408FD0012CEC7 /* wxstd.mo */ = {isa = PBXFileReference; lastKnownFileType = file; path = wxstd.mo; sourceTree = "<group>"; };
+		BDCCA14A0F5409100012CEC7 /* wxstd.mo */ = {isa = PBXFileReference; lastKnownFileType = file; path = wxstd.mo; sourceTree = "<group>"; };
+		BDCCA14C0F5409240012CEC7 /* wxstd.mo */ = {isa = PBXFileReference; lastKnownFileType = file; path = wxstd.mo; sourceTree = "<group>"; };
+		BDCCA14E0F5409430012CEC7 /* wxstd.mo */ = {isa = PBXFileReference; lastKnownFileType = file; path = wxstd.mo; sourceTree = "<group>"; };
+		BDCCA1500F5409590012CEC7 /* wxstd.mo */ = {isa = PBXFileReference; lastKnownFileType = file; path = wxstd.mo; sourceTree = "<group>"; };
+		BDCCA1520F54096A0012CEC7 /* wxstd.mo */ = {isa = PBXFileReference; lastKnownFileType = file; path = wxstd.mo; sourceTree = "<group>"; };
+		BDCCA1540F54097C0012CEC7 /* wxstd.mo */ = {isa = PBXFileReference; lastKnownFileType = file; path = wxstd.mo; sourceTree = "<group>"; };
 		BDD0E7E90D2D585E00761368 /* vvv-document.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = "vvv-document.icns"; path = "src/graphics/vvv-document.icns"; sourceTree = "<group>"; };
 		BDD329F60F2B010100428344 /* catalog_volume_functions.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = catalog_volume_functions.cpp; path = src/catalog_volume_functions.cpp; sourceTree = "<group>"; };
 		BDD329F70F2B010100428344 /* update_volume.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = update_volume.cpp; path = src/update_volume.cpp; sourceTree = "<group>"; };
@@ -524,6 +545,7 @@
 		BDD32A020F2B245200428344 /* de */ = {
 			isa = PBXGroup;
 			children = (
+				BDCCA1480F5408FD0012CEC7 /* wxstd.mo */,
 				BDD32A030F2B245200428344 /* vvv.mo */,
 			);
 			name = de;
@@ -533,6 +555,7 @@
 		BDD32A050F2B245200428344 /* es */ = {
 			isa = PBXGroup;
 			children = (
+				BDCCA14A0F5409100012CEC7 /* wxstd.mo */,
 				BDD32A060F2B245200428344 /* vvv.mo */,
 			);
 			name = es;
@@ -542,6 +565,7 @@
 		BDD32A080F2B245200428344 /* fr */ = {
 			isa = PBXGroup;
 			children = (
+				BDCCA14C0F5409240012CEC7 /* wxstd.mo */,
 				BDD32A090F2B245200428344 /* vvv.mo */,
 			);
 			name = fr;
@@ -560,6 +584,7 @@
 		BDD32A0E0F2B245200428344 /* it */ = {
 			isa = PBXGroup;
 			children = (
+				BDCCA14E0F5409430012CEC7 /* wxstd.mo */,
 				BDD32A0F0F2B245200428344 /* vvv.mo */,
 			);
 			name = it;
@@ -569,6 +594,7 @@
 		BDD32A110F2B245200428344 /* nl */ = {
 			isa = PBXGroup;
 			children = (
+				BDCCA1500F5409590012CEC7 /* wxstd.mo */,
 				BDD32A120F2B245200428344 /* vvv.mo */,
 			);
 			name = nl;
@@ -578,6 +604,7 @@
 		BDD32A140F2B245200428344 /* pl */ = {
 			isa = PBXGroup;
 			children = (
+				BDCCA1520F54096A0012CEC7 /* wxstd.mo */,
 				BDD32A150F2B245200428344 /* vvv.mo */,
 			);
 			name = pl;
@@ -587,6 +614,7 @@
 		BDD32A170F2B245200428344 /* pt */ = {
 			isa = PBXGroup;
 			children = (
+				BDCCA1540F54097C0012CEC7 /* wxstd.mo */,
 				BDD32A180F2B245200428344 /* vvv.mo */,
 			);
 			name = pt;
