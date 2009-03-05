@@ -56,7 +56,7 @@
 		BDD329F80F2B010100428344 /* catalog_volume_functions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BDD329F60F2B010100428344 /* catalog_volume_functions.cpp */; };
 		BDD329F90F2B010100428344 /* update_volume.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BDD329F70F2B010100428344 /* update_volume.cpp */; };
 		BDD32A2E0F2B253000428344 /* vvv.mo in Copy Files - Languages - it */ = {isa = PBXBuildFile; fileRef = BDD32A0F0F2B245200428344 /* vvv.mo */; };
-		BDD32A310F2B25DF00428344 /* vvv.mo in Copy Files - Languages - cz */ = {isa = PBXBuildFile; fileRef = BDD32A000F2B245200428344 /* vvv.mo */; };
+		BDD32A310F2B25DF00428344 /* vvv.mo in Copy Files - Languages - cs */ = {isa = PBXBuildFile; fileRef = BDD32A000F2B245200428344 /* vvv.mo */; };
 		BDD32A380F2B267A00428344 /* vvv.mo in Copy Files - Languages - de */ = {isa = PBXBuildFile; fileRef = BDD32A030F2B245200428344 /* vvv.mo */; };
 		BDD32A470F2B26C100428344 /* vvv.mo in Copy Files - Languages - es */ = {isa = PBXBuildFile; fileRef = BDD32A060F2B245200428344 /* vvv.mo */; };
 		BDD32A4F0F2B274500428344 /* vvv.mo in Copy Files - Languages - fr */ = {isa = PBXBuildFile; fileRef = BDD32A090F2B245200428344 /* vvv.mo */; };
@@ -130,15 +130,15 @@
 			name = "Copy Files - Languages - it";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		BDD32A2F0F2B255A00428344 /* Copy Files - Languages - cz */ = {
+		BDD32A2F0F2B255A00428344 /* Copy Files - Languages - cs */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
-			dstPath = languages/cz;
+			dstPath = languages/cs;
 			dstSubfolderSpec = 7;
 			files = (
-				BDD32A310F2B25DF00428344 /* vvv.mo in Copy Files - Languages - cz */,
+				BDD32A310F2B25DF00428344 /* vvv.mo in Copy Files - Languages - cs */,
 			);
-			name = "Copy Files - Languages - cz";
+			name = "Copy Files - Languages - cs";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		BDD32A360F2B264600428344 /* Copy Files - Languages - de */ = {
@@ -329,7 +329,7 @@
 		BDC65A350D268C4800FE4EAF /* utils.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = utils.cpp; path = src/utils.cpp; sourceTree = "<group>"; };
 		BDC65A360D268C4800FE4EAF /* vvv.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = vvv.cpp; path = src/vvv.cpp; sourceTree = "<group>"; };
 		BDC65A370D268C4800FE4EAF /* window_position.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = window_position.cpp; path = src/window_position.cpp; sourceTree = "<group>"; };
-		BDC85C210D25630A00BE8D80 /* vvv.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = vvv.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BDC85C210D25630A00BE8D80 /* vvv.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = vvv.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDC85C240D25630B00BE8D80 /* vvv-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "vvv-Info.plist"; sourceTree = "<group>"; };
 		BDCCA1480F5408FD0012CEC7 /* wxstd.mo */ = {isa = PBXFileReference; lastKnownFileType = file; path = wxstd.mo; sourceTree = "<group>"; };
 		BDCCA14A0F5409100012CEC7 /* wxstd.mo */ = {isa = PBXFileReference; lastKnownFileType = file; path = wxstd.mo; sourceTree = "<group>"; };
@@ -511,7 +511,7 @@
 		BDD09F450E32435700667327 /* Translations */ = {
 			isa = PBXGroup;
 			children = (
-				BDD329FF0F2B245200428344 /* cz */,
+				BDD329FF0F2B245200428344 /* cs */,
 				BDD32A020F2B245200428344 /* de */,
 				BDD32A050F2B245200428344 /* es */,
 				BDD32A080F2B245200428344 /* fr */,
@@ -533,13 +533,13 @@
 			name = Icons;
 			sourceTree = "<group>";
 		};
-		BDD329FF0F2B245200428344 /* cz */ = {
+		BDD329FF0F2B245200428344 /* cs */ = {
 			isa = PBXGroup;
 			children = (
 				BDD32A000F2B245200428344 /* vvv.mo */,
 			);
-			name = cz;
-			path = translations/cz;
+			name = cs;
+			path = translations/cs;
 			sourceTree = "<group>";
 		};
 		BDD32A020F2B245200428344 /* de */ = {
@@ -720,7 +720,7 @@
 				BDC85C1D0D25630A00BE8D80 /* Resources */,
 				BDC85C1E0D25630A00BE8D80 /* Sources */,
 				BDC85C1F0D25630A00BE8D80 /* Frameworks */,
-				BDD32A2F0F2B255A00428344 /* Copy Files - Languages - cz */,
+				BDD32A2F0F2B255A00428344 /* Copy Files - Languages - cs */,
 				BDD32A360F2B264600428344 /* Copy Files - Languages - de */,
 				BDD32A450F2B269000428344 /* Copy Files - Languages - es */,
 				BDD32A490F2B26D100428344 /* Copy Files - Languages - fr */,
