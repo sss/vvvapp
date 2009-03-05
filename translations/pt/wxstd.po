@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: wxstd.pt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2008-04-24 09:56+0200\n"
-"PO-Revision-Date: 2009-02-22 19:05+0100\n"
+"PO-Revision-Date: 2009-03-05 21:31+0100\n"
 "Last-Translator: Fulvio Senore <mailing@fsoft.it>\n"
 "Language-Team: Portuguese <opensuse-pt@opensuse.org>\n"
 "MIME-Version: 1.0\n"
@@ -40,7 +40,7 @@ msgstr " "
 
 #: ../src/generic/dbgrptg.cpp:322
 msgid "              Thank you and we're sorry for the inconvenience!\n"
-msgstr "              Obrigado e desculpe o inconveniência!\n"
+msgstr "              Obrigado e desculpe a inconveniência!\n"
 
 #: ../src/common/log.cpp:246
 #, c-format
@@ -67,7 +67,7 @@ msgstr " Versão "
 
 #: ../src/common/fontcmn.cpp:619
 msgid " bold"
-msgstr " destacado"
+msgstr " negrito"
 
 #: ../src/common/fontcmn.cpp:635
 msgid " italic"
@@ -210,9 +210,8 @@ msgid "&Actual Size"
 msgstr "T&amanho Actual"
 
 #: ../src/richtext/richtextindentspage.cpp:296
-#, fuzzy
 msgid "&After a paragraph:"
-msgstr "Depois de um parágrafo:"
+msgstr "Depois de um p&arágrafo:"
 
 #: ../src/richtext/richtextliststylepage.cpp:318
 #: ../src/richtext/richtextindentspage.cpp:138
@@ -240,13 +239,12 @@ msgid "&Based on:"
 msgstr "&Baseado em:"
 
 #: ../src/richtext/richtextindentspage.cpp:284
-#, fuzzy
 msgid "&Before a paragraph:"
-msgstr "Antes de um parágrafo:"
+msgstr "&Antes de um parágrafo:"
 
 #: ../src/common/stockitem.cpp:113
 msgid "&Bold"
-msgstr "&Destacado"
+msgstr "&Negrito"
 
 #: ../src/richtext/richtextliststylepage.cpp:209
 #: ../src/richtext/richtextbulletspage.cpp:157
@@ -292,9 +290,8 @@ msgid "&Copy"
 msgstr "&Copiar"
 
 #: ../src/generic/hyperlink.cpp:160
-#, fuzzy
 msgid "&Copy URL"
-msgstr "&Copiar"
+msgstr "&Copiar endereço"
 
 #: ../src/generic/dbgrptg.cpp:330
 msgid "&Debug report preview:"
@@ -590,7 +587,7 @@ msgstr "&Parar"
 
 #: ../src/richtext/richtextfontpage.cpp:225
 msgid "&Strikethrough"
-msgstr ""
+msgstr "&Rasurado"
 
 #: ../src/richtext/richtextstylepage.cpp:103
 #: ../src/generic/fontdlgg.cpp:289
@@ -767,7 +764,7 @@ msgstr "-"
 
 #: ../src/richtext/richtextindentspage.cpp:246
 msgid "1"
-msgstr ""
+msgstr "1"
 
 #: ../src/richtext/richtextliststylepage.cpp:460
 #: ../src/richtext/richtextindentspage.cpp:315
@@ -802,19 +799,19 @@ msgstr "2"
 
 #: ../src/richtext/richtextindentspage.cpp:248
 msgid "3"
-msgstr ""
+msgstr "3"
 
 #: ../src/richtext/richtextindentspage.cpp:249
 msgid "4"
-msgstr ""
+msgstr "4"
 
 #: ../src/richtext/richtextindentspage.cpp:250
 msgid "5"
-msgstr ""
+msgstr "5"
 
 #: ../src/richtext/richtextindentspage.cpp:251
 msgid "6"
-msgstr ""
+msgstr "6"
 
 #: ../src/common/paper.cpp:134
 msgid "6 3/4 Envelope, 3 5/8 x 6 1/2 in"
@@ -822,15 +819,15 @@ msgstr "Envelope 6 3/4, 3 5/8 x 6 1/2 pol."
 
 #: ../src/richtext/richtextindentspage.cpp:252
 msgid "7"
-msgstr ""
+msgstr "7"
 
 #: ../src/richtext/richtextindentspage.cpp:253
 msgid "8"
-msgstr ""
+msgstr "8"
 
 #: ../src/richtext/richtextindentspage.cpp:254
 msgid "9"
-msgstr ""
+msgstr "9"
 
 #: ../src/common/paper.cpp:141
 msgid "9 x 11 in"
@@ -945,9 +942,8 @@ msgid "A debug report has been generated in the directory\n"
 msgstr "Um relatório de depuração de erros foi gerado no directório\n"
 
 #: ../src/common/debugrpt.cpp:565
-#, fuzzy
 msgid "A debug report has been generated. It can be found in"
-msgstr "Um relatório de depuração de erros foi gerado no directório\n"
+msgstr "Foi gerado um relatório de depuração de erros. Pode ser encontrado em"
 
 #: ../src/common/xtixml.cpp:406
 msgid "A non empty collection must consist of 'element' nodes"
@@ -1129,9 +1125,8 @@ msgid "Alt-"
 msgstr "Alt-"
 
 #: ../src/common/debugrpt.cpp:568
-#, fuzzy
 msgid "And includes the following files:\n"
-msgstr "*** E inclui os seguintes ficheiros:\n"
+msgstr "E inclui os seguintes ficheiros:\n"
 
 #: ../src/generic/animateg.cpp:163
 #, c-format
@@ -1158,7 +1153,7 @@ msgstr "O arquivo não contém o ficheiro #SYSTEM"
 
 #: ../src/generic/aboutdlgg.cpp:150
 msgid "Artists"
-msgstr ""
+msgstr "Artistas"
 
 #: ../src/generic/filedlgg.cpp:515
 msgid "Attributes"
@@ -1361,7 +1356,7 @@ msgstr "COMANDO"
 
 #: ../src/richtext/richtextfontpage.cpp:232
 msgid "Ca&pitals"
-msgstr ""
+msgstr "Ma&iúsculas"
 
 #: ../src/os2/thread.cpp:116
 msgid "Can not create mutex."
@@ -1792,27 +1787,23 @@ msgstr "Marque para reiniciar a numeração."
 
 #: ../src/richtext/richtextfontpage.cpp:227
 #: ../src/richtext/richtextfontpage.cpp:229
-#, fuzzy
 msgid "Check to show a line through the text."
-msgstr "Marcar para adicionar um ponto a seguir ao marcador."
+msgstr "Seleccionar para rasurar o testo."
 
 #: ../src/richtext/richtextfontpage.cpp:234
 #: ../src/richtext/richtextfontpage.cpp:236
-#, fuzzy
 msgid "Check to show the text in capitals."
-msgstr "Marque para tornar a letra itálica."
+msgstr "Seleccionar para mostrar o testo em maiúsculas."
 
 #: ../src/richtext/richtextfontpage.cpp:248
 #: ../src/richtext/richtextfontpage.cpp:250
-#, fuzzy
 msgid "Check to show the text in subscript."
-msgstr "Clique para alterar a cor do texto."
+msgstr "Seleccionar para mostrar o texto inferior à linha"
 
 #: ../src/richtext/richtextfontpage.cpp:241
 #: ../src/richtext/richtextfontpage.cpp:243
-#, fuzzy
 msgid "Check to show the text in superscript."
-msgstr "Marque para circundar o marcador entre parêntesis."
+msgstr "Seleccionar para mostrar o texto superior à linha."
 
 #: ../src/msw/dialup.cpp:793
 msgid "Choose ISP to dial"
@@ -1988,9 +1979,8 @@ msgid "Closes the dialog without inserting a symbol."
 msgstr "Fecha a caixa de diáogo sem inserir símbolo."
 
 #: ../src/richtext/richtextformatdlg.cpp:517
-#, fuzzy
 msgid "Colour"
-msgstr "Cor:"
+msgstr "Cor"
 
 #: ../src/mac/carbon/fontdlg.cpp:503
 msgid "Colour:"
@@ -1999,7 +1989,7 @@ msgstr "Cor:"
 #: ../src/common/init.cpp:189
 #, c-format
 msgid "Command line argument %d couldn't be converted to Unicode and will be ignored."
-msgstr ""
+msgstr "O argumento da linha de comandos %d não pode ser convertido para Unicode e será ignorado."
 
 #: ../src/html/helpwnd.cpp:1552
 msgid "Compressed HTML Help file (*.chm)|*.chm|"
@@ -2356,7 +2346,6 @@ msgid "Developed by "
 msgstr "Desenvolvido por "
 
 #: ../src/generic/aboutdlgg.cpp:142
-#, fuzzy
 msgid "Developers"
 msgstr "Desenvolvido por "
 
@@ -2431,9 +2420,8 @@ msgid "Documentation by "
 msgstr "Documentado por "
 
 #: ../src/generic/aboutdlgg.cpp:146
-#, fuzzy
 msgid "Documentation writers"
-msgstr "Documentado por "
+msgstr "Documentado por"
 
 #: ../src/common/sizer.cpp:2095
 msgid "Don't Save"
@@ -2502,9 +2490,8 @@ msgid "Enter a list style name"
 msgstr "Introduza um nome de estilo de lista"
 
 #: ../src/richtext/richtextstyledlg.cpp:843
-#, fuzzy
 msgid "Enter a new style name"
-msgstr "Introduza um nome de estilo de lista"
+msgstr "Introduza um novo nome de estilo de lista"
 
 #: ../src/common/prntbase.cpp:1073
 #, c-format
@@ -2686,9 +2673,9 @@ msgid "Failed to connect: no ISP to dial."
 msgstr "Falha na ligação: nenhum serviço ISP para marcar."
 
 #: ../src/common/textfile.cpp:177
-#, fuzzy, c-format
+#, c-format
 msgid "Failed to convert file \"%s\" to Unicode."
-msgstr "Falha ao converter conteúdo do ficheiro para Unicode."
+msgstr "Falha na conversão do ficheiro \"%s\" para Unicode."
 
 #: ../src/msw/registry.cpp:632
 #, c-format
@@ -2946,9 +2933,8 @@ msgid "Failed to read PID from lock file."
 msgstr "Falha na leitura do PID do ficheiro de bloqueio."
 
 #: ../src/common/fileconf.cpp:522
-#, fuzzy
 msgid "Failed to read config options."
-msgstr "Erro ao ler opções de configuração."
+msgstr "Falha na leitura das opções de configuração."
 
 #: ../src/unix/utilsunx.cpp:599
 msgid "Failed to redirect child process input/output"
@@ -3204,7 +3190,7 @@ msgstr "Fonte:"
 #: ../src/dfb/fontmgr.cpp:167
 #, c-format
 msgid "Fonts index file %s disappeared while loading fonts."
-msgstr ""
+msgstr "O índice %s de Tipo de Letra desapareceu durante o carregamento dos Tipos de Letra."
 
 #: ../src/unix/utilsunx.cpp:546
 msgid "Fork failed"
@@ -3341,9 +3327,8 @@ msgid "HTML files (*.html;*.htm)|*.html;*.htm|"
 msgstr "Ficheiros HTML (*.html;*.htm)|*.html;*.htm|"
 
 #: ../src/html/htmprint.cpp:379
-#, fuzzy
 msgid "HTML pagination algorithm generated more than the allowed maximum number of pages and it can't continue any longer!"
-msgstr "O algoritmo de paginação HTML gerou mais do que o número máximo permitido de páginas e pode continuar ainda mais!"
+msgstr "O algoritmo de paginação HTML gerou mais do que o número máximo permitido de páginas e não pode continuar mais!"
 
 #: ../src/common/fmapbase.cpp:113
 msgid "Hebrew (ISO-8859-8)"
@@ -3821,9 +3806,8 @@ msgid "KP_UP"
 msgstr "KP_UP"
 
 #: ../src/richtext/richtextindentspage.cpp:307
-#, fuzzy
 msgid "L&ine spacing:"
-msgstr "Espaçamento de linhas:"
+msgstr "Espaçamento entre l&inhas:"
 
 #: ../src/common/menucmn.cpp:74
 msgid "LEFT"
@@ -3901,7 +3885,7 @@ msgstr "Letter, 8 1/2 x 11 pol."
 
 #: ../src/generic/aboutdlgg.cpp:139
 msgid "License"
-msgstr ""
+msgstr "Licença"
 
 #: ../src/generic/fontdlgg.cpp:239
 msgid "Light"
@@ -4148,9 +4132,9 @@ msgstr ""
 "(caso contrário o texto nesta codificação não será correctamente apresentado)?"
 
 #: ../src/dfb/fontmgr.cpp:156
-#, fuzzy, c-format
+#, c-format
 msgid "No fonts found in %s."
-msgstr "Não foram encontradas entradas."
+msgstr "Não foram encontrados Tipos de Letra em %s."
 
 #: ../src/xrc/xmlres.cpp:715
 #, c-format
@@ -5204,14 +5188,12 @@ msgid "Subclass '%s' not found for resource '%s', not subclassing!"
 msgstr "Sub-Classe '%s' não encontrada para o recurso '%s', a sub-classe não é criada!"
 
 #: ../src/richtext/richtextfontpage.cpp:246
-#, fuzzy
 msgid "Subscrip&t"
-msgstr "Script"
+msgstr "Inferior à linha"
 
 #: ../src/richtext/richtextfontpage.cpp:239
-#, fuzzy
 msgid "Supe&rscript"
-msgstr "Script"
+msgstr "Superior à linha"
 
 #: ../src/common/paper.cpp:152
 msgid "SuperA/SuperA/A4 227 x 356 mm"
@@ -5610,9 +5592,8 @@ msgid "Translations by "
 msgstr "Traduções por "
 
 #: ../src/generic/aboutdlgg.cpp:154
-#, fuzzy
 msgid "Translators"
-msgstr "Traduções por "
+msgstr "Traductores"
 
 #: ../src/common/fs_mem.cpp:230
 #, c-format
@@ -5852,9 +5833,9 @@ msgid "Validation conflict"
 msgstr "Conflito de validação"
 
 #: ../src/mac/carbon/aboutdlg.cpp:73
-#, fuzzy, c-format
+#, c-format
 msgid "Version %s"
-msgstr " Versão "
+msgstr " Versão %s"
 
 #: ../contrib/src/mmedia/vidbase.cpp:62
 msgid "Video Output"

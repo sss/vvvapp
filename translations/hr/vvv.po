@@ -101,32 +101,32 @@ msgstr "Odabir sadržaja kataloga"
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/catalog_volume_functions.cpp:328
 msgid "Number of added files: "
-msgstr ""
+msgstr "Broj dodanih datoteka:"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/catalog_volume_functions.cpp:329
 msgid "Number of updated files: "
-msgstr ""
+msgstr "Broj obnovljenih datoteka:"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/catalog_volume_functions.cpp:330
 msgid "Number of deleted files (not counting those in deleted folders): "
-msgstr ""
+msgstr "Broj obrisanih datoteka. Datoteke obrisane u mapama nisu ubrojene."
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/catalog_volume_functions.cpp:331
 msgid "Number of deleted folders: "
-msgstr ""
+msgstr "Broj obrisanih mapa."
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/catalog_volume_functions.cpp:332
 msgid "Number of unchanged files: "
-msgstr ""
+msgstr "Broj neizmijenjenih datoteka."
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/catalog_volume_functions.cpp:333
 msgid "Do you really want to update the volume?"
-msgstr ""
+msgstr "Broj obrisanih datoteka?"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/choose_virtual_folder.cpp:157
@@ -205,12 +205,12 @@ msgstr "Uključi zaglavlja"
 #: (virtual volumes view)\src/exportdata.cpp:207
 #: view)\src/mainframe.cpp:940
 msgid "All physical volumes"
-msgstr "Sve stvarne diskove"
+msgstr "Sve stvarne kataloge"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/exportdata.cpp:208
 msgid "Selected physical volume/folder"
-msgstr "Odabir stvarnog diska ili mape"
+msgstr "Odabir stvarnog kataloga ili mape"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/exportdata.cpp:209
@@ -314,7 +314,7 @@ msgstr ""
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:782
 msgid "&New..."
-msgstr "&Nova..."
+msgstr "&Novi..."
 
 # Part of the File menu
 #: E:\C_Prg\vvv
@@ -349,7 +349,7 @@ msgstr "I&zlaz"
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:790
 msgid "&File"
-msgstr "&Datoteke"
+msgstr "&Katalozi"
 
 # Part of the Edit menu
 #: E:\C_Prg\vvv
@@ -402,19 +402,18 @@ msgstr "&Uređivanje"
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:806
 msgid "&Catalog Volume..."
-msgstr "&Katalog..."
+msgstr "&Izrada kataloga..."
 
 # Part of the Volumes menu
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:807
-#, fuzzy
 msgid "&Update Volume..."
-msgstr "&Katalog..."
+msgstr "&Obnavljanje kataloga..."
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:808
 msgid "&Volumes"
-msgstr "&Katalozi"
+msgstr "&Katalogizacija"
 
 # Part of the View menu
 #: E:\C_Prg\vvv
@@ -469,9 +468,8 @@ msgstr "&Sadržaj"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:834
-#, fuzzy
 msgid "&About VVV..."
-msgstr "&O programu"
+msgstr "&O programu..."
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:842
@@ -521,7 +519,7 @@ msgstr "Prikaz stvarnih kataloga"
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:858
 msgid "Virtual"
-msgstr "Virtualno"
+msgstr "Virtualni"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:858
@@ -715,7 +713,7 @@ msgid ""
 "Unable to connect to the following server:\n"
 "\n"
 msgstr ""
-"Ne mogu uspostaviti vezu s domaćinom:\n"
+"Ne mogu uspostaviti vezu s poslužiteljom:\n"
 "\n"
 
 #: E:\C_Prg\vvv
@@ -726,8 +724,8 @@ msgid ""
 "If you want to open a catalog on another computer you must connect to the database server (Tools/Options menu)."
 msgstr ""
 "Ne mogu otvoriti katalog.\n"
-"Niste povezani s bazom podataka domaćina pa ne možete otvoriti katalog koji se nalazi na drugom računalu ili mreži.\n"
-"Ako želite otvoriti katalog koji se nalazi na drugom računalu ili mreži morate se prethodno spojiti na bazu podataka domaćina (Alati/Mogućnosti)."
+"Niste povezani s bazom podataka poslužitelja pa ne možete otvoriti katalog koji se nalazi na drugom računalu ili mreži.\n"
+"Ako želite otvoriti katalog koji se nalazi na drugom računalu ili mreži morate se prethodno spojiti na bazu podataka poslužitelja (Alati/Mogućnosti)."
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:2122
@@ -778,7 +776,7 @@ msgid ""
 msgstr ""
 "Ne mogu stvoriti novi katalog.\n"
 "\n"
-"Povezani ste na bazu podataka na drugom računalu. Morate pokrenuti VVV na domaćinu da bi mogli provesti pretvorbu."
+"Povezani ste na bazu podataka na drugom računalu. Morate pokrenuti VVV na poslužitelju da bi mogli provesti pretvorbu."
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:2148
@@ -799,18 +797,13 @@ msgstr ""
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:2319
-#, fuzzy
 msgid "VVV (Virtual Volumes View): a program to catalog removable devices like CDs and DVDs"
-msgstr ""
-"VVV (Virtual Volumes View), katalogizacija sadržaja izmjenjivih diskova CDa i DVDa\n"
-"\n"
-"\"The mud of Venaus is the blood of this land\""
+msgstr "VVV (Virtual Volumes View), katalogizacija sadržaja izmjenjivih diskova CDa i DVDa"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:2320
-#, fuzzy
 msgid "Copyright (C) 2007-2009 The VVV Team"
-msgstr "Copyright (C) 2007-2008 VVV tim"
+msgstr "Autorska prava (C) 2007-2008 VVV tim"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:2321
@@ -819,11 +812,12 @@ msgstr "Glavni programer: Fulvio Senore"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:2322
-#, fuzzy
 msgid ""
 "\n"
 "Jan Albartus: worked at the portable version and designed the application's icon"
-msgstr "Prenosiva verzija i ikone: Jan Albartus"
+msgstr ""
+"\n"
+"Jan Albartus: Autor prenosive verzije i ikona"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:2323
@@ -838,48 +832,47 @@ msgstr "Otvoreni softver se koristi pod GNU GENERAL PUBLIC LICENSE"
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:2325
 msgid "Czech"
-msgstr ""
+msgstr "Češki"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:2326
-#, fuzzy
 msgid "German"
-msgstr "Općenito"
+msgstr "Njemački"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:2327
 msgid "Spanish"
-msgstr ""
+msgstr "Španjolski"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:2328
 msgid "French"
-msgstr ""
+msgstr "Francuski"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:2329
 msgid "Croatian"
-msgstr ""
+msgstr "Hrvatski"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:2330
 msgid "Italian"
-msgstr ""
+msgstr "Talijanski"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:2331
 msgid "Dutch"
-msgstr ""
+msgstr "Danski"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:2332
 msgid "Polish"
-msgstr ""
+msgstr "Poljski"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:2333
 msgid "Portuguese"
-msgstr ""
+msgstr "Potrugalski"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:2349
@@ -924,9 +917,8 @@ msgstr "Obriši"
 # Part of the Volumes menu
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:2529
-#, fuzzy
 msgid "Update Volume..."
-msgstr "&Katalog..."
+msgstr "Obnavljanje &kataloga..."
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:2553
@@ -1095,7 +1087,7 @@ msgid ""
 msgstr ""
 "Ne mogu restaurirati.\n"
 "\n"
-"Povezani ste na bazu podataka na drugom računalu. Morate pokrenuti VVV na domaćinu da bi mogli provesti restauraciju."
+"Povezani ste na bazu podataka na drugom računalu. Morate pokrenuti VVV na poslužitelju da bi mogli provesti restauraciju."
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:3716
@@ -1124,9 +1116,8 @@ msgstr "Restauriranje je završeno"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:3792
-#, fuzzy
 msgid "Update Volume"
-msgstr "Disk"
+msgstr "Obnavljanje kataloga"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/object_description.cpp:145
@@ -1146,10 +1137,10 @@ msgid ""
 "Enter the alias or the complete path to the catalog file.\n"
 "Remember that the path must be relative to the server, not to the client."
 msgstr ""
-"Otvaranje kataloga lociranog na domaćinu.\n"
+"Otvaranje kataloga lociranog na poslužitelju.\n"
 "\n"
 "Unesite alias ili punu stazu do datoteke kataloga.\n"
-"Staza mora biti relativna prema domaćinu, a ne prema korisniku."
+"Staza mora biti relativna prema poslužitelju, a ne prema korisniku."
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/opencatalog.cpp:257
@@ -1208,7 +1199,7 @@ msgstr "Datoteka kataloga"
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/settings.cpp:175
 msgid "Reopen the last used catalog at startup"
-msgstr "Pri pokretanju učitaj zadnje otvoreni katalog"
+msgstr "Pri pokretanju učitaj zadnje otvarani katalog"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/settings.cpp:181
@@ -1250,21 +1241,21 @@ msgid ""
 "stored in this computer and you do not want to share them\n"
 "with other computers."
 msgstr ""
-"Kvačicom označite da želite pristupiti katalogu na mrežnom domaćinu.\n"
-"Svako računalo u mreži može pristupiti katalozima lociranim na domaćinu.\n"
+"Kvačicom označite da želite pristupiti katalogu na mrežnom poslužitelju.\n"
+"Svako računalo u mreži može pristupiti katalozima lociranim na poslužitelju.\n"
 "NE stavljajte kvačicu ukoliko pristupate katalozima na ovom računalu i\n"
 "ne želite ih dijeliti s ostalim računalima."
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/settings.cpp:263
 msgid "Connect to a network server"
-msgstr "Spoji se na mrežnog domaćina"
+msgstr "Spoji se na mrežnog poslužitelja"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/settings.cpp:270
 #: view)\src/settings.cpp:293
 msgid "Server"
-msgstr "Domaćin"
+msgstr "Poslužitelj"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/settings.cpp:276
@@ -1279,12 +1270,12 @@ msgstr "Lozinka"
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/settings.cpp:290
 msgid "Test server connection"
-msgstr "Provjeri vezu s domaćinom"
+msgstr "Provjeri vezu s poslužiteljom"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/settings.cpp:381
 msgid "You must enter a server name or address"
-msgstr "Unesite naziv domaćina ili adresu"
+msgstr "Unesite naziv poslužitelja ili adresu"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/settings.cpp:385
@@ -1299,12 +1290,12 @@ msgstr "Unesite lozinku"
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/settings.cpp:452
 msgid "You must enter the server name or address"
-msgstr "Unesite naziv domaćina ili adresu"
+msgstr "Unesite naziv poslužitelja ili adresu"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/settings.cpp:457
 msgid "Unable to connect to the server"
-msgstr "Ne mogu se spojiti na domaćina"
+msgstr "Ne mogu se spojiti na poslužitelja"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/settings.cpp:459
@@ -1314,24 +1305,22 @@ msgstr "Spajanje je uspjelo"
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/update_volume.cpp:180
 msgid "You are about to update the following volume:"
-msgstr ""
+msgstr "Obnavljate katalog:"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/update_volume.cpp:183
-#, fuzzy
 msgid "VOLUME NAME"
-msgstr "NAZIV STAVKE"
+msgstr "Naziv kataloga"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/update_volume.cpp:188
-#, fuzzy
 msgid "Enter or select the path to volume to update"
-msgstr "Unesite ili odaberite mapu ili disk za katalogiziranje"
+msgstr "Unesite ili odaberite stazu kataloga za obnavljanje"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/update_volume.cpp:208
 msgid "Update"
-msgstr ""
+msgstr "Obnavljanje"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/vvv.cpp:316
@@ -1339,7 +1328,7 @@ msgid ""
 "Unable to connect to the server\n"
 "\n"
 msgstr ""
-"Ne mogu se spojiti na domaćina\n"
+"Ne mogu se spojiti na poslužitelja\n"
 "\n"
 
 #: E:\C_Prg\vvv
@@ -1359,180 +1348,14 @@ msgstr "Došlo je do neočekivane greške. Program će biti zatvoren"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/vvv.cpp:361
-#, fuzzy
 msgid "The volume path does not exists"
 msgstr "Nedostaje staza do kataloga"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/vvv.cpp:402
-#, fuzzy
 msgid "Volume name not found"
-msgstr "Naziv kataloga"
+msgstr "Nema kataloga tog naziva"
 
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/exportdata.h:71
 msgid "Export data"

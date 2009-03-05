@@ -55,7 +55,7 @@ msgstr "&Hilfe"
 #: (virtual volumes view)\src/catalog_volume.cpp:209
 #: view)\src/mainframe.cpp:848
 msgid "Catalog"
-msgstr "Katalogisiere"
+msgstr "Katalogisieren"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/catalog_volume.cpp:212
@@ -101,32 +101,32 @@ msgstr "Wählen Sie den zu katalogisierenden Datenträger"
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/catalog_volume_functions.cpp:328
 msgid "Number of added files: "
-msgstr ""
+msgstr "Anzahl der hinzugefügten Dateien: "
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/catalog_volume_functions.cpp:329
 msgid "Number of updated files: "
-msgstr ""
+msgstr "Anzahl der aktualisierten Dateien: "
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/catalog_volume_functions.cpp:330
 msgid "Number of deleted files (not counting those in deleted folders): "
-msgstr ""
+msgstr "Anzahl der gelöschten Dateien (ohne die aus gelöschten Ordnern): "
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/catalog_volume_functions.cpp:331
 msgid "Number of deleted folders: "
-msgstr ""
+msgstr "Anzahl der gelöschten Ordner: "
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/catalog_volume_functions.cpp:332
 msgid "Number of unchanged files: "
-msgstr ""
+msgstr "Anzahl der unveränderten Dateien: "
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/catalog_volume_functions.cpp:333
 msgid "Do you really want to update the volume?"
-msgstr ""
+msgstr "Wollen Sie den Datenträger wirklich aktualisieren?"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/choose_virtual_folder.cpp:157
@@ -385,7 +385,7 @@ msgstr "&Neues virtuelles Wurzelverzeichnis..."
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:800
 msgid "New Virtual &Subfolder..."
-msgstr "Neuer &virtueller Unterverzeichnis..."
+msgstr "Neues &virtuelles Unterverzeichnis..."
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:802
@@ -407,9 +407,8 @@ msgstr "Datenträger &katalogisieren..."
 # Part of the Volumes menu
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:807
-#, fuzzy
 msgid "&Update Volume..."
-msgstr "Datenträger &katalogisieren..."
+msgstr "Datenträger &aktualisieren..."
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:808
@@ -469,9 +468,8 @@ msgstr "&Inhalt"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:834
-#, fuzzy
 msgid "&About VVV..."
-msgstr "Ü&ber VVV"
+msgstr "Ü&ber VVV..."
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:842
@@ -725,7 +723,7 @@ msgid ""
 "Please note that you are not connected to a database server so you cannot open a catalog located on another computer in the network.\n"
 "If you want to open a catalog on another computer you must connect to the database server (Tools/Options menu)."
 msgstr ""
-"Außerstande den Katalog zu öffnen.\n"
+"Der Katalog konnte nicht geöffnet werden.\n"
 "Bitte beachten Sie, dass Sie nicht zum Datenbankserver verbunden sind und deshalb keine Kataloge auf anderen Computern des Netzwerks öffnen können.\n"
 "Wenn Sie Kataloge auf einem anderen Computer öffnen wollen müssen Sie zum Datenbankserver verbunden sein (Extras/Optionen Menü)."
 
@@ -776,7 +774,7 @@ msgid ""
 "\n"
 "You are connecting to a database server on another computer. You must execute this program on the server to be able to create a new catalog."
 msgstr ""
-"Außerstande einen neuen Katalog zu erstellen.\n"
+"Es konnte kein neuer Katalog erstellt werden.\n"
 "\n"
 "Sie sind mit dem Datenbankserver eines anderen Computers verbunden. Sie müssen das Programm auf dem Server ausführen um einen neuen Katalog erstellen zu können."
 
@@ -793,24 +791,19 @@ msgid ""
 "\n"
 "You can try reinstalling the program to solve this problem."
 msgstr ""
-"Außerstande die Datenbanksicherung wiederherzustellen.\n"
+"Die wiederherzustellende Datenbanksicherung konnte nicht gefunden werden.\n"
 "\n"
 "Sie können eine Neuinstallation des Programms versuchen um das Problem zu lösen."
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:2319
-#, fuzzy
 msgid "VVV (Virtual Volumes View): a program to catalog removable devices like CDs and DVDs"
-msgstr ""
-"VVV (Virtual Volumes View): ein Programm zum katalogisieren austauschbarer Datenträger wie CDs und DVDs\n"
-"\n"
-"\"The mud of Venaus is the blood of this land\""
+msgstr "VVV (Virtual Volumes View): ein Programm zum katalogisieren austauschbarer Datenträger wie CDs und DVDs"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:2320
-#, fuzzy
 msgid "Copyright (C) 2007-2009 The VVV Team"
-msgstr "Copyright (C) 2007-2008 Das VVV Team"
+msgstr "Copyright (C) 2007-2009 Das VVV Team"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:2321
@@ -819,11 +812,12 @@ msgstr "Fulvio Senore: Hauptentwickler"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:2322
-#, fuzzy
 msgid ""
 "\n"
 "Jan Albartus: worked at the portable version and designed the application's icon"
-msgstr "Jan Albartus: arbeitete an der portablen Version und entwarf das Programmicon"
+msgstr ""
+"\n"
+"Jan Albartus: arbeitete an der portablen Version und entwarf das Programmicon"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:2323
@@ -838,48 +832,47 @@ msgstr "Dies ist Open Source Software, die unter der GNU GENERAL PUBLIC LICENSE 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:2325
 msgid "Czech"
-msgstr ""
+msgstr "Tschechisch"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:2326
-#, fuzzy
 msgid "German"
-msgstr "Allgemein"
+msgstr "Deutsch"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:2327
 msgid "Spanish"
-msgstr ""
+msgstr "Spanisch"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:2328
 msgid "French"
-msgstr ""
+msgstr "Französisch"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:2329
 msgid "Croatian"
-msgstr ""
+msgstr "Kroatisch"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:2330
 msgid "Italian"
-msgstr ""
+msgstr "Italienisch"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:2331
 msgid "Dutch"
-msgstr ""
+msgstr "Niederländisch"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:2332
 msgid "Polish"
-msgstr ""
+msgstr "Polnisch"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:2333
 msgid "Portuguese"
-msgstr ""
+msgstr "Portugiesisch"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:2349
@@ -924,9 +917,8 @@ msgstr "Löschen"
 # Part of the Volumes menu
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:2529
-#, fuzzy
 msgid "Update Volume..."
-msgstr "Datenträger &katalogisieren..."
+msgstr "Datenträger &aktualisieren..."
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:2553
@@ -975,7 +967,7 @@ msgid ""
 "\n"
 "Do you really want to delete the selected virtual folder?"
 msgstr ""
-"Dieser Befehl löscht den ausgewählten virtuellen Ordner, aber verändert die Ordner in der physikalischen Ansicht nicht.\n"
+"Dieser Befehl löscht den ausgewählten virtuellen Ordner, aber verändert nicht die Ordner in der physikalischen Ansicht.\n"
 "\n"
 "Wollen Sie den ausgewählten virtuellen Ordner wirklich löschen?"
 
@@ -1006,7 +998,7 @@ msgstr ""
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:3269
 msgid "Unable to delete this volume: at least one of its files is used in the virtual view"
-msgstr "Außerstande den Datenträger zu löschen: Mindestens eine Datei wird in der virtuellen Ansicht benutzt"
+msgstr "Der Datenträger konnte nicht gelöscht werden: Mindestens eine Datei wird in der virtuellen Ansicht benutzt"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:3290
@@ -1035,7 +1027,7 @@ msgid ""
 "\n"
 "Do you really want to delete the selected virtual files?"
 msgstr ""
-"Dieser Befehl löscht die ausgewählten virtuellen Dateien, aber verändert die Dateien in der physikalischen Ansicht nicht.\n"
+"Dieser Befehl löscht die ausgewählten virtuellen Dateien, aber verändert nicht die Dateien in der physikalischen Ansicht.\n"
 "\n"
 "Wollen Sie die ausgewählten virtuellen Dateien wirklich löschen?"
 
@@ -1046,7 +1038,7 @@ msgid ""
 "Unable to continue. You have choosen an existing file:\n"
 "\n"
 msgstr ""
-"Außerstande fortzufahren. Sie haben eine bereits existierende Datei gewählt:\n"
+"Der Vorgang wurde abgebrochen: Sie haben eine bereits existierende Datei gewählt:\n"
 "\n"
 
 #: E:\C_Prg\vvv
@@ -1067,7 +1059,7 @@ msgstr ""
 #: view)\src/mainframe.cpp:3665
 #: view)\src/mainframe.cpp:3747
 msgid "Unable to continue: you have choosen a folder where you do not have the right to create a file."
-msgstr "Außerstande fortzufahren: Sie haben einen Ordner gewählt in dem Sie keine Rechte haben Dateien zu erstellen."
+msgstr "Der Vorgang wurde abgebrochen: Sie haben einen Ordner gewählt in dem Sie keine Rechte haben Dateien zu erstellen."
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:3633
@@ -1079,7 +1071,7 @@ msgstr "VVV Sicherungsdateien (*.vvvbk)|*.vvvbk|Alle Dateien (*.*)|*.*"
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:3634
 msgid "Backup catalog"
-msgstr "Sichere Katalog"
+msgstr "Katalog sichern"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:3679
@@ -1093,7 +1085,7 @@ msgid ""
 "\n"
 "You are connecting to a database server on another computer. You must execute this command on the server to be able to restore a catalog."
 msgstr ""
-"Außerstande wiederherzustellen.\n"
+"Die Wiederherstellung konnte nicht ausgeführt werden.\n"
 "\n"
 "Sie sind mit dem Datenbankserver eines anderen Computers verbunden. Sie müssen den Befehl auf dem Server ausführen um einen Katalog wiederherstellen zu können."
 
@@ -1114,7 +1106,7 @@ msgid ""
 "Unable to continue. You have choosen an existing catalog:\n"
 "\n"
 msgstr ""
-"Außerstande fortzufahren. Sie haben einen bereits existierenden Katalog gewählt:\n"
+"Der Vorgang wurde abgebrochen: Sie haben einen bereits existierenden Katalog gewählt:\n"
 "\n"
 
 #: E:\C_Prg\vvv
@@ -1124,9 +1116,8 @@ msgstr "Wiederherstellung beendet"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:3792
-#, fuzzy
 msgid "Update Volume"
-msgstr "Datenträger"
+msgstr "Datenträger aktualisieren"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/object_description.cpp:145
@@ -1160,7 +1151,7 @@ msgstr "VVV Dateien  (*.vvv)|*.vvv|Alle Dateien (*.*)|*.*"
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/opencatalog.cpp:277
 msgid "Open Catalog"
-msgstr "Öffne Katalog"
+msgstr "Katalog öffnen"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/opencatalog.cpp:281
@@ -1218,7 +1209,9 @@ msgstr "Piepton für Aufgaben länger als (Sekunden):"
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/settings.cpp:187
 msgid "Use VVV in English (restart required)"
-msgstr "Benutze VVV in Englisch (Neustart erforderlich)"
+msgstr ""
+"Benutze VVV in Englisch (Neustart erforderlich)\n"
+"Use VVV in English (restart required)"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/settings.cpp:191
@@ -1316,24 +1309,22 @@ msgstr "Serververbindung erfolgreich"
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/update_volume.cpp:180
 msgid "You are about to update the following volume:"
-msgstr ""
+msgstr "Sie sind dabei folgende Datenträger zu aktualisieren:"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/update_volume.cpp:183
-#, fuzzy
 msgid "VOLUME NAME"
-msgstr "OBJEKTNAME"
+msgstr "DATENTRÄGERNAME"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/update_volume.cpp:188
-#, fuzzy
 msgid "Enter or select the path to volume to update"
-msgstr "Eingabe oder Auswahl des Datenträgers"
+msgstr "Eingabe oder Auswahl des zu aktualisiernden Datenträgers"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/update_volume.cpp:208
 msgid "Update"
-msgstr ""
+msgstr "Aktualisieren"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/vvv.cpp:316
@@ -1361,180 +1352,14 @@ msgstr "Ein unerwarteter Fehler ist aufgetreten. Das Programm wird beendet."
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/vvv.cpp:361
-#, fuzzy
 msgid "The volume path does not exists"
-msgstr "Der Datenträgerpfad fehlt"
+msgstr "Der Datenträgerpfad existiert nicht"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/vvv.cpp:402
-#, fuzzy
 msgid "Volume name not found"
-msgstr "Datenträgername"
+msgstr "Datenträgername nicht gefunden"
 
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
-#: E:\C_Prg\vvv
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/exportdata.h:71
 msgid "Export data"

@@ -8,7 +8,7 @@
 
 #define AppName "VVV (Virtual Volumes View)"
 #define ExeName "vvv.exe"
-#define AppVersion "0.97"
+#define AppVersion "1.0"
 
 [Setup]
 AppId=VVV-fu-ku-jitsu
@@ -22,7 +22,7 @@ VersionInfoVersion={#AppVersion}
 ChangesAssociations=yes
 OutputDir=.
 ;OutputBaseFilename=VVV- + {#AppVersion} + -Setup
-OutputBaseFilename=VVV-0.97-Setup
+OutputBaseFilename=VVV-1.0-Setup
 
 [Tasks]
 Name: desktopicon; Description: {cm:CreateDesktopIcon}
@@ -42,7 +42,7 @@ Source: intl\fbintl.conf; DestDir: {app}\intl; Flags: replacesameversion
 Source: ..\vvv-struct-update.fdb; DestDir: {app}; Attribs: readonly; Flags: overwritereadonly uninsremovereadonly
 Source: ..\VVV.fbk; DestDir: {app}
 Source: ..\help\en\vvv.chm; DestDir: {app}
-Source: ..\translations\cz\vvv.mo; DestDir: {app}\languages\cz
+Source: ..\translations\cs\vvv.mo; DestDir: {app}\languages\cs
 Source: ..\translations\de\vvv.mo; DestDir: {app}\languages\de
 Source: ..\translations\de\wxstd.mo; DestDir: {app}\languages\de
 Source: ..\translations\es\vvv.mo; DestDir: {app}\languages\es
@@ -74,7 +74,7 @@ Root: HKCU; Subkey: Software\VVV; Flags: uninsdeletekey
 [Languages]
 Name: en; MessagesFile: compiler:Default.isl
 Name: it; MessagesFile: compiler:Languages\Italian.isl
-Name: cz; MessagesFile: compiler:Languages\Czech.isl
+Name: cs; MessagesFile: compiler:Languages\Czech.isl
 Name: de; MessagesFile: compiler:Languages\German.isl
 Name: es; MessagesFile: compiler:Languages\Spanish.isl
 Name: fr; MessagesFile: compiler:Languages\French.isl
