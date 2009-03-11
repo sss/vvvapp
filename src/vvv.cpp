@@ -316,6 +316,7 @@ int CVvvApp::OnRun() {
 	}
 	
 	mainWindow->Show(true);
+	mainWindow->SendSizeEvent();
 	try {
 		return wxApp::OnRun();
 	}
