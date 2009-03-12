@@ -525,7 +525,7 @@ msgstr "Virtueel"
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:858
 msgid "Show the virtual view"
-msgstr "Toon overzicht viruele mappen"
+msgstr "Toon overzicht virtuele mappen"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:861
@@ -804,7 +804,7 @@ msgstr "VVV (Virtual Volumes View): een programma om verwisselbare media zoals C
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:2320
 msgid "Copyright (C) 2007-2009 The VVV Team"
-msgstr "Auterusrechten (C) 2007-2009 Het VVV Team"
+msgstr "Auteursrechten © 2007-2009 Het VVV Team"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:2321
@@ -833,7 +833,7 @@ msgstr "Dit is open-bron-software, verspreid onder de GNU ALGEMENE PUBLIEKE LICE
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:2325
 msgid "Czech"
-msgstr "Tjechisch"
+msgstr "Tsjechisch"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:2326
@@ -878,7 +878,7 @@ msgstr "Portugees"
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:2349
 msgid "New catalog"
-msgstr "Nieuwe catolgus"
+msgstr "Nieuwe catalgus"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:2382
@@ -999,7 +999,7 @@ msgstr ""
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:3269
 msgid "Unable to delete this volume: at least one of its files is used in the virtual view"
-msgstr "Kan het volume niet verwijderen: er is tenminste één bestand in gebruik bij het virutele overzicht "
+msgstr "Kan het volume niet verwijderen: er is tenminste één bestand in gebruik bij het virtuele overzicht "
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:3290
@@ -1174,7 +1174,7 @@ msgid ""
 msgstr ""
 "U staat op het punt een nieuwe catalogus aan te maken vanuit een back-up bestand.\n"
 "\n"
-"Geef het volledig pad naar het backup bestand en naar het catalogusbestand dat aangemaakt moet worden.\n"
+"Geef het volledig pad naar het back-up bestand en naar het catalogusbestand dat aangemaakt moet worden.\n"
 "U kunt geen naam van een bestaande catalogus gebruiken."
 
 #: E:\C_Prg\vvv
@@ -1348,7 +1348,7 @@ msgid ""
 "An unexpected error has occurred. Here is a description of the error:\n"
 "\n"
 msgstr ""
-"Er is een onverwachte fout opgetreden.Hier is een beschrijving van de fout:\n"
+"Er is een onverwachte fout opgetreden. Hier is een beschrijving van de fout:\n"
 "\n"
 
 #: E:\C_Prg\vvv
