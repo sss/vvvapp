@@ -23,8 +23,10 @@ Gideon van Melle
 gvmelle@gmail.com
 
 pl:
-Grzegorz Skoczylas
-gskoczylas@gmail.com
+Darek
+d2m@op.pl
+//Grzegorz Skoczylas
+//gskoczylas@gmail.com
 
 pt:
 Pedro Cunha
