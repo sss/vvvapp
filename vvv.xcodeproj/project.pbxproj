@@ -329,7 +329,7 @@
 		BDC65A350D268C4800FE4EAF /* utils.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = utils.cpp; path = src/utils.cpp; sourceTree = "<group>"; };
 		BDC65A360D268C4800FE4EAF /* vvv.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = vvv.cpp; path = src/vvv.cpp; sourceTree = "<group>"; };
 		BDC65A370D268C4800FE4EAF /* window_position.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = window_position.cpp; path = src/window_position.cpp; sourceTree = "<group>"; };
-		BDC85C210D25630A00BE8D80 /* vvv.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = vvv.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BDC85C210D25630A00BE8D80 /* vvv.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = vvv.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDC85C240D25630B00BE8D80 /* vvv-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "vvv-Info.plist"; sourceTree = "<group>"; };
 		BDCCA1480F5408FD0012CEC7 /* wxstd.mo */ = {isa = PBXFileReference; lastKnownFileType = file; path = wxstd.mo; sourceTree = "<group>"; };
 		BDCCA14A0F5409100012CEC7 /* wxstd.mo */ = {isa = PBXFileReference; lastKnownFileType = file; path = wxstd.mo; sourceTree = "<group>"; };
@@ -954,6 +954,10 @@
 					System,
 					"-framework",
 					QuickTime,
+					"-framework",
+					OpenGL,
+					"-framework",
+					AGL,
 					"$(WXDIR)/build-release-unicode/lib/libwx_macu_richtext-2.8.a",
 					"$(WXDIR)/build-release-unicode/lib/libwx_macu_aui-2.8.a",
 					"$(WXDIR)/build-release-unicode/lib/libwx_macu_xrc-2.8.a",
