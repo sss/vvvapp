@@ -284,7 +284,31 @@ bool CVvvApp::OnInit()
 #if wxUSE_GIF
 	wxImage::AddHandler(new wxGIFHandler);
 #endif
-	mainWindow = new CMainFrame( NULL, ID_MAIN_FRAME );
+
+	try {
+		mainWindow = new CMainFrame( NULL, ID_MAIN_FRAME );
+	}
+	catch( CDataErrorException& e ) {
+		wxString s;
+		if( e.GetErrorCause() == CDataErrorException::ecServerNotFound )
+			s = _("Unable to connect to the server\n\n");
+		else
+			s = _("An unexpected error has occurred. Here is a description of the error:\n\n");
+		s += CUtils::std2wx( e.what() );
+		wxLogError( wxT("%s"), s.c_str() );
+		return false;
+	}
+	catch( IBPP::Exception& e ) {
+		wxString s = _("An unexpected error has occurred. Here is a description of the error:\n\n");
+		s += CUtils::std2wx( e.ErrorMessage() );
+		wxLogError( wxT("%s"), s.c_str() );
+		return false;
+	}
+	catch( ... ) {
+		wxString s = _("An unexpected error has occurred. This application will be terminated");
+		wxLogError( wxT("%s"), s.c_str() );
+		return false;
+	}
 
 	return true;
 }
