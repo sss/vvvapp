@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: wxWidgets-2.5.2\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2008-04-24 09:56+0200\n"
-"PO-Revision-Date: 2009-02-22 19:04+0100\n"
+"PO-Revision-Date: 2009-03-21 08:40+0100\n"
 "Last-Translator: Fulvio Senore <mailing@fsoft.it>\n"
 "Language-Team: wxWidgets translators <wx-translators@wxwidgets.org>\n"
 "MIME-Version: 1.0\n"
@@ -1177,7 +1177,7 @@ msgstr "Archiwum nie zawiera pliku #SYSTEM"
 
 #: ../src/generic/aboutdlgg.cpp:150
 msgid "Artists"
-msgstr ""
+msgstr "Projekt graficzny"
 
 #: ../src/generic/filedlgg.cpp:515
 msgid "Attributes"
@@ -2413,11 +2413,11 @@ msgstr "Pulpit"
 
 #: ../src/generic/aboutdlgg.cpp:71
 msgid "Developed by "
-msgstr ""
+msgstr "Rozwijany przez"
 
 #: ../src/generic/aboutdlgg.cpp:142
 msgid "Developers"
-msgstr ""
+msgstr "Twórcy"
 
 #: ../src/msw/dialup.cpp:396
 msgid "Dial up functions are unavailable because the remote access service (RAS) is not installed on this machine. Please install it."
@@ -3258,18 +3258,16 @@ msgid "Font"
 msgstr ""
 
 #: ../src/richtext/richtextfontpage.cpp:187
-#, fuzzy
 msgid "Font &weight:"
-msgstr "Waga czcionki."
+msgstr "Grubo¶æ czcionki."
 
 #: ../src/html/helpwnd.cpp:1216
 msgid "Font size:"
 msgstr "Rozmiar czcionki:"
 
 #: ../src/richtext/richtextfontpage.cpp:174
-#, fuzzy
 msgid "Font st&yle:"
-msgstr "Rozmiar czcionki:"
+msgstr "Rodzaj czcionki:"
 
 #: ../src/mac/carbon/fontdlg.cpp:452
 #, fuzzy
@@ -3987,7 +3985,7 @@ msgstr "List, 8 1/2 x 11 cali"
 
 #: ../src/generic/aboutdlgg.cpp:139
 msgid "License"
-msgstr ""
+msgstr "Licencja"
 
 #: ../src/generic/fontdlgg.cpp:239
 msgid "Light"
@@ -4021,9 +4019,8 @@ msgstr ""
 
 #: ../src/richtext/richtextfontpage.cpp:144
 #: ../src/richtext/richtextfontpage.cpp:146
-#, fuzzy
 msgid "Lists the available fonts."
-msgstr "Niestety, porady nie s± dostêpne!"
+msgstr "Lista dostêpnych fontów."
 
 #: ../src/common/fldlgcmn.cpp:283
 #, c-format
@@ -4161,9 +4158,8 @@ msgstr ""
 #: ../src/richtext/richtextstyledlg.cpp:775
 #: ../src/richtext/richtextstyledlg.cpp:843
 #: ../src/richtext/richtextstyledlg.cpp:851
-#, fuzzy
 msgid "New Style"
-msgstr "Nowa pozycja"
+msgstr "Nowy styl"
 
 #: ../src/generic/dirdlgg.cpp:100
 msgid "New directory"
@@ -4238,9 +4234,9 @@ msgstr ""
 "(inaczej tekst mo¿e nie byæ wy¶wietlony poprawnie)?"
 
 #: ../src/dfb/fontmgr.cpp:156
-#, fuzzy, c-format
+#, c-format
 msgid "No fonts found in %s."
-msgstr "Nie znaleziono pozycji."
+msgstr "Nie znaleziono fontów w %s."
 
 #: ../src/xrc/xmlres.cpp:715
 #, c-format
@@ -5727,11 +5723,11 @@ msgstr "Górny margines (mm):"
 
 #: ../src/generic/aboutdlgg.cpp:80
 msgid "Translations by "
-msgstr ""
+msgstr "T³umaczenie"
 
 #: ../src/generic/aboutdlgg.cpp:154
 msgid "Translators"
-msgstr ""
+msgstr "T³umacze"
 
 #: ../src/common/fs_mem.cpp:230
 #, c-format
@@ -6092,9 +6088,9 @@ msgid "Windows Baltic (CP 1257)"
 msgstr "Windows ba³tycki (CP 1257)"
 
 #: ../src/msw/utils.cpp:1074
-#, fuzzy, c-format
+#, c-format
 msgid "Windows CE (%d.%d)"
-msgstr "Windows 9x (%d.%d)"
+msgstr "Windows CE (%d.%d)"
 
 #: ../src/common/fmapbase.cpp:128
 msgid "Windows Central European (CP 1250)"

@@ -2333,7 +2333,7 @@ void CMainFrame::OnABOUTClick( wxCommandEvent& WXUNUSED(event) )
 	info.AddTranslator( wxString(wxT("Hasan Osmanagi\u0107: ")) + _("Croatian") );
 	info.AddTranslator( wxString(wxT("Fulvio Senore: ")) + _("Italian") );
 	info.AddTranslator( wxString(wxT("Gideon van Melle: ")) + _("Dutch") );
-	info.AddTranslator( wxString(wxT("Darek: ")) + _("Polish") );
+	info.AddTranslator( wxString(wxT("Dariusz Liszewski: ")) + _("Polish") );
 	info.AddTranslator( wxString(wxT("Pedro Cunha: ")) + _("Portuguese") );
 
 	wxAboutBox( info );

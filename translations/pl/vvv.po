@@ -17,7 +17,7 @@ msgstr ""
 
 #: ..\src/catalog_volume.cpp:174
 msgid "Enter or select the volume to catalog"
-msgstr "Wpisz lub wybierz nośnik do skanowania."
+msgstr "Wpisz lub wybierz nośnik do skatalogowania"
 
 #: ..\src/catalog_volume.cpp:183
 #: ..\src/exportdata.cpp:223
@@ -88,27 +88,27 @@ msgstr "Wybierz nośnik do skatalogowania"
 
 #: ..\src/catalog_volume_functions.cpp:328
 msgid "Number of added files: "
-msgstr ""
+msgstr "Liczba dodanych plików:"
 
 #: ..\src/catalog_volume_functions.cpp:329
 msgid "Number of updated files: "
-msgstr ""
+msgstr "Liczba zaktualizowanych plików:"
 
 #: ..\src/catalog_volume_functions.cpp:330
 msgid "Number of deleted files (not counting those in deleted folders): "
-msgstr ""
+msgstr "Liczba skasowanych plików (bez tych w skasowanych folderach):"
 
 #: ..\src/catalog_volume_functions.cpp:331
 msgid "Number of deleted folders: "
-msgstr ""
+msgstr "Liczba skasowanych folderów:"
 
 #: ..\src/catalog_volume_functions.cpp:332
 msgid "Number of unchanged files: "
-msgstr ""
+msgstr "Liczba niezmienionych plików:"
 
 #: ..\src/catalog_volume_functions.cpp:333
 msgid "Do you really want to update the volume?"
-msgstr ""
+msgstr "Czy chcesz zaktualizować nośnik?"
 
 #: ..\src/choose_virtual_folder.cpp:157
 msgid "Please select the virtual folder that will receive the selected files and/or folders:"
@@ -343,9 +343,8 @@ msgstr "&Dodaj nośnik..."
 
 # Part of the Volumes menu
 #: ..\src/mainframe.cpp:807
-#, fuzzy
 msgid "&Update Volume..."
-msgstr "&Dodaj nośnik..."
+msgstr "&Skanuj nośnik..."
 
 #: ..\src/mainframe.cpp:808
 msgid "&Volumes"
@@ -394,9 +393,8 @@ msgid "Help &Contents"
 msgstr "Zawartość pomocy"
 
 #: ..\src/mainframe.cpp:834
-#, fuzzy
 msgid "&About VVV..."
-msgstr "O VVV"
+msgstr "&O programie VVV"
 
 #: ..\src/mainframe.cpp:842
 msgid "New"
@@ -671,28 +669,24 @@ msgstr ""
 "Spróbuj przeinstalować program aby rozwiązać ten problem."
 
 #: ..\src/mainframe.cpp:2321
-#, fuzzy
 msgid "VVV (Virtual Volumes View): a program to catalog removable devices like CDs and DVDs"
-msgstr ""
-"VVV (Virtual Volumes View): program do katalogowania nośników wyjmowalnych takich jak CD i DVD\n"
-"\n"
-"\"Błoto z Venaus jest krwią tej ziemi\""
+msgstr "VVV (Virtual Volumes View): program do katalogowania nośników wyjmowalnych takich jak CD i DVD"
 
 #: ..\src/mainframe.cpp:2322
-#, fuzzy
 msgid "Copyright (C) 2007-2009 The VVV Team"
-msgstr "Copyright (C) 2007-2008 The VVV Team"
+msgstr "Copyright (C) 2007-2009 The VVV Team"
 
 #: ..\src/mainframe.cpp:2323
 msgid "Fulvio Senore: main developer"
 msgstr "Fulvio Senore: szef projektu"
 
 #: ..\src/mainframe.cpp:2324
-#, fuzzy
 msgid ""
 "\n"
 "Jan Albartus: worked at the portable version and designed the application's icon"
-msgstr "Jan Albartus: opracował wersję portable i zaprojektował ikony aplikacji"
+msgstr ""
+"\n"
+"Jan Albartus: opracował wersję portable i zaprojektował ikony aplikacji"
 
 #: ..\src/mainframe.cpp:2325
 msgid "This program uses icons from the Gnome, Ubuntu and Crystal icons projects"
@@ -704,40 +698,39 @@ msgstr "To otwarte oprogramowanie, rozprowadzane na licencji GNU GENERAL PUBLIC 
 
 #: ..\src/mainframe.cpp:2327
 msgid "Czech"
-msgstr ""
+msgstr "Czeski"
 
 #: ..\src/mainframe.cpp:2328
-#, fuzzy
 msgid "German"
-msgstr "Ogólne"
+msgstr "Niemiecki"
 
 #: ..\src/mainframe.cpp:2329
 msgid "Spanish"
-msgstr ""
+msgstr "Hiszpański"
 
 #: ..\src/mainframe.cpp:2330
 msgid "French"
-msgstr ""
+msgstr "Francuski"
 
 #: ..\src/mainframe.cpp:2331
 msgid "Croatian"
-msgstr ""
+msgstr "Chorwacki"
 
 #: ..\src/mainframe.cpp:2332
 msgid "Italian"
-msgstr ""
+msgstr "Włoski"
 
 #: ..\src/mainframe.cpp:2333
 msgid "Dutch"
-msgstr ""
+msgstr "Holenderski"
 
 #: ..\src/mainframe.cpp:2334
 msgid "Polish"
-msgstr ""
+msgstr "Polski"
 
 #: ..\src/mainframe.cpp:2335
 msgid "Portuguese"
-msgstr ""
+msgstr "Portugalski"
 
 #: ..\src/mainframe.cpp:2351
 msgid "New catalog"
@@ -774,9 +767,8 @@ msgstr "Skasuj"
 
 # Part of the Volumes menu
 #: ..\src/mainframe.cpp:2533
-#, fuzzy
 msgid "Update Volume..."
-msgstr "&Dodaj nośnik..."
+msgstr "&Skanuj nośnik..."
 
 #: ..\src/mainframe.cpp:2557
 msgid "New Root Folder"
@@ -945,9 +937,8 @@ msgid "Restore completed"
 msgstr "Odtworzenie ukończone"
 
 #: ..\src/mainframe.cpp:3801
-#, fuzzy
 msgid "Update Volume"
-msgstr "Nośnik"
+msgstr "Skanuj nośnik"
 
 #: ..\src/object_description.cpp:145
 msgid "Please enter the description for the following object:"
@@ -1025,7 +1016,7 @@ msgstr "Dźwięk dla operacji dłuższych niż (sekund):"
 # Please do not translate this sentence
 #: ..\src/settings.cpp:187
 msgid "Use VVV in English (restart required)"
-msgstr "VVV po angielsku (wymaga restartu)"
+msgstr "Use VVV in English (restart required)"
 
 #: ..\src/settings.cpp:191
 msgid "General"
@@ -1106,21 +1097,19 @@ msgstr "Połączenie z serwerem udało się"
 
 #: ..\src/update_volume.cpp:180
 msgid "You are about to update the following volume:"
-msgstr ""
+msgstr "Czy chcesz skanować ten nośnik:"
 
 #: ..\src/update_volume.cpp:183
-#, fuzzy
 msgid "VOLUME NAME"
-msgstr "Nazwa"
+msgstr "Nazwa nośnika"
 
 #: ..\src/update_volume.cpp:188
-#, fuzzy
 msgid "Enter or select the path to volume to update"
-msgstr "Wpisz lub wybierz nośnik do skanowania."
+msgstr "Wpisz lub wybierz nośnik do skanowania"
 
 #: ..\src/update_volume.cpp:208
 msgid "Update"
-msgstr ""
+msgstr "Zaktualizuj"
 
 #: ..\src/vvv.cpp:325
 msgid ""
@@ -1145,23 +1134,20 @@ msgstr "Wystąpił niespodziewany błąd. Program zostanie zamknięty."
 
 #: ..\src/vvv.cpp:351
 #: ..\src/vvv.cpp:435
-#, fuzzy
 msgid ""
 "An unexpected error has happened. Here is a description of the error:\n"
 "\n"
 msgstr ""
-"Wystąpił niespodziewany błąd. Tu jest opis błędu:\n"
+"Pojawił się niespodziewany błąd. Tu jest opis błędu:\n"
 "\n"
 
 #: ..\src/vvv.cpp:377
-#, fuzzy
 msgid "The volume path does not exists"
-msgstr "Nośnik nie odnaleziony"
+msgstr "Nie można odnaleźć nośnika"
 
 #: ..\src/vvv.cpp:418
-#, fuzzy
 msgid "Volume name not found"
-msgstr "Nazwa nośnika"
+msgstr "Nazwa nośnika nie znaleziona"
 
 #: ..\src/exportdata.h:71
 msgid "Export data"
