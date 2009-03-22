@@ -1209,9 +1209,7 @@ msgstr "Piepton für Aufgaben länger als (Sekunden):"
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/settings.cpp:187
 msgid "Use VVV in English (restart required)"
-msgstr ""
-"Benutze VVV in Englisch (Neustart erforderlich)\n"
-"Use VVV in English (restart required)"
+msgstr "Use VVV in English (restart required)"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/settings.cpp:191
