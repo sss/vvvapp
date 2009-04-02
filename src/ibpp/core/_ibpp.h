@@ -64,6 +64,7 @@
 #include <vector>
 #include <sstream>
 #include <cstdarg>
+#include <cstring>
 
 #ifdef _DEBUG
 #define ASSERTION(x)	{if (!(x)) {throw LogicExceptionImpl("ASSERTION", \
