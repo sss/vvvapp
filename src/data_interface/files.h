@@ -24,6 +24,7 @@
 #define __FILES_H__
 
 #include <wx/string.h>
+#include <vector>
 #include "wx/datetime.h"
 #include "base_rec.h"
 
@@ -67,6 +68,8 @@ public:
 	// updates file date and size
 	static void UpdateDateSize( long FileID, const wxDateTime& fdt, const wxLongLong& fs );
 
+	// return a vector containing all the extensions found in a folder
+	static std::vector<wxString> ListFolderExtensions( long PathID );
 
 protected:
 
@@ -78,6 +81,7 @@ protected:
 
 	static void FB_UpdateDescription( long FileID, const wxString& descr );
 	static void FB_UpdateDateSize( long FileID, const wxDateTime& fdt, const wxLongLong& fs );
+	static std::vector<wxString> FB_ListFolderExtensions( long PathID );
 };
 
 

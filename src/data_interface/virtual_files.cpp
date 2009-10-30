@@ -73,3 +73,15 @@ void CVirtualFiles::DBStartSearchFolderFiles( wxString fileName, bool useFileNam
 
 }
 
+std::vector<wxString> CVirtualFiles::ListFolderExtensions( long PathID )
+{
+	std::vector<wxString> retVal;
+	switch( DatabaseType ) {
+		case dbtFirebird:
+			retVal = FB_ListFolderExtensions( PathID );
+			break;
+	}
+	return retVal;
+}
+
+

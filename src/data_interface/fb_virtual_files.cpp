@@ -128,3 +128,38 @@ void CVirtualFiles::FB_FetchRow(void) {
 		TransactionAlreadyStarted = false;
 	}
 }
+
+std::vector<wxString> CVirtualFiles::FB_ListFolderExtensions( long PathID )
+{
+	wxString sql;
+	bool transAlreadyStarted;
+	
+	sql = wxT("select distinct files.file_ext ");
+    sql += wxT("from virtual_files inner join files ");
+	sql += wxT("on virtual_files.physical_file_id = files.file_id ");
+	sql += wxT("where virtual_files.virtual_path_id = ") + CUtils::long2string(PathID);
+
+	CFirebirdDB* db = (CFirebirdDB*) CBaseDB::GetDatabase();
+	transAlreadyStarted = db->TransactionIsOpened();
+	if( !transAlreadyStarted )
+		db->TransactionStart( true );
+	IBPP::Statement st = StatementFactory( db->GetIBPPDB(), db->TransactionGetReference() );
+	st->Execute( CUtils::DBwx2std(sql) );
+
+	std::vector<wxString> extList;
+	while( st->Fetch() ) {
+		string stmp;
+		st->Get( "FILE_EXT", stmp );
+		if( !stmp.empty() ) {
+			extList.push_back( CUtils::DBstd2wx(stmp) );
+		}
+	}
+
+	if( !transAlreadyStarted ) {
+		CFirebirdDB* db = (CFirebirdDB*) CBaseDB::GetDatabase();
+		db->TransactionCommit();
+	}
+
+	return extList;
+}
+

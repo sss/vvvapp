@@ -164,3 +164,34 @@ void CFiles::FB_UpdateDateSize( long FileID, const wxDateTime& fdt, const wxLong
 	FB_ExecuteQueryNoReturn( sql );
 }
 
+std::vector<wxString> CFiles::FB_ListFolderExtensions( long PathID )
+{
+	wxString sql;
+	bool transAlreadyStarted;
+	
+	sql = wxT("SELECT DISTINCT FILE_EXT FROM FILES WHERE PATH_ID = ") + CUtils::long2string( PathID );
+
+	CFirebirdDB* db = (CFirebirdDB*) CBaseDB::GetDatabase();
+	transAlreadyStarted = db->TransactionIsOpened();
+	if( !transAlreadyStarted )
+		db->TransactionStart( true );
+	IBPP::Statement st = StatementFactory( db->GetIBPPDB(), db->TransactionGetReference() );
+	st->Execute( CUtils::DBwx2std(sql) );
+
+	std::vector<wxString> extList;
+	while( st->Fetch() ) {
+		string stmp;
+		st->Get( "FILE_EXT", stmp );
+		if( !stmp.empty() ) {
+			extList.push_back( CUtils::DBstd2wx(stmp) );
+		}
+	}
+
+	if( !transAlreadyStarted ) {
+		CFirebirdDB* db = (CFirebirdDB*) CBaseDB::GetDatabase();
+		db->TransactionCommit();
+	}
+
+	return extList;
+}
+

@@ -63,6 +63,9 @@ public:
 	// true if this row represents a folder
 	bool IsFolder(void) { return !VirtualPathFileID.IsNull(); }
 
+	// return a vector containing all the extensions found in a folder
+	static std::vector<wxString> ListFolderExtensions( long PathID );
+
 protected:
 
 	// Firebird implementation of the database methods
@@ -70,6 +73,7 @@ protected:
 	void FB_DbUpdate(void);
 	void FB_DbDelete(void);
 	void FB_FetchRow(void);
+	static std::vector<wxString> FB_ListFolderExtensions( long PathID );
 
 };
 
