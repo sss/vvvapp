@@ -97,6 +97,8 @@ class CRightPaneList;
 #define ID_NEW_VIRTUAL_ROOT_FOLDER 10021
 #define ID_NEW_VIRTUAL_SUBFOLDER 10022
 #define ID_UPDATE_VOLUME 10090
+#define ID_VIEW_EXPAND 10089
+#define ID_VIEW_COLLAPSE 10091
 #define ID_VIEW_TOOLBAR 10042
 #define ID_VIEW_STATUS_BAR 10043
 #define ID_HELP_CONTENTS 10072
@@ -270,6 +272,18 @@ public:
 
     /// wxEVT_UPDATE_UI event handler for ID_UP_ONE_FOLDER
     void OnUpOneFolderUpdate( wxUpdateUIEvent& event );
+
+    /// wxEVT_COMMAND_MENU_SELECTED event handler for ID_VIEW_EXPAND
+    void OnViewExpandClick( wxCommandEvent& event );
+
+    /// wxEVT_UPDATE_UI event handler for ID_VIEW_EXPAND
+    void OnViewExpandUpdate( wxUpdateUIEvent& event );
+
+    /// wxEVT_COMMAND_MENU_SELECTED event handler for ID_VIEW_COLLAPSE
+    void OnViewCollapseClick( wxCommandEvent& event );
+
+    /// wxEVT_UPDATE_UI event handler for ID_VIEW_COLLAPSE
+    void OnViewCollapseUpdate( wxUpdateUIEvent& event );
 
     /// wxEVT_COMMAND_MENU_SELECTED event handler for ID_VIEW_TOOLBAR
     void OnViewToolbarClick( wxCommandEvent& event );
@@ -558,6 +572,9 @@ private:
 
 	// returns true if the Edit/Delete command must be enabled
 	bool IsEditDeleteEnabled();
+
+	// returns true if the Expand/Collapse command must be enabled
+	bool IsExpandCollapseEnabled();
 
 	// deletes the virtual file(s) currently selected in the list control
 	void DeleteSelectedVirtualFiles();
