@@ -7,7 +7,7 @@
     <string name="author">""</string>
     <string name="description">""</string>
     <string name="xrc_filename">""</string>
-    <long name="image_mode">0</long>
+    <long name="image_mode">2</long>
     <bool name="inline_images">0</bool>
     <bool name="generate_cpp_for_xrc">0</bool>
     <long name="working_mode">1</long>
@@ -23,7 +23,7 @@
     <bool name="generate_for_xrced">0</bool>
     <bool name="generate_virtual_eventhandlers">0</bool>
     <string name="current_platform">"__WXMSW__"</string>
-    <string name="target_wx_version">"2.8.0"</string>
+    <string name="target_wx_version">"2.8.10"</string>
     <string name="app_kind">"Standard"</string>
     <string name="cpp_header_comment">"/////////////////////////////////////////////////////////////////////////////
 // Name:        %HEADER-FILENAME%
@@ -207,7 +207,7 @@
           <long name="title-mode">0</long>
           <long name="locked">0</long>
           <string name="template-name">"VC++"</string>
-          <bool name="dirty">1</bool>
+          <bool name="dirty">0</bool>
           <long name="makefile-last-written">-8519680</long>
           <string name="Compiler name">"VC++"</string>
           <string name="Build mode">"Debug"</string>
@@ -277,7 +277,7 @@
           <long name="title-mode">0</long>
           <long name="locked">0</long>
           <string name="template-name">"VC++"</string>
-          <bool name="dirty">1</bool>
+          <bool name="dirty">0</bool>
           <long name="makefile-last-written">-8519680</long>
           <string name="Compiler name">"VC++"</string>
           <string name="Build mode">"Release"</string>
@@ -347,7 +347,7 @@
           <long name="title-mode">0</long>
           <long name="locked">0</long>
           <string name="template-name">"VC++"</string>
-          <bool name="dirty">1</bool>
+          <bool name="dirty">0</bool>
           <long name="makefile-last-written">-8519680</long>
           <string name="Compiler name">"VC++"</string>
           <string name="Build mode">"Debug"</string>
@@ -417,7 +417,7 @@
           <long name="title-mode">0</long>
           <long name="locked">0</long>
           <string name="template-name">"VC++"</string>
-          <bool name="dirty">1</bool>
+          <bool name="dirty">0</bool>
           <long name="makefile-last-written">-8519680</long>
           <string name="Compiler name">"VC++"</string>
           <string name="Build mode">"Release"</string>
@@ -733,7 +733,7 @@
               <string name="proxy-Platform">"&lt;Any platform&gt;"</string>
             </document>
             <document>
-              <string name="title">"Catalog: ID_CATALOG_VOLUME"</string>
+              <string name="title">"Catalogv: ID_CATALOG_VOLUME"</string>
               <string name="type">"dialog-control-document"</string>
               <string name="filename">""</string>
               <string name="icon-name">"menuitem"</string>
@@ -745,9 +745,9 @@
               <string name="proxy-type">"wbToolBarButtonProxy"</string>
               <string name="proxy-Id name">"ID_CATALOG_VOLUME"</string>
               <long name="proxy-Id value">10005</long>
-              <string name="proxy-Bitmap">"graphics/tlb_catalog.xpm"</string>
+              <string name="proxy-Bitmap">"graphics/tlb_catalog.png"</string>
               <string name="proxy-Bitmap (disabled)">""</string>
-              <string name="proxy-Label">"Catalog"</string>
+              <string name="proxy-Label">"Catalogv"</string>
               <string name="proxy-Kind">"Normal"</string>
               <bool name="proxy-Enabled">1</bool>
               <string name="proxy-Tooltip">"Catalog a new volume"</string>
@@ -11592,6 +11592,17 @@ You cannot enter the name of an existing catalog."</string>
         <long name="owns-file">1</long>
         <long name="title-mode">0</long>
         <long name="locked">1</long>
+        <document>
+          <string name="title">"tlb_catalog.png"</string>
+          <string name="type">"image-document"</string>
+          <string name="filename">"graphics/tlb_catalog.png"</string>
+          <string name="icon-name">"image"</string>
+          <long name="is-transient">0</long>
+          <long name="owns-file">0</long>
+          <long name="title-mode">0</long>
+          <long name="locked">0</long>
+          <long name="zoom-level">100</long>
+        </document>
       </document>
     </document>
   </documents>

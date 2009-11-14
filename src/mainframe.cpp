@@ -49,6 +49,7 @@
 #endif
 
 ////@begin includes
+#include "wx/mstream.h"
 #include "catalog_volume.h"
 #include "wx/imaglist.h"
 ////@end includes
@@ -79,7 +80,7 @@
 #include "graphics/vvv32.xpm"
 #include "graphics/tlb_new.xpm"
 #include "graphics/tlb_open.xpm"
-#include "graphics/tlb_catalog.xpm"
+#include "graphics/tlb_catalog.inc"
 #include "graphics/tlb_up.xpm"
 #include "graphics/tlb_physical.xpm"
 #include "graphics/tlb_virtual.xpm"
@@ -854,7 +855,7 @@ void CMainFrame::CreateControls()
     wxBitmap itemtool4Bitmap(itemFrame1->GetBitmapResource(wxT("graphics/tlb_open.xpm")));
     wxBitmap itemtool4BitmapDisabled;
     m_Toolbar->AddTool(wxID_OPEN, _("Open"), itemtool4Bitmap, itemtool4BitmapDisabled, wxITEM_NORMAL, _("Open an existing catalog"), wxEmptyString);
-    wxBitmap itemtool5Bitmap(itemFrame1->GetBitmapResource(wxT("graphics/tlb_catalog.xpm")));
+    wxBitmap itemtool5Bitmap(itemFrame1->GetBitmapResource(wxT("graphics/tlb_catalog.png")));
     wxBitmap itemtool5BitmapDisabled;
     m_Toolbar->AddTool(ID_CATALOG_VOLUME, _("Catalog"), itemtool5Bitmap, itemtool5BitmapDisabled, wxITEM_NORMAL, _("Catalog a new volume"), wxEmptyString);
     wxBitmap itemtool6Bitmap(itemFrame1->GetBitmapResource(wxT("graphics/tlb_up.xpm")));
@@ -998,9 +999,10 @@ wxBitmap CMainFrame::GetBitmapResource( const wxString& name )
         wxBitmap bitmap(tlb_open_xpm);
         return bitmap;
     }
-    else if (name == _T("graphics/tlb_catalog.xpm"))
+    else if (name == _T("graphics/tlb_catalog.png"))
     {
-        wxBitmap bitmap(tlb_catalog_xpm);
+        wxMemoryInputStream memStream(tlb_catalog_png, sizeof(tlb_catalog_png));
+        wxBitmap bitmap(wxImage(memStream, wxBITMAP_TYPE_ANY, -1), -1);
         return bitmap;
     }
     else if (name == _T("graphics/tlb_up.xpm"))
