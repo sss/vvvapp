@@ -748,7 +748,7 @@ void CMainFrame::Init()
 {
 //	wxIcon ico(removable_xpm);
 ////@begin CMainFrame member initialisation
-    m_Toolbar = NULL;
+    m_ToolbarCtrl = NULL;
     m_fileMenu = NULL;
     m_StatusBar = NULL;
 ////@end CMainFrame member initialisation
@@ -847,32 +847,32 @@ void CMainFrame::CreateControls()
     menuBar->Append(itemMenu48, _("&Help"));
     itemFrame1->SetMenuBar(menuBar);
 
-    m_Toolbar = CreateToolBar( wxTB_FLAT|wxTB_HORIZONTAL|wxTB_TEXT, ID_TOOLBAR1 );
-    m_Toolbar->SetToolBitmapSize(wxSize(16, 16));
+    m_ToolbarCtrl = CreateToolBar( wxTB_FLAT|wxTB_HORIZONTAL|wxTB_TEXT, ID_TOOLBAR1 );
+    m_ToolbarCtrl->SetToolBitmapSize(wxSize(16, 16));
     wxBitmap itemtool3Bitmap(itemFrame1->GetBitmapResource(wxT("graphics/tlb_new.xpm")));
     wxBitmap itemtool3BitmapDisabled;
-    m_Toolbar->AddTool(wxID_NEW, _("New"), itemtool3Bitmap, itemtool3BitmapDisabled, wxITEM_NORMAL, _("Create a new catalog"), wxEmptyString);
+    m_ToolbarCtrl->AddTool(wxID_NEW, _("New"), itemtool3Bitmap, itemtool3BitmapDisabled, wxITEM_NORMAL, _("Create a new catalog"), wxEmptyString);
     wxBitmap itemtool4Bitmap(itemFrame1->GetBitmapResource(wxT("graphics/tlb_open.xpm")));
     wxBitmap itemtool4BitmapDisabled;
-    m_Toolbar->AddTool(wxID_OPEN, _("Open"), itemtool4Bitmap, itemtool4BitmapDisabled, wxITEM_NORMAL, _("Open an existing catalog"), wxEmptyString);
+    m_ToolbarCtrl->AddTool(wxID_OPEN, _("Open"), itemtool4Bitmap, itemtool4BitmapDisabled, wxITEM_NORMAL, _("Open an existing catalog"), wxEmptyString);
     wxBitmap itemtool5Bitmap(itemFrame1->GetBitmapResource(wxT("graphics/tlb_catalog.png")));
     wxBitmap itemtool5BitmapDisabled;
-    m_Toolbar->AddTool(ID_CATALOG_VOLUME, _("Catalog"), itemtool5Bitmap, itemtool5BitmapDisabled, wxITEM_NORMAL, _("Catalog a new volume"), wxEmptyString);
+    m_ToolbarCtrl->AddTool(ID_CATALOG_VOLUME, _("Catalog"), itemtool5Bitmap, itemtool5BitmapDisabled, wxITEM_NORMAL, _("Catalog a new volume"), wxEmptyString);
     wxBitmap itemtool6Bitmap(itemFrame1->GetBitmapResource(wxT("graphics/tlb_up.xpm")));
     wxBitmap itemtool6BitmapDisabled;
-    m_Toolbar->AddTool(ID_UP_ONE_FOLDER, _("Up"), itemtool6Bitmap, itemtool6BitmapDisabled, wxITEM_NORMAL, _("Move up one level"), wxEmptyString);
-    m_Toolbar->AddSeparator();
+    m_ToolbarCtrl->AddTool(ID_UP_ONE_FOLDER, _("Up"), itemtool6Bitmap, itemtool6BitmapDisabled, wxITEM_NORMAL, _("Move up one level"), wxEmptyString);
+    m_ToolbarCtrl->AddSeparator();
     wxBitmap itemtool8Bitmap(itemFrame1->GetBitmapResource(wxT("graphics/tlb_physical.xpm")));
     wxBitmap itemtool8BitmapDisabled;
-    m_Toolbar->AddTool(ID_VIEW_PHYSICAL, _("Physical"), itemtool8Bitmap, itemtool8BitmapDisabled, wxITEM_RADIO, _("Show the physical view"), wxEmptyString);
+    m_ToolbarCtrl->AddTool(ID_VIEW_PHYSICAL, _("Physical"), itemtool8Bitmap, itemtool8BitmapDisabled, wxITEM_RADIO, _("Show the physical view"), wxEmptyString);
     wxBitmap itemtool9Bitmap(itemFrame1->GetBitmapResource(wxT("graphics/tlb_virtual.xpm")));
     wxBitmap itemtool9BitmapDisabled;
-    m_Toolbar->AddTool(ID_VIEW_VIRTUAL, _("Virtual"), itemtool9Bitmap, itemtool9BitmapDisabled, wxITEM_RADIO, _("Show the virtual view"), wxEmptyString);
+    m_ToolbarCtrl->AddTool(ID_VIEW_VIRTUAL, _("Virtual"), itemtool9Bitmap, itemtool9BitmapDisabled, wxITEM_RADIO, _("Show the virtual view"), wxEmptyString);
     wxBitmap itemtool10Bitmap(itemFrame1->GetBitmapResource(wxT("graphics/tlb_search.xpm")));
     wxBitmap itemtool10BitmapDisabled;
-    m_Toolbar->AddTool(ID_VIEW_SEARCH, _("Search"), itemtool10Bitmap, itemtool10BitmapDisabled, wxITEM_RADIO, _("Show the search view"), wxEmptyString);
-    m_Toolbar->Realize();
-    itemFrame1->SetToolBar(m_Toolbar);
+    m_ToolbarCtrl->AddTool(ID_VIEW_SEARCH, _("Search"), itemtool10Bitmap, itemtool10BitmapDisabled, wxITEM_RADIO, _("Show the search view"), wxEmptyString);
+    m_ToolbarCtrl->Realize();
+    itemFrame1->SetToolBar(m_ToolbarCtrl);
 
     m_StatusBar = new wxStatusBar( itemFrame1, ID_STATUSBAR1, wxST_SIZEGRIP );
     m_StatusBar->SetFieldsCount(4);
@@ -893,6 +893,13 @@ void CMainFrame::CreateControls()
     itemSplitterWindow53->SplitVertically(itemTreeCtrl54, itemListCtrl55, 50);
 
 ////@end CMainFrame content construction
+
+#if defined(__WXMAC__)
+	// recreate the toolbar with larger bitmaps to make it look better in OS X
+	delete m_ToolbarCtrl;
+	SetToolBar( NULL );
+	CreateMacToolbar();
+#endif
 
 	// creates the tree control used to show virtual folders
 	// this control must be created in the same way as the tree control created above
@@ -3976,4 +3983,40 @@ bool CMainFrame::IsExpandCollapseEnabled() {
 	return enableItem;
 }
 
+void CMainFrame::CreateMacToolbar()
+{
+	const int bmpSize = 32;	// size of the toolbar bitmaps
+
+    CMainFrame* itemFrame1 = this;
+
+	// this code is copied from the CreateControls() code. The only difference is that it uses larger toolbar
+	// to make them look better in the Mac version
+    m_ToolbarCtrl = CreateToolBar( wxTB_FLAT|wxTB_HORIZONTAL|wxTB_TEXT, ID_TOOLBAR1 );
+    m_ToolbarCtrl->SetToolBitmapSize(wxSize(bmpSize, bmpSize));
+	wxBitmap itemtool3Bitmap( CUtils::EnlargeBitmap(itemFrame1->GetBitmapResource(wxT("graphics/tlb_new.xpm")), bmpSize, bmpSize) );
+    wxBitmap itemtool3BitmapDisabled;
+    m_ToolbarCtrl->AddTool(wxID_NEW, _("New"), itemtool3Bitmap, itemtool3BitmapDisabled, wxITEM_NORMAL, _("Create a new catalog"), wxEmptyString);
+	wxBitmap itemtool4Bitmap( CUtils::EnlargeBitmap(itemFrame1->GetBitmapResource(wxT("graphics/tlb_open.xpm")), bmpSize, bmpSize) );
+    wxBitmap itemtool4BitmapDisabled;
+    m_ToolbarCtrl->AddTool(wxID_OPEN, _("Open"), itemtool4Bitmap, itemtool4BitmapDisabled, wxITEM_NORMAL, _("Open an existing catalog"), wxEmptyString);
+	wxBitmap itemtool5Bitmap( CUtils::EnlargeBitmap(itemFrame1->GetBitmapResource(wxT("graphics/tlb_catalog.png")), bmpSize, bmpSize) );
+    wxBitmap itemtool5BitmapDisabled;
+    m_ToolbarCtrl->AddTool(ID_CATALOG_VOLUME, _("Catalog"), itemtool5Bitmap, itemtool5BitmapDisabled, wxITEM_NORMAL, _("Catalog a new volume"), wxEmptyString);
+	wxBitmap itemtool6Bitmap( CUtils::EnlargeBitmap(itemFrame1->GetBitmapResource(wxT("graphics/tlb_up.xpm")), bmpSize, bmpSize) );
+    wxBitmap itemtool6BitmapDisabled;
+    m_ToolbarCtrl->AddTool(ID_UP_ONE_FOLDER, _("Up"), itemtool6Bitmap, itemtool6BitmapDisabled, wxITEM_NORMAL, _("Move up one level"), wxEmptyString);
+    m_ToolbarCtrl->AddSeparator();
+	wxBitmap itemtool8Bitmap( CUtils::EnlargeBitmap(itemFrame1->GetBitmapResource(wxT("graphics/tlb_physical.xpm")), bmpSize, bmpSize) );
+    wxBitmap itemtool8BitmapDisabled;
+    m_ToolbarCtrl->AddTool(ID_VIEW_PHYSICAL, _("Physical"), itemtool8Bitmap, itemtool8BitmapDisabled, wxITEM_RADIO, _("Show the physical view"), wxEmptyString);
+	wxBitmap itemtool9Bitmap( CUtils::EnlargeBitmap(itemFrame1->GetBitmapResource(wxT("graphics/tlb_virtual.xpm")), bmpSize, bmpSize) );
+    wxBitmap itemtool9BitmapDisabled;
+    m_ToolbarCtrl->AddTool(ID_VIEW_VIRTUAL, _("Virtual"), itemtool9Bitmap, itemtool9BitmapDisabled, wxITEM_RADIO, _("Show the virtual view"), wxEmptyString);
+	wxBitmap itemtool10Bitmap( CUtils::EnlargeBitmap(itemFrame1->GetBitmapResource(wxT("graphics/tlb_search.xpm")), bmpSize, bmpSize) );
+    wxBitmap itemtool10BitmapDisabled;
+    m_ToolbarCtrl->AddTool(ID_VIEW_SEARCH, _("Search"), itemtool10Bitmap, itemtool10BitmapDisabled, wxITEM_RADIO, _("Show the search view"), wxEmptyString);
+    m_ToolbarCtrl->Realize();
+
+	itemFrame1->SetToolBar(m_ToolbarCtrl);
+}
 

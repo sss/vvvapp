@@ -218,3 +218,20 @@ bool CUtils::FileIsLink( wxString fileName ) {
 #endif
 }
 
+wxBitmap CUtils::EnlargeBitmap( wxBitmap bmpIn, int w, int h )
+{
+	wxImage img = bmpIn.ConvertToImage();
+	int wOrg = img.GetWidth();
+	int hOrg = img.GetHeight();
+
+	wxASSERT( w > wOrg );
+	wxASSERT( h > hOrg );
+
+	wxSize size( w, h );
+	wxPoint pos( (w - wOrg)/2, (h - hOrg)/2 );	// center original bitmap in the new image
+	img.Resize( size, pos );
+	return wxBitmap( img );
+}
+
+
+

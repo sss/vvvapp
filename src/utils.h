@@ -25,6 +25,8 @@
 
 #include <wx/string.h>
 #include <wx/msgdlg.h>
+#include <wx/image.h>
+#include <wx/bitmap.h>
 #include <string>
 
 class wxMBConv;
@@ -96,6 +98,10 @@ public:
 
 	// return true if the specified file is a symlink
 	static bool FileIsLink( wxString fileName );
+
+	// return an enlarged version of a bitmap
+	// w and h are the dimensions of the new returned
+	static wxBitmap EnlargeBitmap( wxBitmap bmpIn, int w, int h );
 
 private:
 	// name of the current application

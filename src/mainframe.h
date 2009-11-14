@@ -333,7 +333,7 @@ public:
     static bool ShowToolTips();
 
 ////@begin CMainFrame member variables
-    wxToolBar* m_Toolbar;
+    wxToolBar* m_ToolbarCtrl;
     wxMenu* m_fileMenu;
     wxStatusBar* m_StatusBar;
 ////@end CMainFrame member variables
@@ -585,6 +585,9 @@ private:
 	// restore a database from the given backup file. Shows the given caption in the save dialog box
 	// returns an empty string if the database has not been restored
 	wxString RestoreDatabase( wxString caption, wxString backupName );
+
+	// create a toolbar for the Mac version ( bitmaps are enlarged )
+	void CreateMacToolbar();
 
 protected:
 	// shows in the listview the files contained in the passed folder
