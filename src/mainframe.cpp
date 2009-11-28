@@ -1752,7 +1752,7 @@ void CMainFrame::ShowFolderFiles( wxTreeItemId itemID ) {
 		lctl->SetItem( i, 2, files.FileExt );
 		lctl->SetItem( i, 3, files.DateTime.FormatDate() + wxT(" ") + files.DateTime.FormatTime() );
 		lctl->SetItem( i, 4, FormatObjectDescriptionForListView(files.FileDescription) );
-		MyListItemData *itemData = new MyListItemData( files.FileID, files.PathFileID.IsNull() ? 0 : (long) files.PathFileID, files.FileName, files.FileExt, files.FileSize, files.DateTime, files.IsFolder(), wxEmptyString, files.FileDescription );
+		MyListItemData *itemData = new MyListItemData( files.FileID, -1, files.PathFileID.IsNull() ? 0 : (long) files.PathFileID, files.FileName, files.FileExt, files.FileSize, files.DateTime, files.IsFolder(), wxEmptyString, files.FileDescription );
 		lctl->SetItemData( i, (long) itemData );
 
 		if( audioMetadataAvailable ) {
@@ -1906,8 +1906,8 @@ void CMainFrame::OnAddVirtualFolderClick( wxCommandEvent& WXUNUSED(event) )
 			MyListItemData *itemData = (MyListItemData *) lctl->GetItemData( item );
 			if( itemData->IsFolder() )
 				CVirtualPaths::AppendPhysicalPath( itemData->GetPathFileID(), virtualFolderId );
-			else
-				CVirtualPaths::AddPhysicalFile( itemData->GetFileID(), virtualFolderId );
+			else 
+				CVirtualPaths::AddPhysicalFile( itemData->GetPhysicalFileID(), virtualFolderId );
 		}
 	}
 	else {
@@ -1945,10 +1945,13 @@ void CMainFrame::OnAddVirtualFolderUpdate( wxUpdateUIEvent& event )
 		return;
 	}
 	
-	bool isEnabled = m_CurrentView == cvPhysical;
-	if( isEnabled ) {
+	bool isEnabled = false;
+	if( m_CurrentView == cvPhysical ) {
 		wxTreeCtrl* tctl = GetTreePhysicalControl();
 		isEnabled = (tctl->GetCount() > 0);
+	}
+	if( m_CurrentView == cvSearch ) {
+		isEnabled = m_ListViewHasFocus;
 	}
 
 	event.Enable( isEnabled );
@@ -2430,7 +2433,7 @@ void CMainFrame::OnEditObjectDescriptionClick( wxCommandEvent& WXUNUSED(event) )
 				CPaths::UpdateDescription( itemData->GetPathFileID(), newDescr );
 			}
 			else {
-				CFiles::UpdateDescription( itemData->GetFileID(), newDescr );
+				CFiles::UpdateDescription( itemData->GetPhysicalFileID(), newDescr );
 			}
 			lctl->SetItem( item, m_CurrentView == cvPhysical ? 4 : 5, FormatObjectDescriptionForListView(newDescr) );
 		}
@@ -2888,11 +2891,11 @@ int CMainFrame::AddRowToVirtualListControl( wxListCtrl* lctl, bool isFolder, wxS
 	lctl->SetItem( i, 3, dateTime.FormatDate() + wxT(" ") + dateTime.FormatTime() );
 	lctl->SetItem( i, 4, physicalPath );
 	lctl->SetItem( i, 5, FormatObjectDescriptionForListView(fileDescription) );
-	MyListItemData *itemData = new MyListItemData( fileID, virtualPathFileID, fileName, ext, fileSize, dateTime, isFolder, physicalPath, fileDescription );
+	MyListItemData *itemData = new MyListItemData( physicalFileID, fileID, virtualPathFileID, fileName, ext, fileSize, dateTime, isFolder, physicalPath, fileDescription );
 	lctl->SetItemData( i, (long) itemData );
 	if( audioMetadataAvailable ) {
-			if( !m_CurrentlyShowingAudioMetadata )
-				CreateAudioMetadataListControlHeaders();
+		if( !m_CurrentlyShowingAudioMetadata )
+			CreateAudioMetadataListControlHeaders();
 		AddAudioMetatataToListControl( fam, lctl, i, 6 );
 		itemData->AddAudioMetadata( fam );
 	}
@@ -3102,7 +3105,7 @@ void CMainFrame::OnListControlContextMenu( wxContextMenuEvent& event )
 	if( m_ListViewHasFocus && m_CurrentView == cvVirtual )
 		virtualFilesSelected = AreOnlyVirtualFilesSelected();
 
-	if( m_CurrentView != cvPhysical && !virtualFilesSelected ) return;
+	if( m_CurrentView == cvVirtual && !virtualFilesSelected ) return;
 	if( GetListControl()->GetSelectedItemCount() <= 0 ) return;
 
 	wxPoint point = event.GetPosition();
@@ -3124,8 +3127,10 @@ void CMainFrame::OnListControlContextMenu( wxContextMenuEvent& event )
 	}
 	else {
 		menu.Append( ID_ADD_VIRTUAL_FOLDER, _("Add To Virtual Folder") );
-		menu.AppendSeparator();
-		menu.Append( ID_EDIT_OBJECT_DESCRIPTION, _("Edit Description...") );
+		if( m_CurrentView != cvSearch ) {
+			menu.AppendSeparator();
+			menu.Append( ID_EDIT_OBJECT_DESCRIPTION, _("Edit Description...") );
+		}
 	}
 
 	m_PoppingUpContextMenu = true;
@@ -3484,7 +3489,7 @@ void CMainFrame::DeleteSelectedVirtualFiles() {
 		wxASSERT( !itemData->IsFolder() );
 
 		CVirtualFiles vf;
-		vf.FileID = itemData->GetFileID();
+		vf.FileID = itemData->GetVirtualFileID();
 		vf.DbDelete();
 		delete itemData;
 		lctl->DeleteItem( item );

@@ -36,8 +36,8 @@ class MyListItemData {
 
 public:
 
-	MyListItemData( long fileID, long pathFileID, const wxString& name, const wxString& ext, wxLongLong size, wxDateTime dateTime, bool isFolder, const wxString& fullPhysicalPath = wxEmptyString, const wxString& objectDescription = wxEmptyString ) :
-	                m_FileID(fileID), m_PathFileID(pathFileID), m_name(name), m_ext(ext), m_size(size), m_dateTime(dateTime), m_isFolder(isFolder), m_fullPhysicalPath(fullPhysicalPath), m_objectDescription(objectDescription) {
+	MyListItemData( long physicalFileID, long virtualFileID, long pathFileID, const wxString& name, const wxString& ext, wxLongLong size, wxDateTime dateTime, bool isFolder, const wxString& fullPhysicalPath = wxEmptyString, const wxString& objectDescription = wxEmptyString ) :
+	                m_PhysicalFileID(physicalFileID), m_VirtualFileID(virtualFileID), m_PathFileID(pathFileID), m_name(name), m_ext(ext), m_size(size), m_dateTime(dateTime), m_isFolder(isFolder), m_fullPhysicalPath(fullPhysicalPath), m_objectDescription(objectDescription) {
 
 		m_artist = wxEmptyString;
 		m_album = wxEmptyString;
@@ -73,7 +73,9 @@ public:
 	bool IsFolder() { return m_isFolder; }
 	const wxString& GetFullPhysicalPath() const { return m_fullPhysicalPath; }
 	long GetPathFileID() { return m_PathFileID; }
-	long GetFileID() { return m_FileID; }
+//	long GetFileID() { return m_FileID; }
+	long GetPhysicalFileID() { return m_PhysicalFileID; }
+	long GetVirtualFileID() { return m_VirtualFileID; }
 	const wxString GetObjectDescription() const { return m_objectDescription; }
 	void SetObjectDescription( const wxString& ObjDescr ) { m_objectDescription = ObjDescr; }
 
@@ -109,7 +111,12 @@ private:
 	// corresponding row in the PATHS or VIRTUAL_PATHS table
 	long m_PathFileID;
 
-	long m_FileID;	// primary key of the database row
+//	long m_FileID;	// primary key of the database row
+	// primary key in the physical files table
+	long m_PhysicalFileID;
+	// primary key in the virtual files table
+	// only for virtual files, set to -1 for physical files
+	long m_VirtualFileID;
 
 };
 
