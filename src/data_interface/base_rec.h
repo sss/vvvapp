@@ -25,7 +25,7 @@
 
 #include "db_null.h"
 #include "base_db.h"
-#include "../ibpp/core/ibpp.h"
+#include "ibpp.h"
 
 class CBaseRec
 {

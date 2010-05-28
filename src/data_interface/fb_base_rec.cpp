@@ -23,7 +23,7 @@
 #include "base_rec.h"
 #include "data_error.h"
 #include "firebird_db.h"
-#include "../ibpp/core/ibpp.h"
+#include "ibpp.h"
 
 using namespace IBPP;
 

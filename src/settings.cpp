@@ -41,7 +41,7 @@
 
 #include "settings.h"
 #include "vvv.h"
-#include "ibpp/core/ibpp.h"
+#include "ibpp.h"
 
 ////@begin XPM images
 ////@end XPM images

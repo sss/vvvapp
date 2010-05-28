@@ -25,7 +25,7 @@
 #include "data_error.h"
 #include "paths.h"
 #include "firebird_db.h"
-#include "../ibpp/core/ibpp.h"
+#include "ibpp.h"
 
 using namespace IBPP;
 

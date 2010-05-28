@@ -21,7 +21,7 @@
 */
 
 #include "utils.h"
-#include "ibpp/core/ibpp.h"
+#include "ibpp.h"
 #include <wx/string.h>
 #include "wx/datetime.h"
 #include <string>
