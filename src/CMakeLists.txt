@@ -1,7 +1,7 @@
 # folder: src
 #         ---
 
-FIND_PACKAGE(wxWidgets REQUIRED adv core base net aui html xrc qa richtext )
+FIND_PACKAGE(wxWidgets REQUIRED html adv core base net aui xrc qa richtext )
 INCLUDE(${wxWidgets_USE_FILE})
 
 include_directories( ${PROJECT_SOURCE_DIR}/src/ibpp/core
@@ -92,13 +92,26 @@ if(WIN32)
   target_link_libraries( vvv id3lib zlib )
 endif(WIN32)
 if( UNIX )
-  # link to the Firebird client library
+  # link to the Firebird client library and to id3lib
   find_library( FB_LIB fbembed PATHS /usr/lib /usr/local/lib /opt/firebird/lib )
   if( NOT FB_LIB )
     message( FATAL_ERROR "Unable to find firebird interface" )
   else( NOT FB_LIB )
     message( STATUS "Firebird interface: " ${FB_LIB} )
   endif( NOT FB_LIB )
-#  target_link_libraries( -lfbembed )
-  target_link_libraries( ${FB_LIB} )
+
+  # first look for a static id3lib library
+  find_library( ID3_LIB libid3.a PATHS /usr/lib /usr/local/lib )
+  if( NOT ID3_LIB )
+    # if not found accept a shared one
+    find_library( ID3_LIB id3 PATHS /usr/lib /usr/local/lib )
+  endif( NOT ID3_LIB )
+  if( NOT ID3_LIB )
+    message( FATAL_ERROR "Unable to find id3lib" )
+  else( NOT ID3_LIB )
+    message( STATUS "Id3lib: " ${ID3_LIB} )
+  endif( NOT ID3_LIB )
+
+#  target_link_libraries( vvv -lfbembed )
+  target_link_libraries( vvv ${FB_LIB} ${ID3_LIB} )
 endif( UNIX )
