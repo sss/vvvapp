@@ -80,10 +80,26 @@ set( SRCS
 # If we build for windows systems, we also include the resource file
 # containing the manifest, icon and other resources
 if(WIN32)
-  set(SRCS ${SRCS} windows_specific.cpp windows_specific.h vvv.rc vvv.rc2)
+  set( SRCS ${SRCS} windows_specific.cpp windows_specific.h vvv.rc vvv.rc2 )
 endif(WIN32)
 
+#--------------------------------------------------------------------------------
+# For Apple set the icns file containing icons
+if(APPLE)
+  # icon files to copy in the bundle
+  set( OSX_ICON_FILES ${CMAKE_CURRENT_SOURCE_DIR}/graphics/vvv.icns ${CMAKE_CURRENT_SOURCE_DIR}/graphics/vvv-document.icns ) 
+  # set where in the bundle to put the icns files
+  set_source_files_properties( ${OSX_ICON_FILES} PROPERTIES MACOSX_PACKAGE_LOCATION Resources)
+  # include the icns files in the target
+  set( SRCS ${SRCS} ${OSX_ICON_FILES} )
+ENDIF(APPLE)
+
 add_executable( vvv WIN32 MACOSX_BUNDLE ${SRCS} )
+
+if(APPLE)
+  # configure CMake to use a custom Info.plist
+  set_target_properties( vvv PROPERTIES MACOSX_BUNDLE_INFO_PLIST ${PROJECT_SOURCE_DIR}/vvv-Info.plist )
+ENDIF(APPLE)
 
 add_definitions( -DID3LIB_LINKOPTION=1 )
 
@@ -92,26 +108,59 @@ if(WIN32)
   target_link_libraries( vvv id3lib zlib )
 endif(WIN32)
 if( UNIX )
-  # link to the Firebird client library and to id3lib
-  find_library( FB_LIB fbembed PATHS /usr/lib /usr/local/lib /opt/firebird/lib )
+  # link to the Firebird client library
+  # the last path is used for OS X where I have a local copy (not installed)
+  find_library( FB_LIB fbembed PATHS /usr/lib /usr/local/lib /opt/firebird/lib ${PROJECT_SOURCE_DIR}/firebird_runtime/firebird )
   if( NOT FB_LIB )
     message( FATAL_ERROR "Unable to find firebird interface" )
   else( NOT FB_LIB )
     message( STATUS "Firebird interface: " ${FB_LIB} )
   endif( NOT FB_LIB )
 
+  # look for the folder containing the firebird embedded files to ship with the program
+  find_path( FB_EMBEDDED_PATH firebird.conf ${PROJECT_SOURCE_DIR}/firebird_runtime )
+  message( STATUS "Embedded firebird files path: " ${FB_EMBEDDED_PATH} )
+
+  # link to id3lib
+  # the last path is used for OS X where I have a local copy (not installed)
   # first look for a static id3lib library
-  find_library( ID3_LIB libid3.a PATHS /usr/lib /usr/local/lib )
+  find_library( ID3_LIB libid3.a PATHS /usr/lib /usr/local/lib ${PROJECT_SOURCE_DIR}/../id3lib-3.8.3/lib )
   if( NOT ID3_LIB )
     # if not found accept a shared one
-    find_library( ID3_LIB id3 PATHS /usr/lib /usr/local/lib )
+    find_library( ID3_LIB id3 PATHS /usr/lib /usr/local/lib ${PROJECT_SOURCE_DIR}/../id3lib-3.8.3/lib )
   endif( NOT ID3_LIB )
   if( NOT ID3_LIB )
     message( FATAL_ERROR "Unable to find id3lib" )
   else( NOT ID3_LIB )
     message( STATUS "Id3lib: " ${ID3_LIB} )
   endif( NOT ID3_LIB )
+  if( APPLE )
+    # since id3lib is not installed...
+    find_path( ID3_INCLUDE id3.h PATHS ${PROJECT_SOURCE_DIR}/../id3lib-3.8.3/include )
+    message( STATUS "Id3 include path: " ${ID3_INCLUDE} )
+    include_directories( ${ID3_INCLUDE} )
+  endif( APPLE )
+
 
 #  target_link_libraries( vvv -lfbembed )
   target_link_libraries( vvv ${FB_LIB} ${ID3_LIB} )
 endif( UNIX )
+
+
+# installation stuff
+
+install( TARGETS vvv DESTINATION . )
+
+if( APPLE )
+  # copy the Firebird runtime
+  install( DIRECTORY ${FB_EMBEDDED_PATH}/ DESTINATION vvv.app/Contents/MacOS USE_SOURCE_PERMISSIONS )
+  install( FILES ${FB_EMBEDDED_PATH}/firebird/firebird.msg DESTINATION vvv.app/Contents/MacOS/firebird/bin/firebird )
+  # fix filename references in the runtime
+  set( FIXUP_COMMAND ${PROJECT_SOURCE_DIR}/MACOSX_fixup_bundle.sh " " ${CMAKE_INSTALL_PREFIX}/vvv.app )
+  message( STATUS "Fixup command: " ${FIXUP_COMMAND} )
+  install( CODE "execute_process( COMMAND ${FIXUP_COMMAND} )" )
+endif( APPLE )
+
+
+
+

@@ -75,8 +75,8 @@
 		BDDE887E0D2BF50700756213 /* fb_lock_mgr in Copy Files - Executables-firebird-bin */ = {isa = PBXBuildFile; fileRef = BDDE88520D2BF0CC00756213 /* fb_lock_mgr */; };
 		BDDE887F0D2BF50700756213 /* gbak in Copy Files - Executables-firebird-bin */ = {isa = PBXBuildFile; fileRef = BDDE88530D2BF0CC00756213 /* gbak */; };
 		BDDE88800D2BF50700756213 /* isql in Copy Files - Executables-firebird-bin */ = {isa = PBXBuildFile; fileRef = BDDE88540D2BF0CC00756213 /* isql */; };
-		BDDE88810D2BF53100756213 /* fbintl.conf in Copy Files - Executables-intl */ = {isa = PBXBuildFile; fileRef = BDDE88570D2BF0CC00756213 /* fbintl.conf */; };
-		BDDE88820D2BF53100756213 /* fbintl.dylib in Copy Files - Executables-intl */ = {isa = PBXBuildFile; fileRef = BDDE88580D2BF0CC00756213 /* fbintl.dylib */; };
+		BDDE88810D2BF53100756213 /* fbintl.conf in Copy Files - Executables-firebird-intl */ = {isa = PBXBuildFile; fileRef = BDDE88570D2BF0CC00756213 /* fbintl.conf */; };
+		BDDE88820D2BF53100756213 /* fbintl.dylib in Copy Files - Executables-firebird-intl */ = {isa = PBXBuildFile; fileRef = BDDE88580D2BF0CC00756213 /* fbintl.dylib */; };
 		BDE673290D2CF2580095991E /* libfbembed.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BDDE88590D2BF0CC00756213 /* libfbembed.dylib */; };
 		BDE673480D2CFE5D0095991E /* libicuuc.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BDDE885D0D2BF0CC00756213 /* libicuuc.dylib */; };
 		BDF7CAA30DF1A2E5005B0634 /* exportdata.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BDF7CAA20DF1A2E5005B0634 /* exportdata.cpp */; };
@@ -253,16 +253,16 @@
 			name = "Copy Files - Executables-firebird-bin";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		BDDE887C0D2BF4AD00756213 /* Copy Files - Executables-intl */ = {
+		BDDE887C0D2BF4AD00756213 /* Copy Files - Executables-firebird-intl */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = firebird/intl;
 			dstSubfolderSpec = 6;
 			files = (
-				BDDE88810D2BF53100756213 /* fbintl.conf in Copy Files - Executables-intl */,
-				BDDE88820D2BF53100756213 /* fbintl.dylib in Copy Files - Executables-intl */,
+				BDDE88810D2BF53100756213 /* fbintl.conf in Copy Files - Executables-firebird-intl */,
+				BDDE88820D2BF53100756213 /* fbintl.dylib in Copy Files - Executables-firebird-intl */,
 			);
-			name = "Copy Files - Executables-intl";
+			name = "Copy Files - Executables-firebird-intl";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -732,7 +732,7 @@
 				BDB509C10D26CC7A003AB768 /* Copy Files - Executables */,
 				BDDE88710D2BF3C500756213 /* Copy Files - Executables-firebird */,
 				BDDE887A0D2BF47400756213 /* Copy Files - Executables-firebird-bin */,
-				BDDE887C0D2BF4AD00756213 /* Copy Files - Executables-intl */,
+				BDDE887C0D2BF4AD00756213 /* Copy Files - Executables-firebird-intl */,
 				BDD085D80D5A230A001CFF1C /* Copy Files - Executables-firebird-bin-firebird */,
 				BDE6731C0D2CEC2F0095991E /* ShellScript */,
 			);
