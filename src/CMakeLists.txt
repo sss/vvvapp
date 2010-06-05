@@ -157,10 +157,28 @@ if( APPLE )
   install( FILES ${FB_EMBEDDED_PATH}/firebird/firebird.msg DESTINATION vvv.app/Contents/MacOS/firebird/bin/firebird )
   # fix filename references in the runtime
   set( FIXUP_COMMAND ${PROJECT_SOURCE_DIR}/MACOSX_fixup_bundle.sh " " ${CMAKE_INSTALL_PREFIX}/vvv.app )
-  message( STATUS "Fixup command: " ${FIXUP_COMMAND} )
   install( CODE "execute_process( COMMAND ${FIXUP_COMMAND} )" )
 endif( APPLE )
 
+if( UNIX )
+  # set the installation path of the executable file and the resources (in OS X they are inside the bundle )
+  if( APPLE )
+    set( EXECUTABLE_INTALL_PATH vvv.app/Contents/MacOS )
+    set( RESOURCES_INTALL_PATH vvv.app/Contents/Resources )
+  else( APPLE )
+    set( EXECUTABLE_INTALL_PATH . )
+    set( RESOURCES_INTALL_PATH . )
+  endif( APPLE )
 
+  # copy localization files
+  install( DIRECTORY ${PROJECT_SOURCE_DIR}/translations/ DESTINATION ${RESOURCES_INTALL_PATH}/languages FILES_MATCHING PATTERN "*.mo" )
+
+  # copy other files to the installation path
+  install( FILES ${PROJECT_SOURCE_DIR}/vvv-struct-update.fdb 
+                 ${PROJECT_SOURCE_DIR}/VVV.fbk
+                 ${PROJECT_SOURCE_DIR}/help/en/vvv.htb
+                 DESTINATION ${EXECUTABLE_INTALL_PATH} )
+
+endif( UNIX )
 
 
