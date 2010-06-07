@@ -118,7 +118,7 @@ if( UNIX )
   endif( NOT FB_LIB )
 
   # look for the folder containing the firebird embedded files to ship with the program
-  find_path( FB_EMBEDDED_PATH firebird.conf ${PROJECT_SOURCE_DIR}/firebird_runtime )
+  find_path( FB_EMBEDDED_PATH firebird.conf ${PROJECT_SOURCE_DIR}/firebird_runtime ${PROJECT_SOURCE_DIR}/../../firebird_embedded_2.0.4_runtime )
   message( STATUS "Embedded firebird files path: " ${FB_EMBEDDED_PATH} )
 
   # link to id3lib
@@ -160,6 +160,11 @@ if( APPLE )
   install( CODE "execute_process( COMMAND ${FIXUP_COMMAND} )" )
 endif( APPLE )
 
+if( UNIX AND NOT APPLE )
+  # copy the Firebird runtime
+  install( DIRECTORY ${FB_EMBEDDED_PATH}/ DESTINATION . USE_SOURCE_PERMISSIONS )
+endif( UNIX AND NOT APPLE )
+
 if( UNIX )
   # set the installation path of the executable file and the resources (in OS X they are inside the bundle )
   if( APPLE )
@@ -171,7 +176,9 @@ if( UNIX )
   endif( APPLE )
 
   # copy localization files
-  install( DIRECTORY ${PROJECT_SOURCE_DIR}/translations/ DESTINATION ${RESOURCES_INTALL_PATH}/languages FILES_MATCHING PATTERN "*.mo" )
+  install( DIRECTORY ${PROJECT_SOURCE_DIR}/translations/ DESTINATION ${RESOURCES_INTALL_PATH}/languages 
+           FILES_MATCHING PATTERN "*.mo"
+           PATTERN ".svn" EXCLUDE )
 
   # copy other files to the installation path
   install( FILES ${PROJECT_SOURCE_DIR}/vvv-struct-update.fdb 
