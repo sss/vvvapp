@@ -66,7 +66,7 @@ protected:
 
 public:
 	CBaseRec(void);
-//	~CBaseRec(void);
+	virtual ~CBaseRec(void) {}
 
 	// insert this record into the database
 	void DbInsert(void);

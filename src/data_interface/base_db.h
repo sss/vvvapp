@@ -37,6 +37,8 @@ class CBaseDB
 {
 public:
 
+	virtual ~CBaseDB() {}
+	
 	// tables to be affected by UpdateStatistics()
 	// usPhysical: only tables used for the physical view
 	// usVirtual: only tables used for the virtual view
