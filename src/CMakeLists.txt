@@ -165,6 +165,7 @@ if( UNIX AND NOT APPLE )
   install( DIRECTORY ${FB_EMBEDDED_PATH}/ DESTINATION . USE_SOURCE_PERMISSIONS )
   # copy other files used only for the Linux version
   install( FILES ${PROJECT_SOURCE_DIR}/linux_specific/readme.txt 
+                 ${PROJECT_SOURCE_DIR}/linux_specific/License.txt 
                  ${PROJECT_SOURCE_DIR}/linux_specific/vvv-start.sh 
                  DESTINATION . )
 endif( UNIX AND NOT APPLE )
