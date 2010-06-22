@@ -48,6 +48,8 @@ set( SRCS
   catalog_volume_functions.h
   choose_virtual_folder.cpp
   choose_virtual_folder.h
+  chooselang.cpp
+  chooselang.h
   convert_db_unicode.cpp
   exportdata.cpp
   exportdata.h

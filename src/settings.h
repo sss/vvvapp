@@ -56,7 +56,7 @@ class wxSpinCtrl;
 #define ID_DS_GENERAL 10049
 #define ID_DS_REOPEN_CATALOG 10051
 #define ID_SPIN_BEEP_TIME 10020
-#define ID_DS_FORCE_ENGLISH 10086
+#define ID_BTN_CHANGE_LANGUAGE 10092
 #define ID_DS_MP3 10050
 #define ID_DS_ARTIST 10052
 #define ID_DS_ALBUM 10053
@@ -114,6 +114,9 @@ public:
 
 ////@begin CDialogSettings event handler declarations
 
+    /// wxEVT_COMMAND_BUTTON_CLICKED event handler for ID_BTN_CHANGE_LANGUAGE
+    void OnBtnChangeLanguageClick( wxCommandEvent& event );
+
     /// wxEVT_UPDATE_UI event handler for ID_DS_SERVERNAME
     void OnDsServernameUpdate( wxUpdateUIEvent& event );
 
@@ -154,9 +157,6 @@ public:
     int GetBeepTime() const { return m_BeepTime ; }
     void SetBeepTime(int value) { m_BeepTime = value ; }
 
-    bool GetForceEnglish() const { return m_ForceEnglish ; }
-    void SetForceEnglish(bool value) { m_ForceEnglish = value ; }
-
     /// Retrieves bitmap resources
     wxBitmap GetBitmapResource( const wxString& name );
 
@@ -192,7 +192,6 @@ private:
     wxString m_Username;
     wxString m_Password;
     int m_BeepTime;
-    bool m_ForceEnglish;
 ////@end CDialogSettings member variables
 
 	bool TransferDataToWindow();

@@ -66,6 +66,7 @@
 #include "catalog_volume_functions.h"
 #include "data_interface/base_db.h"
 #include "data_interface/data_error.h"
+#include "chooselang.h"
 
 ////@begin XPM images
 ////@end XPM images
@@ -258,19 +259,24 @@ bool CVvvApp::OnInit()
 		m_locale.AddCatalogLookupPathPrefix( languagePath );
 	}
 	
- 	//	if( m_locale.Init(wxLANGUAGE_DEFAULT, wxLOCALE_LOAD_DEFAULT | wxLOCALE_CONV_ENCODING) ) {
-	if( m_locale.Init(wxLANGUAGE_DEFAULT, wxLOCALE_CONV_ENCODING) ) {
-		// read from the settings if we must use the localized translation
-		// the same code is used when all settigns are read: we need this info now so I duplicated some code
-		wxConfigBase *pConfig = wxConfigBase::Get();
-		pConfig->SetPath(wxT("/Settings"));
-		bool forceEnglish;
-		pConfig->Read( wxT("ForceEnglish"), &forceEnglish, false );
-		if( !forceEnglish ) {
-			m_locale.AddCatalog( wxT("wxstd") );
-			m_locale.AddCatalog( wxT("vvv") );
-		}
-	}
+    wxLanguage lang = GetUILanguage();
+	m_locale.Init( lang );
+	m_locale.AddCatalog( wxT("vvv") );
+
+
+	//	if( m_locale.Init(wxLANGUAGE_DEFAULT, wxLOCALE_LOAD_DEFAULT | wxLOCALE_CONV_ENCODING) ) {
+	//if( m_locale.Init(wxLANGUAGE_DEFAULT, wxLOCALE_CONV_ENCODING) ) {
+	//	// read from the settings if we must use the localized translation
+	//	// the same code is used when all settigns are read: we need this info now so I duplicated some code
+	//	wxConfigBase *pConfig = wxConfigBase::Get();
+	//	pConfig->SetPath(wxT("/Settings"));
+	//	bool forceEnglish;
+	//	pConfig->Read( wxT("ForceEnglish"), &forceEnglish, false );
+	//	if( !forceEnglish ) {
+	//		m_locale.AddCatalog( wxT("wxstd") );
+	//		m_locale.AddCatalog( wxT("vvv") );
+	//	}
+	//}
 
 #if wxUSE_XPM
 	wxImage::AddHandler(new wxXPMHandler);
