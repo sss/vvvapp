@@ -5,8 +5,7 @@ Contents file=vvv.hhc
 Compiled file=vvv.chm
 Default Window=Help
 Default topic=welcome.htm
-Language=0x809 English (United Kingdom)
-Default Font=MS Sans Serif,8,0
+Charset=utf-8
 Index file=vvv.hhk
 Title=VVV Help
 
