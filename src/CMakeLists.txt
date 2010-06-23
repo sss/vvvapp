@@ -168,8 +168,10 @@ if( UNIX AND NOT APPLE )
   # copy other files used only for the Linux version
   install( FILES ${PROJECT_SOURCE_DIR}/linux_specific/readme.txt 
                  ${PROJECT_SOURCE_DIR}/linux_specific/License.txt 
-                 ${PROJECT_SOURCE_DIR}/linux_specific/vvv-start.sh 
                  DESTINATION . )
+  install( FILES ${PROJECT_SOURCE_DIR}/linux_specific/vvv-start.sh 
+                 DESTINATION . PERMISSIONS OWNER_EXECUTE OWNER_WRITE OWNER_READ GROUP_EXECUTE
+                                           GROUP_READ WORLD_READ WORLD_EXECUTE )
 endif( UNIX AND NOT APPLE )
 
 if( UNIX )

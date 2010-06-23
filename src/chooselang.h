@@ -35,11 +35,11 @@
 #include <wx/string.h>
 #include <wx/intl.h>
 
-#if defined(__UNIX__) && !defined(__WXMAC__)
-    #define NEED_CHOOSELANG_UI 0
-#else
+//#if defined(__UNIX__) && !defined(__WXMAC__)
+//    #define NEED_CHOOSELANG_UI 0
+//#else
     #define NEED_CHOOSELANG_UI 1
-#endif
+//#endif
 
 #if NEED_CHOOSELANG_UI
 /// Let the user select language
