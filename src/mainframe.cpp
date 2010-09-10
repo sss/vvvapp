@@ -2342,7 +2342,7 @@ void CMainFrame::OnABOUTClick( wxCommandEvent& WXUNUSED(event) )
 	info.SetVersion( CUtils::GetApplicationVersion() );
 	info.SetWebSite( wxT("http://vvvapp.sourceforge.net/") );
 	info.SetDescription( _("VVV (Virtual Volumes View): a program to catalog removable devices like CDs and DVDs") );
-	info.SetCopyright( _("Copyright (C) 2007-2009 The VVV Team") );
+	info.SetCopyright( _("Copyright (C) 2007-2010 The VVV Team") );
 	info.AddDeveloper( _("Fulvio Senore: main developer") );
 	info.AddDeveloper( _("\nJan Albartus: worked at the portable version and designed the application's icon") );
 	info.AddArtist( _("This program uses icons from the Gnome, Ubuntu and Crystal icons projects") );
