@@ -172,6 +172,9 @@ public:
 
 ////@begin CMainFrame event handler declarations
 
+    /// wxEVT_CLOSE_WINDOW event handler for ID_MAIN_FRAME
+    void OnCloseWindow( wxCloseEvent& event );
+
     /// wxEVT_COMMAND_MENU_SELECTED event handler for wxID_NEW
     void OnNEWClick( wxCommandEvent& event );
 

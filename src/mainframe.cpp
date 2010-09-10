@@ -502,6 +502,8 @@ IMPLEMENT_CLASS( CMainFrame, wxFrame )
 BEGIN_EVENT_TABLE( CMainFrame, wxFrame )
 
 ////@begin CMainFrame event table entries
+    EVT_CLOSE( CMainFrame::OnCloseWindow )
+
     EVT_MENU( wxID_NEW, CMainFrame::OnNEWClick )
 
     EVT_MENU( wxID_OPEN, CMainFrame::OnOPENClick )
@@ -4021,5 +4023,23 @@ void CMainFrame::CreateMacToolbar()
     m_ToolbarCtrl->Realize();
 
 	itemFrame1->SetToolBar(m_ToolbarCtrl);
+}
+
+
+/*!
+ * wxEVT_CLOSE_WINDOW event handler for ID_MAIN_FRAME
+ */
+
+void CMainFrame::OnCloseWindow( wxCloseEvent& event )
+{
+	// empty the tree control (the default code is very slow so I need to do this manually)
+	m_treePhysicalCtl->Freeze();
+	m_treePhysicalCtl->DeleteAllItems();
+	m_treePhysicalCtl->Thaw();
+	m_treeVirtualCtl->Freeze();
+	m_treeVirtualCtl->DeleteAllItems();
+	m_treeVirtualCtl->Thaw();
+
+	event.Skip();
 }
 
