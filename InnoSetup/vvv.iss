@@ -8,7 +8,7 @@
 
 #define AppName "VVV (Virtual Volumes View)"
 #define ExeName "vvv.exe"
-#define AppVersion "1.0"
+#define AppVersion "1.01"
 
 [Setup]
 AppId=VVV-fu-ku-jitsu
@@ -22,13 +22,13 @@ VersionInfoVersion={#AppVersion}
 ChangesAssociations=yes
 OutputDir=.
 ;OutputBaseFilename=VVV- + {#AppVersion} + -Setup
-OutputBaseFilename=VVV-1.0-Setup
+OutputBaseFilename=VVV-1.01-Setup
 
 [Tasks]
 Name: desktopicon; Description: {cm:CreateDesktopIcon}
 
 [Files]
-Source: ..\vc_mswu\{#ExeName}; DestDir: {app}; Tasks: 
+Source: ..\build\src\release\{#ExeName}; DestDir: {app}; Tasks: 
 Source: msvcr71.dll; DestDir: {app}; Flags: replacesameversion; Tasks: 
 Source: fbclient.dll; DestDir: {app}; Flags: replacesameversion
 Source: firebird.msg; DestDir: {app}; Flags: replacesameversion
@@ -43,6 +43,7 @@ Source: ..\vvv-struct-update.fdb; DestDir: {app}; Attribs: readonly; Flags: over
 Source: ..\VVV.fbk; DestDir: {app}
 Source: ..\help\en\vvv.chm; DestDir: {app}
 Source: ..\translations\cs\vvv.mo; DestDir: {app}\languages\cs
+Source: ..\translations\cs\wxstd.mo; DestDir: {app}\languages\cs
 Source: ..\translations\de\vvv.mo; DestDir: {app}\languages\de
 Source: ..\translations\de\wxstd.mo; DestDir: {app}\languages\de
 Source: ..\translations\es\vvv.mo; DestDir: {app}\languages\es
@@ -58,6 +59,13 @@ Source: ..\translations\pl\vvv.mo; DestDir: {app}\languages\pl
 Source: ..\translations\pl\wxstd.mo; DestDir: {app}\languages\pl
 Source: ..\translations\pt\vvv.mo; DestDir: {app}\languages\pt
 Source: ..\translations\pt\wxstd.mo; DestDir: {app}\languages\pt
+Source: ..\translations\ro\vvv.mo; DestDir: {app}\languages\ro
+Source: ..\translations\ru\vvv.mo; DestDir: {app}\languages\ru
+Source: ..\translations\ru\wxstd.mo; DestDir: {app}\languages\ru
+Source: ..\translations\sr\vvv.mo; DestDir: {app}\languages\sr
+Source: ..\translations\sr@latin\vvv.mo; DestDir: {app}\languages\sr@latin
+Source: ..\translations\uk\vvv.mo; DestDir: {app}\languages\uk
+Source: ..\translations\uk\wxstd.mo; DestDir: {app}\languages\uk
 
 
 [Icons]
@@ -81,6 +89,7 @@ Name: fr; MessagesFile: compiler:Languages\French.isl
 Name: nl; MessagesFile: compiler:Languages\Dutch.isl
 Name: pl; MessagesFile: compiler:Languages\Polish.isl
 Name: pt; MessagesFile: compiler:Languages\Portuguese.isl
+Name: ru; MessagesFile: compiler:Languages\Russian.isl
 
 #ifdef Debug
   #expr SaveToFile(AddBackslash(SourcePath) + "Preprocessed.iss")

@@ -2349,15 +2349,18 @@ void CMainFrame::OnABOUTClick( wxCommandEvent& WXUNUSED(event) )
 	info.AddDeveloper( _("\nJan Albartus: worked at the portable version and designed the application's icon") );
 	info.AddArtist( _("This program uses icons from the Gnome, Ubuntu and Crystal icons projects") );
 	info.SetLicence( _("This is open source software, distributed under the GNU GENERAL PUBLIC LICENSE") );
-	info.AddTranslator( wxString(wxT("Karel Kozl\u00EDk: ")) + _("Czech") );
-	info.AddTranslator( wxString(wxT("Steve K\u00F6hler: ")) + _("German") );
+	info.AddTranslator( wxString(wxT("Pedro Cunha: ")) + _("Portuguese") );
 	info.AddTranslator( wxString(wxT("David de Castro: ")) + _("Spanish") );
 	info.AddTranslator( wxString(wxT("Fr\u00E9d\u00E9ric Gacquer: ")) + _("French") );
-	info.AddTranslator( wxString(wxT("Hasan Osmanagi\u0107: ")) + _("Croatian") );
-	info.AddTranslator( wxString(wxT("Fulvio Senore: ")) + _("Italian") );
-	info.AddTranslator( wxString(wxT("Gideon van Melle: ")) + _("Dutch") );
+	info.AddTranslator( wxString(wxT("Steve K\u00F6hler: ")) + _("German") );
+	info.AddTranslator( wxString(wxT("Karel Kozl\u00EDk: ")) + _("Czech") );
 	info.AddTranslator( wxString(wxT("Dariusz Liszewski: ")) + _("Polish") );
-	info.AddTranslator( wxString(wxT("Pedro Cunha: ")) + _("Portuguese") );
+	info.AddTranslator( wxString(wxT("Yaroslav D. Mudryy : ")) + _("Russian") + wxT(" ") + _("Ukrainian") );
+	info.AddTranslator( wxString(wxT("Hasan Osmanagi\u0107: ")) + _("Croatian") );
+	info.AddTranslator( wxString(wxT("Milos Popovic: ")) + _("Serbian") );
+	info.AddTranslator( wxString(wxT("Fulvio Senore: ")) + _("Italian") );
+	info.AddTranslator( wxString(wxT("Nick Sercaianu: ")) + _("Romanian") );
+	info.AddTranslator( wxString(wxT("Gideon van Melle: ")) + _("Dutch") );
 
 	wxAboutBox( info );
 }

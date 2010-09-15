@@ -102,7 +102,10 @@ wxLanguage ChooseLanguage()
         { _("Italian"), wxLANGUAGE_ITALIAN },
         { _("Polish"), wxLANGUAGE_POLISH },
         { _("Portuguese"), wxLANGUAGE_PORTUGUESE },
+        { _("Romanian"), wxLANGUAGE_ROMANIAN },
         { _("Russian"), wxLANGUAGE_RUSSIAN },
+        { _("Serbian (cyrillic)"), wxLANGUAGE_SERBIAN_CYRILLIC },
+        { _("Serbian (latin)"), wxLANGUAGE_SERBIAN_LATIN },
         { _("Spanish"), wxLANGUAGE_SPANISH },
         { _("Ukrainian"), wxLANGUAGE_UKRAINIAN },
         { _T(""), wxLANGUAGE_UNKNOWN }

@@ -32,7 +32,15 @@ pt:
 Pedro Cunha
 pmferreirac@gmail.com
 
-pt-br:
-Cláudio Mantovani Vieira
-claudio.mantovani@itelefonica.com.br
+ro:
+Nick Sercaianu
+araxth@gmail.com
+
+sr:
+Milos Popovic
+gpopac@gmail.com
+
+uk, ru:
+Yaroslav D. Mudryy
+premudriy@ukr.net
 
