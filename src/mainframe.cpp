@@ -75,6 +75,7 @@
 #include "exportdata.h"
 #include "restore.h"
 #include "update_volume.h"
+#include "decode_search_string.h"
 
 ////@begin XPM images
 #include "graphics/vvv32.xpm"
@@ -2728,10 +2729,7 @@ void CMainFrame::RefreshCurrentView(void) {
 	}
 }
 
-
-
 void CMainFrame::OnButtonSearchClick( wxCommandEvent& WXUNUSED(event) ) {
-	bool useWildcardsFilename, useWildcardsDescription;
 
 	wxString fileName = m_SearchFileName->GetValue();
 	wxString ext = m_SearchExtension->GetValue();
@@ -2742,43 +2740,57 @@ void CMainFrame::OnButtonSearchClick( wxCommandEvent& WXUNUSED(event) ) {
 		return;
 	}
 
+	// decode the search strings
+	wxString whFileName = wxEmptyString;
+	wxString whExt = wxEmptyString;
+	wxString whDescription = wxEmptyString;
+	fileName = fileName.MakeUpper();
+	ext = ext.MakeUpper();
+	description = description.MakeUpper();
+	if( !fileName.IsEmpty() ) {
+		CDecodeSearchString ds( fileName );
+		if( ds.DecodeString() ) {
+			FilenameSearchKind searchKind = (FilenameSearchKind) m_FilenameRadioBox->GetSelection();
+			whFileName = ds.CreateWhereClause( wxT("FILE_NAME"), searchKind );
+			whFileName = wxT( "(" ) + whFileName + wxT( ")" );
+		}
+		else {
+			CUtils::MsgErr( _("Incorrect file name search data") );
+			return;
+		}
+	}
+	if( !ext.IsEmpty() ) {
+		CDecodeSearchString ds( ext );
+		if( ds.DecodeString() ) {
+			whExt = ds.CreateWhereClause( wxT("FILE_EXT"), FilenameSearchKind::fskIsEqual );
+			whExt = wxT( "(" ) + whExt + wxT( ")" );
+		}
+		else {
+			CUtils::MsgErr( _("Incorrect extension search data") );
+			return;
+		}
+	}
+	if( !description.IsEmpty() ) {
+		CDecodeSearchString ds( description );
+		if( ds.DecodeString() ) {
+			FilenameSearchKind searchKind = (FilenameSearchKind) m_DescriptionRadioBox->GetSelection();
+			whDescription = ds.CreateWhereClause( wxT("FILE_DESCRIPTION"), searchKind );
+			whDescription = wxT( "(" ) + whDescription + wxT( ")" );
+		}
+		else {
+			CUtils::MsgErr( _("Incorrect description search data") );
+			return;
+		}
+	}
+
 	CLongTaskBeep ltb;
 
-	// escapes wildcard chars typed by the user
-	// ...filename
-	FilenameSearchKind searchKind = (FilenameSearchKind) m_FilenameRadioBox->GetSelection();
-	useWildcardsFilename = false;
-	if( !fileName.empty() ) {
-		switch( searchKind ) {
-			case fskStartsWith:
-				useWildcardsFilename = true;
-				fileName = CBaseRec::EscapeWildcards( fileName, wxT("/") );
-				fileName = fileName + wxT("%");
-				break;
-			case fskContains:
-				useWildcardsFilename = true;
-				fileName = CBaseRec::EscapeWildcards( fileName, wxT("/") );
-				fileName = wxT("%") + fileName + wxT("%");
-				break;
-		}
-	}
-	// ...description
-	searchKind = (FilenameSearchKind) m_DescriptionRadioBox->GetSelection();
-	useWildcardsDescription = false;
-	if( !description.empty() ) {
-		switch( searchKind ) {
-			case fskStartsWith:
-				useWildcardsDescription = true;
-				description = CBaseRec::EscapeWildcards( description, wxT("/") );
-				description = description + wxT("%");
-				break;
-			case fskContains:
-				useWildcardsDescription = true;
-				description = CBaseRec::EscapeWildcards( description, wxT("/") );
-				description = wxT("%") + description + wxT("%");
-				break;
-		}
-	}
+	// create the WHERE clause related to the search data
+	wxString wh = whFileName;
+	if( !wh.empty() && !whExt.IsEmpty() ) wh += wxT(" AND ");
+	wh += whExt;
+	if( !wh.empty() && !whDescription.IsEmpty() ) wh += wxT(" AND ");
+	wh += whDescription;
 
 	SearchScope scope = (SearchScope) m_SearchRadioBox->GetSelection();
 	wxBusyCursor wait;
@@ -2802,7 +2814,7 @@ void CMainFrame::OnButtonSearchClick( wxCommandEvent& WXUNUSED(event) ) {
 			CFiles files;
 			CNullableLong nl;
 			nl.SetNull(true);
-			files.DBStartSearchVolumeFiles( fileName, useWildcardsFilename, ext, description, useWildcardsDescription, nl );
+			files.DBStartSearchVolumeFilesSQL( nl, wh );
 			while( !files.IsEOF() ) {
 				if( files.FileExt.Upper() == wxT("MP3") ) {
 					foundAudioFiles = true;
@@ -2826,7 +2838,7 @@ void CMainFrame::OnButtonSearchClick( wxCommandEvent& WXUNUSED(event) ) {
 			if( tctl->GetItemParent(item) == tctl->GetRootItem() ) {
 				// the user selected a volume
 				CFiles files;
-				files.DBStartSearchVolumeFiles( fileName, useWildcardsFilename, ext, description, useWildcardsDescription, itemData->GetVolumeID() );
+				files.DBStartSearchVolumeFilesSQL( itemData->GetVolumeID(), wh );
 				while( !files.IsEOF() ) {
 					if( files.FileExt.Upper() == wxT("MP3") ) {
 						foundAudioFiles = true;
@@ -2843,7 +2855,7 @@ void CMainFrame::OnButtonSearchClick( wxCommandEvent& WXUNUSED(event) ) {
 			else {
 				// the user selected a folder: recursion
 				CBaseDB::GetDatabase()->TransactionStart( true );
-				SearchPhysicalFolder( fileName, useWildcardsFilename, ext, description, useWildcardsDescription, itemData->GetPathID(), itemData->GetVolumeID() );
+				SearchPhysicalFolder( itemData->GetPathID(), itemData->GetVolumeID(), wh );
 				CBaseDB::GetDatabase()->TransactionCommit();
 			}
 			break;
@@ -2855,7 +2867,7 @@ void CMainFrame::OnButtonSearchClick( wxCommandEvent& WXUNUSED(event) ) {
 			wxASSERT( item.IsOk() );
 		    MyTreeItemData *itemData = (MyTreeItemData *) tctl->GetItemData(item);
 			CBaseDB::GetDatabase()->TransactionStart( true );
-			SearchVirtualFolder( fileName, useWildcardsFilename, ext, description, useWildcardsDescription, itemData->GetPathID() );
+			SearchVirtualFolder( itemData->GetPathID(), wh );
 			CBaseDB::GetDatabase()->TransactionCommit();
 			break;
 		}
@@ -2909,13 +2921,13 @@ int CMainFrame::AddRowToVirtualListControl( wxListCtrl* lctl, bool isFolder, wxS
 	return i;
 }
 
-void CMainFrame::SearchVirtualFolder( wxString fileName, bool useFileNameWildcards, wxString ext, wxString description, bool useDescriptionWildcards, long folderID ) {
+void CMainFrame::SearchVirtualFolder( long folderID, const wxString& wh ) {
 
 	// searches the current folder
 	CVirtualFiles files;
 	wxListCtrl* lctl = GetListControl();
 	bool foundAudioFiles = false;
-	files.DBStartSearchFolderFiles( fileName, useFileNameWildcards, ext, description, useDescriptionWildcards, folderID );
+	files.DBStartSearchFolderFilesSQL( folderID, wh );
 	while( !files.IsEOF() ) {
 		if( files.FileExt.Upper() == wxT("MP3") ) {
 			foundAudioFiles = true;
@@ -2932,19 +2944,19 @@ void CMainFrame::SearchVirtualFolder( wxString fileName, bool useFileNameWildcar
 	CVirtualPaths pth;
 	pth.DBStartQueryListPaths( folderID );
 	while( !pth.IsEOF() ) {
-		SearchVirtualFolder( fileName, useFileNameWildcards, ext, description, useDescriptionWildcards, pth.PathID );
+		SearchVirtualFolder( pth.PathID, wh );
 		pth.DBNextRow();
 	}
 
 }
 
-void CMainFrame::SearchPhysicalFolder( wxString fileName, bool useFileNameWildcards, wxString ext, wxString description, bool useDescriptionWildcards, long folderID, long volumeID ) {
+void CMainFrame::SearchPhysicalFolder( long folderID, long volumeID, const wxString& wh ) {
 
 	// searches the current folder
 	CFiles files;
 	wxListCtrl* lctl = GetListControl();
 	bool foundAudioFiles = false;
-	files.DBStartSearchFolderFiles( fileName, useFileNameWildcards, ext, description, useDescriptionWildcards, folderID );
+	files.DBStartSearchFolderFilesSQL( folderID, wh );
 	while( !files.IsEOF() ) {
 		if( files.FileExt.Upper() == wxT("MP3") ) {
 			foundAudioFiles = true;
@@ -2961,7 +2973,7 @@ void CMainFrame::SearchPhysicalFolder( wxString fileName, bool useFileNameWildca
 	CPaths pth;
 	pth.DBStartQueryListPaths( volumeID, folderID );
 	while( !pth.IsEOF() ) {
-		SearchPhysicalFolder( fileName, useFileNameWildcards, ext, description, useDescriptionWildcards, pth.PathID, volumeID );
+		SearchPhysicalFolder( pth.PathID, volumeID, wh );
 		pth.DBNextRow();
 	}
 

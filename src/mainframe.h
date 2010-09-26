@@ -392,6 +392,13 @@ public:
 		amdChannels
 	};
 
+	// possible choices for file name search
+	enum FilenameSearchKind {
+		fskIsEqual = 0,
+		fskStartsWith,
+		fskContains
+	};
+
 	// struct to hold data for database server connection
 	struct CDBConnectionData {
 		bool connectToServer;	// true of we want to connect to a server
@@ -421,13 +428,6 @@ private:
 	// we need this because popping up a menu causes a listcontrol lostfocus event in wxGTK that would
 	// set m_ListViewHasFocus = 0 causing wrong behaviours
 	bool m_PoppingUpContextMenu;
-
-	// possible choices for file name search
-	enum FilenameSearchKind {
-		fskIsEqual = 0,
-		fskStartsWith,
-		fskContains
-	};
 
 	// possible search choices
 	enum SearchScope {
@@ -537,10 +537,10 @@ private:
 	void RefreshCurrentView(void);
 
 	// searches a physical folder for files, appends them to the list control, then recursion
-	void SearchPhysicalFolder( wxString fileName, bool useFileNameWildcards, wxString ext, wxString description, bool useDescriptionWildcards, long folderID, long volumeID );
+	void SearchPhysicalFolder( long folderID, long volumeID, const wxString& wh );
 
 	// searches a virtual folder for files, appends them to the list control, then recursion
-	void SearchVirtualFolder( wxString fileName, bool useFileNameWildcards, wxString ext, wxString description, bool useDescriptionWildcards, long folderID );
+	void SearchVirtualFolder( long folderID, const wxString& wh );
 
 	// adds a row to the listview in Virtual or Search mode
 	// return the index position of the newly inserted row

@@ -233,5 +233,11 @@ wxBitmap CUtils::EnlargeBitmap( wxBitmap bmpIn, int w, int h )
 	return wxBitmap( img );
 }
 
+wxString CUtils::ExpandSingleQuotes( wxString txt ) {
+	// doubles single-quote characters in a string, used to create SQL statements
+
+	txt.Replace( wxT("'"), wxT("''"), true );
+	return txt;
+}
 
 

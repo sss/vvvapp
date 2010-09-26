@@ -103,6 +103,9 @@ public:
 	// w and h are the dimensions of the new returned
 	static wxBitmap EnlargeBitmap( wxBitmap bmpIn, int w, int h );
 
+	// doubles single-quote characters in a string, used to create SQL statements
+	static wxString ExpandSingleQuotes( wxString txt );
+
 private:
 	// name of the current application
 	static wxString applicationName;

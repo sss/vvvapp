@@ -57,10 +57,19 @@ public:
 	// searches all the files of a given volume
 	// if volumeID is null searches all the stored volumes
 	// if useFileNameWildcards == true the file name contains wildcards, fileName wildcards must already be escaped
-	void DBStartSearchVolumeFiles( wxString fileName, bool useFileNameWildcards, wxString ext, wxString description, bool useDescriptionWildcards, CNullableLong volumeID );
+//	void DBStartSearchVolumeFiles( wxString fileName, bool useFileNameWildcards, wxString ext, wxString description, bool useDescriptionWildcards, CNullableLong volumeID );
+
+	// searches all the files of a given volume
+	// if volumeID is null searches all the stored volumes
+	// receives as a parameter the WHERE clause used to select only some rows
+	void DBStartSearchVolumeFilesSQL( CNullableLong volumeID, const wxString& wh );
 
 	// searches all the files in a folder and its subfolders
-	void DBStartSearchFolderFiles( wxString fileName, bool useFileNameWildcards, wxString ext, wxString description, bool useDescriptionWildcards, long folderID );
+//	void DBStartSearchFolderFiles( wxString fileName, bool useFileNameWildcards, wxString ext, wxString description, bool useDescriptionWildcards, long folderID );
+
+	// searches all the files in a folder and its subfolders
+	// receives as a parameter the WHERE clause used to select only some rows
+	void DBStartSearchFolderFilesSQL( long folderID, const wxString& wh  );
 
 	// updates the decription
 	static void UpdateDescription( long FileID, const wxString& descr );

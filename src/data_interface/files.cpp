@@ -36,34 +36,9 @@ void CFiles::DBStartQueryListFiles( long PathID ) {
 	DBStartMultiRowQuery( sql, true );
 }
 
-void CFiles::DBStartSearchVolumeFiles( wxString fileName, bool useFileNameWildcards, wxString ext, wxString description, bool useDescriptionWildcards, CNullableLong volumeID ) {
-	wxString sql, wh;
-
-	fileName = fileName.MakeUpper();
-	ext = ext.MakeUpper();
-	description = description.MakeUpper();
-
-	wh = wxEmptyString;
-	if( !fileName.empty() && useFileNameWildcards ) {
-		if( !wh.empty() ) wh += wxT(" AND");
-		wh += wxT(" UPPER(FILE_NAME) LIKE '") + fileName + wxT("' ESCAPE '/'");
-	}
-	if( !fileName.empty() && !useFileNameWildcards ) {
-		if( !wh.empty() ) wh += wxT(" AND");
-		wh += wxT(" UPPER(FILE_NAME) = '") + fileName + wxT("'");
-	}
-	if( !ext.empty() ) {
-		if( !wh.empty() ) wh += wxT(" AND");
-		wh += wxT(" UPPER(FILE_EXT) = '") + ExpandSingleQuotes(ext) + wxT("'");
-	}
-	if( !description.empty() && useDescriptionWildcards ) {
-		if( !wh.empty() ) wh += wxT(" AND");
-		wh += wxT(" UPPER(FILE_DESCRIPTION) LIKE '") + description + wxT("' ESCAPE '/'");
-	}
-	if( !description.empty() && !useDescriptionWildcards ) {
-		if( !wh.empty() ) wh += wxT(" AND");
-		wh += wxT(" UPPER(FILE_DESCRIPTION) = '") + description + wxT("'");
-	}
+void CFiles::DBStartSearchVolumeFilesSQL( CNullableLong volumeID, const wxString& wh )
+{
+	wxString sql;
 
 	if( volumeID.IsNull() ) {
 		// all volumes
@@ -74,37 +49,11 @@ void CFiles::DBStartSearchVolumeFiles( wxString fileName, bool useFileNameWildca
 	}
 
 	DBStartMultiRowQuery( sql, true );
-
 }
 
-void CFiles::DBStartSearchFolderFiles( wxString fileName, bool useFileNameWildcards, wxString ext, wxString description, bool useDescriptionWildcards, long folderID ) {
-	wxString sql, wh;
-
-	fileName = fileName.MakeUpper();
-	ext = ext.MakeUpper();
-	description = description.MakeUpper();
-
-	wh = wxEmptyString;
-	if( !fileName.empty() && useFileNameWildcards ) {
-		if( !wh.empty() ) wh += wxT(" AND");
-		wh += wxT(" UPPER(FILE_NAME) LIKE '") + fileName + wxT("' ESCAPE '/'");
-	}
-	if( !fileName.empty() && !useFileNameWildcards ) {
-		if( !wh.empty() ) wh += wxT(" AND");
-		wh += wxT(" UPPER(FILE_NAME) = '") + fileName + wxT("'");
-	}
-	if( !ext.empty() ) {
-		if( !wh.empty() ) wh += wxT(" AND");
-		wh += wxT(" UPPER(FILE_EXT) = '") + ExpandSingleQuotes(ext) + wxT("'");
-	}
-	if( !description.empty() && useDescriptionWildcards ) {
-		if( !wh.empty() ) wh += wxT(" AND");
-		wh += wxT(" UPPER(FILE_DESCRIPTION) LIKE '") + description + wxT("' ESCAPE '/'");
-	}
-	if( !description.empty() && !useDescriptionWildcards ) {
-		if( !wh.empty() ) wh += wxT(" AND");
-		wh += wxT(" UPPER(FILE_DESCRIPTION) = '") + description + wxT("'");
-	}
+void CFiles::DBStartSearchFolderFilesSQL( long folderID, const wxString& wh  )
+{
+	wxString sql;
 
 	sql = wxT("SELECT * FROM FILES WHERE PATH_ID = ") + CUtils::long2string(folderID) + wxT(" AND ") + wh;
 

@@ -51,6 +51,8 @@ set( SRCS
   chooselang.cpp
   chooselang.h
   convert_db_unicode.cpp
+  decode_search_string.cpp
+  decode_search_string.h
   exportdata.cpp
   exportdata.h
   long_task_beep.cpp

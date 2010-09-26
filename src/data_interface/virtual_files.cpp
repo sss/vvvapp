@@ -39,38 +39,12 @@ void CVirtualFiles::DBStartQueryListFiles( long PathID ) {
 	DBStartMultiRowQuery( sql, true );
 }
 
-void CVirtualFiles::DBStartSearchFolderFiles( wxString fileName, bool useFileNameWildcards, wxString ext, wxString description, bool useDescriptionWildcards, long folderID ) {
-	wxString sql, wh;
-
-	fileName = fileName.MakeUpper();
-	ext = ext.MakeUpper();
-	description = description.MakeUpper();
-
-	wh = wxEmptyString;
-	if( !fileName.empty() && useFileNameWildcards ) {
-		if( !wh.empty() ) wh += wxT(" AND");
-		wh += wxT(" UPPER(FILES.FILE_NAME) LIKE '") + fileName + wxT("' ESCAPE '/'");
-	}
-	if( !fileName.empty() && !useFileNameWildcards ) {
-		if( !wh.empty() ) wh += wxT(" AND");
-		wh += wxT(" UPPER(FILES.FILE_NAME) = '") + fileName + wxT("'");
-	}
-	if( !ext.empty() ) {
-		if( !wh.empty() ) wh += wxT(" AND");
-		wh += wxT(" UPPER(FILES.FILE_EXT) = '") + ExpandSingleQuotes(ext) + wxT("'");
-	}
-	if( !description.empty() && useDescriptionWildcards ) {
-		if( !wh.empty() ) wh += wxT(" AND");
-		wh += wxT(" UPPER(FILES.FILE_DESCRIPTION) LIKE '") + description + wxT("' ESCAPE '/'");
-	}
-	if( !description.empty() && !useDescriptionWildcards ) {
-		if( !wh.empty() ) wh += wxT(" AND");
-		wh += wxT(" UPPER(FILES.FILE_DESCRIPTION) = '") + description + wxT("'");
-	}
+void CVirtualFiles::DBStartSearchFolderFilesSQL( long folderID, const wxString& wh )
+{
+	wxString sql;
 	sql = wxT("SELECT * FROM VIRTUAL_FILES INNER JOIN FILES ON VIRTUAL_FILES.PHYSICAL_FILE_ID = FILES.FILE_ID WHERE VIRTUAL_FILES.VIRTUAL_PATH_ID = ") + CUtils::long2string(folderID) + wxT(" AND ") + wh;
 
 	DBStartMultiRowQuery( sql, true );
-
 }
 
 std::vector<wxString> CVirtualFiles::ListFolderExtensions( long PathID )
