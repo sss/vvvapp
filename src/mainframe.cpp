@@ -932,7 +932,7 @@ void CMainFrame::CreateControls()
 		m_FilenameRadioBox->SetSelection(0);
 		itemBoxSizer3->Add(m_FilenameRadioBox, 0, wxALIGN_LEFT|wxALL, 5);
 
-		m_SearchFileName = new wxTextCtrl( m_SearchPanel, ID_SEARCH_FILE_NAME, _T(""), wxDefaultPosition, wxSize(120, -1), 0 );
+		m_SearchFileName = new wxTextCtrl( m_SearchPanel, ID_SEARCH_FILE_NAME, _T(""), wxDefaultPosition, wxSize(200, -1), 0 );
 		itemBoxSizer3->Add(m_SearchFileName, 0, wxALIGN_LEFT|wxALL, 5);
 
 		itemBoxSizer3->Add(5, 3, 0, wxALIGN_CENTER_HORIZONTAL|wxALL, 5);
@@ -940,7 +940,7 @@ void CMainFrame::CreateControls()
 		wxStaticText* itemStaticText7 = new wxStaticText( m_SearchPanel, wxID_STATIC, _("Extension:"), wxDefaultPosition, wxDefaultSize, 0 );
 		itemBoxSizer3->Add(itemStaticText7, 0, wxALIGN_LEFT|wxALL, 5);
 
-		m_SearchExtension = new wxTextCtrl( m_SearchPanel, ID_SEARCH_EXTENSION, _T(""), wxDefaultPosition, wxSize(60, -1), 0 );
+		m_SearchExtension = new wxTextCtrl( m_SearchPanel, ID_SEARCH_EXTENSION, _T(""), wxDefaultPosition, wxSize(100, -1), 0 );
 		itemBoxSizer3->Add(m_SearchExtension, 0, wxALIGN_LEFT|wxALL, 5);
 
 		itemBoxSizer3->Add(5, 3, 0, wxALIGN_CENTER_HORIZONTAL|wxALL, 5);
@@ -953,7 +953,7 @@ void CMainFrame::CreateControls()
 		m_DescriptionRadioBox->SetSelection(0);
 		itemBoxSizer3->Add(m_DescriptionRadioBox, 0, wxALIGN_LEFT|wxALL, 5);
 
-		m_SearchDescription = new wxTextCtrl( m_SearchPanel, ID_SEARCH_DESCRIPTION, _T(""), wxDefaultPosition, wxSize(120, -1), 0 );
+		m_SearchDescription = new wxTextCtrl( m_SearchPanel, ID_SEARCH_DESCRIPTION, _T(""), wxDefaultPosition, wxSize(200, -1), 0 );
 		itemBoxSizer3->Add(m_SearchDescription, 0, wxALIGN_LEFT|wxALL, 5);
 
 		itemBoxSizer3->Add(5, 5, 0, wxALIGN_CENTER_HORIZONTAL|wxALL, 5);
