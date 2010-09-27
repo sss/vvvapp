@@ -2816,12 +2816,15 @@ void CMainFrame::OnButtonSearchClick( wxCommandEvent& WXUNUSED(event) ) {
 			nl.SetNull(true);
 			files.DBStartSearchVolumeFilesSQL( nl, wh );
 			while( !files.IsEOF() ) {
-				if( files.FileExt.Upper() == wxT("MP3") ) {
-					foundAudioFiles = true;
+				if( !files.PathID.IsNull() ) {
+					// avoid rows that represent virtual folders created by the user
+					if( files.FileExt.Upper() == wxT("MP3") ) {
+						foundAudioFiles = true;
+					}
+					AddRowToVirtualListControl( lctl, files.IsFolder(), files.FileName, files.FileSize, files.FileExt, files.DateTime, CPaths::GetFullPath(files.PathID), files.FileID, files.PathFileID.IsNull() ? 0 : (long) files.PathFileID, files.FileDescription, files.FileID );
+					nSearchFiles++;
+					sizeSearchFiles += files.FileSize;
 				}
-				AddRowToVirtualListControl( lctl, files.IsFolder(), files.FileName, files.FileSize, files.FileExt, files.DateTime, CPaths::GetFullPath(files.PathID), files.FileID, files.PathFileID.IsNull() ? 0 : (long) files.PathFileID, files.FileDescription, files.FileID );
-				nSearchFiles++;
-				sizeSearchFiles += files.FileSize;
 				files.DBNextRow();
 			}
 			if( !foundAudioFiles && m_CurrentlyShowingAudioMetadata )
