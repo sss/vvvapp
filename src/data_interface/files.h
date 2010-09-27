@@ -42,7 +42,7 @@ public:
 	CNullableLong FileID;
 	wxDateTime DateTime;
 	wxLongLong FileSize;
-	long PathID;
+	CNullableLong PathID;
 	CNullableLong PathFileID;
 	wxString FileDescription;
 
@@ -52,7 +52,7 @@ public:
 	void DBStartQueryListFiles( long PathID );
 
 	// true if this row represents a folder
-	bool IsFolder(void) { return !PathFileID.IsNull(); }
+	bool IsFolder(void) { return (!PathFileID.IsNull() || PathID.IsNull()); }
 
 	// searches all the files of a given volume
 	// if volumeID is null searches all the stored volumes

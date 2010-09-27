@@ -124,8 +124,12 @@ void CFiles::FB_FetchRow(void) {
 			FB_st->Get("PATH_FILE_ID", tmp);
 			PathFileID = (long) tmp;
 		}
-		FB_st->Get("PATH_ID", tmp);
-		PathID = (long) tmp;
+		if( FB_st->IsNull("PATH_ID") )
+			PathID.SetNull(true);
+		else {
+			FB_st->Get("PATH_ID", tmp);
+			PathID = (long) tmp;
+		}
 		if( FB_st->IsNull("FILE_DESCRIPTION") ) {
 			FileDescription = wxEmptyString;
 		}
