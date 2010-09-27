@@ -1,34 +1,32 @@
 [OPTIONS]
-Compatibility=1.1
-Full-text search=Yes
-Contents file=vvv.hhc
+Compatibility=1.1 or later
 Compiled file=vvv.chm
+Contents file=vvv.hhc
 Default Window=Help
 Default topic=welcome.htm
-Charset=utf-8
-Index file=vvv.hhk
+Display compile progress=No
+Full-text search=Yes
+Language=0x409 Inglese (Stati Uniti)
 Title=VVV Help
 
 [WINDOWS]
-Help=,"vvv.hhc","vvv.hhk","welcome.htm",,,,,,0x2420,,0x380e,,,,,0,,,
+Help=,"vvv.hhc",,"welcome.htm",,,,,,0x2420,,0x380e,,,,,0,,,0
+
 
 [FILES]
-welcome.htm
-getting_started.htm
-network_usage.htm
 backup_and_restore.htm
-command_line_switches.htm
-doc-0005.htm
 catalog_volume.htm
-general_settings.htm
-mp3_settings.htm
-server_settings.htm
+command_line_switches.htm
 export_data.htm
+general_settings.htm
+getting_started.htm
+mp3_settings.htm
+network_usage.htm
 restore_catalog.htm
+searching.htm
+server_settings.htm
 update_volume.htm
+welcome.htm
 
-[ALIAS]
-#include "vvv_alias.h"
+[INFOTYPES]
 
-[MAP]
-#include "vvv_ids.h"

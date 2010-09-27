@@ -1,0 +1,58 @@
+
+<HTML>
+<head>
+ <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+ <meta http-equiv="Content-Language" content="en-us">
+ <meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+ <meta name="ProgId" content="FrontPage.Editor.Document">
+ <title>Getting started</title></head>
+
+<BODY TOPMARGIN=4 BGCOLOR=#FFFFFF TEXT=#000000 VLINK=#000000 LINK=#000000 ALINK=#000000>
+<FONT FACE="Verdana, Arial, Lucida, Helvetica">
+
+<H2>Searching</H2>
+<p>
+
+You can search the catalog for files meeting your specifications. Press the <B>Search</B> toolbar button or select the <B>View/Search View</B> menu : the left pane will change to show the search tools. You can type one or more of the following:  file name, file extension, description. For the file name and the description you can choose among three matching modes:</p>
+
+<UL><LI>Check <B>Is equal to</B> for an exact match. The program will only return results that are equal to the typed text. Please notice that the file name also includes the extension, so you must type something like "MyDocument.pdf" if you want to match a pdf file. Typing "MyDocument" will not match the pdf file.
+<LI>Check <B>Starts with</B> to match all the results that start with the text that you have typed. So if you type "game" the program will match "game", "games" and so on, but it will not match "MyGame".
+<LI>Check <B>Contains</B> to match all the results that contain the text that you have typed. So if you type "game" the program will match "game", "games", "MyGame" and so on.</UL><P>
+
+The searches are not case sensitive, so typing "game" will match "game", "Game" and "GAME".<P>In
+each text box you can type one or more words. If you type more than one word the
+text will interpreted in the following way:
+<ul>
+  <li>By default words are connected with OR. So the program will match data
+    that contain at least one of the given words.</li>
+  <li>A word starting with &quot;+&quot; is required. The program will match
+    only data containing that word.</li>
+  <li>A word starting with &quot;-&quot; is excluded. The program will match
+    only data that does not contain that word.</li>
+  <li>Many words enclosed by &quot; are considered a single word.</li>
+</ul>
+<p>Here are some examples with their meaning:</p>
+<p><b>one two three</b><br>
+matches data containing one or more of the three words</p>
+<p><b>one +two three</b><br>
+matching data must contain &quot;two&quot; and one of the other words
+(&quot;one&quot; or &quot;three&quot;)</p>
+<p><b>one -two three</b><br>
+matching data must contain either &quot;one&quot; or &quot;three&quot; and it
+must not contain &quot;two&quot;</p>
+<p><b>&quot;my document&quot; text</b><br>
+matching data must contain either &quot;<b>my document</b>&quot; (without
+quotes) or &quot;text&quot;</p>
+<p><b>+&quot;my document&quot; text image</b><br>
+matching data must contain &quot;<b>my document</b>&quot; (without quotes) and
+either &quot;text&quot; or &quot;image&quot;</p>
+<P>
+
+When you have typed some text you can choose the scope of your search. You can search:
+
+<UL><LI>all the physical volumes stored in the catalog
+<LI>only the selected physical folder, i.e. the selected folder in the physical view
+<LI>only the selected virtual folder, i.e. the selected folder in the virtual view</UL><P>
+
+Now press the <B>Search</B> button to start the search.
+</FONT></BODY></HTML>

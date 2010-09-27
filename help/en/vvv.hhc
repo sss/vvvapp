@@ -1,65 +1,66 @@
 <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
 <HTML>
 <HEAD>
-<meta name="GENERATOR" content="HelpBlocks">
+<meta name="GENERATOR" content="Microsoft&reg; HTML Help Workshop 4.1">
 <!-- Sitemap 1.0 -->
 </HEAD><BODY>
-<OBJECT type="text/site properties">
-</OBJECT>
 <UL>
-  <LI><OBJECT type="text/sitemap">
-      <param name="Name" value="Welcome to VVV">
-      <param name="Local" value="welcome.htm">
-      </OBJECT>
-  <LI><OBJECT type="text/sitemap">
-      <param name="Name" value="Getting started">
-      <param name="Local" value="getting_started.htm">
-      </OBJECT>
-  <LI><OBJECT type="text/sitemap">
-      <param name="Name" value="Network usage">
-      <param name="Local" value="network_usage.htm">
-      </OBJECT>
-  <LI><OBJECT type="text/sitemap">
-      <param name="Name" value="Backup and restore">
-      <param name="Local" value="backup_and_restore.htm">
-      </OBJECT>
-  <LI><OBJECT type="text/sitemap">
-      <param name="Name" value="Command line switches">
-      <param name="Local" value="command_line_switches.htm">
-      </OBJECT>
-  <LI><OBJECT type="text/sitemap">
-      <param name="Name" value="VVV Dialogs">
-      <param name="Local" value="doc-0005.htm">
-      </OBJECT>
-  <UL>
-    <LI><OBJECT type="text/sitemap">
-        <param name="Name" value="Catalog volume">
-        <param name="Local" value="catalog_volume.htm">
-        </OBJECT>
-    <LI><OBJECT type="text/sitemap">
-        <param name="Name" value="General settings">
-        <param name="Local" value="general_settings.htm">
-        </OBJECT>
-    <LI><OBJECT type="text/sitemap">
-        <param name="Name" value="MP3 settings">
-        <param name="Local" value="mp3_settings.htm">
-        </OBJECT>
-    <LI><OBJECT type="text/sitemap">
-        <param name="Name" value="Server settings">
-        <param name="Local" value="server_settings.htm">
-        </OBJECT>
-    <LI><OBJECT type="text/sitemap">
-        <param name="Name" value="Export data">
-        <param name="Local" value="export_data.htm">
-        </OBJECT>
-    <LI><OBJECT type="text/sitemap">
-        <param name="Name" value="Restore catalog">
-        <param name="Local" value="restore_catalog.htm">
-        </OBJECT>
-    <LI><OBJECT type="text/sitemap">
-        <param name="Name" value="Update volume">
-        <param name="Local" value="update_volume.htm">
-        </OBJECT>
-  </UL>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Welcome to VVV">
+		<param name="Local" value="welcome.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Getting started">
+		<param name="Local" value="getting_started.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Searching">
+		<param name="Local" value="searching.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Network usage">
+		<param name="Local" value="network_usage.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Backup and restore">
+		<param name="Local" value="backup_and_restore.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Command line switches">
+		<param name="Local" value="command_line_switches.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="VVV Dialogs">
+		</OBJECT>
+	<UL>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Catalog volume">
+			<param name="Local" value="catalog_volume.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="General settings">
+			<param name="Local" value="general_settings.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="MP3 settings">
+			<param name="Local" value="mp3_settings.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Server settings">
+			<param name="Local" value="server_settings.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Export data">
+			<param name="Local" value="export_data.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Restore catalog">
+			<param name="Local" value="restore_catalog.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Update volume">
+			<param name="Local" value="update_volume.htm">
+			</OBJECT>
+	</UL>
 </UL>
 </BODY></HTML>
