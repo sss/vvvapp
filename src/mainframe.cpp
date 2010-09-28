@@ -1572,7 +1572,7 @@ void CMainFrame::OnViewPhysicalClick( wxCommandEvent& event )
 			HideSearchView();
 			break;
 		default:
-			wxASSERT(true);
+			wxASSERT(false);
 	}
 	ShowPhysicalView();
 	sw->SplitVertically( GetTreePhysicalControl(), lctl );
@@ -1602,7 +1602,7 @@ void CMainFrame::OnViewVirtualClick( wxCommandEvent& event )
 			HideSearchView();
 			break;
 		default:
-			wxASSERT(true);
+			wxASSERT(false);
 	}
 	ShowVirtualView();
 	sw->SplitVertically( GetTreeVirtualControl(), lctl );
@@ -2625,7 +2625,7 @@ void CMainFrame::OnViewSearchClick( wxCommandEvent& event )
 			HideVirtualView();
 			break;
 		default:
-			wxASSERT(true);
+			wxASSERT(false);
 	}
 	ShowSearchView();
 	sw->SplitVertically( m_SearchPanel, lctl );
@@ -2875,7 +2875,7 @@ void CMainFrame::OnButtonSearchClick( wxCommandEvent& WXUNUSED(event) ) {
 			break;
 		}
 		default:
-			wxASSERT( true );
+			wxASSERT( false );
 			break;
 	}
 
@@ -3008,7 +3008,7 @@ void CMainFrame::OnListControlItemActivated( wxListEvent& event )
 			tctl = GetTreeVirtualControl();
 			break;
 		default:
-			wxASSERT( true );
+			wxASSERT( false );
 	}
 	// this is the selected item in the tree control
 	wxTreeItemId itemFather = tctl->GetSelection();
