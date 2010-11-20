@@ -556,6 +556,9 @@ BEGIN_EVENT_TABLE( CMainFrame, wxFrame )
     EVT_MENU( ID_VIEW_SEARCH, CMainFrame::OnViewSearchClick )
     EVT_UPDATE_UI( ID_VIEW_SEARCH, CMainFrame::OnViewSearchUpdate )
 
+    EVT_MENU( ID_VIEW_SHOW_IN_PHYSICAL, CMainFrame::OnViewShowInPhysicalViewClick )
+    EVT_UPDATE_UI( ID_VIEW_SHOW_IN_PHYSICAL, CMainFrame::OnViewShowInPhysicalViewUpdate )
+
     EVT_MENU( ID_UP_ONE_FOLDER, CMainFrame::OnUpOneFolderClick )
     EVT_UPDATE_UI( ID_UP_ONE_FOLDER, CMainFrame::OnUpOneFolderUpdate )
 
@@ -825,6 +828,7 @@ void CMainFrame::CreateControls()
     itemMenu35->Append(ID_VIEW_VIRTUAL, _("&Virtual View"), wxEmptyString, wxITEM_RADIO);
     itemMenu35->Append(ID_VIEW_SEARCH, _("&Search View"), wxEmptyString, wxITEM_RADIO);
     itemMenu35->AppendSeparator();
+    itemMenu35->Append(ID_VIEW_SHOW_IN_PHYSICAL, _("Show in physical view"), wxEmptyString, wxITEM_NORMAL);
     itemMenu35->Append(ID_UP_ONE_FOLDER, _("Go &Up One Level"), wxEmptyString, wxITEM_NORMAL);
     itemMenu35->Append(ID_VIEW_EXPAND, _("Expand"), wxEmptyString, wxITEM_NORMAL);
     itemMenu35->Append(ID_VIEW_COLLAPSE, _("Collapse"), wxEmptyString, wxITEM_NORMAL);
@@ -835,19 +839,19 @@ void CMainFrame::CreateControls()
     itemMenu35->Check(ID_VIEW_STATUS_BAR, true);
     menuBar->Append(itemMenu35, _("Vie&w"));
 #if defined(__WXMSW__) || defined(__WXGTK__)
-    wxMenu* itemMenu46 = new wxMenu;
+    wxMenu* itemMenu47 = new wxMenu;
 #if defined(__WXMSW__) || defined(__WXGTK__)
-    itemMenu46->Append(wxID_PREFERENCES, _("&Options..."), wxEmptyString, wxITEM_NORMAL);
+    itemMenu47->Append(wxID_PREFERENCES, _("&Options..."), wxEmptyString, wxITEM_NORMAL);
 #endif
-    menuBar->Append(itemMenu46, _("&Tools"));
+    menuBar->Append(itemMenu47, _("&Tools"));
 #endif
-    wxMenu* itemMenu48 = new wxMenu;
-    itemMenu48->Append(ID_HELP_CONTENTS, _("Help &Contents"), wxEmptyString, wxITEM_NORMAL);
+    wxMenu* itemMenu49 = new wxMenu;
+    itemMenu49->Append(ID_HELP_CONTENTS, _("Help &Contents"), wxEmptyString, wxITEM_NORMAL);
 #if defined(__WXMSW__) || defined(__WXGTK__)
-    itemMenu48->AppendSeparator();
+    itemMenu49->AppendSeparator();
 #endif
-    itemMenu48->Append(wxID_ABOUT, _("&About VVV..."), wxEmptyString, wxITEM_NORMAL);
-    menuBar->Append(itemMenu48, _("&Help"));
+    itemMenu49->Append(wxID_ABOUT, _("&About VVV..."), wxEmptyString, wxITEM_NORMAL);
+    menuBar->Append(itemMenu49, _("&Help"));
     itemFrame1->SetMenuBar(menuBar);
 
     m_ToolbarCtrl = CreateToolBar( wxTB_FLAT|wxTB_HORIZONTAL|wxTB_TEXT, ID_TOOLBAR1 );
@@ -887,13 +891,13 @@ void CMainFrame::CreateControls()
     m_StatusBar->SetStatusWidths(4, m_StatusBarWidths);
     itemFrame1->SetStatusBar(m_StatusBar);
 
-    wxSplitterWindow* itemSplitterWindow53 = new wxSplitterWindow( itemFrame1, ID_SPLITTERWINDOW1, wxDefaultPosition, wxSize(100, 100), wxSP_3DBORDER|wxSP_3DSASH|wxSP_NO_XP_THEME|wxNO_BORDER );
-    itemSplitterWindow53->SetMinimumPaneSize(0);
+    wxSplitterWindow* itemSplitterWindow54 = new wxSplitterWindow( itemFrame1, ID_SPLITTERWINDOW1, wxDefaultPosition, wxSize(100, 100), wxSP_3DBORDER|wxSP_3DSASH|wxSP_NO_XP_THEME|wxNO_BORDER );
+    itemSplitterWindow54->SetMinimumPaneSize(0);
 
-    wxTreeCtrl* itemTreeCtrl54 = new wxTreeCtrl( itemSplitterWindow53, ID_TREE_CONTROL, wxDefaultPosition, wxSize(100, 100), wxTR_HAS_BUTTONS |wxTR_HIDE_ROOT|wxTR_SINGLE|wxNO_BORDER|wxTR_DEFAULT_STYLE );
+    wxTreeCtrl* itemTreeCtrl55 = new wxTreeCtrl( itemSplitterWindow54, ID_TREE_CONTROL, wxDefaultPosition, wxSize(100, 100), wxTR_HAS_BUTTONS |wxTR_HIDE_ROOT|wxTR_SINGLE|wxNO_BORDER|wxTR_DEFAULT_STYLE );
 
-    CRightPaneList* itemListCtrl55 = new CRightPaneList( itemSplitterWindow53, ID_LIST_CONTROL, wxDefaultPosition, wxSize(100, 100), wxLC_REPORT|wxNO_BORDER );
-    itemSplitterWindow53->SplitVertically(itemTreeCtrl54, itemListCtrl55, 50);
+    CRightPaneList* itemListCtrl56 = new CRightPaneList( itemSplitterWindow54, ID_LIST_CONTROL, wxDefaultPosition, wxSize(100, 100), wxLC_REPORT|wxNO_BORDER );
+    itemSplitterWindow54->SplitVertically(itemTreeCtrl55, itemListCtrl56, 50);
 
 ////@end CMainFrame content construction
 
@@ -3125,7 +3129,7 @@ void CMainFrame::OnListControlContextMenu( wxContextMenuEvent& event )
 	if( m_ListViewHasFocus && m_CurrentView == cvVirtual )
 		virtualFilesSelected = AreOnlyVirtualFilesSelected();
 
-	if( m_CurrentView == cvVirtual && !virtualFilesSelected ) return;
+//	if( m_CurrentView == cvVirtual && !virtualFilesSelected ) return;
 	if( GetListControl()->GetSelectedItemCount() <= 0 ) return;
 
 	wxPoint point = event.GetPosition();
@@ -3142,8 +3146,11 @@ void CMainFrame::OnListControlContextMenu( wxContextMenuEvent& event )
 	}
 
 	wxMenu menu;
-	if( virtualFilesSelected ) {
-		menu.Append( ID_EDIT_DELETE, _("Delete") );
+	if( m_CurrentView == cvVirtual ) {
+		menu.Append( ID_VIEW_SHOW_IN_PHYSICAL, _("Show in physical view") );
+		if( virtualFilesSelected ) {
+			menu.Append( ID_EDIT_DELETE, _("Delete") );
+		}
 	}
 	else {
 		menu.Append( ID_ADD_VIRTUAL_FOLDER, _("Add To Virtual Folder") );
@@ -4059,5 +4066,93 @@ void CMainFrame::OnCloseWindow( wxCloseEvent& event )
 	m_treeVirtualCtl->Thaw();
 
 	event.Skip();
+}
+
+
+/*!
+ * wxEVT_COMMAND_MENU_SELECTED event handler for ID_VIEW_SHOW_IN_PHYSICAL
+ */
+
+void CMainFrame::OnViewShowInPhysicalViewClick( wxCommandEvent& event )
+{
+	// get the physical path for this item
+	wxListCtrl *lctl = GetListControl();
+	int nSelectedObjects = lctl->GetSelectedItemCount();
+	wxASSERT( nSelectedObjects == 1 );
+	long item = -1;
+	item = lctl->GetNextItem( item, wxLIST_NEXT_ALL, wxLIST_STATE_SELECTED );
+	MyListItemData *itemData = (MyListItemData *) lctl->GetItemData( item );
+	wxString physPath = itemData->GetFullPhysicalPath();
+	wxChar sep = wxFileName::GetPathSeparator();
+	if( itemData->IsFolder() ) {
+		if( !physPath.IsEmpty() ) {
+			physPath = physPath + sep;
+		}
+		physPath += itemData->GetName();
+	}
+	if( physPath.IsEmpty() ) return;
+	
+	// switch to the physical view
+	wxSplitterWindow* sw = GetSplitterWindow();
+	long sp = sw->GetSashPosition();
+	sw->Unsplit();
+//	sw->ReplaceWindow( GetTreeVirtualControl(), GetTreePhysicalControl() );
+	HideVirtualView();
+	ShowPhysicalView();
+	sw->SplitVertically( GetTreePhysicalControl(), lctl );
+	sw->SetSashPosition( sp );
+	UpdateStatusBar( nPhysicalFiles, sizePhysicalFiles );
+
+	// move to the physical path
+	wxTreeCtrl* tctl = GetTreePhysicalControl();
+	wxTreeItemId fatherID = tctl->GetRootItem();
+	int i;
+	do {
+		// extract a path folder
+		wxString folderName;
+		i = physPath.Find( sep );
+		if( i == wxNOT_FOUND ) {
+			folderName = physPath;
+		}
+		else {
+			folderName = physPath.Left( i );
+			physPath = physPath.Mid( i + 1 );
+		}
+
+		// select that folder
+		wxTreeItemIdValue cookie;
+		wxTreeItemId childID = tctl->GetFirstChild( fatherID, cookie );
+		while( childID.IsOk() ) {
+			MyTreeItemData *itemData = (MyTreeItemData *) tctl->GetItemData( childID );
+			wxString treeFolderName = itemData->GetDesc();
+			if( treeFolderName == folderName ) {
+				// found! select this item
+				tctl->SelectItem( childID );
+				fatherID = childID;
+				break;
+			}
+
+			childID = tctl->GetNextChild( fatherID, cookie );
+			if( !childID.IsOk() )
+				return;		// we did not find the folder
+		}
+	} while( i != wxNOT_FOUND );
+}
+
+
+/*!
+ * wxEVT_UPDATE_UI event handler for ID_VIEW_SHOW_IN_PHYSICAL
+ */
+
+void CMainFrame::OnViewShowInPhysicalViewUpdate( wxUpdateUIEvent& event )
+{
+	bool enabled = false;
+	if( m_ListViewHasFocus && m_CurrentView == cvVirtual ) {
+		if( GetListControl()->GetSelectedItemCount() == 1 ) {
+			enabled = true;
+		}
+	}
+
+	event.Enable( enabled );
 }
 

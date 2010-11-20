@@ -97,6 +97,7 @@ class CRightPaneList;
 #define ID_NEW_VIRTUAL_ROOT_FOLDER 10021
 #define ID_NEW_VIRTUAL_SUBFOLDER 10022
 #define ID_UPDATE_VOLUME 10090
+#define ID_VIEW_SHOW_IN_PHYSICAL 10086
 #define ID_VIEW_EXPAND 10089
 #define ID_VIEW_COLLAPSE 10091
 #define ID_VIEW_TOOLBAR 10042
@@ -269,6 +270,12 @@ public:
 
     /// wxEVT_UPDATE_UI event handler for ID_VIEW_SEARCH
     void OnViewSearchUpdate( wxUpdateUIEvent& event );
+
+    /// wxEVT_COMMAND_MENU_SELECTED event handler for ID_VIEW_SHOW_IN_PHYSICAL
+    void OnViewShowInPhysicalViewClick( wxCommandEvent& event );
+
+    /// wxEVT_UPDATE_UI event handler for ID_VIEW_SHOW_IN_PHYSICAL
+    void OnViewShowInPhysicalViewUpdate( wxUpdateUIEvent& event );
 
     /// wxEVT_COMMAND_MENU_SELECTED event handler for ID_UP_ONE_FOLDER
     void OnUpOneFolderClick( wxCommandEvent& event );
