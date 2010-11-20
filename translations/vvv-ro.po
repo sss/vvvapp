@@ -2,9 +2,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: VVV 0.9\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-07 20:51+0100\n"
+"POT-Creation-Date: 2010-11-20 23:19+0100\n"
 "PO-Revision-Date: \n"
-"Last-Translator: Nick Sercaianu <araxth@gmail.com>\n"
+"Last-Translator: Fulvio Senore <mailing@fsoft.it>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -39,16 +39,16 @@ msgstr "Importă numele volumului"
 #: ..\src/catalog_volume.cpp:204
 #: ..\src/exportdata.cpp:230
 #: ..\src/exportdata.cpp:248
-#: ..\src/mainframe.cpp:837
+#: ..\src/mainframe.cpp:854
 #: ..\src/restore.cpp:187
 #: ..\src/restore.cpp:205
 #: ..\src/update_volume.cpp:203
-#: ..\src/vvv.cpp:140
 msgid "&Help"
 msgstr "&Ajutor"
 
 #: ..\src/catalog_volume.cpp:209
-#: ..\src/mainframe.cpp:850
+#: ..\src/mainframe.cpp:867
+#: ..\src/mainframe.cpp:4034
 msgid "Catalog"
 msgstr "Catalog"
 
@@ -68,12 +68,10 @@ msgstr "Volum catalogat anterior"
 
 #: ..\src/catalog_volume.cpp:288
 #: ..\src/update_volume.cpp:269
-#: ..\src/vvv.cpp:398
 msgid "The volume path is missing"
 msgstr "Cale către volum lipsă"
 
 #: ..\src/catalog_volume.cpp:293
-#: ..\src/vvv.cpp:394
 msgid "The volume name is missing"
 msgstr "Numele volumului lipsă"
 
@@ -109,6 +107,101 @@ msgstr "Numărul fișierelor nemodificate:"
 #: ..\src/catalog_volume_functions.cpp:333
 msgid "Do you really want to update the volume?"
 msgstr "Confirmi actualizarea volumului?"
+
+#: ..\src/chooselang.cpp:77
+#, c-format
+msgid "Uknown locale code '%s' in registry."
+msgstr ""
+
+#: ..\src/chooselang.cpp:94
+msgid "(Use default language)"
+msgstr ""
+
+#: ..\src/chooselang.cpp:96
+#: ..\src/mainframe.cpp:2364
+msgid "Croatian"
+msgstr "Croată"
+
+#: ..\src/chooselang.cpp:97
+#: ..\src/mainframe.cpp:2361
+msgid "Czech"
+msgstr "Cehă"
+
+#: ..\src/chooselang.cpp:98
+#: ..\src/mainframe.cpp:2368
+msgid "Dutch"
+msgstr "Olandeză"
+
+#: ..\src/chooselang.cpp:99
+#, fuzzy
+msgid "English"
+msgstr "Poloneză"
+
+#: ..\src/chooselang.cpp:100
+#: ..\src/mainframe.cpp:2359
+msgid "French"
+msgstr "Franceză"
+
+#: ..\src/chooselang.cpp:101
+#: ..\src/mainframe.cpp:2360
+msgid "German"
+msgstr "Germană"
+
+#: ..\src/chooselang.cpp:102
+#: ..\src/mainframe.cpp:2366
+msgid "Italian"
+msgstr "Italiană"
+
+#: ..\src/chooselang.cpp:103
+#: ..\src/mainframe.cpp:2362
+msgid "Polish"
+msgstr "Poloneză"
+
+#: ..\src/chooselang.cpp:104
+#: ..\src/mainframe.cpp:2357
+msgid "Portuguese"
+msgstr "Portugheză"
+
+#: ..\src/chooselang.cpp:105
+#: ..\src/mainframe.cpp:2367
+#, fuzzy
+msgid "Romanian"
+msgstr "Croată"
+
+#: ..\src/chooselang.cpp:106
+#: ..\src/mainframe.cpp:2363
+msgid "Russian"
+msgstr ""
+
+#: ..\src/chooselang.cpp:107
+msgid "Serbian (cyrillic)"
+msgstr ""
+
+#: ..\src/chooselang.cpp:108
+msgid "Serbian (latin)"
+msgstr ""
+
+#: ..\src/chooselang.cpp:109
+#: ..\src/mainframe.cpp:2358
+msgid "Spanish"
+msgstr "Spaniolă"
+
+#: ..\src/chooselang.cpp:110
+#: ..\src/mainframe.cpp:2363
+msgid "Ukrainian"
+msgstr ""
+
+#: ..\src/chooselang.cpp:119
+msgid "Select your preferred language"
+msgstr ""
+
+#: ..\src/chooselang.cpp:120
+msgid "Language selection"
+msgstr ""
+
+#: ..\src/chooselang.cpp:134
+msgid "You must restart the program for this change to take effect."
+msgstr ""
 
 #: ..\src/choose_virtual_folder.cpp:157
 msgid "Please select the virtual folder that will receive the selected files and/or folders:"
@@ -173,7 +266,7 @@ msgid "Include headers"
 msgstr "Include anteturi"
 
 #: ..\src/exportdata.cpp:207
-#: ..\src/mainframe.cpp:942
+#: ..\src/mainframe.cpp:966
 msgid "All physical volumes"
 msgstr "Toate volumele fizice"
 
@@ -182,7 +275,7 @@ msgid "Selected physical volume/folder"
 msgstr "Directorul / volumul fizic selectat"
 
 #: ..\src/exportdata.cpp:209
-#: ..\src/mainframe.cpp:944
+#: ..\src/mainframe.cpp:968
 msgid "Selected virtual folder"
 msgstr "Selectează directorul virtual"
 
@@ -213,25 +306,25 @@ msgstr "Generarea fișierului este imposibilă."
 
 #: ..\src/exportdata.cpp:524
 #: ..\src/exportdata.cpp:526
-#: ..\src/mainframe.cpp:1270
+#: ..\src/mainframe.cpp:1295
 msgid "Name"
 msgstr "Nume"
 
 #: ..\src/exportdata.cpp:524
 #: ..\src/exportdata.cpp:526
-#: ..\src/mainframe.cpp:1275
+#: ..\src/mainframe.cpp:1300
 msgid "Size"
 msgstr "Mărime"
 
 #: ..\src/exportdata.cpp:524
 #: ..\src/exportdata.cpp:526
-#: ..\src/mainframe.cpp:1279
+#: ..\src/mainframe.cpp:1304
 msgid "Ext"
 msgstr "Extensie"
 
 #: ..\src/exportdata.cpp:524
 #: ..\src/exportdata.cpp:526
-#: ..\src/mainframe.cpp:1283
+#: ..\src/mainframe.cpp:1308
 msgid "Last modified"
 msgstr "Ultima modificare"
 
@@ -241,9 +334,9 @@ msgstr "Calefizică"
 
 #: ..\src/exportdata.cpp:524
 #: ..\src/exportdata.cpp:526
-#: ..\src/mainframe.cpp:932
-#: ..\src/mainframe.cpp:1291
-#: ..\src/mainframe.cpp:1296
+#: ..\src/mainframe.cpp:956
+#: ..\src/mainframe.cpp:1316
+#: ..\src/mainframe.cpp:1321
 msgid "Description"
 msgstr "Descriere"
 
@@ -255,7 +348,7 @@ msgstr "Volum"
 msgid "Path"
 msgstr "Cale"
 
-#: ..\src/mainframe.cpp:722
+#: ..\src/mainframe.cpp:736
 msgid ""
 "This catalog file does not exist:\n"
 "\n"
@@ -264,316 +357,347 @@ msgstr ""
 "\n"
 
 # Part of the File menu
-#: ..\src/mainframe.cpp:784
+#: ..\src/mainframe.cpp:798
 msgid "&New..."
 msgstr "&Nou"
 
 # Part of the File menu
-#: ..\src/mainframe.cpp:785
+#: ..\src/mainframe.cpp:799
 msgid "&Open..."
 msgstr "&Deschide"
 
 # Part of the File menu
-#: ..\src/mainframe.cpp:786
+#: ..\src/mainframe.cpp:800
 msgid "&Export..."
 msgstr "&Exportă"
 
 # Part of the File menu
-#: ..\src/mainframe.cpp:788
+#: ..\src/mainframe.cpp:802
 msgid "&Backup..."
 msgstr "&Copie de siguranță"
 
 # Part of the File menu
-#: ..\src/mainframe.cpp:789
+#: ..\src/mainframe.cpp:803
 msgid "&Restore..."
 msgstr "&Restaurează..."
 
 # Part of the File menu
-#: ..\src/mainframe.cpp:791
+#: ..\src/mainframe.cpp:805
 msgid "E&xit"
 msgstr "Î&nchide programul"
 
-#: ..\src/mainframe.cpp:792
+#: ..\src/mainframe.cpp:806
 msgid "&File"
 msgstr "&Fişier"
 
 # Part of the Edit menu
-#: ..\src/mainframe.cpp:794
+#: ..\src/mainframe.cpp:808
 msgid "&Add To Virtual Folder..."
 msgstr "&Adaugă în ecranul virtual"
 
 # Part of the Edit menu
-#: ..\src/mainframe.cpp:796
+#: ..\src/mainframe.cpp:810
 msgid "&Rename...\tF2"
 msgstr "&Redenumeşte...\tF2"
 
 # Part of the Edit menu
-#: ..\src/mainframe.cpp:797
+#: ..\src/mainframe.cpp:811
 msgid "&Delete"
 msgstr "&Şterge"
 
 # Part of the Edit menu
-#: ..\src/mainframe.cpp:799
+#: ..\src/mainframe.cpp:813
 msgid "&Object Description..."
 msgstr "&Descriere obiect..."
 
 # Part of the Edit menu
-#: ..\src/mainframe.cpp:801
+#: ..\src/mainframe.cpp:815
 msgid "&New Virtual Root Folder..."
 msgstr "&Director rădăcină nou..."
 
 # Part of the Edit menu
-#: ..\src/mainframe.cpp:802
+#: ..\src/mainframe.cpp:816
 msgid "New Virtual &Subfolder..."
 msgstr "Subdirector virtual &nou..."
 
-#: ..\src/mainframe.cpp:804
-#: ..\src/mainframe.cpp:827
+#: ..\src/mainframe.cpp:818
+#: ..\src/mainframe.cpp:844
 msgid "&Options..."
 msgstr "&Opțiuni..."
 
-#: ..\src/mainframe.cpp:806
+#: ..\src/mainframe.cpp:820
 msgid "&Edit"
 msgstr "&Editează"
 
 # Part of the Volumes menu
-#: ..\src/mainframe.cpp:808
+#: ..\src/mainframe.cpp:822
 msgid "&Catalog Volume..."
 msgstr "&Catalogare volum..."
 
-#: ..\src/mainframe.cpp:809
+#: ..\src/mainframe.cpp:823
 msgid "&Update Volume..."
 msgstr "&Actualizează volum..."
 
-#: ..\src/mainframe.cpp:810
+#: ..\src/mainframe.cpp:824
 msgid "&Volumes"
 msgstr "&Volume"
 
 # Part of the View menu
-#: ..\src/mainframe.cpp:812
+#: ..\src/mainframe.cpp:826
 msgid "&Physical View"
 msgstr "&Ecran fizic"
 
 # Part of the View menu
-#: ..\src/mainframe.cpp:814
+#: ..\src/mainframe.cpp:828
 msgid "&Virtual View"
 msgstr "&Ecran virtual"
 
 # Part of the View menu
-#: ..\src/mainframe.cpp:815
+#: ..\src/mainframe.cpp:829
 msgid "&Search View"
 msgstr "&Căutare"
 
+#: ..\src/mainframe.cpp:831
+#: ..\src/mainframe.cpp:3150
+#, fuzzy
+msgid "Show in physical view"
+msgstr "Afișează ecranul fizic"
+
 # Part of the View menu
-#: ..\src/mainframe.cpp:817
+#: ..\src/mainframe.cpp:832
 msgid "Go &Up One Level"
 msgstr "Nivelul &superior"
 
+#: ..\src/mainframe.cpp:833
+#: ..\src/mainframe.cpp:2561
+#: ..\src/mainframe.cpp:2598
+msgid "Expand"
+msgstr ""
+
+#: ..\src/mainframe.cpp:834
+#: ..\src/mainframe.cpp:2562
+#: ..\src/mainframe.cpp:2599
+msgid "Collapse"
+msgstr ""
+
 # Part of the View menu
-#: ..\src/mainframe.cpp:819
+#: ..\src/mainframe.cpp:836
 msgid "&Toolbar"
 msgstr "&Bara de instrumente"
 
 # Part of the View menu
-#: ..\src/mainframe.cpp:821
+#: ..\src/mainframe.cpp:838
 msgid "Status &Bar"
 msgstr "&Bara de stare"
 
-#: ..\src/mainframe.cpp:823
+#: ..\src/mainframe.cpp:840
 msgid "Vie&w"
 msgstr "A&fișează"
 
-#: ..\src/mainframe.cpp:829
+#: ..\src/mainframe.cpp:846
 msgid "&Tools"
 msgstr "&Instrumente"
 
-#: ..\src/mainframe.cpp:832
+#: ..\src/mainframe.cpp:849
 msgid "Help &Contents"
 msgstr "Ajutor &Conținut"
 
-#: ..\src/mainframe.cpp:836
+#: ..\src/mainframe.cpp:853
 msgid "&About VVV..."
 msgstr "/Despre VVV.."
 
-#: ..\src/mainframe.cpp:844
+#: ..\src/mainframe.cpp:861
+#: ..\src/mainframe.cpp:4028
 msgid "New"
 msgstr "Nou"
 
-#: ..\src/mainframe.cpp:844
+#: ..\src/mainframe.cpp:861
+#: ..\src/mainframe.cpp:4028
 msgid "Create a new catalog"
 msgstr "Catalog nou"
 
-#: ..\src/mainframe.cpp:847
+#: ..\src/mainframe.cpp:864
+#: ..\src/mainframe.cpp:4031
 msgid "Open"
 msgstr "Deschide"
 
-#: ..\src/mainframe.cpp:847
+#: ..\src/mainframe.cpp:864
+#: ..\src/mainframe.cpp:4031
 msgid "Open an existing catalog"
 msgstr "Deschide un catalog existent"
 
-#: ..\src/mainframe.cpp:850
+#: ..\src/mainframe.cpp:867
+#: ..\src/mainframe.cpp:4034
 msgid "Catalog a new volume"
 msgstr "Cataloghează un volum nou"
 
-#: ..\src/mainframe.cpp:853
+#: ..\src/mainframe.cpp:870
+#: ..\src/mainframe.cpp:4037
 msgid "Up"
 msgstr "Sus"
 
-#: ..\src/mainframe.cpp:853
+#: ..\src/mainframe.cpp:870
+#: ..\src/mainframe.cpp:4037
 msgid "Move up one level"
 msgstr "Către nivelul superior"
 
-#: ..\src/mainframe.cpp:857
+#: ..\src/mainframe.cpp:874
+#: ..\src/mainframe.cpp:4041
 msgid "Physical"
 msgstr "Fizic"
 
-#: ..\src/mainframe.cpp:857
+#: ..\src/mainframe.cpp:874
+#: ..\src/mainframe.cpp:4041
 msgid "Show the physical view"
 msgstr "Afișează ecranul fizic"
 
-#: ..\src/mainframe.cpp:860
+#: ..\src/mainframe.cpp:877
+#: ..\src/mainframe.cpp:4044
 msgid "Virtual"
 msgstr "Virtual"
 
-#: ..\src/mainframe.cpp:860
+#: ..\src/mainframe.cpp:877
+#: ..\src/mainframe.cpp:4044
 msgid "Show the virtual view"
 msgstr "Afișează ecranul virtual"
 
-#: ..\src/mainframe.cpp:863
-#: ..\src/mainframe.cpp:945
-#: ..\src/mainframe.cpp:951
+#: ..\src/mainframe.cpp:880
+#: ..\src/mainframe.cpp:969
+#: ..\src/mainframe.cpp:975
+#: ..\src/mainframe.cpp:4047
 msgid "Search"
 msgstr "Caută"
 
-#: ..\src/mainframe.cpp:863
+#: ..\src/mainframe.cpp:880
+#: ..\src/mainframe.cpp:4047
 msgid "Show the search view"
 msgstr "Afișează secțiunea de căutare"
 
-#: ..\src/mainframe.cpp:908
-#: ..\src/mainframe.cpp:929
+#: ..\src/mainframe.cpp:932
+#: ..\src/mainframe.cpp:953
 msgid "Is equal to:"
 msgstr "Este egal cu:"
 
-#: ..\src/mainframe.cpp:909
-#: ..\src/mainframe.cpp:930
+#: ..\src/mainframe.cpp:933
+#: ..\src/mainframe.cpp:954
 msgid "Starts with:"
 msgstr "Începe cu:"
 
-#: ..\src/mainframe.cpp:910
-#: ..\src/mainframe.cpp:931
+#: ..\src/mainframe.cpp:934
+#: ..\src/mainframe.cpp:955
 msgid "Contains:"
 msgstr "Conține:"
 
-#: ..\src/mainframe.cpp:911
+#: ..\src/mainframe.cpp:935
 msgid "File name"
 msgstr "Nume fișier"
 
-#: ..\src/mainframe.cpp:920
+#: ..\src/mainframe.cpp:944
 msgid "Extension:"
 msgstr "Extensie:"
 
-#: ..\src/mainframe.cpp:943
+#: ..\src/mainframe.cpp:967
 msgid "Selected physical folder"
 msgstr "Selectează director fizic"
 
-#: ..\src/mainframe.cpp:1046
+#: ..\src/mainframe.cpp:1071
 msgid "Catalog volume"
 msgstr "Catalogare volum"
 
-#: ..\src/mainframe.cpp:1288
+#: ..\src/mainframe.cpp:1313
 msgid "Physical path"
 msgstr "Cale fizică"
 
-#: ..\src/mainframe.cpp:1338
-#: ..\src/settings.cpp:204
+#: ..\src/mainframe.cpp:1363
+#: ..\src/settings.cpp:209
 msgid "Artist"
 msgstr "Artist"
 
-#: ..\src/mainframe.cpp:1343
-#: ..\src/settings.cpp:208
+#: ..\src/mainframe.cpp:1368
+#: ..\src/settings.cpp:213
 msgid "Album"
 msgstr "Album"
 
-#: ..\src/mainframe.cpp:1348
-#: ..\src/settings.cpp:212
+#: ..\src/mainframe.cpp:1373
+#: ..\src/settings.cpp:217
 msgid "Title"
 msgstr "Titlu"
 
-#: ..\src/mainframe.cpp:1353
-#: ..\src/settings.cpp:216
+#: ..\src/mainframe.cpp:1378
+#: ..\src/settings.cpp:221
 msgid "Year"
 msgstr "An"
 
-#: ..\src/mainframe.cpp:1358
-#: ..\src/settings.cpp:220
+#: ..\src/mainframe.cpp:1383
+#: ..\src/settings.cpp:225
 msgid "Comment"
 msgstr "Comentariu"
 
-#: ..\src/mainframe.cpp:1363
+#: ..\src/mainframe.cpp:1388
 msgid "Number"
 msgstr "Număr"
 
-#: ..\src/mainframe.cpp:1368
-#: ..\src/settings.cpp:228
+#: ..\src/mainframe.cpp:1393
+#: ..\src/settings.cpp:233
 msgid "Genre"
 msgstr "Gen"
 
-#: ..\src/mainframe.cpp:1373
-#: ..\src/settings.cpp:232
+#: ..\src/mainframe.cpp:1398
+#: ..\src/settings.cpp:237
 msgid "Length"
 msgstr "Durată"
 
-#: ..\src/mainframe.cpp:1378
-#: ..\src/settings.cpp:236
+#: ..\src/mainframe.cpp:1403
+#: ..\src/settings.cpp:241
 msgid "Bitrate"
 msgstr "Rata de transfer"
 
-#: ..\src/mainframe.cpp:1383
-#: ..\src/settings.cpp:240
+#: ..\src/mainframe.cpp:1408
+#: ..\src/settings.cpp:245
 msgid "Sample rate"
 msgstr "Frecvența de eșantionare"
 
-#: ..\src/mainframe.cpp:1388
-#: ..\src/settings.cpp:244
+#: ..\src/mainframe.cpp:1413
+#: ..\src/settings.cpp:249
 msgid "Channels"
 msgstr "Canale"
 
-#: ..\src/mainframe.cpp:1417
+#: ..\src/mainframe.cpp:1442
 msgid "Open catalog"
 msgstr "Deschide catalog"
 
-#: ..\src/mainframe.cpp:1421
-#: ..\src/mainframe.cpp:3567
+#: ..\src/mainframe.cpp:1446
+#: ..\src/mainframe.cpp:3622
 msgid "VVV  files (*.vvv)|*.vvv|All files (*.*)|*.*"
 msgstr "VVV  fişiere (*.vvv)|*.vvv|Toate fişierele (*.*)|*.*"
 
-#: ..\src/mainframe.cpp:1866
+#: ..\src/mainframe.cpp:1891
 msgid "Choose virtual folder"
 msgstr "Alege directorul virtual"
 
-#: ..\src/mainframe.cpp:1949
+#: ..\src/mainframe.cpp:1977
 msgid "New virtual root folder"
 msgstr "Director rădăcină virtual nou"
 
-#: ..\src/mainframe.cpp:1977
+#: ..\src/mainframe.cpp:2005
 msgid "New virtual subfolder"
 msgstr "Sub-director virtual nou"
 
-#: ..\src/mainframe.cpp:1995
-#: ..\src/mainframe.cpp:3330
+#: ..\src/mainframe.cpp:2023
+#: ..\src/mainframe.cpp:3385
 msgid "Enter the new folder name"
 msgstr "Introdu numele noului director"
 
-#: ..\src/mainframe.cpp:2010
-#: ..\src/mainframe.cpp:3341
+#: ..\src/mainframe.cpp:2038
+#: ..\src/mainframe.cpp:3396
 msgid "The new folder name is already present in the database"
 msgstr "Numele noului director este deja prezent în baza de date"
 
-#: ..\src/mainframe.cpp:2063
+#: ..\src/mainframe.cpp:2091
 msgid "This catalog file does not exist any more"
 msgstr "Acest catalog nu este disponibil"
 
-#: ..\src/mainframe.cpp:2093
+#: ..\src/mainframe.cpp:2121
 msgid ""
 "Catalog not found:\n"
 "\n"
@@ -581,7 +705,7 @@ msgstr ""
 "Nu pot gasi catalogul:\n"
 "\n"
 
-#: ..\src/mainframe.cpp:2097
+#: ..\src/mainframe.cpp:2125
 msgid ""
 "Incorrect username or password for the following database:\n"
 "\n"
@@ -589,7 +713,7 @@ msgstr ""
 "Nume și parola utilizatorului nu sunt corecte pentru următoarea bază de date:\n"
 "\n"
 
-#: ..\src/mainframe.cpp:2102
+#: ..\src/mainframe.cpp:2130
 msgid ""
 "Unable to connect to the following server:\n"
 "\n"
@@ -597,7 +721,7 @@ msgstr ""
 "Conectare imposibilă la următorul server:\n"
 "\n"
 
-#: ..\src/mainframe.cpp:2104
+#: ..\src/mainframe.cpp:2132
 msgid ""
 "Unable to open the catalog.\n"
 "Please note that you are not connected to a database server so you cannot open a catalog located on another computer in the network.\n"
@@ -607,7 +731,7 @@ msgstr ""
 "Nu sunteți conectat la un server. în consecință nu puteți deschide un catalog aflat pe un alt computer în rețea.\n"
 "Dacă doriți să deschideți un catalog aflat pe un alt computer trebuie să vă conectați la un server (meniul Instrumente/Opțiuni)"
 
-#: ..\src/mainframe.cpp:2126
+#: ..\src/mainframe.cpp:2154
 msgid ""
 "This catalog has been created with a previous version of the program and it needs to be upgraded, but the file containing the upgrades list is missing.\n"
 "\n"
@@ -617,11 +741,11 @@ msgstr ""
 "\n"
 "Puteți încerca reinstalarea programului pentru a rezolva această problemă"
 
-#: ..\src/mainframe.cpp:2130
+#: ..\src/mainframe.cpp:2158
 msgid "Upgrading the catalog, please wait..."
 msgstr "Actualizare catalog, vă rog așteptați..."
 
-#: ..\src/mainframe.cpp:2142
+#: ..\src/mainframe.cpp:2170
 msgid ""
 "This catalog has been created with an older version of VVV so you need to convert it to a newer format.\n"
 "\n"
@@ -629,7 +753,7 @@ msgstr ""
 "Acest catalog a fost generat cu o versiune mai veche a VVV, în consecință va trebui convertit în noul format:\n"
 "\n"
 
-#: ..\src/mainframe.cpp:2143
+#: ..\src/mainframe.cpp:2171
 msgid ""
 "The conversion will create a new catalog with the same data as the older one, then you will use this new catalog with VVV. You will not use the older catalog any more.\n"
 "\n"
@@ -637,12 +761,12 @@ msgstr ""
 "Conversia va genera un nou catalog cu aceleași date ca și cel vechi, pe care îl puteți folosi în VVV. Catalogul vechi nu va mai putea fi folosit.\n"
 "\n"
 
-#: ..\src/mainframe.cpp:2144
+#: ..\src/mainframe.cpp:2172
 msgid "Do you want to convert the catatalog creating a new one?"
 msgstr "Doriți convertirea calatogului prin generarea unui catalog nou?"
 
-#: ..\src/mainframe.cpp:2148
-#: ..\src/mainframe.cpp:2349
+#: ..\src/mainframe.cpp:2176
+#: ..\src/mainframe.cpp:2380
 msgid ""
 "Unable to create a new catalog.\n"
 "\n"
@@ -652,12 +776,12 @@ msgstr ""
 "\n"
 "Vă conectați la o bază de date de pe un alt computer. Trebuie sa executați această comandă pe server pentru a putea genera un nou catalog."
 
-#: ..\src/mainframe.cpp:2152
+#: ..\src/mainframe.cpp:2180
 msgid "Convert to a new catalog"
 msgstr "Convertește într-un catalog virtual"
 
-#: ..\src/mainframe.cpp:2160
-#: ..\src/mainframe.cpp:2361
+#: ..\src/mainframe.cpp:2188
+#: ..\src/mainframe.cpp:2392
 msgid ""
 "Unable to find the database backup to restore.\n"
 "\n"
@@ -667,19 +791,20 @@ msgstr ""
 "\n"
 "Puteți încerca reinstalarea programului pentru rezolvarea acestei probleme."
 
-#: ..\src/mainframe.cpp:2323
+#: ..\src/mainframe.cpp:2351
 msgid "VVV (Virtual Volumes View): a program to catalog removable devices like CDs and DVDs"
 msgstr "VVV (Virtual Volumes View): un program pentru catalogarea unităților mobile (exp. CD-uri sau DVD-uri)"
 
-#: ..\src/mainframe.cpp:2324
-msgid "Copyright (C) 2007-2009 The VVV Team"
+#: ..\src/mainframe.cpp:2352
+#, fuzzy
+msgid "Copyright (C) 2007-2010 The VVV Team"
 msgstr "Copyright (C) 2007-2009 Echipa VVV"
 
-#: ..\src/mainframe.cpp:2325
+#: ..\src/mainframe.cpp:2353
 msgid "Fulvio Senore: main developer"
 msgstr "Fulvio Senore: dezvoltator principal"
 
-#: ..\src/mainframe.cpp:2326
+#: ..\src/mainframe.cpp:2354
 msgid ""
 "\n"
 "Jan Albartus: worked at the portable version and designed the application's icon"
@@ -687,120 +812,103 @@ msgstr ""
 "\n"
 "Jan Albartus: versiunea portabilă şi design-ul pictogramei"
 
-#: ..\src/mainframe.cpp:2327
+#: ..\src/mainframe.cpp:2355
 msgid "This program uses icons from the Gnome, Ubuntu and Crystal icons projects"
 msgstr "Programul foloseşte pictograme din proiectele Gnome, Ubuntu şi Crystal"
 
-#: ..\src/mainframe.cpp:2328
+#: ..\src/mainframe.cpp:2356
 msgid "This is open source software, distributed under the GNU GENERAL PUBLIC LICENSE"
 msgstr "Acest program este open source, distribuit confirm licenţei publice GNU"
 
-#: ..\src/mainframe.cpp:2329
-msgid "Czech"
-msgstr "Cehă"
-
-#: ..\src/mainframe.cpp:2330
-msgid "German"
+#: ..\src/mainframe.cpp:2365
+#, fuzzy
+msgid "Serbian"
 msgstr "Germană"
 
-#: ..\src/mainframe.cpp:2331
-msgid "Spanish"
-msgstr "Spaniolă"
-
-#: ..\src/mainframe.cpp:2332
-msgid "French"
-msgstr "Franceză"
-
-#: ..\src/mainframe.cpp:2333
-msgid "Croatian"
-msgstr "Croată"
-
-#: ..\src/mainframe.cpp:2334
-msgid "Italian"
-msgstr "Italiană"
-
-#: ..\src/mainframe.cpp:2335
-msgid "Dutch"
-msgstr "Olandeză"
-
-#: ..\src/mainframe.cpp:2336
-msgid "Polish"
-msgstr "Poloneză"
-
-#: ..\src/mainframe.cpp:2337
-msgid "Portuguese"
-msgstr "Portugheză"
-
-#: ..\src/mainframe.cpp:2353
+#: ..\src/mainframe.cpp:2384
 msgid "New catalog"
 msgstr "Catalog nou"
 
-#: ..\src/mainframe.cpp:2386
+#: ..\src/mainframe.cpp:2417
 msgid "Multiple items"
 msgstr "Elemente multiple"
 
-#: ..\src/mainframe.cpp:2395
-#: ..\src/mainframe.cpp:2429
+#: ..\src/mainframe.cpp:2426
+#: ..\src/mainframe.cpp:2460
 msgid "Object description"
 msgstr "Descrierea obiectului"
 
-#: ..\src/mainframe.cpp:2528
-#: ..\src/mainframe.cpp:3101
+#: ..\src/mainframe.cpp:2559
+#: ..\src/mainframe.cpp:3156
 msgid "Add To Virtual Folder"
 msgstr "Adaugă la directorul virtual"
 
-#: ..\src/mainframe.cpp:2530
-#: ..\src/mainframe.cpp:3103
+#: ..\src/mainframe.cpp:2564
+#: ..\src/mainframe.cpp:3159
 msgid "Edit Description..."
 msgstr "Editează descrierea...."
 
-#: ..\src/mainframe.cpp:2533
+#: ..\src/mainframe.cpp:2567
 msgid "Rename..."
 msgstr "Redenumeşte..."
 
-#: ..\src/mainframe.cpp:2534
-#: ..\src/mainframe.cpp:2565
-#: ..\src/mainframe.cpp:3098
+#: ..\src/mainframe.cpp:2568
+#: ..\src/mainframe.cpp:2603
+#: ..\src/mainframe.cpp:3152
 msgid "Delete"
 msgstr "Şterge"
 
-#: ..\src/mainframe.cpp:2535
+#: ..\src/mainframe.cpp:2569
 msgid "Update Volume..."
 msgstr "Actualizare volum..."
 
-#: ..\src/mainframe.cpp:2559
+#: ..\src/mainframe.cpp:2593
 msgid "New Root Folder"
 msgstr "Director rădăcină nou"
 
-#: ..\src/mainframe.cpp:2562
+#: ..\src/mainframe.cpp:2596
 msgid "New Subfolder"
 msgstr "Sub-director nou"
 
-#: ..\src/mainframe.cpp:2564
+#: ..\src/mainframe.cpp:2602
 msgid "Rename"
 msgstr "Redenumeşte"
 
-#: ..\src/mainframe.cpp:2708
+#: ..\src/mainframe.cpp:2743
 msgid "Please enter some search data"
 msgstr "Vă rog introduceți date pentru căutare"
 
-#: ..\src/mainframe.cpp:2838
+#: ..\src/mainframe.cpp:2762
+#, fuzzy
+msgid "Incorrect file name search data"
+msgstr "Vă rog introduceți date pentru căutare"
+
+#: ..\src/mainframe.cpp:2773
+#, fuzzy
+msgid "Incorrect extension search data"
+msgstr "Vă rog introduceți date pentru căutare"
+
+#: ..\src/mainframe.cpp:2785
+msgid "Incorrect description search data"
+msgstr ""
+
+#: ..\src/mainframe.cpp:2890
 msgid "The search did not find anything"
 msgstr "Căutare fără rezultat"
 
-#: ..\src/mainframe.cpp:2987
+#: ..\src/mainframe.cpp:3039
 msgid "Objects: "
 msgstr "Obiecte:"
 
-#: ..\src/mainframe.cpp:2994
+#: ..\src/mainframe.cpp:3046
 msgid "Total size: "
 msgstr "Mărime totală:"
 
-#: ..\src/mainframe.cpp:3148
+#: ..\src/mainframe.cpp:3205
 msgid "Settings"
 msgstr "Setări"
 
-#: ..\src/mainframe.cpp:3240
+#: ..\src/mainframe.cpp:3295
 msgid ""
 "This command will delete the selected virtual folder, but it will not change the folders in the physical view.\n"
 "\n"
@@ -810,7 +918,7 @@ msgstr ""
 "\n"
 "Doriți ștergerea directorului virtual selectat?"
 
-#: ..\src/mainframe.cpp:3265
+#: ..\src/mainframe.cpp:3320
 msgid ""
 "This command will delete this volume:\n"
 "\n"
@@ -818,7 +926,7 @@ msgstr ""
 "Comanda va șterge acest volum:\n"
 "\n"
 
-#: ..\src/mainframe.cpp:3265
+#: ..\src/mainframe.cpp:3320
 msgid ""
 "\n"
 "\n"
@@ -832,27 +940,27 @@ msgstr ""
 "\n"
 "Confirmați ștergerea acestui volum?"
 
-#: ..\src/mainframe.cpp:3275
+#: ..\src/mainframe.cpp:3330
 msgid "Unable to delete this volume: at least one of its files is used in the virtual view"
 msgstr "Nu pot șterge acest volum: cel puțin unul din fișiere este folosit în ecranul virtual"
 
-#: ..\src/mainframe.cpp:3296
+#: ..\src/mainframe.cpp:3351
 msgid "Enter the new volume name"
 msgstr "Introdu numele noului volum"
 
-#: ..\src/mainframe.cpp:3296
+#: ..\src/mainframe.cpp:3351
 msgid "Rename volume"
 msgstr "Redenumeşte volumul"
 
-#: ..\src/mainframe.cpp:3309
+#: ..\src/mainframe.cpp:3364
 msgid "The new volume name is already present in the database"
 msgstr "Numele noului volum este deja prezent în baza de date"
 
-#: ..\src/mainframe.cpp:3330
+#: ..\src/mainframe.cpp:3385
 msgid "Rename virtual folder"
 msgstr "Redenumește directorul virtual"
 
-#: ..\src/mainframe.cpp:3448
+#: ..\src/mainframe.cpp:3503
 msgid ""
 "This command will delete the selected virtual files, but it will not change the files in the physical view.\n"
 "\n"
@@ -862,8 +970,8 @@ msgstr ""
 "\n"
 "Confirmați ștergerea fișierelor virtuale selectate?"
 
-#: ..\src/mainframe.cpp:3590
-#: ..\src/mainframe.cpp:3667
+#: ..\src/mainframe.cpp:3645
+#: ..\src/mainframe.cpp:3722
 msgid ""
 "Unable to continue. You have choosen an existing file:\n"
 "\n"
@@ -871,9 +979,9 @@ msgstr ""
 "Nu pot continua. Fișierul există:\n"
 "\n"
 
-#: ..\src/mainframe.cpp:3590
-#: ..\src/mainframe.cpp:3667
-#: ..\src/mainframe.cpp:3749
+#: ..\src/mainframe.cpp:3645
+#: ..\src/mainframe.cpp:3722
+#: ..\src/mainframe.cpp:3804
 msgid ""
 "\n"
 "\n"
@@ -883,27 +991,27 @@ msgstr ""
 "\n"
 "Trebuie să introduci numele unui fișier nou."
 
-#: ..\src/mainframe.cpp:3599
-#: ..\src/mainframe.cpp:3676
-#: ..\src/mainframe.cpp:3758
+#: ..\src/mainframe.cpp:3654
+#: ..\src/mainframe.cpp:3731
+#: ..\src/mainframe.cpp:3813
 msgid "Unable to continue: you have choosen a folder where you do not have the right to create a file."
 msgstr "Nu pot continua: nu am drepturi de scriere în directorul ales."
 
-#: ..\src/mainframe.cpp:3644
+#: ..\src/mainframe.cpp:3699
 #: ..\src/opencatalog.cpp:255
 #: ..\src/restore.cpp:287
 msgid "VVV backup files (*.vvvbk)|*.vvvbk|All files (*.*)|*.*"
 msgstr "Copii de siguranță VVV (*.vvvbk)|*.vvvbk|Toate fișierele(*.*)|*.*"
 
-#: ..\src/mainframe.cpp:3645
+#: ..\src/mainframe.cpp:3700
 msgid "Backup catalog"
 msgstr "Catalog de rezervă"
 
-#: ..\src/mainframe.cpp:3690
+#: ..\src/mainframe.cpp:3745
 msgid "Backup completed"
 msgstr "Copie de rezervă disponibilă"
 
-#: ..\src/mainframe.cpp:3713
+#: ..\src/mainframe.cpp:3768
 msgid ""
 "Unable to restore.\n"
 "\n"
@@ -913,16 +1021,15 @@ msgstr ""
 "\n"
 "Vă conectați la o bază de date de pe un alt computer. Trebuie sa executați această comandă pe server pentru a putea restaura catalogul."
 
-#: ..\src/mainframe.cpp:3727
-#: ..\src/vvv.cpp:390
+#: ..\src/mainframe.cpp:3782
 msgid "The catalog name is missing"
 msgstr "Numele catalogului lipsește"
 
-#: ..\src/mainframe.cpp:3731
+#: ..\src/mainframe.cpp:3786
 msgid "The backup name is missing"
 msgstr "Numele copiei de siguranță lipsește"
 
-#: ..\src/mainframe.cpp:3749
+#: ..\src/mainframe.cpp:3804
 msgid ""
 "Unable to continue. You have choosen an existing catalog:\n"
 "\n"
@@ -930,11 +1037,11 @@ msgstr ""
 "Nu pot continua. Catalogul există:\n"
 "\n"
 
-#: ..\src/mainframe.cpp:3786
+#: ..\src/mainframe.cpp:3841
 msgid "Restore completed"
 msgstr "Restaurare completă"
 
-#: ..\src/mainframe.cpp:3803
+#: ..\src/mainframe.cpp:3858
 msgid "Update Volume"
 msgstr "Actualizare volum"
 
@@ -1003,36 +1110,35 @@ msgstr "Alege copia de siguranță"
 msgid "Catalog file"
 msgstr "Catalogare fișier"
 
-#: ..\src/settings.cpp:175
+#: ..\src/settings.cpp:179
 msgid "Reopen the last used catalog at startup"
 msgstr "Deschide automat ultimul catalog la pornire."
 
-#: ..\src/settings.cpp:181
+#: ..\src/settings.cpp:185
 msgid "Beep for tasks longer than (seconds):"
 msgstr "Alertă sonoră pentru activități care durează mai mult de (secunde):"
 
-# Please do not translate this sentence
-#: ..\src/settings.cpp:187
-msgid "Use VVV in English (restart required)"
-msgstr "Folosește VVV în engleză (restart obligatoriu)"
+#: ..\src/settings.cpp:193
+msgid "Change language"
+msgstr ""
 
-#: ..\src/settings.cpp:191
+#: ..\src/settings.cpp:196
 msgid "General"
 msgstr "General"
 
-#: ..\src/settings.cpp:199
+#: ..\src/settings.cpp:204
 msgid "Show the following data for MP3 files:"
 msgstr "Afișează următoarele date pentru fișierele MP3:"
 
-#: ..\src/settings.cpp:224
+#: ..\src/settings.cpp:229
 msgid "Track number"
 msgstr "Numărul piesei"
 
-#: ..\src/settings.cpp:250
+#: ..\src/settings.cpp:255
 msgid "MP3"
 msgstr "MP3"
 
-#: ..\src/settings.cpp:258
+#: ..\src/settings.cpp:263
 msgid ""
 "Check the checkbox below if you want to access catalogs stored\n"
 "in a network server. Each computer in the network will be able to\n"
@@ -1045,48 +1151,48 @@ msgstr ""
 "pe un server din rețea. Fiecare computer din rețea va avea acces la aceste cataloage.\n"
 "NU bifați căsuța dacă doriți accesarea cataloagelor numai de pe acest computer, fără partajarea lor în rețea"
 
-#: ..\src/settings.cpp:263
+#: ..\src/settings.cpp:268
 msgid "Connect to a network server"
 msgstr "Conectare la un server din rețea"
 
-#: ..\src/settings.cpp:270
-#: ..\src/settings.cpp:293
+#: ..\src/settings.cpp:275
+#: ..\src/settings.cpp:298
 msgid "Server"
 msgstr "Server"
 
-#: ..\src/settings.cpp:276
+#: ..\src/settings.cpp:281
 msgid "Username"
 msgstr "Nume utilizator"
 
-#: ..\src/settings.cpp:282
+#: ..\src/settings.cpp:287
 msgid "Password"
 msgstr "Parola"
 
-#: ..\src/settings.cpp:290
+#: ..\src/settings.cpp:295
 msgid "Test server connection"
 msgstr "Testare conexiune la server"
 
-#: ..\src/settings.cpp:381
+#: ..\src/settings.cpp:385
 msgid "You must enter a server name or address"
 msgstr "Trebuie să introduci numele sau adresa serverului"
 
-#: ..\src/settings.cpp:385
+#: ..\src/settings.cpp:389
 msgid "You must enter a username"
 msgstr "Nume de utilizator obligatoriu"
 
-#: ..\src/settings.cpp:389
+#: ..\src/settings.cpp:393
 msgid "You must enter a password"
 msgstr "Parola obligatorie"
 
-#: ..\src/settings.cpp:452
+#: ..\src/settings.cpp:456
 msgid "You must enter the server name or address"
 msgstr "Numele și adresa serverului obligatorii"
 
-#: ..\src/settings.cpp:457
+#: ..\src/settings.cpp:461
 msgid "Unable to connect to the server"
 msgstr "Conectare la server imposibilă"
 
-#: ..\src/settings.cpp:459
+#: ..\src/settings.cpp:463
 msgid "Server connection successful"
 msgstr "Conectare la server posibilă"
 
@@ -1106,8 +1212,8 @@ msgstr "Introdu sau selectează calea către volumul care trebuie actualizat"
 msgid "Update"
 msgstr "Actualizare"
 
-#: ..\src/vvv.cpp:294
-#: ..\src/vvv.cpp:350
+#: ..\src/vvv.cpp:300
+#: ..\src/vvv.cpp:356
 msgid ""
 "Unable to connect to the server\n"
 "\n"
@@ -1115,10 +1221,10 @@ msgstr ""
 "Conectarea la server nu este posibilă\n"
 "\n"
 
-#: ..\src/vvv.cpp:296
 #: ..\src/vvv.cpp:302
-#: ..\src/vvv.cpp:352
+#: ..\src/vvv.cpp:308
 #: ..\src/vvv.cpp:358
+#: ..\src/vvv.cpp:364
 msgid ""
 "An unexpected error has occurred. Here is a description of the error:\n"
 "\n"
@@ -1126,13 +1232,13 @@ msgstr ""
 "A apărut o eroare. Aici este descrierea:\n"
 "\n"
 
-#: ..\src/vvv.cpp:308
-#: ..\src/vvv.cpp:364
+#: ..\src/vvv.cpp:314
+#: ..\src/vvv.cpp:370
 msgid "An unexpected error has occurred. This application will be terminated"
 msgstr "A avut loc o eroare. Aplicația va fi închisă"
 
-#: ..\src/vvv.cpp:376
-#: ..\src/vvv.cpp:460
+#: ..\src/vvv.cpp:382
+#: ..\src/vvv.cpp:466
 msgid ""
 "An unexpected error has happened. Here is a description of the error:\n"
 "\n"
@@ -1140,11 +1246,11 @@ msgstr ""
 "A avut loc o eroare. Aici este descrierea erorii:\n"
 "\n"
 
-#: ..\src/vvv.cpp:402
+#: ..\src/vvv.cpp:408
 msgid "The volume path does not exists"
 msgstr "Calea către volum nu există"
 
-#: ..\src/vvv.cpp:443
+#: ..\src/vvv.cpp:449
 msgid "Volume name not found"
 msgstr "Numele volumului nu poate fi găsit"
 
@@ -1152,7 +1258,7 @@ msgstr "Numele volumului nu poate fi găsit"
 msgid "Export data"
 msgstr "Exportă datele"
 
-#: ..\src/mainframe.h:108
+#: ..\src/mainframe.h:111
 msgid "VVV"
 msgstr "VVV"
 

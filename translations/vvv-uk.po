@@ -2,9 +2,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: VVV 0.9\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-07-26 10:06+0100\n"
+"POT-Creation-Date: 2010-11-20 23:19+0100\n"
 "PO-Revision-Date: \n"
-"Last-Translator: Yaroslav D. Mudryy <premudriy@ukr.net>\n"
+"Last-Translator: Fulvio Senore <mailing@fsoft.it>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -22,6 +22,7 @@ msgstr "Введіть або виберіть том для каталогіз�
 #: ..\src/opencatalog.cpp:174
 #: ..\src/restore.cpp:168
 #: ..\src/restore.cpp:180
+#: ..\src/update_volume.cpp:197
 msgid "..."
 msgstr "..."
 
@@ -36,23 +37,26 @@ msgstr "Получити мітку розділу"
 #: ..\src/catalog_volume.cpp:204
 #: ..\src/exportdata.cpp:230
 #: ..\src/exportdata.cpp:248
-#: ..\src/mainframe.cpp:825
+#: ..\src/mainframe.cpp:854
 #: ..\src/restore.cpp:187
 #: ..\src/restore.cpp:205
-#: ..\src/vvv.cpp:139
+#: ..\src/update_volume.cpp:203
 msgid "&Help"
 msgstr "&Допомога"
 
 #: ..\src/catalog_volume.cpp:209
-#: ..\src/mainframe.cpp:838
+#: ..\src/mainframe.cpp:867
+#: ..\src/mainframe.cpp:4034
 msgid "Catalog"
 msgstr "Каталог"
 
 #: ..\src/catalog_volume.cpp:212
+#: ..\src/update_volume.cpp:211
 msgid "&Close"
 msgstr "&Закрити"
 
 #: ..\src/catalog_volume.cpp:215
+#: ..\src/update_volume.cpp:214
 msgid "Current folder"
 msgstr "Поточна папка"
 
@@ -61,6 +65,7 @@ msgid "Previously cataloged volumes"
 msgstr "Раніше каталогізовані розділи"
 
 #: ..\src/catalog_volume.cpp:288
+#: ..\src/update_volume.cpp:269
 msgid "The volume path is missing"
 msgstr "Шлях до розділу диска не вказаний"
 
@@ -68,13 +73,132 @@ msgstr "Шлях до розділу диска не вказаний"
 msgid "The volume name is missing"
 msgstr "Им'я розділу диска не вказане"
 
-#: ..\src/catalog_volume.cpp:316
+#: ..\src/catalog_volume.cpp:310
 msgid "This volume name is already present in the database"
 msgstr "Таке ім'я вже існує в базі даних"
 
-#: ..\src/catalog_volume.cpp:448
+#: ..\src/catalog_volume.cpp:357
+#: ..\src/update_volume.cpp:296
 msgid "Select the volume to catalog"
 msgstr "Виберіть розділ для каталогізування"
+
+#: ..\src/catalog_volume_functions.cpp:328
+msgid "Number of added files: "
+msgstr ""
+
+#: ..\src/catalog_volume_functions.cpp:329
+msgid "Number of updated files: "
+msgstr ""
+
+#: ..\src/catalog_volume_functions.cpp:330
+msgid "Number of deleted files (not counting those in deleted folders): "
+msgstr ""
+
+#: ..\src/catalog_volume_functions.cpp:331
+msgid "Number of deleted folders: "
+msgstr ""
+
+#: ..\src/catalog_volume_functions.cpp:332
+msgid "Number of unchanged files: "
+msgstr ""
+
+#: ..\src/catalog_volume_functions.cpp:333
+msgid "Do you really want to update the volume?"
+msgstr ""
+
+#: ..\src/chooselang.cpp:77
+#, c-format
+msgid "Uknown locale code '%s' in registry."
+msgstr ""
+
+#: ..\src/chooselang.cpp:94
+msgid "(Use default language)"
+msgstr ""
+
+#: ..\src/chooselang.cpp:96
+#: ..\src/mainframe.cpp:2364
+msgid "Croatian"
+msgstr ""
+
+#: ..\src/chooselang.cpp:97
+#: ..\src/mainframe.cpp:2361
+msgid "Czech"
+msgstr ""
+
+#: ..\src/chooselang.cpp:98
+#: ..\src/mainframe.cpp:2368
+msgid "Dutch"
+msgstr ""
+
+#: ..\src/chooselang.cpp:99
+msgid "English"
+msgstr ""
+
+#: ..\src/chooselang.cpp:100
+#: ..\src/mainframe.cpp:2359
+msgid "French"
+msgstr ""
+
+#: ..\src/chooselang.cpp:101
+#: ..\src/mainframe.cpp:2360
+#, fuzzy
+msgid "German"
+msgstr "Загальний"
+
+#: ..\src/chooselang.cpp:102
+#: ..\src/mainframe.cpp:2366
+msgid "Italian"
+msgstr ""
+
+#: ..\src/chooselang.cpp:103
+#: ..\src/mainframe.cpp:2362
+msgid "Polish"
+msgstr ""
+
+#: ..\src/chooselang.cpp:104
+#: ..\src/mainframe.cpp:2357
+msgid "Portuguese"
+msgstr ""
+
+#: ..\src/chooselang.cpp:105
+#: ..\src/mainframe.cpp:2367
+msgid "Romanian"
+msgstr ""
+
+#: ..\src/chooselang.cpp:106
+#: ..\src/mainframe.cpp:2363
+msgid "Russian"
+msgstr ""
+
+#: ..\src/chooselang.cpp:107
+msgid "Serbian (cyrillic)"
+msgstr ""
+
+#: ..\src/chooselang.cpp:108
+msgid "Serbian (latin)"
+msgstr ""
+
+#: ..\src/chooselang.cpp:109
+#: ..\src/mainframe.cpp:2358
+msgid "Spanish"
+msgstr ""
+
+#: ..\src/chooselang.cpp:110
+#: ..\src/mainframe.cpp:2363
+msgid "Ukrainian"
+msgstr ""
+
+#: ..\src/chooselang.cpp:119
+msgid "Select your preferred language"
+msgstr ""
+
+#: ..\src/chooselang.cpp:120
+msgid "Language selection"
+msgstr ""
+
+#: ..\src/chooselang.cpp:134
+msgid "You must restart the program for this change to take effect."
+msgstr ""
 
 #: ..\src/choose_virtual_folder.cpp:157
 msgid "Please select the virtual folder that will receive the selected files and/or folders:"
@@ -139,7 +263,7 @@ msgid "Include headers"
 msgstr "Включити заголовки"
 
 #: ..\src/exportdata.cpp:207
-#: ..\src/mainframe.cpp:930
+#: ..\src/mainframe.cpp:966
 msgid "All physical volumes"
 msgstr "Всі фізизні розділи"
 
@@ -148,7 +272,7 @@ msgid "Selected physical volume/folder"
 msgstr "Обраний фізичний розділ / папка"
 
 #: ..\src/exportdata.cpp:209
-#: ..\src/mainframe.cpp:932
+#: ..\src/mainframe.cpp:968
 msgid "Selected virtual folder"
 msgstr "Обрана віртуальна папка"
 
@@ -179,25 +303,25 @@ msgstr "Неможливо створити файл."
 
 #: ..\src/exportdata.cpp:524
 #: ..\src/exportdata.cpp:526
-#: ..\src/mainframe.cpp:1250
+#: ..\src/mainframe.cpp:1295
 msgid "Name"
 msgstr "Ім'я"
 
 #: ..\src/exportdata.cpp:524
 #: ..\src/exportdata.cpp:526
-#: ..\src/mainframe.cpp:1255
+#: ..\src/mainframe.cpp:1300
 msgid "Size"
 msgstr "Розмір"
 
 #: ..\src/exportdata.cpp:524
 #: ..\src/exportdata.cpp:526
-#: ..\src/mainframe.cpp:1259
+#: ..\src/mainframe.cpp:1304
 msgid "Ext"
 msgstr "Розширення"
 
 #: ..\src/exportdata.cpp:524
 #: ..\src/exportdata.cpp:526
-#: ..\src/mainframe.cpp:1263
+#: ..\src/mainframe.cpp:1308
 msgid "Last modified"
 msgstr "Змінений"
 
@@ -207,9 +331,9 @@ msgstr "Фізичний шлях"
 
 #: ..\src/exportdata.cpp:524
 #: ..\src/exportdata.cpp:526
-#: ..\src/mainframe.cpp:920
-#: ..\src/mainframe.cpp:1271
-#: ..\src/mainframe.cpp:1276
+#: ..\src/mainframe.cpp:956
+#: ..\src/mainframe.cpp:1316
+#: ..\src/mainframe.cpp:1321
 msgid "Description"
 msgstr "Опис"
 
@@ -221,7 +345,7 @@ msgstr "Розділ"
 msgid "Path"
 msgstr "Шлях"
 
-#: ..\src/mainframe.cpp:712
+#: ..\src/mainframe.cpp:736
 msgid ""
 "This catalog file does not exist:\n"
 "\n"
@@ -230,311 +354,350 @@ msgstr ""
 "\n"
 
 # Part of the File menu
-#: ..\src/mainframe.cpp:773
+#: ..\src/mainframe.cpp:798
 msgid "&New..."
 msgstr "&Створити"
 
 # Part of the File menu
-#: ..\src/mainframe.cpp:774
+#: ..\src/mainframe.cpp:799
 msgid "&Open..."
 msgstr "&Відкрити"
 
 # Part of the File menu
-#: ..\src/mainframe.cpp:775
+#: ..\src/mainframe.cpp:800
 msgid "&Export..."
 msgstr "&Експортувати"
 
 # Part of the File menu
-#: ..\src/mainframe.cpp:777
+#: ..\src/mainframe.cpp:802
 msgid "&Backup..."
 msgstr "&Резервувати..."
 
 # Part of the File menu
-#: ..\src/mainframe.cpp:778
+#: ..\src/mainframe.cpp:803
 msgid "&Restore..."
 msgstr "&Відновити"
 
 # Part of the File menu
-#: ..\src/mainframe.cpp:780
+#: ..\src/mainframe.cpp:805
 msgid "E&xit"
 msgstr "В&ийти"
 
-#: ..\src/mainframe.cpp:781
+#: ..\src/mainframe.cpp:806
 msgid "&File"
 msgstr "&Файл"
 
 # Part of the Edit menu
-#: ..\src/mainframe.cpp:783
+#: ..\src/mainframe.cpp:808
 msgid "&Add To Virtual Folder..."
 msgstr "&Додати в Віртуальну Папку..."
 
 # Part of the Edit menu
-#: ..\src/mainframe.cpp:785
+#: ..\src/mainframe.cpp:810
 msgid "&Rename...\tF2"
 msgstr "&Перейменувати...\tF2"
 
 # Part of the Edit menu
-#: ..\src/mainframe.cpp:786
+#: ..\src/mainframe.cpp:811
 msgid "&Delete"
 msgstr "&Видалити"
 
 # Part of the Edit menu
-#: ..\src/mainframe.cpp:788
+#: ..\src/mainframe.cpp:813
 msgid "&Object Description..."
 msgstr "&Опис об'єкту..."
 
 # Part of the Edit menu
-#: ..\src/mainframe.cpp:790
+#: ..\src/mainframe.cpp:815
 msgid "&New Virtual Root Folder..."
 msgstr "&Нова Віртуальна Коренева Папка..."
 
 # Part of the Edit menu
-#: ..\src/mainframe.cpp:791
+#: ..\src/mainframe.cpp:816
 msgid "New Virtual &Subfolder..."
 msgstr "Нова Віртуальна &підпапка..."
 
-#: ..\src/mainframe.cpp:793
-#: ..\src/mainframe.cpp:815
+#: ..\src/mainframe.cpp:818
+#: ..\src/mainframe.cpp:844
 msgid "&Options..."
 msgstr "&Опції..."
 
-#: ..\src/mainframe.cpp:795
+#: ..\src/mainframe.cpp:820
 msgid "&Edit"
 msgstr "&Правка"
 
 # Part of the Volumes menu
-#: ..\src/mainframe.cpp:797
+#: ..\src/mainframe.cpp:822
 msgid "&Catalog Volume..."
 msgstr "&Каталогізувати Розділ..."
 
-#: ..\src/mainframe.cpp:798
+# Part of the Volumes menu
+#: ..\src/mainframe.cpp:823
+#, fuzzy
+msgid "&Update Volume..."
+msgstr "&Каталогізувати Розділ..."
+
+#: ..\src/mainframe.cpp:824
 msgid "&Volumes"
 msgstr "&Розділи"
 
 # Part of the View menu
-#: ..\src/mainframe.cpp:800
+#: ..\src/mainframe.cpp:826
 msgid "&Physical View"
 msgstr "&Фізичний Вигляд"
 
 # Part of the View menu
-#: ..\src/mainframe.cpp:802
+#: ..\src/mainframe.cpp:828
 msgid "&Virtual View"
 msgstr "&Віртуальний Вигляд"
 
 # Part of the View menu
-#: ..\src/mainframe.cpp:803
+#: ..\src/mainframe.cpp:829
 msgid "&Search View"
 msgstr "&Пошуковий Вигляд"
 
+#: ..\src/mainframe.cpp:831
+#: ..\src/mainframe.cpp:3150
+#, fuzzy
+msgid "Show in physical view"
+msgstr "Показати фізичний вигляд"
+
 # Part of the View menu
-#: ..\src/mainframe.cpp:805
+#: ..\src/mainframe.cpp:832
 msgid "Go &Up One Level"
 msgstr "На один рівень &вгору"
 
+#: ..\src/mainframe.cpp:833
+#: ..\src/mainframe.cpp:2561
+#: ..\src/mainframe.cpp:2598
+msgid "Expand"
+msgstr ""
+
+#: ..\src/mainframe.cpp:834
+#: ..\src/mainframe.cpp:2562
+#: ..\src/mainframe.cpp:2599
+msgid "Collapse"
+msgstr ""
+
 # Part of the View menu
-#: ..\src/mainframe.cpp:807
+#: ..\src/mainframe.cpp:836
 msgid "&Toolbar"
 msgstr "Панель &Інструментів"
 
 # Part of the View menu
-#: ..\src/mainframe.cpp:809
+#: ..\src/mainframe.cpp:838
 msgid "Status &Bar"
 msgstr "&Рядок Стану"
 
-#: ..\src/mainframe.cpp:811
+#: ..\src/mainframe.cpp:840
 msgid "Vie&w"
 msgstr "&Вигляд"
 
-#: ..\src/mainframe.cpp:817
+#: ..\src/mainframe.cpp:846
 msgid "&Tools"
 msgstr "&Інструменти"
 
-#: ..\src/mainframe.cpp:820
+#: ..\src/mainframe.cpp:849
 msgid "Help &Contents"
 msgstr "Зміст &Довідки"
 
-#: ..\src/mainframe.cpp:824
-msgid "&About VVV"
+#: ..\src/mainframe.cpp:853
+#, fuzzy
+msgid "&About VVV..."
 msgstr "Про &програму VVV"
 
-#: ..\src/mainframe.cpp:832
+#: ..\src/mainframe.cpp:861
+#: ..\src/mainframe.cpp:4028
 msgid "New"
 msgstr "Створити"
 
-#: ..\src/mainframe.cpp:832
+#: ..\src/mainframe.cpp:861
+#: ..\src/mainframe.cpp:4028
 msgid "Create a new catalog"
 msgstr "Створити новий каталог"
 
-#: ..\src/mainframe.cpp:835
+#: ..\src/mainframe.cpp:864
+#: ..\src/mainframe.cpp:4031
 msgid "Open"
 msgstr "Відкрити"
 
-#: ..\src/mainframe.cpp:835
+#: ..\src/mainframe.cpp:864
+#: ..\src/mainframe.cpp:4031
 msgid "Open an existing catalog"
 msgstr "Відкрити існуючий каталог"
 
-#: ..\src/mainframe.cpp:838
+#: ..\src/mainframe.cpp:867
+#: ..\src/mainframe.cpp:4034
 msgid "Catalog a new volume"
 msgstr "Каталогізувати новий розділ"
 
-#: ..\src/mainframe.cpp:841
+#: ..\src/mainframe.cpp:870
+#: ..\src/mainframe.cpp:4037
 msgid "Up"
 msgstr "Вгору"
 
-#: ..\src/mainframe.cpp:841
+#: ..\src/mainframe.cpp:870
+#: ..\src/mainframe.cpp:4037
 msgid "Move up one level"
 msgstr "На один рівень вгору"
 
-#: ..\src/mainframe.cpp:845
+#: ..\src/mainframe.cpp:874
+#: ..\src/mainframe.cpp:4041
 msgid "Physical"
 msgstr "Фізичний"
 
-#: ..\src/mainframe.cpp:845
+#: ..\src/mainframe.cpp:874
+#: ..\src/mainframe.cpp:4041
 msgid "Show the physical view"
 msgstr "Показати фізичний вигляд"
 
-#: ..\src/mainframe.cpp:848
+#: ..\src/mainframe.cpp:877
+#: ..\src/mainframe.cpp:4044
 msgid "Virtual"
 msgstr "Віртуальний"
 
-#: ..\src/mainframe.cpp:848
+#: ..\src/mainframe.cpp:877
+#: ..\src/mainframe.cpp:4044
 msgid "Show the virtual view"
 msgstr "Показати віртуальний вигляд"
 
-#: ..\src/mainframe.cpp:851
-#: ..\src/mainframe.cpp:933
-#: ..\src/mainframe.cpp:939
+#: ..\src/mainframe.cpp:880
+#: ..\src/mainframe.cpp:969
+#: ..\src/mainframe.cpp:975
+#: ..\src/mainframe.cpp:4047
 msgid "Search"
 msgstr "Пошуковий"
 
-#: ..\src/mainframe.cpp:851
+#: ..\src/mainframe.cpp:880
+#: ..\src/mainframe.cpp:4047
 msgid "Show the search view"
 msgstr "Показати пошуковий вигляд"
 
-#: ..\src/mainframe.cpp:896
-#: ..\src/mainframe.cpp:917
+#: ..\src/mainframe.cpp:932
+#: ..\src/mainframe.cpp:953
 msgid "Is equal to:"
 msgstr "Так само:"
 
-#: ..\src/mainframe.cpp:897
-#: ..\src/mainframe.cpp:918
+#: ..\src/mainframe.cpp:933
+#: ..\src/mainframe.cpp:954
 msgid "Starts with:"
 msgstr "Починається з:"
 
-#: ..\src/mainframe.cpp:898
-#: ..\src/mainframe.cpp:919
+#: ..\src/mainframe.cpp:934
+#: ..\src/mainframe.cpp:955
 msgid "Contains:"
 msgstr "Містить:"
 
-#: ..\src/mainframe.cpp:899
+#: ..\src/mainframe.cpp:935
 msgid "File name"
 msgstr "Ім'я файлу"
 
-#: ..\src/mainframe.cpp:908
+#: ..\src/mainframe.cpp:944
 msgid "Extension:"
 msgstr "Розширення"
 
-#: ..\src/mainframe.cpp:931
+#: ..\src/mainframe.cpp:967
 msgid "Selected physical folder"
 msgstr "Обрана фізична папка"
 
-#: ..\src/mainframe.cpp:1032
+#: ..\src/mainframe.cpp:1071
 msgid "Catalog volume"
 msgstr "Каталог розділу"
 
-#: ..\src/mainframe.cpp:1268
+#: ..\src/mainframe.cpp:1313
 msgid "Physical path"
 msgstr "Фізичний шлях"
 
-#: ..\src/mainframe.cpp:1318
-#: ..\src/settings.cpp:204
+#: ..\src/mainframe.cpp:1363
+#: ..\src/settings.cpp:209
 msgid "Artist"
 msgstr "Артист"
 
-#: ..\src/mainframe.cpp:1323
-#: ..\src/settings.cpp:208
+#: ..\src/mainframe.cpp:1368
+#: ..\src/settings.cpp:213
 msgid "Album"
 msgstr "Альбом"
 
-#: ..\src/mainframe.cpp:1328
-#: ..\src/settings.cpp:212
+#: ..\src/mainframe.cpp:1373
+#: ..\src/settings.cpp:217
 msgid "Title"
 msgstr "Назва"
 
-#: ..\src/mainframe.cpp:1333
-#: ..\src/settings.cpp:216
+#: ..\src/mainframe.cpp:1378
+#: ..\src/settings.cpp:221
 msgid "Year"
 msgstr "Рік"
 
-#: ..\src/mainframe.cpp:1338
-#: ..\src/settings.cpp:220
+#: ..\src/mainframe.cpp:1383
+#: ..\src/settings.cpp:225
 msgid "Comment"
 msgstr "Коментар"
 
-#: ..\src/mainframe.cpp:1343
+#: ..\src/mainframe.cpp:1388
 msgid "Number"
 msgstr "Номер"
 
-#: ..\src/mainframe.cpp:1348
-#: ..\src/settings.cpp:228
+#: ..\src/mainframe.cpp:1393
+#: ..\src/settings.cpp:233
 msgid "Genre"
 msgstr "Жанр"
 
-#: ..\src/mainframe.cpp:1353
-#: ..\src/settings.cpp:232
+#: ..\src/mainframe.cpp:1398
+#: ..\src/settings.cpp:237
 msgid "Length"
 msgstr "Тривалість"
 
-#: ..\src/mainframe.cpp:1358
-#: ..\src/settings.cpp:236
+#: ..\src/mainframe.cpp:1403
+#: ..\src/settings.cpp:241
 msgid "Bitrate"
 msgstr "Бітрейт"
 
-#: ..\src/mainframe.cpp:1363
-#: ..\src/settings.cpp:240
+#: ..\src/mainframe.cpp:1408
+#: ..\src/settings.cpp:245
 msgid "Sample rate"
 msgstr "Семпл рейт"
 
-#: ..\src/mainframe.cpp:1368
-#: ..\src/settings.cpp:244
+#: ..\src/mainframe.cpp:1413
+#: ..\src/settings.cpp:249
 msgid "Channels"
 msgstr "Канали"
 
-#: ..\src/mainframe.cpp:1397
+#: ..\src/mainframe.cpp:1442
 msgid "Open catalog"
 msgstr "Відкрити каталог"
 
-#: ..\src/mainframe.cpp:1401
-#: ..\src/mainframe.cpp:3522
+#: ..\src/mainframe.cpp:1446
+#: ..\src/mainframe.cpp:3622
 msgid "VVV  files (*.vvv)|*.vvv|All files (*.*)|*.*"
 msgstr "VVV  файли (*.vvv)|*.vvv|Всі файли (*.*)|*.*"
 
-#: ..\src/mainframe.cpp:1846
+#: ..\src/mainframe.cpp:1891
 msgid "Choose virtual folder"
 msgstr "Вибрати віртуальну папку"
 
-#: ..\src/mainframe.cpp:1927
+#: ..\src/mainframe.cpp:1977
 msgid "New virtual root folder"
 msgstr "Нова віртуальна коренева папка"
 
-#: ..\src/mainframe.cpp:1955
+#: ..\src/mainframe.cpp:2005
 msgid "New virtual subfolder"
 msgstr "Нова віртуальна папка"
 
-#: ..\src/mainframe.cpp:1973
+#: ..\src/mainframe.cpp:2023
+#: ..\src/mainframe.cpp:3385
 msgid "Enter the new folder name"
 msgstr "Введіть нову назву папки"
 
-#: ..\src/mainframe.cpp:1988
-#: ..\src/mainframe.cpp:3303
+#: ..\src/mainframe.cpp:2038
+#: ..\src/mainframe.cpp:3396
 msgid "The new folder name is already present in the database"
 msgstr "Нове ім'я папки вже існує в базі даних"
 
-#: ..\src/mainframe.cpp:2041
+#: ..\src/mainframe.cpp:2091
 msgid "This catalog file does not exist any more"
 msgstr "Цей каталог більше не існує"
 
-#: ..\src/mainframe.cpp:2071
+#: ..\src/mainframe.cpp:2121
 msgid ""
 "Catalog not found:\n"
 "\n"
@@ -542,7 +705,7 @@ msgstr ""
 "Каталог не знайдений:\n"
 "\n"
 
-#: ..\src/mainframe.cpp:2075
+#: ..\src/mainframe.cpp:2125
 msgid ""
 "Incorrect username or password for the following database:\n"
 "\n"
@@ -550,7 +713,7 @@ msgstr ""
 "Не вірне ім'я користувача або пароль для наступної бази даних:\n"
 "\n"
 
-#: ..\src/mainframe.cpp:2080
+#: ..\src/mainframe.cpp:2130
 msgid ""
 "Unable to connect to the following server:\n"
 "\n"
@@ -558,7 +721,7 @@ msgstr ""
 "Неможливо підключитися до наступного серверу:\n"
 "\n"
 
-#: ..\src/mainframe.cpp:2082
+#: ..\src/mainframe.cpp:2132
 msgid ""
 "Unable to open the catalog.\n"
 "Please note that you are not connected to a database server so you cannot open a catalog located on another computer in the network.\n"
@@ -568,7 +731,7 @@ msgstr ""
 "Будь ласка, зверніть увагу, що ви не з'єднані з базою даних і тому не можете відкрити каталог що знаходиться на іншому комп'ютері в мережі.\n"
 "Якщо ви хочете відкрити каталок на на іншому комп'ютері, ви маєте з'єднатися з сервером бази даних (меню Інструменти / Опції)."
 
-#: ..\src/mainframe.cpp:2104
+#: ..\src/mainframe.cpp:2154
 msgid ""
 "This catalog has been created with a previous version of the program and it needs to be upgraded, but the file containing the upgrades list is missing.\n"
 "\n"
@@ -578,11 +741,11 @@ msgstr ""
 "\n"
 "Ви можете спробувати перевстановити програму для вирішення цієї проблеми."
 
-#: ..\src/mainframe.cpp:2108
+#: ..\src/mainframe.cpp:2158
 msgid "Upgrading the catalog, please wait..."
 msgstr "Каталог оновлюється, будь ласка зачекайте..."
 
-#: ..\src/mainframe.cpp:2120
+#: ..\src/mainframe.cpp:2170
 msgid ""
 "This catalog has been created with an older version of VVV so you need to convert it to a newer format.\n"
 "\n"
@@ -590,7 +753,7 @@ msgstr ""
 "Цей каталог був створений старішою версією VVV, так що ви маєте переконвертувати його в новий формат.\n"
 "\n"
 
-#: ..\src/mainframe.cpp:2121
+#: ..\src/mainframe.cpp:2171
 msgid ""
 "The conversion will create a new catalog with the same data as the older one, then you will use this new catalog with VVV. You will not use the older catalog any more.\n"
 "\n"
@@ -598,12 +761,12 @@ msgstr ""
 "Конвертування створить новий каталог з тими ж даними що містилися у старому каталозі, і потім то ви зможете використовувати цей новий каталог з VVV. Старий каталог більше не зможе бути використаний.\n"
 "\n"
 
-#: ..\src/mainframe.cpp:2122
+#: ..\src/mainframe.cpp:2172
 msgid "Do you want to convert the catatalog creating a new one?"
 msgstr "Ви бажаєте переконвертувати каталог і створити новий?"
 
-#: ..\src/mainframe.cpp:2126
-#: ..\src/mainframe.cpp:2318
+#: ..\src/mainframe.cpp:2176
+#: ..\src/mainframe.cpp:2380
 msgid ""
 "Unable to create a new catalog.\n"
 "\n"
@@ -613,12 +776,12 @@ msgstr ""
 "\n"
 "Ви підключаєтеся до сервера бази даних на іншому комп'ютері. Ви повинні запустити цю програму на сервері, щоб створити новий каталог."
 
-#: ..\src/mainframe.cpp:2130
+#: ..\src/mainframe.cpp:2180
 msgid "Convert to a new catalog"
 msgstr "Конвертувати в новий каталог"
 
-#: ..\src/mainframe.cpp:2138
-#: ..\src/mainframe.cpp:2330
+#: ..\src/mainframe.cpp:2188
+#: ..\src/mainframe.cpp:2392
 msgid ""
 "Unable to find the database backup to restore.\n"
 "\n"
@@ -628,102 +791,128 @@ msgstr ""
 "\n"
 "Ви можете спробувати перевстановити програму для вирішення цієї проблеми."
 
-#: ..\src/mainframe.cpp:2301
-msgid ""
-"VVV (Virtual Volumes View): a program to catalog removable devices like CDs and DVDs\n"
-"\n"
-"\"The mud of Venaus is the blood of this land\""
+#: ..\src/mainframe.cpp:2351
+#, fuzzy
+msgid "VVV (Virtual Volumes View): a program to catalog removable devices like CDs and DVDs"
 msgstr ""
 "VVV (Virtual Volumes View / Віртуальний Вид Розділів): програма для каталогізації знімних пристроїв, таких як компакт-диски та DVD\n"
 "\n"
 "\"Бруд Венауса - кров на цій землі\""
 
-#: ..\src/mainframe.cpp:2302
-msgid "Copyright (C) 2007-2008 The VVV Team"
+#: ..\src/mainframe.cpp:2352
+#, fuzzy
+msgid "Copyright (C) 2007-2010 The VVV Team"
 msgstr "Авторське право (C) 2007-2008 The VVV Team"
 
-#: ..\src/mainframe.cpp:2303
+#: ..\src/mainframe.cpp:2353
 msgid "Fulvio Senore: main developer"
 msgstr "Фульвіо Сеньйоре: головний розробник"
 
-#: ..\src/mainframe.cpp:2304
-msgid "Jan Albartus: worked at the portable version and designed the application's icon"
+#: ..\src/mainframe.cpp:2354
+#, fuzzy
+msgid ""
+"\n"
+"Jan Albartus: worked at the portable version and designed the application's icon"
 msgstr "Ян Альбартус: працював над портативної версією програми і іконками для цієї програми"
 
-#: ..\src/mainframe.cpp:2305
+#: ..\src/mainframe.cpp:2355
 msgid "This program uses icons from the Gnome, Ubuntu and Crystal icons projects"
 msgstr "Ця програма використовує іконки з проектів Gnome, Ubuntu та Crystal Icons."
 
-#: ..\src/mainframe.cpp:2306
+#: ..\src/mainframe.cpp:2356
 msgid "This is open source software, distributed under the GNU GENERAL PUBLIC LICENSE"
 msgstr "Це програмне забезпечення з відкритим вихідним кодом, розповсюджується під ліцензією GNU GENERAL PUBLIC LICENCE"
 
-#: ..\src/mainframe.cpp:2322
+#: ..\src/mainframe.cpp:2365
+msgid "Serbian"
+msgstr ""
+
+#: ..\src/mainframe.cpp:2384
 msgid "New catalog"
 msgstr "Новий каталог"
 
-#: ..\src/mainframe.cpp:2355
+#: ..\src/mainframe.cpp:2417
 msgid "Multiple items"
 msgstr "Множинні пункти"
 
-#: ..\src/mainframe.cpp:2364
-#: ..\src/mainframe.cpp:2396
+#: ..\src/mainframe.cpp:2426
+#: ..\src/mainframe.cpp:2460
 msgid "Object description"
 msgstr "Опис об'єкту"
 
-#: ..\src/mainframe.cpp:2495
-#: ..\src/mainframe.cpp:3067
+#: ..\src/mainframe.cpp:2559
+#: ..\src/mainframe.cpp:3156
 msgid "Add To Virtual Folder"
 msgstr "Додати в Віртуальну Папку"
 
-#: ..\src/mainframe.cpp:2497
-#: ..\src/mainframe.cpp:3069
+#: ..\src/mainframe.cpp:2564
+#: ..\src/mainframe.cpp:3159
 msgid "Edit Description..."
 msgstr "Змінити опис..."
 
-#: ..\src/mainframe.cpp:2500
+#: ..\src/mainframe.cpp:2567
 msgid "Rename..."
 msgstr "Перейменувати..."
 
-#: ..\src/mainframe.cpp:2501
-#: ..\src/mainframe.cpp:2531
-#: ..\src/mainframe.cpp:3064
+#: ..\src/mainframe.cpp:2568
+#: ..\src/mainframe.cpp:2603
+#: ..\src/mainframe.cpp:3152
 msgid "Delete"
 msgstr "Видалити"
 
-#: ..\src/mainframe.cpp:2525
+# Part of the Volumes menu
+#: ..\src/mainframe.cpp:2569
+#, fuzzy
+msgid "Update Volume..."
+msgstr "&Каталогізувати Розділ..."
+
+#: ..\src/mainframe.cpp:2593
 msgid "New Root Folder"
 msgstr "Нова Корнева Папка"
 
-#: ..\src/mainframe.cpp:2528
+#: ..\src/mainframe.cpp:2596
 msgid "New Subfolder"
 msgstr "Нова Підпапка"
 
-#: ..\src/mainframe.cpp:2530
+#: ..\src/mainframe.cpp:2602
 msgid "Rename"
 msgstr "Перейменувати"
 
-#: ..\src/mainframe.cpp:2674
+#: ..\src/mainframe.cpp:2743
 msgid "Please enter some search data"
 msgstr "Будь ласка, введіть ваш запит"
 
-#: ..\src/mainframe.cpp:2804
+#: ..\src/mainframe.cpp:2762
+#, fuzzy
+msgid "Incorrect file name search data"
+msgstr "Будь ласка, введіть ваш запит"
+
+#: ..\src/mainframe.cpp:2773
+#, fuzzy
+msgid "Incorrect extension search data"
+msgstr "Будь ласка, введіть ваш запит"
+
+#: ..\src/mainframe.cpp:2785
+msgid "Incorrect description search data"
+msgstr ""
+
+#: ..\src/mainframe.cpp:2890
 msgid "The search did not find anything"
 msgstr "За даним запитом нічого не знайдено"
 
-#: ..\src/mainframe.cpp:2953
+#: ..\src/mainframe.cpp:3039
 msgid "Objects: "
 msgstr "Об'єкти:"
 
-#: ..\src/mainframe.cpp:2960
+#: ..\src/mainframe.cpp:3046
 msgid "Total size: "
 msgstr "Загальний розмір:"
 
-#: ..\src/mainframe.cpp:3114
+#: ..\src/mainframe.cpp:3205
 msgid "Settings"
 msgstr "Установки"
 
-#: ..\src/mainframe.cpp:3206
+#: ..\src/mainframe.cpp:3295
 msgid ""
 "This command will delete the selected virtual folder, but it will not change the folders in the physical view.\n"
 "\n"
@@ -733,7 +922,7 @@ msgstr ""
 "\n"
 "Ви дійсно бажаєте видалити вибрану віртуальну папку?"
 
-#: ..\src/mainframe.cpp:3229
+#: ..\src/mainframe.cpp:3320
 msgid ""
 "This command will delete this volume:\n"
 "\n"
@@ -741,7 +930,7 @@ msgstr ""
 "Ця команда видалить наступний розділ:\n"
 "\n"
 
-#: ..\src/mainframe.cpp:3229
+#: ..\src/mainframe.cpp:3320
 msgid ""
 "\n"
 "\n"
@@ -755,31 +944,27 @@ msgstr ""
 "\n"
 "Ви дійсно бажаєте видалити цей розділ?"
 
-#: ..\src/mainframe.cpp:3239
+#: ..\src/mainframe.cpp:3330
 msgid "Unable to delete this volume: at least one of its files is used in the virtual view"
 msgstr "Не вдається видалити цей розділ: щонайменше один з цих файлів використовується у віртуальному вигляді"
 
-#: ..\src/mainframe.cpp:3258
+#: ..\src/mainframe.cpp:3351
 msgid "Enter the new volume name"
 msgstr "Введіть нову назву розділу"
 
-#: ..\src/mainframe.cpp:3258
+#: ..\src/mainframe.cpp:3351
 msgid "Rename volume"
 msgstr "Перейменувати розділ"
 
-#: ..\src/mainframe.cpp:3271
+#: ..\src/mainframe.cpp:3364
 msgid "The new volume name is already present in the database"
 msgstr "Нова назва розділу вже існує в базі даних"
 
-#: ..\src/mainframe.cpp:3292
-msgid "Enter the new forder name"
-msgstr "Введіть нову назву папки"
-
-#: ..\src/mainframe.cpp:3292
+#: ..\src/mainframe.cpp:3385
 msgid "Rename virtual folder"
 msgstr "Перейменувати віртуальну папку"
 
-#: ..\src/mainframe.cpp:3410
+#: ..\src/mainframe.cpp:3503
 msgid ""
 "This command will delete the selected virtual files, but it will not change the files in the physical view.\n"
 "\n"
@@ -789,8 +974,8 @@ msgstr ""
 "\n"
 "Ви дійсно бажаєте видалити вибрані віртуальні файли?"
 
-#: ..\src/mainframe.cpp:3545
-#: ..\src/mainframe.cpp:3622
+#: ..\src/mainframe.cpp:3645
+#: ..\src/mainframe.cpp:3722
 msgid ""
 "Unable to continue. You have choosen an existing file:\n"
 "\n"
@@ -798,9 +983,9 @@ msgstr ""
 "Продовження неможливе. Ви вибрали існуючий файл:\n"
 "\n"
 
-#: ..\src/mainframe.cpp:3545
-#: ..\src/mainframe.cpp:3622
-#: ..\src/mainframe.cpp:3704
+#: ..\src/mainframe.cpp:3645
+#: ..\src/mainframe.cpp:3722
+#: ..\src/mainframe.cpp:3804
 msgid ""
 "\n"
 "\n"
@@ -810,27 +995,27 @@ msgstr ""
 "\n"
 "Ви маєте ввести ім'я файлу, який ще не існує."
 
-#: ..\src/mainframe.cpp:3554
-#: ..\src/mainframe.cpp:3631
-#: ..\src/mainframe.cpp:3713
+#: ..\src/mainframe.cpp:3654
+#: ..\src/mainframe.cpp:3731
+#: ..\src/mainframe.cpp:3813
 msgid "Unable to continue: you have choosen a folder where you do not have the right to create a file."
 msgstr "Продовження неможливе: ви вибрали папку в якій ви не маєте прав доступу на створення файлів."
 
-#: ..\src/mainframe.cpp:3599
+#: ..\src/mainframe.cpp:3699
 #: ..\src/opencatalog.cpp:255
 #: ..\src/restore.cpp:287
 msgid "VVV backup files (*.vvvbk)|*.vvvbk|All files (*.*)|*.*"
 msgstr "VVV резервні копії (*.vvvbk)|*.vvvbk|Всі файли (*.*)|*.*"
 
-#: ..\src/mainframe.cpp:3600
+#: ..\src/mainframe.cpp:3700
 msgid "Backup catalog"
 msgstr "Резервувати каталог"
 
-#: ..\src/mainframe.cpp:3645
+#: ..\src/mainframe.cpp:3745
 msgid "Backup completed"
 msgstr "Резервування закінчено"
 
-#: ..\src/mainframe.cpp:3668
+#: ..\src/mainframe.cpp:3768
 msgid ""
 "Unable to restore.\n"
 "\n"
@@ -840,15 +1025,15 @@ msgstr ""
 "\n"
 "Ви підключаєтеся до сервера бази даних на іншому комп'ютері. Ви маєте виконати цю команду на сервері, щоб відновити каталог."
 
-#: ..\src/mainframe.cpp:3682
+#: ..\src/mainframe.cpp:3782
 msgid "The catalog name is missing"
 msgstr "Назва каталогу не вказана"
 
-#: ..\src/mainframe.cpp:3686
+#: ..\src/mainframe.cpp:3786
 msgid "The backup name is missing"
 msgstr "Назва резервної копії не вказана"
 
-#: ..\src/mainframe.cpp:3704
+#: ..\src/mainframe.cpp:3804
 msgid ""
 "Unable to continue. You have choosen an existing catalog:\n"
 "\n"
@@ -856,9 +1041,14 @@ msgstr ""
 "Продовження неможливе. Ви вибрали вже існуючий каталог:\n"
 "\n"
 
-#: ..\src/mainframe.cpp:3741
+#: ..\src/mainframe.cpp:3841
 msgid "Restore completed"
 msgstr "Відновлення закінчено"
+
+#: ..\src/mainframe.cpp:3858
+#, fuzzy
+msgid "Update Volume"
+msgstr "Розділ"
 
 #: ..\src/object_description.cpp:145
 msgid "Please enter the description for the following object:"
@@ -925,36 +1115,35 @@ msgstr "Виберіть файл резервної копії"
 msgid "Catalog file"
 msgstr "Файл каталога"
 
-#: ..\src/settings.cpp:175
+#: ..\src/settings.cpp:179
 msgid "Reopen the last used catalog at startup"
 msgstr "Відкривати останній використовуваний каталог при завантженні програми"
 
-#: ..\src/settings.cpp:181
+#: ..\src/settings.cpp:185
 msgid "Beep for tasks longer than (seconds):"
 msgstr "Звуковий сигнал для задач триваліше ніж (секунд):"
 
-# Please do not translate this sentence
-#: ..\src/settings.cpp:187
-msgid "Use VVV in English (restart required)"
-msgstr "Користуватися VVV на Англійському (презапуск обов'язковий)"
+#: ..\src/settings.cpp:193
+msgid "Change language"
+msgstr ""
 
-#: ..\src/settings.cpp:191
+#: ..\src/settings.cpp:196
 msgid "General"
 msgstr "Загальний"
 
-#: ..\src/settings.cpp:199
+#: ..\src/settings.cpp:204
 msgid "Show the following data for MP3 files:"
 msgstr "Відображати наступні дані для MP3 файлів:"
 
-#: ..\src/settings.cpp:224
+#: ..\src/settings.cpp:229
 msgid "Track number"
 msgstr "Номер доріжки"
 
-#: ..\src/settings.cpp:250
+#: ..\src/settings.cpp:255
 msgid "MP3"
 msgstr "MP3"
 
-#: ..\src/settings.cpp:258
+#: ..\src/settings.cpp:263
 msgid ""
 "Check the checkbox below if you want to access catalogs stored\n"
 "in a network server. Each computer in the network will be able to\n"
@@ -970,52 +1159,71 @@ msgstr ""
 "зберігаються тільки на локальному комп'ютері і ви не хочете використовувати каталоги\n"
 "nспільно з іншими комп'ютерами в мережі"
 
-#: ..\src/settings.cpp:263
+#: ..\src/settings.cpp:268
 msgid "Connect to a network server"
 msgstr "Підключитися до мережного серверу"
 
-#: ..\src/settings.cpp:270
-#: ..\src/settings.cpp:293
+#: ..\src/settings.cpp:275
+#: ..\src/settings.cpp:298
 msgid "Server"
 msgstr "Сервер"
 
-#: ..\src/settings.cpp:276
+#: ..\src/settings.cpp:281
 msgid "Username"
 msgstr "Ім'я користувача"
 
-#: ..\src/settings.cpp:282
+#: ..\src/settings.cpp:287
 msgid "Password"
 msgstr "Пароль"
 
-#: ..\src/settings.cpp:290
+#: ..\src/settings.cpp:295
 msgid "Test server connection"
 msgstr "Тестувати з'єднання з сервером"
 
-#: ..\src/settings.cpp:381
+#: ..\src/settings.cpp:385
 msgid "You must enter a server name or address"
 msgstr "Ви маєте ввести ім'я сервера або адресу"
 
-#: ..\src/settings.cpp:385
+#: ..\src/settings.cpp:389
 msgid "You must enter a username"
 msgstr "Ви маєте ввести ім'я користувача"
 
-#: ..\src/settings.cpp:389
+#: ..\src/settings.cpp:393
 msgid "You must enter a password"
 msgstr "Ви маєте ввести пароль"
 
-#: ..\src/settings.cpp:452
+#: ..\src/settings.cpp:456
 msgid "You must enter the server name or address"
 msgstr "Ви маєте ввести ім'я сервера або адресу"
 
-#: ..\src/settings.cpp:457
+#: ..\src/settings.cpp:461
 msgid "Unable to connect to the server"
 msgstr "Не вдалося підключитися до сервера"
 
-#: ..\src/settings.cpp:459
+#: ..\src/settings.cpp:463
 msgid "Server connection successful"
 msgstr "Успішне з'єднання з сервером"
 
-#: ..\src/vvv.cpp:285
+#: ..\src/update_volume.cpp:180
+msgid "You are about to update the following volume:"
+msgstr ""
+
+#: ..\src/update_volume.cpp:183
+#, fuzzy
+msgid "VOLUME NAME"
+msgstr "НАЗВА ОБ'ЄКТА"
+
+#: ..\src/update_volume.cpp:188
+#, fuzzy
+msgid "Enter or select the path to volume to update"
+msgstr "Введіть або виберіть том для каталогізування"
+
+#: ..\src/update_volume.cpp:208
+msgid "Update"
+msgstr ""
+
+#: ..\src/vvv.cpp:300
+#: ..\src/vvv.cpp:356
 msgid ""
 "Unable to connect to the server\n"
 "\n"
@@ -1023,8 +1231,10 @@ msgstr ""
 "Не вдалося підключитися до сервера\n"
 "\n"
 
-#: ..\src/vvv.cpp:287
-#: ..\src/vvv.cpp:293
+#: ..\src/vvv.cpp:302
+#: ..\src/vvv.cpp:308
+#: ..\src/vvv.cpp:358
+#: ..\src/vvv.cpp:364
 msgid ""
 "An unexpected error has occurred. Here is a description of the error:\n"
 "\n"
@@ -1032,15 +1242,36 @@ msgstr ""
 "Виникла непередбачена помилка. Опис помилки:\n"
 "\n"
 
-#: ..\src/vvv.cpp:299
+#: ..\src/vvv.cpp:314
+#: ..\src/vvv.cpp:370
 msgid "An unexpected error has occurred. This application will be terminated"
 msgstr "Виникла непередбачена помилка. Ця програма буде зупинена"
+
+#: ..\src/vvv.cpp:382
+#: ..\src/vvv.cpp:466
+#, fuzzy
+msgid ""
+"An unexpected error has happened. Here is a description of the error:\n"
+"\n"
+msgstr ""
+"Виникла непередбачена помилка. Опис помилки:\n"
+"\n"
+
+#: ..\src/vvv.cpp:408
+#, fuzzy
+msgid "The volume path does not exists"
+msgstr "Шлях до розділу диска не вказаний"
+
+#: ..\src/vvv.cpp:449
+#, fuzzy
+msgid "Volume name not found"
+msgstr "Мітка розділу"
 
 #: ..\src/exportdata.h:71
 msgid "Export data"
 msgstr "Експортувати дані"
 
-#: ..\src/mainframe.h:107
+#: ..\src/mainframe.h:111
 msgid "VVV"
 msgstr "VVV"
 
@@ -1051,4 +1282,7 @@ msgstr "Опис Об'єкту"
 #: ..\src/restore.h:46
 msgid "Restore"
 msgstr "Відновити"
+
+#~ msgid "Enter the new forder name"
+#~ msgstr "Введіть нову назву папки"
 
