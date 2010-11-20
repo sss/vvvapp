@@ -3146,13 +3146,13 @@ void CMainFrame::OnListControlContextMenu( wxContextMenuEvent& event )
 	}
 
 	wxMenu menu;
-	if( m_CurrentView == cvVirtual ) {
+	if( m_CurrentView == cvVirtual || m_CurrentView == cvSearch ) {
 		menu.Append( ID_VIEW_SHOW_IN_PHYSICAL, _("Show in physical view") );
 		if( virtualFilesSelected ) {
 			menu.Append( ID_EDIT_DELETE, _("Delete") );
 		}
 	}
-	else {
+	if( m_CurrentView == cvPhysical || m_CurrentView == cvSearch ) {
 		menu.Append( ID_ADD_VIRTUAL_FOLDER, _("Add To Virtual Folder") );
 		if( m_CurrentView != cvSearch ) {
 			menu.AppendSeparator();
@@ -4096,8 +4096,16 @@ void CMainFrame::OnViewShowInPhysicalViewClick( wxCommandEvent& event )
 	wxSplitterWindow* sw = GetSplitterWindow();
 	long sp = sw->GetSashPosition();
 	sw->Unsplit();
-//	sw->ReplaceWindow( GetTreeVirtualControl(), GetTreePhysicalControl() );
-	HideVirtualView();
+	switch( m_CurrentView ) {
+		case cvVirtual:
+			HideVirtualView();
+			break;
+		case cvSearch:
+			HideSearchView();
+			break;
+		default:
+			wxASSERT(false);
+	}
 	ShowPhysicalView();
 	sw->SplitVertically( GetTreePhysicalControl(), lctl );
 	sw->SetSashPosition( sp );
@@ -4147,7 +4155,7 @@ void CMainFrame::OnViewShowInPhysicalViewClick( wxCommandEvent& event )
 void CMainFrame::OnViewShowInPhysicalViewUpdate( wxUpdateUIEvent& event )
 {
 	bool enabled = false;
-	if( m_ListViewHasFocus && m_CurrentView == cvVirtual ) {
+	if( m_ListViewHasFocus && (m_CurrentView == cvVirtual || m_CurrentView == cvSearch) ) {
 		if( GetListControl()->GetSelectedItemCount() == 1 ) {
 			enabled = true;
 		}
