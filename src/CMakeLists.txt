@@ -171,9 +171,9 @@ if( UNIX AND NOT APPLE )
   install( FILES ${PROJECT_SOURCE_DIR}/linux_specific/readme.txt 
                  ${PROJECT_SOURCE_DIR}/linux_specific/License.txt 
                  DESTINATION . )
-  install( FILES ${PROJECT_SOURCE_DIR}/linux_specific/vvv-start.sh 
-                 DESTINATION . PERMISSIONS OWNER_EXECUTE OWNER_WRITE OWNER_READ GROUP_EXECUTE
-                                           GROUP_READ WORLD_READ WORLD_EXECUTE )
+#  install( FILES ${PROJECT_SOURCE_DIR}/linux_specific/vvv-start.sh 
+#                 DESTINATION . PERMISSIONS OWNER_EXECUTE OWNER_WRITE OWNER_READ GROUP_EXECUTE
+#                                           GROUP_READ WORLD_READ WORLD_EXECUTE )
 endif( UNIX AND NOT APPLE )
 
 if( UNIX )
@@ -186,10 +186,50 @@ if( UNIX )
     set( RESOURCES_INTALL_PATH . )
   endif( APPLE )
 
-  # copy localization files
-  install( DIRECTORY ${PROJECT_SOURCE_DIR}/translations/ DESTINATION ${RESOURCES_INTALL_PATH}/languages 
-           FILES_MATCHING PATTERN "*.mo"
-           PATTERN ".svn" EXCLUDE )
+  # copy localization files -- vvv files...
+  install( FILES ${PROJECT_SOURCE_DIR}/translations/vvv-cs.mo 
+           DESTINATION ${RESOURCES_INTALL_PATH}/languages/cs RENAME vvv.mo )
+  install( FILES ${PROJECT_SOURCE_DIR}/translations/vvv-de.mo 
+           DESTINATION ${RESOURCES_INTALL_PATH}/languages/de RENAME vvv.mo )
+  install( FILES ${PROJECT_SOURCE_DIR}/translations/vvv-es.mo 
+           DESTINATION ${RESOURCES_INTALL_PATH}/languages/es RENAME vvv.mo )
+  install( FILES ${PROJECT_SOURCE_DIR}/translations/vvv-fr.mo 
+           DESTINATION ${RESOURCES_INTALL_PATH}/languages/fr RENAME vvv.mo )
+  install( FILES ${PROJECT_SOURCE_DIR}/translations/vvv-hr.mo 
+           DESTINATION ${RESOURCES_INTALL_PATH}/languages/hr RENAME vvv.mo )
+  install( FILES ${PROJECT_SOURCE_DIR}/translations/vvv-it.mo 
+           DESTINATION ${RESOURCES_INTALL_PATH}/languages/it RENAME vvv.mo )
+  install( FILES ${PROJECT_SOURCE_DIR}/translations/vvv-nl.mo 
+           DESTINATION ${RESOURCES_INTALL_PATH}/languages/nl RENAME vvv.mo )
+  install( FILES ${PROJECT_SOURCE_DIR}/translations/vvv-pl.mo 
+           DESTINATION ${RESOURCES_INTALL_PATH}/languages/pl RENAME vvv.mo )
+  install( FILES ${PROJECT_SOURCE_DIR}/translations/vvv-pt.mo 
+           DESTINATION ${RESOURCES_INTALL_PATH}/languages/pt RENAME vvv.mo )
+  install( FILES ${PROJECT_SOURCE_DIR}/translations/vvv-ro.mo 
+           DESTINATION ${RESOURCES_INTALL_PATH}/languages/ro RENAME vvv.mo )
+  install( FILES ${PROJECT_SOURCE_DIR}/translations/vvv-ru.mo 
+           DESTINATION ${RESOURCES_INTALL_PATH}/languages/ru RENAME vvv.mo )
+  install( FILES ${PROJECT_SOURCE_DIR}/translations/vvv-sr.mo 
+           DESTINATION ${RESOURCES_INTALL_PATH}/languages/sr RENAME vvv.mo )
+  install( FILES ${PROJECT_SOURCE_DIR}/translations/vvv-sr@latin.mo 
+           DESTINATION ${RESOURCES_INTALL_PATH}/languages/sr@latin RENAME vvv.mo )
+  install( FILES ${PROJECT_SOURCE_DIR}/translations/vvv-uk.mo 
+           DESTINATION ${RESOURCES_INTALL_PATH}/languages/uk RENAME vvv.mo )
+# ... wxWidgets files
+  install( FILES ${PROJECT_SOURCE_DIR}/translations/cs/wxstd.mo DESTINATION ${RESOURCES_INTALL_PATH}/languages/cs )
+  install( FILES ${PROJECT_SOURCE_DIR}/translations/de/wxstd.mo DESTINATION ${RESOURCES_INTALL_PATH}/languages/de )
+  install( FILES ${PROJECT_SOURCE_DIR}/translations/es/wxstd.mo DESTINATION ${RESOURCES_INTALL_PATH}/languages/es )
+  install( FILES ${PROJECT_SOURCE_DIR}/translations/fr/wxstd.mo DESTINATION ${RESOURCES_INTALL_PATH}/languages/fr )
+  install( FILES ${PROJECT_SOURCE_DIR}/translations/it/wxstd.mo DESTINATION ${RESOURCES_INTALL_PATH}/languages/it )
+  install( FILES ${PROJECT_SOURCE_DIR}/translations/nl/wxstd.mo DESTINATION ${RESOURCES_INTALL_PATH}/languages/nl )
+  install( FILES ${PROJECT_SOURCE_DIR}/translations/pl/wxstd.mo DESTINATION ${RESOURCES_INTALL_PATH}/languages/pl )
+  install( FILES ${PROJECT_SOURCE_DIR}/translations/pt/wxstd.mo DESTINATION ${RESOURCES_INTALL_PATH}/languages/pt )
+  install( FILES ${PROJECT_SOURCE_DIR}/translations/ru/wxstd.mo DESTINATION ${RESOURCES_INTALL_PATH}/languages/ru )
+  install( FILES ${PROJECT_SOURCE_DIR}/translations/uk/wxstd.mo DESTINATION ${RESOURCES_INTALL_PATH}/languages/uk )
+
+#  install( DIRECTORY ${PROJECT_SOURCE_DIR}/translations/ DESTINATION ${RESOURCES_INTALL_PATH}/languages 
+#           FILES_MATCHING PATTERN "*.mo"
+#           PATTERN ".svn" EXCLUDE )
 
   # copy other files to the installation path
   install( FILES ${PROJECT_SOURCE_DIR}/vvv-struct-update.fdb 

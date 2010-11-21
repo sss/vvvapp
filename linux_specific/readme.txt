@@ -29,9 +29,8 @@ http://vvvapp.sourceforge.net/
 Installation:
 -------------
 
-VVV does not need to be installed. Everything it needs is contained in is folder.
-Just expand the program in a suitable folder and execute "vvv-start.sh".
-NOTE: do not start directly the vvv executable file because it would not work.
+VVV does not need to be installed. Everything it needs is contained in its folder.
+Just expand the archive in a suitable folder and execute "vvv".
 
 The help file contains some instructions.
 
