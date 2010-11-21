@@ -53,6 +53,7 @@
 #include "wx/listctrl.h"
 ////@end includes
 
+#include <wx/radiobox.h>
 #include "wx/docview.h"
 #include <wx/arrstr.h>
 

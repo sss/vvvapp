@@ -2766,7 +2766,7 @@ void CMainFrame::OnButtonSearchClick( wxCommandEvent& WXUNUSED(event) ) {
 	if( !ext.IsEmpty() ) {
 		CDecodeSearchString ds( ext );
 		if( ds.DecodeString() ) {
-			whExt = ds.CreateWhereClause( wxT("FILE_EXT"), FilenameSearchKind::fskIsEqual );
+			whExt = ds.CreateWhereClause( wxT("FILE_EXT"), fskIsEqual );
 			whExt = wxT( "(" ) + whExt + wxT( ")" );
 		}
 		else {
