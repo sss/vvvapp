@@ -138,12 +138,16 @@ if( UNIX )
   else( NOT ID3_LIB )
     message( STATUS "Id3lib: " ${ID3_LIB} )
   endif( NOT ID3_LIB )
-  if( APPLE )
-    # since id3lib is not installed...
+
+  # this code locates the id3lib include dir
+  # it is needed if the library is not installed, if it is installed the include files are in a standard location and they can be found
+  # turn the following option ON to be able to define the include path
+  option( VVV_DEFINE_ID3_INCLUDE "Manually define the id3lib include path (if id3lib is not installed)" OFF )
+  if( VVV_DEFINE_ID3_INCLUDE )
     find_path( ID3_INCLUDE id3.h PATHS ${PROJECT_SOURCE_DIR}/../id3lib-3.8.3/include )
     message( STATUS "Id3 include path: " ${ID3_INCLUDE} )
     include_directories( ${ID3_INCLUDE} )
-  endif( APPLE )
+  endif( VVV_DEFINE_ID3_INCLUDE )
 
 
 #  target_link_libraries( vvv -lfbembed )
