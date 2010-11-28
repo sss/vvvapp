@@ -1,0 +1,336 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Language" content="en-us" />
+<title>How to build</title>
+<meta name="keywords" content="Virtual Volumes View, Virtual, Virtual Volumes, Virtual View, Virtual, network usage, network,  usage, command line switches," />  
+<meta name="description" content="VVV uses a relational database to store its data."/>
+<link href="styles.css" rel="stylesheet" type="text/css" />
+<style type="text/css">table, td {background-color:transparent;border:none;border-width:0;}</style>
+<!--Fixed background starts-->
+<style type="text/css">body {background-color:#000000; background-image:url(images/back_all.jpg); background-attachment:fixed;}</style>
+<!--Fixed background ends-->
+</head><body>
+<div id="main">
+<div id="header">
+<div id="buttons">
+<ul>
+<!--Nave bar starts-->
+<!--<li class="first"><a href="#" title="">Home</a></li>
+  <li><a href="#" title="">Blog</a></li>
+  <li><a href="#" title="">Gallery</a></li>
+  <li><a href="#" title="">About</a></li>
+  <li><a href="#" title="">Contact</a></li>-->
+<!--Nave bars ends-->
+</ul>
+</div>
+<div id="logo">
+<div style="text-align: center;">
+<h1 style="color: white;"><big>V V V - How to build</big></h1>
+</div>
+</div>
+</div>
+<br><br><!--Google Ads Starts-->
+<!-- AdSense 01 start -->
+<p align="center">
+<script type="text/javascript"><!--
+google_ad_client = "pub-7312550097740663";
+/* 728x90, PTViewer */
+google_ad_slot = "5025979953";
+google_ad_width = 728;
+google_ad_height = 90;
+//-->
+</script>
+<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script><!-- AdSense 01 end -->
+<!--Google Ads Ends-->
+<!-- content begins --></p>
+<div id="content">
+<div id="right">
+<div id="sidebar">
+<ul>
+  <li>
+    <h2>Links<br />
+    </h2>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+	  <li><a href="download.html">Download</a></li>
+	  <li><a href="screenshots.html">Screenshots</a></li>
+      <li><a href="network_usage.html">Network
+usage</a></li>
+      <li><a href="versions.html">Version
+history</a></li>
+      <li><a href="how_to_translate_vvv.html">How To Translate VVV</a></li>
+      <li><a href="command_line_switches.html">Command
+line switches</a></li>
+      <li><a href="how_to_compile_vvv.html">How
+to build VVV</a></li>
+    </ul>
+  </li>
+  <li>
+    <h2>News<br />
+    </h2>
+    <ul>
+          <li>
+            <p>
+			<a href="http://portableapps.com/apps/utilities/virtual_volumes_view_portable">VVV Portable	Edition released</a></p>
+          </li>
+          <li>
+            <p>
+			<a href="versions.html">VVV Version 1.0 released</a></p>
+          </li>
+    </ul>
+  </li>
+</ul>
+</div>
+<!-- end #sidebar --> </div>
+<div id="left">
+Here are instructions for building VVV in Windows, Linux and OS X. Feel free to contact me if you have problems.<br />
+<h2>Windows</h2>
+	<p>&nbsp;</p>
+<p>First you need to install the wxWidgets library. You can download the 
+	source code from <a href="http://www.wxwidgets.org">www.wxwidgets.org</a>. 
+	VVV has been developed using version 2.8.x.<br />
+	Download the Windows installer and install the library source code. The &quot;docs\msw\install.txt&quot; 
+	file contains instructions about compiling the library. It is probably 
+	better to compile wxWidgets as a static library to avoid runtime 
+	dependencies.</p>
+<p>&nbsp;</p>
+<p>Unpack the VVV zip source file: you will have a root folder that contains all the 
+downloaded files.</p>
+<p>&nbsp;</p>
+<p>Now it is time to create the build files. VVV uses 
+<a href="http://www.cmake.org/">CMake</a> so you need to 
+download it.</p>
+<p>Create a folder where you will build the program: it can be inside the source 
+code root folder or in another location.</p>
+<p>Run CMake (cmake-gui) to show the user interface. Fill the first two text 
+boxes:</p>
+<p>&nbsp;</p>
+<ul>
+	<li>In <strong>Where is the source code:</strong> select the root folder of 
+	the downloaded source code.</li>
+	<li>In <strong>Where to build the binaries:</strong> select the folder that 
+	you created to build the program.</li>
+</ul>
+<p>&nbsp;</p>
+<p>Press the <strong>Configure</strong> button and chose your compiler from the 
+list. CMake will work for some time, then you will see a list of name/value 
+pairs colored in red. You need to set some of those values:</p>
+<p>&nbsp;</p>
+<ul>
+	<li>Set <strong>wxWidgets_CONFIGURATION</strong> to <strong>mswu</strong></li>
+	<li>Set <strong>wsWidgets_ROOT_DIR</strong> to the path of your wxWidgets 
+	library. For example <strong>E:/wxWidgets-2.8.10</strong></li>
+	<li>Set wxWidgets_<strong>LIB_DIR</strong> to the path of the libraries. For 
+	example <strong>E:/wxWidgets-2.8.10/lib/vc_lib</strong></li>
+	<li>Select the <strong>wxWidgets_USE_REL_AND_DBG</strong> checkbox so you 
+	will create both a debug and release configuration.</li>
+	<li>Do not care about <strong>wxWidgets_wxrc_EXECUTABLE</strong>: VVV does 
+	not use the setting.</li>
+</ul>
+<p>&nbsp;</p>
+<p>Click <strong>Configure</strong> again: you should not see red lines any more 
+(if you see red lines correct the wrong values and configure again).</p>
+<p>Press the <strong>Generate</strong> button.</p>
+<p>CMake has created the build files (for example a Visual Studio solution) in 
+the build folder. You can now open that files with your development system and 
+build the program.</p>
+<p>&nbsp;</p>
+<p>Now that you have built VVV, you need to run it. VVV uses the Firebird 
+relational database (<a href="http://www.firebirdsql.org">www.firebirdsql.org</a>) 
+to handle catalogs. You can install the full server or use the embedded version.</p>
+<p>&nbsp;</p>
+<ul>
+	<li>If you are going to develop VVV it is simpler to install the full 
+	server. Choose the superserver (not classic) version 2.0.x. After 
+	installation (a very simple task) VVV will be able to handle catalogs.</li>
+	<li>If you prefer not to install the full server you can use the embedded 
+	version which ships with the VVV executable. The VVV setup copies vvv.exe 
+	and many other files in the installation folder. Simply copy all those files 
+	(and subfolders) to the folder where the compiler will save and execute the 
+	compiled program. This can be tricky so I recommend installing the full 
+	server.</li>
+</ul>
+<p>&nbsp;</p>
+<h2>Linux</h2>
+<p>&nbsp;</p>
+<p><strong>Build wxWidgets</strong></p>
+<p>&nbsp;</p>
+<p>First you need to install the wxWidgets library. You can download the source 
+code from <a href="http://www.wxwidgets.org">www.wxwidgets.org</a>. VVV has been 
+developed using version 2.8.x.</p>
+You need to download the wxGTK source code and compile it. Expand the archive in 
+a folder and read&nbsp; <b>install-gtk.txt</b> that contains compilation 
+instructions.<br />
+<br />
+Create two folders, one for a debug build and one for a release one. In each 
+folder you will execute the configure script with different parameters.<br />
+<p>
+Use <b>--enable-debug</b> for the debug build.</p>
+<p>
+For the release build I use <b>
+--disable-shared</b> to statically link wxWidgets and reduce dependencies. 
+</p>
+<p>
+&nbsp;</p>
+<p>
+Configure will run and print a summary of the configuration: depending on your 
+system it will use wxWidgets&#39; version of many libraries or the one that is 
+already installed. Using wxWidgets&#39; own version of the library will reduce 
+dependencies too. </p>
+<p>
+For example you can run configure with <b>--with-expat=builtin</b> 
+to force configure to use the wxWidgets&#39; version of expat instead of the one 
+already installed in your computer. Similar switches are available for other 
+libraries too.</p>
+<p>
+&nbsp;</p>
+<p>
+After building the library with make you do not need to install it, unless you 
+prefer to do it.</p>
+<p>
+&nbsp;</p>
+<p>
+<strong>Build id3lib</strong></p>
+<p>
+&nbsp;</p>
+<p>
+VVV uses the id3lib library to read metadata tags from mp3 files. The source 
+code contains a folder with the source code, but that folder is only used by the 
+Windows build: in Linux and OS X it is ignored.</p>
+<p>
+You can download a copy of the id3lib source code from the VVV Sourceforge files 
+page. It is based on the official one but it contains some patches. After 
+downloading it you can build it following the instructions: you don&#39;t need to 
+install it if you only want to build VVV.</p>
+<p>&nbsp;</p>
+<p><strong>Get Firebird</strong></p>
+<p>&nbsp;</p>
+<p>VVV uses the <a href="http://www.firebirdsql.org/">Firebird</a> database to 
+handle catalogs so it must be linked with the libfbembed.so file. VVV uses 
+Firebird as an embedded database manager, so there is no need to install it.
+<a href="http://accountingplusplus.blogspot.com/2010/06/firebird-embedded-linux.html">
+More info here</a>.</p>
+<p>In order to build VVV you need to prepare a folder containing the Firebird 
+files as described in the link above. Just exclude &quot;vvv&quot; that will be added at a 
+second time and vvv-start.sh that is not needed any more.</p>
+<p>&nbsp;</p>
+<p>You can obtain the Firebird files in different ways:</p>
+<p>Use the files contained in the VVV precompiled binary.</p>
+<p>Download the Firebird package for your Linux distribution. I build VVV with 
+Firebird 2.0.x. Later versions should work but I have not tested them.</p>
+<p>Build Firebird from sources, it is not difficult. Download version 2.0.x 
+source code and follow
+<a href="http://accountingplusplus.blogspot.com/2010/11/compiling-firebird-in-linux.html">
+these instructions</a>.</p>
+<p>&nbsp;</p>
+<p>If you only want to develop VVV and you do not want to distribute the 
+compiled program you can simply install the server using the available package. 
+Then link with the installed libfbembed.so file. You can avoid specifying the 
+folder that contains the Firebird runtime (more on this below) since it is only 
+used to create the binary distribution.</p>
+<p>&nbsp;</p>
+<strong>Get CMake</strong><p>&nbsp;</p>
+<p>VVV uses <a href="http://www.cmake.org/">CMake</a> to create the build files, 
+so you need to install it. It is usually available as a package.</p>
+<p>You will need al least version 2.6.</p>
+<p>&nbsp;</p>
+<p><strong>Build VVV</strong></p>
+<p>&nbsp;</p>
+<p>Now it is finally possible to build VVV. Create a folder that will contain 
+the build files for the release version. I usually create a &quot;build_release&quot; 
+folder into the VVV root source code folder, but you can create it everywhere. I 
+you want you can also create another folder for build files of a debug version.</p>
+<p>&nbsp;</p>
+<p>Now start the CMake GUI: you will see the user interface. Fill the first two 
+text boxes:</p>
+<p>&nbsp;</p>
+<ul>
+	<li>In <strong>Where is the source code:</strong> select the root folder of 
+	the downloaded source code.</li>
+	<li>In <strong>Where to build the binaries:</strong> select the folder that 
+	you created to build the program.</li>
+</ul>
+<p>&nbsp;</p>
+<p>Press the <strong>Configure</strong> button and chose your build environment from the 
+list. You can chose &quot;makefiles&quot; if you only want to build the program. CMake will work for some time, then you will 
+get an error message and you will see a list of name/value pairs colored in red. 
+The error means that CMake has not been able to find some of the needed 
+software, so you need to set it manually in the list. After setting a value 
+press <strong>Configure</strong> again: you will probably get another error, and 
+you will need to set a new value by hand and to repeat the procedure until you 
+do not get errors any more.</p>
+<p>&nbsp;</p>
+<p>Here is a list of the variables that must be set:</p>
+<ul>
+	<li>CMAKE_BUILD_TYPE: set to <strong>Debug</strong> or <strong>Release</strong>.</li>
+	<li>wxWidgets_CONFIG_EXECUTABLE: it is the path of the wx-config file that 
+	matches the VVV build configuration. For example /media/disco2/wxGTK-2.8.10/buildgtkud/wx-config.</li>
+	<li>FB_LIB: it is the path to libfbembed.so, and it will be used by the 
+	linker. For example /media/disco2/firebird-2.0.6-embedded-runtime/firebird/libfbembed.so.</li>
+	<li>FB_EMBEDDED_PATH: it is the path to the folder that contains the runtime 
+	Firebird files as described above. For example 
+	/media/disco2/firebird-2.0.6-embedded-runtime/.</li>
+	<li>ID3_LIB: it is the path to the id3lib library, and it will be used by 
+	the linker. For example /media/disco2/id3lib-3.8.3/lib/libid3.a.</li>
+	<li>VVV_DEFINE_ID3_INCLUDE: it is a boolean variable. Check it if your copy 
+	of id3lib has not been installed because CMake needs to locate the library 
+	header files. If the library is installed the include files are stored in a 
+	standard location and the compiler can find it without problems.</li>
+	<li>ID3_INCLUDE: you will see this variable only if VVV_DEFINE_ID3_INCLUDE 
+	is checked. It is the path to the id3lib include files, for example 
+	/media/disco2/id3lib-3.8.3/include/.</li>
+	<li>CMAKE_INSTALL_PREFIX: it is the path to a folder that will contain the 
+	installed files, ready to be executed.</li>
+</ul>
+<p>&nbsp;</p>
+<p>If some libraries are installed CMake might be able to find some of those 
+paths by itself, otherwise you will have to set them by hand.</p>
+<p>&nbsp;</p>
+<p>Once you do not get errors any more in the configuration stage press the
+<strong>Generate</strong> button: CMake will create the needed build files in 
+the build folder.</p>
+<p>You can use those files to build VVV with the tools that you selected.</p>
+<p>&nbsp;</p>
+<p>Once you have successfully built VVV you can build the <strong>INSTALL</strong> 
+target to create the binary distribution in the install folder, ready to be 
+executed or distributed.</p>
+<p>&nbsp;</p>
+<h2>OS X</h2>
+<p>&nbsp;</p>
+<p>Building VVV under OS X is very similar to building it under Linux, so you 
+can read the Linux section for reference. Below you will find the differences 
+from the Linux procedure.</p>
+<p>&nbsp;</p>
+<p>There is one more CMake variable: CMAKE_OSX_ARCHITECTURES. You can set it to
+<strong>i386</strong>.</p>
+<p>&nbsp;</p>
+<p>If you want to build the binary distribution go to grouped view and check the 
+CPACK_BINARY_DRAGNDROP variable. Uncheck the other CPACK variables.</p>
+<p>&nbsp;</p>
+<p>After generating the build files you can use them to build the VVV 
+executable.</p>
+<p>&nbsp;</p>
+<p>Once you have successfully built VVV you can build the <strong>INSTALL</strong> 
+target to create the binary distribution in the install folder, ready to be 
+executed.</p>
+<p>If you build the PACKAGE target you will create a .dmg file ready for 
+distribution. It will be located in the _CPack_Packages folder into the build 
+folder.</p>
+</div>
+</div>
+<!-- content ends -->
+<!-- footer begins -->
+<div id="metamorph2">
+<div id="footer">
+<p>Designed by <a href="http://www.metamorphozis.com/" title="Flash Templates">Metamorphosis Design</a></p>
+<br />
+<style type="text/css">.ct {font:6pt;text-align:center;margin:0px}.ct img{border:0} .ct a,.ct a:visited{color:silver;text-decoration:none}.ct a:hover{color:gray;text-decoration:underline}
+</style></div>
+</div>
+<!-- footer ends -->
+</div>
+
+</body></html>
