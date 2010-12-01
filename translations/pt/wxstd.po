@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: wxstd.pt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2008-04-24 09:56+0200\n"
-"PO-Revision-Date: 2009-03-05 21:31+0100\n"
+"PO-Revision-Date: 2010-12-01 21:55+0100\n"
 "Last-Translator: Fulvio Senore <mailing@fsoft.it>\n"
 "Language-Team: Portuguese <opensuse-pt@opensuse.org>\n"
 "MIME-Version: 1.0\n"
@@ -471,9 +471,8 @@ msgid "&Open..."
 msgstr "&Abrir..."
 
 #: ../src/richtext/richtextindentspage.cpp:241
-#, fuzzy
 msgid "&Outline level:"
-msgstr "&Lista de nível:"
+msgstr "&Nível de destaque:"
 
 #: ../src/common/stockitem.cpp:141
 #: ../src/richtext/richtextctrl.cpp:2583
@@ -5428,9 +5427,8 @@ msgstr "O número de item da lista."
 
 #: ../src/richtext/richtextindentspage.cpp:257
 #: ../src/richtext/richtextindentspage.cpp:259
-#, fuzzy
 msgid "The outline level."
-msgstr "A antevisão do estilo."
+msgstr "O nível de destaque."
 
 #: ../src/common/filename.cpp:1254
 #, c-format
@@ -5593,7 +5591,7 @@ msgstr "Traduções por "
 
 #: ../src/generic/aboutdlgg.cpp:154
 msgid "Translators"
-msgstr "Traductores"
+msgstr "Tradutores"
 
 #: ../src/common/fs_mem.cpp:230
 #, c-format

@@ -129,7 +129,7 @@ msgstr ""
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/chooselang.cpp:77
 #, c-format
-msgid "Uknown locale code '%s' in registry."
+msgid "Unknown locale code '%s' in registry."
 msgstr ""
 
 #: E:\C_Prg\vvv

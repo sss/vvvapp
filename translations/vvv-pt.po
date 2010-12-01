@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: VVV 0.9\n"
+"Project-Id-Version: VVV 1.01\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-11-20 23:18+0100\n"
 "PO-Revision-Date: \n"
@@ -37,7 +37,7 @@ msgstr "Nome do volume"
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/catalog_volume.cpp:196
 msgid "Get volume name"
-msgstr "Detectar nome do volume"
+msgstr "Obter nome do volume"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/catalog_volume.cpp:204
@@ -99,27 +99,27 @@ msgstr "Seleccione o volume a catalogar"
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/catalog_volume_functions.cpp:328
 msgid "Number of added files: "
-msgstr "Número de ficheiros adicionados"
+msgstr "Número de ficheiros adicionados: "
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/catalog_volume_functions.cpp:329
 msgid "Number of updated files: "
-msgstr "Número de ficheiros actualizados"
+msgstr "Número de ficheiros actualizados: "
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/catalog_volume_functions.cpp:330
 msgid "Number of deleted files (not counting those in deleted folders): "
-msgstr "Número de ficheiros apagados (não contando aqueles nas pastas apagadas)"
+msgstr "Número de ficheiros apagados (não contando aqueles nas pastas apagadas): "
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/catalog_volume_functions.cpp:331
 msgid "Number of deleted folders: "
-msgstr "Número de pastas apagadas"
+msgstr "Número de pastas apagadas: "
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/catalog_volume_functions.cpp:332
 msgid "Number of unchanged files: "
-msgstr "Número de ficheiros inalterados"
+msgstr "Número de ficheiros inalterados: "
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/catalog_volume_functions.cpp:333
@@ -129,13 +129,13 @@ msgstr "Deseja mesmo actualizar o volume?"
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/chooselang.cpp:77
 #, c-format
-msgid "Uknown locale code '%s' in registry."
-msgstr ""
+msgid "Unknown locale code '%s' in registry."
+msgstr "Código local '%s' desconhecido no registo."
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/chooselang.cpp:94
 msgid "(Use default language)"
-msgstr ""
+msgstr "(Usar idioma padrão)"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/chooselang.cpp:96
@@ -157,9 +157,8 @@ msgstr "Holandês"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/chooselang.cpp:99
-#, fuzzy
 msgid "English"
-msgstr "Polaco"
+msgstr "Inglês"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/chooselang.cpp:100
@@ -194,25 +193,24 @@ msgstr "Português"
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/chooselang.cpp:105
 #: view)\src/mainframe.cpp:2367
-#, fuzzy
 msgid "Romanian"
-msgstr "Croata"
+msgstr "Romeno"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/chooselang.cpp:106
 #: view)\src/mainframe.cpp:2363
 msgid "Russian"
-msgstr ""
+msgstr "Russo"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/chooselang.cpp:107
 msgid "Serbian (cyrillic)"
-msgstr ""
+msgstr "Sérvio (cirílico)"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/chooselang.cpp:108
 msgid "Serbian (latin)"
-msgstr ""
+msgstr "Sérvio (latim)"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/chooselang.cpp:109
@@ -224,22 +222,22 @@ msgstr "Espanhol"
 #: (virtual volumes view)\src/chooselang.cpp:110
 #: view)\src/mainframe.cpp:2363
 msgid "Ukrainian"
-msgstr ""
+msgstr "Ucraniano"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/chooselang.cpp:119
 msgid "Select your preferred language"
-msgstr ""
+msgstr "Seleccione seu idioma preferido"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/chooselang.cpp:120
 msgid "Language selection"
-msgstr ""
+msgstr "Selecção de idioma"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/chooselang.cpp:134
 msgid "You must restart the program for this change to take effect."
-msgstr ""
+msgstr "Tem de reiniciar o programa para que esta alteração tenha efeito."
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/choose_virtual_folder.cpp:157
@@ -427,37 +425,37 @@ msgstr ""
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:798
 msgid "&New..."
-msgstr "&Novo"
+msgstr "&Novo..."
 
 # Part of the File menu
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:799
 msgid "&Open..."
-msgstr "&Abrir"
+msgstr "&Abrir..."
 
 # Part of the File menu
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:800
 msgid "&Export..."
-msgstr "&Exportar"
+msgstr "&Exportar..."
 
 # Part of the File menu
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:802
 msgid "&Backup..."
-msgstr "&Cópia de Segurança"
+msgstr "&Cópia de Segurança..."
 
 # Part of the File menu
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:803
 msgid "&Restore..."
-msgstr "&Restaurar"
+msgstr "&Restaurar..."
 
 # Part of the File menu
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:805
 msgid "E&xit"
-msgstr "&Saír"
+msgstr "&Sair"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:806
@@ -492,7 +490,7 @@ msgstr "&Descrição do Objecto..."
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:815
 msgid "&New Virtual Root Folder..."
-msgstr "&Nova Pasta Virtual de Raíz"
+msgstr "&Nova Pasta Virtual de Raíz..."
 
 # Part of the Edit menu
 #: E:\C_Prg\vvv
@@ -549,9 +547,8 @@ msgstr "&Vista de Procura"
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:831
 #: view)\src/mainframe.cpp:3150
-#, fuzzy
 msgid "Show in physical view"
-msgstr "Mostrar a vista física"
+msgstr "Mostrar na vista física"
 
 # Part of the View menu
 #: E:\C_Prg\vvv
@@ -564,14 +561,14 @@ msgstr "Ir &Um Nível Acima"
 #: view)\src/mainframe.cpp:2561
 #: view)\src/mainframe.cpp:2598
 msgid "Expand"
-msgstr ""
+msgstr "Expandir"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:834
 #: view)\src/mainframe.cpp:2562
 #: view)\src/mainframe.cpp:2599
 msgid "Collapse"
-msgstr ""
+msgstr "Recolher"
 
 # Part of the View menu
 #: E:\C_Prg\vvv
@@ -598,7 +595,7 @@ msgstr "&Ferramentas"
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:849
 msgid "Help &Contents"
-msgstr "&Conteúdo da Ajuda"
+msgstr "&Conteúdos da Ajuda"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:853
@@ -949,9 +946,8 @@ msgstr "VVV (Virtual Volumes View): um programa para catalogar dispositivos amov
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:2352
-#, fuzzy
 msgid "Copyright (C) 2007-2010 The VVV Team"
-msgstr "Copyright (C) 2007-2009 A equipa VVV"
+msgstr "Copyright (C) 2007-2010 A equipa VVV"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:2353
@@ -979,9 +975,8 @@ msgstr "Isto é software de código aberto, distribuído sob GNU GENERAL PUBLIC 
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:2365
-#, fuzzy
 msgid "Serbian"
-msgstr "Alemão"
+msgstr "Sérvio"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:2384
@@ -991,7 +986,7 @@ msgstr "Novo catálogo"
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:2417
 msgid "Multiple items"
-msgstr "Multiplos itens"
+msgstr "Múltiplos itens"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:2426
@@ -1051,20 +1046,18 @@ msgstr "Insira alguns caracteres para procura"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:2762
-#, fuzzy
 msgid "Incorrect file name search data"
-msgstr "Insira alguns caracteres para procura"
+msgstr "Dados incorrectos da pesquisa do nome de ficheiro"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:2773
-#, fuzzy
 msgid "Incorrect extension search data"
-msgstr "Insira alguns caracteres para procura"
+msgstr "Dados incorrectos da pesquisa da extensão"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:2785
 msgid "Incorrect description search data"
-msgstr ""
+msgstr "Dados incorrectos da pesquisa da descrição"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:2890
@@ -1134,7 +1127,7 @@ msgstr "Insira o novo nome do volume"
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:3351
 msgid "Rename volume"
-msgstr "Mudar o nome ao volume"
+msgstr "Mudar o nome do volume"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:3364
@@ -1144,7 +1137,7 @@ msgstr "O novo nome do volume já está presente na base de dados"
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:3385
 msgid "Rename virtual folder"
-msgstr "Mudar o nome à pasta virtual"
+msgstr "Mudar o nome da pasta virtual"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:3503
@@ -1334,7 +1327,7 @@ msgstr "Reproduzir som para tarefas com tempo superior a (segundos):"
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/settings.cpp:193
 msgid "Change language"
-msgstr ""
+msgstr "Alterar idioma"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/settings.cpp:196
@@ -1407,12 +1400,12 @@ msgstr "Tem que inserir um nome de servidor ou endereço"
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/settings.cpp:389
 msgid "You must enter a username"
-msgstr "Tem que inserir um nome de Utilizador"
+msgstr "Tem que inserir um nome de utilizador"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/settings.cpp:393
 msgid "You must enter a password"
-msgstr "Tem que inserir uma Palavra-chave"
+msgstr "Tem que inserir uma palavra-chave"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/settings.cpp:456
@@ -1456,7 +1449,7 @@ msgid ""
 "Unable to connect to the server\n"
 "\n"
 msgstr ""
-"Não foi possível ligar ao servidor\n"
+"Não é possível ligar ao servidor\n"
 "\n"
 
 #: E:\C_Prg\vvv
@@ -1468,24 +1461,23 @@ msgid ""
 "An unexpected error has occurred. Here is a description of the error:\n"
 "\n"
 msgstr ""
-"Ocurreu um erro inesperado. Descrição do erro:\n"
+"Ocurreu um erro inesperado. Aqui está uma descrição do erro:\n"
 "\n"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/vvv.cpp:314
 #: view)\src/vvv.cpp:370
 msgid "An unexpected error has occurred. This application will be terminated"
-msgstr "Ocurreu um erro inesperado. A aplicação vai ser terminada"
+msgstr "Ocurreu um erro inesperado. Esta aplicação vai ser terminada"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/vvv.cpp:382
 #: view)\src/vvv.cpp:466
-#, fuzzy
 msgid ""
 "An unexpected error has happened. Here is a description of the error:\n"
 "\n"
 msgstr ""
-"Ocurreu um erro inesperado. Descrição do erro:\n"
+"Ocurreu um erro inesperado. Aqui está uma descrição do erro:\n"
 "\n"
 
 #: E:\C_Prg\vvv

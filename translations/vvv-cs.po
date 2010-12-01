@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: VVV 0.9\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-11-20 23:16+0100\n"
-"PO-Revision-Date: 2010-11-20 23:27+0100\n"
+"PO-Revision-Date: 2010-12-01 22:19+0100\n"
 "Last-Translator: Fulvio Senore <mailing@fsoft.it>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -128,13 +128,13 @@ msgstr "Opravdu chcete svazek aktualizovat?"
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/chooselang.cpp:77
 #, c-format
-msgid "Uknown locale code '%s' in registry."
-msgstr ""
+msgid "Unknown locale code '%s' in registry."
+msgstr "Neznámý kód jazyka '%s' v registru."
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/chooselang.cpp:94
 msgid "(Use default language)"
-msgstr ""
+msgstr "(Použij výchozí jazyk)"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/chooselang.cpp:96
@@ -156,9 +156,8 @@ msgstr "Holandsky"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/chooselang.cpp:99
-#, fuzzy
 msgid "English"
-msgstr "Polsky"
+msgstr "Anglicky"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/chooselang.cpp:100
@@ -193,25 +192,24 @@ msgstr "Portugalsky"
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/chooselang.cpp:105
 #: view)\src/mainframe.cpp:2367
-#, fuzzy
 msgid "Romanian"
-msgstr "Chorvatsky"
+msgstr "Rumunsky"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/chooselang.cpp:106
 #: view)\src/mainframe.cpp:2363
 msgid "Russian"
-msgstr ""
+msgstr "Rusky"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/chooselang.cpp:107
 msgid "Serbian (cyrillic)"
-msgstr ""
+msgstr "Srbsky (cyrilice)"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/chooselang.cpp:108
 msgid "Serbian (latin)"
-msgstr ""
+msgstr "Srbsky (latinka)"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/chooselang.cpp:109
@@ -223,22 +221,22 @@ msgstr "Španělsky"
 #: (virtual volumes view)\src/chooselang.cpp:110
 #: view)\src/mainframe.cpp:2363
 msgid "Ukrainian"
-msgstr ""
+msgstr "Ukrajinsky"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/chooselang.cpp:119
 msgid "Select your preferred language"
-msgstr ""
+msgstr "Vyberte preferovaný jazyk"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/chooselang.cpp:120
 msgid "Language selection"
-msgstr ""
+msgstr "Výběr jazyka"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/chooselang.cpp:134
 msgid "You must restart the program for this change to take effect."
-msgstr ""
+msgstr "Aby se vaše změna projevila, musíte program restartovat."
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/choose_virtual_folder.cpp:157
@@ -548,9 +546,8 @@ msgstr "V&yhledávání"
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:831
 #: view)\src/mainframe.cpp:3150
-#, fuzzy
 msgid "Show in physical view"
-msgstr "Přepni na fyzické zobrazení"
+msgstr "Zobraz ve fyzickém zobrazení"
 
 # Part of the View menu
 #: E:\C_Prg\vvv
@@ -563,14 +560,14 @@ msgstr "&Jdi o úroveň výše"
 #: view)\src/mainframe.cpp:2561
 #: view)\src/mainframe.cpp:2598
 msgid "Expand"
-msgstr ""
+msgstr "Rozvinout"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:834
 #: view)\src/mainframe.cpp:2562
 #: view)\src/mainframe.cpp:2599
 msgid "Collapse"
-msgstr ""
+msgstr "Svinout"
 
 # Part of the View menu
 #: E:\C_Prg\vvv
@@ -948,9 +945,8 @@ msgstr "VVV (Virtual Volumes View): program ke katalogizaci výměnných médií
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:2352
-#, fuzzy
 msgid "Copyright (C) 2007-2010 The VVV Team"
-msgstr "Copyright (C) 2007-2009 VVV tým"
+msgstr "Copyright (C) 2007-2010 VVV tým"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:2353
@@ -978,9 +974,8 @@ msgstr "Toto je open source software, distribuovaný pod GNU GENERAL PUBLIC LICE
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:2365
-#, fuzzy
 msgid "Serbian"
-msgstr "Německy"
+msgstr "Srbsky"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:2384
@@ -1050,20 +1045,18 @@ msgstr "Prosím vložte nějaká vyhledávací kriteria"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:2762
-#, fuzzy
 msgid "Incorrect file name search data"
-msgstr "Prosím vložte nějaká vyhledávací kriteria"
+msgstr "Nesprávné jméno souboru ve vyhledávacích kritériích"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:2773
-#, fuzzy
 msgid "Incorrect extension search data"
-msgstr "Prosím vložte nějaká vyhledávací kriteria"
+msgstr "Nesprávná přípona ve vyhledávacích kritériích"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:2785
 msgid "Incorrect description search data"
-msgstr ""
+msgstr "Nesprávný popis ve vyhledávacích kritériích"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:2890
@@ -1333,7 +1326,7 @@ msgstr "Pípnout při úlohách delších než (vteřiny):"
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/settings.cpp:193
 msgid "Change language"
-msgstr ""
+msgstr "Změna jazyka"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/settings.cpp:196
@@ -1479,12 +1472,11 @@ msgstr "Nastala neočekávaná chyba. Tato aplikace bude ukončena."
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/vvv.cpp:382
 #: view)\src/vvv.cpp:466
-#, fuzzy
 msgid ""
 "An unexpected error has happened. Here is a description of the error:\n"
 "\n"
 msgstr ""
-"Nastala neočekévaná chyba. Zde je její popis:\n"
+"Nastala neočekávaná chyba. Zde je její popis:\n"
 "\n"
 
 #: E:\C_Prg\vvv

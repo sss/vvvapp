@@ -108,7 +108,7 @@ msgstr ""
 
 #: ..\src/chooselang.cpp:77
 #, c-format
-msgid "Uknown locale code '%s' in registry."
+msgid "Unknown locale code '%s' in registry."
 msgstr ""
 
 #: ..\src/chooselang.cpp:94

@@ -130,13 +130,13 @@ msgstr "Wilt u werkelijk het volume bijwerken?"
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/chooselang.cpp:77
 #, c-format
-msgid "Uknown locale code '%s' in registry."
-msgstr ""
+msgid "Unknown locale code '%s' in registry."
+msgstr "Onbekende locale code '%s' in het register."
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/chooselang.cpp:94
 msgid "(Use default language)"
-msgstr ""
+msgstr "(Gebruik standaard taal)"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/chooselang.cpp:96
@@ -158,9 +158,8 @@ msgstr "Nederlands"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/chooselang.cpp:99
-#, fuzzy
 msgid "English"
-msgstr "Pools"
+msgstr "Engels"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/chooselang.cpp:100
@@ -195,25 +194,24 @@ msgstr "Portugees"
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/chooselang.cpp:105
 #: view)\src/mainframe.cpp:2367
-#, fuzzy
 msgid "Romanian"
-msgstr "Kroatisch"
+msgstr "Roemeens"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/chooselang.cpp:106
 #: view)\src/mainframe.cpp:2363
 msgid "Russian"
-msgstr ""
+msgstr "Russisch"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/chooselang.cpp:107
 msgid "Serbian (cyrillic)"
-msgstr ""
+msgstr "Servisch (cyrillisch)"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/chooselang.cpp:108
 msgid "Serbian (latin)"
-msgstr ""
+msgstr "Servisch (latijns)"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/chooselang.cpp:109
@@ -225,22 +223,22 @@ msgstr "Spaans"
 #: (virtual volumes view)\src/chooselang.cpp:110
 #: view)\src/mainframe.cpp:2363
 msgid "Ukrainian"
-msgstr ""
+msgstr "Oekraïens"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/chooselang.cpp:119
 msgid "Select your preferred language"
-msgstr ""
+msgstr "Selecteer de taal van uw voorkeur"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/chooselang.cpp:120
 msgid "Language selection"
-msgstr ""
+msgstr "Geselecteerde Taal"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/chooselang.cpp:134
 msgid "You must restart the program for this change to take effect."
-msgstr ""
+msgstr "U moet het programma opnieuw starten om de veranderingen door te voeren."
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/choose_virtual_folder.cpp:157
@@ -550,9 +548,8 @@ msgstr "&Zoekvenster"
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:831
 #: view)\src/mainframe.cpp:3150
-#, fuzzy
 msgid "Show in physical view"
-msgstr "Toon overzicht fysiek mappen"
+msgstr "Toon in fysieke mappen"
 
 # Part of the View menu
 #: E:\C_Prg\vvv
@@ -565,14 +562,14 @@ msgstr "Ga één niveau &Omhoog"
 #: view)\src/mainframe.cpp:2561
 #: view)\src/mainframe.cpp:2598
 msgid "Expand"
-msgstr ""
+msgstr "Uitklappen"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:834
 #: view)\src/mainframe.cpp:2562
 #: view)\src/mainframe.cpp:2599
 msgid "Collapse"
-msgstr ""
+msgstr "Inklappen"
 
 # Part of the View menu
 #: E:\C_Prg\vvv
@@ -950,9 +947,8 @@ msgstr "VVV (Virtual Volumes View): een programma om verwisselbare media zoals C
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:2352
-#, fuzzy
 msgid "Copyright (C) 2007-2010 The VVV Team"
-msgstr "Auteursrechten © 2007-2009 Het VVV Team"
+msgstr "Auteursrechten © 2007-2010 Het VVV Team"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:2353
@@ -980,9 +976,8 @@ msgstr "Dit is open-bron-software, verspreid onder de GNU ALGEMENE PUBLIEKE LICE
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:2365
-#, fuzzy
 msgid "Serbian"
-msgstr "Duits"
+msgstr "Servisch"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:2384
@@ -1052,20 +1047,18 @@ msgstr "Vul wat zoekgegevens in"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:2762
-#, fuzzy
 msgid "Incorrect file name search data"
-msgstr "Vul wat zoekgegevens in"
+msgstr "Onjuiste bestandnaam in zoekgegevens"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:2773
-#, fuzzy
 msgid "Incorrect extension search data"
-msgstr "Vul wat zoekgegevens in"
+msgstr "Onjuiste extensie in zoekgegevens"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:2785
 msgid "Incorrect description search data"
-msgstr ""
+msgstr "Onjuiste omschrijving in zoekgegevens"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:2890
@@ -1335,7 +1328,7 @@ msgstr "Pieptoon voor taken langer dan (sec):"
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/settings.cpp:193
 msgid "Change language"
-msgstr ""
+msgstr "Verander de taal"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/settings.cpp:196
@@ -1482,7 +1475,6 @@ msgstr "Er is een onverwachte fout opgetreden. Deze applicatie zal worden afgesl
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/vvv.cpp:382
 #: view)\src/vvv.cpp:466
-#, fuzzy
 msgid ""
 "An unexpected error has happened. Here is a description of the error:\n"
 "\n"

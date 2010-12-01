@@ -129,13 +129,13 @@ msgstr "Sei sicuro di voler aggiornare questo volume?"
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/chooselang.cpp:77
 #, c-format
-msgid "Uknown locale code '%s' in registry."
-msgstr ""
+msgid "Unknown locale code '%s' in registry."
+msgstr "Codice di locale sconosciuto '%s' nel registro."
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/chooselang.cpp:94
 msgid "(Use default language)"
-msgstr ""
+msgstr "(Usa il linguaggio predefinito)"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/chooselang.cpp:96
@@ -157,9 +157,8 @@ msgstr "Olandese"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/chooselang.cpp:99
-#, fuzzy
 msgid "English"
-msgstr "Polacco"
+msgstr "Inglese"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/chooselang.cpp:100
@@ -194,25 +193,24 @@ msgstr "Portoghese"
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/chooselang.cpp:105
 #: view)\src/mainframe.cpp:2367
-#, fuzzy
 msgid "Romanian"
-msgstr "Croato"
+msgstr "Rumeno"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/chooselang.cpp:106
 #: view)\src/mainframe.cpp:2363
 msgid "Russian"
-msgstr ""
+msgstr "Russo"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/chooselang.cpp:107
 msgid "Serbian (cyrillic)"
-msgstr ""
+msgstr "Serbo (cirillico)"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/chooselang.cpp:108
 msgid "Serbian (latin)"
-msgstr ""
+msgstr "Serbo (latino)"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/chooselang.cpp:109
@@ -224,22 +222,22 @@ msgstr "Spagnolo"
 #: (virtual volumes view)\src/chooselang.cpp:110
 #: view)\src/mainframe.cpp:2363
 msgid "Ukrainian"
-msgstr ""
+msgstr "Ucraino"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/chooselang.cpp:119
 msgid "Select your preferred language"
-msgstr ""
+msgstr "Selezionare il linguaggio desiderato"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/chooselang.cpp:120
 msgid "Language selection"
-msgstr ""
+msgstr "Selezione del linguaggio"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/chooselang.cpp:134
 msgid "You must restart the program for this change to take effect."
-msgstr ""
+msgstr "E' necessario riavviare il programma perché questa modifica abbia effetto."
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/choose_virtual_folder.cpp:157
@@ -532,9 +530,8 @@ msgstr "Vista di &ricerca"
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:831
 #: view)\src/mainframe.cpp:3150
-#, fuzzy
 msgid "Show in physical view"
-msgstr "Mostra la vista fisica"
+msgstr "Mostra nella vista fisica"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:832
@@ -546,14 +543,14 @@ msgstr "S&ale di un livello"
 #: view)\src/mainframe.cpp:2561
 #: view)\src/mainframe.cpp:2598
 msgid "Expand"
-msgstr ""
+msgstr "Espandi"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:834
 #: view)\src/mainframe.cpp:2562
 #: view)\src/mainframe.cpp:2599
 msgid "Collapse"
-msgstr ""
+msgstr "Comprimi"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:836
@@ -932,9 +929,8 @@ msgstr ""
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:2352
-#, fuzzy
 msgid "Copyright (C) 2007-2010 The VVV Team"
-msgstr "Copyright (C) 2007-2008 The VVV Team"
+msgstr "Copyright (C) 2007-2010 The VVV Team"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:2353
@@ -962,9 +958,8 @@ msgstr "Questo è un programma open source, distribuito secondo la licenza GNU G
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:2365
-#, fuzzy
 msgid "Serbian"
-msgstr "Tedesco"
+msgstr "Serbo"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:2384
@@ -1033,20 +1028,18 @@ msgstr "E' necessario digitare qualcosa da cercare"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:2762
-#, fuzzy
 msgid "Incorrect file name search data"
-msgstr "E' necessario digitare qualcosa da cercare"
+msgstr "Dati di ricerca non corretti per il nome del file"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:2773
-#, fuzzy
 msgid "Incorrect extension search data"
-msgstr "E' necessario digitare qualcosa da cercare"
+msgstr "Dati di ricerca non corretti per l'estensione"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:2785
 msgid "Incorrect description search data"
-msgstr ""
+msgstr "Dati di ricerca non corretti per la descrizione"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:2890
@@ -1316,7 +1309,7 @@ msgstr "Emetti un suono per operazioni più lunghe di (secondi):"
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/settings.cpp:193
 msgid "Change language"
-msgstr ""
+msgstr "Cambia lingua"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/settings.cpp:196
@@ -1462,7 +1455,6 @@ msgstr "Si è verificato un errore inaspettato. Questo programma verrà terminat
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/vvv.cpp:382
 #: view)\src/vvv.cpp:466
-#, fuzzy
 msgid ""
 "An unexpected error has happened. Here is a description of the error:\n"
 "\n"

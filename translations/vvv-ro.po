@@ -110,12 +110,12 @@ msgstr "Confirmi actualizarea volumului?"
 
 #: ..\src/chooselang.cpp:77
 #, c-format
-msgid "Uknown locale code '%s' in registry."
-msgstr ""
+msgid "Unknown locale code '%s' in registry."
+msgstr "Cod local '%s' necunoscut in registru."
 
 #: ..\src/chooselang.cpp:94
 msgid "(Use default language)"
-msgstr ""
+msgstr "(Folosește limba prestabilită)"
 
 #: ..\src/chooselang.cpp:96
 #: ..\src/mainframe.cpp:2364
@@ -133,9 +133,8 @@ msgid "Dutch"
 msgstr "Olandeză"
 
 #: ..\src/chooselang.cpp:99
-#, fuzzy
 msgid "English"
-msgstr "Poloneză"
+msgstr "Engleză"
 
 #: ..\src/chooselang.cpp:100
 #: ..\src/mainframe.cpp:2359
@@ -164,22 +163,21 @@ msgstr "Portugheză"
 
 #: ..\src/chooselang.cpp:105
 #: ..\src/mainframe.cpp:2367
-#, fuzzy
 msgid "Romanian"
-msgstr "Croată"
+msgstr "Română"
 
 #: ..\src/chooselang.cpp:106
 #: ..\src/mainframe.cpp:2363
 msgid "Russian"
-msgstr ""
+msgstr "Rusă"
 
 #: ..\src/chooselang.cpp:107
 msgid "Serbian (cyrillic)"
-msgstr ""
+msgstr "Sârbă (scriere chirilică)"
 
 #: ..\src/chooselang.cpp:108
 msgid "Serbian (latin)"
-msgstr ""
+msgstr "Sârbă (scriere latină)"
 
 #: ..\src/chooselang.cpp:109
 #: ..\src/mainframe.cpp:2358
@@ -189,19 +187,19 @@ msgstr "Spaniolă"
 #: ..\src/chooselang.cpp:110
 #: ..\src/mainframe.cpp:2363
 msgid "Ukrainian"
-msgstr ""
+msgstr "Ucraineană"
 
 #: ..\src/chooselang.cpp:119
 msgid "Select your preferred language"
-msgstr ""
+msgstr "Selectează limba preferată"
 
 #: ..\src/chooselang.cpp:120
 msgid "Language selection"
-msgstr ""
+msgstr "Selectare limbă"
 
 #: ..\src/chooselang.cpp:134
 msgid "You must restart the program for this change to take effect."
-msgstr ""
+msgstr "Pentru a efectua schimbările, este necesară restartarea programului."
 
 #: ..\src/choose_virtual_folder.cpp:157
 msgid "Please select the virtual folder that will receive the selected files and/or folders:"
@@ -459,9 +457,8 @@ msgstr "&Căutare"
 
 #: ..\src/mainframe.cpp:831
 #: ..\src/mainframe.cpp:3150
-#, fuzzy
 msgid "Show in physical view"
-msgstr "Afișează ecranul fizic"
+msgstr "Afișează în ecranul fizic"
 
 # Part of the View menu
 #: ..\src/mainframe.cpp:832
@@ -472,13 +469,13 @@ msgstr "Nivelul &superior"
 #: ..\src/mainframe.cpp:2561
 #: ..\src/mainframe.cpp:2598
 msgid "Expand"
-msgstr ""
+msgstr "Extinde"
 
 #: ..\src/mainframe.cpp:834
 #: ..\src/mainframe.cpp:2562
 #: ..\src/mainframe.cpp:2599
 msgid "Collapse"
-msgstr ""
+msgstr "Restrânge"
 
 # Part of the View menu
 #: ..\src/mainframe.cpp:836
@@ -796,9 +793,8 @@ msgid "VVV (Virtual Volumes View): a program to catalog removable devices like C
 msgstr "VVV (Virtual Volumes View): un program pentru catalogarea unităților mobile (exp. CD-uri sau DVD-uri)"
 
 #: ..\src/mainframe.cpp:2352
-#, fuzzy
 msgid "Copyright (C) 2007-2010 The VVV Team"
-msgstr "Copyright (C) 2007-2009 Echipa VVV"
+msgstr "Copyright (C) 2007-2010 Echipa VVV"
 
 #: ..\src/mainframe.cpp:2353
 msgid "Fulvio Senore: main developer"
@@ -821,9 +817,8 @@ msgid "This is open source software, distributed under the GNU GENERAL PUBLIC LI
 msgstr "Acest program este open source, distribuit confirm licenţei publice GNU"
 
 #: ..\src/mainframe.cpp:2365
-#, fuzzy
 msgid "Serbian"
-msgstr "Germană"
+msgstr "Sârbă"
 
 #: ..\src/mainframe.cpp:2384
 msgid "New catalog"
@@ -879,18 +874,16 @@ msgid "Please enter some search data"
 msgstr "Vă rog introduceți date pentru căutare"
 
 #: ..\src/mainframe.cpp:2762
-#, fuzzy
 msgid "Incorrect file name search data"
-msgstr "Vă rog introduceți date pentru căutare"
+msgstr "Numele fișierului căutat este incorect"
 
 #: ..\src/mainframe.cpp:2773
-#, fuzzy
 msgid "Incorrect extension search data"
-msgstr "Vă rog introduceți date pentru căutare"
+msgstr "Numele extensiei căutate este incorect"
 
 #: ..\src/mainframe.cpp:2785
 msgid "Incorrect description search data"
-msgstr ""
+msgstr "Descriere incorectă"
 
 #: ..\src/mainframe.cpp:2890
 msgid "The search did not find anything"
@@ -1120,7 +1113,7 @@ msgstr "Alertă sonoră pentru activități care durează mai mult de (secunde):
 
 #: ..\src/settings.cpp:193
 msgid "Change language"
-msgstr ""
+msgstr "Schimbă limba"
 
 #: ..\src/settings.cpp:196
 msgid "General"

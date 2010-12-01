@@ -1,17 +1,18 @@
+# Miloš Popović <gpopac@gmail.com>, 2009, 2010.
 #
-# Miloš Popović <gpopac@gmail.com>, 2009.
 msgid ""
 msgstr ""
 "Project-Id-Version: VVV 0.9\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-11-20 23:19+0100\n"
-"PO-Revision-Date: 2010-11-20 23:29+0100\n"
+"PO-Revision-Date: 2010-12-01 22:22+0100\n"
 "Last-Translator: Fulvio Senore <mailing@fsoft.it>\n"
-"Language-Team: Serbian <gnome@prevod.org>\n"
+"Language-Team: Serbian <gnom@prevod.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-Basepath: ..\\src\n"
+"Plural-Forms: nplurals=4; plural=n==1? 3 : n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\\n\n"
 "X-Poedit-SearchPath-0: ..\\src\n"
 
 #: ..\src/catalog_volume.cpp:174
@@ -109,12 +110,12 @@ msgstr "Da li želite da ažurirate disk?"
 
 #: ..\src/chooselang.cpp:77
 #, c-format
-msgid "Uknown locale code '%s' in registry."
-msgstr ""
+msgid "Unknown locale code '%s' in registry."
+msgstr "Nepoznata oznaka jezika „%s“ unutar registra."
 
 #: ..\src/chooselang.cpp:94
 msgid "(Use default language)"
-msgstr ""
+msgstr "(koristi podrazumevani jezik)"
 
 #: ..\src/chooselang.cpp:96
 #: ..\src/mainframe.cpp:2364
@@ -132,9 +133,8 @@ msgid "Dutch"
 msgstr "holandski"
 
 #: ..\src/chooselang.cpp:99
-#, fuzzy
 msgid "English"
-msgstr "poljski"
+msgstr "engleski"
 
 #: ..\src/chooselang.cpp:100
 #: ..\src/mainframe.cpp:2359
@@ -163,22 +163,21 @@ msgstr "portugalski"
 
 #: ..\src/chooselang.cpp:105
 #: ..\src/mainframe.cpp:2367
-#, fuzzy
 msgid "Romanian"
-msgstr "hrvatski"
+msgstr "rumunski"
 
 #: ..\src/chooselang.cpp:106
 #: ..\src/mainframe.cpp:2363
 msgid "Russian"
-msgstr ""
+msgstr "ruski"
 
 #: ..\src/chooselang.cpp:107
 msgid "Serbian (cyrillic)"
-msgstr ""
+msgstr "srpski (ćirilica)"
 
 #: ..\src/chooselang.cpp:108
 msgid "Serbian (latin)"
-msgstr ""
+msgstr "srpski (latinica)"
 
 #: ..\src/chooselang.cpp:109
 #: ..\src/mainframe.cpp:2358
@@ -188,19 +187,19 @@ msgstr "španski"
 #: ..\src/chooselang.cpp:110
 #: ..\src/mainframe.cpp:2363
 msgid "Ukrainian"
-msgstr ""
+msgstr "ukrainski"
 
 #: ..\src/chooselang.cpp:119
 msgid "Select your preferred language"
-msgstr ""
+msgstr "Izaberite željeni jezik"
 
 #: ..\src/chooselang.cpp:120
 msgid "Language selection"
-msgstr ""
+msgstr "Izbor jezika"
 
 #: ..\src/chooselang.cpp:134
 msgid "You must restart the program for this change to take effect."
-msgstr ""
+msgstr "Ova izmena zahteva ponovno pokretanje programa."
 
 #: ..\src/choose_virtual_folder.cpp:157
 msgid "Please select the virtual folder that will receive the selected files and/or folders:"
@@ -458,9 +457,8 @@ msgstr "&Pretraga"
 
 #: ..\src/mainframe.cpp:831
 #: ..\src/mainframe.cpp:3150
-#, fuzzy
 msgid "Show in physical view"
-msgstr "Prikazuje stvarne stavke"
+msgstr "Prikaži stvarne stavke"
 
 # Part of the View menu
 #: ..\src/mainframe.cpp:832
@@ -471,13 +469,13 @@ msgstr "Idi &gore za jedan nivo"
 #: ..\src/mainframe.cpp:2561
 #: ..\src/mainframe.cpp:2598
 msgid "Expand"
-msgstr ""
+msgstr "Raširi"
 
 #: ..\src/mainframe.cpp:834
 #: ..\src/mainframe.cpp:2562
 #: ..\src/mainframe.cpp:2599
 msgid "Collapse"
-msgstr ""
+msgstr "Sakupi"
 
 # Part of the View menu
 #: ..\src/mainframe.cpp:836
@@ -795,9 +793,8 @@ msgid "VVV (Virtual Volumes View): a program to catalog removable devices like C
 msgstr "VPD (Virtuelni Pregled Diskova) je program za izradu kataloga uklonjivih medijuma, kao što su CD i DVD diskovi"
 
 #: ..\src/mainframe.cpp:2352
-#, fuzzy
 msgid "Copyright (C) 2007-2010 The VVV Team"
-msgstr "Sva prava su zadržana, (C) 2007-2009 VPD tim"
+msgstr "Sva prava su zadržana, (C) 2007-2010 VPD tim"
 
 #: ..\src/mainframe.cpp:2353
 msgid "Fulvio Senore: main developer"
@@ -820,9 +817,8 @@ msgid "This is open source software, distributed under the GNU GENERAL PUBLIC LI
 msgstr "Ovo je slobodan program, izdat pod Gnuovom Opštom Javnom Licencom (eng. GPL)"
 
 #: ..\src/mainframe.cpp:2365
-#, fuzzy
 msgid "Serbian"
-msgstr "nemački"
+msgstr "srpski"
 
 #: ..\src/mainframe.cpp:2384
 msgid "New catalog"
@@ -878,18 +874,16 @@ msgid "Please enter some search data"
 msgstr "Unesite reči za pretragu"
 
 #: ..\src/mainframe.cpp:2762
-#, fuzzy
 msgid "Incorrect file name search data"
-msgstr "Unesite reči za pretragu"
+msgstr "Neispravno ime datoteke za pretragu"
 
 #: ..\src/mainframe.cpp:2773
-#, fuzzy
 msgid "Incorrect extension search data"
-msgstr "Unesite reči za pretragu"
+msgstr "Neispravna ekstenzija za pretragu"
 
 #: ..\src/mainframe.cpp:2785
 msgid "Incorrect description search data"
-msgstr ""
+msgstr "Neispravan opis za pretragu"
 
 #: ..\src/mainframe.cpp:2890
 msgid "The search did not find anything"
@@ -1119,7 +1113,7 @@ msgstr "Svirni ako su zadaci duži od (sekundi):"
 
 #: ..\src/settings.cpp:193
 msgid "Change language"
-msgstr ""
+msgstr "Promeni jezik"
 
 #: ..\src/settings.cpp:196
 msgid "General"
