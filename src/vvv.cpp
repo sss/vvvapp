@@ -68,10 +68,6 @@
 #include "data_interface/data_error.h"
 #include "chooselang.h"
 
-#ifdef __WXGTK__
-    #include <stdlib.h>     // for setenv()
-#endif
-
 ////@begin XPM images
 ////@end XPM images
 
@@ -144,20 +140,6 @@ bool CVvvApp::OnInit()
 	
 	s_macHelpMenuTitleName = _("&Help");
 #endif	
-
-#if defined(__WXGTK__)
-    // set the environment variables needed by the Firebird runtime
-    // only for the release version.
-    // the debug version does not do this so we can run the program in the debugger
-    int r = setenv( "LD_LIBRARY_PATH", "./firebird", 0 );
-    if( r == 0 ) {
-        r = setenv( "FIREBIRD", ".", 0 );
-    }
-    if( r != 0 ) {
-        CUtils::MsgErr( wxT("Unable to set the environment variables") );
-        return false;
-    }
-#endif
 
 	// sets the config object
 	SetVendorName(wxT("VVV"));

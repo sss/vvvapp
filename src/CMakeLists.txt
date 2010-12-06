@@ -175,9 +175,9 @@ if( UNIX AND NOT APPLE )
   install( FILES ${PROJECT_SOURCE_DIR}/linux_specific/readme.txt 
                  ${PROJECT_SOURCE_DIR}/linux_specific/License.txt 
                  DESTINATION . )
-#  install( FILES ${PROJECT_SOURCE_DIR}/linux_specific/vvv-start.sh 
-#                 DESTINATION . PERMISSIONS OWNER_EXECUTE OWNER_WRITE OWNER_READ GROUP_EXECUTE
-#                                           GROUP_READ WORLD_READ WORLD_EXECUTE )
+  install( FILES ${PROJECT_SOURCE_DIR}/linux_specific/vvv-start.sh 
+                 DESTINATION . PERMISSIONS OWNER_EXECUTE OWNER_WRITE OWNER_READ GROUP_EXECUTE
+                                           GROUP_READ WORLD_READ WORLD_EXECUTE )
 endif( UNIX AND NOT APPLE )
 
 if( UNIX )
