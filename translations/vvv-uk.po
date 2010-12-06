@@ -84,121 +84,120 @@ msgstr "Виберіть розділ для каталогізування"
 
 #: ..\src/catalog_volume_functions.cpp:328
 msgid "Number of added files: "
-msgstr ""
+msgstr "Кількість доданих файлів:"
 
 #: ..\src/catalog_volume_functions.cpp:329
 msgid "Number of updated files: "
-msgstr ""
+msgstr "Кількість оновлених файлів:"
 
 #: ..\src/catalog_volume_functions.cpp:330
 msgid "Number of deleted files (not counting those in deleted folders): "
-msgstr ""
+msgstr "Кількість видалених файлів (не рахуючи тих, що у видаленій папці):"
 
 #: ..\src/catalog_volume_functions.cpp:331
 msgid "Number of deleted folders: "
-msgstr ""
+msgstr "Кількість видалених папок:"
 
 #: ..\src/catalog_volume_functions.cpp:332
 msgid "Number of unchanged files: "
-msgstr ""
+msgstr "Кількість файлів без змін:"
 
 #: ..\src/catalog_volume_functions.cpp:333
 msgid "Do you really want to update the volume?"
-msgstr ""
+msgstr "Ви дійсно хочете оновити розділ?"
 
 #: ..\src/chooselang.cpp:77
 #, c-format
 msgid "Unknown locale code '%s' in registry."
-msgstr ""
+msgstr "Невідомий код мови '%s' в реєстрі."
 
 #: ..\src/chooselang.cpp:94
 msgid "(Use default language)"
-msgstr ""
+msgstr "(Використовувати стандартну мову)"
 
 #: ..\src/chooselang.cpp:96
 #: ..\src/mainframe.cpp:2364
 msgid "Croatian"
-msgstr ""
+msgstr "Хорватська"
 
 #: ..\src/chooselang.cpp:97
 #: ..\src/mainframe.cpp:2361
 msgid "Czech"
-msgstr ""
+msgstr "Чеська"
 
 #: ..\src/chooselang.cpp:98
 #: ..\src/mainframe.cpp:2368
 msgid "Dutch"
-msgstr ""
+msgstr "Голландська"
 
 #: ..\src/chooselang.cpp:99
 msgid "English"
-msgstr ""
+msgstr "Англійська"
 
 #: ..\src/chooselang.cpp:100
 #: ..\src/mainframe.cpp:2359
 msgid "French"
-msgstr ""
+msgstr "Французька"
 
 #: ..\src/chooselang.cpp:101
 #: ..\src/mainframe.cpp:2360
-#, fuzzy
 msgid "German"
-msgstr "Загальний"
+msgstr "Німецька"
 
 #: ..\src/chooselang.cpp:102
 #: ..\src/mainframe.cpp:2366
 msgid "Italian"
-msgstr ""
+msgstr "Італійська"
 
 #: ..\src/chooselang.cpp:103
 #: ..\src/mainframe.cpp:2362
 msgid "Polish"
-msgstr ""
+msgstr "Польська"
 
 #: ..\src/chooselang.cpp:104
 #: ..\src/mainframe.cpp:2357
 msgid "Portuguese"
-msgstr ""
+msgstr "Португальська"
 
 #: ..\src/chooselang.cpp:105
 #: ..\src/mainframe.cpp:2367
 msgid "Romanian"
-msgstr ""
+msgstr "Румунська"
 
 #: ..\src/chooselang.cpp:106
 #: ..\src/mainframe.cpp:2363
 msgid "Russian"
-msgstr ""
+msgstr "Російська"
 
 #: ..\src/chooselang.cpp:107
 msgid "Serbian (cyrillic)"
-msgstr ""
+msgstr "Сербська (кирилиця)"
 
 #: ..\src/chooselang.cpp:108
 msgid "Serbian (latin)"
-msgstr ""
+msgstr "Сербська (латиниця)"
 
 #: ..\src/chooselang.cpp:109
 #: ..\src/mainframe.cpp:2358
 msgid "Spanish"
-msgstr ""
+msgstr "Іспанська"
 
 #: ..\src/chooselang.cpp:110
 #: ..\src/mainframe.cpp:2363
 msgid "Ukrainian"
-msgstr ""
+msgstr "Українська"
 
 #: ..\src/chooselang.cpp:119
 msgid "Select your preferred language"
-msgstr ""
+msgstr "Виберіть потрібну мову"
 
 #: ..\src/chooselang.cpp:120
 msgid "Language selection"
-msgstr ""
+msgstr "Вибір мови"
 
 #: ..\src/chooselang.cpp:134
 msgid "You must restart the program for this change to take effect."
-msgstr ""
+msgstr "Вам потрібно перезапустити програму, щоб зміни вступили в силу."
 
 #: ..\src/choose_virtual_folder.cpp:157
 msgid "Please select the virtual folder that will receive the selected files and/or folders:"
@@ -433,9 +432,8 @@ msgstr "&Каталогізувати Розділ..."
 
 # Part of the Volumes menu
 #: ..\src/mainframe.cpp:823
-#, fuzzy
 msgid "&Update Volume..."
-msgstr "&Каталогізувати Розділ..."
+msgstr "&Оновити Розділ..."
 
 #: ..\src/mainframe.cpp:824
 msgid "&Volumes"
@@ -458,7 +456,6 @@ msgstr "&Пошуковий Вигляд"
 
 #: ..\src/mainframe.cpp:831
 #: ..\src/mainframe.cpp:3150
-#, fuzzy
 msgid "Show in physical view"
 msgstr "Показати фізичний вигляд"
 
@@ -471,13 +468,13 @@ msgstr "На один рівень &вгору"
 #: ..\src/mainframe.cpp:2561
 #: ..\src/mainframe.cpp:2598
 msgid "Expand"
-msgstr ""
+msgstr "Розгорнути"
 
 #: ..\src/mainframe.cpp:834
 #: ..\src/mainframe.cpp:2562
 #: ..\src/mainframe.cpp:2599
 msgid "Collapse"
-msgstr ""
+msgstr "Згорнути"
 
 # Part of the View menu
 #: ..\src/mainframe.cpp:836
@@ -502,7 +499,6 @@ msgid "Help &Contents"
 msgstr "Зміст &Довідки"
 
 #: ..\src/mainframe.cpp:853
-#, fuzzy
 msgid "&About VVV..."
 msgstr "Про &програму VVV"
 
@@ -792,15 +788,12 @@ msgstr ""
 "Ви можете спробувати перевстановити програму для вирішення цієї проблеми."
 
 #: ..\src/mainframe.cpp:2351
-#, fuzzy
 msgid "VVV (Virtual Volumes View): a program to catalog removable devices like CDs and DVDs"
 msgstr ""
-"VVV (Virtual Volumes View / Віртуальний Вид Розділів): програма для каталогізації знімних пристроїв, таких як компакт-диски та DVD\n"
-"\n"
-"\"Бруд Венауса - кров на цій землі\""
+"VVV (Virtual Volumes View / Віртуальний Вид Розділів): програма для каталогізації\n"
+"знімних пристроїв, таких як компакт-диски та DVD"
 
 #: ..\src/mainframe.cpp:2352
-#, fuzzy
 msgid "Copyright (C) 2007-2010 The VVV Team"
 msgstr "Авторське право (C) 2007-2008 The VVV Team"
 
@@ -809,11 +802,12 @@ msgid "Fulvio Senore: main developer"
 msgstr "Фульвіо Сеньйоре: головний розробник"
 
 #: ..\src/mainframe.cpp:2354
-#, fuzzy
 msgid ""
 "\n"
 "Jan Albartus: worked at the portable version and designed the application's icon"
-msgstr "Ян Альбартус: працював над портативної версією програми і іконками для цієї програми"
+msgstr ""
+"\n"
+"Ян Альбартус: працював над портативної версією програми і іконками для цієї програми"
 
 #: ..\src/mainframe.cpp:2355
 msgid "This program uses icons from the Gnome, Ubuntu and Crystal icons projects"
@@ -825,7 +819,7 @@ msgstr "Це програмне забезпечення з відкритим �
 
 #: ..\src/mainframe.cpp:2365
 msgid "Serbian"
-msgstr ""
+msgstr "Сербська"
 
 #: ..\src/mainframe.cpp:2384
 msgid "New catalog"
@@ -862,9 +856,8 @@ msgstr "Видалити"
 
 # Part of the Volumes menu
 #: ..\src/mainframe.cpp:2569
-#, fuzzy
 msgid "Update Volume..."
-msgstr "&Каталогізувати Розділ..."
+msgstr "&Оновити Розділ..."
 
 #: ..\src/mainframe.cpp:2593
 msgid "New Root Folder"
@@ -883,18 +876,16 @@ msgid "Please enter some search data"
 msgstr "Будь ласка, введіть ваш запит"
 
 #: ..\src/mainframe.cpp:2762
-#, fuzzy
 msgid "Incorrect file name search data"
-msgstr "Будь ласка, введіть ваш запит"
+msgstr "Невірне ім'я файлу в пошукових даних"
 
 #: ..\src/mainframe.cpp:2773
-#, fuzzy
 msgid "Incorrect extension search data"
-msgstr "Будь ласка, введіть ваш запит"
+msgstr "невірне поширення файлу в пошукових даних"
 
 #: ..\src/mainframe.cpp:2785
 msgid "Incorrect description search data"
-msgstr ""
+msgstr "Невірний опис пошукових даних"
 
 #: ..\src/mainframe.cpp:2890
 msgid "The search did not find anything"
@@ -1046,9 +1037,8 @@ msgid "Restore completed"
 msgstr "Відновлення закінчено"
 
 #: ..\src/mainframe.cpp:3858
-#, fuzzy
 msgid "Update Volume"
-msgstr "Розділ"
+msgstr "Оновити Розділ"
 
 #: ..\src/object_description.cpp:145
 msgid "Please enter the description for the following object:"
@@ -1125,7 +1115,7 @@ msgstr "Звуковий сигнал для задач триваліше ні�
 
 #: ..\src/settings.cpp:193
 msgid "Change language"
-msgstr ""
+msgstr "Змінити мову"
 
 #: ..\src/settings.cpp:196
 msgid "General"
@@ -1206,21 +1196,19 @@ msgstr "Успішне з'єднання з сервером"
 
 #: ..\src/update_volume.cpp:180
 msgid "You are about to update the following volume:"
-msgstr ""
+msgstr "Ви збираєтеся оновити наступні розділи:"
 
 #: ..\src/update_volume.cpp:183
-#, fuzzy
 msgid "VOLUME NAME"
-msgstr "НАЗВА ОБ'ЄКТА"
+msgstr "НАЗВА РОЗДІЛУ"
 
 #: ..\src/update_volume.cpp:188
-#, fuzzy
 msgid "Enter or select the path to volume to update"
-msgstr "Введіть або виберіть том для каталогізування"
+msgstr "Введіть або виберіть шлях до оновлюємого розділу"
 
 #: ..\src/update_volume.cpp:208
 msgid "Update"
-msgstr ""
+msgstr "Оновити"
 
 #: ..\src/vvv.cpp:300
 #: ..\src/vvv.cpp:356
@@ -1249,7 +1237,6 @@ msgstr "Виникла непередбачена помилка. Ця прог�
 
 #: ..\src/vvv.cpp:382
 #: ..\src/vvv.cpp:466
-#, fuzzy
 msgid ""
 "An unexpected error has happened. Here is a description of the error:\n"
 "\n"
@@ -1258,14 +1245,12 @@ msgstr ""
 "\n"
 
 #: ..\src/vvv.cpp:408
-#, fuzzy
 msgid "The volume path does not exists"
-msgstr "Шлях до розділу диска не вказаний"
+msgstr "Шлях до розділу диска не існує"
 
 #: ..\src/vvv.cpp:449
-#, fuzzy
 msgid "Volume name not found"
-msgstr "Мітка розділу"
+msgstr "Мітка розділу не знайдена"
 
 #: ..\src/exportdata.h:71
 msgid "Export data"
