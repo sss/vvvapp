@@ -35,4 +35,23 @@ NOTE: do not start directly the vvv executable file because it would not work.
 
 The help file contains some instructions.
 
+How to start VVV from a menu entry:
+-----------------------------------
+
+It is possible to start VVV from a menu entry or from a launcher: just set the entry
+to start the "vvv-start.sh" file, but you need to edit the script file to make it work.
+
+You must add a new line at the top of the file, setting the current directory to the
+directory that contains the script. This directory changes from computer to
+computer so this line cannot be set in the distribution archive.
+For example the script file could look like:
+
+
+#!/bin/sh
+cd ~/vvv
+export LD_LIBRARY_PATH=./firebird
+export FIREBIRD=.
+./vvv
+
+
 Fulvio Senore (fsenore@ica-net.it)
