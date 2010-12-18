@@ -3439,7 +3439,12 @@ bool CMainFrame::IsEditRenameEnabled() {
 				wxTreeItemId item = tctl->GetSelection();
 				if( item.IsOk() ) {
 					MyTreeItemData *itemData = (MyTreeItemData *) tctl->GetItemData(item);
-					isEnabled = itemData->GetPhysPathID().IsNull();
+					if( itemData == NULL ) {
+						isEnabled = false;
+					}
+					else {
+						isEnabled = itemData->GetPhysPathID().IsNull();
+					}
 				}
 				else
 					isEnabled = false;
