@@ -178,7 +178,7 @@ For the release build I use <b>
 <p>
 Configure will run and print a summary of the configuration: depending on your 
 system it will use wxWidgets&#39; version of many libraries or the one that is 
-already installed. Using wxWidgets&#39; own version of the library will reduce 
+already installed. Using wxWidgets&#39; own version of the libraries will reduce 
 dependencies too. </p>
 <p>
 For example you can run configure with <b>--with-expat=builtin</b> 
@@ -214,17 +214,19 @@ Firebird as an embedded database manager, so there is no need to install it.
 <a href="http://accountingplusplus.blogspot.com/2010/06/firebird-embedded-linux.html">
 More info here</a>.</p>
 <p>In order to build VVV you need to prepare a folder containing the Firebird 
-files as described in the link above. Just exclude &quot;vvv&quot; that will be added at a 
-second time and vvv-start.sh that is not needed any more.</p>
+files as described in the link above. Just exclude &quot;vvv&quot; and 
+&quot;vvv-start.sh&quot; that will be added at a 
+second time.</p>
 <p>&nbsp;</p>
 <p>You can obtain the Firebird files in different ways:</p>
-<p>Use the files contained in the VVV precompiled binary.</p>
-<p>Download the Firebird package for your Linux distribution. I build VVV with 
-Firebird 2.0.x. Later versions should work but I have not tested them.</p>
-<p>Build Firebird from sources, it is not difficult. Download version 2.0.x 
+<ul>
+	<li>Use the files contained in the VVV precompiled binary.</li>
+	<li>Download the Firebird package for your Linux distribution. I build VVV with 
+Firebird 2.0.x. Later versions should work but I have not tested them.</li>
+	<li>Build Firebird from sources, it is not difficult. Download version 2.0.x 
 source code and follow
-<a href="http://accountingplusplus.blogspot.com/2010/11/compiling-firebird-in-linux.html">
-these instructions</a>.</p>
+	<a href="http://accountingplusplus.blogspot.com/2010/11/compiling-firebird-in-linux.html">these instructions</a>.</li>
+</ul>
 <p>&nbsp;</p>
 <p>If you only want to develop VVV and you do not want to distribute the 
 compiled program you can simply install the server using the available package. 
