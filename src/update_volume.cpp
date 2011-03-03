@@ -46,6 +46,7 @@
 #endif
 
 ////@begin includes
+#include "wx/mstream.h"
 ////@end includes
 
 #include "vvv.h"
@@ -177,7 +178,7 @@ void CDialogUpdateVolume::CreateControls()
     wxBoxSizer* itemBoxSizer2 = new wxBoxSizer(wxVERTICAL);
     itemDialog1->SetSizer(itemBoxSizer2);
 
-    wxStaticText* itemStaticText3 = new wxStaticText( itemDialog1, wxID_STATIC, _("You are about to update the following volume:"), wxDefaultPosition, wxDefaultSize, 0 );
+    wxStaticText* itemStaticText3 = new wxStaticText( itemDialog1, wxID_STATIC, wxGetTranslation(wxString(wxT("You are about to update the following volume:")) + (wxChar) 0x00E0), wxDefaultPosition, wxDefaultSize, 0 );
     itemBoxSizer2->Add(itemStaticText3, 0, wxALIGN_LEFT|wxALL, 5);
 
     m_VolumeNameStatic = new wxStaticText( itemDialog1, wxID_STATIC, _("VOLUME NAME"), wxDefaultPosition, wxDefaultSize, 0 );
@@ -191,7 +192,7 @@ void CDialogUpdateVolume::CreateControls()
     wxBoxSizer* itemBoxSizer7 = new wxBoxSizer(wxHORIZONTAL);
     itemBoxSizer2->Add(itemBoxSizer7, 0, wxGROW|wxBOTTOM, 5);
 
-    m_VolumePath = new wxTextCtrl( itemDialog1, ID_VOLUME_PATH, _T(""), wxDefaultPosition, wxDefaultSize, 0 );
+    m_VolumePath = new wxTextCtrl( itemDialog1, ID_VOLUME_PATH, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
     itemBoxSizer7->Add(m_VolumePath, 1, wxALIGN_CENTER_VERTICAL|wxALL, 5);
 
     m_VolumeBrowse = new wxButton( itemDialog1, ID_VOLUME_BROWSE, _("..."), wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT );

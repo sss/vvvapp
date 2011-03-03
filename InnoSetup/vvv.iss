@@ -8,7 +8,7 @@
 
 #define AppName "VVV (Virtual Volumes View)"
 #define ExeName "vvv.exe"
-#define AppVersion "1.1"
+#define AppVersion "1.11"
 
 [Setup]
 AppId=VVV-fu-ku-jitsu
@@ -22,7 +22,7 @@ VersionInfoVersion={#AppVersion}
 ChangesAssociations=yes
 OutputDir=.
 ;OutputBaseFilename=VVV- + {#AppVersion} + -Setup
-OutputBaseFilename=VVV-1.1-Setup
+OutputBaseFilename=VVV-1.11-Setup
 
 [Tasks]
 Name: desktopicon; Description: {cm:CreateDesktopIcon}
@@ -51,6 +51,8 @@ Source: ..\translations\es\wxstd.mo; DestDir: {app}\languages\es
 Source: ..\translations\vvv-fr.mo; DestDir: {app}\languages\fr; DestName: vvv.mo
 Source: ..\translations\fr\wxstd.mo; DestDir: {app}\languages\fr
 Source: ..\translations\vvv-hr.mo; DestDir: {app}\languages\hr; DestName: vvv.mo
+Source: ..\translations\vvv-hu.mo; DestDir: {app}\languages\hu; DestName: vvv.mo
+Source: ..\translations\hu\wxstd.mo; DestDir: {app}\languages\hu
 Source: ..\translations\vvv-it.mo; DestDir: {app}\languages\it; DestName: vvv.mo
 Source: ..\translations\it\wxstd.mo; DestDir: {app}\languages\it
 Source: ..\translations\vvv-nl.mo; DestDir: {app}\languages\nl; DestName: vvv.mo

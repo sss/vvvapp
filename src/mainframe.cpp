@@ -2358,6 +2358,7 @@ void CMainFrame::OnABOUTClick( wxCommandEvent& WXUNUSED(event) )
 	info.AddTranslator( wxString(wxT("David de Castro: ")) + _("Spanish") );
 	info.AddTranslator( wxString(wxT("Fr\u00E9d\u00E9ric Gacquer: ")) + _("French") );
 	info.AddTranslator( wxString(wxT("Steve K\u00F6hler: ")) + _("German") );
+	info.AddTranslator( wxString(wxT("Kriszti\u00E1n Mukli: ")) + _("Hungarian") );
 	info.AddTranslator( wxString(wxT("Karel Kozl\u00EDk: ")) + _("Czech") );
 	info.AddTranslator( wxString(wxT("Dariusz Liszewski: ")) + _("Polish") );
 	info.AddTranslator( wxString(wxT("Yaroslav D. Mudryy : ")) + _("Russian") + wxT(" ") + _("Ukrainian") );
