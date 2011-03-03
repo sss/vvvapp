@@ -2169,7 +2169,7 @@ void CMainFrame::OpenDatabase( wxString fileName, int expectedVersion ) {
 		// upgrade the db to unicode
 		wxString msg = _("This catalog has been created with an older version of VVV so you need to convert it to a newer format.\n\n");
 		msg += _("The conversion will create a new catalog with the same data as the older one, then you will use this new catalog with VVV. You will not use the older catalog any more.\n\n");
-		msg += _("Do you want to convert the catatalog creating a new one?");
+		msg += _("Do you want to convert the catalog creating a new one?");
 		if( !CUtils::MsgAskNo(msg) ) return;
 
 		if( DBConnectionData.connectToServer && !DBConnectionData.IsLocalhost() ) {
