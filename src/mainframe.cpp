@@ -3505,7 +3505,7 @@ void CMainFrame::DeleteSelectedVirtualFiles() {
 
 	wxASSERT( m_ListViewHasFocus );
 
-	if( !CUtils::MsgAskNo( _("This command will delete the selected virtual files, but it will not change the files in the physical view.\n\nDo you really want to delete the selected virtual files?") ) )
+	if( !CUtils::MsgAskNo( _("This command will delete the selected files from the virtual view, but it will not change the files in the physical view.\n\nDo you really want to delete the selected virtual files?") ) )
 		return;
 
 	// loops over all the selected items
