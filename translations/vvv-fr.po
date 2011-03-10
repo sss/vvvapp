@@ -99,149 +99,149 @@ msgstr "Sélectionnez le volume à cataloguer"
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/catalog_volume_functions.cpp:328
 msgid "Number of added files: "
-msgstr ""
+msgstr "Nombre de fichiers ajoutés:"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/catalog_volume_functions.cpp:329
 msgid "Number of updated files: "
-msgstr ""
+msgstr "Nombre de fichiers mis à jour:"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/catalog_volume_functions.cpp:330
 msgid "Number of deleted files (not counting those in deleted folders): "
-msgstr ""
+msgstr "Nombre de fichiers supprimés (sans compter ceux qui sont dans les dossiers supprimés):"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/catalog_volume_functions.cpp:331
 msgid "Number of deleted folders: "
-msgstr ""
+msgstr "Nombre de dossiers supprimés:"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/catalog_volume_functions.cpp:332
 msgid "Number of unchanged files: "
-msgstr ""
+msgstr "Nombre de fichiers inchangés:"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/catalog_volume_functions.cpp:333
 msgid "Do you really want to update the volume?"
-msgstr ""
+msgstr "Voulez-vous vraiment mettre à jour ce volume?"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/chooselang.cpp:77
 #, c-format
 msgid "Unknown locale code '%s' in registry."
-msgstr ""
+msgstr "Paamètre régional inconnu '%s' en base de registre."
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/chooselang.cpp:94
 msgid "(Use default language)"
-msgstr ""
+msgstr "(Utiliser la langue par défaut)"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/chooselang.cpp:96
 #: view)\src/mainframe.cpp:2364
 msgid "Croatian"
-msgstr ""
+msgstr "Croate"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/chooselang.cpp:97
 #: view)\src/mainframe.cpp:2361
 msgid "Czech"
-msgstr ""
+msgstr "Tchèque"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/chooselang.cpp:98
 #: view)\src/mainframe.cpp:2368
 msgid "Dutch"
-msgstr ""
+msgstr "Néerlandais"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/chooselang.cpp:99
 msgid "English"
-msgstr ""
+msgstr "Anglais"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/chooselang.cpp:100
 #: view)\src/mainframe.cpp:2359
 msgid "French"
-msgstr ""
+msgstr "Français"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/chooselang.cpp:101
 #: view)\src/mainframe.cpp:2360
-#, fuzzy
 msgid "German"
-msgstr "Général"
+msgstr "Allemand"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/chooselang.cpp:102
 #: view)\src/mainframe.cpp:2366
 msgid "Italian"
-msgstr ""
+msgstr "Italien"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/chooselang.cpp:103
 #: view)\src/mainframe.cpp:2362
 msgid "Polish"
-msgstr ""
+msgstr "Polonais"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/chooselang.cpp:104
 #: view)\src/mainframe.cpp:2357
 msgid "Portuguese"
-msgstr ""
+msgstr "Portugais"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/chooselang.cpp:105
 #: view)\src/mainframe.cpp:2367
 msgid "Romanian"
-msgstr ""
+msgstr "Roumain"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/chooselang.cpp:106
 #: view)\src/mainframe.cpp:2363
 msgid "Russian"
-msgstr ""
+msgstr "Russe"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/chooselang.cpp:107
 msgid "Serbian (cyrillic)"
-msgstr ""
+msgstr "Serbe (cyrillique)"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/chooselang.cpp:108
 msgid "Serbian (latin)"
-msgstr ""
+msgstr "Serbe (latin)"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/chooselang.cpp:109
 #: view)\src/mainframe.cpp:2358
 msgid "Spanish"
-msgstr ""
+msgstr "Espagnol"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/chooselang.cpp:110
 #: view)\src/mainframe.cpp:2363
 msgid "Ukrainian"
-msgstr ""
+msgstr "Ukrainien"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/chooselang.cpp:119
 msgid "Select your preferred language"
-msgstr ""
+msgstr "Choisissez votre langue préférée"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/chooselang.cpp:120
 msgid "Language selection"
-msgstr ""
+msgstr "Sélection de la langue"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/chooselang.cpp:134
 msgid "You must restart the program for this change to take effect."
-msgstr ""
+msgstr "Vous devez redémarrer le programme pour que cette modification prenne effet."
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/choose_virtual_folder.cpp:157
+#, fuzzy
 msgid "Please select the virtual folder that will receive the selected files and/or folders:"
 msgstr "Veuillez sélectionner le répertoire virtuel destiné aux fichiers et/ou répertoires sélectionnés :"
 
@@ -275,8 +275,9 @@ msgstr "&Annuler"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/convert_db_unicode.cpp:520
+#, fuzzy
 msgid "Conversion is about to start: a message will tell you when it will be completed."
-msgstr "La conversion est sur le point de débuter: un message"
+msgstr "La conversion est sur le point de débuter: un message vous indiquera quand tout sera terminé."
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/convert_db_unicode.cpp:546
@@ -333,7 +334,7 @@ msgstr "Répertoire virtuel sélectionné"
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/exportdata.cpp:210
 msgid "Export"
-msgstr "Export"
+msgstr "Exporter"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/exportdata.cpp:214
@@ -444,7 +445,7 @@ msgstr "&Exporter..."
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:802
 msgid "&Backup..."
-msgstr "&Sauvegarde..."
+msgstr "&Sauvegarder..."
 
 # Part of the File menu
 #: E:\C_Prg\vvv
@@ -467,7 +468,7 @@ msgstr "&Fichier"
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:808
 msgid "&Add To Virtual Folder..."
-msgstr "&Ajout dans le Répertoire Virtuel"
+msgstr "&Ajouter dans le Répertoire Virtuel"
 
 # Part of the Edit menu
 #: E:\C_Prg\vvv
@@ -519,9 +520,8 @@ msgstr "&Cataloguer le volume..."
 # Part of the Volumes menu
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:823
-#, fuzzy
 msgid "&Update Volume..."
-msgstr "&Cataloguer le volume..."
+msgstr "&Mettre à jour le volume..."
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:824
@@ -549,9 +549,8 @@ msgstr "&Vue Recherche"
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:831
 #: view)\src/mainframe.cpp:3150
-#, fuzzy
 msgid "Show in physical view"
-msgstr "Montrer la vue physique"
+msgstr "Montrer dans la vue physique"
 
 # Part of the View menu
 #: E:\C_Prg\vvv
@@ -564,14 +563,14 @@ msgstr "&Remonter d'un niveau"
 #: view)\src/mainframe.cpp:2561
 #: view)\src/mainframe.cpp:2598
 msgid "Expand"
-msgstr ""
+msgstr "Développer"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:834
 #: view)\src/mainframe.cpp:2562
 #: view)\src/mainframe.cpp:2599
 msgid "Collapse"
-msgstr ""
+msgstr "Réduire"
 
 # Part of the View menu
 #: E:\C_Prg\vvv
@@ -602,9 +601,8 @@ msgstr "Aide &Sommaire"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:853
-#, fuzzy
 msgid "&About VVV..."
-msgstr "&A propos de VVV"
+msgstr "&A propos de VVV..."
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:861
@@ -792,7 +790,7 @@ msgstr "Taux d'échantillonage"
 #: (virtual volumes view)\src/mainframe.cpp:1413
 #: view)\src/settings.cpp:249
 msgid "Channels"
-msgstr "Cannaux"
+msgstr "Canaux"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:1442
@@ -824,7 +822,7 @@ msgstr "Nouveau sous-répertoire virtuel"
 #: (virtual volumes view)\src/mainframe.cpp:2023
 #: view)\src/mainframe.cpp:3385
 msgid "Enter the new folder name"
-msgstr "Entrer le nouveau nom de répertoire"
+msgstr "Entrez le nouveau nom de répertoire"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:2038
@@ -832,10 +830,12 @@ msgstr "Entrer le nouveau nom de répertoire"
 msgid "The new folder name is already present in the database"
 msgstr "Le nouveau nom de répertoire est déjà présent dans la base de données"
 
+# When this message appears?
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:2091
+#, fuzzy
 msgid "This catalog file does not exist any more"
-msgstr "Dorénavant ce fichier catalogue n'existe plus"
+msgstr "Ce fichier catalogue n'existe plus"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:2121
@@ -852,7 +852,7 @@ msgid ""
 "Incorrect username or password for the following database:\n"
 "\n"
 msgstr ""
-"nom d'utilisateur ou mot de passe incorrect pour la base de donnée qui suit:\n"
+"nom d'utilisateur ou mot de passe incorrect pour la base de donnée suivante:\n"
 "\n"
 
 #: E:\C_Prg\vvv
@@ -872,8 +872,8 @@ msgid ""
 "If you want to open a catalog on another computer you must connect to the database server (Tools/Options menu)."
 msgstr ""
 "Impossible d'ouvrir le catalogue.\n"
-"Veuillez noter que vous n'êtes pas connecté au serveur de base de données et donc que vous ne pouvez ouvrir de catalogue situé sur un autre ordniateur sur le réseau.\n"
-"Si vous voulez ouvrir un catalogue sur un autre ordinateur vous devez vous connecter au server de base de données (Menu Outils/Options)."
+"Veuillez noter que vous n'êtes pas connecté a un serveur de base de données et donc que vous ne pouvez pas ouvrir de catalogue situé sur un autre ordniateur sur le réseau.\n"
+"Si vous voulez ouvrir un catalogue sur un autre ordinateur vous devez vous connecter a un server de base de données (Menu Outils/Options)."
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:2154
@@ -945,16 +945,11 @@ msgstr ""
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:2351
-#, fuzzy
 msgid "VVV (Virtual Volumes View): a program to catalog removable devices like CDs and DVDs"
-msgstr ""
-"VVV (Vue de Volumes Virtuels): un programme pour cataloguer les unités amovibles comme les CDs et les DVDs\n"
-"\n"
-"\"La boue de Venaus est le sang de cette terre\""
+msgstr "VVV (Vue de Volumes Virtuels): un programme pour cataloguer les unités amovibles comme les CDs et les DVDs"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:2352
-#, fuzzy
 msgid "Copyright (C) 2007-2010 The VVV Team"
 msgstr "Copyright (C) 2007-2008 L'équipe VVV"
 
@@ -965,16 +960,17 @@ msgstr "Fulvio Senore: développeur principal"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:2354
-#, fuzzy
 msgid ""
 "\n"
 "Jan Albartus: worked at the portable version and designed the application's icon"
-msgstr "Jan Albartus: a travaillé sur la version portable et à conçu l'icône de l'application"
+msgstr ""
+"\n"
+"Jan Albartus: a travaillé sur la version portable et a conçu l'icône de l'application"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:2355
 msgid "This program uses icons from the Gnome, Ubuntu and Crystal icons projects"
-msgstr "Ce programme utilise des icônes qui provienne des projets Gnome, Ubuntu et Crystal icons"
+msgstr "Ce programme utilise des icônes provenant des projets Gnome, Ubuntu et Crystal icons"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:2356
@@ -983,9 +979,8 @@ msgstr "Ceci est du logiciel libre, distribué sous la licence GNU GENERAL PUBLI
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:2365
-#, fuzzy
 msgid "Serbian"
-msgstr "Général"
+msgstr "Serbe"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:2384
@@ -1030,9 +1025,8 @@ msgstr "Effacer"
 # Part of the Volumes menu
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:2569
-#, fuzzy
 msgid "Update Volume..."
-msgstr "&Cataloguer le volume..."
+msgstr "&Mettre à jour le volume..."
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:2593
@@ -1056,20 +1050,18 @@ msgstr "Veuillez entrer quelque chose à chercher"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:2762
-#, fuzzy
 msgid "Incorrect file name search data"
-msgstr "Veuillez entrer quelque chose à chercher"
+msgstr "Mavaise information de recherche sur les noms de fichier"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:2773
-#, fuzzy
 msgid "Incorrect extension search data"
-msgstr "Veuillez entrer quelque chose à chercher"
+msgstr "Mavaise information de recherche sur les extensions de fichier"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:2785
 msgid "Incorrect description search data"
-msgstr ""
+msgstr "Mavaise information de recherche sur les descriptions"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:2890
@@ -1246,9 +1238,8 @@ msgstr "Restauration terminée"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/mainframe.cpp:3858
-#, fuzzy
 msgid "Update Volume"
-msgstr "Volume"
+msgstr "Mettre à jour le Volume"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/object_description.cpp:145
@@ -1334,12 +1325,12 @@ msgstr "Réouvrir au démarrage le dernier catalogue utilisé "
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/settings.cpp:185
 msgid "Beep for tasks longer than (seconds):"
-msgstr "Bip pour des tâches plus longue que (secondes):"
+msgstr "Bip pour des tâches plus longue que (en secondes):"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/settings.cpp:193
 msgid "Change language"
-msgstr ""
+msgstr "Choisir la langue de l'interface"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/settings.cpp:196
@@ -1371,7 +1362,7 @@ msgid ""
 "stored in this computer and you do not want to share them\n"
 "with other computers."
 msgstr ""
-"Cocher la case ci-dessous si vous souhaitez accéder aux catalogues stockés\n"
+"Cocher la case ci-dessous si vous souhaitez accéder à des catalogues stockés\n"
 "sur un serveur réseau. Chaque ordinateur sur le réseau pourra\n"
 "accéder aux mêmes catalogues sur le serveur.\n"
 "NE PAS cocher la case si vous souhaitez seulement accéder aux catalogues\n"
@@ -1437,24 +1428,22 @@ msgstr "Connexion au serveur réussie"
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/update_volume.cpp:180
 msgid "You are about to update the following volume:"
-msgstr ""
+msgstr "Vous vous apprêtez à mettre à jour le volume suivant:"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/update_volume.cpp:183
-#, fuzzy
 msgid "VOLUME NAME"
-msgstr "NOM DE L'OBJET"
+msgstr "NOM DU VOLUME"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/update_volume.cpp:188
-#, fuzzy
 msgid "Enter or select the path to volume to update"
-msgstr "Entrez ou sélectionnez le volume à cataloguer"
+msgstr "Entrez ou sélectionnez le volume à mettre à jour"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/update_volume.cpp:208
 msgid "Update"
-msgstr ""
+msgstr "Mise à jour"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/vvv.cpp:300
@@ -1487,7 +1476,6 @@ msgstr "Une erreur inattendue est intervenue. L'application va être fermée."
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/vvv.cpp:382
 #: view)\src/vvv.cpp:466
-#, fuzzy
 msgid ""
 "An unexpected error has happened. Here is a description of the error:\n"
 "\n"
@@ -1497,15 +1485,13 @@ msgstr ""
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/vvv.cpp:408
-#, fuzzy
 msgid "The volume path does not exists"
-msgstr "Le chemin du volume est manquant"
+msgstr "Le chemin du volume n'existe pas"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/vvv.cpp:449
-#, fuzzy
 msgid "Volume name not found"
-msgstr "Nom du volume"
+msgstr "Nom du volume introuvable"
 
 #: E:\C_Prg\vvv
 #: (virtual volumes view)\src/exportdata.h:71
