@@ -22,185 +22,93 @@
 
 #include "audio_metadata.h"
 
+#include <fileref.h>
+#include <tag.h>
 
-wxString CAudioMetadata::field2wx( ID3_Field* myField ) {
-	char *str1 = new char[1024];
-	unicode_t *wstr1 = new unicode_t[1024];
-	wxString retVal;
-
-	ID3_TextEnc enc = myField->GetEncoding();
-	switch( enc ) {
-		case ID3TE_UTF8:
-			myField->Get(str1, 1024);
-			retVal = CUtils::std2wx( str1, &wxConvUTF8 );
-			break;
-		case ID3TE_UTF16:
-			myField->Get(wstr1, 1024);
-			wstr1[myField->Size()/sizeof(unicode_t)] = L'\0';
-			for (unsigned int i = 0; i < myField->Size()/sizeof(unicode_t); i++)
-				wstr1[i] = wxUINT16_SWAP_ALWAYS(wstr1[i]);
-			retVal = CUtils::UTF162wx( (const char *) wstr1 );
-			break;
-		case ID3TE_ISO8859_1:
-			myField->Get(str1, 1024);
-			retVal = CUtils::std2wx( str1, &wxConvISO8859_1 );
-			break;
-		default:
-			myField->Get(str1, 1024);
-			retVal = CUtils::std2wx( str1 );
-			break;
-	}
-	delete str1;
-	delete wstr1;
-	return retVal;
+static wxString TagLibString2wx( const TagLib::String &ts )
+{
+	std::string s = ts.to8Bit( true );
+	wxString ws = CUtils::std2wx( s, &wxConvUTF8 );
+	return ws;
 }
 
+
 bool CAudioMetadata::ReadMP3Metadata( wxString fileName, CFilesAudioMetadata& metaData ) {
-	char *str1 = new char[1024];
-	unicode_t *wstr1 = new unicode_t[1024];
+
 	bool found = false;
 
-//	ID3_Tag myTag( fileName.fn_str() );
-//	ID3_Tag myTag( fileName.char_str() );
+	TagLib::FileRef f( fileName.fn_str() );
 
-	// code taken from the eMule source files: thank you!
-	// ID3LIB BUG: If there are ID3v2 _and_ ID3v1 tags available, id3lib
-	// destroys (actually corrupts) the Unicode strings from ID3v2 tags due to
-	// converting Unicode to ASCII and then convertion back from ASCII to Unicode.
-	// To prevent this, we force the reading of ID3v2 tags only, in case there are 
-	// also ID3v1 tags available.
-	ID3_Tag myTag;
-	size_t id3Size = myTag.Link(fileName.char_str(), ID3TT_ID3V2);
-	if (id3Size == 0) {
-		myTag.Clear();
-		myTag.Link(fileName.char_str(), ID3TT_ID3V1);
-	}
+	if( f.isNull() ) return false;
 
-	ID3_Frame* myFrame = myTag.Find(ID3FID_LEADARTIST);
-	if( myFrame != NULL ) {
-		ID3_Field* myField = myFrame->GetField(ID3FN_TEXT);
-		if( myField != NULL ) {
-			metaData.Artist = field2wx( myField );
+	if( f.tag() ) {
+		wxString s;
+		TagLib::uint i;
+
+		TagLib::Tag *tag = f.tag();
+
+		s = TagLibString2wx( tag->artist() );
+		if( !s.IsEmpty() ) {
+			metaData.Artist = s;
+			found = true;
+		}
+		s = TagLibString2wx( tag->title() );
+		if( !s.IsEmpty() ) {
+			metaData.Title = s;
+			found = true;
+		}
+		s = TagLibString2wx( tag->album() );
+		if( !s.IsEmpty() ) {
+			metaData.Album = s;
+			found = true;
+		}
+		s = TagLibString2wx( tag->comment() );
+		if( !s.IsEmpty() ) {
+			metaData.Comment = s;
+			found = true;
+		}
+		i = tag->track();
+		if( i != 0 ) {
+			metaData.Number = i;
+			found = true;
+		}
+		i = tag->year();
+		if( i != 0 ) {
+			metaData.Year = i;
+			found = true;
+		}
+		s = TagLibString2wx( tag->genre() );
+		if( !s.IsEmpty() ) {
+			metaData.Genre = s;
 			found = true;
 		}
 	}
 
-	myFrame = myTag.Find(ID3FID_TITLE);
-	if( myFrame != NULL ) {
-		ID3_Field* myField = myFrame->GetField(ID3FN_TEXT);
-		if( myField != NULL ) {
-			metaData.Title = field2wx( myField );
+	if( f.audioProperties() ) {
+		TagLib::AudioProperties *properties = f.audioProperties();
+		int i;
+		i = properties->bitrate();
+		if( i != 0 ) {
+			metaData.Bitrate = i;
 			found = true;
 		}
-	}
-
-	myFrame = myTag.Find(ID3FID_ALBUM);
-	if( myFrame != NULL ) {
-		ID3_Field* myField = myFrame->GetField(ID3FN_TEXT);
-		if( myField != NULL ) {
-			metaData.Album = field2wx( myField );
+		i = properties->sampleRate();
+		if( i != 0 ) {
+			metaData.SampleRate = i;
 			found = true;
 		}
-	}
-
-	myFrame = myTag.Find(ID3FID_COMMENT);
-	if( myFrame != NULL ) {
-		ID3_Field* myField = myFrame->GetField(ID3FN_TEXT);
-		if( myField != NULL ) {
-			metaData.Comment = field2wx( myField );
+		i = properties->length();
+		if( i != 0 ) {
+			metaData.Length = i;
 			found = true;
 		}
-	}
-
-	myFrame = myTag.Find(ID3FID_TRACKNUM);
-	if( myFrame != NULL ) {
-		ID3_Field* myField = myFrame->GetField(ID3FN_TEXT);
-		if( myField != NULL ) {
-			myField->Get(str1, 1024);
-			// handles the "5/9" case
-			wxString s = CUtils::std2wx( str1 );
-			s = s.BeforeFirst( '/' );
-			long tmp;
-			if( s.ToLong( &tmp ) )
-				metaData.Number = tmp;
-			else
-				metaData.Number = 0;
+		i = properties->channels();
+		if( i != 0 ) {
+			metaData.Channels = i;
 			found = true;
 		}
-	}
 
-	myFrame = myTag.Find(ID3FID_YEAR);
-	if( myFrame != NULL ) {
-		ID3_Field* myField = myFrame->GetField(ID3FN_TEXT);
-		if( myField != NULL ) {
-			myField->Get(str1, 1024);
-			long tmp;
-			wxString s = CUtils::std2wx( str1 );
-			if( s.ToLong( &tmp ) )
-				metaData.Year = tmp;
-			else
-				metaData.Year = 0;
-			found = true;
-		}
 	}
-
-	myFrame = myTag.Find(ID3FID_CONTENTTYPE);
-	if( myFrame != NULL ) {
-		ID3_Field* myField = myFrame->GetField(ID3FN_TEXT);
-		if( myField != NULL ) {
-			ID3_TextEnc enc = myField->GetEncoding();
-			wxString s;
-			if( enc == ID3TE_UTF16 ) {
-				myField->Get(wstr1, 1024);
-				wstr1[myField->Size()/sizeof(unicode_t)] = L'\0';
-				for (unsigned int i = 0; i < myField->Size()/sizeof(unicode_t); i++)
-					wstr1[i] = wxUINT16_SWAP_ALWAYS(wstr1[i]);
-				s = CUtils::UTF162wx( (const char *) wstr1 );
-			}
-			else {
-				myField->Get(str1, 1024);
-				s = CUtils::std2wx( str1 );
-			}
-			if( s[0] == '(' ) {
-				// decodes genre
-				s = s.AfterFirst( '(' );
-				s = s.BeforeFirst( ')' );
-				long i;
-				if( s.ToLong(&i) ) {
-					const char *cp = ID3_V1GENRE2DESCRIPTION(i);
-					if( cp != NULL )
-						metaData.Genre = wxString::From8BitData( cp );
-//						metaData.Genre = cp;
-				}
-			}
-			else
-				metaData.Genre = s;
-			found = true;
-		}
-	}
-
-	const Mp3_Headerinfo* mp3info;
-	mp3info = myTag.GetMp3HeaderInfo();
-	if( mp3info != NULL ) {
-		metaData.Bitrate = mp3info->bitrate / 1000;
-		metaData.SampleRate = mp3info->frequency;
-		metaData.Length = mp3info->time;
-		if( mp3info->channelmode == MP3CHANNELMODE_FALSE ) {
-			metaData.Channels = 0;
-		}
-		else {
-			if( mp3info->channelmode == MP3CHANNELMODE_SINGLE_CHANNEL ) {
-				metaData.Channels = 1;
-			}
-			else {
-				metaData.Channels = 2;
-			}
-		}
-		found = true;
-	}
-
-	delete str1;
-	delete wstr1;
 
 	return found;
 }

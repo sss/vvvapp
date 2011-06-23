@@ -8,12 +8,23 @@ include_directories( ${PROJECT_SOURCE_DIR}/src/ibpp/core
                      ${PROJECT_SOURCE_DIR}/src/data_interface
 ) 
 
+# look for TagLib
+find_path( TAGLIB_INCLUDE_PATH tag.h DOC "Path to TagLib header files" )
+message( STATUS "TagLib header files path: " ${TAGLIB_INCLUDE_PATH} )
 if(WIN32)
-  # under Windows we compile id3lib together with VVV
-  include_directories( ${PROJECT_SOURCE_DIR}/id3lib-3.8.3/include
-                       ${PROJECT_SOURCE_DIR}/id3lib-3.8.3/include/id3
-  )
+  find_file( TAGLIB_LIB_PATH_DEBUG tagd.lib DOC "Path to the DEBUG TagLib library" )
+  find_file( TAGLIB_LIB_PATH_RELEASE tag.lib DOC "Path to the RELEASE TagLib library" )
+else(WIN32)
+  find_library( TAGLIB_LIB libtag.a PATHS /usr/lib /usr/local/lib )
+  if( NOT TAGLIB_LIB )
+    message( FATAL_ERROR "Unable to find TagLib" )
+  else( NOT TAGLIB_LIB )
+    message( STATUS "TagLib: " ${TAGLIB_LIB} )
+  endif( NOT TAGLIB_LIB )
 endif(WIN32)
+
+include_directories( ${TAGLIB_INCLUDE_PATH} )
+add_definitions( -DTAGLIB_STATIC )
 
 if( WIN32 )
   add_definitions( -DIBPP_WINDOWS )
@@ -29,12 +40,6 @@ add_subdirectory( data_interface )
 link_directories (${PROJECT_BINARY_DIR}/src/ibpp/core
                   ${PROJECT_BINARY_DIR}/src/data_interface
 ) 
-
-if(WIN32)
-  link_directories (${PROJECT_BINARY_DIR}/id3lib-3.8.3/src
-                    ${PROJECT_BINARY_DIR}/id3lib-3.8.3/src/zlib/src
-  )
-endif(WIN32)
 
 
 # For convenience we define the sources as a variable. You can add 
@@ -105,12 +110,12 @@ if(APPLE)
   set_target_properties( vvv PROPERTIES MACOSX_BUNDLE_INFO_PLIST ${PROJECT_SOURCE_DIR}/vvv-Info.plist )
 ENDIF(APPLE)
 
-add_definitions( -DID3LIB_LINKOPTION=1 )
-
-target_link_libraries(vvv data_interface ibpp ${wxWidgets_LIBRARIES})
 if(WIN32)
-  target_link_libraries( vvv id3lib zlib )
+  target_link_libraries( vvv debug ${TAGLIB_LIB_PATH_DEBUG} optimized ${TAGLIB_LIB_PATH_RELEASE} )
+else(WIN32)
+  target_link_libraries( vvv ${TAGLIB_LIB} )
 endif(WIN32)
+target_link_libraries(vvv data_interface ibpp ${wxWidgets_LIBRARIES})
 if( UNIX )
   # link to the Firebird client library
   # the last path is used for OS X where I have a local copy (not installed)
@@ -125,33 +130,8 @@ if( UNIX )
   find_path( FB_EMBEDDED_PATH firebird.conf ${PROJECT_SOURCE_DIR}/firebird_runtime ${PROJECT_SOURCE_DIR}/../../firebird_embedded_2.0.4_runtime )
   message( STATUS "Embedded firebird files path: " ${FB_EMBEDDED_PATH} )
 
-  # link to id3lib
-  # the last path is used for OS X where I have a local copy (not installed)
-  # first look for a static id3lib library
-  find_library( ID3_LIB libid3.a PATHS /usr/lib /usr/local/lib ${PROJECT_SOURCE_DIR}/../id3lib-3.8.3/lib )
-  if( NOT ID3_LIB )
-    # if not found accept a shared one
-    find_library( ID3_LIB id3 PATHS /usr/lib /usr/local/lib ${PROJECT_SOURCE_DIR}/../id3lib-3.8.3/lib )
-  endif( NOT ID3_LIB )
-  if( NOT ID3_LIB )
-    message( FATAL_ERROR "Unable to find id3lib" )
-  else( NOT ID3_LIB )
-    message( STATUS "Id3lib: " ${ID3_LIB} )
-  endif( NOT ID3_LIB )
-
-  # this code locates the id3lib include dir
-  # it is needed if the library is not installed, if it is installed the include files are in a standard location and they can be found
-  # turn the following option ON to be able to define the include path
-  option( VVV_DEFINE_ID3_INCLUDE "Manually define the id3lib include path (if id3lib is not installed)" OFF )
-  if( VVV_DEFINE_ID3_INCLUDE )
-    find_path( ID3_INCLUDE id3.h PATHS ${PROJECT_SOURCE_DIR}/../id3lib-3.8.3/include )
-    message( STATUS "Id3 include path: " ${ID3_INCLUDE} )
-    include_directories( ${ID3_INCLUDE} )
-  endif( VVV_DEFINE_ID3_INCLUDE )
-
-
 #  target_link_libraries( vvv -lfbembed )
-  target_link_libraries( vvv ${FB_LIB} ${ID3_LIB} )
+  target_link_libraries( vvv ${FB_LIB} )
 endif( UNIX )
 
 

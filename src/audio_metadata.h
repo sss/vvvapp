@@ -24,7 +24,7 @@
 #define __AUDIO_METADATA_H__
 
 #include <wx/string.h>
-#include <id3/tag.h>
+//#include <id3/tag.h>
 #include "data_interface/files_audio_metadata.h"
 
 class CAudioMetadata
@@ -35,10 +35,10 @@ public:
 	// returns true if it has found some metadata, false if it didn't find any metadata
 	static bool ReadMP3Metadata( wxString fileName, CFilesAudioMetadata& metaData );
 
-protected:
-
-	// converts the text content of a field to a wxString, handling some text encodigs
-	static wxString field2wx( ID3_Field* myField );
+//protected:
+//
+//	// converts the text content of a field to a wxString, handling some text encodigs
+//	static wxString field2wx( ID3_Field* myField );
 
 };
 
