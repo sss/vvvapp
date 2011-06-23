@@ -4,10 +4,6 @@
 cmake_minimum_required (VERSION 2.6)
 project (VVV)
 
-if( WIN32 )
-  add_subdirectory( id3lib-3.8.3 ) 
-endif( WIN32 )
-
 add_subdirectory( src ) 
 
 set( CPACK_PACKAGE_VERSION_MAJOR 1 )
